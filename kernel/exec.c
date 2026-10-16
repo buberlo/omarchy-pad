@@ -497,6 +497,9 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
     current->mm->stack_start = sp;
 #if defined(GUEST_ARM64)
     current->cpu.sp = sp;
+    printk("ish-highva: exec %s -> sp=%#llx high_va=%d stack_map_page=%#llx\n", file,
+            (unsigned long long) sp, (int) current->mem->high_va,
+            (unsigned long long) STACK_TOP_PAGE(current->mem));
     current->cpu.pc = entry;
     // Zero all general-purpose registers
     memset(current->cpu.regs, 0, sizeof(current->cpu.regs));
