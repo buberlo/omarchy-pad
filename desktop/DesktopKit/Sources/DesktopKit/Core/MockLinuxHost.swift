@@ -8,6 +8,11 @@ public final class MockLinuxHost: LinuxHost {
     public let homeDirectory = "/root"
 
     /// Simulated per-command latency; the real emulator takes tens to hundreds of milliseconds.
+    /// Whether this mock stands for the Alpine system (the desktop's root). The game app's Arch root
+    /// has no apk, so `SystemMaintenance`'s repair guard must find nothing there — set this to false to
+    /// test that path.
+    public var isAlpineRoot = true
+
     public var latency: Duration
 
     private enum Node {
@@ -47,6 +52,10 @@ public final class MockLinuxHost: LinuxHost {
         try? await Task.sleep(for: latency)
         let trimmed = command.trimmingCharacters(in: .whitespacesAndNewlines)
 
+        // `/etc/apk/world` is how the repair kit decides whether it applies to the booted system.
+        if trimmed.contains("/etc/apk/world") {
+            return CommandResult(stdout: isAlpineRoot ? "alpine\n" : "")
+        }
         switch trimmed {
         case "uname -a":
             return CommandResult(stdout: "Linux \(hostName) 4.20.69-ish #1 SMP PREEMPT aarch64 Linux\n")

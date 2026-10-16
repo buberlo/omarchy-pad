@@ -182,8 +182,18 @@ private final class ScriptedRepairHost: LinuxHost, LinuxSystemResetting {
     private(set) var scheduledFactoryReset: FactoryResetMode?
     private(set) var quitCount = 0
 
+    /// The desktop's root is Alpine, so the bundled repair kit applies. Set false to stand for the game
+    /// app's Arch root, where `SystemMaintenance`'s guard must leave it alone.
+    var isAlpineRoot = true
+
     func run(_ command: String, cwd: String?, stdin: Data?) async -> CommandResult {
         runs.append((command, stdin))
+        if command.contains("/etc/apk/world") {
+            return CommandResult(stdout: "alpine\n")   // these doubles stand for the desktop's Alpine root
+        }
+        if command.contains("/etc/apk/world") {
+            return CommandResult(stdout: isAlpineRoot ? "alpine\n" : "")
+        }
         if command.hasPrefix("cat \(RepairKit.installedVersionPath)") {
             return CommandResult(stdout: installedVersion.map { $0 + "\n" } ?? "", exitCode: installedVersion == nil ? 1 : 0)
         }

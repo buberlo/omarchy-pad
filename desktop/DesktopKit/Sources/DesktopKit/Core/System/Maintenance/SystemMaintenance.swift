@@ -94,9 +94,20 @@ final class SystemMaintenanceService {
         installedKitVersion = result.succeeded && !text.isEmpty ? text : nil
     }
 
+    /// The bundled kit is the Alpine system's (apk, Firefox ESR prefs, lifecycle scripts, theme packs).
+    /// The game app boots its own Arch root, where none of it applies — so ask the guest rather than
+    /// trusting the variant, because one binary serves both.
+    private func rootIsAlpine() async -> Bool {
+        (await host.run("[ -f /etc/apk/world ] && echo alpine")).stdout.contains("alpine")
+    }
+
     /// After boot: repairs silently once when the app bundles a newer kit than the guest
     /// last applied (an app update), or when the Settings app asked for a repair.
     func runAutomaticRepairIfNeeded() async {
+        guard await rootIsAlpine() else {
+            Self.logger.notice("the booted Linux system is not Alpine; the bundled repair kit does not apply")
+            return
+        }
         guard !startedAutomaticCheck, let kit else {
             if kit == nil { Self.logger.notice("no repair kit in this build") }
             return
@@ -132,6 +143,10 @@ final class SystemMaintenanceService {
             archive = try kit.verifiedArchive()
         } catch {
             state = .failed(error.localizedDescription)
+            return
+        }
+        guard await rootIsAlpine() else {
+            state = .failed("This Linux system has no apk (it is not the Alpine system), so this build's repair kit does not apply to it.")
             return
         }
         let directory = Self.guestKitDirectory
