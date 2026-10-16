@@ -1,0 +1,26 @@
+#!/bin/sh
+# What the installed Linux system has before the ishwl update: package versions the
+# patched compositor must link against, the current binary and the session options.
+OUT=/tmp/kb4453-probe.txt
+{
+    date -u
+    echo "=== os-release ==="
+    head -3 /etc/os-release 2>&1
+    echo "=== packages ==="
+    for p in musl libxkbcommon wayland-libs-server wayland-libs-client wayland zlib libx11; do
+        apk info -v 2>/dev/null | grep -E "^${p}-[0-9]" | head -2
+    done
+    echo "=== ishwl ==="
+    ls -l /usr/local/bin/ishwl 2>&1
+    sha256sum /usr/local/bin/ishwl 2>&1
+    echo "=== session options ==="
+    cat /etc/ishwl/options 2>&1
+    echo "=== options files ==="
+    ls -l /etc/ishwl/ 2>&1
+    echo "=== ishwl log ==="
+    ls -l /tmp/ishwl.log 2>&1
+    tail -5 /tmp/ishwl.log 2>&1
+} > "$OUT" 2>&1
+wget -T 20 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"
+echo KB4453_PROBE_DONE=1

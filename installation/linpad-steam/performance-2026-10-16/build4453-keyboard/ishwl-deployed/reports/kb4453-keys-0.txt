@@ -1,0 +1,4 @@
+sample=0 keys=0 date=Fri Oct 16 17:47:42 UTC 2026
+=== key lines ===
+=== text input, keymap, toplevels ===
+ishwl 67059.113: keymap: de mac -

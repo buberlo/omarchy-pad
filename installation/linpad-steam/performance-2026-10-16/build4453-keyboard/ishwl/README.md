@@ -1,8 +1,10 @@
-# Prepared, not deployed: ishwl stops holding the input queue for 250 ms
+# ishwl stops holding the input queue for 250 ms
 
-Status: **built and locally checked, not installed on the device, not verified.** The iPad
-still runs the compositor that came with its Linux system. Nothing in build 4453 depends on
-this; deploy it when the next test round is wanted.
+Status: **built, checked, and deployed on 16 October 2026** (see
+[../ishwl-deployed/README.md](../ishwl-deployed/README.md) for the deployment, the key log that
+confirms the new binary is running and what is still unverified). This document stays as the
+build and ABI record: how the binary was produced, what was checked before it was installed,
+and the deployment steps as they were planned.
 
 ## The defect
 

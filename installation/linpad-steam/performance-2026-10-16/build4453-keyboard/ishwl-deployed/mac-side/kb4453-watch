@@ -1,0 +1,27 @@
+#!/bin/sh
+# Posts the compositor's key lines whenever they change, so a play session's evidence
+# arrives on the Mac by itself. Bounded to 25 minutes; started detached by kb4453-play.
+set -u
+LOG=/tmp/ishwl.log
+echo $$ > /tmp/kb4453-watch.pid
+last=-1
+i=0
+end=$(( $(date +%s) + 1500 ))
+while [ "$(date +%s)" -lt "$end" ]; do
+    n=$(grep -cE "^ishwl [0-9.]+: key " "$LOG" 2>/dev/null)
+    [ -n "$n" ] || n=0
+    if [ "$n" != "$last" ]; then
+        last=$n
+        OUT=/tmp/kb4453-keys-$i.txt
+        {
+            echo "sample=$i keys=$n date=$(date -u)"
+            echo "=== key lines ==="
+            grep -E "^ishwl [0-9.]+: key " "$LOG" 2>/dev/null | tail -80
+            echo "=== text input, keymap, toplevels ==="
+            grep -E "text input|keymap:|map toplevel" "$LOG" 2>/dev/null | tail -6
+        } > "$OUT" 2>&1
+        wget -T 15 -q --post-file="$OUT" "http://192.168.0.104:8766/report?name=kb4453-keys-$i" -O /dev/null
+        i=$((i+1))
+    fi
+    sleep 5
+done

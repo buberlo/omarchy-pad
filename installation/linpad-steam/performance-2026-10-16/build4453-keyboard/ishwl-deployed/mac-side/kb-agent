@@ -1,0 +1,49 @@
+#!/bin/sh
+# Command agent for the iPad's Linux system: asks the Mac for one command at a time, runs it,
+# and posts the output back as reports/agent-<name>.txt. Started detached by the bootstrap.
+#
+# Bounded and auditable: it stops after KB_AGENT_MINUTES (default 180), every command it runs
+# is written to /tmp/kb-agent-cmd.sh and appended to /tmp/kb-agent.log, and one command cannot
+# block the channel for more than ten minutes (long jobs belong in a detached setsid call).
+# Stop it early with: kill "$(cat /tmp/kb-agent.pid)"
+set -u
+SERVER=${KB_AGENT_SERVER:-http://192.168.0.104:8766}
+LOG=/tmp/kb-agent.log
+MINUTES=${KB_AGENT_MINUTES:-180}
+echo $$ > /tmp/kb-agent.pid
+deadline=$(( $(date +%s) + MINUTES * 60 ))
+echo "agent start $(date -u) pid=$$ minutes=$MINUTES" >> "$LOG"
+
+while [ "$(date +%s)" -lt "$deadline" ]; do
+    # Download to a file rather than to stdout: not every busybox wget treats "-O -" as stdout.
+    if ! wget -T 15 -qO /tmp/kb-agent-next "$SERVER/agent/next" 2>/dev/null; then
+        echo "$(date -u) fetch failed" >> "$LOG"
+        sleep 5
+        continue
+    fi
+    cmd=$(cat /tmp/kb-agent-next 2>/dev/null)
+    case "$cmd" in
+        ''|NO_COMMAND*) sleep 2; continue ;;
+    esac
+    id=$(printf '%s\n' "$cmd" | head -1 | sed 's/^#ID //' | tr -cd 'A-Za-z0-9._-')
+    [ -n "$id" ] || id=unnamed
+    printf '%s\n' "$cmd" | tail -n +2 > /tmp/kb-agent-cmd.sh
+    {
+        echo "AGENT_BEGIN id=$id pid=$$ $(date -u)"
+        echo "AGENT_HOST=$(uname -n 2>/dev/null)"
+        # Keep one command from blocking the channel; a long job belongs in a detached setsid
+        # call inside the command itself. Without coreutils' timeout, run it directly.
+        if command -v timeout >/dev/null 2>&1; then
+            timeout 600 sh /tmp/kb-agent-cmd.sh
+        else
+            sh /tmp/kb-agent-cmd.sh
+        fi
+        echo "AGENT_EXIT=$?"
+        echo "AGENT_END $(date -u)"
+    } > /tmp/kb-agent-out.txt 2>&1
+    echo "$(date -u) ran id=$id $(grep -o 'AGENT_EXIT=[0-9]*' /tmp/kb-agent-out.txt | tail -1)" >> "$LOG"
+    wget -T 30 -q --post-file=/tmp/kb-agent-out.txt "$SERVER/report?name=agent-$id" -O /dev/null
+done
+
+echo "agent stop $(date -u)" >> "$LOG"
+rm -f /tmp/kb-agent.pid

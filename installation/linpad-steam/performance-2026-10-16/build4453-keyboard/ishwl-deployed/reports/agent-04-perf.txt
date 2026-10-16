@@ -1,0 +1,165 @@
+AGENT_BEGIN id=04-perf pid=7056 Fri Oct 16 17:49:30 UTC 2026
+AGENT_HOST=iPad
+KB4453_PERF_BEGIN
+Fri Oct 16 17:49:30 UTC 2026
+
+=== helpers ===
+frame helper: 116 lines
+audio probe: 51 lines
+
+=== game process ===
+GAME_PID=7580
+--- stat
+7580 (FEX-apple-m1-mun) R 7577 7577 7577 0 0 0 0 0 0 0 9086 998 0 0 20 0 43 0 56710522 140802185707520 5336370 0 0 0 4294956544 0 0 0 0 8192 3238038012 0 0 0 17 0
+
+--- status
+Name:	FEX-apple-m1-mun
+VmPeak:	137502134480 kB
+VmSize:	137502134480 kB
+VmHWM:	21345480 kB
+VmRSS:	21345480 kB
+Threads:	43
+
+=== unity log tail ===
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T17:49:28.904Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+
+=== frame log before the capture ===
+4208 /tmp/hollow4452-frames.txt
+
+=== 30 s frame capture: keep playing now ===
+CAPTURE_START
+SELECTED_VIEW_ID=1
+Fri Oct 16 17:49:30 UTC 2026
+FRAME_LOG=/tmp/hollow4452-frames.txt
+FRAME_LOG_ROWS=4208
+567210305 1 4205 1366 950
+567210342 1 4206 1366 950
+567210378 1 4207 1366 950
+567210416 1 4208 1366 950
+567210454 1 4209 1366 950
+HOLLOW_TITLE_MAP_CANDIDATES
+ishwl 67127.816: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+HOLLOW_ACTIVE_BUFFER_CANDIDATES
+VIEW_ID=1
+8680476 -rw-r--r--    1 0        0          5190800 Oct 16 17:48 /tmp/ishwl/v1-2.buf
+UNITY_GRAPHICS_MILESTONES
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info [enabled=1, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_relaxed_extended_instruction [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_rotate [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_uniform_control_flow [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_spirv_1_4 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_synchronization2 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_timeline_semaphore [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_variable_pointers [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vertex_attribute_divisor [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vulkan_memory_model [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_zero_initialize_workgroup_memory [enabled=0, external=0]
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan device type 1
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T17:47:48.987Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T17:47:49.037Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T17:47:56.048Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T17:47:56.050Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+2026-10-16T17:48:03.333Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T17:48:03.334Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T17:48:07.916Z|0xcc410540|InitializeOrResetSwapChain 1366x950 hdr=0 samples=1
+CAPTURE_END
+Fri Oct 16 17:50:00 UTC 2026
+SELECTED_VIEW_ID=1
+8680476 -rw-r--r--    1 0        0          5190800 Oct 16 17:48 /tmp/ishwl/v1-2.buf
+COMPOSITOR_WINDOW_EVENTS
+CAPTURE_META
+start_second=1792172970 end_second=1792173000 start_line=4209 end_line=5235 view_id=1 requested_seconds=30
+SELECTED_VIEW_ROWS
+1026
+CAPTURE_FILES=/tmp/kb4453-window-20261016T174930Z.meta /tmp/kb4453-window-20261016T174930Z.txt /tmp/kb4453-window-20261016T174930Z.status.txt
+
+=== compositor key lines ===
+KEY_LINES=120
+ishwl 67237.339: key 106 down
+ishwl 67237.422: key 106 up
+ishwl 67237.505: key 106 down
+ishwl 67237.605: key 106 up
+ishwl 67237.689: key 106 down
+ishwl 67237.772: key 106 up
+ishwl 67237.872: key 106 down
+ishwl 67237.955: key 106 up
+ishwl 67238.039: key 106 down
+ishwl 67238.155: key 106 up
+ishwl 67238.255: key 106 down
+ishwl 67238.372: key 106 up
+ishwl 67238.589: key 106 down
+ishwl 67238.872: key 106 up
+ishwl 67239.089: key 106 down
+ishwl 67239.222: key 106 up
+ishwl 67239.372: key 106 down
+ishwl 67239.672: key 106 up
+ishwl 67239.755: key 106 down
+ishwl 67240.005: key 44 down
+ishwl 67240.106: key 44 up
+ishwl 67240.238: key 106 up
+ishwl 67240.322: key 45 down
+ishwl 67240.405: key 45 up
+
+=== device memory ===
+footprint_mb 2986
+allowance_mb 8192
+headroom_mb 5205
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 7580 899 0 0 FEX-apple-m1-munmap
+
+=== audio stream probe (same pid) ===
+CAPTURE_BEGIN_UTC=2026-10-16T17:50:00Z
+REQUESTED_GAME_PID=7580
+GAME_CHANGED=0
+FIFO_OPENED=0
+AUDIO_STREAM_CREATED=0
+/tmp/linpad-pulse-probe/client.conf.download: OK
+/tmp/linpad-pulse-probe/zero-token.download: OK
+/tmp/linpad-pulse-probe/stream-filter.awk.download: OK
+SAMPLE=1
+SAMPLE_UTC=2026-10-16T17:50:00Z
+ISHAUDIO_SINK_INDEX=0
+GAME_STREAM index=1 sink=0 pid=7580 corked=no mute=no buffer_usec=64000 sink_usec=315
+SINK_INPUTS_TOTAL=1
+GAME_STREAMS_MATCHING_PID=1
+QUERY_EXIT=0
+SAMPLE=2
+SAMPLE_UTC=2026-10-16T17:50:05Z
+ISHAUDIO_SINK_INDEX=0
+GAME_STREAM index=1 sink=0 pid=7580 corked=no mute=no buffer_usec=64000 sink_usec=8984
+SINK_INPUTS_TOTAL=1
+GAME_STREAMS_MATCHING_PID=1
+QUERY_EXIT=0
+CAPTURE_END_UTC=2026-10-16T17:50:05Z
+SCRIPT_EXIT=0
+
+KB4453_PERF_END
+
+CAPTURE_FILES=/tmp/kb4453-window-20261016T174930Z.meta /tmp/kb4453-window-20261016T174930Z.txt /tmp/kb4453-window-20261016T174930Z.status.txt
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 17:50:05 UTC 2026

@@ -41,14 +41,16 @@ The launcher is in the device's Linux `/tmp`; `device-scripts/` holds nothing fo
 but the keyboard probes below, and build4452's `device-scripts/hollow4452-egl` is its
 archived source.
 
-## The second half: input latency (prepared, not deployed)
+## The second half: input latency (deployed, key log verified)
 
-The same investigation found that the compositor holds its input queue for up to
-`ORDER_TIMEOUT_MS` (250 ms) after every non-modifier key press while a text input is active,
+The same investigation found that the compositor held its input queue for up to
+`ORDER_TIMEOUT_MS` (250 ms) after every non-modifier key press while a text input was active,
 because a bare key event has nothing for the app to acknowledge. That makes a released key
-keep moving and every later press lag. It is fixed in `bd6e9881` and built, but **not
-installed**: see [ishwl/README.md](ishwl/README.md) for the change, the ABI evidence, the
-build script and the exact deployment steps. Nothing in build 4453 depends on it.
+keep moving and every later press lag. It is fixed in `bd6e9881`, built, and **installed on the
+device on 16 October 2026** — confirmed by the compositor's own key log, in which printable
+keys (X, Z, Y, Space) now appear as key events for the first time. The deployment, its numbers
+and what it still does not prove are in [ishwl-deployed/README.md](ishwl-deployed/README.md);
+the rollback command and the exact agent commands used are archived beside it.
 
 ## Evidence in this directory
 

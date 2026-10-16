@@ -1,0 +1,21 @@
+AGENT_BEGIN id=03-play pid=7056 Fri Oct 16 17:47:42 UTC 2026
+AGENT_HOST=iPad
+watcher pid: 7560
+game launcher pid: 7577
+
+=== processes ===
+ 7305 ishwl
+ 7580 FEX-apple-m1-mu
+
+=== unity log so far ===
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] Selected backend.
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] Name: PhysX
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] Id: 0xf2b8ea05
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] SDK Version: 4.1.2
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] Integration Version: 1.0.0
+2026-10-16T17:47:51.325Z|0xcc410540|[Physics::Module] Threading Mode: Multi-Threaded
+
+=== compositor frames ===
+0 /tmp/hollow4452-frames.txt
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 17:47:53 UTC 2026

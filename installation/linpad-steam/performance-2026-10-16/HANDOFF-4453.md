@@ -1,37 +1,47 @@
-# Latest handoff: the keyboard works, the latency fix is pending
+# Latest handoff: keyboard fix deployed, key log verified, gameplay and Steam next
 
-The user reports that the keyboard in Hollow Knight works on build 4453, installed on the
-physical iPad. It is the first non-Enter key ever reported to work in the game, and it was
-reported after the fix in `b432013e` (a listed app's hardware keys go to it as key codes
-instead of into the iPadOS text system). The exact scope of that report, and everything it
-does not cover, is in [build4453-keyboard/VERIFICATION.md](build4453-keyboard/VERIFICATION.md).
-No per-key list, screenshot, recording, frame rate or audio was captured.
+The compositor fix is on the device and — unlike build 4453 alone — it is backed by the
+compositor's own log. `bd6e9881`'s `ishwl` (`a6ed7453…`, 162 856 bytes) replaced the system's
+compositor (`d47335e0…`) on 16 October 2026; the old binary is kept on the device as
+`/tmp/ishwl-before-kb4453`. In one play session the log shows **printable keys as key events for
+the first time**: X 116×, Z 30×, Y 14×, Space 44×, alongside Enter 18× and the arrows. Before
+this, those keys produced no key event at all — the host sent them as committed text, which the
+game ignores. [Deployment, numbers and limits](build4453-keyboard/ishwl-deployed/README.md).
 
-Next, in order:
+Also measured in the same session: 1 026 game-view frame deliveries in a 30 s window during play
+(34.2/s; 6 839 rows over the whole 140.7 s session), a live unmuted uncorked Pulse stream for the
+game's pid, app footprint 2 986 MB of the 8 192 MB allowance with `kills 0`, and the game on
+`Virtio-GPU Venus (Apple M2 GPU)`, Mesa 26.2.4-1, swapchain 1366×950.
 
-1. **Deploy the prepared compositor fix** (`bd6e9881`): the device still runs the compositor
-   from its Linux system, which holds the input queue for up to 250 ms after every
-   non-modifier key press while a text input is active. Built, ABI-checked, not installed.
-   [build4453-keyboard/ishwl/README.md](build4453-keyboard/ishwl/README.md) has the change,
-   the artifacts and the exact steps (probe, install, Restart Desktop Session, key log).
-   The same binary's key log is what turns "the user says it works" into evidence: a
-   printable key must appear as `key <evdev> down` in `/tmp/ishwl.log`.
-2. **Then the gameplay gate that is still open**: movement, combat, menus, audio, and a real
-   numerical performance result. Nothing about gameplay is proven by a working keyboard.
-3. **Then Steam**: integrate the proven launch route into Steam and verify Steam-to-game
-   launch. The game is still started with `sh /tmp/hollow4452-egl` in LinPad's Terminal; the
-   desktop shortcut and the Steam route are not qualified.
+## What is still open
 
-Build 4453 is LinPad 1.4.0, commit `b432013e` on the archived `dd179fdc`, signed, installed
-over 4452 in place (same bundle id, no Linux system change: the bundled rootfs is the
-installed one, `root.version 202610031701`, so Steam, the game and both save slots are
-untouched). Slot 1 is the user's save; slot 2 was created for earlier tests.
+1. **Human confirmation of gameplay and audio** with this compositor: does the knight move,
+   jump, attack, respond to the menus, and is it audible? The key codes prove input arrived;
+   they do not prove the game reacted.
+2. **Text-field ordering**: the change deliberately lets only Return, Tab and Backspace wait
+   for the app. Nobody has typed into a text field (Terminal, Firefox, VS Code) since the
+   restart, so that half of the change is still argued from the code, not observed.
+3. **The 250 ms figure** is arithmetic from `ORDER_TIMEOUT_MS`, not a measurement; this
+   session shows that key events arrive, not how quickly they do.
+4. **Steam**: the game was started with `sh /tmp/hollow4452-egl` by the command agent, exactly
+   as by hand. The wrapper (`linpad-hk-fex`) and the launch-options editor
+   (`kb4453-steam-launchopts`, 12 local tests green) are prepared but not installed, and the
+   Steam route is not qualified. Note that a Steam toplevel appeared in the log before this
+   session and a launch attempt from it failed with `hollow_knight.x86_64: not found`, so the
+   Steam entry currently starts nothing.
+5. **A numerical FPS result** in the usual sense. Frame *deliveries* are not frames per second
+   and are not presented as such.
 
-The device lease in the Madeira workspace still names `linpad` as the owner with
-`linpad-install-active`, and `work/linpad-lease-token` matches it, so device work is ours
-without acquiring anything. Release it when device work ends. Device Hub keyboard capture
-stays off. JIT needs StikDebug's "Enable and Run Script" after every app restart.
+## The device is drivable from the Mac
 
-The earlier build checkpoints stay as recorded in HANDOFF-4452.md; nothing in them is
-superseded by this build except the input-routing statement they carried ("Enter works, no
-other key does"), which is now fixed on the device.
+The user pasted one bootstrap line; it installed the binary, the frame-log hook and a bounded
+command agent (`/usr/local/bin/kb-agent`, 180 minutes, no autostart, removable with
+`kill "$(cat /tmp/kb-agent.pid)"; rm -f /usr/local/bin/kb-agent`). The Mac queues one shell
+command at a time through `work/performance/agent-run` and the answers land in
+`work/performance/reports/`. The stop script of a desktop session restart kills only ishwl,
+dbus-daemon and pulseaudio, so the agent survives it. Rollback of the compositor is
+`agent-commands/4-99-rollback-ishwl.sh` plus a session restart.
+
+The device lease in the Madeira workspace still names `linpad` as owner with
+`linpad-install-active` and `work/linpad-lease-token` matches it. Device Hub keyboard capture
+stays off; JIT needs StikDebug's approval after every app restart.

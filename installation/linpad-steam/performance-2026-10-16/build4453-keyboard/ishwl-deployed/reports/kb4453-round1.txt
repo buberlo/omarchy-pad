@@ -1,0 +1,51 @@
+KB4453_ROUND1_BEGIN
+Fri Oct 16 17:46:32 UTC 2026
+
+=== guest ===
+NAME="Linux for iPad"
+VERSION_ID=3.21.0
+musl-1.2.6-r4
+libxkbcommon-1.7.0-r1
+wayland-libs-server-1.23.1-r0
+zlib-1.3.2-r0
+
+=== compositor before ===
+-rwxr-xr-x    1 root     root        166920 Oct  3 14:57 /usr/local/bin/ishwl
+d47335e07795a2a9bb378ae7f4ee4a453bc06629f9e0c67aff257fa9bf1bcb13  /usr/local/bin/ishwl
+session options: 
+log: -rw-r--r--    1 root     root           479 Oct 16 17:23 /tmp/ishwl.log
+last session lines:
+/bin/sh: hollow_knight.x86_64: not found
+ishwl 64097.631: child 90 exited (32512)
+ishwl 64117.922: map toplevel 1 '' Steam
+ishwl: client 171 disconnected
+
+=== install ===
+/tmp/kb4453-ishwl.new: OK
+staged: -rwxr-xr-x    1 root     root        162856 Oct 16 17:46 /tmp/kb4453-ishwl.new
+installed: -rwxr-xr-x    1 root     root        162856 Oct 16 17:46 /usr/local/bin/ishwl
+installed sha: a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44  /usr/local/bin/ishwl
+backup sha: d47335e07795a2a9bb378ae7f4ee4a453bc06629f9e0c67aff257fa9bf1bcb13  /tmp/ishwl-before-kb4453
+RESULT=INSTALLED (differs from the previous binary)
+
+=== frame log hook ===
+hook written: export ISHWL_FRAMELOG=/tmp/hollow4452-frames.txt
+-rw-r--r--    1 root     root            49 Oct 16 17:46 /etc/ishwl/session.d/99-kb4453-frames.sh
+other session hooks:
+total 24
+-rw-r--r--    1 root     root           300 Oct  3 17:16 05-bus-address.sh
+-rw-r--r--    1 root     root           786 Oct  3 17:16 10-style.sh
+-rw-r--r--    1 root     root           545 Oct  3 17:51 15-lowmem.sh
+-rw-r--r--    1 root     root           597 Oct  3 17:16 20-audio.sh
+-rw-r--r--    1 root     root          1027 Oct  3 17:51 90-firstrun.sh
+-rw-r--r--    1 root     root            49 Oct 16 17:46 99-kb4453-frames.sh
+current frame log: ls: /tmp/hollow4452-frames.txt: No such file or directory
+
+=== command agent ===
+agent binary: -rwxr-xr-x    1 root     root          2210 Oct 16 17:46 /usr/local/bin/kb-agent
+agent sha: ea3b3be9b26d8ed60097690dd3ad159059c378218c62b6a3c77edcc3df96ee03  /usr/local/bin/kb-agent
+agent pid: 7056
+agent log tail:
+agent start Fri Oct 16 17:46:35 UTC 2026 pid=7056 minutes=180
+
+KB4453_ROUND1_END

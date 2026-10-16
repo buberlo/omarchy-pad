@@ -1,0 +1,32 @@
+#!/bin/bash
+# agent-run NAME  -- queue one shell script for the guest agent and print its report.
+#
+#   printf 'uname -a\n' | work/performance/agent-run probe
+#
+# The command is written to work/performance/cmd/queue/NAME.sh, the agent picks it up within a
+# couple of seconds and its output arrives as reports/agent-NAME.txt. Nothing runs on the
+# device unless an agent is already running there (see serve/kb4453-round1).
+set -euo pipefail
+NAME=${1:?usage: agent-run NAME < command.sh}
+HERE=$(cd "$(dirname "$0")" && pwd)
+QUEUE="$HERE/cmd/queue"
+REPORTS="$HERE/reports"
+WAIT=${WAIT:-150}
+
+case "$NAME" in ''|*[!A-Za-z0-9._-]*) echo "bad name: $NAME" >&2; exit 64 ;; esac
+mkdir -p "$QUEUE" "$REPORTS"
+if [ -e "$REPORTS/agent-$NAME.txt" ]; then
+    echo "refusing: reports/agent-$NAME.txt already exists (pick another name)" >&2
+    exit 65
+fi
+cat > "$QUEUE/$NAME.sh"
+
+for _ in $(seq 1 "$WAIT"); do
+    if [ -f "$REPORTS/agent-$NAME.txt" ]; then
+        cat "$REPORTS/agent-$NAME.txt"
+        exit 0
+    fi
+    sleep 2
+done
+echo "TIMEOUT: no report after ${WAIT} checks; is the agent running on the device?" >&2
+exit 1

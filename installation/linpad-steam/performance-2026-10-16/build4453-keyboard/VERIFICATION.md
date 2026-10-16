@@ -32,9 +32,11 @@ time any non-Enter key has been reported to work in Hollow Knight.
   still leaves no trace in `/tmp/ishwl.log`.
 - No gameplay acceptance: movement, combat, menus beyond the tested keys, and the transition
   from Steam into the game are all still open, exactly as HANDOFF-4452.md recorded them.
-- The 250 ms input-latency defect that the same investigation found is fixed in source
-  (`bd6e9881`) but **not deployed and not verified on the device**. Build 4453 was tested
-  with the device's original compositor, so the keys the user tried arrived without it.
+- The 250 ms input-latency defect that the same investigation found was fixed in source
+  (`bd6e9881`) and, after this verification was written, **deployed the same day**: see
+  [ishwl-deployed/README.md](ishwl-deployed/README.md) for that separate step, its key log and
+  its own list of what remains unverified. Build 4453 itself was tested with the device's
+  original compositor, so the keys the user tried then arrived without it.
 - Steam-to-game production launch is untouched. The game was started from LinPad's Terminal.
 
 ## Where the fix is

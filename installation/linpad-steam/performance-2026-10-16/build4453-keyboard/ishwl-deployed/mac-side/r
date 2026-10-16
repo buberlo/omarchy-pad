@@ -1,0 +1,9 @@
+#!/bin/sh
+# Short alias so the bootstrap fits one hand-typed line on the iPad:
+#     wget -O /tmp/r 192.168.0.104:8766/r;sh /tmp/r
+set -u
+wget -T 30 -qO /tmp/kb4453-round1 http://192.168.0.104:8766/kb4453-round1 || {
+    echo "download of kb4453-round1 failed"
+    exit 1
+}
+sh /tmp/kb4453-round1

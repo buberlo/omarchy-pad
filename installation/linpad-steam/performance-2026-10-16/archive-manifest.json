@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix and its prepared compositor follow-up; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix, and the deployed compositor follow-up with its device key log; no authentication or proprietary game binaries.",
   "files": [
     {
       "path": "HANDOFF-4451.md",
@@ -14,8 +14,8 @@
     },
     {
       "path": "HANDOFF-4453.md",
-      "bytes": 2560,
-      "sha256": "9b0ac526f186375a33099e5866d3e880e8208e90e2745f80c6f844463aeb2885"
+      "bytes": 3263,
+      "sha256": "c36a06fc827a1d2cd7aef37b76ee38e49a76456e5fc650180fb84bbbcd979ef0"
     },
     {
       "path": "audio-path-audit/README.md",
@@ -2444,13 +2444,23 @@
     },
     {
       "path": "build4453-keyboard/README.md",
-      "bytes": 3952,
-      "sha256": "0367982e707f6e2497ec241da78fc7c088d284a62c14daf76bd15516d156ceff"
+      "bytes": 4701,
+      "sha256": "f38bdb266e47e62b6e0e3cd1965d2d479142db3031c09a0d836c4fce9b183071"
+    },
+    {
+      "path": "build4453-keyboard/REPOSITORY-SHA256SUMS",
+      "bytes": 4492,
+      "sha256": "2a4eec47e3b30908dec80f22606cb1c0dc94da0cbd85f4855aa284b106102376"
+    },
+    {
+      "path": "build4453-keyboard/SHA256SUMS",
+      "bytes": 563,
+      "sha256": "3a06cd7b091bd09ac7458370af6c529a883093e4e382fed83b2ce9c552a19803"
     },
     {
       "path": "build4453-keyboard/VERIFICATION.md",
-      "bytes": 3604,
-      "sha256": "825d5792d8b3946b61cca129f49989e6c53ee59d990b467c33519691fb7ca447"
+      "bytes": 3775,
+      "sha256": "b1e0213ceed8e0fadc4430afdb9f7075c68a96d87a7ac6c64b9c19ae309c9b3c"
     },
     {
       "path": "build4453-keyboard/build-local.sh",
@@ -2488,9 +2498,139 @@
       "sha256": "f93d0a44e93b3e2f1c4438f8792b7afd463a708703aa68e9954aec015cff5c3e"
     },
     {
+      "path": "build4453-keyboard/ishwl-deployed/README.md",
+      "bytes": 5464,
+      "sha256": "50c232a962693b51415d692bc50861f9b46d7bb27d9bd624b480b73477711cc0"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/agent-commands/1-01-probe.sh",
+      "bytes": 1024,
+      "sha256": "71623034160e65d19038745dcb1ded91a052f1ef6ebac3d1ea80cee0ca2f84eb"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/agent-commands/2-03-play.sh",
+      "bytes": 1420,
+      "sha256": "36b78b31ac038919c1107076a5ef7c337be6787536ab1d2124e6a5224e9acd9c"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/agent-commands/3-04-perf.sh",
+      "bytes": 417,
+      "sha256": "ead24e32df2b041bd6e63250a2f7b9dfb03b42a564d798864849be7d96f7f370"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/agent-commands/4-99-rollback-ishwl.sh",
+      "bytes": 879,
+      "sha256": "c7856ff9984630eecce847e575ddd141aa1471919889c0154356139681ba7c2e"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/agent-commands/5-01-probe-repeat.sh",
+      "bytes": 1024,
+      "sha256": "71623034160e65d19038745dcb1ded91a052f1ef6ebac3d1ea80cee0ca2f84eb"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/agent-run",
+      "bytes": 1118,
+      "sha256": "d6e9232ea0dc9343720e12ebde5056dc96f3bd1f17ecf6bfbed5df8d2ef6b888"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/collector.py",
+      "bytes": 2885,
+      "sha256": "ac2c22b52725b398ed4021b0dfbc88a40bc326152975a6019b53101d4aba78cd"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb-agent",
+      "bytes": 2210,
+      "sha256": "ea3b3be9b26d8ed60097690dd3ad159059c378218c62b6a3c77edcc3df96ee03"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-install-ishwl",
+      "bytes": 1244,
+      "sha256": "3fd0181ecdf8e66c77bd85eba5ad0e5bf480cc511909fff99f740a6a0d24cef5"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-keylog",
+      "bytes": 1059,
+      "sha256": "b41d0b93a90c070fa2575ff133188cb6673b0af222492c06b0fad20772e138e9"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-perf",
+      "bytes": 2895,
+      "sha256": "470cbece39ef377fbe1b0297136d2d7daa4a425c8a1119bb115dc13de5e4fb60"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-play",
+      "bytes": 523,
+      "sha256": "dd2d9183cf4bbb0889c61210fb652efae18f024bfc43e670365e3e72529cbfa0"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-probe",
+      "bytes": 929,
+      "sha256": "0cfd395f436d480c6012dbe112b64584c2d55e2a352fb015541610e410942b6e"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-round1",
+      "bytes": 4431,
+      "sha256": "d1007ee6479c343d8ffad8ff898e734d7e44627689db0eeed96b3cf001ff5b80"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/kb4453-watch",
+      "bytes": 980,
+      "sha256": "71c35e2188271206ae3f5372ebce211667e2dd88a811368dde4c0da1e3a7f244"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/mac-side/r",
+      "bytes": 296,
+      "sha256": "6a9156a3a7899e3aa1cb8d029f47d5198c733a6e410ddc25945fb7b943844ce7"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-01-probe.txt",
+      "bytes": 1629,
+      "sha256": "3bfc39c782199557ac55d156daa70ed5f1132425d375d1317aa5290cb369abd5"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-03-play.txt",
+      "bytes": 752,
+      "sha256": "31db65b56774ee879eff8c953a7547a5cdd4f81309ccbf0585f9122c59b2a5c6"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-04-perf.txt",
+      "bytes": 8067,
+      "sha256": "9e242d324d09d59f3f110effe046995b32cd0e299e2197b828b810b0099b9b33"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-05-menu-status.txt",
+      "bytes": 1948,
+      "sha256": "b53f8e16b4fcd01709d468a97f2216d3e2ed58fd8c16af8b70848e18523f49d2"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-06-keycheck.txt",
+      "bytes": 1195,
+      "sha256": "5c6428e5588b039f14b2b3da073ba65360e881aa4e7e958296ec8f0be60d9e76"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/agent-07-evidence.txt",
+      "bytes": 3207,
+      "sha256": "dab85869e8c4bd04776bed6f0588f2f2be734700a486854ac1e7d07e92a3b299"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/kb4453-keys-0.txt",
+      "bytes": 140,
+      "sha256": "f6cd95c7e44555d2a949d6ab92b92d72bfe396d111c38883a1156af131eed3f4"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/kb4453-keys-1.txt",
+      "bytes": 366,
+      "sha256": "ea4fb6d1fac09b1e58b564a58d27499ddbb8a3aba52d9c4370defdf943d05361"
+    },
+    {
+      "path": "build4453-keyboard/ishwl-deployed/reports/kb4453-round1.txt",
+      "bytes": 2177,
+      "sha256": "229511438c9b6dfa71fa28417182f97bb95d3e8a681c92ce2171d2545f0f9edc"
+    },
+    {
       "path": "build4453-keyboard/ishwl/README.md",
-      "bytes": 5321,
-      "sha256": "2705d78d5747d2f70496ff47c223ca06fdb5d801cfb976c3007f720109725a6d"
+      "bytes": 5456,
+      "sha256": "f647b3b777d01ddc8cd70752b13ee266c2b1166b6f702726d18c36b594044e16"
     },
     {
       "path": "build4453-keyboard/ishwl/abi-verification.txt",
@@ -2531,6 +2671,11 @@
       "path": "build4453-keyboard/source-commit.txt",
       "bytes": 9,
       "sha256": "cbab43ef8c9c15552371f9c5e3736e2430953e68a76257627103ba3d39e64a13"
+    },
+    {
+      "path": "build4453-keyboard/source-evidence.json",
+      "bytes": 482,
+      "sha256": "af29f6216eda73eb0e5e68f9865a1f9ae152b0862bcaf7cade4c9e9cc6a586ee"
     },
     {
       "path": "egl-repair/ARCHIVE.md",

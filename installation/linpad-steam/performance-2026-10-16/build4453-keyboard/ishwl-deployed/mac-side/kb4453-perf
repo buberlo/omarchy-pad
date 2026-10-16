@@ -1,0 +1,84 @@
+#!/bin/sh
+# One bounded gameplay measurement, for one paste while playing: 30 seconds of compositor
+# frame deliveries for the game's view, the game's own process and memory state, the key
+# lines the patched compositor logged, and the Pulse stream state for the same pid.
+#
+# Read-only: sends the game no input, loads no preload, changes no configuration and signals
+# nothing. Reuses the archived helpers so the numbers are the same metric the 4451 baseline
+# used (212 deliveries in 30 s).
+set -u
+SERVER=http://192.168.0.104:8766
+OUT=/tmp/kb4453-perf.txt
+STAMP=$(date -u +%Y%m%dT%H%M%SZ)
+HELPER=/tmp/hollow4452-frame-capture
+AUDIO=/tmp/audio-stream4449-probe
+CAPTURE=/tmp/kb4453-window-$STAMP
+
+fetch() {
+    test -s "$1" && return 0
+    wget -T 25 -qO "$1" "$SERVER/$2"
+}
+
+{
+    echo KB4453_PERF_BEGIN
+    date -u
+    echo
+    echo "=== helpers ==="
+    if fetch "$HELPER" hollow4452-frame-capture; then echo "frame helper: $(wc -l < "$HELPER") lines"; else echo FRAME_HELPER_MISSING=1; fi
+    if fetch "$AUDIO" audio-stream4449-probe; then echo "audio probe: $(wc -l < "$AUDIO") lines"; else echo AUDIO_PROBE_MISSING=1; fi
+
+    echo
+    echo "=== game process ==="
+    gamepid=$(ps -o pid,comm 2>/dev/null | awk '/FEX-apple-m1-mu/ {print $1; exit}')
+    echo "GAME_PID=${gamepid:-none}"
+    case "${gamepid:-}" in
+        ''|*[!0-9]*) echo "GAME_NOT_FOUND=1" ;;
+        *)
+            echo "--- stat"
+            head -c 4096 "/proc/$gamepid/stat" 2>&1
+            echo
+            echo "--- status"
+            grep -E "^(Name|VmPeak|VmSize|VmRSS|VmHWM|Threads)" "/proc/$gamepid/status" 2>&1
+            ;;
+    esac
+
+    echo
+    echo "=== unity log tail ==="
+    tail -12 /tmp/hollow4452-egl-unity.txt 2>&1
+
+    echo
+    echo "=== frame log before the capture ==="
+    wc -l /tmp/hollow4452-frames.txt 2>&1
+
+    echo
+    echo "=== 30 s frame capture: keep playing now ==="
+    if test -s "$HELPER"; then
+        LINPAD_FRAME_LOG=/tmp/hollow4452-frames.txt LINPAD_FRAME_CAPTURE="$CAPTURE" \
+            sh "$HELPER" capture auto 30 2>&1
+    else
+        echo FRAME_CAPTURE_SKIPPED=1
+    fi
+
+    echo
+    echo "=== compositor key lines ==="
+    printf 'KEY_LINES='
+    grep -cE "^ishwl [0-9.]+: key " /tmp/ishwl.log 2>/dev/null || echo 0
+    grep -E "^ishwl [0-9.]+: key " /tmp/ishwl.log 2>/dev/null | tail -24
+
+    echo
+    echo "=== device memory ==="
+    head -8 /proc/ish/memory 2>&1
+
+    echo
+    echo "=== audio stream probe (same pid) ==="
+    case "${gamepid:-}" in
+        ''|*[!0-9]*) echo "AUDIO_SKIPPED_NO_GAME_PID=1" ;;
+        *) if test -s "$AUDIO"; then sh "$AUDIO" "$gamepid" 2>&1 | tail -40; else echo "AUDIO_PROBE_MISSING=1"; fi ;;
+    esac
+    echo
+    echo KB4453_PERF_END
+} > "$OUT" 2>&1
+
+wget -T 25 -q --post-file="$OUT" "$SERVER/report?name=kb4453-perf" -O /dev/null
+cat "$OUT"
+printf '\nCAPTURE_FILES=%s.meta %s.txt %s.status.txt\n' "$CAPTURE" "$CAPTURE" "$CAPTURE"

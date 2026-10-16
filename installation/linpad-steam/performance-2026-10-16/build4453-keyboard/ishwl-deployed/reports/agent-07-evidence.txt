@@ -1,0 +1,69 @@
+AGENT_BEGIN id=07-evidence pid=7056 Fri Oct 16 17:50:28 UTC 2026
+AGENT_HOST=iPad
+=== all key codes with counts ===
+     14 21
+     18 28
+     30 44
+    116 45
+     44 57
+      4 103
+     13 105
+     44 106
+
+=== down/up counts ===
+    142 down
+    141 up
+
+=== first and last key line ===
+ishwl 67180.822: key 28 down
+ishwl 67268.388: key 45 up
+
+=== capture meta ===
+start_second=1792172970 end_second=1792173000 start_line=4209 end_line=5235 view_id=1 requested_seconds=30
+
+=== capture status (head) ===
+CAPTURE_START
+SELECTED_VIEW_ID=1
+Fri Oct 16 17:49:30 UTC 2026
+FRAME_LOG=/tmp/hollow4452-frames.txt
+FRAME_LOG_ROWS=4208
+567210305 1 4205 1366 950
+567210342 1 4206 1366 950
+567210378 1 4207 1366 950
+567210416 1 4208 1366 950
+567210454 1 4209 1366 950
+HOLLOW_TITLE_MAP_CANDIDATES
+ishwl 67127.816: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+HOLLOW_ACTIVE_BUFFER_CANDIDATES
+VIEW_ID=1
+8680476 -rw-r--r--    1 0        0          5190800 Oct 16 17:48 /tmp/ishwl/v1-2.buf
+UNITY_GRAPHICS_MILESTONES
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info [enabled=1, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_relaxed_extended_instruction [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_rotate [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_uniform_control_flow [enabled=0, external=0]
+2026-10-16T17:47:48.793Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_spirv_1_4 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format [enabled=1, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_synchronization2 [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_timeline_semaphore [enabled=0, external=0]
+2026-10-16T17:47:48.794Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout [enabled=0, external=0]
+
+=== view-1 frame rate over the whole session ===
+view1_rows=6839 span_ms=140722 rate_per_s=48.60
+
+=== frame log size ===
+6839 /tmp/hollow4452-frames.txt
+
+=== session info ===
+ishwl 67059.071: GPU clients: WAYLAND_DISPLAY=wayland-0-gpu
+ishwl 67059.071: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl
+ishwl 67059.071: scm-compat: off (native fd passing works)
+ishwl 67059.071: spawned 7320: thunar --daemon
+uptime: 567268.56
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 17:50:28 UTC 2026

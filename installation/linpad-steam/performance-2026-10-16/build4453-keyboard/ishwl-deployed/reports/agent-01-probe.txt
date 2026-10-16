@@ -1,0 +1,44 @@
+AGENT_BEGIN id=01-probe pid=7056 Fri Oct 16 17:47:26 UTC 2026
+AGENT_HOST=iPad
+Fri Oct 16 17:47:26 UTC 2026
+AGENT_PID=7056
+AGENT_LOG=agent start Fri Oct 16 17:46:35 UTC 2026 pid=7056 minutes=180
+
+=== compositor ===
+-rwxr-xr-x    1 root     root        162856 Oct 16 17:46 /usr/local/bin/ishwl
+a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44  /usr/local/bin/ishwl
+backup: d47335e07795a2a9bb378ae7f4ee4a453bc06629f9e0c67aff257fa9bf1bcb13  /tmp/ishwl-before-kb4453
+
+=== session log ===
+-rw-r--r--    1 root     root           277 Oct 16 17:46 /tmp/ishwl.log
+first lines:
+ishwl 67059.071: GPU clients: WAYLAND_DISPLAY=wayland-0-gpu
+ishwl 67059.071: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl
+ishwl 67059.071: scm-compat: off (native fd passing works)
+key lines: 0
+
+=== frame hook and log ===
+export ISHWL_FRAMELOG=/tmp/hollow4452-frames.txt
+-rw-r--r--    1 root     root             0 Oct 16 17:46 /tmp/hollow4452-frames.txt
+frame rows: 0
+session hooks:
+total 24
+-rw-r--r--    1 root     root           300 Oct  3 17:16 05-bus-address.sh
+-rw-r--r--    1 root     root           786 Oct  3 17:16 10-style.sh
+-rw-r--r--    1 root     root           545 Oct  3 17:51 15-lowmem.sh
+-rw-r--r--    1 root     root           597 Oct  3 17:16 20-audio.sh
+-rw-r--r--    1 root     root          1027 Oct  3 17:51 90-firstrun.sh
+-rw-r--r--    1 root     root            49 Oct 16 17:46 99-kb4453-frames.sh
+
+=== game processes ===
+ 7305 ishwl
+
+=== load and memory ===
+footprint_mb 1285
+allowance_mb 8192
+headroom_mb 6906
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 17:47:26 UTC 2026

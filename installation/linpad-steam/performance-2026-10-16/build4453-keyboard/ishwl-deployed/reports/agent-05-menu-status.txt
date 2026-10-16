@@ -1,0 +1,44 @@
+AGENT_BEGIN id=05-menu-status pid=7056 Fri Oct 16 17:48:03 UTC 2026
+AGENT_HOST=iPad
+=== unity log tail ===
+2026-10-16T17:48:24.226Z|0xcc410540|Game controller set to None.
+2026-10-16T17:48:24.637Z|0xcc410540|Loaded saved language code 'DE'
+2026-10-16T17:48:24.637Z|0xcc410540|Restored language code 'DE'
+2026-10-16T17:48:27.595Z|0xcc410540|Attempting to get `timeSamples` on an audio source that has a resource assigned that is not a clip is ignored!
+2026-10-16T17:48:27.885Z|0xcc410540|pd.maxHealth: 5 pd.maxHealthBase: 5
+2026-10-16T17:48:29.517Z|0xcc410540|Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 46698.
+2026-10-16T17:48:29.524Z|0xcc410540|Total: 208.222000 ms (FindLiveObjects: 6.911000 ms CreateObjectMapping: 1.851000 ms MarkObjects: 183.522000 ms  DeleteObjects: 15.905000 ms)
+
+
+=== compositor: toplevels, keymap, errors ===
+ishwl 67059.113: keymap: de mac -
+ishwl 67127.816: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+
+=== key lines ===
+0
+
+=== frame log ===
+1543 /tmp/hollow4452-frames.txt
+567163389 1 1541 1366 950
+567163406 1 1542 1366 950
+567163422 1 1543 1366 950
+
+=== processes ===
+ 7305 ishwl
+ 7580 FEX-apple-m1-mu
+
+=== game report so far ===
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Loading in SingleInstance mode
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 17:48:43 UTC 2026

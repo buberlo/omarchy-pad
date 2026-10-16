@@ -1,0 +1,121 @@
+#!/bin/sh
+# Round 1 for the prepared ishwl fix: record the guest state, then install the patched
+# compositor, in one command. The session still runs the old binary afterwards -- restart
+# it from Quick Settings -> "Restart Desktop Session", then the key log becomes readable.
+#
+# Everything lands in one report, including failures: the script never exits early, so a
+# failed download or a digest mismatch still comes back with the state that caused it.
+set -u
+OUT=/tmp/kb4453-round1.txt
+NEW=/tmp/kb4453-ishwl.new
+SHA=a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44
+
+probe() {
+    echo "=== guest ==="
+    head -2 /etc/os-release 2>&1
+    for p in musl libxkbcommon wayland-libs-server zlib; do
+        apk info -v 2>/dev/null | grep -E "^${p}-[0-9]" | head -1
+    done
+    echo
+    echo "=== compositor before ==="
+    ls -l /usr/local/bin/ishwl 2>&1
+    sha256sum /usr/local/bin/ishwl 2>&1
+    echo "session options: $(cat /etc/ishwl/options 2>/dev/null)"
+    echo "log: $(ls -l /tmp/ishwl.log 2>/dev/null)"
+    echo "last session lines:"
+    tail -4 /tmp/ishwl.log 2>&1
+}
+
+install() {
+    if ! wget -T 30 -qO "$NEW" http://192.168.0.104:8766/kb4453-ishwl; then
+        echo "RESULT=DOWNLOAD_FAILED"
+        return 1
+    fi
+    if ! echo "$SHA  $NEW" | sha256sum -c -; then
+        echo "RESULT=SHA256_MISMATCH"
+        ls -l "$NEW"
+        return 1
+    fi
+    chmod 755 "$NEW"
+    echo "staged: $(ls -l "$NEW")"
+    cp -a /usr/local/bin/ishwl /tmp/ishwl-before-kb4453 2>/dev/null || echo "backup copy failed"
+    # mv, not cp: overwriting a running executable fails with "text file busy"
+    if ! mv -f "$NEW" /usr/local/bin/ishwl; then
+        echo "RESULT=INSTALL_FAILED"
+        return 1
+    fi
+    echo "installed: $(ls -l /usr/local/bin/ishwl)"
+    echo "installed sha: $(sha256sum /usr/local/bin/ishwl)"
+    echo "backup sha: $(sha256sum /tmp/ishwl-before-kb4453 2>&1)"
+    if cmp -s /usr/local/bin/ishwl /tmp/ishwl-before-kb4453; then
+        echo "RESULT=INSTALL_INEFFECTIVE (identical to the previous binary)"
+        return 1
+    fi
+    echo "RESULT=INSTALLED (differs from the previous binary)"
+    return 0
+}
+
+# The compositor logs one line per composited frame when ISHWL_FRAMELOG is set as it starts,
+# so the hook has to be in place before the session restart. The path is the one the archived
+# frame-capture helper reads by default, so it needs no override later.
+frames() {
+    hook=/etc/ishwl/session.d/99-kb4453-frames.sh
+    mkdir -p /etc/ishwl/session.d
+    printf 'export ISHWL_FRAMELOG=/tmp/hollow4452-frames.txt\n' > "$hook"
+    chmod 644 "$hook"
+    echo "hook written: $(cat "$hook")"
+    ls -l "$hook"
+    echo "other session hooks:"
+    ls -l /etc/ishwl/session.d/ 2>&1
+    echo "current frame log: $(ls -l /tmp/hollow4452-frames.txt 2>&1)"
+}
+
+# The command agent: a plain shell loop that asks the Mac for one command at a time, so the
+# remaining steps (key log, measurements, Steam setup) need no further pasting here. It is
+# bounded to three hours, logs to /tmp/kb-agent.log, runs in its own session (so a desktop
+# session restart leaves it alone) and is removable with:
+#     kill "$(cat /tmp/kb-agent.pid)"; rm -f /usr/local/bin/kb-agent
+agent() {
+    A=/usr/local/bin/kb-agent
+    if ! wget -T 25 -qO "$A.new" http://192.168.0.104:8766/kb-agent; then
+        echo "RESULT=AGENT_DOWNLOAD_FAILED"
+        return 1
+    fi
+    chmod 755 "$A.new"
+    mv -f "$A.new" "$A"
+    echo "agent binary: $(ls -l "$A")"
+    echo "agent sha: $(sha256sum "$A")"
+    if [ -f /tmp/kb-agent.pid ] && kill -0 "$(cat /tmp/kb-agent.pid)" 2>/dev/null; then
+        echo "stopping the agent already running as $(cat /tmp/kb-agent.pid)"
+        kill "$(cat /tmp/kb-agent.pid)" 2>/dev/null
+        sleep 1
+    fi
+    KB_AGENT_MINUTES=180 setsid sh "$A" >/tmp/kb-agent-start.log 2>&1 &
+    sleep 3
+    echo "agent pid: $(cat /tmp/kb-agent.pid 2>/dev/null)"
+    echo "agent log tail:"
+    tail -2 /tmp/kb-agent.log 2>&1
+}
+
+{
+    echo "KB4453_ROUND1_BEGIN"
+    date -u
+    echo
+    probe
+    echo
+    echo "=== install ==="
+    install
+    echo
+    echo "=== frame log hook ==="
+    frames
+    echo
+    echo "=== command agent ==="
+    agent
+    echo
+    echo "KB4453_ROUND1_END"
+} > "$OUT" 2>&1
+
+wget -T 20 -q --post-file="$OUT" http://192.168.0.104:8766/report?name=kb4453-round1 -O /dev/null
+cat "$OUT"
+echo
+echo "NEXT: Quick Settings -> Restart Desktop Session, then start the game and press keys."

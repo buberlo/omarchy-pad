@@ -1,0 +1,23 @@
+#!/bin/sh
+# After the session restarted on the patched ishwl: what the compositor logged for the
+# keys. A printable key must appear as "key <evdev> down" -- a line only the patched
+# binary writes, and proof the host sent a key code instead of composing text.
+OUT=/tmp/kb4453-keylog.txt
+{
+    date -u
+    echo "=== first lines of the restarted session ==="
+    head -4 /tmp/ishwl.log 2>&1
+    echo "=== key lines ==="
+    grep -E "^ishwl [0-9.]+: key " /tmp/ishwl.log 2>/dev/null | tail -40
+    echo "=== key line count ==="
+    grep -cE "^ishwl [0-9.]+: key " /tmp/ishwl.log 2>/dev/null
+    echo "=== distinct key codes seen ==="
+    grep -E "^ishwl [0-9.]+: key " /tmp/ishwl.log 2>/dev/null | awk '{print $4}' | sort -n | uniq -c
+    echo "=== text-input state and keymap lines ==="
+    grep -E "text input|keymap:|map toplevel" /tmp/ishwl.log 2>/dev/null | tail -10
+    echo "=== tail ==="
+    tail -12 /tmp/ishwl.log 2>&1
+} > "$OUT" 2>&1
+wget -T 20 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"
+echo KB4453_KEYLOG_DONE=1
