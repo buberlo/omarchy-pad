@@ -176,6 +176,9 @@ static bool exec_env_has(struct exec_args envp, const char *name) {
 static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, struct exec_args envp) {
     int err = 0;
     current->mem->high_va = exec_env_has(envp, "ISH_HIGH_VA");
+    printk("ish-highva: %s envp.count=%zu -> high_va=%d stack_page=%#llx\n", file,
+            (size_t) envp.count, (int) current->mem->high_va,
+            (unsigned long long) STACK_TOP_PAGE(current->mem));
 
     // read the headers
     exec_elf_header header;
