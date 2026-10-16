@@ -209,6 +209,13 @@ static inline bool task_is_leader(struct task *task) {
     return task->group->leader == task;
 }
 
+// Call with pids_lock held. All threads report the process's parent, and a
+// process forked from a worker reports that worker's process ID, not its TID.
+static inline pid_t_ task_parent_pid(struct task *task) {
+    struct task *parent = task->group->leader->parent;
+    return parent != NULL ? parent->tgid : 0;
+}
+
 struct pid {
     dword_t id;
     struct task *task;

@@ -14,10 +14,7 @@ pid_t_ sys_getppid() {
     STRACE("getppid()");
     pid_t_ ppid;
     lock(&pids_lock);
-    if (current->parent != NULL)
-        ppid = current->parent->pid;
-    else
-        ppid = 0;
+    ppid = task_parent_pid(current);
     unlock(&pids_lock);
     return ppid;
 }

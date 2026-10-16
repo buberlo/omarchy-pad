@@ -152,7 +152,7 @@ static int proc_pid_status_show(struct proc_entry *entry, struct proc_data *buf)
     proc_printf(buf, "State:\t%c\n", state);
     proc_printf(buf, "Tgid:\t%d\n", task->tgid);
     proc_printf(buf, "Pid:\t%d\n", task->pid);
-    proc_printf(buf, "PPid:\t%d\n", task->parent ? task->parent->pid : 0);
+    proc_printf(buf, "PPid:\t%d\n", task_parent_pid(task));
     proc_printf(buf, "Uid:\t%d\t%d\t%d\t%d\n", task->uid, task->euid, task->suid, task->euid);
     proc_printf(buf, "Gid:\t%d\t%d\t%d\t%d\n", task->gid, task->egid, task->sgid, task->egid);
     proc_printf(buf, "VmPeak:\t%8llu kB\n", (unsigned long long) (vm.size * kb));
@@ -189,7 +189,7 @@ static int proc_pid_stat_show(struct proc_entry *entry, struct proc_data *buf) {
             task->zombie ? 'Z' :
             task->group->stopped ? 'T' :
             'R'); // I have no visibility into sleep state at the moment
-    proc_printf(buf, "%d ", task->parent ? task->parent->pid : 0);
+    proc_printf(buf, "%d ", task_parent_pid(task));
     proc_printf(buf, "%d ", task->group->pgid);
     proc_printf(buf, "%d ", task->group->sid);
     struct tty *tty = task->group->tty;
