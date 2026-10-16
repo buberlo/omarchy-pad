@@ -1,0 +1,18 @@
+AGENT_BEGIN id=109-glibc-fork-threads pid=43 Fri Oct 16 22:06:09 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== glibc, default (low) layout ===
+glibc fork+threads probe: pid=1436
+fork-while-threaded: ok
+thread churn: ok
+summary: glibc threads+fork ok
+exit=0
+
+=== glibc, high layout (what wine now uses) ===
+glibc fork+threads probe: pid=1455
+fork-while-threaded: ok
+thread churn: ok
+summary: glibc threads+fork ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:06:09 UTC 2026

@@ -1,0 +1,35 @@
+AGENT_BEGIN id=104-highva-works pid=43 Fri Oct 16 22:02:11 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Fri Oct 16 22:00:55 UTC 2026
+Fri Oct 16 22:02:12 UTC 2026
+
+=== the switch now? ===
+--- default:
+ISH_HIGH_VA in my environment : (absent)
+stack address                 : 0xffffd834
+high stack expected           : 0x7fff....
+--- with ISH_HIGH_VA=1:
+ISH_HIGH_VA in my environment : 1
+stack address                 : 0x7fffffe814
+high stack expected           : 0x7fff....
+
+=== kernel log ===
+ish-highva: /tmp/env-check-probe asked for the high address-space layout (stack page 0x7ffffff)
+
+=== the maps of a shell that asked for it ===
+007fffffc000-007ffffff000 -w-p 00000000 00:00 0          [stack]
+awk: cmd. line:1: Call to undefined function
+maps above 4 GB: 
+
+=== a glibc program with the switch (that is what wine is) ===
+stack-ish (address of a local): 0x7fffffe6b4
+sbrk(0)                       : 0x10ed000
+fresh mmap(1 MB)              : 0x7fffeb5e000
+libc function address         : 0x7fffedecb40
+main                          : 0x1030558
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:02:12 UTC 2026

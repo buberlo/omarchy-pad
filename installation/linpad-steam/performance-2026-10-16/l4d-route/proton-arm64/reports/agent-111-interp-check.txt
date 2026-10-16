@@ -1,0 +1,23 @@
+AGENT_BEGIN id=111-interp-check pid=43 Fri Oct 16 22:07:46 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== ELF interpreter of every wine binary that matters ===
+wine                                                       /lib/ld-linux-aarch64.so.1
+wineserver                                                 /lib/ld-linux-aarch64.so.1
+wine-preloader                                             (no interpreter string)
+ntdll.so                                                   (no interpreter string)
+python3                                                    /lib/ld-musl-aarch64.so.1
+sh                                                         /lib/ld-musl-aarch64.so.1
+
+=== the interpreter links on the device ===
+lrwxrwxrwx 1 root root     63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+-rwxr-xr-x 1 root root 723480 Sep 28 18:26 /lib/ld-musl-aarch64.so.1
+
+=== does a wine process really have two libcs? (maps of a live wine) ===
+--- pid 1838: libc mappings
+07fffed60000-07fffeefc000 r-xp 00000000 00:00 0          /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+07fffeefc000-07fffef0d000 ---p 00000000 00:00 0          /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+07fffef0d000-07fffef10000 r--p 0019d000 00:00 0          /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+07fffef10000-07fffef11000 rw-p 0019d000 00:00 0          /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:08:04 UTC 2026

@@ -1,0 +1,24 @@
+AGENT_BEGIN id=105-wine-highva pid=43 Fri Oct 16 22:02:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 32-bit Windows PE through ARM64 Proton, now with the high layout ===
+t= 32s success=0 corruption=1 procs=[]
+
+=== output ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc_consolidate(): invalid chunk size
+
+=== kernel: did wine processes take the high layout? ===
+ish-highva: /tmp/env-check-probe asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /bin/sh asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /bin/grep asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /usr/bin/awk asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /tmp/va-layout-probe asked for the high address-space layout (stack page 0x7ffffff)
+footprint_mb 141
+allowance_mb 8192
+headroom_mb 8050
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:02:54 UTC 2026

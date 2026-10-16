@@ -1,0 +1,14 @@
+AGENT_BEGIN id=102-nojit-boot2 pid=43 Fri Oct 16 21:59:34 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=92 at Fri Oct 16 21:14:11 UTC 2026
+kb4453 agent started pid=43 at Fri Oct 16 21:58:18 UTC 2026
+Fri Oct 16 21:59:34 UTC 2026
+footprint_mb 139
+allowance_mb 8192
+headroom_mb 8052
+jit: supported 1 enabled 0 
+switch test: stack address                 : 0xffffd814 high stack expected           : 0x7fff.... 
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:59:34 UTC 2026

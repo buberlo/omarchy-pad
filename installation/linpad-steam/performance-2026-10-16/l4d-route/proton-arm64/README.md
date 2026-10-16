@@ -203,3 +203,53 @@ Linux system's lock, and relaunching several times; the app never gets past the 
 capture in `high-va/evidence-app-stuck-on-jit.log`, zero `EXEC`/`MMAP` trace lines). Unlocking the
 iPad (and tapping StikDebug's prompt if it appears) is all it takes to continue; the session hook
 then starts the command agent by itself.
+
+## Round of 17 October, 05:50–06:20: the layout switch works, wine still corrupts
+
+**Reaching the device while it is locked.** The app stops at StikDebug's JIT handshake when the iPad
+is asleep, and that had blocked everything. The app's own fast-mode setting turns it off:
+`NSUserDefaults` reads launch arguments, so
+
+```
+xcrun devicectl device process launch --terminate-existing --device <udid> \
+    com.konradkern.linpad -- -fastMode.setting off
+```
+
+boots straight into the session, without StikDebug and without a human tap, and the guest then runs on
+the *interpreter* instead of the JIT. I also had to terminate the parallel session's "LinPad Steam"
+app, which holds the shared Linux system's exclusive lock (`devicectl device process terminate`).
+Both programs crashed the same way with the JIT on earlier in the evening, so the interpreter is not
+what breaks wine — it only makes it slower.
+
+**The high layout now works end to end.** `exec.c` installed a fresh mm *after* the request was
+applied, which reset it; the request is now applied right after `task_set_mm()`. Measured:
+
+```
+/tmp/env-check-probe      stack 0x7fffffe814        (default: 0xffffd834)
+[stack]                   007fffffc000-007ffffff000
+glibc program             stack 0x7fffffe6b4, mmap 0x7fffeb5e000, libc 0x7fffedecb40
+                          "of those three, below 4 GB: 0"
+```
+
+and the kernel log shows the whole wine chain taking it: `python3`, `wineserver`, `wine`,
+`wine-preloader` all "asked for the high address-space layout".
+
+**Wine still dies the same way.** `wineserver: using server-side synchronization.` then
+`Fatal glibc error: malloc.c:2601 (sysmalloc)` / `corrupted size vs. prev_size`, both with the low
+and the high layout, with the JIT and without it. So the layout was *not* the cause — that hypothesis
+is disproved too.
+
+**What was tested and cleared in this round** (each with a probe that passes on real Linux first, or
+by direct comparison):
+
+| Suspect | Evidence |
+| --- | --- |
+| FEX-specific (x86 translation) | wine's *native* `aarch64-windows` programs (`cmd.exe`, `services.exe`, `wineboot.exe` all ship for aarch64) crash identically. ARM64EC interop still loads FEX's modules, so this is not a complete exclusion. |
+| glibc threads plus fork (wine's pattern) | `probes/glibcfork.c`: 6 threads churning the heap, 12 forks from the threaded process, parent heap intact — `glibc threads+fork ok`, low and high layout |
+| two libcs in one process | the live wine process maps exactly one libc (the runtime platform's), no musl |
+| `/proc/<pid>/mem` (wine's fallback for other processes' memory, since `process_vm_readv/writev` return ENOSYS) | `probes/procmem.c`: the write lands exactly in the target page, neighbours untouched, read-back correct |
+| emulator-side fault | the guest kernel log reports no fault, no GPF, nothing — the corruption is silent |
+
+Wine gets to Windows-process creation (`wineboot`, `services`, `svchost`, `plugdev`, ~30 builtin
+modules) and then aborts. The next useful step is wine's own heap trace (`WINEDEBUG=+heap`) around
+the abort, and a comparison against a second wine build if one can be had.

@@ -1,0 +1,39 @@
+AGENT_BEGIN id=108-bisect-arm64-windows pid=43 Fri Oct 16 22:05:12 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== what Windows programs does the ARM64 Proton ship? ===
+acledit.dll
+aclui.dll
+activeds.dll
+activeds.tlb
+actxprxy.dll
+adsldp.dll
+adsldpc.dll
+advapi32.dll
+advpack.dll
+amd_ags_x64.dll
+amdxc64.dll
+amsi.dll
+aarch64-unix aarch64-windows dxvk i386-windows icu nvapi vkd3d-proton x86_64-windows 
+=== is there an ARM64 (aarch64-windows) cmd/services? ===
+cmd.exe        aarch64:1 i386:1 x86_64:1
+services.exe   aarch64:1 i386:0 x86_64:0
+wineboot.exe   aarch64:1 i386:0 x86_64:0
+explorer.exe   aarch64:1 i386:1 x86_64:1
+
+=== which architecture is wine-preloader / wine? ===
+wine-preloader                                                         3
+wine                                                                   3
+
+=== run wine's own builtin cmd (whatever arch it picks) ===
+t= 30s 0 | 5
+--- cmd output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+malloc_consolidate(): invalid chunk size
+malloc_consolidate(): invalid chunk size
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:05:42 UTC 2026

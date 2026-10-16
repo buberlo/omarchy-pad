@@ -1,0 +1,10 @@
+AGENT_BEGIN id=113-proc-pid-mem pid=43 Fri Oct 16 22:09:27 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== /proc/<pid>/mem write correctness (wine's fallback path) ===
+parent: wrote 4096 bytes at 0x10222a0 + 4096
+parent: read back 4096 bytes, first byte 0xbb (want 0xbb)
+parent: child exit=0
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:09:27 UTC 2026

@@ -1,0 +1,31 @@
+AGENT_BEGIN id=112-fault-log pid=43 Fri Oct 16 22:08:21 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== run wine and capture the emulator's own diagnostics ===
+--- wine output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc_consolidate(): invalid chunk size
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+
+=== emulator diagnostics (guest kernel log) ===
+ish-highva: /bin/mkdir asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /usr/bin/python3 asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+
+=== any fault/GPF/unmapped lines at all? ===
+0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:08:46 UTC 2026

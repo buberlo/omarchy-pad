@@ -1,0 +1,49 @@
+AGENT_BEGIN id=107-wine-virtual-highva pid=43 Fri Oct 16 22:04:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine with the virtual-memory trace, high layout ===
+t= 30s lines=17108 crash=3
+
+=== where does wine put the 32-bit view now? ===
+dump_view View: 0x10000
+dump_view View: 0x100000000
+dump_view View: 0x100100000
+dump_view View: 0x100200000
+dump_view View: 0x100300000
+dump_view View: 0x100400000
+dump_view View: 0x100500000
+dump_view View: 0x100600000
+trace:virtual:alloc_free_area limit 0x10000-0x80000000, size 0x200000, top_down 0x100000.
+trace:virtual:alloc_free_area limit 0x10000-0x80000000, size 0x200000, top_down 0x100000.
+002c:trace:virtual:alloc_free_area limit 0x10000-0x7fffffff0000, size 0x3000, top_down 0.
+002c:trace:virtual:alloc_free_area limit 0x100000000-0x7fffffff0000, size 0x100000, top_down 0.
+
+=== who crashes and what was it doing ===
+3333:Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+3335:0058:err:seh:call_seh_handlers invalid frame 1004fdee0 (0000000000B32000-0000000000C30000)
+3336:0058:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+10970:malloc_consolidate(): invalid chunk size
+10972:002c:err:seh:call_seh_handlers invalid frame 1000fcfc0 (0000000000022000-0000000000120000)
+10973:002c:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+17024:Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+17026:0024:err:seh:call_seh_handlers invalid frame 1000ff5b0 (0000000000022000-0000000000120000)
+17027:0024:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+
+=== the last few trace lines before the corruption ===
+004c:trace:virtual:alloc_free_area_in_range range 0x100500000-0x140000000.
+004c:trace:virtual:dump_view View: 0x100500000 - 0x1005fffff c-rw- (valloc)
+004c:trace:virtual:dump_view       0x100500000 - 0x100500fff c-r--
+004c:trace:virtual:dump_view       0x100501000 - 0x1005fffff c-rw-
+004c:trace:virtual:alloc_free_area limit 0x10000-0x7fffffff0000, size 0x100000, top_down 0.
+004c:trace:virtual:alloc_free_area range (nil)-0x10000.
+004c:trace:virtual:alloc_free_area range 0xc30000-0x7fde0000.
+004c:trace:virtual:alloc_free_area_in_range range 0xc30000-0x7fde0000.
+004c:trace:virtual:dump_view View: 0xc30000 - 0xd2ffff c-rw- (valloc)
+004c:trace:virtual:dump_view       0xc30000 - 0xc30fff -----
+004c:trace:virtual:dump_view       0xc31000 - 0xc31fff cgrw-
+004c:trace:virtual:dump_view       0xc32000 - 0xd2ffff c-rw-
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev
+0058:warn:virtual:virtual_setup_exception exception outside of stack limits addr 0x7fffede8020 stack 0x1004fdee0 (0xb30000-0xb32000-0xc30000)
+0058:err:seh:call_seh_handlers invalid frame 1004fdee0 (0000000000B32000-0000000000C30000)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:04:47 UTC 2026

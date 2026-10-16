@@ -1,0 +1,48 @@
+AGENT_BEGIN id=110-glibc-mix pid=43 Fri Oct 16 22:06:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== which glibc does my launcher inject? ===
+total 36
+lrwxrwxrwx 1 root root 143 Oct 16 20:14 libc.so.6 -> /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+lrwxrwxrwx 1 root root 144 Oct 16 20:14 libdl.so.2 -> /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libdl.so.2
+lrwxrwxrwx 1 root root 147 Oct 16 20:14 libgcc_s.so.1 -> /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libgcc_s.so.1
+lrwxrwxrwx 1 root root 143 Oct 16 20:14 libm.so.6 -> /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libm.so.6
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+
+=== does Proton ship its own glibc? ===
+ls: cannot access '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/aarch64-linux-gnu/libc.so.6': No such file or directory
+cmake
+fst
+glslang
+graphene-1.0
+gstreamer-1.0
+libdav1d.so
+libdav1d.so.6
+libdav1d.so.6.9.0
+
+=== and the Steam runtime platform's glibc ===
+-rwxr-xr-x 1 root root 1716616 Oct 16 08:17 /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu/libc.so.6
+
+=== which libc does the wine process actually load? ===
+      1560:	find library=libc.so.6 [0]; searching
+      1560:	  trying file=/opt/linpad-glibc/libc.so.6
+      1560:	calling init: /lib/libc.musl-aarch64.so.1
+      1560:	calling init: /opt/linpad-glibc/libc.so.6
+      1560:	calling fini: /opt/linpad-glibc/libc.so.6 [0]
+      1560:	calling fini: /lib/libc.musl-aarch64.so.1 [0]
+--- distinct libc paths mentioned ---
+/opt/linpad-glibc/libc.so.6
+
+=== and for a full wine run (the crashing one) ===
+     11 /files/lib/aarch64-linux-gnu/libc.so.6
+     11 /files/lib/i386-linux-gnu/libc.so.6
+     11 /files/lib/x86_64-linux-gnu/libc.so.6
+     25 /opt/linpad-glibc/libc.so.6
+     11 /root/.local/share/Steam/steamrtarm64/video/libc.so.6
+     11 /root/.local/share/Steam/ubuntu12_32/video/libc.so.6
+     11 /root/.local/share/Steam/ubuntu12_64/video/libc.so.6
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+corrupted size vs. prev_size
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:07:29 UTC 2026
