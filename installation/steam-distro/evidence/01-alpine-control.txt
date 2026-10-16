@@ -1,0 +1,8 @@
+NAME="Alpine Linux"
+ID=alpine
+VERSION_ID=3.21.0
+PRETTY_NAME="Alpine Linux v3.21"
+HOME_URL="https://alpinelinux.org/"
+BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
+Linux MacBook-Pro-von-Konrad.local 4.20.69-ish SUPER AWESOME Oct 17 2026 03:54:56 aarch64 Linux
+PROBE_OK

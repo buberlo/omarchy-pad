@@ -1,0 +1,12 @@
+--- pacman -Q
+warning: config file /etc/pacman.conf, line 92: directive 'DisableSandbox' in section 'aur' not recognized.
+error: failed to initialize alpm library:
+--- pacman -Sy --disable-sandbox
+warning: config file /etc/pacman.conf, line 92: directive 'DisableSandbox' in section 'aur' not recognized.
+error: failed to initialize alpm library:
+(root: /, dbpath: /var/lib/pacman/)
+could not find or read directory
+--- pacman -Sp python (resolve only)
+(root: /, dbpath: /var/lib/pacman/)
+could not find or read directory
+PACMAN_GATE_DONE

@@ -1,0 +1,10 @@
+1. shell chdir /:
+/bin/sh: line 1: cd: /: Not a directory
+2. subshell + exec:
+/bin/sh: line 1: cd: /: Not a directory
+3. foot -w /:
+error: invalid window-size-pixels: /
+4. foot default cwd:
+ err: slave.c:554: /bin/sh: failed to execute: Not a directory
+ err: fdm.c:228: no such FD: 6
+CHDIR_MATRIX_DONE

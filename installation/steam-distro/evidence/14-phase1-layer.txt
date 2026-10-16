@@ -1,0 +1,8 @@
+session files:
+ishwl ishwl-launch ishwl-session ishwl-x11 ishwl-x11-wm steam-bigpicture steam-local 
+scm shim present: no
+steam-mode: bigpicture
+gpu hook: 1
+ishwl 52490.605: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl (headless)
+ishwl 52490.605: scm-compat: off (native fd passing works)
+PHASE1_LAYER_OK

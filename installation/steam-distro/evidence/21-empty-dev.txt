@@ -1,0 +1,6 @@
+chdir: OK
+dev: console full mqueue null ptmx pts random shm tty urandom zero 
+pacman: acl 2.4.0-1
+foot:  err: fdm.c:228: no such FD: 6
+toplevels: 0
+R26_DONE

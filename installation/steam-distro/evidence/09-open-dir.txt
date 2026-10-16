@@ -1,0 +1,3 @@
+open-dir-ok fd9
+O_DIRECTORY ignored or honoured: opendir-ok
+OPEN_DIR_DONE

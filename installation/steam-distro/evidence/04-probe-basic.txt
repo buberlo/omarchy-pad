@@ -1,0 +1,22 @@
+libc: glibc 2.43
+ldd: ldd (GNU libc) 2.43
+fork/exec/reap:
+  child1 pid=1
+  child2 pid=1
+  child3 pid=1
+pipes: hi
+flock: locked
+tools:
+  python3 no
+  cc no
+  gcc no
+  pacman yes
+  curl yes
+  wget no
+  bash yes
+  awk yes
+  sed yes
+  tar yes
+  zstd yes
+pkgs: 0
+PROBE2_OK

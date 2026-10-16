@@ -1,0 +1,9 @@
+--- client log:
+ err: slave.c:399: failed to change working directory to /: Not a directory
+ err: slave.c:554: sh: failed to execute: Not a directory
+ err: fdm.c:228: no such FD: 6
+--- compositor log:
+ishwl 52754.183: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl (headless)
+ishwl 52754.184: scm-compat: off (native fd passing works)
+ishwl: client 16 disconnected
+TOPLEVEL_TEST_DONE

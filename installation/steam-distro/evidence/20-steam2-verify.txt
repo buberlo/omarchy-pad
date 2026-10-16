@@ -1,0 +1,11 @@
+/etc/profile.d/debuginfod.sh: line 9: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 9: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 14: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 14: /dev/null: No such device or address
+1. chdir: CHDIR_OK
+2. pacman -Q: acl 2.4.0-1
+/bin/sh: line 1: cannot redirect standard input from /dev/null: No such device or address
+3. foot log:  err: terminal.c:1195: failed to open PTY: No such file or directory
+4. toplevels: 0
+/bin/sh: line 1: /dev/null: No such device or address
+ROUND25_DONE

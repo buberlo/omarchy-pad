@@ -1,0 +1,5 @@
+control: foot version: 1.28.0 (Sep 08 2026, branch 'makepkg') +pgo +ime +graphemes +toplevel-tag +blur -assertions
+foot alive: no
+foot log:  err: slave.c:554: /bin/sh: failed to execute: Inappropriate ioctl for device| err: fdm.c:228: no such FD: 6|
+toplevels: 0
+R27_DONE

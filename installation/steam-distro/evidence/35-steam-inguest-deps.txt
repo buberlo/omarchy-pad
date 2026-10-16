@@ -1,0 +1,19 @@
+--- in-guest pacman:
+sync rc=1 (error: failed to synchronize all databases (download library error))
+install rc=1 (Errors occurred, no packages were upgraded.)
+steamui missing: 8
+steam alive: no
+--- windows:
+
+  Root window id: 0x22c (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     0 children.
+
+--- log:
+[2026-10-16 21:14:12] Process started with command-line: '/root/.local/share/Steam/steamrtarm64/steam' '-child-update-ui' '-child-update-ui-socket' '8' '-no-cef-sandbox' '-cef-disable-gpu' '-gamepadui'
+[2026-10-16 21:14:12] Suppressing Steam update
+dlmopen /root/.local/share/Steam/steamrtarm64/steamui.so failed: libXrandr.so.2: cannot open shared object file: No such file or directory
+dlmopen steamui.so failed: libXrandr.so.2: cannot open shared object file: No such file or directory
+Failed to load steamui.so - dlerror(): (null)
+xwd bytes: 2870379
+R41_DONE

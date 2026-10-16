@@ -1,0 +1,27 @@
+1. script (pty alloc + use):
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+SCRIPT_OK
+not a tty
+TERM=dumb
+2. setsid + pty:
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+pollnval 0 flags 0 events 3 revents 32
+SETSID_PTY_OK
+3. /dev/ptmx:
+crw-rw-rw- 1 root root 5, 2 Oct 16 20:35 /dev/ptmx
+
+/dev/pts:
+4. foot --pty test:
+binary ok
+PTY_MATRIX_DONE

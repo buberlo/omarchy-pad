@@ -1,0 +1,18 @@
+x ready after 1 ticks
+--- windows:
+
+xwininfo: Window id: 0x22c (the root window) (has no name)
+
+  Root window id: 0x22c (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     0 children.
+
+--- steam log:
+10/16 21:02:35 Failed writing minidump, nothing to upload.
+[2026-10-16 21:02:35] Startup - Steam Client launched with: '/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-gamepadui'
+src/steamexe/main.cpp (1400) : Assertion Failed: Steam data link does not exist, client is misconfigured, cannot continue: /root/.steam/steam
+src/steamexe/main.cpp (1400) : Assertion Failed: Steam data link does not exist, client is misconfigured, cannot continue: /root/.steam/steam
+10/16 21:02:35 Failed writing minidump, nothing to upload.
+--- frame:
+xwd bytes: 2870379
+R38_DONE

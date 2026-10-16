@@ -1,0 +1,10 @@
+STATE=exited code=139
+log bytes: 0
+--- log:
+--- windows:
+  Root window id: 0x22c (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     0 children.
+
+--- xwd: 2870379
+R55B_DONE

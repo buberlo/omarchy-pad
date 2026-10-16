@@ -1,0 +1,8 @@
+/etc/profile.d/debuginfod.sh: line 9: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 9: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 14: /dev/null: No such device or address
+/etc/profile.d/debuginfod.sh: line 14: /dev/null: No such device or address
+cd / -> CHDIR_OK
+pwd=/
+ls / -> bin boot dev 
+GNU_TAR_ROOT_DONE

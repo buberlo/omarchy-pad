@@ -1,0 +1,15 @@
+--- stat -f (statvfs)
+  File: /var/lib/pacman
+    ID: 0        Namelen: 255     Type: UNKNOWN (0x66616b65)
+Block size: 1048576    Fundamental block size: 4096
+--- stat -c
+drwxr-xr-x root /var/lib/pacman
+drwxr-xr-x root /var/lib/pacman/local
+--- df
+Filesystem                                                                                                            Size  Used Avail Use% Mounted on
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/steam-distro/arch-container/data  461G  375G   86G  82% /
+--- getmntent
+devpts /dev/pts devpts rw 0 0
+proc /proc proc rw 0 0
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/steam-distro/arch-container/data / fake rw 0 0
+GATE2_DONE

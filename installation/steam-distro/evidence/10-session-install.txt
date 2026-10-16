@@ -1,0 +1,5 @@
+init: #!/bin/sh
+ishwl: /usr/local/bin/ishwl
+session: /usr/local/bin/ishwl-session
+libs: libishwl-compat.so libishwl-scm.so 
+SESSION_INSTALL_OK

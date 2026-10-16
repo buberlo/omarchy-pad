@@ -1,0 +1,25 @@
+# app-critical files in the Arch tree (audit questions 1 and 4)
+sbin/init              lrwxrwxrwx
+bin/sh                 lrwxrwxrwx
+bin/login              -rwxr-xr-x
+etc/os-release         lrwxrwxrwx
+etc/pacman.conf        -rw-r--r--
+etc/apk                MISSING
+etc/apk/world          MISSING
+etc/alpine-release     MISSING
+usr/bin/pacman         -rwxr-xr-x
+usr/bin/bash           -rwxr-xr-x
+var/lib/pacman         drwxr-xr-x
+
+# /etc/os-release
+NAME="Arch Linux ARM"
+PRETTY_NAME="Arch Linux ARM"
+ID=archarm
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://archlinuxarm.org/"
+DOCUMENTATION_URL="https://archlinuxarm.org/wiki"
+SUPPORT_URL="https://archlinuxarm.org/forum"
+BUG_REPORT_URL="https://github.com/archlinuxarm/PKGBUILDs/issues"
+LOGO=archlinux-logo

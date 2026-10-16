@@ -1,0 +1,9 @@
+--- ldd
+	libwayland-server.so.0 => /usr/lib/libwayland-server.so.0 (0x00000000eff40000)
+	libxkbcommon.so.0 => /usr/lib/libxkbcommon.so.0 (0x00000000efde0000)
+--- run
+usage: ishwl [options] [-- command...]
+  -s, --socket NAME       Wayland socket name (default wayland-0)
+  -r, --runtime-dir DIR   frame buffers and bridge FIFOs (default /tmp/ishwl)
+  -H, --headless          no host app; frames are acked locally
+SESSION_LINK_OK

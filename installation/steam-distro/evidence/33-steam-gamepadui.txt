@@ -1,0 +1,19 @@
+link: /root/.local/share/Steam
+x ready: 1 ticks
+steam alive: no
+--- windows:
+xwininfo: Window id: 0x22c (the root window) (has no name)
+
+  Root window id: 0x22c (the root window) (has no name)
+  Parent window id: 0x0 (none)
+     1 child:
+     0x200003 "Steam - Fatal Error": ()  854x129+85+285  +85+285
+
+--- steam log:
+[2026-10-16 21:04:41] Error: Steam needs to be online to update.	 Please confirm your network connection and try again.
+[2026-10-16 21:04:41] Fatal error: Steam needs to be online to update.	 Please confirm your network connection and try again.
+src/tier0/threadtools.cpp (3881) : Assertion Failed: Illegal termination of worker thread 'Thread(0x0xf000ef60/0x0xeeead8'
+src/tier0/threadtools.cpp (3881) : Assertion Failed: Illegal termination of worker thread 'Thread(0x0xf000ef60/0x0xeeead8'
+10/16 21:04:43 Failed writing minidump, nothing to upload.
+xwd bytes: 2870379
+R39_DONE

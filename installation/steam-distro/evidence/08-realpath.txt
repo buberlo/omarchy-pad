@@ -1,0 +1,5 @@
+readlink -f: /var/lib/pacman
+readlink -f local: /var/lib/pacman/local
+pwd -P: /var/lib/pacman
+cd+ls: local sync 
+ALPM_PATH_DONE

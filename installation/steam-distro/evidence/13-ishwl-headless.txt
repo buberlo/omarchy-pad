@@ -1,0 +1,13 @@
+--- running: yes
+--- log
+ishwl 52309.930: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl (headless)
+ishwl 52309.931: scm-compat: off (native fd passing works)
+--- runtime dir
+wayland-0
+wayland-0.lock
+--- bridge dir
+alive
+clipboard-in
+dnd
+events
+SESSION_HEADLESS_DONE

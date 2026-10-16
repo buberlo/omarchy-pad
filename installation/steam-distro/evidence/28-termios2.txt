@@ -1,0 +1,11 @@
+FOOTIOCTL fd=6 cmd=5414
+FOOTIOCTL fd=6 cmd=80045430
+FOOTIOCTL fd=6 cmd=80045430
+FOOTIOCTL fd=6 cmd=40045431
+FOOTIOCTL fd=6 cmd=540e
+FOOTIOCTL fd=6 cmd=802c542a
+FOOTIOCTL fd=6 cmd=402c542b
+foot alive: no
+foot log:  err: terminal.c:1138: failed to load primary fonts| err: fdm.c:228: no such FD: 6|
+toplevels: 0
+R33B_DONE

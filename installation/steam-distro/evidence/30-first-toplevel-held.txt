@@ -1,0 +1,16 @@
+FOOTIOCTL fd=6 cmd=5414
+FOOTIOCTL fd=6 cmd=80045430
+FOOTIOCTL fd=6 cmd=80045430
+FOOTIOCTL fd=6 cmd=40045431
+FOOTIOCTL fd=6 cmd=540e
+FOOTIOCTL fd=6 cmd=802c542a
+FOOTIOCTL fd=6 cmd=402c542b
+FOOTIOCTL fd=6 cmd=5414
+foot alive: yes
+--- ishwl log:
+ishwl 53936.080: map toplevel 1 'foot' foot
+--- foot log:
+warn: wayland.c:1883: compositor does not implement server-side cursors, falling back to client-side cursors
+warn: wayland.c:1888: compositor does not implement the xdg-toplevel-icon protocol
+ err: shm.c:468: failed to seal SHM backing memory file: Invalid argument
+R34B_DONE

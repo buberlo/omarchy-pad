@@ -1,0 +1,6 @@
+STATE=exited code=139
+log bytes: 0
+--- raw log (last 22 lines):
+--- dumps:
+--- x11 sockets: X55 
+R55_DONE
