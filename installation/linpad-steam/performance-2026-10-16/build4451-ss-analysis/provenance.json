@@ -1,0 +1,15 @@
+{
+  "source_commit": "a98b09d165335ca22fd261d6382952a4d4b62467",
+  "physical_report_sha256": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+  "source_sha256": {
+    "work/LinPad/jit/translate.c": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061",
+    "work/LinPad/jit/jit.c": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+    "work/LinPad/jit/emit.h": "3812bded81f3d6b975defbb6739555cac817ba83af3c52c56da2c156f3047953",
+    "work/LinPad/asbestos/guest-arm64/gen.c": "8dbab3cf4129b4a8c68bcbbe34e2f8fe6c2c96fdb29b329d09157efda1d67875",
+    "work/LinPad/asbestos/guest-arm64/gadgets-aarch64/memory.S": "a5b74b4f56f6f2a49cd05de51145b013e2dcb290f2cbb78f4b159f0cd521a560",
+    "work/performance/fex-build/FEX/FEXCore/Source/Interface/Core/JIT/MemoryOps.cpp": "c5173fcdb037856b8e3fe23f20abeca9fc2a3935400266e34a9b45f7f4cf81b7"
+  },
+  "decode_method": "Exact sampled uint32 instruction words assembled with .inst into ARM64 object, decoded with Apple LLVM objdump --mattr=+rcpc,+rcpc-immo. No byte swapping.",
+  "analysis_only": true,
+  "production_changes": false
+}

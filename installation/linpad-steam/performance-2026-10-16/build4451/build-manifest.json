@@ -1,0 +1,165 @@
+{
+  "build": "4451",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "source_base": "508bcfa9907faab97e0dd1eee1f57d177d817f13",
+  "source_files": [
+    {
+      "path": "fs/proc/ish.c",
+      "sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+    },
+    {
+      "path": "jit/jit.c",
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6"
+    },
+    {
+      "path": "jit/jit.h",
+      "sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90"
+    },
+    {
+      "path": "tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466"
+    }
+  ],
+  "source_patch_sha256": "44d0ad1f55c2d0c68fa9f0644dbf42f70a2318a769faf6327a5677b6da18f6fa",
+  "build_verified": true,
+  "build_log_sha256": "49287e4ce212481c89d95171f1f9ae055f07ce736c1371a2b7f94033ef512aa8",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "9BFED852-22FE-3EAF-BD41-2979AF3AF623",
+  "executable_sha256": "76e406875b13c75a4c8eebd1386ff4c42d27535cfcd95b3230675c88d4784771",
+  "dwarf_sha256": "f1652e4fec015db87fa0fab52b09a69303dc94263b53eb08a86675c74353c269",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4450": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4451-Konrad.ipa",
+      "bytes": 637224953,
+      "sha256": "f00f7fa3521c691534d3205cbc594989c0b9dea0dd8a0807e2ffa565974ffaf8",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4451-dSYM.zip",
+      "bytes": 13531416,
+      "sha256": "97caa8188d329e64f0b680eaff9123e121dfe63640d901c33e4049648fe3f1b5",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "Frozen baseline diagnostic checkpoint: boot/SMC/native and actual-game counters, visible German menu and bounded foreground compositor cadence qualify. Audio, normal gameplay and playable performance remain pending. The separate disablelrcpc2 experiment failed before Unity startup and is not the baseline configuration.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA.",
+  "curated_at_utc": "2026-10-16T14:01:31.430022+00:00",
+  "curation_frozen": true,
+  "physical": {
+    "installed": true,
+    "launched": true,
+    "native_jit_512MiB": true,
+    "boot_completed": true,
+    "ordinary_smc": {
+      "status": "passed",
+      "rewrites": 200,
+      "exit": 0,
+      "source_sha256": "51bceb94bf9bc4287e357f46b3f15d2502f4f615f75f828425a1b0ad980d44d6",
+      "evidence": "smc4451-device-pass.txt"
+    },
+    "fallback_smc": {
+      "status": "passed",
+      "checks": 200,
+      "failures": 0,
+      "exit": 0,
+      "source_sha256": "51bceb94bf9bc4287e357f46b3f15d2502f4f615f75f828425a1b0ad980d44d6",
+      "evidence": "smc4451-device-pass.txt"
+    },
+    "native_diagnostic_counters": {
+      "status": "passed",
+      "source_sha256": "3d759986957bb2da372ab51e803bb1d87bce65884336075bb1ac8e4310d10fbd",
+      "evidence": "native-counter-selftest-excerpt.txt",
+      "guest_pid": 288,
+      "attempts": 200000,
+      "hits": 199998,
+      "cold_misses": 2,
+      "persistent_fills": 2,
+      "samples": 174,
+      "negative_path_attempts": 100000,
+      "native_exit_path_attempts": 100000,
+      "truncated": false,
+      "scope": "Native physical probe; not the game workload."
+    },
+    "game_diagnostic_counters": {
+      "status": "passed",
+      "guest_pid": 348,
+      "evidence": "game-counter-startup-excerpt.txt",
+      "summary": "game-counter-startup-summary.json",
+      "source_sha256": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+      "main_attempts": 140699252,
+      "scope": "Actual game startup counter collection. Rendering is qualified separately by the later menu capture; these counters alone establish no audio, gameplay or performance acceptance."
+    },
+    "game_rendered_frame": {
+      "status": "passed",
+      "scene": "German title menu",
+      "swapchain_extent": [
+        659,
+        540
+      ],
+      "evidence": [
+        "hollow-knight-title-menu-4451-baseline-measurement.png",
+        "hollow-knight-title-menu-4451-baseline-end.png"
+      ],
+      "qualification": "Both screenshots independently inspected; no normal gameplay acceptance."
+    },
+    "gameplay": "pending",
+    "audio_playback": "pending",
+    "performance": {
+      "status": "bounded_menu_observation_only",
+      "interval_utc": [
+        "2026-10-16T13:55:24Z",
+        "2026-10-16T13:55:54Z"
+      ],
+      "view_id": 1,
+      "frames_observed": 212,
+      "wall_seconds": 30,
+      "composited_deliveries_per_second": 7.066666666666666,
+      "foreground": "Parent verified before and after, with no intervening switch or input.",
+      "evidence": "baseline-menu-analysis.json",
+      "playable_performance": "pending",
+      "gpu_fps_claim": false
+    },
+    "baseline_end": {
+      "guest_pid": 348,
+      "operator_stop_utc": "2026-10-16T13:56:50Z/2026-10-16T13:56:53Z",
+      "signals": [
+        "SIGTERM",
+        "SIGKILL"
+      ],
+      "evidence": "baseline-stop-excerpt.txt",
+      "source_sha256": "1eb8bee84777bfd599953a301cd1dd0a20dcd7beae950037bacfec6abe528cc9",
+      "scope": "Menu baseline manually stopped for a separate feature-mask experiment; no spontaneous baseline crash claimed."
+    }
+  },
+  "predecessor_run": {
+    "build": "4450",
+    "operator_stop_utc": "2026-10-16T13:41:09Z/2026-10-16T13:41:12Z",
+    "operator_sent_signals": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "guest_pid": 271,
+    "total_frame_rows_observed": 10270,
+    "raw_report_sha256": "861030d3fa052bfdb1fb35b12a4e2187fc20d604534df8ffbd386ca1d29ecec9",
+    "evidence": "predecessor4450-end-excerpt.txt",
+    "scope": "Parent observed menu and new-slot2 introduction only; no normal gameplay qualification. Manually stopped for this diagnostic build. Aggregate rows are not FPS."
+  },
+  "initial_build_manifest_sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf",
+  "scope": "Large release assets, raw process/maps/env data, device identifiers, provisioning-profile bytes and proprietary game inputs stay outside Git."
+}

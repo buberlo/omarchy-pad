@@ -2,9 +2,11 @@
 
 Private archive of the LinPad work verified on 16 October 2026.
 
-**Verified:** development-signed LinPad 1.5.0 build 4441 installed on the M2 iPad;
-Steam ARM64 reaches its sign-in screen; FEX static runtime probes pass;
-the rebuilt app renders a Vulkan cube. Sign-in and games were not tested.
+**Current device checkpoint:** development-signed LinPad 1.4.0 build 4451 runs on the M2 iPad. The installed Linux Hollow Knight reaches its German main menu through FEX and Venus Vulkan on Apple M2. A foreground 30-second menu capture measured 212 compositor deliveries (7.07/s at 659×540). The user reported audible but severely stuttering music on the preceding build. Normal gameplay and smooth audio remain unqualified.
+
+Build 4451 identifies the dominant slow fallback instructions as LDAPUR/STLUR. A separate FEX feature-override experiment exits before Unity initialization and is not a working configuration. [Current evidence and limitations](installation/linpad-steam/performance-2026-10-16/build4451/VERIFICATION.md).
+
+Build 4441 originally established Steam ARM64 sign-in, static FEX probes and the Vulkan cube smoke test; those historical records remain below.
 
 - [Full handoff and recovery notes](installation/linpad-steam/README.md)
 - [Steam sign-in evidence](installation/linpad-steam/evidence/steam-ipad-login-4441.jpg)

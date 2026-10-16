@@ -1,0 +1,4 @@
+RCPC_CONTROL features=default target=/opt/mono-init/stack-limits-probe
+STACK_LIMITS local=0x808007fffb0c base=0x808000000000 size=0x8000000 soft=0x8000000 hard=0xffffffffffffffff
+STACK_LIMITS MAP 808007800000-808008000000 rw-p 00000000 00:00 0          
+STACK_LIMITS PASS contains_local=1 within_soft_limit=1 one_mapping=1 mapping_bounded=1

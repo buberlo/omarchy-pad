@@ -1,0 +1,62 @@
+[
+  {
+    "case": "hello-default",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "default",
+      "/opt/fex/hello-x86_64"
+    ],
+    "jit": "1",
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.086
+  },
+  {
+    "case": "hello-disabled",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "disablelrcpc2",
+      "/opt/fex/hello-x86_64"
+    ],
+    "jit": "1",
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.058
+  },
+  {
+    "case": "stack-default",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "default",
+      "/opt/mono-init/stack-limits-probe"
+    ],
+    "jit": "1",
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.229
+  },
+  {
+    "case": "stack-disabled",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "disablelrcpc2",
+      "/opt/mono-init/stack-limits-probe"
+    ],
+    "jit": "1",
+    "exit": 139,
+    "timeout": false,
+    "elapsed": 0.144
+  }
+]

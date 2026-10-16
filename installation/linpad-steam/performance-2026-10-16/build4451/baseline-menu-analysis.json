@@ -1,0 +1,46 @@
+{
+  "metric": "composited_game_view_delivery_cadence",
+  "view_id": 1,
+  "captured_wall_seconds": 30,
+  "wall_clock_resolution_seconds": 1,
+  "frames_observed": 212,
+  "other_view_rows_excluded": 0,
+  "full_window_rate_approx_fps": 7.066666666666666,
+  "active_span_seconds": 29.807,
+  "active_span_rate_fps": 7.078874089978864,
+  "interval_ms": {
+    "p50": 140,
+    "p95": 150,
+    "p99": 157,
+    "max": 207
+  },
+  "first_timestamp_ms": 553164684,
+  "last_timestamp_ms": 553194491,
+  "first_sequence": 4718,
+  "last_sequence": 4929,
+  "damage_dimensions_observed": [
+    [
+      659,
+      540
+    ]
+  ],
+  "sequence_discontinuities": [],
+  "warnings": [],
+  "interpretation": "Full-window rate includes observed idle time; active-span rate must not replace it. Damage dimensions are not swapchain extent. This is not GPU render duration or independently verified physical display FPS.",
+  "qualification": {
+    "scene": "German title menu; no input during measured interval",
+    "foreground": "Parent confirmed active game before and after, without intervening switch/input; both screenshots independently inspected and show the same foreground title menu.",
+    "interval_utc": [
+      "2026-10-16T13:55:24Z",
+      "2026-10-16T13:55:54Z"
+    ],
+    "swapchain_extent": [
+      659,
+      540
+    ],
+    "swapchain_source": "InitializeOrResetSwapChain 659x540 at 13:47:04.988 UTC in capture status; buffer size 1423440 bytes matches 659*540*4.",
+    "buffer": "v1-2.buf",
+    "buffer_inode": 8641622,
+    "comparison": "Eligible same-build scene baseline; candidate execution/cadence still pending. Not gameplay/GPU FPS."
+  }
+}

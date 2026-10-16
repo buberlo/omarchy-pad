@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-16T13:51:26.404308+00:00",
+  "status": "read-only source and physical sample audit; override not executed by this agent",
+  "inputs": {
+    "work/performance/reports/ss4451-hollow-startup-1.txt": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+    "work/LinPad/jit/translate.c": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061",
+    "work/LinPad/asbestos/guest-arm64/gen.c": "8dbab3cf4129b4a8c68bcbbe34e2f8fe6c2c96fdb29b329d09157efda1d67875",
+    "work/steam/FEX-static/FEX/FEXCore/Source/Interface/Config/Config.json.in": "9e3f33a5a3284d9d7d3f83854c6119292538b130ca65d1d58b11971300b452a5",
+    "work/steam/FEX-static/FEX/FEXCore/include/FEXCore/Config/Config.h": "7242a4d253e2cb5bf765b6791e420b3c26f47c639b669cf8a3326242e834b1be",
+    "work/steam/FEX-static/FEX/Source/Common/Config.cpp": "53e63adb74437b4bca09337fb4ead28681cfabdd95adf768a1ad0a163ebf1a66",
+    "work/steam/FEX-static/FEX/Source/Common/HostFeatures.cpp": "f0638fd648316f4edea7a2cd42fc3712e891e110dd4bfe155a8722b1f1648e60",
+    "work/steam/FEX-static/FEX/FEXCore/Source/Interface/Core/Addressing.cpp": "df1cbd6d7fbbf5a8144c3f27a258bdc601e8eb22ceee8fca807980008063625b",
+    "work/steam/FEX-static/FEX/FEXCore/Source/Interface/Core/JIT/MemoryOps.cpp": "c5173fcdb037856b8e3fe23f20abeca9fc2a3935400266e34a9b45f7f4cf81b7",
+    "work/performance/fex-build/build/include/FEXCore/Config/ConfigOptions.inl": "44622ca6e69235032c93d4e021caaa701a40b1b63be7eb69e9db0ff991840936",
+    "work/performance/serve/FEX-apple-m1-munmap": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "work/performance/steam-compat/linpad-fex-native/launch-game": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3",
+    "work/performance/serve/fex-hollow-egl": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397",
+    "work/performance/serve/fex-game-crash-report": "52177b933138d861c6b945d5af42be67f3638f44bc9bd90a67c66393486fac24"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "source_sha256": "94ab32081ad3410195cb54072062cecc63d37368dfc293b6982cd9c545d8f1a0",
+  "scope": "Synthetic process/counter files; actual collector shell and awk logic. Reads, waits and network stubbed. No device or performance claim.",
+  "results": [
+    {
+      "case": "valid_tgid_tick_tolerance",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "case": "disabled",
+      "exit": 70,
+      "passed": true
+    },
+    {
+      "case": "truncated",
+      "exit": 70,
+      "passed": true
+    },
+    {
+      "case": "wrong_sample_identity",
+      "exit": 70,
+      "passed": true
+    },
+    {
+      "case": "changed_mmu",
+      "exit": 70,
+      "passed": true
+    },
+    {
+      "case": "counter_decrease",
+      "exit": 70,
+      "passed": true
+    },
+    {
+      "case": "capped_maps",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "case": "oversized_report",
+      "exit": 75,
+      "passed": true
+    }
+  ]
+}

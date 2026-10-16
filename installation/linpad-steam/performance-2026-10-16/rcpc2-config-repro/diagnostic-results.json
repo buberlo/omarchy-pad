@@ -1,0 +1,40 @@
+[
+  {
+    "case": "stack-disabled-trace",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "disablelrcpc2",
+      "/opt/mono-init/stack-limits-probe"
+    ],
+    "env": {
+      "ISH_JIT": "1",
+      "ISH_CRASHLOG": "2",
+      "ISH_EXEC_TRACE": "1"
+    },
+    "exit": 139,
+    "timeout": false,
+    "elapsed": 0.14
+  },
+  {
+    "case": "stack-disabled-gadget",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/rcpc2-config-launch",
+      "disablelrcpc2",
+      "/opt/mono-init/stack-limits-probe"
+    ],
+    "env": {
+      "ISH_JIT": "0",
+      "ISH_CRASHLOG": "2",
+      "ISH_EXEC_TRACE": "1"
+    },
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.514
+  }
+]

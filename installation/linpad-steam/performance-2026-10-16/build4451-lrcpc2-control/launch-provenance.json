@@ -1,0 +1,47 @@
+{
+  "app_build": "4451",
+  "app_source": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "app_manifest_sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf",
+  "baseline_launcher": {
+    "source": "work/performance/serve/hollow4451-egl",
+    "copy": "baseline-launch.sh",
+    "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+  },
+  "candidate_launcher": {
+    "source": "work/performance/serve/hollow4451-rcpc2",
+    "copy": "candidate-launch.sh",
+    "sha256": "d1cbfff1c0798c6bc4017ef84bf4d2fc6b963464338fcaaee8dc3c234670522d"
+  },
+  "static_delta_check": {
+    "passed": true,
+    "exact_after_normalization": true,
+    "normalizations": [
+      "remove exact added line export FEX_HOSTFEATURES=disablelrcpc2",
+      "rename /tmp/hollow4451-rcpc2- log/output prefix back to /tmp/hollow4451-egl-"
+    ]
+  },
+  "intended_independent_variable": {
+    "FEX_HOSTFEATURES": "disablelrcpc2"
+  },
+  "unchanged_launch_inputs": [
+    "same app build and running compositor",
+    "same FEX ELF path",
+    "same native Steam compatibility tool",
+    "same swrast EGL bootstrap",
+    "same -force-wayland and -force-vulkan",
+    "same requested 960x540 windowed arguments",
+    "same crash reporter wrapper",
+    "same diagnostic-enabled app"
+  ],
+  "candidate_unity_log": "/tmp/hollow4451-rcpc2-unity.txt",
+  "candidate_fex_log": "/tmp/hollow4451-rcpc2-fex.txt",
+  "candidate_execution": {
+    "status": "failed_before_Unity_log",
+    "utc": "2026-10-16T13:57:22Z",
+    "guest_pid": 1703,
+    "guest_signal": 11,
+    "shell_exit": 139,
+    "candidate_cadence": null
+  },
+  "scope": "Static launcher provenance. A matching script does not prove on-device environment delivery or comparable scene/foreground; qualify those independently."
+}

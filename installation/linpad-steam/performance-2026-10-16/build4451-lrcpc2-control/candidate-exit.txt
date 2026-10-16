@@ -1,0 +1,12 @@
+Fri Oct 16 13:57:22 UTC 2026
+LINPAD_EGL_DIAGNOSTIC mode=swrast auxiliary_driver=llvmpipe FEX=/tmp/fex-game-crash-report
+LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+EGL_VENDOR=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+WAYLAND=/tmp/xdg-runtime/wayland-0-gpu SDL_VIDEODRIVER=wayland EGL_PLATFORM=wayland
+VULKAN_ICD=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json VK_LOADER_LAYERS_DISABLE=* LD_PRELOAD=unset argv_count=12
+Segmentation fault
+GAME_EXIT=139
+UNITY_LOG
+cat: can't open '/tmp/hollow4451-rcpc2-unity.txt': No such file or directory
+Fri Oct 16 13:57:22 UTC 2026

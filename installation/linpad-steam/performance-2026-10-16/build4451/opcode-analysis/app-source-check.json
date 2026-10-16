@@ -1,0 +1,32 @@
+{
+  "app_source_commit": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "analysis_checkout_commit": "a98b09d165335ca22fd261d6382952a4d4b62467",
+  "meaning": "The analysis checkout includes later commits. All listed LinPad production blobs are independently identical to the app source commit. FEX is a separate guest binary/source audit.",
+  "checked": [
+    {
+      "path": "jit/translate.c",
+      "sha256": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061",
+      "matches_app_source": true
+    },
+    {
+      "path": "jit/jit.c",
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+      "matches_app_source": true
+    },
+    {
+      "path": "jit/emit.h",
+      "sha256": "3812bded81f3d6b975defbb6739555cac817ba83af3c52c56da2c156f3047953",
+      "matches_app_source": true
+    },
+    {
+      "path": "asbestos/guest-arm64/gen.c",
+      "sha256": "8dbab3cf4129b4a8c68bcbbe34e2f8fe6c2c96fdb29b329d09157efda1d67875",
+      "matches_app_source": true
+    },
+    {
+      "path": "asbestos/guest-arm64/gadgets-aarch64/memory.S",
+      "sha256": "a5b74b4f56f6f2a49cd05de51145b013e2dcb290f2cbb78f4b159f0cd521a560",
+      "matches_app_source": true
+    }
+  ]
+}

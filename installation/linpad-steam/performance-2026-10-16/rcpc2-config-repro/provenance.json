@@ -1,0 +1,39 @@
+{
+  "scope": "Local macOS-hosted LinPad CLI; no device action or production edits",
+  "feature_control": "FEX_HOSTFEATURES=disablelrcpc2",
+  "raw_logs": {
+    "hello-default.txt": {
+      "sha256": "49f43277833b33a5b59f53b64aa474bfd5a2da59695c4f8d1f2e259d79793f5b",
+      "bytes": 106163
+    },
+    "hello-disabled.txt": {
+      "sha256": "9f79f3cde9d0416cac0bd0a3167e52dc23fd9ca0c01f03c0b689dff445c5b237",
+      "bytes": 106207
+    },
+    "stack-default.txt": {
+      "sha256": "b497e74516ebd7fdc9006af088e24cf1fa4c0a9f1dd0ce1a2673747af9cfdabb",
+      "bytes": 388514
+    },
+    "stack-disabled.txt": {
+      "sha256": "81121bbd38371962cafed61f2c3ab1a4e076010639d3ff7ae182f284d7caa2ff",
+      "bytes": 149011
+    },
+    "stack-disabled-trace.txt": {
+      "sha256": "8efc276f608f7b12fb86995e016c91982ebd847448b15ffa5e34a01e6be3e8a0",
+      "bytes": 166044
+    },
+    "stack-disabled-gadget.txt": {
+      "sha256": "80744ba32943a873ebac0a428ac7ec35e2ebf4226169180c9600fc5162a849c9",
+      "bytes": 389784
+    }
+  },
+  "input_sha256": {
+    "work/linpad-cli/ish": "c607972272fda73b11e20b4866bedc9945705fd5be0ba38243c7118ecf2199e8",
+    "work/performance/vulkan-repro-root/opt/fex/FEX-apple-m1-munmap": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "work/performance/vulkan-repro-root/opt/fex/hello-x86_64": "40786d46133b9674702270bb8554cdb7c1b11c9b09a15bf2b907380eb7e15e71",
+    "work/performance/vulkan-repro-root/opt/mono-init/stack-limits-probe": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43",
+    "work/performance/vulkan-repro-root/opt/rcpc2-config-launch": "0290ee7ba3c76bd4da3f135e462a1bd80b9d71442061e3fcb0e970dad04cbedd"
+  },
+  "diagnosis_boundary": "Native-JIT-dependent failure reproduced; exact failing opcode/alignment cause not proven",
+  "investigation_stopped_at_user_request": true
+}

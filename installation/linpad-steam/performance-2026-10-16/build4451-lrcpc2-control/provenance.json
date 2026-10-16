@@ -1,0 +1,125 @@
+{
+  "curation_frozen": true,
+  "captured_at_utc": "2026-10-16T14:01:09.182100+00:00",
+  "build": "4451",
+  "app_source_commit": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "feature_mask": "disablelrcpc2",
+  "outcome": "guest_exit139_before_Unity_log",
+  "execution_utc": "2026-10-16T13:57:22Z",
+  "guest_pid": 1703,
+  "fault": {
+    "signal": 11,
+    "code": 0,
+    "address": "0x80013505aa34",
+    "pc": "0x80013505aa34",
+    "lr": "0x800124041214",
+    "scope": "Anonymous FEX-generated code location; cause not established by these lines."
+  },
+  "candidate_cadence": null,
+  "recommendation": "Do not adopt this failed candidate launch as a working configuration.",
+  "baseline": {
+    "archive": "../build4451",
+    "interval_utc": [
+      "2026-10-16T13:55:24Z",
+      "2026-10-16T13:55:54Z"
+    ],
+    "rows": 212,
+    "seconds": 30,
+    "composited_deliveries_per_second": 7.066666666666666,
+    "scene": "foreground German title menu",
+    "resolution": [
+      659,
+      540
+    ],
+    "operator_stop_utc": "2026-10-16T13:56:50Z/2026-10-16T13:56:53Z",
+    "signals": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "guest_pid": 348
+  },
+  "records": [
+    {
+      "source": "work/performance/build4451-lrcpc2-control/baseline-launch.sh",
+      "destination": "baseline-launch.sh",
+      "bytes": 858,
+      "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/candidate-launch.sh",
+      "destination": "candidate-launch.sh",
+      "bytes": 902,
+      "sha256": "d1cbfff1c0798c6bc4017ef84bf4d2fc6b963464338fcaaee8dc3c234670522d",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/launch-control.patch",
+      "destination": "launch-control.patch",
+      "bytes": 1191,
+      "sha256": "97d87442d50f4b41bdcb714760c8fb5a703dba622db83c7858b424c3e30f6646",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/baseline-inputs.json",
+      "destination": "baseline-inputs.json",
+      "bytes": 1584,
+      "sha256": "21b50e8ceebe5757f3b79aa0b31ab1345cb83507ffe23ea6dbe754dbfd2479d9",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/hollow4451-frame-capture",
+      "destination": "hollow4451-frame-capture",
+      "bytes": 4266,
+      "sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/hollow4451-menu-cadence",
+      "destination": "hollow4451-menu-cadence",
+      "bytes": 1908,
+      "sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/parse-hollow-frame-window.py",
+      "destination": "parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/curate-failed-control.py",
+      "destination": "curate-failed-control.py",
+      "bytes": 6367,
+      "sha256": "17fc33c24ade87138fc3a6bd65cbbbee72d5675bc6d9305d62a86770a3964351",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4451-rcpc2-exit-1.txt",
+      "destination": "candidate-exit.txt",
+      "bytes": 815,
+      "sha256": "82105a0ded65ff3a4d77dcc1f79ba9b137d12175435b5b6fef2746017d57b6db",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4451/device-console.log",
+      "destination": "candidate-guest-fault-excerpt.txt",
+      "snapshot_bytes": 8922894,
+      "snapshot_sha256": "3e94f32d5300c1190a56cd68de2bfd2f7b7a88ddb3f7e0caad3e7232ea60e629",
+      "source_lines": [
+        43081,
+        43082
+      ],
+      "mode": "two numbered guest-fault lines; control character rendered as literal escape; no process/maps dump"
+    },
+    {
+      "source": "work/performance/build4451/curated/baseline-stop-excerpt.txt",
+      "destination": "baseline-stop-excerpt.txt",
+      "bytes": 426,
+      "sha256": "19e1f9d89fb83936fa0c34c35dd6b68aa87232a7a3dc0950a56c845581332b09",
+      "mode": "byte-identical"
+    }
+  ],
+  "scope": "Frozen failed-experiment evidence. App host was not reported to crash; the guest exited139. No candidate Unity window, cadence, gameplay, audio or performance improvement is claimed. Subsequent diagnosis belongs in a separate follow-up."
+}

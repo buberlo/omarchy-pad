@@ -1,0 +1,23 @@
+{
+  "report": {
+    "source": "work/performance/reports/hollow4451-baseline-menu-cadence.txt",
+    "copy": "baseline-menu-report.txt",
+    "sha256": "a4cb05ff6c0329bcbb9883629b8ca4f743cb9163b808fa22e772dc1939f26932"
+  },
+  "parser_sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+  "screenshots": [
+    {
+      "source": "outputs/hollow-knight-title-menu-4451-baseline-measurement.png",
+      "copy": "hollow-knight-title-menu-4451-baseline-measurement.png",
+      "sha256": "0e665a5d2afaa9a0416b3b95d1022af425340379f5f7dab4c0250296d08e6ffd",
+      "visually_reviewed": true
+    },
+    {
+      "source": "outputs/hollow-knight-title-menu-4451-baseline-end.png",
+      "copy": "hollow-knight-title-menu-4451-baseline-end.png",
+      "sha256": "b64f5c5239bf617876c88a0081eac84c2e17e367acf291d565ebf061ed197201",
+      "visually_reviewed": true
+    }
+  ],
+  "qualification_source": "Parent message confirms continuous foreground before/after and no intervening inputs; screenshots independently show German menu. No instrumentation proves continuous focus."
+}

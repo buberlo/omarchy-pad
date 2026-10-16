@@ -1,0 +1,23 @@
+{
+  "scope": "isolated candidate emitter + native ARM64 emitted words, not integrated LinPad",
+  "model": {
+    "register_value_cases": 6304,
+    "stale_reentry_negative_control_detected": true,
+    "missing_mask_negative_control_detected": true
+  },
+  "native": {
+    "cases": 4672,
+    "failures": 0,
+    "host_fpcr_restored": true
+  },
+  "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+  "candidate_sha256": "6a39ab62ff0ee5078e0340d889146cf0e87bbb4225a5ea4aa9629b2ae5bcbee1",
+  "test_source_sha256": "60903d9b51b197156d6c7ad356f479186ca2d2683f16487c511ed3e9f058bd4c",
+  "emitted_sha256": "67d552244754ba75123fa73a574a5781d562ffd8a61b98d4334ed88b77a11908",
+  "limitations": [
+    "No production patch applied",
+    "No complete JIT/trampoline execution",
+    "No device test",
+    "No measured opcode frequency or game speedup"
+  ]
+}

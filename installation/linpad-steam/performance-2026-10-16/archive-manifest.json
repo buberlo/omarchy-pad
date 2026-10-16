@@ -3,6 +3,11 @@
   "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, plus visible Hollow Knight menu evidence; no authentication or proprietary game binaries.",
   "files": [
     {
+      "path": "HANDOFF-4451.md",
+      "bytes": 3262,
+      "sha256": "aee16fca9b8c171aff884f35c46edada5e58564144e899ef099604f6044aea16"
+    },
+    {
       "path": "audio-path-audit/README.md",
       "bytes": 10704,
       "sha256": "75496160fe2c692ad4b37a6cd0867ae541694ca1fb1fd6bc63c99369c37e5cfb"
@@ -1558,6 +1563,31 @@
       "sha256": "c2d6768f339844b7ef978c48902bdec235753ea0fdf3a4401412ec48fd4d5683"
     },
     {
+      "path": "build4450-intro-followup/README.md",
+      "bytes": 398,
+      "sha256": "ff8d8d176d655947d15ba495c8b87db5e965a9441233f5a1ec4829794b0b7348"
+    },
+    {
+      "path": "build4450-intro-followup/SHA256SUMS",
+      "bytes": 359,
+      "sha256": "24bc6b47b3d15c356ae94b74049552490bca619e81d789d3306182e79c4c9d3a"
+    },
+    {
+      "path": "build4450-intro-followup/finish4450-prepare4451.txt",
+      "bytes": 33149,
+      "sha256": "861030d3fa052bfdb1fb35b12a4e2187fc20d604534df8ffbd386ca1d29ecec9"
+    },
+    {
+      "path": "build4450-intro-followup/hollow-knight-intro-video-4450.png",
+      "bytes": 288854,
+      "sha256": "dc005c31705143dc973c1ce53c8b311ed2dae261f7b8b5c40c5b6f112464ffca"
+    },
+    {
+      "path": "build4450-intro-followup/hollow4450-short-3.txt",
+      "bytes": 4884,
+      "sha256": "1ae32eb393c91bec597fadd6a6bc45ffb6f5df2f30e6b875d36eb53ebe339edd"
+    },
+    {
       "path": "build4450-release-verified.json",
       "bytes": 1469,
       "sha256": "d21969ff8ccf451b0ca83c83d2d90445bf261dd76b2be80743991edfdf4b1a52"
@@ -1791,6 +1821,411 @@
       "path": "build4450/title-menu-window.txt",
       "bytes": 5250,
       "sha256": "89f2ecb15e5a869d2120ffc1dfad57031795c69a6ed9252d1988bb6e177adc11"
+    },
+    {
+      "path": "build4451-lrcpc2-control/README.md",
+      "bytes": 2019,
+      "sha256": "ebb0636e3e7113e4388486d4253d142231ef7838ecb100e2588dedc1d18a84ce"
+    },
+    {
+      "path": "build4451-lrcpc2-control/SHA256SUMS",
+      "bytes": 1236,
+      "sha256": "d414e46c47b326c060cf3d08f6e33a40502e046cfef76f2ba171f193937f7a04"
+    },
+    {
+      "path": "build4451-lrcpc2-control/baseline-inputs.json",
+      "bytes": 1584,
+      "sha256": "21b50e8ceebe5757f3b79aa0b31ab1345cb83507ffe23ea6dbe754dbfd2479d9"
+    },
+    {
+      "path": "build4451-lrcpc2-control/baseline-launch.sh",
+      "bytes": 858,
+      "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+    },
+    {
+      "path": "build4451-lrcpc2-control/baseline-stop-excerpt.txt",
+      "bytes": 426,
+      "sha256": "19e1f9d89fb83936fa0c34c35dd6b68aa87232a7a3dc0950a56c845581332b09"
+    },
+    {
+      "path": "build4451-lrcpc2-control/candidate-exit.txt",
+      "bytes": 815,
+      "sha256": "82105a0ded65ff3a4d77dcc1f79ba9b137d12175435b5b6fef2746017d57b6db"
+    },
+    {
+      "path": "build4451-lrcpc2-control/candidate-guest-fault-excerpt.txt",
+      "bytes": 399,
+      "sha256": "892a351017a6957d528d32e2a6ff9ea4caf20b42660c68838d6f5f803877d42f"
+    },
+    {
+      "path": "build4451-lrcpc2-control/candidate-launch.sh",
+      "bytes": 902,
+      "sha256": "d1cbfff1c0798c6bc4017ef84bf4d2fc6b963464338fcaaee8dc3c234670522d"
+    },
+    {
+      "path": "build4451-lrcpc2-control/curate-failed-control.py",
+      "bytes": 6367,
+      "sha256": "17fc33c24ade87138fc3a6bd65cbbbee72d5675bc6d9305d62a86770a3964351"
+    },
+    {
+      "path": "build4451-lrcpc2-control/hollow4451-frame-capture",
+      "bytes": 4266,
+      "sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d"
+    },
+    {
+      "path": "build4451-lrcpc2-control/hollow4451-menu-cadence",
+      "bytes": 1908,
+      "sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7"
+    },
+    {
+      "path": "build4451-lrcpc2-control/launch-control.patch",
+      "bytes": 1191,
+      "sha256": "97d87442d50f4b41bdcb714760c8fb5a703dba622db83c7858b424c3e30f6646"
+    },
+    {
+      "path": "build4451-lrcpc2-control/launch-provenance.json",
+      "bytes": 1778,
+      "sha256": "7d27bae625ca19498c582881917cdab269f0b950143154cb73b2edbf5deb4ea7"
+    },
+    {
+      "path": "build4451-lrcpc2-control/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "build4451-lrcpc2-control/provenance.json",
+      "bytes": 4637,
+      "sha256": "d44513c157404b4957ab0250c745f0ddf4e23119cc17a7f2c471d9e6ddd0e7a4"
+    },
+    {
+      "path": "build4451-ss-analysis/LRCPC2-DESIGN.md",
+      "bytes": 6149,
+      "sha256": "2f6995f4544a5d5b9b723d56cf963d40ad99cf74563fefc39a69afd1036985d5"
+    },
+    {
+      "path": "build4451-ss-analysis/README.md",
+      "bytes": 3168,
+      "sha256": "84953afcb61633b29f219cbb98d35e5b8d61172621a4a89b9afcb54a23731cb8"
+    },
+    {
+      "path": "build4451-ss-analysis/REPOSITORY-SHA256SUMS",
+      "bytes": 766,
+      "sha256": "75c7d533fdeab923695e951937936c8f46b3ff1310e33837ea21cd40b5146fbf"
+    },
+    {
+      "path": "build4451-ss-analysis/analyze-report.py",
+      "bytes": 5024,
+      "sha256": "2542145089ee449617f5e67eb3dbe27b7fbb14988167224db60ec21469f60ead"
+    },
+    {
+      "path": "build4451-ss-analysis/opcode-counts.txt",
+      "bytes": 3607,
+      "sha256": "a2ca1fa11afa8d1d70a311b047f15fe189ed31ed25b9ff8716404c7a37ba2a88"
+    },
+    {
+      "path": "build4451-ss-analysis/provenance.json",
+      "bytes": 1119,
+      "sha256": "0b5164525e7243f1a581d38839119a2ebf5d33381bc01f6664538989345e4740"
+    },
+    {
+      "path": "build4451-ss-analysis/sampled-opcodes-disassembly.txt",
+      "bytes": 15117,
+      "sha256": "40c4bc1033a50be36de68a292fa8e1f0bb4b287149a945d0c2c82591259d32c1"
+    },
+    {
+      "path": "build4451-ss-analysis/sampled-opcodes.S",
+      "bytes": 5590,
+      "sha256": "4b1d589aba214f4b7ca61b4c20604ffab95274dcbbdc7d2b2068a54d289e3104"
+    },
+    {
+      "path": "build4451-ss-analysis/startup-analysis.json",
+      "bytes": 1007069,
+      "sha256": "0a89e2181a5a64d05a9860d0cb7da8f8170bba71b68d5395db88976fb3788c5d"
+    },
+    {
+      "path": "build4451-ss-analysis/startup-summary.json",
+      "bytes": 5707,
+      "sha256": "b6604228de77fa3d822a0010b52d5b243096b84c6a50e85b0938ad7de9fd7d0a"
+    },
+    {
+      "path": "build4451/REPOSITORY-SHA256SUMS",
+      "bytes": 5293,
+      "sha256": "8fefb03a3cbb73c8b40c31eeacc225331a91e0c40d239ac3cc5857088e2330b8"
+    },
+    {
+      "path": "build4451/SHA256SUMS",
+      "bytes": 198,
+      "sha256": "3e3e9d13b7e6e0b8d697b3394b0cc215fa3b1652eff3a5e05f61f4fe5bc898a1"
+    },
+    {
+      "path": "build4451/VERIFICATION.md",
+      "bytes": 5216,
+      "sha256": "5ae91c78c4526a00f719de9eb061ff4e6df37757070f1ebc656811a2563cb65e"
+    },
+    {
+      "path": "build4451/artifact-verification.log",
+      "bytes": 805,
+      "sha256": "41b847a45b549522273ca72898fd3868ee52ffd53855eee3f66393767deea8c2"
+    },
+    {
+      "path": "build4451/baseline-menu-analysis.json",
+      "bytes": 1635,
+      "sha256": "5fdde635f0ca70b36a6b09dec1f9e4a1fbe0996c81806c7da1afa2feef592329"
+    },
+    {
+      "path": "build4451/baseline-menu-provenance.json",
+      "bytes": 1085,
+      "sha256": "38d57246054dda341c15c1114ac410ef01c65ebbce836a5cce2a37a69844bbbc"
+    },
+    {
+      "path": "build4451/baseline-stop-excerpt.txt",
+      "bytes": 426,
+      "sha256": "19e1f9d89fb83936fa0c34c35dd6b68aa87232a7a3dc0950a56c845581332b09"
+    },
+    {
+      "path": "build4451/baseline-window.meta",
+      "bytes": 107,
+      "sha256": "24a7e54d099b7966f8774d17e38d5125318105bf044612332da6eef52e1d44aa"
+    },
+    {
+      "path": "build4451/baseline-window.status.txt",
+      "bytes": 4043,
+      "sha256": "2de98becf435b4a02e6752e42c5728e756ed9c6694f87e03da7c7deec7e66f63"
+    },
+    {
+      "path": "build4451/baseline-window.txt",
+      "bytes": 5300,
+      "sha256": "9c01e0f2d4c03ed182ebfe708853c6e90bbcc8e152af739820cfb34c2d93cd4a"
+    },
+    {
+      "path": "build4451/build-local.sh",
+      "bytes": 399,
+      "sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "path": "build4451/build-manifest.json",
+      "bytes": 6746,
+      "sha256": "a70e823f1a480c95e7ddd3ba52c16c37b4d29ed0c3c51cedea5445138753b2bd"
+    },
+    {
+      "path": "build4451/build-summary.log",
+      "bytes": 711,
+      "sha256": "069e6046a0570c4cc99759a739f903f3fcd691624dc53c819a6989707058406b"
+    },
+    {
+      "path": "build4451/curate-build4451.py",
+      "bytes": 22530,
+      "sha256": "f502493029ac4eef20e213d74edf9442a8e428860ba9f5755d7029994caea055"
+    },
+    {
+      "path": "build4451/device-boot-excerpt.txt",
+      "bytes": 394,
+      "sha256": "c0a9572cfad5fa9362195e80baf59446afa5fe6a097d7998ed31d5cb7f5f11d7"
+    },
+    {
+      "path": "build4451/device-install-evidence.json",
+      "bytes": 314,
+      "sha256": "d5fef2b4533367372a85414c803b96f94c3e97f6c1ba5b94f7ccdb81fe0bd97c"
+    },
+    {
+      "path": "build4451/device-scripts/hollow4451-egl",
+      "bytes": 858,
+      "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+    },
+    {
+      "path": "build4451/device-scripts/hollow4451-frame-capture",
+      "bytes": 4266,
+      "sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d"
+    },
+    {
+      "path": "build4451/device-scripts/hollow4451-menu-cadence",
+      "bytes": 1908,
+      "sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7"
+    },
+    {
+      "path": "build4451/device-scripts/smc4451-probe",
+      "bytes": 809,
+      "sha256": "cc30219ccc307b25ce2e28adfa50cc0b2ecafaae8d96ecd8fce7c97083f9393b"
+    },
+    {
+      "path": "build4451/device-scripts/ss4451-probe",
+      "bytes": 5663,
+      "sha256": "94ab32081ad3410195cb54072062cecc63d37368dfc293b6982cd9c545d8f1a0"
+    },
+    {
+      "path": "build4451/diagnostics/collector-tests.json",
+      "bytes": 935,
+      "sha256": "a975730acfc6ab0b75f7a20a7ae906e1cdde51bdd472e4e170604b297137fc1a"
+    },
+    {
+      "path": "build4451/diagnostics/frame-parser-test-results.json",
+      "bytes": 411,
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432"
+    },
+    {
+      "path": "build4451/diagnostics/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "build4451/diagnostics/test-hollow-frame-parser.py",
+      "bytes": 1821,
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba"
+    },
+    {
+      "path": "build4451/diagnostics/test-ss4451-collector.py",
+      "bytes": 4583,
+      "sha256": "f1db69e2a4234e4339f106ebcdce7c55cf6b9a3eec2030539a414a83cefb65dd"
+    },
+    {
+      "path": "build4451/game-counter-startup-excerpt.txt",
+      "bytes": 2832,
+      "sha256": "44fc6213f3b474f6f48e29e97852a5f239e20c5389c3c0c8f3d351db254c9855"
+    },
+    {
+      "path": "build4451/game-counter-startup-summary.json",
+      "bytes": 1193,
+      "sha256": "d34b8bd2d4a4f12f543a9e1f5ad82205ef6a74745134ea5b7c6d0121077457ca"
+    },
+    {
+      "path": "build4451/hollow-knight-title-menu-4451-baseline-end.png",
+      "bytes": 318614,
+      "sha256": "b64f5c5239bf617876c88a0081eac84c2e17e367acf291d565ebf061ed197201"
+    },
+    {
+      "path": "build4451/hollow-knight-title-menu-4451-baseline-measurement.png",
+      "bytes": 312503,
+      "sha256": "0e665a5d2afaa9a0416b3b95d1022af425340379f5f7dab4c0250296d08e6ffd"
+    },
+    {
+      "path": "build4451/hollow4451-baseline-menu-cadence.txt",
+      "bytes": 14194,
+      "sha256": "a4cb05ff6c0329bcbb9883629b8ca4f743cb9163b808fa22e772dc1939f26932"
+    },
+    {
+      "path": "build4451/initial-build-manifest.json",
+      "bytes": 2461,
+      "sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf"
+    },
+    {
+      "path": "build4451/native-counter-selftest-excerpt.txt",
+      "bytes": 676,
+      "sha256": "3ee81db9a5f8994af3cc94fb7cbca1b260f0f97a50791f40a705e21626cbce18"
+    },
+    {
+      "path": "build4451/opcode-analysis/README.md",
+      "bytes": 3168,
+      "sha256": "84953afcb61633b29f219cbb98d35e5b8d61172621a4a89b9afcb54a23731cb8"
+    },
+    {
+      "path": "build4451/opcode-analysis/analyze-report.py",
+      "bytes": 5024,
+      "sha256": "2542145089ee449617f5e67eb3dbe27b7fbb14988167224db60ec21469f60ead"
+    },
+    {
+      "path": "build4451/opcode-analysis/app-source-check.json",
+      "bytes": 1204,
+      "sha256": "b8341b3295ce2c352f0d906135ad90259be7e6b29e2286b8cbcc60a30078ec17"
+    },
+    {
+      "path": "build4451/opcode-analysis/opcode-counts.txt",
+      "bytes": 3607,
+      "sha256": "a2ca1fa11afa8d1d70a311b047f15fe189ed31ed25b9ff8716404c7a37ba2a88"
+    },
+    {
+      "path": "build4451/opcode-analysis/provenance.json",
+      "bytes": 1119,
+      "sha256": "0b5164525e7243f1a581d38839119a2ebf5d33381bc01f6664538989345e4740"
+    },
+    {
+      "path": "build4451/opcode-analysis/sampled-opcodes-disassembly.txt",
+      "bytes": 15117,
+      "sha256": "40c4bc1033a50be36de68a292fa8e1f0bb4b287149a945d0c2c82591259d32c1"
+    },
+    {
+      "path": "build4451/opcode-analysis/startup-summary.json",
+      "bytes": 5707,
+      "sha256": "b6604228de77fa3d822a0010b52d5b243096b84c6a50e85b0938ad7de9fd7d0a"
+    },
+    {
+      "path": "build4451/predecessor4450-end-excerpt.txt",
+      "bytes": 509,
+      "sha256": "ace375e5bda8561d89de153501a1241de8910c3918ca77ad0889a2c9122722bd"
+    },
+    {
+      "path": "build4451/record-artifact.py",
+      "bytes": 4255,
+      "sha256": "50b5e595c5bcc7aac63da0bf9fa882a9413236a56b2fa1b89cb07a3759c8e2bf"
+    },
+    {
+      "path": "build4451/release-notes.md",
+      "bytes": 4505,
+      "sha256": "dfe3d94b7dbeddaccc36a80881fbf8e1c163410cd4ddc428b612317b2fac7c39"
+    },
+    {
+      "path": "build4451/signed-entitlements.plist",
+      "bytes": 847,
+      "sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "path": "build4451/signing-excerpt.txt",
+      "bytes": 187,
+      "sha256": "5ed7196132aa627ae8b244c02110d4d6b0e6f248a1a53d7212af72616eca0c84"
+    },
+    {
+      "path": "build4451/smc4451-device-pass.txt",
+      "bytes": 234,
+      "sha256": "3b50082d675329ff267f52780065000afb10cc21e641298664aee424e4be17f7"
+    },
+    {
+      "path": "build4451/source-changes.patch",
+      "bytes": 41832,
+      "sha256": "44d0ad1f55c2d0c68fa9f0644dbf42f70a2318a769faf6327a5677b6da18f6fa"
+    },
+    {
+      "path": "build4451/source-commit.txt",
+      "bytes": 41,
+      "sha256": "7820fbb20398fa3d39928613813c713b5433a55c2cd3251eadd1cc044a7d37c2"
+    },
+    {
+      "path": "build4451/source-evidence.json",
+      "bytes": 16891,
+      "sha256": "386598b4e2aa9b795d566c28646c556b7255fa341dc3e83b8710c7dfee0c6c6a"
+    },
+    {
+      "path": "build4451/source-snapshot/fs/proc/ish.c",
+      "bytes": 6970,
+      "sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+    },
+    {
+      "path": "build4451/source-snapshot/jit/jit.c",
+      "bytes": 94962,
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6"
+    },
+    {
+      "path": "build4451/source-snapshot/jit/jit.h",
+      "bytes": 2147,
+      "sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc"
+    },
+    {
+      "path": "build4451/source-snapshot/jit/jit_internal.h",
+      "bytes": 15499,
+      "sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90"
+    },
+    {
+      "path": "build4451/source-snapshot/tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "bytes": 2499,
+      "sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a"
+    },
+    {
+      "path": "build4451/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 39239,
+      "sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466"
+    },
+    {
+      "path": "build4451/symbols.json",
+      "bytes": 266,
+      "sha256": "eb6438fb0fe0331c841c1e158014364ba93a39e91836d3b72504a7a57a1f096a"
     },
     {
       "path": "egl-repair/ARCHIVE.md",
@@ -2581,6 +3016,66 @@
       "path": "fmod-sched-repair/unity-helper-matched-results.json",
       "bytes": 354,
       "sha256": "761ed64bafc66a0778a0e3cde747e86f228ef2daa48686bba068513201016ac9"
+    },
+    {
+      "path": "fpcr-candidate/4451-decision.md",
+      "bytes": 993,
+      "sha256": "72386ae5724926e277b09fe94cf78843f1df66cf6c6511177dcf9f880a3ee8d3"
+    },
+    {
+      "path": "fpcr-candidate/README.md",
+      "bytes": 7347,
+      "sha256": "fcd8488d0fd5dc87d855372a84062dc396f7f07564f0ca8f625325429cdd383b"
+    },
+    {
+      "path": "fpcr-candidate/REPOSITORY-SHA256SUMS",
+      "bytes": 940,
+      "sha256": "0bc0c101aee2de5ff877bae3be09d734a44cdf75a733eb63a081b51d13965b2d"
+    },
+    {
+      "path": "fpcr-candidate/SHA256SUMS",
+      "bytes": 863,
+      "sha256": "2fc4129386e32bcba3bb8ca0c142d385bcc7f0539530705d1bc6eb6980b50593"
+    },
+    {
+      "path": "fpcr-candidate/audit-source-hashes.json",
+      "bytes": 956,
+      "sha256": "d0bb4e7cfbf04f6e56be7462bea003633c42c9171a0fbc8d71de0b8e271d0655"
+    },
+    {
+      "path": "fpcr-candidate/msr-fpcr-candidate.patch",
+      "bytes": 1140,
+      "sha256": "6a39ab62ff0ee5078e0340d889146cf0e87bbb4225a5ea4aa9629b2ae5bcbee1"
+    },
+    {
+      "path": "fpcr-candidate/msr-fpcr-handler.inc",
+      "bytes": 703,
+      "sha256": "143613f04723fa28c4f9f250b5e340c557d854148db139e0b6d58aa0ace0856c"
+    },
+    {
+      "path": "fpcr-candidate/prepare-candidate.py",
+      "bytes": 2416,
+      "sha256": "6030c44047545518d8f09fa38c614577a48c3eaca06c7e2129840ca3224b9e98"
+    },
+    {
+      "path": "fpcr-candidate/runtime-options-audit.md",
+      "bytes": 5303,
+      "sha256": "8e10994be014606b01ab3760c913c4d4c410f0e217f379e57225043f39b931f2"
+    },
+    {
+      "path": "fpcr-candidate/source-provenance.json",
+      "bytes": 1578,
+      "sha256": "3f506be921ddc2b073e77c6a693b8663a2e148d9a35cfcf85a860a2fd882b103"
+    },
+    {
+      "path": "fpcr-candidate/test-candidate.py",
+      "bytes": 13584,
+      "sha256": "60903d9b51b197156d6c7ad356f479186ca2d2683f16487c511ed3e9f058bd4c"
+    },
+    {
+      "path": "fpcr-candidate/test-results.json",
+      "bytes": 850,
+      "sha256": "302da0c392ed1d825d439543cc444eb5a9192b472abc53afcd0487a3b05c9a36"
     },
     {
       "path": "game-fault-report/PROVENANCE.json",
@@ -3951,6 +4446,141 @@
       "path": "mono-stack-repair/source-manifest.json",
       "bytes": 39823,
       "sha256": "331814fed9bf87a17576d4911104e5bc7d95dc025009a2f6720fa154ed79c155"
+    },
+    {
+      "path": "rcpc2-audit/FINAL-STATUS.md",
+      "bytes": 355,
+      "sha256": "1ddf73ce852470b8fed6a09674e7c1ee64195e6d776007ed14d9fa9e62989946"
+    },
+    {
+      "path": "rcpc2-audit/README.md",
+      "bytes": 5337,
+      "sha256": "e06c39f290257f467b0461743797a9906c03f53b000019c464bb0c5041d80387"
+    },
+    {
+      "path": "rcpc2-audit/REPOSITORY-SHA256SUMS",
+      "bytes": 654,
+      "sha256": "c20899cfcd094fb1c9518bd572e864079973696c34e9c86926a06c05dcb5600a"
+    },
+    {
+      "path": "rcpc2-audit/SHA256SUMS",
+      "bytes": 495,
+      "sha256": "1c0c6d712cd744011bc82da81d7d9cff1b77a7dcbe7932eff481b1dccd51f920"
+    },
+    {
+      "path": "rcpc2-audit/main-samples.json",
+      "bytes": 24835,
+      "sha256": "c2368d3812ca639c9af7bcb338b20348c770edce0899665c3556fb2b180bc749"
+    },
+    {
+      "path": "rcpc2-audit/provenance.json",
+      "bytes": 1991,
+      "sha256": "886a4c99808edc70e3423eea1f0ebed1037ec30aa22167d78cf195326f3644ad"
+    },
+    {
+      "path": "rcpc2-audit/sample-counts.json",
+      "bytes": 12890,
+      "sha256": "77deff5fbbf0bf62320383e528db0cecab474f92eb48ce5cd5993ec6ce102ec9"
+    },
+    {
+      "path": "rcpc2-audit/sample-disassembly.txt",
+      "bytes": 15102,
+      "sha256": "7a8ceb0189b6b669040f754dd8fe4123506b1fedc64256d6a2b29b56ff92f439"
+    },
+    {
+      "path": "rcpc2-audit/sample-ops.S",
+      "bytes": 5580,
+      "sha256": "650fb8edee15605add7ce57f0444fa518060204332879e68d521d0c0e0380464"
+    },
+    {
+      "path": "rcpc2-config-repro/README.md",
+      "bytes": 2584,
+      "sha256": "c846d0e900461d1005435910b0215f011b375e19247b0fdbc8db6cfa228ebb2c"
+    },
+    {
+      "path": "rcpc2-config-repro/SHA256SUMS",
+      "bytes": 1454,
+      "sha256": "10c2e5eab9a22536f6875fa3bcf97d1b8910ab1d43442051cf96e38a7aecf00a"
+    },
+    {
+      "path": "rcpc2-config-repro/diagnostic-results.json",
+      "bytes": 821,
+      "sha256": "c6d1e372aa4289287d85f1ad903751c5899be9c9cfa8dd932ddeb97d7483b86f"
+    },
+    {
+      "path": "rcpc2-config-repro/hello-default-excerpt.txt",
+      "bytes": 59,
+      "sha256": "24b800745d0e4e9530d6c3291bc2959c3b6d63f85f9c2d5f8d554af40fb81099"
+    },
+    {
+      "path": "rcpc2-config-repro/hello-disabled-excerpt.txt",
+      "bytes": 65,
+      "sha256": "ab2dcada708f8a72db1ce98ec4415a36667d73f19c9e18c87648e748564e9bd8"
+    },
+    {
+      "path": "rcpc2-config-repro/launch.c",
+      "bytes": 805,
+      "sha256": "82e2098238805b62494e7d785e34ce6c8e142642527db6190c4ba73238f2ede7"
+    },
+    {
+      "path": "rcpc2-config-repro/lldb.txt",
+      "bytes": 740,
+      "sha256": "39a08e65dda72831a7b18f03d432bffd8577d38a22414b01a9e53e6c589dce7c"
+    },
+    {
+      "path": "rcpc2-config-repro/provenance.json",
+      "bytes": 1847,
+      "sha256": "4ee1122f5dbea1e8e45cf1b811ca667f5e9d26d673159c213dc53866337d0f06"
+    },
+    {
+      "path": "rcpc2-config-repro/rcpc2-config-launch",
+      "bytes": 1597168,
+      "sha256": "0290ee7ba3c76bd4da3f135e462a1bd80b9d71442061e3fcb0e970dad04cbedd"
+    },
+    {
+      "path": "rcpc2-config-repro/repro.lldb",
+      "bytes": 301,
+      "sha256": "35e6ab6a53587c02ecfdb09f53ee050529e1043281c160bb5439a17c751f3bcb"
+    },
+    {
+      "path": "rcpc2-config-repro/results.json",
+      "bytes": 1251,
+      "sha256": "0f3f364e2f7cc01d334b48b2dd279b4ede18bffa6b304165b919afcc1965aa82"
+    },
+    {
+      "path": "rcpc2-config-repro/run.py",
+      "bytes": 1192,
+      "sha256": "a548bed7f3c256eea2fd1ecb8a0a1e0e737952732e8ad18031fed595d879281d"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-default-excerpt.txt",
+      "bytes": 341,
+      "sha256": "b065b3b05d37c86ac21a9c49431edc0f059f6e21456eaba9b25abec12d7565c8"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-disabled-excerpt.txt",
+      "bytes": 452,
+      "sha256": "aa7054cf397d8090e9beb443ff7d5aac492109b2347120de2d4fa87da0bbaf6d"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-disabled-gadget-excerpt.txt",
+      "bytes": 347,
+      "sha256": "559895cadacbd647de169000a8bc59ebbed6b2d98949ba87ce42d5b429c880fb"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-disabled-trace-excerpt.txt",
+      "bytes": 695,
+      "sha256": "addd7158ecb108ea6dfdb4adf4abc12900ab2c506989bc01a3dfb89f61cb0e4f"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-limits-probe",
+      "bytes": 14848,
+      "sha256": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43"
+    },
+    {
+      "path": "rcpc2-config-repro/stack-limits-probe.c",
+      "bytes": 2007,
+      "sha256": "850c6f0348a349f100a15fb6bcc62b4241d9c6fb99924cb5f7a86e15c0e2c94a"
     },
     {
       "path": "runtime-followup/README.md",

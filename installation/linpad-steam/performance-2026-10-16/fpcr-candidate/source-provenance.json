@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-10-16T13:37:23.697713+00:00",
+  "status": "unapplied candidate; no production, CLI, or device change",
+  "linpad_head": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "inputs": {
+    "jit/translate.c": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061",
+    "jit/emit.h": "3812bded81f3d6b975defbb6739555cac817ba83af3c52c56da2c156f3047953",
+    "jit/jit_internal.h": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90",
+    "jit/jit.c": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+    "emu/arch/arm64/cpu.h": "d886d6353e48f05f6bf7acec6e1c2030d1a7dc4a60b5571e5aa76d418c08db21",
+    "asbestos/guest-arm64/gadgets-aarch64/math.S": "e46bd5f74b73e1e39e38debd2b385422b0a060f0801e8a9fbcdec0e50ae870e3",
+    "asbestos/guest-arm64/gadgets-aarch64/entry.S": "b09d42fa3b815aaeb4b218926b49b9bb7c2a696c41b17a8544b68d1d8c48caf1",
+    "asbestos/guest-arm64/gadgets-aarch64/gadgets.h": "58d4029036d1d2c8362d23868b16118cda844ab6e64aaa5213226fdcb0424cf1"
+  },
+  "fex_head": "5285020de0b30dbdae7b44d0d83541af2d13d002",
+  "fex_rounding_source": {
+    "path": "work/steam/FEX-static/FEX/FEXCore/Source/Interface/Core/JIT/MiscOps.cpp",
+    "sha256": "36b5b8c73e41147d8e27667eea49afd7ffdf43a3afe1768a2fd2b7a55c98f446"
+  },
+  "candidate_sha256": "6a39ab62ff0ee5078e0340d889146cf0e87bbb4225a5ea4aa9629b2ae5bcbee1",
+  "handler_sha256": "143613f04723fa28c4f9f250b5e340c557d854148db139e0b6d58aa0ace0856c",
+  "activation_gate": "Review 4451 sampled opcodes first; then full JIT integration, regressions, device qualification."
+}

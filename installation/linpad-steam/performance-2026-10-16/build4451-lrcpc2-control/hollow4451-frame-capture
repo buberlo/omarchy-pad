@@ -1,0 +1,116 @@
+#!/bin/sh
+# Diagnostic only: observes regular files. Never reads bridge FIFOs or changes the game.
+# status | capture [observed-view-id|auto] [seconds=30]
+set -eu
+mode=${1:-status}
+log=${LINPAD_FRAME_LOG:-/tmp/hollow4451-frames.txt}
+compositor=${LINPAD_COMPOSITOR_LOG:-/tmp/ishwl.log}
+runtime=${LINPAD_VIEW_RUNTIME:-/tmp/ishwl}
+unity=${LINPAD_UNITY_LOG:-/tmp/hollow4451-egl-unity.txt}
+capture=${LINPAD_FRAME_CAPTURE:-/tmp/hollow4451-frame-window}
+
+mapped_ids() {
+    test -f "$compositor" || return 0
+    awk 'index($0, "\047Hollow Knight\047") {
+        for(i=1;i<NF-1;i++) if($i=="map" && $(i+1)=="toplevel" && $(i+2)~/^[0-9]+$/) print $(i+2)
+    }' "$compositor" | sort -nu
+}
+active_ids() {
+    for view in $(mapped_ids); do
+        for buffer in "$runtime/v$view-"*.buf; do
+            if test -f "$buffer"; then printf '%s\n' "$view"; break; fi
+        done
+    done
+}
+buffer_identity() {
+    for buffer in "$runtime/v$1-"*.buf; do
+        test ! -f "$buffer" || ls -in "$buffer"
+    done
+}
+status() {
+    date -u
+    printf 'FRAME_LOG=%s\n' "$log"
+    if test -f "$log"; then
+        printf 'FRAME_LOG_ROWS='; wc -l < "$log"
+        tail -5 "$log"
+    else
+        echo FRAME_LOG_MISSING=1
+    fi
+    echo HOLLOW_TITLE_MAP_CANDIDATES
+    if test -f "$compositor"; then
+        awk 'index($0, "\047Hollow Knight\047") && /map toplevel/ {print}' "$compositor" | tail -10
+    fi
+    echo HOLLOW_ACTIVE_BUFFER_CANDIDATES
+    for view in $(active_ids); do
+        printf 'VIEW_ID=%s\n' "$view"
+        buffer_identity "$view"
+    done
+    echo UNITY_GRAPHICS_MILESTONES
+    if test -f "$unity"; then
+        grep -E 'Desktop is|Display [0-9]|Virtio-GPU|Vulkan|SwapChain|MainPlayerWindow|GfxDevice|Renderer:|ERROR|Error' "$unity" | tail -30 || true
+    fi
+}
+
+case "$mode" in
+status) status; exit 0 ;;
+capture) ;;
+*) echo 'usage: hollow4451-frame-capture status | capture [view|auto] [1..60 seconds]' >&2; exit 64 ;;
+esac
+
+test -f "$log" || { echo FRAME_LOG_MISSING >&2; exit 66; }
+view=${2:-auto}
+seconds=${3:-30}
+case "$seconds" in ''|*[!0-9]*) exit 64;; esac
+test "$seconds" -ge 1 && test "$seconds" -le 60 || exit 64
+ids=$(active_ids)
+if test "$view" = auto; then
+    set -- $ids
+    test "$#" -eq 1 || { echo 'A unique mapped Hollow Knight view with a live buffer is required; run status.' >&2; exit 65; }
+    view=$1
+fi
+case "$view" in ''|*[!0-9]*) exit 64;; esac
+printf '%s\n' "$ids" | grep -qx "$view" || { echo 'Requested view lacks a Hollow Knight title map and current buffer.' >&2; exit 65; }
+# Never overwrite an earlier capture. Set LINPAD_FRAME_CAPTURE to a new prefix.
+for extension in meta txt status.txt; do
+    test ! -e "$capture.$extension" || { echo 'Capture prefix already exists.' >&2; exit 73; }
+done
+{
+    echo CAPTURE_START
+    printf 'SELECTED_VIEW_ID=%s\n' "$view"
+    status
+} > "$capture.status.txt"
+start_buffer=$(buffer_identity "$view")
+start_line=$(wc -l < "$log" | awk '{print $1}')
+start_log_line=$(wc -l < "$compositor" | awk '{print $1}')
+start_second=$(date +%s)
+sleep "$seconds"
+end_second=$(date +%s)
+end_line=$(wc -l < "$log" | awk '{print $1}')
+end_buffer=$(buffer_identity "$view")
+printf 'start_second=%s end_second=%s start_line=%s end_line=%s view_id=%s requested_seconds=%s\n' \
+    "$start_second" "$end_second" "$start_line" "$end_line" "$view" "$seconds" > "$capture.meta"
+if test "$end_line" -lt "$start_line"; then
+    echo FRAME_LOG_TRUNCATED=1 >> "$capture.status.txt"
+    : > "$capture.txt"
+    exit 74
+elif test "$end_line" -gt "$start_line"; then
+    sed -n "$((start_line + 1)),${end_line}p" "$log" > "$capture.txt"
+else
+    : > "$capture.txt"
+fi
+{
+    echo CAPTURE_END
+    date -u
+    printf 'SELECTED_VIEW_ID=%s\n' "$view"
+    buffer_identity "$view"
+    if test "$start_buffer" != "$end_buffer"; then echo VIEW_BUFFER_CHANGED=1; fi
+    echo COMPOSITOR_WINDOW_EVENTS
+    awk -v first="$start_log_line" -v id="$view" 'NR>first &&
+        (index($0,"view " id ":") || index($0,"map toplevel " id " ")) {print}' "$compositor"
+    echo CAPTURE_META
+    cat "$capture.meta"
+    echo SELECTED_VIEW_ROWS
+    awk -v id="$view" '$2==id {n++} END {print n+0}' "$capture.txt"
+} >> "$capture.status.txt"
+cat "$capture.status.txt"
+printf 'CAPTURE_FILES=%s.meta %s.txt %s.status.txt\n' "$capture" "$capture" "$capture"

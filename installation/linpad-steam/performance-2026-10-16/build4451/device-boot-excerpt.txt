@@ -1,0 +1,5 @@
+1: Launched application with com.konradkern.linpad bundle identifier.
+4: 2026-10-16 21:42:43.565 iSH ARM64[21692:4367523] [boot] case_sensitive_container=yes
+8: ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x1190e8000
+9: 2026-10-16 21:43:11.074 iSH ARM64[21692:4367523] [boot] fast_mode=on
+11: 2026-10-16 21:43:11.826 iSH ARM64[21692:4367523] [boot] boot_seconds=0.75

@@ -1,0 +1,48 @@
+{
+  "state": "pre-candidate provenance; no candidate launch or cadence result claimed",
+  "files": [
+    {
+      "path": "work/performance/serve/hollow4451-egl",
+      "bytes": 858,
+      "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+    },
+    {
+      "path": "work/performance/serve/hollow4451-frame-capture",
+      "bytes": 4266,
+      "sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d"
+    },
+    {
+      "path": "work/performance/serve/hollow4451-menu-cadence",
+      "bytes": 1908,
+      "sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7"
+    },
+    {
+      "path": "work/performance/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "work/performance/build4451/build-manifest.json",
+      "bytes": 2461,
+      "sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf"
+    }
+  ],
+  "preserved_local_copies": [
+    {
+      "name": "baseline-launch.sh",
+      "sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+    },
+    {
+      "name": "hollow4451-frame-capture",
+      "sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d"
+    },
+    {
+      "name": "hollow4451-menu-cadence",
+      "sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7"
+    },
+    {
+      "name": "parse-hollow-frame-window.py",
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    }
+  ]
+}

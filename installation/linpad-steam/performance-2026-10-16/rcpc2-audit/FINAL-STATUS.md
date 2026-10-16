@@ -1,0 +1,1 @@
+The source audit preceded the physical control. On build4451, adding only FEX_HOSTFEATURES=disablelrcpc2 caused guest exit139 before Unity initialization. This is not a working configuration. See ../build4451-lrcpc2-control. Native LRCPC2 support is design-only; no translator patch was applied. Further work stopped at the user request to save and push.

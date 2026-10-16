@@ -1,0 +1,16 @@
+1: Fri Oct 16 13:44:34 UTC 2026
+3: supported 1
+4: enabled 1
+5: version 1
+6: approximate_counters 1
+7: counters_count_attempts 1
+8: sample_window recent
+9: sample_probability_denominator 1024
+12: sample_ring_size 64
+13: contexts_visited 28
+14: truncated 0
+15: context_allocation_failed 0
+16: context tid=288 tgid=288 mmu=535 reset=4 sampled=174 busy_samples=0 hit=199998 miss_cold=2 miss_collision=0 miss_generation=0 miss_generation_same_pc=0 shared_hit=0 persistent_fill=2 oneshot_generation=0 oneshot_pressure=0 untracked_oom=0 path_negative=100000 path_exit=100000 path_nomem=0
+108: SS_DIAG_PROC PASS enabled=1
+109: SS_DIAG_DEVICE_EXIT=0
+110: Fri Oct 16 13:44:34 UTC 2026

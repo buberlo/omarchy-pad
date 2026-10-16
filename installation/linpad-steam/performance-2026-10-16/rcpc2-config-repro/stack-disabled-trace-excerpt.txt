@@ -1,0 +1,7 @@
+RCPC_CONTROL features=disablelrcpc2 target=/opt/mono-init/stack-limits-probe
+FORCE_EXIT_STUCK_PC: pid=1 exits 139 after 257 GPFs at pc=0x800135084098 fault=0x800135084098
+ish crash: pid 1 tgid 1 (FEX-apple-m1-mun) signal 11 code 0 addr 0x800135084098 pc 0x800135084098 [anon]+0x98 lr 0x800124041158 [anon]+0x158 sp 0xffffc3c0
+ish crash:   last syscalls (oldest first): 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0 113(0x1)=0
+RECORDED_INT_GPF_LINES=257
+INT_GPF pid=1 pc=0x800135084098 fault=0x800135084098 write=0
+INT_GPF pid=1 pc=0x800135084098 fault=0x800135084098 write=0

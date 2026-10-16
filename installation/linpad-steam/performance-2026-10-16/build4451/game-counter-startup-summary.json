@@ -1,0 +1,40 @@
+{
+  "source_sha256": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+  "guest_pid": 348,
+  "interval_utc": [
+    "2026-10-16T13:46:02Z",
+    "2026-10-16T13:46:12Z"
+  ],
+  "main_thread_identity": {
+    "tid": 348,
+    "tgid": 348,
+    "mmu": 666,
+    "reset": 14
+  },
+  "main_delta": {
+    "tid": 348,
+    "mmu": 666,
+    "reset": 14,
+    "hit": 119934653,
+    "miss_cold": 0,
+    "miss_collision": 20282626,
+    "miss_generation": 481973,
+    "miss_generation_same_pc": 119234,
+    "shared_hit": 20730137,
+    "persistent_fill": 34462,
+    "oneshot_generation": 0,
+    "oneshot_pressure": 0,
+    "untracked_oom": 0,
+    "path_negative": 22598590,
+    "path_exit": 118100662,
+    "path_nomem": 0
+  },
+  "main_attempts": 140699252,
+  "main_misses": 20764599,
+  "hit_percent": 85.24185544355275,
+  "collision_percent_of_misses": 97.67887162184061,
+  "shared_hit_percent_of_misses": 99.83403483977706,
+  "all_collector_gates_valid": true,
+  "maps_truncated": false,
+  "scope": "Approximate main-thread fallback attempts in a startup interval, not FPS or all-game CPU time. Worker deltas are not computed. Recent opcode rings cover a different, bounded recent sample window."
+}

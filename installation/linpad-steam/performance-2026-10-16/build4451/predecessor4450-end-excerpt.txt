@@ -1,0 +1,10 @@
+1: Fri Oct 16 13:41:09 UTC 2026
+2: OPERATOR_REASON=Install_opt_in_SS_cache_counters_to_identify_remaining_contention
+217: 2026-10-16T13:14:24.491Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+239: 2026-10-16T13:15:54.300Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+282: Fri Oct 16 13:13:59 UTC 2026
+335: 10270 /tmp/hollow4450-frames.txt
+336: OPERATOR_SENT_SIGTERM=271
+337: OPERATOR_SENT_SIGKILL=271
+338: NEXT_BOOT_FRAME_CAPTURE_READY=4451
+339: Fri Oct 16 13:41:12 UTC 2026

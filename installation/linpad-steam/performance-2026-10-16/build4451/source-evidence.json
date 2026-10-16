@@ -1,0 +1,348 @@
+{
+  "files": [
+    {
+      "source": "work/performance/build4451/source-snapshot/fs/proc/ish.c",
+      "destination": "source-snapshot/fs/proc/ish.c",
+      "source_sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961",
+      "source_bytes": 6970,
+      "mode": "byte-identical",
+      "archived_sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+    },
+    {
+      "source": "work/performance/build4451/source-snapshot/jit/jit.c",
+      "destination": "source-snapshot/jit/jit.c",
+      "source_sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+      "source_bytes": 94962,
+      "mode": "byte-identical",
+      "archived_sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6"
+    },
+    {
+      "source": "work/performance/build4451/source-snapshot/jit/jit.h",
+      "destination": "source-snapshot/jit/jit.h",
+      "source_sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc",
+      "source_bytes": 2147,
+      "mode": "byte-identical",
+      "archived_sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc"
+    },
+    {
+      "source": "work/performance/build4451/source-snapshot/jit/jit_internal.h",
+      "destination": "source-snapshot/jit/jit_internal.h",
+      "source_sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90",
+      "source_bytes": 15499,
+      "mode": "byte-identical",
+      "archived_sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90"
+    },
+    {
+      "source": "work/performance/build4451/source-snapshot/tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "destination": "source-snapshot/tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "source_sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a",
+      "source_bytes": 2499,
+      "mode": "byte-identical",
+      "archived_sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a"
+    },
+    {
+      "source": "work/performance/build4451/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "destination": "source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "source_sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466",
+      "source_bytes": 39239,
+      "mode": "byte-identical",
+      "archived_sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466"
+    },
+    {
+      "source": "work/performance/build4451/source-commit.txt",
+      "destination": "source-commit.txt",
+      "source_sha256": "7820fbb20398fa3d39928613813c713b5433a55c2cd3251eadd1cc044a7d37c2",
+      "source_bytes": 41,
+      "mode": "byte-identical",
+      "archived_sha256": "7820fbb20398fa3d39928613813c713b5433a55c2cd3251eadd1cc044a7d37c2"
+    },
+    {
+      "source": "work/performance/build4451/source-changes.patch",
+      "destination": "source-changes.patch",
+      "source_sha256": "44d0ad1f55c2d0c68fa9f0644dbf42f70a2318a769faf6327a5677b6da18f6fa",
+      "source_bytes": 41832,
+      "mode": "byte-identical",
+      "archived_sha256": "44d0ad1f55c2d0c68fa9f0644dbf42f70a2318a769faf6327a5677b6da18f6fa"
+    },
+    {
+      "source": "work/performance/build4451/build-local.sh",
+      "destination": "build-local.sh",
+      "source_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae",
+      "source_bytes": 399,
+      "mode": "byte-identical",
+      "archived_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "source": "work/performance/build4451/record-artifact.py",
+      "destination": "record-artifact.py",
+      "source_sha256": "50b5e595c5bcc7aac63da0bf9fa882a9413236a56b2fa1b89cb07a3759c8e2bf",
+      "source_bytes": 4255,
+      "mode": "byte-identical",
+      "archived_sha256": "50b5e595c5bcc7aac63da0bf9fa882a9413236a56b2fa1b89cb07a3759c8e2bf"
+    },
+    {
+      "source": "work/performance/build4451/artifact-verification.log",
+      "destination": "artifact-verification.log",
+      "source_sha256": "41b847a45b549522273ca72898fd3868ee52ffd53855eee3f66393767deea8c2",
+      "source_bytes": 805,
+      "mode": "byte-identical",
+      "archived_sha256": "41b847a45b549522273ca72898fd3868ee52ffd53855eee3f66393767deea8c2"
+    },
+    {
+      "source": "work/performance/build4451/signed-entitlements.plist",
+      "destination": "signed-entitlements.plist",
+      "source_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3",
+      "source_bytes": 847,
+      "mode": "byte-identical",
+      "archived_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "source": "work/performance/build4451/build-manifest.json",
+      "destination": "initial-build-manifest.json",
+      "source_sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf",
+      "source_bytes": 2461,
+      "mode": "byte-identical",
+      "archived_sha256": "eff079d43caabd1bcbb58a74525c6a94997396f4eebc8639f30ef55e0dbdeadf"
+    },
+    {
+      "source": "work/performance/build4451/curate-build4451.py",
+      "destination": "curate-build4451.py",
+      "source_sha256": "f502493029ac4eef20e213d74edf9442a8e428860ba9f5755d7029994caea055",
+      "source_bytes": 22530,
+      "mode": "byte-identical",
+      "archived_sha256": "f502493029ac4eef20e213d74edf9442a8e428860ba9f5755d7029994caea055"
+    },
+    {
+      "source": "work/performance/build4451/build.log",
+      "destination": "build-summary.log",
+      "source_sha256": "49287e4ce212481c89d95171f1f9ae055f07ce736c1371a2b7f94033ef512aa8",
+      "source_bytes": 66860,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "069e6046a0570c4cc99759a739f903f3fcd691624dc53c819a6989707058406b"
+    },
+    {
+      "source": "work/performance/build4451/signing.log",
+      "destination": "signing-excerpt.txt",
+      "source_sha256": "f1dcec9baee0eb10f58f5d0aed5bf123138251c1ea3946c12d35b1bb3d3d7ea4",
+      "source_bytes": 184,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "5ed7196132aa627ae8b244c02110d4d6b0e6f248a1a53d7212af72616eca0c84"
+    },
+    {
+      "source": "work/performance/build4451/device-console.log",
+      "destination": "device-boot-excerpt.txt",
+      "source_sha256": "de34efa00d7ba4fa0e942bf5993adeb06a1ca4da303161afee1260766539d147",
+      "source_bytes": 8925106,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "c0a9572cfad5fa9362195e80baf59446afa5fe6a097d7998ed31d5cb7f5f11d7"
+    },
+    {
+      "source": "work/performance/serve/smc4451-probe",
+      "destination": "device-scripts/smc4451-probe",
+      "source_sha256": "cc30219ccc307b25ce2e28adfa50cc0b2ecafaae8d96ecd8fce7c97083f9393b",
+      "source_bytes": 809,
+      "mode": "byte-identical",
+      "archived_sha256": "cc30219ccc307b25ce2e28adfa50cc0b2ecafaae8d96ecd8fce7c97083f9393b"
+    },
+    {
+      "source": "work/performance/serve/ss4451-probe",
+      "destination": "device-scripts/ss4451-probe",
+      "source_sha256": "94ab32081ad3410195cb54072062cecc63d37368dfc293b6982cd9c545d8f1a0",
+      "source_bytes": 5663,
+      "mode": "byte-identical",
+      "archived_sha256": "94ab32081ad3410195cb54072062cecc63d37368dfc293b6982cd9c545d8f1a0"
+    },
+    {
+      "source": "work/performance/test-ss4451-collector.py",
+      "destination": "diagnostics/test-ss4451-collector.py",
+      "source_sha256": "f1db69e2a4234e4339f106ebcdce7c55cf6b9a3eec2030539a414a83cefb65dd",
+      "source_bytes": 4583,
+      "mode": "byte-identical",
+      "archived_sha256": "f1db69e2a4234e4339f106ebcdce7c55cf6b9a3eec2030539a414a83cefb65dd"
+    },
+    {
+      "source": "work/performance/jit-ss-diagnostics-review/collector-tests.json",
+      "destination": "diagnostics/collector-tests.json",
+      "source_sha256": "a975730acfc6ab0b75f7a20a7ae906e1cdde51bdd472e4e170604b297137fc1a",
+      "source_bytes": 935,
+      "mode": "byte-identical",
+      "archived_sha256": "a975730acfc6ab0b75f7a20a7ae906e1cdde51bdd472e4e170604b297137fc1a"
+    },
+    {
+      "source": "work/performance/reports/smc4451-device-pass.txt",
+      "destination": "smc4451-device-pass.txt",
+      "source_sha256": "51bceb94bf9bc4287e357f46b3f15d2502f4f615f75f828425a1b0ad980d44d6",
+      "source_bytes": 207,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "3b50082d675329ff267f52780065000afb10cc21e641298664aee424e4be17f7"
+    },
+    {
+      "source": "work/performance/reports/ss4451-selftest-device-pass.txt",
+      "destination": "native-counter-selftest-excerpt.txt",
+      "source_sha256": "3d759986957bb2da372ab51e803bb1d87bce65884336075bb1ac8e4310d10fbd",
+      "source_bytes": 13545,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "3ee81db9a5f8994af3cc94fb7cbca1b260f0f97a50791f40a705e21626cbce18"
+    },
+    {
+      "source": "work/performance/reports/ss4451-hollow-startup-1.txt",
+      "destination": "game-counter-startup-excerpt.txt",
+      "source_sha256": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+      "source_bytes": 229323,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "44fc6213f3b474f6f48e29e97852a5f239e20c5389c3c0c8f3d351db254c9855"
+    },
+    {
+      "source": "work/performance/reports/hollow4451-baseline-menu-cadence.txt",
+      "destination": "hollow4451-baseline-menu-cadence.txt",
+      "source_sha256": "a4cb05ff6c0329bcbb9883629b8ca4f743cb9163b808fa22e772dc1939f26932",
+      "source_bytes": 14194,
+      "mode": "byte-identical",
+      "archived_sha256": "a4cb05ff6c0329bcbb9883629b8ca4f743cb9163b808fa22e772dc1939f26932"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/baseline-menu-analysis.json",
+      "destination": "baseline-menu-analysis.json",
+      "source_sha256": "5fdde635f0ca70b36a6b09dec1f9e4a1fbe0996c81806c7da1afa2feef592329",
+      "source_bytes": 1635,
+      "mode": "byte-identical",
+      "archived_sha256": "5fdde635f0ca70b36a6b09dec1f9e4a1fbe0996c81806c7da1afa2feef592329"
+    },
+    {
+      "source": "work/performance/build4451-lrcpc2-control/baseline-menu-provenance.json",
+      "destination": "baseline-menu-provenance.json",
+      "source_sha256": "38d57246054dda341c15c1114ac410ef01c65ebbce836a5cce2a37a69844bbbc",
+      "source_bytes": 1085,
+      "mode": "byte-identical",
+      "archived_sha256": "38d57246054dda341c15c1114ac410ef01c65ebbce836a5cce2a37a69844bbbc"
+    },
+    {
+      "source": "outputs/hollow-knight-title-menu-4451-baseline-measurement.png",
+      "destination": "hollow-knight-title-menu-4451-baseline-measurement.png",
+      "source_sha256": "0e665a5d2afaa9a0416b3b95d1022af425340379f5f7dab4c0250296d08e6ffd",
+      "source_bytes": 312503,
+      "mode": "byte-identical",
+      "archived_sha256": "0e665a5d2afaa9a0416b3b95d1022af425340379f5f7dab4c0250296d08e6ffd"
+    },
+    {
+      "source": "outputs/hollow-knight-title-menu-4451-baseline-end.png",
+      "destination": "hollow-knight-title-menu-4451-baseline-end.png",
+      "source_sha256": "b64f5c5239bf617876c88a0081eac84c2e17e367acf291d565ebf061ed197201",
+      "source_bytes": 318614,
+      "mode": "byte-identical",
+      "archived_sha256": "b64f5c5239bf617876c88a0081eac84c2e17e367acf291d565ebf061ed197201"
+    },
+    {
+      "source": "work/performance/serve/hollow4451-menu-cadence",
+      "destination": "device-scripts/hollow4451-menu-cadence",
+      "source_sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7",
+      "source_bytes": 1908,
+      "mode": "byte-identical",
+      "archived_sha256": "022b582e521786ddfb6051c021fa55801cc5b402797fc245836a46a5d99cb8c7"
+    },
+    {
+      "source": "work/performance/serve/hollow4451-frame-capture",
+      "destination": "device-scripts/hollow4451-frame-capture",
+      "source_sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d",
+      "source_bytes": 4266,
+      "mode": "byte-identical",
+      "archived_sha256": "e6cf0b73d5f454a9639e7c61ea487357cd1763c4d286cd718863d68a1d15ad8d"
+    },
+    {
+      "source": "work/performance/serve/hollow4451-egl",
+      "destination": "device-scripts/hollow4451-egl",
+      "source_sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5",
+      "source_bytes": 858,
+      "mode": "byte-identical",
+      "archived_sha256": "759c79a3b6f2a31c0b1463e44d40457e92e5253b759a3fb22b58cc2fc50f56b5"
+    },
+    {
+      "source": "work/performance/parse-hollow-frame-window.py",
+      "destination": "diagnostics/parse-hollow-frame-window.py",
+      "source_sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "source_bytes": 4345,
+      "mode": "byte-identical",
+      "archived_sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "source": "work/performance/test-hollow-frame-parser.py",
+      "destination": "diagnostics/test-hollow-frame-parser.py",
+      "source_sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba",
+      "source_bytes": 1821,
+      "mode": "byte-identical",
+      "archived_sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba"
+    },
+    {
+      "source": "work/performance/frame-parser-test-results.json",
+      "destination": "diagnostics/frame-parser-test-results.json",
+      "source_sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432",
+      "source_bytes": 411,
+      "mode": "byte-identical",
+      "archived_sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/README.md",
+      "destination": "opcode-analysis/README.md",
+      "source_sha256": "84953afcb61633b29f219cbb98d35e5b8d61172621a4a89b9afcb54a23731cb8",
+      "source_bytes": 3168,
+      "mode": "byte-identical",
+      "archived_sha256": "84953afcb61633b29f219cbb98d35e5b8d61172621a4a89b9afcb54a23731cb8"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/startup-summary.json",
+      "destination": "opcode-analysis/startup-summary.json",
+      "source_sha256": "b6604228de77fa3d822a0010b52d5b243096b84c6a50e85b0938ad7de9fd7d0a",
+      "source_bytes": 5707,
+      "mode": "byte-identical",
+      "archived_sha256": "b6604228de77fa3d822a0010b52d5b243096b84c6a50e85b0938ad7de9fd7d0a"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/provenance.json",
+      "destination": "opcode-analysis/provenance.json",
+      "source_sha256": "0b5164525e7243f1a581d38839119a2ebf5d33381bc01f6664538989345e4740",
+      "source_bytes": 1119,
+      "mode": "byte-identical",
+      "archived_sha256": "0b5164525e7243f1a581d38839119a2ebf5d33381bc01f6664538989345e4740"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/analyze-report.py",
+      "destination": "opcode-analysis/analyze-report.py",
+      "source_sha256": "2542145089ee449617f5e67eb3dbe27b7fbb14988167224db60ec21469f60ead",
+      "source_bytes": 5024,
+      "mode": "byte-identical",
+      "archived_sha256": "2542145089ee449617f5e67eb3dbe27b7fbb14988167224db60ec21469f60ead"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/sampled-opcodes-disassembly.txt",
+      "destination": "opcode-analysis/sampled-opcodes-disassembly.txt",
+      "source_sha256": "40c4bc1033a50be36de68a292fa8e1f0bb4b287149a945d0c2c82591259d32c1",
+      "source_bytes": 15117,
+      "mode": "byte-identical",
+      "archived_sha256": "40c4bc1033a50be36de68a292fa8e1f0bb4b287149a945d0c2c82591259d32c1"
+    },
+    {
+      "source": "work/performance/build4451-ss-analysis/opcode-counts.txt",
+      "destination": "opcode-analysis/opcode-counts.txt",
+      "source_sha256": "a2ca1fa11afa8d1d70a311b047f15fe189ed31ed25b9ff8716404c7a37ba2a88",
+      "source_bytes": 3607,
+      "mode": "byte-identical",
+      "archived_sha256": "a2ca1fa11afa8d1d70a311b047f15fe189ed31ed25b9ff8716404c7a37ba2a88"
+    },
+    {
+      "source": "work/performance/reports/finish4451-baseline.txt",
+      "destination": "baseline-stop-excerpt.txt",
+      "source_sha256": "1eb8bee84777bfd599953a301cd1dd0a20dcd7beae950037bacfec6abe528cc9",
+      "source_bytes": 29607,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "19e1f9d89fb83936fa0c34c35dd6b68aa87232a7a3dc0950a56c845581332b09"
+    },
+    {
+      "source": "work/performance/reports/finish4450-prepare4451.txt",
+      "destination": "predecessor4450-end-excerpt.txt",
+      "source_sha256": "861030d3fa052bfdb1fb35b12a4e2187fc20d604534df8ffbd386ca1d29ecec9",
+      "source_bytes": 33149,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "ace375e5bda8561d89de153501a1241de8910c3918ca77ad0889a2c9122722bd"
+    }
+  ]
+}

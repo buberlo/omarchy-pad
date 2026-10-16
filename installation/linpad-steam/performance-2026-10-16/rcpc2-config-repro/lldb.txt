@@ -1,0 +1,9 @@
+(lldb) target create "work/linpad-cli/ish"
+Current executable set to '/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli/ish' (arm64).
+(lldb) settings set -- target.run-args  "-r" "work/performance/vulkan-repro-root" "/opt/rcpc2-config-launch" "disablelrcpc2" "/opt/mono-init/stack-limits-probe"
+(lldb) command source -s 0 'work/performance/rcpc2-config-repro/repro.lldb'
+Executing commands in '/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/rcpc2-config-repro/repro.lldb'.
+(lldb) settings set target.disable-aslr false
+(lldb) settings set target.env-vars ISH_JIT=1 ISH_CRASHLOG=2
+(lldb) run
+error: process exited with status -1 (no such process)

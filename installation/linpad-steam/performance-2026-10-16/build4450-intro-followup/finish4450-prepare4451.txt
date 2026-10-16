@@ -1,0 +1,339 @@
+Fri Oct 16 13:41:09 UTC 2026
+OPERATOR_REASON=Install_opt_in_SS_cache_counters_to_identify_remaining_contention
+GAME_COMMAND
+/opt/fex/FEX-apple-m1-munmap ./hollow_knight.x86_64 -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4450-egl-unity.txt  
+GAME_STAT
+271 (FEX-apple-m1-mun) R 269 269 29 34818 269 0 0 0 0 0 273362 212056 0 0 20 0 43 0 55067943 140803317248000 5374297 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+UNITY_LOG
+2026-10-16T13:14:00.089Z|0xcc410540|The selected window backend is wayland 
+2026-10-16T13:14:00.123Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+2026-10-16T13:14:00.123Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+2026-10-16T13:14:01.552Z|0xcc410540|Input System module state changed to: Initialized.
+2026-10-16T13:14:01.588Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+2026-10-16T13:14:01.616Z|0xcc410540|[Physics::Module] Initialized fallback backend.
+2026-10-16T13:14:01.616Z|0xcc410540|[Physics::Module] Id: 0xdecafbad
+2026-10-16T13:14:01.801Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T13:14:04.005Z|0xcc410540|[Vulkan init] extensions: count=24
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_acquire_drm_display [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_acquire_xlib_display [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_debug_report [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_debug_utils [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_direct_mode_display [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_display_surface_counter [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_headless_surface [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_surface_maintenance1 [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_swapchain_colorspace [enabled=1, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_device_group_creation [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_display [enabled=1, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_fence_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_memory_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_semaphore_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_display_properties2 [enabled=0, external=0]
+2026-10-16T13:14:04.006Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_physical_device_properties2 [enabled=1, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_surface_capabilities2 [enabled=0, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_portability_enumeration [enabled=0, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_surface [enabled=1, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_surface_protected_capabilities [enabled=0, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_wayland_surface [enabled=1, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_xcb_surface [enabled=0, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_xlib_surface [enabled=1, external=0]
+2026-10-16T13:14:04.007Z|0xcc410540|[Vulkan init] extensions: name=VK_LUNARG_direct_driver_loading [enabled=0, external=0]
+2026-10-16T13:14:04.458Z|0xcc410540|[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
+2026-10-16T13:14:04.468Z|0xcc410540|[Vulkan init] Physical Device 0x501310 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+2026-10-16T13:14:04.498Z|0xcc410540|Vulkan detection: 2
+2026-10-16T13:14:04.514Z|0xcc410540|Initialize engine version: 6000.0.61f1 (74a0adb02c31)
+2026-10-16T13:14:04.561Z|0xcc410540|[Subsystems] Discovering subsystems at path /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/UnitySubsystems
+2026-10-16T13:14:04.572Z|0xcc410540|Forcing GfxDevice: Vulkan
+2026-10-16T13:14:04.573Z|0xcc410540|GfxDevice: creating device client; kGfxThreadingModeThreaded
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: count=24
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_acquire_drm_display [enabled=0, external=0]
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_acquire_xlib_display [enabled=0, external=0]
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_debug_report [enabled=0, external=0]
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_debug_utils [enabled=0, external=0]
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_direct_mode_display [enabled=0, external=0]
+2026-10-16T13:14:04.694Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_display_surface_counter [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_headless_surface [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_surface_maintenance1 [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_swapchain_colorspace [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_device_group_creation [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_display [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_fence_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_memory_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_semaphore_capabilities [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_display_properties2 [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_physical_device_properties2 [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_surface_capabilities2 [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_portability_enumeration [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_surface [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_surface_protected_capabilities [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_wayland_surface [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_xcb_surface [enabled=0, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_xlib_surface [enabled=1, external=0]
+2026-10-16T13:14:04.695Z|0xcc410540|[Vulkan init] extensions: name=VK_LUNARG_direct_driver_loading [enabled=0, external=0]
+2026-10-16T13:14:04.851Z|0xcc410540|[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
+2026-10-16T13:14:04.968Z|0xcc410540|[Vulkan init] Physical Device 0x50cff0 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+2026-10-16T13:14:04.969Z|0xcc410540|[Vulkan init] Selected physical device 0x50cff0
+2026-10-16T13:14:04.969Z|0xcc410540|[Vulkan init] Graphics queue count=1
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: count=120
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_4444_formats [enabled=1, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_buffer_device_address [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_calibrated_timestamps [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_depth_clip_control [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_descriptor_indexing [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_device_memory_report [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_extended_dynamic_state [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_extended_dynamic_state2 [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_extended_dynamic_state3 [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_external_memory_dma_buf [enabled=0, external=0]
+2026-10-16T13:14:04.982Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_fragment_shader_interlock [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_global_priority [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_global_priority_query [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_hdr_metadata [enabled=1, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_host_image_copy [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_host_query_reset [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_image_2d_view_of_3d [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_image_robustness [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_index_type_uint8 [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_inline_uniform_block [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_line_rasterization [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_load_store_op_none [enabled=1, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_map_memory_placed [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_physical_device_drm [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_pipeline_creation_cache_control [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_pipeline_creation_feedback [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_pipeline_robustness [enabled=0, external=0]
+2026-10-16T13:14:04.983Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_post_depth_coverage [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_private_data [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_robustness2 [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_sample_locations [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_scalar_block_layout [enabled=1, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_separate_stencil_usage [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_atomic_float [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_demote_to_helper_invocation [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_stencil_export [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_subgroup_ballot [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_subgroup_vote [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_shader_viewport_index_layer [enabled=1, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_subgroup_size_control [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_texel_buffer_alignment [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_texture_compression_astc_hdr [enabled=1, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_tooling_info [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_EXT_vertex_attribute_divisor [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_16bit_storage [enabled=1, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_8bit_storage [enabled=0, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_bind_memory2 [enabled=1, external=0]
+2026-10-16T13:14:04.984Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_buffer_device_address [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_calibrated_timestamps [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_copy_commands2 [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_create_renderpass2 [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_dedicated_allocation [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_depth_stencil_resolve [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_descriptor_update_template [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_device_group [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_driver_properties [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_dynamic_rendering [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_dynamic_rendering_local_read [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_fence [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_fence_fd [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_memory [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_memory_fd [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_semaphore [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_external_semaphore_fd [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_format_feature_flags2 [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_fragment_shader_barycentric [enabled=0, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_get_memory_requirements2 [enabled=1, external=0]
+2026-10-16T13:14:04.985Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_global_priority [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_image_format_list [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_imageless_framebuffer [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_incremental_present [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_index_type_uint8 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_line_rasterization [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_load_store_op_none [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance1 [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance2 [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance3 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance4 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance5 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance6 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_maintenance7 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_map_memory2 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_multiview [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_present_id [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_present_id2 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_present_wait [enabled=1, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_present_wait2 [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_push_descriptor [enabled=0, external=0]
+2026-10-16T13:14:04.986Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_relaxed_block_layout [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_robustness2 [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_sampler_mirror_clamp_to_edge [enabled=1, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_sampler_ycbcr_conversion [enabled=1, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_separate_depth_stencil_layouts [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_draw_parameters [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_expect_assume [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_float16_int8 [enabled=1, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_float_controls [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_float_controls2 [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_fma [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_integer_dot_product [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_maximal_reconvergence [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info [enabled=1, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_relaxed_extended_instruction [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_rotate [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_uniform_control_flow [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_spirv_1_4 [enabled=0, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class [enabled=1, external=0]
+2026-10-16T13:14:04.987Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format [enabled=1, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_synchronization2 [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_timeline_semaphore [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_variable_pointers [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vertex_attribute_divisor [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vulkan_memory_model [enabled=0, external=0]
+2026-10-16T13:14:04.988Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_zero_initialize_workgroup_memory [enabled=0, external=0]
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan device type 1
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T13:14:05.203Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T13:14:05.266Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T13:14:06.152Z|0xcc410540|Begin MonoManager ReloadAssembly
+2026-10-16T13:14:11.416Z|0xcc410540|- Loaded All Assemblies, in  5.264 seconds
+2026-10-16T13:14:11.575Z|0xcc410540|- Finished resetting the current domain, in  0.159 seconds
+2026-10-16T13:14:11.593Z|0xcc410540|[Physics::Module] Selected backend.
+2026-10-16T13:14:11.593Z|0xcc410540|[Physics::Module] Name: PhysX
+2026-10-16T13:14:11.593Z|0xcc410540|[Physics::Module] Id: 0xf2b8ea05
+2026-10-16T13:14:11.593Z|0xcc410540|[Physics::Module] SDK Version: 4.1.2
+2026-10-16T13:14:11.594Z|0xcc410540|[Physics::Module] Integration Version: 1.0.0
+2026-10-16T13:14:11.594Z|0xcc410540|[Physics::Module] Threading Mode: Multi-Threaded
+2026-10-16T13:14:24.458Z|0xcc410540|requesting resize 960 x 540
+2026-10-16T13:14:24.475Z|0xcc410540|resizing window to 960 x 540
+2026-10-16T13:14:24.489Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T13:14:24.491Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+2026-10-16T13:14:40.723Z|0xcc410540|UnloadTime: 31.146000 ms
+2026-10-16T13:14:46.886Z|0xcc410540|Steam initializing
+[S_API] SteamAPI_Init(): SteamAPI_IsSteamRunning() did not locate a running instance of Steam.
+dlopen failed trying to load:
+/root/.steam/sdk64/steamclient.so
+with error:
+/root/.steam/sdk64/steamclient.so: cannot open shared object file: No such file or directory
+[S_API] SteamAPI_Init(): Failed to load module '/root/.steam/sdk64/steamclient.so'
+2026-10-16T13:14:47.114Z|0xcc410540|Steam failed to initialize
+2026-10-16T13:14:47.119Z|0xcc410540|Selected online subsystem SteamOnlineSubsystem
+2026-10-16T13:14:52.570Z|0xcc410540|Couldn't find a Game Manager, make sure one exists in the scene.
+2026-10-16T13:14:53.022Z|0xcc410540|Discovered supported languages: DE, EN, ES, FR, IT, JA, KO, PT, RU, ZH, ZH_TW
+2026-10-16T13:14:53.032Z|0xa1d5c6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:14:53.196Z|0xcc410540|Loaded saved language code 'DE'
+2026-10-16T13:14:53.198Z|0xcc410540|Restored language code 'DE'
+2026-10-16T13:15:00.788Z|0xcc410540|Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 3942.
+2026-10-16T13:15:00.807Z|0xcc410540|Total: 311.324000 ms (FindLiveObjects: 5.508000 ms CreateObjectMapping: 2.291000 ms MarkObjects: 300.057000 ms  DeleteObjects: 3.410000 ms)
+
+2026-10-16T13:15:00.890Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T13:15:00.891Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T13:15:01.310Z|0xcc410540|Couldn't find GameCameras, make sure one exists in the scene.
+2026-10-16T13:15:54.300Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+2026-10-16T13:16:09.268Z|0xcc410540|Didn't need to wait for PlayerPrefs load.
+2026-10-16T13:16:09.317Z|0xcc410540|Couldn't find GameCameras, make sure one exists in the scene.
+2026-10-16T13:18:34.061Z|0xa1d5c6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:18:34.479Z|0xcc410540|UnloadTime: 367.373000 ms
+2026-10-16T13:18:48.339Z|0xcc410540|DontDestroyOnLoad only works for root GameObjects or components on root GameObjects.
+2026-10-16T13:18:48.693Z|0xcc410540|Performing automatic level start.
+2026-10-16T13:18:58.344Z|0xcc410540|Game controller set to None.
+2026-10-16T13:19:01.511Z|0xcc410540|Loaded saved language code 'DE'
+2026-10-16T13:19:01.512Z|0xcc410540|Restored language code 'DE'
+2026-10-16T13:20:09.740Z|0xcc410540|Attempting to get `timeSamples` on an audio source that has a resource assigned that is not a clip is ignored!
+2026-10-16T13:20:12.698Z|0xcc410540|pd.maxHealth: 5 pd.maxHealthBase: 5
+2026-10-16T13:20:23.278Z|0xcc410540|Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 46867.
+2026-10-16T13:20:23.309Z|0xcc410540|Total: 4354.573000 ms (FindLiveObjects: 70.970000 ms CreateObjectMapping: 17.857000 ms MarkObjects: 4228.626000 ms  DeleteObjects: 37.017000 ms)
+
+2026-10-16T13:26:44.434Z|0xcc410540|Making UI menu lean.
+2026-10-16T13:27:16.377Z|0xcc410540|Using fallback 1 to find tilemap. Scene Opening_Sequence requires manual fixing.
+2026-10-16T13:27:16.427Z|0xcc410540|Using fallback 2 to find tilemap. Scene Opening_Sequence requires manual fixing.
+2026-10-16T13:27:16.506Z|0xcc410540|Failed to find tilemap in Opening_Sequence entirely.
+2026-10-16T13:27:16.521Z|0xa1d5c6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:27:17.186Z|0xcc410540|Opening sequience changing sequences.
+2026-10-16T13:27:22.212Z|0xcc410540|Unloading 182 unused Assets to reduce memory usage. Loaded Objects now: 44732.
+2026-10-16T13:27:22.217Z|0xcc410540|Total: 4488.824000 ms (FindLiveObjects: 79.620000 ms CreateObjectMapping: 20.936000 ms MarkObjects: 4285.900000 ms  DeleteObjects: 101.952000 ms)
+
+2026-10-16T13:28:15.501Z|0xcc410540|Opening sequience changing sequences.
+2026-10-16T13:28:50.966Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.818Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.819Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.820Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.821Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.822Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.823Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:29:34.339Z|0xa1d5c6c0|Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:29:34.388Z|0xcc410540|Levels are ready before cinematics are finished. Cinematics made skippable.
+2026-10-16T13:40:51.781Z|0xcc410540|Opening sequience changing sequences.
+GAME_OUTPUT
+Fri Oct 16 13:13:59 UTC 2026
+LINPAD_EGL_DIAGNOSTIC mode=swrast auxiliary_driver=llvmpipe FEX=/tmp/fex-game-crash-report
+LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+EGL_VENDOR=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+WAYLAND=/tmp/xdg-runtime/wayland-0-gpu SDL_VIDEODRIVER=wayland EGL_PLATFORM=wayland
+VULKAN_ICD=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json VK_LOADER_LAYERS_DISABLE=* LD_PRELOAD=unset argv_count=12
+X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=4194304"
+    "memorysetup-bucket-allocator-block-count=1"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=4194304"
+    "memorysetup-profiler-bucket-allocator-block-count=1"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=4194304"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Loading in SingleInstance mode
+COMPOSITOR
+ishwl 50601.569: GPU clients: WAYLAND_DISPLAY=wayland-0-gpu
+ishwl 50601.570: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl
+ishwl 50601.570: scm-compat: off (native fd passing works)
+ishwl 50601.571: spawned 81: thunar --daemon
+ishwl 50601.735: keymap: de mac -
+ishwl 50791.218: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+ishwl 50791.309: text input active in view 1
+ishwl 50925.197: text input inactive in view 0
+ishwl 51099.397: text input active in view 1
+ishwl 51779.831: text input inactive in view 0
+ishwl 51827.061: text input active in view 1
+ishwl 52203.970: text input inactive in view 0
+FRAME_ROWS
+10270 /tmp/hollow4450-frames.txt
+OPERATOR_SENT_SIGTERM=271
+OPERATOR_SENT_SIGKILL=271
+NEXT_BOOT_FRAME_CAPTURE_READY=4451
+Fri Oct 16 13:41:12 UTC 2026

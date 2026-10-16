@@ -1,0 +1,67 @@
+Fri Oct 16 13:32:56 UTC 2026
+UNITY_TAIL
+2026-10-16T13:16:09.268Z|0xcc410540|Didn't need to wait for PlayerPrefs load.
+2026-10-16T13:16:09.317Z|0xcc410540|Couldn't find GameCameras, make sure one exists in the scene.
+2026-10-16T13:18:34.061Z|0xa1d5c6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:18:34.479Z|0xcc410540|UnloadTime: 367.373000 ms
+2026-10-16T13:18:48.339Z|0xcc410540|DontDestroyOnLoad only works for root GameObjects or components on root GameObjects.
+2026-10-16T13:18:48.693Z|0xcc410540|Performing automatic level start.
+2026-10-16T13:18:58.344Z|0xcc410540|Game controller set to None.
+2026-10-16T13:19:01.511Z|0xcc410540|Loaded saved language code 'DE'
+2026-10-16T13:19:01.512Z|0xcc410540|Restored language code 'DE'
+2026-10-16T13:20:09.740Z|0xcc410540|Attempting to get `timeSamples` on an audio source that has a resource assigned that is not a clip is ignored!
+2026-10-16T13:20:12.698Z|0xcc410540|pd.maxHealth: 5 pd.maxHealthBase: 5
+2026-10-16T13:20:23.278Z|0xcc410540|Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 46867.
+2026-10-16T13:20:23.309Z|0xcc410540|Total: 4354.573000 ms (FindLiveObjects: 70.970000 ms CreateObjectMapping: 17.857000 ms MarkObjects: 4228.626000 ms  DeleteObjects: 37.017000 ms)
+
+2026-10-16T13:26:44.434Z|0xcc410540|Making UI menu lean.
+2026-10-16T13:27:16.377Z|0xcc410540|Using fallback 1 to find tilemap. Scene Opening_Sequence requires manual fixing.
+2026-10-16T13:27:16.427Z|0xcc410540|Using fallback 2 to find tilemap. Scene Opening_Sequence requires manual fixing.
+2026-10-16T13:27:16.506Z|0xcc410540|Failed to find tilemap in Opening_Sequence entirely.
+2026-10-16T13:27:16.521Z|0xa1d5c6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:27:17.186Z|0xcc410540|Opening sequience changing sequences.
+2026-10-16T13:27:22.212Z|0xcc410540|Unloading 182 unused Assets to reduce memory usage. Loaded Objects now: 44732.
+2026-10-16T13:27:22.217Z|0xcc410540|Total: 4488.824000 ms (FindLiveObjects: 79.620000 ms CreateObjectMapping: 20.936000 ms MarkObjects: 4285.900000 ms  DeleteObjects: 101.952000 ms)
+
+2026-10-16T13:28:15.501Z|0xcc410540|Opening sequience changing sequences.
+2026-10-16T13:28:50.966Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.818Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.819Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.820Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.821Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.822Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:28:51.823Z|0xcc410540|PlayMakerUnity2DProxy requires the 'PlayMaker Unity 2D' Prefab in the Scene.
+Use the menu 'PlayMaker/Addons/Unity 2D/Components/Add PlayMakerUnity2D to Scene' to correct the situation
+2026-10-16T13:29:34.339Z|0xa1d5c6c0|Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+2026-10-16T13:29:34.388Z|0xcc410540|Levels are ready before cinematics are finished. Cinematics made skippable.
+GAME_STAT
+GAME_PID=271
+271 (FEX-apple-m1-mun) R 269 269 29 34818 269 0 0 0 0 0 185204 138965 0 0 20 0 43 0 55067943 140802674765824 5364897 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+GAME_OUTPUT
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Loading in SingleInstance mode
+FRAME_LINES
+6953 /tmp/hollow4450-frames.txt
+COMPOSITOR_MAPS
+ishwl 50791.218: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+MEMORY
+footprint_mb 2895
+allowance_mb 8192
+headroom_mb 5296
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 271 802 0 0 FEX-apple-m1-munmap

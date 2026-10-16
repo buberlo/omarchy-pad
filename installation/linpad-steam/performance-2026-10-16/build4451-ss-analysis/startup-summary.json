@@ -1,0 +1,209 @@
+{
+  "source": "work/performance/reports/ss4451-hollow-startup-1.txt",
+  "source_sha256": "3b6cc3877dea40034049b0072115f9bbfcc1e71997b4fd8b241661118e582d0a",
+  "game_pid": 348,
+  "gates": {
+    "MAIN_DELTA_ELIGIBLE": "1",
+    "PROCESS_CONTINUITY_ELIGIBLE": "1 start_tick_spread=1 tolerance_ticks=2",
+    "ALL_DELTA_GATES_VALID": "1",
+    "MAPS_TRUNCATED": "0",
+    "MAPS_READ_EXIT": "0"
+  },
+  "main_delta": {
+    "tid": 348,
+    "mmu": 666,
+    "reset": 14,
+    "hit": 119934653,
+    "miss_cold": 0,
+    "miss_collision": 20282626,
+    "miss_generation": 481973,
+    "miss_generation_same_pc": 119234,
+    "shared_hit": 20730137,
+    "persistent_fill": 34462,
+    "oneshot_generation": 0,
+    "oneshot_pressure": 0,
+    "untracked_oom": 0,
+    "path_negative": 22598590,
+    "path_exit": 118100662,
+    "path_nomem": 0
+  },
+  "main_delta_summary": {
+    "attempts": 140699252,
+    "misses": 20764599,
+    "percent_of_attempts": {
+      "hit": 85.24185544355275,
+      "miss_cold": 0.0,
+      "miss_collision": 14.415589075057769,
+      "miss_generation": 0.3425554813894817
+    },
+    "collision_percent_of_misses": 97.67887162184061,
+    "shared_hit_percent_of_misses": 99.83403483977706
+  },
+  "snapshot_summary": [
+    {
+      "snapshot": 1,
+      "contexts": 40,
+      "retained_samples": 608,
+      "families": {
+        "LRCPC2_LDAPUR_STLUR": 608
+      },
+      "main_retained_samples": 64,
+      "main_paths": {
+        "1": 54,
+        "0": 10
+      },
+      "main_miss_classes": {
+        "0": 38,
+        "2": 25,
+        "3": 1
+      },
+      "all_sample_pcs_anonymous_rwx": true,
+      "workers_with_attempts": 39,
+      "worker_cumulative_examples": [
+        {
+          "tid": 455,
+          "hit": 19546164,
+          "miss_cold": 260,
+          "miss_collision": 10504756,
+          "miss_generation": 327285,
+          "oneshot_generation": 4,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 404,
+          "hit": 175520,
+          "miss_cold": 176,
+          "miss_collision": 9666,
+          "miss_generation": 184916,
+          "oneshot_generation": 1,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 403,
+          "hit": 5275815,
+          "miss_cold": 255,
+          "miss_collision": 1016602,
+          "miss_generation": 500146,
+          "oneshot_generation": 0,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 402,
+          "hit": 1033736,
+          "miss_cold": 258,
+          "miss_collision": 1702561,
+          "miss_generation": 609259,
+          "oneshot_generation": 2,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 400,
+          "hit": 55017455,
+          "miss_cold": 525,
+          "miss_collision": 177348,
+          "miss_generation": 150341,
+          "oneshot_generation": 13,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        }
+      ]
+    },
+    {
+      "snapshot": 2,
+      "contexts": 40,
+      "retained_samples": 615,
+      "families": {
+        "LRCPC2_LDAPUR_STLUR": 615
+      },
+      "main_retained_samples": 64,
+      "main_paths": {
+        "1": 61,
+        "0": 3
+      },
+      "main_miss_classes": {
+        "0": 60,
+        "2": 4
+      },
+      "all_sample_pcs_anonymous_rwx": true,
+      "workers_with_attempts": 39,
+      "worker_cumulative_examples": [
+        {
+          "tid": 455,
+          "hit": 19552486,
+          "miss_cold": 260,
+          "miss_collision": 10505862,
+          "miss_generation": 328325,
+          "oneshot_generation": 4,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 404,
+          "hit": 230679,
+          "miss_cold": 176,
+          "miss_collision": 12353,
+          "miss_generation": 208568,
+          "oneshot_generation": 1,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 403,
+          "hit": 6471822,
+          "miss_cold": 255,
+          "miss_collision": 1259458,
+          "miss_generation": 565969,
+          "oneshot_generation": 0,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 402,
+          "hit": 1287376,
+          "miss_cold": 258,
+          "miss_collision": 2105638,
+          "miss_generation": 686936,
+          "oneshot_generation": 2,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        },
+        {
+          "tid": 400,
+          "hit": 55131990,
+          "miss_cold": 525,
+          "miss_collision": 183261,
+          "miss_generation": 151209,
+          "oneshot_generation": 13,
+          "oneshot_pressure": 0,
+          "untracked_oom": 0,
+          "retained_samples": 64
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Recent bounded per-context rings; not a whole-interval instruction histogram.",
+    "Worker interval deltas excluded because context incarnation continuity is not proven.",
+    "Anonymous executable mapping offsets do not identify original x86 Unity functions.",
+    "Counters include gadget execution attempts; no FPS or application speedup inferred."
+  ],
+  "decoded_examples": {
+    "d9400294": "ldapur x20, [x20]",
+    "99400174": "ldapur w20, [x11]",
+    "59000284": "stlurh w4, [x20]",
+    "990cc0c4": "stlur w4, [x6, #0xcc]"
+  }
+}

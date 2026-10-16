@@ -1,0 +1,60 @@
+1: SS_DIAGNOSTIC_REPORT_BEGIN
+2: BUILD=4451
+3: GAME_PID=348
+4: MUTATIONS=0
+5: COUNTERS=approximate fallback attempts; recent opcode samples are not FPS
+6: WORKER_DELTAS=not_computed; tid/mmu/reset cannot rule out worker-context incarnation reuse
+7: SNAPSHOT_BEGIN=1
+8: Fri Oct 16 13:46:02 UTC 2026
+9: IDENTITY tag=1 game=348 start_tick=55254981 basename=hollow_knight.x86_64 valid=1
+10: READ_EXIT=0
+11: RAW_BYTES=75632
+12: supported 1
+13: enabled 1
+14: version 1
+15: approximate_counters 1
+16: counters_count_attempts 1
+17: sample_window recent
+18: sample_probability_denominator 1024
+19: path_legend 0=negative 1=exit 2=nomem
+20: miss_legend 0=hit 1=cold 2=collision 3=generation
+21: sample_ring_size 64
+22: contexts_visited 69
+23: truncated 0
+24: context_allocation_failed 0
+608: context tid=348 tgid=348 mmu=666 reset=14 sampled=427385 busy_samples=0 hit=297026978 miss_cold=284 miss_collision=135647555 miss_generation=5788629 miss_generation_same_pc=1899417 shared_hit=140804453 persistent_fill=631987 oneshot_generation=28 oneshot_pressure=0 untracked_oom=0 path_negative=92957803 path_exit=345505643 path_nomem=0
+673: FILTER_SELECTED_CONTEXTS=40
+674: FILTER_INVALID_ROWS=0
+675: SNAPSHOT_ELIGIBLE=1
+676: SNAPSHOT_END=1
+677: SNAPSHOT_BEGIN=2
+678: Fri Oct 16 13:46:12 UTC 2026
+679: IDENTITY tag=2 game=348 start_tick=55254981 basename=hollow_knight.x86_64 valid=1
+680: READ_EXIT=0
+681: RAW_BYTES=76266
+682: supported 1
+683: enabled 1
+684: version 1
+685: approximate_counters 1
+686: counters_count_attempts 1
+687: sample_window recent
+688: sample_probability_denominator 1024
+689: path_legend 0=negative 1=exit 2=nomem
+690: miss_legend 0=hit 1=cold 2=collision 3=generation
+691: sample_ring_size 64
+692: contexts_visited 69
+693: truncated 0
+694: context_allocation_failed 0
+1285: context tid=348 tgid=348 mmu=666 reset=14 sampled=565036 busy_samples=0 hit=416961631 miss_cold=284 miss_collision=155930181 miss_generation=6270602 miss_generation_same_pc=2018651 shared_hit=161534590 persistent_fill=666449 oneshot_generation=28 oneshot_pressure=0 untracked_oom=0 path_negative=115556393 path_exit=463606305 path_nomem=0
+1350: FILTER_SELECTED_CONTEXTS=40
+1351: FILTER_INVALID_ROWS=0
+1352: SNAPSHOT_ELIGIBLE=1
+1353: SNAPSHOT_END=2
+1354: IDENTITY tag=final game=348 start_tick=55254980 basename=hollow_knight.x86_64 valid=1
+1355: PROCESS_CONTINUITY_ELIGIBLE=1 start_tick_spread=1 tolerance_ticks=2
+1356: MAIN_DELTA_ELIGIBLE=1
+1357: MAIN_DELTA tid=348 mmu=666 reset=14 hit=119934653 miss_cold=0 miss_collision=20282626 miss_generation=481973 miss_generation_same_pc=119234 shared_hit=20730137 persistent_fill=34462 oneshot_generation=0 oneshot_pressure=0 untracked_oom=0 path_negative=22598590 path_exit=118100662 path_nomem=0
+1359: MAPS_TRUNCATED=0
+2507: MAPS_READ_EXIT=0
+2509: ALL_DELTA_GATES_VALID=1
+2510: SS_DIAGNOSTIC_REPORT_END
