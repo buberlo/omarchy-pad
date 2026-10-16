@@ -598,6 +598,136 @@
       "sha256": "613d954da8653b6e77f765b380d2366fbdd2ec0d56d6314b0a357c8fd6b854df"
     },
     {
+      "path": "build4447/REPOSITORY-SHA256SUMS",
+      "bytes": 2273,
+      "sha256": "1a0607ddb5939ebe85ac039740a8138cd771af5e4f9c740b919d941eeb1a6757"
+    },
+    {
+      "path": "build4447/SHA256SUMS",
+      "bytes": 198,
+      "sha256": "03af3195513d73efebaa1dabf6a74f7adc7f507bcd681960b33eeeab669c6b91"
+    },
+    {
+      "path": "build4447/VERIFICATION.md",
+      "bytes": 1977,
+      "sha256": "21f3d2860ad9f7f73a048a0c9bf28fb6236d746bca5b902bd9f2e3d0ed016104"
+    },
+    {
+      "path": "build4447/artifact-verification.log",
+      "bytes": 805,
+      "sha256": "d6d5a10801f561b8f8ac2652f8200e3594bd116e66eb249ed7b0e416ab3c59e2"
+    },
+    {
+      "path": "build4447/build-local.sh",
+      "bytes": 399,
+      "sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "path": "build4447/build-manifest.json",
+      "bytes": 3304,
+      "sha256": "7691f2dd16d5c8930801f4cdcab8d59222991607c37fd7e86d823ae5d92b749f"
+    },
+    {
+      "path": "build4447/build-summary.log",
+      "bytes": 711,
+      "sha256": "3dbd95668a42fd12f7504c429d76dd56037906f4fbeff48dda32b1f506541607"
+    },
+    {
+      "path": "build4447/curate-build4447.py",
+      "bytes": 9801,
+      "sha256": "465bbb0f536ae7d4e7f4a5dc4ad154390e17af8cf9d2882dbb25ed8fba910487"
+    },
+    {
+      "path": "build4447/device-boot-excerpt.txt",
+      "bytes": 394,
+      "sha256": "693a7d9ecd24370473a6998506b602ea2ea1f6539b7fd7d0b79531753d705dc3"
+    },
+    {
+      "path": "build4447/device-install-evidence.json",
+      "bytes": 314,
+      "sha256": "3f82db71e9647e9e4117f8361ea582254da9189faeb9abef76bc3b118857fdce"
+    },
+    {
+      "path": "build4447/device-scripts/maps4447-probe",
+      "bytes": 509,
+      "sha256": "5480abe7c62d3a68a4e5536f8a9709a1a711fbd9117b109502ac6233af5795a1"
+    },
+    {
+      "path": "build4447/device-scripts/mono4447-probe",
+      "bytes": 3206,
+      "sha256": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43"
+    },
+    {
+      "path": "build4447/initial-build-manifest.json",
+      "bytes": 2018,
+      "sha256": "c4cc3432af9401b10b76a04d21b14eefd581f96d83eaa3eed7c49459c89a4cc3"
+    },
+    {
+      "path": "build4447/maps4447-device-pass.txt",
+      "bytes": 1433,
+      "sha256": "018f214401124ab08df408594c5afb2be5115dc888a2abd48796f3b27846f9d0"
+    },
+    {
+      "path": "build4447/mono4447-device-pass.txt",
+      "bytes": 1863,
+      "sha256": "7c8b209c632dc47074b884d75bb378120ccc17da71151d346f2f52af6a7488f0"
+    },
+    {
+      "path": "build4447/record-artifact.py",
+      "bytes": 4126,
+      "sha256": "e5762d4ff7cc7e0426f474c6890acc4272813f0bdd1d296cc98bb17537edd448"
+    },
+    {
+      "path": "build4447/release-notes.md",
+      "bytes": 787,
+      "sha256": "f6667ed99a64cb76e3dedb83bd331e96c8451b5cf440be25e8343cfa78323d85"
+    },
+    {
+      "path": "build4447/signed-entitlements.plist",
+      "bytes": 847,
+      "sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "path": "build4447/signing-excerpt.txt",
+      "bytes": 187,
+      "sha256": "c3faa8f98c7d145cfb805b91bb9322ebef2b2bfff3d679f4dd94e941148bc4c9"
+    },
+    {
+      "path": "build4447/source-changes.patch",
+      "bytes": 5553,
+      "sha256": "5f787371e7409c31367e11c7ac3565b2474a26b671af137463ddfc09b951160d"
+    },
+    {
+      "path": "build4447/source-commit.txt",
+      "bytes": 41,
+      "sha256": "4517156e166fbf2159c73c20a48e9c125d3479630527ef2b8d33fd290c714577"
+    },
+    {
+      "path": "build4447/source-evidence.json",
+      "bytes": 7002,
+      "sha256": "4031e7904a6506763b1a89256df922285bd8d564c1aa7c25585d21fef5bcc5d2"
+    },
+    {
+      "path": "build4447/source-snapshot/fs/proc/pid.c",
+      "bytes": 22388,
+      "sha256": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72"
+    },
+    {
+      "path": "build4447/source-snapshot/tests/manual/steam-compat/README.md",
+      "bytes": 5924,
+      "sha256": "240bb7d567ea69349cd4e2a67b1c71f175ad0e62ebf927a64892a9c9ac100d10"
+    },
+    {
+      "path": "build4447/source-snapshot/tests/manual/steam-compat/proc-maps-boundary-probe.c",
+      "bytes": 3333,
+      "sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102"
+    },
+    {
+      "path": "build4447/symbols.json",
+      "bytes": 266,
+      "sha256": "8935eed645c807d6efc8aa5fee8a393fa1f780ec2edbada983ea4295c1ba4f87"
+    },
+    {
       "path": "egl-repair/ARCHIVE.md",
       "bytes": 471,
       "sha256": "1e94b1c17a68f637d1ae1402f7886e0066846f9e2f27761ffa9fd390d4971206"

@@ -1,0 +1,148 @@
+{
+  "files": [
+    {
+      "source": "work/performance/build4447/source-snapshot/fs/proc/pid.c",
+      "destination": "source-snapshot/fs/proc/pid.c",
+      "source_sha256": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72",
+      "source_bytes": 22388,
+      "mode": "byte-identical",
+      "archived_sha256": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72"
+    },
+    {
+      "source": "work/performance/build4447/source-snapshot/tests/manual/steam-compat/proc-maps-boundary-probe.c",
+      "destination": "source-snapshot/tests/manual/steam-compat/proc-maps-boundary-probe.c",
+      "source_sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102",
+      "source_bytes": 3333,
+      "mode": "byte-identical",
+      "archived_sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102"
+    },
+    {
+      "source": "work/performance/build4447/source-snapshot/tests/manual/steam-compat/README.md",
+      "destination": "source-snapshot/tests/manual/steam-compat/README.md",
+      "source_sha256": "240bb7d567ea69349cd4e2a67b1c71f175ad0e62ebf927a64892a9c9ac100d10",
+      "source_bytes": 5924,
+      "mode": "byte-identical",
+      "archived_sha256": "240bb7d567ea69349cd4e2a67b1c71f175ad0e62ebf927a64892a9c9ac100d10"
+    },
+    {
+      "source": "work/performance/build4447/source-commit.txt",
+      "destination": "source-commit.txt",
+      "source_sha256": "4517156e166fbf2159c73c20a48e9c125d3479630527ef2b8d33fd290c714577",
+      "source_bytes": 41,
+      "mode": "byte-identical",
+      "archived_sha256": "4517156e166fbf2159c73c20a48e9c125d3479630527ef2b8d33fd290c714577"
+    },
+    {
+      "source": "work/performance/build4447/source-changes.patch",
+      "destination": "source-changes.patch",
+      "source_sha256": "5f787371e7409c31367e11c7ac3565b2474a26b671af137463ddfc09b951160d",
+      "source_bytes": 5553,
+      "mode": "byte-identical",
+      "archived_sha256": "5f787371e7409c31367e11c7ac3565b2474a26b671af137463ddfc09b951160d"
+    },
+    {
+      "source": "work/performance/build4447/build-local.sh",
+      "destination": "build-local.sh",
+      "source_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae",
+      "source_bytes": 399,
+      "mode": "byte-identical",
+      "archived_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "source": "work/performance/build4447/record-artifact.py",
+      "destination": "record-artifact.py",
+      "source_sha256": "e5762d4ff7cc7e0426f474c6890acc4272813f0bdd1d296cc98bb17537edd448",
+      "source_bytes": 4126,
+      "mode": "byte-identical",
+      "archived_sha256": "e5762d4ff7cc7e0426f474c6890acc4272813f0bdd1d296cc98bb17537edd448"
+    },
+    {
+      "source": "work/performance/build4447/artifact-verification.log",
+      "destination": "artifact-verification.log",
+      "source_sha256": "d6d5a10801f561b8f8ac2652f8200e3594bd116e66eb249ed7b0e416ab3c59e2",
+      "source_bytes": 805,
+      "mode": "byte-identical",
+      "archived_sha256": "d6d5a10801f561b8f8ac2652f8200e3594bd116e66eb249ed7b0e416ab3c59e2"
+    },
+    {
+      "source": "work/performance/build4447/signed-entitlements.plist",
+      "destination": "signed-entitlements.plist",
+      "source_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3",
+      "source_bytes": 847,
+      "mode": "byte-identical",
+      "archived_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "source": "work/performance/build4447/build-manifest.json",
+      "destination": "initial-build-manifest.json",
+      "source_sha256": "c4cc3432af9401b10b76a04d21b14eefd581f96d83eaa3eed7c49459c89a4cc3",
+      "source_bytes": 2018,
+      "mode": "byte-identical",
+      "archived_sha256": "c4cc3432af9401b10b76a04d21b14eefd581f96d83eaa3eed7c49459c89a4cc3"
+    },
+    {
+      "source": "work/performance/build4447/curate-build4447.py",
+      "destination": "curate-build4447.py",
+      "source_sha256": "465bbb0f536ae7d4e7f4a5dc4ad154390e17af8cf9d2882dbb25ed8fba910487",
+      "source_bytes": 9801,
+      "mode": "byte-identical",
+      "archived_sha256": "465bbb0f536ae7d4e7f4a5dc4ad154390e17af8cf9d2882dbb25ed8fba910487"
+    },
+    {
+      "source": "work/performance/build4447/build.log",
+      "destination": "build-summary.log",
+      "source_sha256": "ae3f75f7c74ebe62c465ad0f486a9ad8e691bd5c6619a4b4405694b5b62995d7",
+      "source_bytes": 71653,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "3dbd95668a42fd12f7504c429d76dd56037906f4fbeff48dda32b1f506541607"
+    },
+    {
+      "source": "work/performance/build4447/sign.log",
+      "destination": "signing-excerpt.txt",
+      "source_sha256": "24ee1309e04b5ee37c6a6c3698393d415a3745de13439cbb5ebc907025237e2e",
+      "source_bytes": 184,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "c3faa8f98c7d145cfb805b91bb9322ebef2b2bfff3d679f4dd94e941148bc4c9"
+    },
+    {
+      "source": "work/performance/build4447/device-console.log",
+      "destination": "device-boot-excerpt.txt",
+      "source_sha256": "bfea32472e90c231e7e0b8ba9529a417bac1d299fa3ac4fc1e76aa2b7e19666f",
+      "source_bytes": 38410,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "693a7d9ecd24370473a6998506b602ea2ea1f6539b7fd7d0b79531753d705dc3"
+    },
+    {
+      "source": "work/performance/serve/maps4447-probe",
+      "destination": "device-scripts/maps4447-probe",
+      "source_sha256": "5480abe7c62d3a68a4e5536f8a9709a1a711fbd9117b109502ac6233af5795a1",
+      "source_bytes": 509,
+      "mode": "byte-identical",
+      "archived_sha256": "5480abe7c62d3a68a4e5536f8a9709a1a711fbd9117b109502ac6233af5795a1"
+    },
+    {
+      "source": "work/performance/serve/mono4447-probe",
+      "destination": "device-scripts/mono4447-probe",
+      "source_sha256": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43",
+      "source_bytes": 3206,
+      "mode": "byte-identical",
+      "archived_sha256": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43"
+    },
+    {
+      "source": "work/performance/reports/maps4447-device-pass.txt",
+      "destination": "maps4447-device-pass.txt",
+      "source_sha256": "7da87da44fbaacc6ab242829fdf7a0da1a4fa3c47f7b3beed77de91f2ecb6019",
+      "source_bytes": 1875,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "018f214401124ab08df408594c5afb2be5115dc888a2abd48796f3b27846f9d0"
+    },
+    {
+      "source": "work/performance/reports/mono4447-device-pass.txt",
+      "destination": "mono4447-device-pass.txt",
+      "source_sha256": "ed0b27348567a33590314ce664184ac26bd1c9cb235a1a4ab0d08d2102b717fb",
+      "source_bytes": 1736,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "7c8b209c632dc47074b884d75bb378120ccc17da71151d346f2f52af6a7488f0"
+    }
+  ]
+}

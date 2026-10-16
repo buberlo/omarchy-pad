@@ -1,0 +1,60 @@
+#!/bin/sh
+# Diagnostic only. Link the installed owned game inputs; do not copy them.
+# Runs unchanged Mono probe with default FEX and the real Wayland SDL backend.
+set -eu
+OUT=/tmp/mono4447-probe.txt
+GAME='/root/.local/share/Steam/steamapps/common/Hollow Knight'
+SERVER=http://192.168.0.104:8766
+BASE=/opt/hollow-runtime
+FEX=/opt/fex/FEX-apple-m1-munmap
+check() { printf '%s  %s\n' "$1" "$2" | sha256sum -c -; }
+link_input() {
+    target=$1 dest=$2 expected=$3
+    check "$expected" "$target" || return
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        check "$expected" "$dest"
+    else
+        ln -s "$target" "$dest"
+    fi
+}
+fetch_probe() {
+    name=$1 dest=$2 expected=$3
+    wget -T 15 -q "$SERVER/$name" -O "$dest.new" || return
+    check "$expected" "$dest.new" || return
+    chmod 755 "$dest.new" || return
+    mv "$dest.new" "$dest"
+}
+run_checks() {
+    date
+    check 343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d "$FEX" || return
+    mkdir -p /opt/mono-init/data/Managed /opt/mono-init/data/mono/4.5 /opt/mono-init/data/etc || return
+    link_input "$GAME/UnityPlayer.so" /opt/UnityPlayer.so 12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33 || return
+    link_input "$GAME/hollow_knight_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so" /opt/mono-init/libmonobdwgc-2.0.so 682d74f03efd9cebd05d38e82c4b296a0a1865f070440281aa1ac51022220b94 || return
+    link_input "$GAME/hollow_knight_Data/Managed/mscorlib.dll" /opt/mono-init/data/Managed/mscorlib.dll 19c81960f79980f14cd4dc271ed42c3e7f031f024c17977fc0f4a9f672a23b86 || return
+    link_input /opt/mono-init/data/Managed/mscorlib.dll /opt/mono-init/data/mono/4.5/mscorlib.dll 19c81960f79980f14cd4dc271ed42c3e7f031f024c17977fc0f4a9f672a23b86 || return
+    fetch_probe mono-init-probe /opt/mono-init/probe 9359890704d5fc5b9a0302a45765fa016dbe704738d5f3487b163f312f11a789 || return
+    fetch_probe stack-limits-probe /opt/mono-init/stack-limits-probe db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43 || return
+    unset LD_PRELOAD LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT FEX_MULTIBLOCK
+    unset SDL_DYNAMIC_API SDL3_DYNAMIC_API DISPLAY XAUTHORITY SDL_VIDEO_DRIVER
+    export SDL_VIDEODRIVER=wayland XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0-gpu
+    export FEX_ROOTFS="$BASE" FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH="$BASE/usr/lib/x86_64-linux-gnu:$BASE/usr/lib/x86_64-linux-gnu/pulseaudio"
+    printf 'MONO_DEVICE_CONFIG SDL=wayland FEX_MULTIBLOCK=unset LD_PRELOAD=unset\n'
+    result=0
+    timeout -k 3 30 "$FEX" /opt/mono-init/stack-limits-probe && code=0 || code=$?
+    printf 'STACK_LIMITS_EXIT=%s\n' "$code"
+    [ "$code" = 0 ] || result=1
+    for flags in 0 3221; do
+        printf 'MONO_DEVICE_BEGIN flags=%s\n' "$flags"
+        timeout -k 3 90 "$FEX" /opt/mono-init/probe mono "$flags" before && code=0 || code=$?
+        printf 'MONO_DEVICE_EXIT flags=%s code=%s\n' "$flags" "$code"
+        [ "$code" = 0 ] || result=1
+    done
+    date
+    return "$result"
+}
+run_checks > "$OUT" 2>&1 && result=0 || result=$?
+printf 'MONO_DEVICE_SUITE_EXIT=%s\n' "$result" >> "$OUT"
+wget -T 8 -q --post-file="$OUT" "$SERVER/report" -O /dev/null || true
+cat "$OUT"
+exit "$result"

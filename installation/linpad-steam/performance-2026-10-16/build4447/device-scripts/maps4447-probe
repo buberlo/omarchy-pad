@@ -1,0 +1,12 @@
+#!/bin/sh
+OUT=/tmp/maps4447-probe.txt
+{
+ date
+ wget -T 15 -qO /tmp/proc-maps-boundary-probe http://192.168.0.104:8766/proc-maps-boundary-probe && echo 'e349c2f648bdb1d8b9ed8b8b370fc4cc8866f16f04cd743e01637405313861ff  /tmp/proc-maps-boundary-probe' | sha256sum -c - && chmod +x /tmp/proc-maps-boundary-probe && /tmp/proc-maps-boundary-probe
+ echo MAPS_DEVICE_EXIT=$?
+ cat /proc/ish/memory
+ df -h /
+ date
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"

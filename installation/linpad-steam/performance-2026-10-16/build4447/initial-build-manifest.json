@@ -1,0 +1,49 @@
+{
+  "build": "4447",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "9beb5dea2eeaffd7ebd27952592cba658fe12bb4",
+  "source_files": [
+    {
+      "path": "fs/proc/pid.c",
+      "sha256": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72"
+    },
+    {
+      "path": "tests/manual/steam-compat/proc-maps-boundary-probe.c",
+      "sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102"
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "240bb7d567ea69349cd4e2a67b1c71f175ad0e62ebf927a64892a9c9ac100d10"
+    }
+  ],
+  "source_patch_sha256": "5f787371e7409c31367e11c7ac3565b2474a26b671af137463ddfc09b951160d",
+  "build_verified": true,
+  "build_log_sha256": "ae3f75f7c74ebe62c465ad0f486a9ad8e691bd5c6619a4b4405694b5b62995d7",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "DEDA2762-5AAF-3685-9513-27727BEF64C6",
+  "executable_sha256": "a679054b98a7fe354cc1edd11c39b615f631e63c52abad9dc6efb83a36ce1b2f",
+  "dwarf_sha256": "908c76b90dcc4eb9da5cc73fe9798694c8a9642d518e3d0bf18617467723b85c",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4446": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4447-Konrad.ipa",
+      "bytes": 637224848,
+      "sha256": "69a194ec07bf807ab06e47740e41919ef0453ce7baefd8e314b93536e8b6f430",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4447-dSYM.zip",
+      "bytes": 13520950,
+      "sha256": "69015a16409b9d1725e9995bb1560f4efa6dcf1dd5e11f4c2f73aa65f7617c8b",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "Pending; update only from physical build4447 evidence.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA."
+}

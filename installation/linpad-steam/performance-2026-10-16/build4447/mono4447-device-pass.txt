@@ -1,0 +1,34 @@
+1: Fri Oct 16 11:57:07 UTC 2026
+2: /opt/fex/FEX-apple-m1-munmap: OK
+3: /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so: OK
+4: /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so: OK
+5: /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed/mscorlib.dll: OK
+6: /opt/mono-init/data/Managed/mscorlib.dll: OK
+7: /opt/mono-init/probe.new: OK
+8: /opt/mono-init/stack-limits-probe.new: OK
+9: MONO_DEVICE_CONFIG SDL=wayland FEX_MULTIBLOCK=unset LD_PRELOAD=unset
+10: STACK_LIMITS local=0x808007fff91c base=0x808000000000 size=0x8000000 soft=0x8000000 hard=0xffffffffffffffff
+11: STACK_LIMITS MAP 808007800000-808008000000 rw-p 00000000 00:00 0          
+12: STACK_LIMITS PASS contains_local=1 within_soft_limit=1 one_mapping=1 mapping_bounded=1
+13: STACK_LIMITS_EXIT=0
+14: MONO_DEVICE_BEGIN flags=0
+15: MONO_PROBE MODE stage=mono sdl=0x0 order=before pid=251
+16: MONO_PROBE 546068.760 MONO_LOAD_BEGIN
+17: MONO_PROBE 546068.813 MONO_LOAD_END
+18: MONO_PROBE 546068.820 MONO_JIT_INIT_BEGIN
+19: MONO_PROBE MONO_JIT_INIT_END domain=0xce182d80
+20: MONO_PROBE 546077.744 PASS
+21: MONO_DEVICE_EXIT flags=0 code=0
+22: MONO_DEVICE_BEGIN flags=3221
+23: MONO_PROBE MODE stage=mono sdl=0x3221 order=before pid=268
+24: MONO_PROBE 546077.979 UNITY_LOAD_BEGIN
+25: MONO_PROBE 546078.536 SDL_INIT_BEGIN
+26: MONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol: _udev_device_get_action
+27: MONO_PROBE 546080.347 MONO_LOAD_BEGIN
+28: MONO_PROBE 546080.522 MONO_LOAD_END
+29: MONO_PROBE 546080.544 MONO_JIT_INIT_BEGIN
+30: MONO_PROBE MONO_JIT_INIT_END domain=0xcb902d80
+31: MONO_PROBE 546097.031 PASS
+32: MONO_DEVICE_EXIT flags=3221 code=0
+33: Fri Oct 16 11:57:36 UTC 2026
+34: MONO_DEVICE_SUITE_EXIT=0
