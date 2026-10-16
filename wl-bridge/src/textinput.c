@@ -152,10 +152,12 @@ void text_input_focus_changed(struct server *s, struct surface *surface) {
     sync_host(s);
 }
 
-static bool is_modifier(uint32_t keycode) {
+/* The keys that edit text: for a field that is not multiline the host sends Return and
+ * Tab as key presses, and Backspace is how it deletes. Only their press has to wait for
+ * the app, or text committed after them could be applied before the edit they make. */
+static bool key_edits_text(uint32_t keycode) {
     switch (keycode) {
-    case KEY_LEFTCTRL: case KEY_RIGHTCTRL: case KEY_LEFTSHIFT: case KEY_RIGHTSHIFT:
-    case KEY_LEFTALT: case KEY_RIGHTALT: case KEY_LEFTMETA: case KEY_RIGHTMETA: case KEY_CAPSLOCK:
+    case KEY_BACKSPACE: case KEY_TAB: case KEY_ENTER: case KEY_KPENTER:
         return true;
     default:
         return false;
@@ -189,8 +191,12 @@ static void deliver(struct server *s, struct pending_input *in) {
                                               in->begin, in->end);
         zwp_text_input_v3_send_done(ti->resource, ti->commits);
     }
-    /* Releases and modifiers edit nothing; waiting after them would only add lag. */
-    waiting_for_app = ti && (!in->is_key || (in->pressed && !is_modifier(in->keycode)));
+    /* An update always waits for the app to take it in. A key press waits only when it
+     * edits text (Return, Tab, Backspace): a key that changes no text is followed by no
+     * request to acknowledge, so waiting after it would only hold the queue for
+     * ORDER_TIMEOUT_MS -- a release and every later key arriving up to a quarter second
+     * late, which a game feels at once. */
+    waiting_for_app = ti && (!in->is_key || (in->pressed && key_edits_text(in->keycode)));
     waiting_since = now_ms();
 }
 

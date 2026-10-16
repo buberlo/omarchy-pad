@@ -105,6 +105,9 @@ static void handle_line(struct server *s, char *line) {
     } else if (strcmp(cmd, "leave") == 0) {
         seat_pointer_leave(s);
     } else if (strcmp(cmd, "key") == 0) {
+        /* One line per key at -v, like "keymap:": what the host sent, and whether it went
+         * to the app as a key code at all (host-side text input sends "ime" instead). */
+        log_msg(s, "key %u %s", (uint32_t) strtoul(argv[1], NULL, 10), ARGI(2) != 0 ? "down" : "up");
         text_input_key(s, (uint32_t) strtoul(argv[1], NULL, 10), ARGI(2) != 0);
     } else if (strcmp(cmd, "text") == 0 && argc > 1) {
         unescape(argv[1]);
