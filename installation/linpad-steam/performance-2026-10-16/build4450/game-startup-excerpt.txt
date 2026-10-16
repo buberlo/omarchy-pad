@@ -1,0 +1,8 @@
+1: Fri Oct 16 13:18:29 UTC 2026
+3: 2026-10-16T13:14:05.203Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+7: 2026-10-16T13:14:11.416Z|0xcc410540|- Loaded All Assemblies, in  5.264 seconds
+18: 2026-10-16T13:14:24.491Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+27: 2026-10-16T13:14:47.114Z|0xcc410540|Steam failed to initialize
+32: 2026-10-16T13:14:53.196Z|0xcc410540|Loaded saved language code 'DE'
+33: 2026-10-16T13:14:53.198Z|0xcc410540|Restored language code 'DE'
+40: 2026-10-16T13:15:54.300Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1

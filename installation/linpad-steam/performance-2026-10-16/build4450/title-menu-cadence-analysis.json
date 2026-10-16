@@ -1,0 +1,31 @@
+{
+  "metric": "composited_game_view_delivery_cadence",
+  "view_id": 1,
+  "captured_wall_seconds": 30,
+  "wall_clock_resolution_seconds": 1,
+  "frames_observed": 210,
+  "other_view_rows_excluded": 0,
+  "full_window_rate_approx_fps": 7.0,
+  "active_span_seconds": 29.815,
+  "active_span_rate_fps": 7.009894348482308,
+  "interval_ms": {
+    "p50": 142,
+    "p95": 149,
+    "p99": 151,
+    "max": 184
+  },
+  "first_timestamp_ms": 551103996,
+  "last_timestamp_ms": 551133811,
+  "first_sequence": 3183,
+  "last_sequence": 3392,
+  "damage_dimensions_observed": [
+    [
+      659,
+      540
+    ]
+  ],
+  "sequence_discontinuities": [],
+  "warnings": [],
+  "interpretation": "Full-window rate includes observed idle time; active-span rate must not replace it. Damage dimensions are not swapchain extent. This is not GPU render duration or independently verified physical display FPS.",
+  "qualification": "Static title menu. Parent verified the game foreground before and after the measured interval, with no window switch during it. Compositor delivery cadence only; no gameplay/GPU FPS or matched improvement claim."
+}

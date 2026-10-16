@@ -1558,6 +1558,236 @@
       "sha256": "c2d6768f339844b7ef978c48902bdec235753ea0fdf3a4401412ec48fd4d5683"
     },
     {
+      "path": "build4450/REPOSITORY-SHA256SUMS",
+      "bytes": 4170,
+      "sha256": "c46c9cc1d5e607ba0f812b154ffb0c1725d403609b3570d202a253f315dd4482"
+    },
+    {
+      "path": "build4450/SHA256SUMS",
+      "bytes": 198,
+      "sha256": "43066134fb0849220853487a51909012760de1a2f52bed5abd6b94cee6b79322"
+    },
+    {
+      "path": "build4450/VERIFICATION.md",
+      "bytes": 4469,
+      "sha256": "6dc9b0d0ddb691bc26c076191944348640d89be80ef00ab48af924ba3f97ba97"
+    },
+    {
+      "path": "build4450/artifact-verification.log",
+      "bytes": 805,
+      "sha256": "230d8a9d9b7d3fb86b30142162e422ba73fc23688f8e3615fd574cf442856a83"
+    },
+    {
+      "path": "build4450/build-local.sh",
+      "bytes": 399,
+      "sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "path": "build4450/build-manifest.json",
+      "bytes": 5222,
+      "sha256": "bba47975dd2d4d8659365d29bc365dedf875ef31ceb6cbc2c563d26403bbcbb8"
+    },
+    {
+      "path": "build4450/build-summary.log",
+      "bytes": 711,
+      "sha256": "0c0f547533ee4f6c924d1cf4618702f181eb8800e74612217ee05cedcfa8777c"
+    },
+    {
+      "path": "build4450/curate-build4450.py",
+      "bytes": 19357,
+      "sha256": "5287d31c44a70f1bd03a662f0f902a4f88df9a78ae965670e4caea3d0e1b4eb6"
+    },
+    {
+      "path": "build4450/device-boot-excerpt.txt",
+      "bytes": 394,
+      "sha256": "4b9a2e2b22aab68d438dcecaf5ce0b3a867167cbcf6dedbee73186a808ebbcb3"
+    },
+    {
+      "path": "build4450/device-install-evidence.json",
+      "bytes": 314,
+      "sha256": "e1756ef634c69c92278c2f8146a8d6e2e059a195f1e6d2371ceb7069ed8b70f5"
+    },
+    {
+      "path": "build4450/device-scripts/hollow4450-frame-capture",
+      "bytes": 4266,
+      "sha256": "815d3d6f155cc62c9c0a31a3b4f797db639565e9b3385577ac68535ec2f9749c"
+    },
+    {
+      "path": "build4450/device-scripts/hollow4450-menu-cadence",
+      "bytes": 1908,
+      "sha256": "c92755a9e8e15fd148532d8fa33c63ad44cfba826c1c66e0c38b658803756105"
+    },
+    {
+      "path": "build4450/device-scripts/smc4450-probe",
+      "bytes": 809,
+      "sha256": "4af2f6620d2e6dc27815110ee6a392544e930516636b1b9bb3bf873084a620cf"
+    },
+    {
+      "path": "build4450/diagnostics/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "build4450/diagnostics/parser-tests.json",
+      "bytes": 411,
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432"
+    },
+    {
+      "path": "build4450/diagnostics/test-hollow-frame-parser.py",
+      "bytes": 1821,
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba"
+    },
+    {
+      "path": "build4450/game-startup-excerpt.txt",
+      "bytes": 602,
+      "sha256": "7651050df3aa981453b6dd5d628f8ee7a58a70ead46334f96131512faa12c390"
+    },
+    {
+      "path": "build4450/hollow-knight-title-menu-4450.png",
+      "bytes": 307198,
+      "sha256": "7feef8d504b8c2ab403c26fa4faf6c399d5d15b1ed7e4f0d8413cdf808c4d226"
+    },
+    {
+      "path": "build4450/hollow4450-cadence-title-menu.txt",
+      "bytes": 14144,
+      "sha256": "da62df7f182c0520216f55d0fc69b55158aac48fca45c765a276f1755bfdd5e3"
+    },
+    {
+      "path": "build4450/initial-build-manifest.json",
+      "bytes": 2052,
+      "sha256": "3624f3a6620e5bd0364f9fdcfb03613cf696be309b8ae571caca178bfead8537"
+    },
+    {
+      "path": "build4450/predecessor4449-end-excerpt.txt",
+      "bytes": 803,
+      "sha256": "94d0c2419893a8720a0d56f463915e4f542218e26629662a1d86041335419019"
+    },
+    {
+      "path": "build4450/profile/README.md",
+      "bytes": 1388,
+      "sha256": "b22a5b797f1c38d81b0aae1add208a1d2e4506fe672157ed99cc6a2d2458a718"
+    },
+    {
+      "path": "build4450/profile/analyze-paths.py",
+      "bytes": 2785,
+      "sha256": "6917a763588ffe86bdd2e7db0e1139301d5e385a564191da828a949bcf391308"
+    },
+    {
+      "path": "build4450/profile/loading-call-paths.json",
+      "bytes": 60190,
+      "sha256": "219d6856a209ef35b0722c33093f748a7fea96216899e82bdb7977670e6dc3c2"
+    },
+    {
+      "path": "build4450/profile/loading-summary.json",
+      "bytes": 11698,
+      "sha256": "b37614072bd30d98152423da0532543b6beeff0c8b68a463e6486aad929d50a0"
+    },
+    {
+      "path": "build4450/profile/provenance.json",
+      "bytes": 1987,
+      "sha256": "4014674310b8f6506f190882e5dd88d470ff765342972f105bfcaf24769178ab"
+    },
+    {
+      "path": "build4450/profile/source-audit.md",
+      "bytes": 6011,
+      "sha256": "64f705d6c2181f5778f48ca5de16ad79f37529bd6aaa425a6d02ddc3673740ae"
+    },
+    {
+      "path": "build4450/profile/startup-call-paths.json",
+      "bytes": 56188,
+      "sha256": "3fe27a6a0ab46c719683d8530c59924d2ab600e6186b802e2f933ceeb73cb98b"
+    },
+    {
+      "path": "build4450/profile/startup-summary.json",
+      "bytes": 11853,
+      "sha256": "edf85a80234097480f5e1c5a079f62c7d26fd6ccc1f12b1b70314e056a915001"
+    },
+    {
+      "path": "build4450/profile/trace-timing.json",
+      "bytes": 911,
+      "sha256": "36932b7842fa4c40f8acb8ef34edcfb6bfa5343a19adadc3bad7519a7077833b"
+    },
+    {
+      "path": "build4450/record-artifact.py",
+      "bytes": 4244,
+      "sha256": "fc0501249eab49bfc1179d392d5fbb1d779fc4446a5e044fa5b1b105f1a85a68"
+    },
+    {
+      "path": "build4450/release-notes.md",
+      "bytes": 3539,
+      "sha256": "e09de8b313dcfc581e51e398b23b0e607c9007e54f421ad0b2382902afd54042"
+    },
+    {
+      "path": "build4450/signed-entitlements.plist",
+      "bytes": 847,
+      "sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "path": "build4450/signing-excerpt.txt",
+      "bytes": 187,
+      "sha256": "848421632583a885e8d2851a0740f571e3a57cb708354adce97e68cf784bca5d"
+    },
+    {
+      "path": "build4450/smc4450-device-pass.txt",
+      "bytes": 234,
+      "sha256": "43ea6f2945371e561ba2a86b0a431ce95cc894100d3f9174a629130c9b9de116"
+    },
+    {
+      "path": "build4450/source-changes.patch",
+      "bytes": 24913,
+      "sha256": "69deae305e6088e01cf36b4d4de8829a21aafc4140224c63d276ac0343641000"
+    },
+    {
+      "path": "build4450/source-commit.txt",
+      "bytes": 41,
+      "sha256": "ac56b882044eceaffdddff1c46f7b978542a305f3bb2f38d4efcc591103d13aa"
+    },
+    {
+      "path": "build4450/source-evidence.json",
+      "bytes": 12404,
+      "sha256": "0297625e13916c65f37dc8e56db30ef4f324ada76e25f6600758552fc7ac0753"
+    },
+    {
+      "path": "build4450/source-snapshot/jit/jit.c",
+      "bytes": 85039,
+      "sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4"
+    },
+    {
+      "path": "build4450/source-snapshot/jit/jit_internal.h",
+      "bytes": 15382,
+      "sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+    },
+    {
+      "path": "build4450/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 31915,
+      "sha256": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
+    },
+    {
+      "path": "build4450/symbols.json",
+      "bytes": 266,
+      "sha256": "c68ea7fbdefdccadf3765a69dc7ba6413449f5a7ace2a76063c400f8d6df7110"
+    },
+    {
+      "path": "build4450/title-menu-cadence-analysis.json",
+      "bytes": 1112,
+      "sha256": "6201f166f38e6bdc2d0d445ab5b9b3d601228a6230b0c1ddac83a23310a61fcf"
+    },
+    {
+      "path": "build4450/title-menu-window.meta",
+      "bytes": 107,
+      "sha256": "f6ae9e4cbd99e5b8b0422fff4295fae964126258575dbd07b362226e9a744266"
+    },
+    {
+      "path": "build4450/title-menu-window.status.txt",
+      "bytes": 4043,
+      "sha256": "e1d8af0400fcb955d5dbe93c648a4dd6b095d75f6d0495d3f6e4f4af1453e677"
+    },
+    {
+      "path": "build4450/title-menu-window.txt",
+      "bytes": 5250,
+      "sha256": "89f2ecb15e5a869d2120ffc1dfad57031795c69a6ed9252d1988bb6e177adc11"
+    },
+    {
       "path": "egl-repair/ARCHIVE.md",
       "bytes": 471,
       "sha256": "1e94b1c17a68f637d1ae1402f7886e0066846f9e2f27761ffa9fd390d4971206"
@@ -2606,6 +2836,181 @@
       "path": "hollow4445-startup/unity-window-and-vulkan-excerpt.txt",
       "bytes": 1201,
       "sha256": "43c7cc81dc84aa422a15c17bb679c7bd2f51a71075c077571e09d5d98d2d91a6"
+    },
+    {
+      "path": "jit-ss-context-cache/README.md",
+      "bytes": 3074,
+      "sha256": "116342d292ef9fe497717b86392f493b6dd0e577d7c3297faea07aa8d6e62bd5"
+    },
+    {
+      "path": "jit-ss-context-cache/SHA256SUMS",
+      "bytes": 3379,
+      "sha256": "782cddadae6c8d5a30e6f174c47be4e85c3fe955c962f9b9d442b1135eaf182e"
+    },
+    {
+      "path": "jit-ss-context-cache/archive-jit-ss-context-cache.py",
+      "bytes": 9546,
+      "sha256": "ce62911cf6d680d1f696da547a4411527d85c326da1319008b6585fe6e425fcd"
+    },
+    {
+      "path": "jit-ss-context-cache/documentation-change.patch",
+      "bytes": 3003,
+      "sha256": "f732aa13031967e9756c179e7ade33a473b2d03f0c5254ae47a7952ba91cbd98"
+    },
+    {
+      "path": "jit-ss-context-cache/documentation/jit/DESIGN.md",
+      "bytes": 24098,
+      "sha256": "4175d8b916b5ba854910883ab28f512db266e12909cd9abece11f538ea7c9ed5"
+    },
+    {
+      "path": "jit-ss-context-cache/documentation/tests/manual/steam-compat/README.md",
+      "bytes": 8110,
+      "sha256": "02acb7ca245376d054a5854f3ffe08a4b8b7b0fcd340e554d55d0b5b87c55281"
+    },
+    {
+      "path": "jit-ss-context-cache/host/README.md",
+      "bytes": 2229,
+      "sha256": "919268408c5784be83b0befbb79dd4373ffac47888574da4a0fc4e4d8b79a479"
+    },
+    {
+      "path": "jit-ss-context-cache/host/benchmark.txt",
+      "bytes": 139,
+      "sha256": "2be1d29b830730a74e292a1ff3b464e095099a00f2ecc6e2617575ba9f7ea145"
+    },
+    {
+      "path": "jit-ss-context-cache/host/context-benchmark.txt",
+      "bytes": 182,
+      "sha256": "b9e36bd2d47f173ed26df52ba20af0e7ec43793a146ae495f858fd7fc9323a8d"
+    },
+    {
+      "path": "jit-ss-context-cache/host/independent-graphics-review.json",
+      "bytes": 745,
+      "sha256": "3269b29adf3bc52ab3b9c33b16f2a5510647540158b7bd00e17d7fe643b42edb"
+    },
+    {
+      "path": "jit-ss-context-cache/host/independent-graphics-review.md",
+      "bytes": 2262,
+      "sha256": "a0cb160b0cf28126d74f6453e88a493e9c6f878c91df9063bd800bbef1433e4b"
+    },
+    {
+      "path": "jit-ss-context-cache/host/jit-ss-index-harness.c",
+      "bytes": 36018,
+      "sha256": "53db69482a202f0c0625d80df9c455428ca93d8a094349dc2a4223c4c2b606d0"
+    },
+    {
+      "path": "jit-ss-context-cache/host/lookup-benchmark.txt",
+      "bytes": 629,
+      "sha256": "997cc29791669dac178f973bed90728f4aa2698ec929f6eda988054abca9e1d9"
+    },
+    {
+      "path": "jit-ss-context-cache/host/precommit-source-provenance.json",
+      "bytes": 837,
+      "sha256": "aa37a231d51a9b4868716e7bb69b734dfae04b94af66786f07a7d29c7ce6d2e1"
+    },
+    {
+      "path": "jit-ss-context-cache/host/provenance.json",
+      "bytes": 2542,
+      "sha256": "de72855f681c50859c0f772f5596a2f976cbd42914f798d125c5f8cc4674ecbd"
+    },
+    {
+      "path": "jit-ss-context-cache/host/regression.txt",
+      "bytes": 296,
+      "sha256": "c5a8313d57367560ad4553da4acff0369aaaacb1e00dc4bdf2601ecf61e1a022"
+    },
+    {
+      "path": "jit-ss-context-cache/provenance.json",
+      "bytes": 10745,
+      "sha256": "16fc97ed874a6205fc89d906293becb11a8d1578f11f5aa80f468850643b626b"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/README.md",
+      "bytes": 971,
+      "sha256": "36c48fe14a36798e96a75c0ddf675184d4d61867c561639db05a7b018c756b4f"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/after-ss-context-mono-0-before-excerpt.txt",
+      "bytes": 2211,
+      "sha256": "2ec0104776fddf9daceeff2df98559b9b1a6d86fcc200247afe5941df0fcea61"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/after-ss-context-mono-3221-before-excerpt.txt",
+      "bytes": 2443,
+      "sha256": "3e2e1f433f7e2bc0bbafda25fd269c3b61d8934e4ace3600bf21814608b787ef"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/after-ss-context-mono-provenance.json",
+      "bytes": 1033,
+      "sha256": "f23daeb61b99a7e2072671f5ff565da7d633bfa348ca15876f046b6139a59eef"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/after-ss-context-mono-results.json",
+      "bytes": 5556,
+      "sha256": "1c9e8f9cc27e3f10e3fc925a49af5a5868e31515ece9d92c1862181272f0d186"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/cli-build-excerpt.txt",
+      "bytes": 541,
+      "sha256": "f9e9f5a04404950d162ddbb67549134373e158aa817e49594d4c876ce4499b9b"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/fallback-smc-jit.txt",
+      "bytes": 1060,
+      "sha256": "504bc71cca4768fcbca274751ea4d633c925587e7b1a451da110cdf4efce50fc"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/fallback-smc-tier2.txt",
+      "bytes": 1067,
+      "sha256": "5a7f0e65dc33ad7e97e09b98535465bb985635eed37037d09cb6cce6ed7cd7ef"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/smc-jit.txt",
+      "bytes": 240,
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/smc-provenance.json",
+      "bytes": 735,
+      "sha256": "1b042508ee08525394a7f2d73b6fb220ae8d7d1f0825204272105624795334b5"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/smc-results.json",
+      "bytes": 1337,
+      "sha256": "1d92708f2bc530933eb4a4ca2a35aa1a6334b5834669a12e2f1ae48a5d1f0dbc"
+    },
+    {
+      "path": "jit-ss-context-cache/runtime-controls/smc-tier2.txt",
+      "bytes": 240,
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212"
+    },
+    {
+      "path": "jit-ss-context-cache/source-change.patch",
+      "bytes": 25216,
+      "sha256": "d516670c1c38e52e91e169d9e15aca2f7e902fd9625a684ab443ec871bd866d7"
+    },
+    {
+      "path": "jit-ss-context-cache/source/jit/jit.c",
+      "bytes": 85039,
+      "sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4"
+    },
+    {
+      "path": "jit-ss-context-cache/source/jit/jit_internal.h",
+      "bytes": 15382,
+      "sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+    },
+    {
+      "path": "jit-ss-context-cache/source/tests/arm64-insn/smc.c",
+      "bytes": 1101,
+      "sha256": "eba5f0ee3f28ba79f286314d0661bcbbaa51d1e8a785d6b363602dcaeb79ae10"
+    },
+    {
+      "path": "jit-ss-context-cache/source/tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "bytes": 1396,
+      "sha256": "e0905888b0342816bb409c4d5a4e1620c5acdc40544844da75693cc032ea815c"
+    },
+    {
+      "path": "jit-ss-context-cache/source/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 31915,
+      "sha256": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
     },
     {
       "path": "jit-ss-growth/README.md",

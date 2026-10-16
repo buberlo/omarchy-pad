@@ -1,0 +1,50 @@
+{
+  "build": "4450",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "f93f14493b4d1b38f5e42b97613237891c1e9b48",
+  "source_base": "a12ac91bc69ca75097cb3125f210d4e80c2bde5f",
+  "source_files": [
+    {
+      "path": "jit/jit.c",
+      "sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
+    }
+  ],
+  "source_patch_sha256": "69deae305e6088e01cf36b4d4de8829a21aafc4140224c63d276ac0343641000",
+  "build_verified": true,
+  "build_log_sha256": "57a1f3079a136e8cc643dba5b936c8de36b154e54341da7af58079326ea4634a",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "5FB3CB79-8481-3307-97C7-5EEFD91C69D2",
+  "executable_sha256": "7aaf5327b3bf870d2190089c9c000bb155246634e9254cb50344150cc3a16967",
+  "dwarf_sha256": "b5f0d9c42508d0e55801ce04c7aeafe3b563a3f40f979e4e4e925bde78dd6c28",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4449": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4450-Konrad.ipa",
+      "bytes": 637223916,
+      "sha256": "2a54d8a34686f909b3259580d43c6a40d2699848a277b716f10693b0dd5e5066",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4450-dSYM.zip",
+      "bytes": 13523022,
+      "sha256": "1559dcd2b9e41f976c0ae6a93b484bd28deae3c24d109e3e5f35d7d5f653e2c7",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "Pending; update only from physical build4450 evidence.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA."
+}

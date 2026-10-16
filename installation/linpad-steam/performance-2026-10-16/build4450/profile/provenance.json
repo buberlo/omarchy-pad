@@ -1,0 +1,57 @@
+{
+  "build": 4450,
+  "source_commit": "f93f1449",
+  "executable_uuid": "5FB3CB79-8481-3307-97C7-5EEFD91C69D2",
+  "host_pid": 21521,
+  "game_guest_pid": 271,
+  "trace_start_utc": "2026-10-16T13:14:45.059Z",
+  "trace_end_utc": "2026-10-16T13:14:50.844Z",
+  "scope": "Read-only analysis of already-recorded own-app CPU samples and local sources; no device actions or runtime changes.",
+  "files": [
+    {
+      "path": "work/performance/build4450/startup-profile-samples.xml",
+      "bytes": 1734158,
+      "sha256": "9eb7e02cd999303e146b4d96ea423669c033f798fbc3d2d127a1067de5992635"
+    },
+    {
+      "path": "work/performance/reports/hollow4450-short-1.txt",
+      "bytes": 4323,
+      "sha256": "839f1fe6943a38beb4a1babe6b944afa7152132c4dd8da279656b83a54d45344"
+    },
+    {
+      "path": "work/LinPad/jit/jit.c",
+      "bytes": 85039,
+      "sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4"
+    },
+    {
+      "path": "work/LinPad/jit/translate.c",
+      "bytes": 54761,
+      "sha256": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061"
+    },
+    {
+      "path": "work/LinPad/jit/jit_internal.h",
+      "bytes": 15382,
+      "sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+    },
+    {
+      "path": "work/LinPad/asbestos/asbestos.c",
+      "bytes": 37834,
+      "sha256": "85a5f47e10f42d9672a952bc92466bed5bf8080acc02d0f269e14c2bf90283d9"
+    },
+    {
+      "path": "work/LinPad/asbestos/guest-arm64/gen.c",
+      "bytes": 325984,
+      "sha256": "8dbab3cf4129b4a8c68bcbbe34e2f8fe6c2c96fdb29b329d09157efda1d67875"
+    },
+    {
+      "path": "work/LinPad/asbestos/guest-arm64/gadgets-aarch64/entry.S",
+      "bytes": 17947,
+      "sha256": "b09d42fa3b815aaeb4b218926b49b9bb7c2a696c41b17a8544b68d1d8c48caf1"
+    },
+    {
+      "path": "work/performance/build4450/loading-profile-samples.xml",
+      "bytes": 3525193,
+      "sha256": "5429a89c410fddbb0b47c6563ac5e6cd0b10f20deab0cd5e766344730e7fc242"
+    }
+  ]
+}

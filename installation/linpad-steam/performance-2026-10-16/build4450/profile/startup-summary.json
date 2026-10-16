@@ -1,0 +1,460 @@
+{
+  "input_sha256": "9eb7e02cd999303e146b4d96ea423669c033f798fbc3d2d127a1067de5992635",
+  "scope": "Statistical CPU samples from the already-recorded own-app trace. Weighted sample time is not wall time or game FPS.",
+  "samples": 6226,
+  "missing_backtrace_rows": 0,
+  "sample_weight_seconds": 6.226,
+  "sample_span_seconds": 5.443714416,
+  "top_self": [
+    {
+      "function": "_platform_memmove",
+      "weighted_seconds": 1.01,
+      "percent": 16.222293607452617
+    },
+    {
+      "function": "jit_run",
+      "weighted_seconds": 0.147,
+      "percent": 2.3610664953421137
+    },
+    {
+      "function": "gadget_step",
+      "weighted_seconds": 0.145,
+      "percent": 2.3289431416639896
+    },
+    {
+      "function": "lookup_lockfree",
+      "weighted_seconds": 0.145,
+      "percent": 2.3289431416639896
+    },
+    {
+      "function": "get_block",
+      "weighted_seconds": 0.133,
+      "percent": 2.136203019595246
+    },
+    {
+      "function": "fiber_enter_raw",
+      "weighted_seconds": 0.131,
+      "percent": 2.104079665917122
+    },
+    {
+      "function": "__psynch_mutexwait",
+      "weighted_seconds": 0.112,
+      "percent": 1.7989078059749437
+    },
+    {
+      "function": "ss_get",
+      "weighted_seconds": 0.11,
+      "percent": 1.7667844522968197
+    },
+    {
+      "function": "fiber_exit",
+      "weighted_seconds": 0.11,
+      "percent": 1.7667844522968197
+    },
+    {
+      "function": "__psynch_mutexdrop",
+      "weighted_seconds": 0.102,
+      "percent": 1.6382910375843238
+    },
+    {
+      "function": "gadget_load64_imm_signed_fast",
+      "weighted_seconds": 0.077,
+      "percent": 1.2367491166077738
+    },
+    {
+      "function": "mincore",
+      "weighted_seconds": 0.077,
+      "percent": 1.2367491166077738
+    },
+    {
+      "function": "gadget_dmb",
+      "weighted_seconds": 0.073,
+      "percent": 1.172502409251526
+    },
+    {
+      "function": "gadget_load32_imm_signed_fast",
+      "weighted_seconds": 0.07,
+      "percent": 1.12431737873434
+    },
+    {
+      "function": "get_block_slow",
+      "weighted_seconds": 0.062,
+      "percent": 0.9958239640218439
+    }
+  ],
+  "top_inclusive": [
+    {
+      "function": "_pthread_start",
+      "weighted_seconds": 4.193,
+      "percent": 67.34661098618696
+    },
+    {
+      "function": "thread_start",
+      "weighted_seconds": 4.193,
+      "percent": 67.34661098618696
+    },
+    {
+      "function": "task_thread",
+      "weighted_seconds": 4.128,
+      "percent": 66.30260199164793
+    },
+    {
+      "function": "task_run_current",
+      "weighted_seconds": 4.128,
+      "percent": 66.30260199164793
+    },
+    {
+      "function": "cpu_run_to_interrupt",
+      "weighted_seconds": 3.723,
+      "percent": 59.79762287182782
+    },
+    {
+      "function": "jit_run",
+      "weighted_seconds": 2.485,
+      "percent": 39.91326694506907
+    },
+    {
+      "function": "gadget_step",
+      "weighted_seconds": 1.845,
+      "percent": 29.633793768069385
+    },
+    {
+      "function": "_platform_memmove",
+      "weighted_seconds": 1.01,
+      "percent": 16.222293607452617
+    },
+    {
+      "function": "ss_get_cached",
+      "weighted_seconds": 0.467,
+      "percent": 7.500803083841953
+    },
+    {
+      "function": "get_block",
+      "weighted_seconds": 0.445,
+      "percent": 7.1474461933825895
+    },
+    {
+      "function": "ss_get",
+      "weighted_seconds": 0.429,
+      "percent": 6.890459363957597
+    },
+    {
+      "function": "handle_interrupt",
+      "weighted_seconds": 0.402,
+      "percent": 6.456794089302924
+    },
+    {
+      "function": "get_block_slow",
+      "weighted_seconds": 0.312,
+      "percent": 5.011243173787343
+    },
+    {
+      "function": "fiber_enter",
+      "weighted_seconds": 0.217,
+      "percent": 3.4853838740764536
+    },
+    {
+      "function": "lookup_lockfree",
+      "weighted_seconds": 0.145,
+      "percent": 2.3289431416639896
+    }
+  ],
+  "threads": [
+    {
+      "thread": "FEX-apple-m-271 (0x426ca5) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 5.247,
+      "percent": 84.2756183745583,
+      "top_self": [
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.953,
+          "percent": 15.306778027626084
+        },
+        {
+          "function": "gadget_step",
+          "weighted_seconds": 0.134,
+          "percent": 2.1522646964343077
+        },
+        {
+          "function": "jit_run",
+          "weighted_seconds": 0.134,
+          "percent": 2.1522646964343077
+        },
+        {
+          "function": "fiber_enter_raw",
+          "weighted_seconds": 0.127,
+          "percent": 2.039832958560874
+        }
+      ]
+    },
+    {
+      "thread": "Finalizer-288 (0x426cbd) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.187,
+      "percent": 3.0035335689045937,
+      "top_self": [
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.02,
+          "percent": 0.32123353678123995
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.019,
+          "percent": 0.30517185994217794
+        },
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.015,
+          "percent": 0.24092515258592997
+        },
+        {
+          "function": "jit_invalidate_range",
+          "weighted_seconds": 0.009,
+          "percent": 0.144555091551558
+        }
+      ]
+    },
+    {
+      "thread": "threaded-ml-328 (0x426d3a) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.171,
+      "percent": 2.7465467394796015,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.022,
+          "percent": 0.35335689045936397
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.019,
+          "percent": 0.30517185994217794
+        },
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.016,
+          "percent": 0.25698682942499196
+        },
+        {
+          "function": "poll",
+          "weighted_seconds": 0.01,
+          "percent": 0.16061676839061997
+        }
+      ]
+    },
+    {
+      "thread": "FEX-apple-m-329 (0x426d3b) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.16,
+      "percent": 2.5698682942499196,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.023,
+          "percent": 0.369418567298426
+        },
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.017,
+          "percent": 0.27304850626405397
+        },
+        {
+          "function": "lookup_lockfree",
+          "weighted_seconds": 0.016,
+          "percent": 0.25698682942499196
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.015,
+          "percent": 0.24092515258592997
+        }
+      ]
+    },
+    {
+      "thread": "head-413 (0x426fa7) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.091,
+      "percent": 1.461612592354642,
+      "top_self": [
+        {
+          "function": "mincore",
+          "weighted_seconds": 0.077,
+          "percent": 1.2367491166077738
+        },
+        {
+          "function": "mm_footprint",
+          "weighted_seconds": 0.007,
+          "percent": 0.11243173787343398
+        },
+        {
+          "function": "mem_pt",
+          "weighted_seconds": 0.006,
+          "percent": 0.09637006103437198
+        },
+        {
+          "function": "0x1295540a1",
+          "weighted_seconds": 0.001,
+          "percent": 0.016061676839061997
+        }
+      ]
+    },
+    {
+      "thread": "pulseaudio-32 (0x4268ae) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.077,
+      "percent": 1.2367491166077738,
+      "top_self": [
+        {
+          "function": "poll",
+          "weighted_seconds": 0.021,
+          "percent": 0.33729521362030196
+        },
+        {
+          "function": "kevent",
+          "weighted_seconds": 0.01,
+          "percent": 0.16061676839061997
+        },
+        {
+          "function": "__fcntl",
+          "weighted_seconds": 0.007,
+          "percent": 0.11243173787343398
+        },
+        {
+          "function": "close",
+          "weighted_seconds": 0.005,
+          "percent": 0.08030838419530999
+        }
+      ]
+    },
+    {
+      "thread": "Main Thread (0x42654b) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.042,
+      "percent": 0.6745904272406039,
+      "top_self": [
+        {
+          "function": "AG::Graph::UpdateStack::update()",
+          "weighted_seconds": 0.016,
+          "percent": 0.25698682942499196
+        },
+        {
+          "function": "AG::Graph::propagate_dirty(AG::AttributeID)",
+          "weighted_seconds": 0.002,
+          "percent": 0.032123353678123995
+        },
+        {
+          "function": "_xzm_free_tc",
+          "weighted_seconds": 0.001,
+          "percent": 0.016061676839061997
+        },
+        {
+          "function": "swift_unknownObjectRelease",
+          "weighted_seconds": 0.001,
+          "percent": 0.016061676839061997
+        }
+      ]
+    },
+    {
+      "thread": "ish-jit-tick (0x426836) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.04,
+      "percent": 0.6424670735624799,
+      "top_self": [
+        {
+          "function": "ticker_main",
+          "weighted_seconds": 0.024,
+          "percent": 0.38548024413748794
+        },
+        {
+          "function": "__semwait_signal",
+          "weighted_seconds": 0.01,
+          "percent": 0.16061676839061997
+        },
+        {
+          "function": "_pthread_exit_if_canceled",
+          "weighted_seconds": 0.003,
+          "percent": 0.04818503051718599
+        },
+        {
+          "function": "pthread_mutex_lock",
+          "weighted_seconds": 0.002,
+          "percent": 0.032123353678123995
+        }
+      ]
+    },
+    {
+      "thread": "pipe-sink-51 (0x4268d9) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.03,
+      "percent": 0.48185030517185995,
+      "top_self": [
+        {
+          "function": "kevent",
+          "weighted_seconds": 0.005,
+          "percent": 0.08030838419530999
+        },
+        {
+          "function": "poll",
+          "weighted_seconds": 0.005,
+          "percent": 0.08030838419530999
+        },
+        {
+          "function": "close",
+          "weighted_seconds": 0.004,
+          "percent": 0.06424670735624799
+        },
+        {
+          "function": "0x118e04c15",
+          "weighted_seconds": 0.001,
+          "percent": 0.016061676839061997
+        }
+      ]
+    },
+    {
+      "thread": "ps-406 (0x426f98) (Linux for iPad, pid: 21521)",
+      "weighted_seconds": 0.03,
+      "percent": 0.48185030517185995,
+      "top_self": [
+        {
+          "function": "mem_pt",
+          "weighted_seconds": 0.011,
+          "percent": 0.17667844522968199
+        },
+        {
+          "function": "mem_next_page",
+          "weighted_seconds": 0.007,
+          "percent": 0.11243173787343398
+        },
+        {
+          "function": "mm_vm_counts",
+          "weighted_seconds": 0.005,
+          "percent": 0.08030838419530999
+        },
+        {
+          "function": "__openat",
+          "weighted_seconds": 0.001,
+          "percent": 0.016061676839061997
+        }
+      ]
+    }
+  ],
+  "ss_invalidation_paths": [
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "discard_host_run",
+        "mem_discard",
+        "sys_madvise",
+        "handle_interrupt"
+      ],
+      "weighted_seconds": 0.007
+    },
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weighted_seconds": 0.001
+    }
+  ]
+}

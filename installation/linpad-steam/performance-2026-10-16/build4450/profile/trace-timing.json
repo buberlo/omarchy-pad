@@ -1,0 +1,22 @@
+{
+  "startup": {
+    "start-date": "2026-10-16T21:14:45.059+08:00",
+    "end-date": "2026-10-16T21:14:50.844+08:00",
+    "duration": "5.785060",
+    "end-reason": "Time limit reached",
+    "template-name": "Time Profiler",
+    "time-limit": "5 seconds",
+    "raw_toc_sha256": "af63c4f60b22f47cb9ea4eedad8a8df072458d65285bbc2f22e0920086af856a",
+    "excluded": "Device identifiers, container paths, process inventory and unrelated table descriptions."
+  },
+  "loading": {
+    "start-date": "2026-10-16T21:17:31.201+08:00",
+    "end-date": "2026-10-16T21:17:37.094+08:00",
+    "duration": "5.892682",
+    "end-reason": "Time limit reached",
+    "template-name": "Time Profiler",
+    "time-limit": "5 seconds",
+    "raw_toc_sha256": "60374e53e0a7ad4d80668fcd6841db895df33838387c9f43e1f7510267553ad4",
+    "excluded": "Device identifiers, container paths, process inventory and unrelated table descriptions."
+  }
+}

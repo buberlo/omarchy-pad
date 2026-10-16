@@ -1,0 +1,10 @@
+{
+  "outcome": "success",
+  "command_type": "devicectl.device.install.app",
+  "installed_bundle_ids": [
+    "com.konradkern.linpad"
+  ],
+  "raw_install_sha256": "aec7c6ac859d4ad410d6800048a597e8b9f87fb7ae9d3f7439a7f03f60897158",
+  "raw_install_bytes": 980,
+  "raw_identifiers_and_container_paths_excluded": true
+}

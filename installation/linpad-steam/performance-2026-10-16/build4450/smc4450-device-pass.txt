@@ -1,0 +1,9 @@
+1: Fri Oct 16 13:13:11 UTC 2026
+2: /tmp/smc-arm64: OK
+3: smc ok
+4: SMC_DEVICE_EXIT=0
+5: /tmp/jit-ss-smc-probe: OK
+6: jit-ss-smc PASS checks=200 failures=0
+7: SS_SMC_DEVICE_EXIT=0
+8: FRAME_LOG_STARTED=1
+9: Fri Oct 16 13:13:12 UTC 2026

@@ -1,0 +1,123 @@
+{
+  "build": "4450",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "f93f14493b4d1b38f5e42b97613237891c1e9b48",
+  "source_base": "a12ac91bc69ca75097cb3125f210d4e80c2bde5f",
+  "source_files": [
+    {
+      "path": "jit/jit.c",
+      "sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
+    }
+  ],
+  "source_patch_sha256": "69deae305e6088e01cf36b4d4de8829a21aafc4140224c63d276ac0343641000",
+  "build_verified": true,
+  "build_log_sha256": "57a1f3079a136e8cc643dba5b936c8de36b154e54341da7af58079326ea4634a",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "5FB3CB79-8481-3307-97C7-5EEFD91C69D2",
+  "executable_sha256": "7aaf5327b3bf870d2190089c9c000bb155246634e9254cb50344150cc3a16967",
+  "dwarf_sha256": "b5f0d9c42508d0e55801ce04c7aeafe3b563a3f40f979e4e4e925bde78dd6c28",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4449": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4450-Konrad.ipa",
+      "bytes": 637223916,
+      "sha256": "2a54d8a34686f909b3259580d43c6a40d2699848a277b716f10693b0dd5e5066",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4450-dSYM.zip",
+      "bytes": 13523022,
+      "sha256": "1559dcd2b9e41f976c0ae6a93b484bd28deae3c24d109e3e5f35d7d5f653e2c7",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "Frozen checkpoint. Build 4450 physical boot/SMC and visible title menu qualify; bounded foreground compositor cadence is recorded. User reports audible but badly stuttering menu music. Normal gameplay and playable performance remain pending.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA.",
+  "curated_at_utc": "2026-10-16T13:28:23.401268+00:00",
+  "curation_frozen": true,
+  "physical": {
+    "installed": true,
+    "launched": true,
+    "native_jit_512MiB": true,
+    "boot_completed": true,
+    "ordinary_smc": {
+      "status": "passed",
+      "rewrites": 200,
+      "exit": 0,
+      "source_sha256": "beb1697ddac0fa2d2c91ca477cd7ba90d6094d91f2114c773bb0e6db6c2c0b53",
+      "evidence": "smc4450-device-pass.txt"
+    },
+    "fallback_smc": {
+      "status": "passed",
+      "checks": 200,
+      "failures": 0,
+      "exit": 0,
+      "source_sha256": "beb1697ddac0fa2d2c91ca477cd7ba90d6094d91f2114c773bb0e6db6c2c0b53",
+      "evidence": "smc4450-device-pass.txt"
+    },
+    "game_rendered_frame": true,
+    "gameplay": "pending",
+    "audio_playback": {
+      "status": "user-reported audible menu music",
+      "reported_date": "2026-10-16",
+      "quality": "User reports the menu music stutters badly; smooth or uninterrupted audio is not established.",
+      "evidence_type": "Direct user report relayed by parent; no audio recording or quantitative audio test."
+    },
+    "performance": "pending",
+    "visible_title_menu": {
+      "status": "observed",
+      "first_observation_utc_approx": "2026-10-16T13:20:48Z",
+      "screenshot": "hollow-knight-title-menu-4450.png",
+      "screenshot_sha256": "7feef8d504b8c2ab403c26fa4faf6c399d5d15b1ed7e4f0d8413cdf808c4d226",
+      "scope": "German title menu visible in unchanged physical-iPad mirror screenshot; observation time is not a first-frame latency measurement."
+    },
+    "bounded_title_menu_cadence": {
+      "start_utc": "2026-10-16T13:21:03Z",
+      "end_utc": "2026-10-16T13:21:33Z",
+      "view_id": 1,
+      "rows": 210,
+      "seconds": 30,
+      "composited_deliveries_per_second": 7.0,
+      "swapchain_extent": [
+        659,
+        540
+      ],
+      "foreground": "Parent confirmed no window switch during the measured interval; menu visible by13:20:48 and screenshot checked13:21:34 UTC.",
+      "pre_delay_seconds": {
+        "operator_before_wrapper": 15,
+        "wrapper": 5
+      },
+      "evidence": "title-menu-cadence-analysis.json",
+      "not_gameplay_fps": true
+    }
+  },
+  "predecessor_run": {
+    "build": "4449",
+    "operator_stop_utc": "2026-10-16T13:10:37Z/2026-10-16T13:10:40Z",
+    "operator_sent_signals": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "guest_pid": 366,
+    "total_frame_rows_observed": 5633,
+    "raw_report_sha256": "b60ff9679bc619f415b15e1ed4267da5fbd33029811f732d818b68da4cf05147",
+    "evidence": "predecessor4449-end-excerpt.txt",
+    "scope": "Prior build menu/setup run manually stopped to install 4450; no normal gameplay qualification or aggregate FPS estimate."
+  },
+  "initial_build_manifest_sha256": "3624f3a6620e5bd0364f9fdcfb03613cf696be309b8ae571caca178bfead8537",
+  "scope": "Large IPA/dSYM archives stay outside Git. No raw process/console inventories, device identifiers, provisioning-profile bytes or proprietary game inputs are copied."
+}

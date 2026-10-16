@@ -1,0 +1,15 @@
+1: Fri Oct 16 13:10:37 UTC 2026
+2: OPERATOR_REASON=Install_verified_per_context_SS_cache_to_reduce_shared_lock_contention
+217: 2026-10-16T12:48:07.963Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+250: 2026-10-16T12:51:16.853Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+258: 2026-10-16T12:56:44.040Z|0xcc410540|Restored language code 'DE'
+273: 2026-10-16T13:01:35.577Z|0xcc410540|Restored language code 'DE'
+279: 2026-10-16T13:09:20.313Z|0xcc410540|Making UI menu lean.
+281: Fri Oct 16 12:47:41 UTC 2026
+326: ishwl 49313.675: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+341: FRAME_ROWS
+342: 5633 /tmp/hollow4449-frames.txt
+343: OPERATOR_SENT_SIGTERM=366
+344: OPERATOR_SENT_SIGKILL=366
+345: NEXT_BOOT_FRAME_CAPTURE_READY=4450
+346: Fri Oct 16 13:10:40 UTC 2026
