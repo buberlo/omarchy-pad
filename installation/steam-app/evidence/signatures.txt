@@ -1,0 +1,48 @@
+# App group both apps are signed with (the shared Linux system)
+
+## com.konradkern.linpad
+$ codesign -d --entitlements - --xml "work/performance/steam-app-desktop/Payload/iSH ARM64.app" | plutil -p -
+  {
+    "application-identifier" => "K5TW9AU245.com.konradkern.linpad"
+    "com.apple.developer.kernel.extended-virtual-addressing" => true
+    "com.apple.developer.kernel.increased-memory-limit" => true
+    "com.apple.developer.team-identifier" => "K5TW9AU245"
+    "com.apple.developer.user-fonts" => [
+      0 => "app-usage"
+    ]
+    "com.apple.security.application-groups" => [
+      0 => "group.com.konradkern.linpad"
+    ]
+    "get-task-allow" => true
+    "keychain-access-groups" => [
+      0 => "K5TW9AU245.com.konradkern.linpad"
+    ]
+  }
+
+$ codesign -dv "work/performance/steam-app-desktop/Payload/iSH ARM64.app"
+  Identifier=com.konradkern.linpad
+  TeamIdentifier=K5TW9AU245
+
+## com.konradkern.linpad.steam
+$ codesign -d --entitlements - --xml "work/performance/steam-app-steam/Payload/LinPad Steam.app" | plutil -p -
+  {
+    "application-identifier" => "K5TW9AU245.com.konradkern.linpad.steam"
+    "com.apple.developer.kernel.extended-virtual-addressing" => true
+    "com.apple.developer.kernel.increased-memory-limit" => true
+    "com.apple.developer.team-identifier" => "K5TW9AU245"
+    "com.apple.developer.user-fonts" => [
+      0 => "app-usage"
+    ]
+    "com.apple.security.application-groups" => [
+      0 => "group.com.konradkern.linpad"
+    ]
+    "get-task-allow" => true
+    "keychain-access-groups" => [
+      0 => "K5TW9AU245.com.konradkern.linpad.steam"
+    ]
+  }
+
+$ codesign -dv "work/performance/steam-app-steam/Payload/LinPad Steam.app"
+  Identifier=com.konradkern.linpad.steam
+  TeamIdentifier=K5TW9AU245
+

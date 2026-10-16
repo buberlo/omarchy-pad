@@ -1,0 +1,114 @@
+#!/bin/sh
+# LinPad Steam: start the verified Steam launcher in Big Picture mode.
+#
+# The dedicated game app launches this through ishwl instead of the user typing a
+# command in a terminal, so it must never surprise the user with a bare failure:
+#
+#   steam-bigpicture [--geometry WxH] [--bigpicture|--classic] [steam args...]
+#
+#     --geometry WxH   size of the Xvnc screen and the viewer window (STEAM_GEOMETRY
+#                      for steam-local). Omitted: steam-local's own default, 1024x700,
+#                      which is the size the verified route was measured at.
+#     --bigpicture     force the gamepad UI and forget an earlier fallback.
+#     --classic        start Steam's normal desktop UI.
+#     --reset          forget the fallback marker and exit.
+#
+# Mode: /etc/linpad/steam-mode holds bigpicture (default) or desktop, so a user can
+# pin a mode without a rebuild. A marker file written after a failed gamepad-UI start
+# (/tmp/steam-bigpicture-fallback) keeps later launches on the classic UI until the
+# user asks for Big Picture again; the app reads both files to explain what started.
+#
+# Big Picture is Steam's -gamepadui (the Deck UI). If this Steam build rejects it the
+# client exits non-zero within a minute, and the script retries the classic UI once.
+set -u
+
+# The paths are overridable so the test in installation/steam-app/tests can run the whole
+# script without a guest. Nothing in the app sets them.
+STEAM=${LINPAD_STEAM_LAUNCHER:-/usr/local/bin/steam}
+MODE_FILE=${LINPAD_STEAM_MODE_FILE:-/etc/linpad/steam-mode}
+FALLBACK=${LINPAD_STEAM_FALLBACK:-/tmp/steam-bigpicture-fallback}
+STATUS=${LINPAD_STEAM_STATUS:-/tmp/steam-bigpicture-status}
+FALLBACK_WINDOW=60
+
+geometry=
+force=            # bigpicture, desktop or empty (the configured mode decides)
+while [ $# -gt 0 ]; do
+    case $1 in
+        --geometry) geometry=${2:-}; shift 2 || { echo "steam-bigpicture: --geometry needs WxH" >&2; exit 64; } ;;
+        --geometry=*) geometry=${1#--geometry=}; shift ;;
+        --bigpicture) force=bigpicture; shift ;;
+        --classic) force=desktop; shift ;;
+        --reset) rm -f "$FALLBACK"; echo "steam-bigpicture: fallback marker cleared"; exit 0 ;;
+        --) shift; break ;;
+        *) break ;;
+    esac
+done
+
+status() {
+    # One line for the app's game-mode UI; cheap and always overwritten.
+    printf '%s\n' "$1" > "$STATUS" 2>/dev/null || true
+}
+
+if [ ! -x "$STEAM" ]; then
+    status "missing"
+    echo "steam-bigpicture: $STEAM is not installed" >&2
+    exit 69
+fi
+
+if [ -n "$geometry" ]; then
+    case $geometry in
+        [0-9]*x[0-9]*) ;;
+        *) echo "steam-bigpicture: geometry must be WxH, got '$geometry'" >&2; exit 64 ;;
+    esac
+    width=${geometry%x*}
+    height=${geometry#*x}
+    if [ "$width" -lt 320 ] || [ "$height" -lt 240 ] ||
+       [ "$width" -gt 4096 ] || [ "$height" -gt 4096 ]; then
+        echo "steam-bigpicture: geometry '$geometry' is outside 320x240..4096x4096" >&2
+        exit 64
+    fi
+    export STEAM_GEOMETRY="$geometry"
+fi
+
+mode=bigpicture
+if [ -r "$MODE_FILE" ]; then
+    configured=$(tr -d ' \t\r\n' < "$MODE_FILE")
+    case $configured in
+        desktop) mode=desktop ;;
+        bigpicture|'') ;;
+        *) echo "steam-bigpicture: $MODE_FILE says '$configured'; using bigpicture" >&2 ;;
+    esac
+fi
+[ -n "$force" ] && mode=$force
+
+if [ "$mode" = desktop ]; then
+    status "desktop"
+    exec "$STEAM" "$@"
+fi
+
+if [ -e "$FALLBACK" ] && [ "$force" != bigpicture ]; then
+    # Big Picture failed before; do not make the user wait for it again.
+    status "desktop-fallback"
+    echo "steam-bigpicture: Big Picture failed earlier; starting the classic UI" >&2
+    exec "$STEAM" "$@"
+fi
+
+rm -f "$FALLBACK"
+status "bigpicture${STEAM_GEOMETRY:+ $STEAM_GEOMETRY}"
+echo "steam-bigpicture: starting Steam Big Picture${STEAM_GEOMETRY:+ at $STEAM_GEOMETRY}" >&2
+
+start=$(date +%s)
+"$STEAM" -gamepadui "$@"
+status_code=$?
+elapsed=$(( $(date +%s) - start ))
+
+if [ "$status_code" -ne 0 ] && [ "$elapsed" -lt "$FALLBACK_WINDOW" ]; then
+    # Almost certainly the client refusing -gamepadui, or failing to come up at all.
+    : > "$FALLBACK"
+    status "desktop-fallback"
+    echo "steam-bigpicture: Big Picture exited $status_code after ${elapsed}s; starting the classic UI" >&2
+    exec "$STEAM" "$@"
+fi
+
+status "exited $status_code"
+exit "$status_code"

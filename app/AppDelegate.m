@@ -465,6 +465,16 @@ static void RequestFastMode(BOOL afterBoot, void (^done)(BOOL on)) {
 @implementation AppDelegate
 
 - (int)boot {
+    // LinPad and LinPad Steam share one Linux system (the app group's roots/), and two
+    // kernels must never mount it at once. Taken here, before anything writes to it, and
+    // held until this process exits. Fails open: only a demonstrable holder stops a boot.
+    NSString *busy = nil;
+    if (!ISHSessionLockAcquire(&busy)) {
+        bootFailure = busy;
+        NSLog(@"not booting: %@", busy);
+        SetBootState(ISHBootPhaseFailed, 1, nil, busy);
+        return -EBUSY;
+    }
     if (Roots.instance.needsDefaultRoot) {
         // Classic UI (or no desktop): import synchronously; the launch screen stays up.
         NSError *error;
@@ -669,7 +679,9 @@ void SyncHostname(void) {
 }
 
 + (NSString *)bootFailureMessage {
-    return bootFailure;
+    // "Another app has the Linux system" outranks the generic failure text the callers set
+    // from the error code, so the shells can explain the one failure the user can fix.
+    return ISHSessionLockMessage() ?: bootFailure;
 }
 
 /// Runs `boot` now, or, when fast mode is automatic and possible, after asking StikDebug for

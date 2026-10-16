@@ -115,6 +115,15 @@ public protocol LinuxSystemPreparing: AnyObject {
     func scheduleSystemUpdate()
 }
 
+/// A host that can say another LinPad app holds the shared Linux system, so the shell can
+/// show that instead of a boot failure the user cannot act on. LinPad and LinPad Steam share
+/// one system through their app group; only one may run it at a time.
+@MainActor
+public protocol LinuxSystemBusyReporting: AnyObject {
+    /// A sentence naming the other app and what to do, or nil when this app owns the system.
+    var sessionBusyReason: String? { get }
+}
+
 /// Progress of the host's preparation, observed by the boot splash.
 @Observable @MainActor
 public final class LinuxSystemPreparation {

@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "AppGroup.h"
 #import "ISHShellExecutor.h"
 #import "Roots.h"
 #import "TerminalViewController.h"

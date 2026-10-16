@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- LinPad's Steam icon: a valve mark, drawn for this project rather than Valve's
+     artwork. The desktop's icon cache renders it once per style
+     (themes/guest/ish-icon-packs); without it the launcher falls back to the generic
+     game-controller symbol. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b2838"/>
+      <stop offset="1" stop-color="#0b1219"/>
+    </linearGradient>
+  </defs>
+  <rect x="1" y="1" width="46" height="46" rx="10" fill="url(#bg)" stroke="#66c0f4" stroke-opacity="0.35"/>
+  <circle cx="21" cy="27" r="9.5" fill="none" stroke="#c7d5e0" stroke-width="3"/>
+  <circle cx="34" cy="14" r="5" fill="none" stroke="#c7d5e0" stroke-width="3"/>
+  <path d="M27.2 21.1 30.6 17.6" stroke="#c7d5e0" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="21" cy="27" r="3.2" fill="#66c0f4"/>
+</svg>

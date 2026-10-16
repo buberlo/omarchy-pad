@@ -9,7 +9,7 @@ import UIKit
 /// boots the kernel afterwards (`AppDelegate.bootPhase()`); `preparation` mirrors that for
 /// the desktop's boot splash. Commands and terminals wait until the kernel runs.
 @MainActor
-final class ISHLinuxHost: LinuxGraphicsHost, LinuxSystemPreparing, FastModeControlling {
+final class ISHLinuxHost: LinuxGraphicsHost, LinuxSystemPreparing, LinuxSystemBusyReporting, FastModeControlling {
     let homeDirectory = "/root"
     private(set) var hostName: String
     let preparation = LinuxSystemPreparation(phase: .unpacking)
@@ -113,6 +113,10 @@ final class ISHLinuxHost: LinuxGraphicsHost, LinuxSystemPreparing, FastModeContr
             }
         }
     }
+
+    /// Set when the other LinPad app holds the shared Linux system (app/AppGroup.m). The game
+    /// shell shows it instead of a boot failure the user cannot act on.
+    var sessionBusyReason: String? { ISHSessionLockMessage() }
 
     func run(_ command: String, cwd: String?, stdin: Data?) async -> CommandResult {
         await execute(command, cwd: cwd, stdin: stdin, onLine: nil)

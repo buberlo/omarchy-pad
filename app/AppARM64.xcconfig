@@ -25,3 +25,8 @@ SWIFT_OBJC_BRIDGING_HEADER = app/iSH-ARM64-Bridging-Header.h
 
 // LinPad releases are versioned independently of upstream iSH (release/RELEASING.md).
 MARKETING_VERSION = 1.4.0
+
+// desktop: LinPad's Linux desktop. steam: the dedicated game app that boots straight into
+// Steam Big Picture (installation/steam-app passes LINPAD_VARIANT=steam on the command line
+// and signs the result with its own bundle id and the same app group).
+LINPAD_VARIANT = desktop

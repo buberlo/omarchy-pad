@@ -107,7 +107,10 @@ final class BootProgress {
     func run(host: any LinuxHost, linux: LinuxGUIBridge?) async {
         if let preparing = host as? LinuxSystemPreparing,
            let failure = await waitForPreparation(preparing.preparation) {
-            step = "Linux could not be installed: \(failure)"
+            // A host that knows why it refused to boot (another LinPad app has the shared
+            // Linux system) says so in its own words; anything else is an install failure.
+            step = (host as? any LinuxSystemBusyReporting)?.sessionBusyReason
+                ?? "Linux did not start: \(failure)"
             try? await Task.sleep(for: .seconds(4))
             finish()
             return

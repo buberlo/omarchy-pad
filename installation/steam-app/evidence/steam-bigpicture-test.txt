@@ -1,0 +1,49 @@
+$ sh installation/steam-app/tests/steam-bigpicture-test.sh
+steam-bigpicture: /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/release/guest/steam-bigpicture
+1. default: Big Picture, one call
+  ok   one call
+  ok   argv carries -gamepadui
+  ok   geometry unset
+  ok   status while Steam runs
+  ok   status after a clean exit
+  ok   no fallback marker
+2. --geometry reaches the launcher as STEAM_GEOMETRY
+  ok   geometry passed through
+  ok   status names the size
+3. a rejected Big Picture falls back to the classic UI once, and stays there
+  ok   two calls
+  ok   first call has -gamepadui
+  ok   second call drops -gamepadui
+  ok   marker written
+  ok   status while the classic UI runs
+  ok   status after the classic UI exits
+  ok   explained on stderr
+4. an existing marker keeps later launches on the classic UI
+  ok   one call
+  ok   no -gamepadui
+  ok   status
+5. --bigpicture overrides the marker; --classic forces the desktop UI
+  ok   marker cleared
+  ok   Big Picture attempted
+  ok   one call
+  ok   classic has no -gamepadui
+  ok   status
+6. /etc/linpad/steam-mode = desktop pins the classic UI
+  ok   status
+  ok   no -gamepadui
+7. Steam arguments after the options are forwarded
+  ok   forwards -console
+  ok   forwards -dev
+8. bad geometry is refused before Steam starts; --reset clears the marker
+  ok   no call for a size without x
+  ok   no call for an out-of-range size
+  ok   marker cleared by --reset
+9. a missing launcher reports itself instead of failing silently
+  ok   status
+10. steam-local keeps the verified default and honours STEAM_GEOMETRY
+  ok   default geometry
+  ok   Xvnc uses the variable
+  ok   viewer uses the variable
+  ok   no hard-coded size left
+
+steam-bigpicture: all checks passed

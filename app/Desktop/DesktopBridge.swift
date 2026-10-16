@@ -4,6 +4,11 @@ import UIKit
 
 /// Entry point the Objective-C scene delegate looks up at runtime (by class name,
 /// since SceneDelegate.m is also built into targets without Swift).
+///
+/// The build's variant (Info.plist `LinPadVariant`, see LinPadVariant in DesktopKit) decides
+/// what the app shows: the ordinary Linux desktop, or — in the dedicated game app — Steam's
+/// Big Picture UI full screen with no desktop around it. The same code is in both apps; only
+/// signing and one build setting differ (installation/steam-app).
 @objc(DesktopBridge)
 final class DesktopBridge: NSObject {
     /// Set to NO (Settings app, or `defaults write`) to get the classic single-terminal UI back.
@@ -19,6 +24,11 @@ final class DesktopBridge: NSObject {
         LinPadLinkInbox.shared.receive(url)
     }
 
+    // The host is created once: switching between game mode and the desktop must not restart
+    // the Linux system — the guest session keeps running and the new bridge reconnects to it.
+    @MainActor private static var host: ISHLinuxHost?
+    @MainActor private static var hostingController: DesktopHostingController<AnyView>?
+
     @MainActor
     @objc static func makeRootViewController() -> UIViewController {
         // White terminals clash with the dark desktop; only overrides the untouched default.
@@ -26,7 +36,19 @@ final class DesktopBridge: NSObject {
         if preferences.colorScheme == .ColorSchemeMatchSystem {
             preferences.colorScheme = .ColorSchemeAlwaysDark
         }
+        let host = linuxHost()
+        let controller = DesktopHostingController(rootView: makeRoot(for: host))
+        controller.view.backgroundColor = .black
+        hostingController = controller
+        return controller
+    }
+
+    /// The one `ISHLinuxHost` this app run uses, with the bridges that hang off it.
+    @MainActor
+    private static func linuxHost() -> ISHLinuxHost {
+        if let host { return host }
         let host = ISHLinuxHost()
+        self.host = host
         // Before anything else can crash: how the last session ended, MetricKit, the marker.
         DiagnosticsCenter.shared.beginSession(host: host)
         // Waits for the guest's PulseAudio FIFO, which the Linux session (ishwl-session)
@@ -34,13 +56,32 @@ final class DesktopBridge: NSObject {
         ISHAudioBridge.shared.start(guestRoot: host.guestRootURL)
         // Microphone for Linux apps: idle (no prompt, no indicator) until one records.
         ISHMicBridge.shared.start(guestRoot: host.guestRootURL)
-        // Light or dark is the desktop's choice (Settings > Desktop > Appearance); DesktopKit
-        // sets the window's interface style itself.
-        let root = DesktopRootView(host: host, apps: BuiltinApps.all(), systemControls: ISHSystemControls())
-            .ignoresSafeArea()
-        let controller = DesktopHostingController(rootView: root)
-        controller.view.backgroundColor = .black
-        return controller
+        return host
+    }
+
+    /// The variant's default screen, unless the user asked for the desktop in the game app.
+    @MainActor
+    private static func makeRoot(for host: ISHLinuxHost) -> AnyView {
+        let wantsGameMode = LinPadVariant.current().isGameMode
+            && (SessionMode.stored() ?? .game) == .game
+        if wantsGameMode {
+            return AnyView(GameModeRootView(host: host, apps: BuiltinApps.all(),
+                                            systemControls: ISHSystemControls(),
+                                            configuration: .steam) {
+                switchToDesktop()
+            })
+        }
+        return AnyView(DesktopRootView(host: host, apps: BuiltinApps.all(),
+                                       systemControls: ISHSystemControls()))
+    }
+
+    /// "Desktop" in the game bar. The Linux system keeps running; only the UI is replaced, and
+    /// the next start shows the desktop until the user turns "Boot into Game Mode" back on.
+    @MainActor
+    @objc static func switchToDesktop() {
+        SessionMode.store(.desktop)
+        guard let hostingController, let host else { return }
+        hostingController.rootView = makeRoot(for: host)
     }
 }
 

@@ -11,6 +11,9 @@
 #import <mach-o/loader.h>
 #import <mach-o/getsect.h>
 #import <dlfcn.h>
+#import <fcntl.h>
+#import <sys/file.h>
+#import <unistd.h>
 
 #define CSMAGIC_EMBEDDED_SIGNATURE 0xfade0cc0
 #define CSMAGIC_EMBEDDED_ENTITLEMENTS 0xfade7171
@@ -110,4 +113,62 @@ NSURL *ContainerURL(void) {
         url = [NSFileManager.defaultManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].firstObject;
 #endif
     return url;
+}
+
+#pragma mark - One Linux system, one app
+
+// Held for the lifetime of the process; the kernel releases it when the process dies,
+// however it dies, which is why it is the right signal for "a kernel is running on this
+// system". A suspended app still holds it, and that is deliberate: its guest is still
+// running in the background.
+static int sessionLockFD = -1;
+static NSString *sessionLockMessage;
+
+/// What another app wrote into the lock file when it took it: "<bundle id> <date>".
+static NSString *SessionLockHolderDescription(NSString *path) {
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSString *line = [[[NSString alloc] initWithData:data ?: [NSData data] encoding:NSUTF8StringEncoding]
+                      stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
+    NSString *holder = line.length > 0 ? line : @"another LinPad app";
+    NSString *bundleID = [holder componentsSeparatedByString:@" "].firstObject;
+    // Names the user sees on the home screen; both apps are built from this source.
+    if ([bundleID hasSuffix:@".steam"])
+        return @"LinPad Steam";
+    if ([bundleID isEqualToString:@"com.konradkern.linpad"])
+        return @"Linux for iPad (LinPad)";
+    return holder;
+}
+
+BOOL ISHSessionLockAcquire(NSString **reason) {
+    if (sessionLockFD >= 0)
+        return YES; // ours already
+    // No container (simulator, or an install without the app group): never block booting.
+    NSURL *roots = [ContainerURL() URLByAppendingPathComponent:@"roots" isDirectory:YES];
+    if (roots == nil)
+        return YES;
+    [NSFileManager.defaultManager createDirectoryAtURL:roots withIntermediateDirectories:YES attributes:@{} error:nil];
+    NSString *path = [[roots URLByAppendingPathComponent:@".session.lock"] path];
+    int fd = open(path.fileSystemRepresentation, O_RDWR | O_CREAT | O_CLOEXEC, 0644);
+    if (fd < 0)
+        return YES; // cannot even open the file: fail open, never block a boot
+    if (flock(fd, LOCK_EX | LOCK_NB) != 0) {
+        NSString *holder = SessionLockHolderDescription(path);
+        sessionLockMessage = [NSString stringWithFormat:
+            @"%@ is already using this Linux system. Close it in the app switcher (swipe it "
+            @"away), then start this app again.", holder];
+        if (reason != NULL)
+            *reason = sessionLockMessage;
+        close(fd);
+        return NO;
+    }
+    ftruncate(fd, 0);
+    NSString *record = [NSString stringWithFormat:@"%@ %@\n", NSBundle.mainBundle.bundleIdentifier ?: @"?",
+                        [NSDate.date descriptionWithLocale:nil]];
+    (void) [record writeToFile:path atomically:NO encoding:NSUTF8StringEncoding error:nil];
+    sessionLockFD = fd;
+    return YES;
+}
+
+NSString *ISHSessionLockMessage(void) {
+    return sessionLockMessage;
 }

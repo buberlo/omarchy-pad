@@ -133,6 +133,8 @@ struct SettingsAppView: View {
     @AppStorage(DesktopSettings.accentColorKey) private var accentID = DesktopSettings.defaultAccentColor
     @AppStorage(DesktopSettings.monospacedFontSizeKey) private var fontSize = DesktopSettings.defaultMonospacedFontSize
     @AppStorage(DesktopSettings.restoreSessionKey) private var restoresSession = true
+    /// Only the dedicated game app reads this; the desktop build never shows the row.
+    @AppStorage(SessionMode.storageKey) private var sessionMode = SessionMode.game.rawValue
     @AppStorage(DesktopSettings.performanceOverlayKey) private var showsPerformance = false
     @AppStorage(DesktopShortcutModifier.storageKey) private var shortcutModifier = DesktopShortcutModifier.controlOption
     @AppStorage(LinuxKeyboardMode.storageKey) private var linuxKeyboardMode = LinuxKeyboardMode.onDemand
@@ -367,6 +369,21 @@ struct SettingsAppView: View {
                 .font(.caption)
                 .foregroundStyle(theme.secondaryText)
                 .fixedSize(horizontal: false, vertical: true)
+            if LinPadVariant.current().isGameMode {
+                ThemedSeparator()
+                SettingsRow(title: "Boot into Game Mode") {
+                    Toggle("Boot into Game Mode", isOn: Binding(
+                        get: { sessionMode != SessionMode.desktop.rawValue },
+                        set: { sessionMode = $0 ? SessionMode.game.rawValue : SessionMode.desktop.rawValue }))
+                        .labelsHidden()
+                        .tint(theme.accent)
+                        .accessibilityIdentifier("settings.gameMode")
+                }
+                Text("LinPad Steam boots into Steam's Big Picture UI instead of this desktop. The choice applies at the next start; “Desktop” in the game bar switches right away.")
+                    .font(.caption)
+                    .foregroundStyle(theme.secondaryText)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             ThemedSeparator()
             SettingsRow(title: "Performance overlay") {
                 Toggle("Performance overlay", isOn: $showsPerformance)

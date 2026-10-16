@@ -1,0 +1,22 @@
+# Provisioning profiles, decoded from the Xcode-managed copies in work/signing/profiles.
+
+## com.konradkern.linpad
+"application-identifier" => "K5TW9AU245.com.konradkern.linpad"
+"com.apple.developer.kernel.extended-virtual-addressing" => true
+"com.apple.developer.kernel.increased-memory-limit" => true
+"com.apple.security.application-groups" => [
+"get-task-allow" => true
+"ExpirationDate" => 2027-10-16 06:33:44 +0000
+"Name" => "iOS Team Provisioning Profile: com.konradkern.linpad"
+0 => "00008112-000924EE14D9A01E"
+
+## com.konradkern.linpad.steam
+"application-identifier" => "K5TW9AU245.com.konradkern.linpad.steam"
+"com.apple.developer.kernel.extended-virtual-addressing" => true
+"com.apple.developer.kernel.increased-memory-limit" => true
+"com.apple.security.application-groups" => [
+"get-task-allow" => true
+"ExpirationDate" => 2027-10-16 17:54:08 +0000
+"Name" => "iOS Team Provisioning Profile: com.konradkern.linpad.steam"
+0 => "00008112-000924EE14D9A01E"
+

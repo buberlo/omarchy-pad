@@ -1,0 +1,95 @@
+#!/bin/sh
+# Builds and stages one LinPad variant. Run from the workspace root (the directory that
+# holds work/, i.e. the parent of the LinPad checkout), like build4453-keyboard/build-local.sh:
+#
+#   sh work/LinPad/installation/steam-app/build-local.sh desktop
+#   sh work/LinPad/installation/steam-app/build-local.sh steam
+#
+#   desktop -> work/performance/steam-app-desktop/Payload/iSH ARM64.app  (LinPad as it is)
+#   steam   -> work/performance/steam-app-steam/Payload/LinPad Steam.app  (the game app)
+#
+# Both variants are one Xcode target; the variant is the LINPAD_VARIANT build setting, which
+# lands in Info.plist (LinPadVariant) and decides what the app shows. Signing is separate
+# (sign-variant.py): the game app gets its own bundle id and the same app group, so both
+# apps share the one installed Linux system.
+#
+# The root filesystem is taken from an existing signed payload (ROOTFS_ARCHIVE), exactly as
+# release builds do: the archive is only used by a *fresh* container, and an install over an
+# existing app keeps the Linux system, Steam, games and saves untouched.
+set -eu
+
+here=$(cd "$(dirname "$0")" && pwd)
+variant=${1:-desktop}
+case $variant in
+    desktop|steam) ;;
+    *) echo "usage: $0 [desktop|steam]" >&2; exit 2 ;;
+esac
+
+# cd to the workspace root: the checkout is at work/LinPad, this script at
+# work/LinPad/installation/steam-app, so the workspace root is four levels up.
+cd "$here/../../../.."
+root=$PWD
+[ -f "$root/work/LinPad/iSH.xcodeproj/project.pbxproj" ] || {
+    echo "$0: run it from the workspace root that holds work/ (looked in $root)" >&2; exit 2; }
+
+ROOTFS_ARCHIVE=${ROOTFS_ARCHIVE:-$root/work/signed/Payload/iSH ARM64.app/root.tar.gz}
+[ -f "$ROOTFS_ARCHIVE" ] || { echo "$0: no rootfs archive at $ROOTFS_ARCHIVE" >&2; exit 2; }
+
+case $variant in
+    desktop) display='Linux for iPad'; outdir=$root/work/performance/steam-app-desktop; appname='iSH ARM64.app' ;;
+    steam)   display='LinPad Steam';   outdir=$root/work/performance/steam-app-steam;   appname='LinPad Steam.app' ;;
+esac
+
+# LinPad releases are numbered by the commit count (release/publish.sh:147); the version is
+# the one in app/AppARM64.xcconfig. Passed explicitly so the staged bundle is right without
+# patching it afterwards.
+build_number=$(git -C "$root/work/LinPad" rev-list --count HEAD)
+version=$(sed -n 's/^MARKETING_VERSION = //p' "$root/work/LinPad/app/AppARM64.xcconfig" | tr -d '[:space:]')
+[ -n "$version" ] || { echo "$0: no MARKETING_VERSION in app/AppARM64.xcconfig" >&2; exit 2; }
+
+mkdir -p "$outdir"
+log=$outdir/build.log
+echo "building $variant: LinPad $version build $build_number ($display)"
+
+export DEVELOPER_DIR=${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}
+export ZIG_GLOBAL_CACHE_DIR="$root/work/zig-cache"
+PATH="$root/work/compiler-bin:$root/work/build-tools/bin:/opt/homebrew/bin:$PATH"
+export PATH
+
+"$DEVELOPER_DIR/usr/bin/xcodebuild" \
+    -project "$root/work/LinPad/iSH.xcodeproj" -target iSH-ARM64 -configuration Release \
+    -sdk iphoneos SYMROOT="$root/work/ios-build" OBJROOT="$root/work/ios-obj" \
+    IPHONEOS_DEPLOYMENT_TARGET=17.0 ISH_JIT_BUILD=enabled CODE_SIGNING_ALLOWED=NO \
+    MARKETING_VERSION="$version" CURRENT_PROJECT_VERSION="$build_number" \
+    APP_DISPLAY_NAME="$display" LINPAD_VARIANT="$variant" \
+    ROOTFS_ARCHIVE="$ROOTFS_ARCHIVE" \
+    build > "$log" 2>&1 || { echo "$0: xcodebuild failed, see $log" >&2; tail -20 "$log" >&2; exit 1; }
+
+built="$root/work/ios-build/Release-iphoneos/$appname"
+[ -d "$built" ] || built="$root/work/ios-build/Release-iphoneos/iSH ARM64.app"
+[ -d "$built" ] || { echo "$0: no built app under work/ios-build/Release-iphoneos" >&2; exit 1; }
+
+# Stage it the way every signed release is staged: Payload/<name>.app, then sign in place.
+rm -rf "$outdir/Payload"
+mkdir -p "$outdir/Payload"
+ditto "$built" "$outdir/Payload/$appname"
+
+# The rootfs archive is copied into the app by the build; it is ~98 % of the .app, so report
+# what came out instead of keeping a second copy.
+printf '%s\n' "staged $outdir/Payload/$appname"
+printf '%s\n' "variant=$variant version=$version build=$build_number display=$display"
+# The executable keeps the target's PRODUCT_NAME ("iSH ARM64"); the .app's name is branding.
+executable=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$outdir/Payload/$appname/Info.plist" 2>/dev/null || echo "${appname%.app}")
+printf '%s\n' "executable: $executable $(shasum -a 256 "$outdir/Payload/$appname/$executable" | cut -d' ' -f1)"
+
+# Facts the signer and the manifest need later.
+{
+    printf 'variant=%s\n' "$variant"
+    printf 'version=%s\n' "$version"
+    printf 'build=%s\n' "$build_number"
+    printf 'display_name=%s\n' "$display"
+    printf 'source_commit=%s\n' "$(git -C "$root/work/LinPad" rev-parse HEAD)"
+    printf 'rootfs_archive=%s\n' "$ROOTFS_ARCHIVE"
+    printf 'rootfs_version=%s\n' "$(cat "$(dirname "$ROOTFS_ARCHIVE")/root.version" 2>/dev/null || echo unknown)"
+} > "$outdir/build-facts.txt"
+cat "$outdir/build-facts.txt"

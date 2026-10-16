@@ -168,6 +168,10 @@ final class DesktopController {
     /// Linux surface id → desktop window id.
     @ObservationIgnored var linuxWindows: [UInt32: UUID] = [:]
 
+    /// Set by the game shell (Core/Game/GameModeRootView): Linux toplevels then go to the
+    /// coordinator instead of becoming desktop windows. nil is the ordinary desktop.
+    @ObservationIgnored weak var gameMode: GameModeCoordinator?
+
     /// Volume, session restart and reboot, when the host provides them.
     let systemControls: (any DesktopSystemControls)?
     let notifications = NotificationCenterModel()

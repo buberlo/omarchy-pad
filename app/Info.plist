@@ -20,6 +20,11 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<!-- Which product this build is: "desktop" (LinPad's Linux desktop) or "steam" (the
+	     dedicated game app that boots into Steam Big Picture). Both are built from this one
+	     target; see installation/steam-app and LinPadVariant in DesktopKit. -->
+	<key>LinPadVariant</key>
+	<string>$(LINPAD_VARIANT)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

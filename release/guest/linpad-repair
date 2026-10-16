@@ -198,6 +198,31 @@ if [ -x /usr/local/bin/code ]; then
 else
     put 644 "$G/ish-install-vscode.desktop" /usr/share/applications/ish-install-vscode.desktop
 fi
+# Steam: the dedicated game app starts Big Picture through ishwl, and the desktop gets a
+# real launcher entry. The installed launcher is the verified one and gains only
+# STEAM_GEOMETRY (default 1024x700, so unchanged for every other caller); it is replaced
+# only when it is the known version, with a backup beside it.
+if [ -x /usr/local/bin/steam ] || [ -x /usr/local/bin/steam-local ] || [ -d /root/.local/share/Steam ]; then
+    step "Steam"
+    if [ -f /usr/local/bin/steam-local ] && ! grep -q 'STEAM_GEOMETRY' /usr/local/bin/steam-local; then
+        if grep -q -- '-geometry 1024x700' /usr/local/bin/steam-local; then
+            if [ ! -e /usr/local/bin/steam-local.linpad-original ]; then
+                cp -p /usr/local/bin/steam-local /usr/local/bin/steam-local.linpad-original || true
+            fi
+            put 755 "$G/steam-local" /usr/local/bin/steam-local
+        else
+            note "/usr/local/bin/steam-local is not the verified launcher; left unchanged"
+        fi
+    fi
+    put 755 "$G/steam-bigpicture" /usr/local/bin/steam-bigpicture
+    put 644 "$G/steam.desktop" /usr/share/applications/steam.desktop
+    put 644 "$G/steam.svg" /usr/share/icons/hicolor/scalable/apps/steam.svg
+    if [ ! -e /etc/linpad/steam-mode ]; then
+        mkdir -p /etc/linpad
+        printf 'bigpicture\n' > /etc/linpad/steam-mode
+        changed /etc/linpad/steam-mode
+    fi
+fi
 if [ -f "$KIT/wl-bridge/os-release.sh" ]; then
     before=$(md5sum "$(readlink -f /etc/os-release)" 2>/dev/null)
     sh "$KIT/wl-bridge/os-release.sh" /etc/os-release

@@ -4,6 +4,15 @@ BASE="$HOME/.local/share/Steam"
 L=/opt/steam-host/usr/lib/aarch64-linux-gnu
 LOADER="$L/ld-linux-aarch64.so.1"
 LIBS="$L:$L/pulseaudio:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+# Screen and viewer size. steam-bigpicture passes --geometry, which exports
+# STEAM_GEOMETRY; unset it is the verified 1024x700, so the launcher behaves exactly as
+# before for every caller that does not ask for another size. Xvnc and the viewer must
+# use the same value, or the viewer shows a cropped or padded picture.
+GEOMETRY="${STEAM_GEOMETRY:-1024x700}"
+case $GEOMETRY in
+    [0-9]*x[0-9]*) ;;
+    *) echo "steam-local: STEAM_GEOMETRY must be WxH, got '$GEOMETRY'" >&2; exit 64 ;;
+esac
 export PATH="/opt/steam-x11/bin:$PATH"
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
 export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
@@ -44,7 +53,7 @@ bus=$!
 env LD_LIBRARY_PATH="$LIBS" LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe \
     MESA_LOADER_DRIVER_OVERRIDE=swrast LIBGL_DRIVERS_PATH="$L/dri" \
     "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/Xtigervnc :55 \
-    -geometry 1024x700 -depth 24 -SecurityTypes None -localhost yes \
+    -geometry "$GEOMETRY" -depth 24 -SecurityTypes None -localhost yes \
     -rfbport 5955 -nolisten tcp -ac >/tmp/steam-xvnc.log 2>&1 &
 server=$!
 tries=0
@@ -73,7 +82,7 @@ wm=$!
 "$0" --client :55 "$@" >/tmp/steam-main.log 2>&1 &
 client=$!
 if [ -n "${STEAM_NO_VIEWER:-}" ]; then wait "$client"; exit $?; fi
-ISHWL_APP=Steam ishwl-x11 -g 1024x700 "$0" --viewer >/tmp/steam-viewer.log 2>&1 &
+ISHWL_APP=Steam ishwl-x11 -g "$GEOMETRY" "$0" --viewer >/tmp/steam-viewer.log 2>&1 &
 viewer=$!
 while kill -0 "$client" 2>/dev/null && kill -0 "$viewer" 2>/dev/null; do sleep 1; done
 if ! kill -0 "$viewer" 2>/dev/null; then kill "$client" 2>/dev/null || true; fi

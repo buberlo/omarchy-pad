@@ -146,6 +146,12 @@ extension DesktopController: LinuxGUIBridgeDelegate {
     }
 
     func linuxBridge(_ bridge: LinuxGUIBridge, didMap surface: LinuxSurface) {
+        // The game shell (Core/Game) shows the Steam toplevel itself, full screen. It has no
+        // window layer, so no other toplevel becomes a window there either.
+        if let gameMode {
+            gameMode.surfaceMapped(surface)
+            return
+        }
         guard let view = surface.view else { return }
         let entry = bridge.applications.first { $0.matches(appID: surface.appID) }
         let appID = LinuxAppID.prefix + (entry?.id ?? surface.appID)
@@ -168,6 +174,10 @@ extension DesktopController: LinuxGUIBridgeDelegate {
     }
 
     func linuxBridge(_ bridge: LinuxGUIBridge, didUnmap surface: LinuxSurface) {
+        if let gameMode {
+            gameMode.surfaceUnmapped(surface)
+            return
+        }
         guard let windowID = linuxWindows.removeValue(forKey: surface.id) else { return }
         windowManager.close(windowID)
     }
@@ -196,6 +206,7 @@ extension DesktopController: LinuxGUIBridgeDelegate {
     }
 
     func linuxBridgeSessionEnded(_ bridge: LinuxGUIBridge) {
+        gameMode?.sessionEnded()
         if !linuxWindows.isEmpty {
             for windowID in linuxWindows.values { windowManager.close(windowID) }
             linuxWindows.removeAll()
