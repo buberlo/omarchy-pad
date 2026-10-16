@@ -20,6 +20,9 @@
 // address enumeration in runtimes (libuv, Chromium). Requests are answered
 // synchronously from the host's getifaddrs(); replies are queued on a host
 // datagram socketpair, so recv/poll/nonblocking behave like a real socket.
+// NETLINK_KOBJECT_UEVENT also provides an idle receive endpoint for libudev.
+// There is no host device-event source or userspace event transport: sends are
+// rejected, and no synthetic hotplug messages or sender credentials are queued.
 
 // The host's interfaces, read again at most once a second. Chromium and libuv ask
 // for them dozens of times while starting (netlink dumps, SIOCGIF* ioctls), and
@@ -125,7 +128,50 @@ static unsigned cached_ifindex(const char *name) {
 #define RT_SCOPE_HOST_ 254
 
 #define NETLINK_ROUTE_ 0
+#define NETLINK_KOBJECT_UEVENT_ 15
 #define SOL_NETLINK_ 270
+
+// Uevent monitors can coexist in one process. Their port IDs must be unique,
+// including explicit binds, and become reusable when the last fd closes.
+static lock_t uevent_lock = LOCK_INITIALIZER;
+static struct list uevent_sockets = LIST_INITIALIZER(uevent_sockets);
+static uint32_t uevent_next_port = UINT32_MAX;
+
+// uevent_lock held
+static bool uevent_port_used(uint32_t port) {
+    struct fd *sock;
+    list_for_each_entry(&uevent_sockets, sock, socket.netlink_link)
+        if (sock->socket.netlink_pid == port)
+            return true;
+    return false;
+}
+
+static int uevent_bind(struct fd *sock, const struct sockaddr_nl_ *addr) {
+    lock(&uevent_lock);
+    uint32_t port = addr->pid;
+    int err = 0;
+    if (sock->socket.netlink_pid != 0) {
+        if (port != sock->socket.netlink_pid)
+            err = _EINVAL;
+    } else {
+        if (port != 0 && uevent_port_used(port)) {
+            err = _EADDRINUSE;
+        } else {
+            if (port == 0) {
+                port = current->tgid;
+                while (port == 0 || uevent_port_used(port))
+                    port = uevent_next_port--;
+            }
+            sock->socket.netlink_pid = port;
+            list_add(&uevent_sockets, &sock->socket.netlink_link);
+        }
+    }
+    if (err == 0)
+        // Preserve Linux's 32-bit bind mask; libudev uses groups 1 and 2.
+        sock->socket.netlink_groups = addr->groups;
+    unlock(&uevent_lock);
+    return err;
+}
 
 struct nlmsghdr_ {
     uint32_t len;
@@ -433,7 +479,7 @@ static void handle_request(struct nl_reply *r, const struct nlmsghdr_ *req, cons
 }
 
 int netlink_socket(int type, int protocol, int *real_fd) {
-    if (protocol != NETLINK_ROUTE_)
+    if (protocol != NETLINK_ROUTE_ && protocol != NETLINK_KOBJECT_UEVENT_)
         return _EAFNOSUPPORT;
     if (type != SOCK_RAW_ && type != SOCK_DGRAM_)
         return _ESOCKTNOSUPPORT;
@@ -458,6 +504,8 @@ static uint32_t netlink_port(struct fd *sock) {
 }
 
 ssize_t netlink_send(struct fd *sock, const void *buf, size_t len) {
+    if (sock->socket.protocol != NETLINK_ROUTE_)
+        return _EOPNOTSUPP; // never interpret uevent payloads as route requests
     struct nl_reply *r = malloc(sizeof(*r));
     if (r == NULL)
         return _ENOMEM;
@@ -487,6 +535,8 @@ int netlink_bind(struct fd *sock, const void *addr, size_t len) {
     memcpy(&nl, addr, sizeof(nl));
     if (nl.family != AF_NETLINK_)
         return _EINVAL;
+    if (sock->socket.protocol == NETLINK_KOBJECT_UEVENT_)
+        return uevent_bind(sock, &nl);
     if (nl.pid != 0)
         sock->socket.netlink_pid = nl.pid;
     netlink_port(sock);
@@ -497,13 +547,26 @@ int netlink_bind(struct fd *sock, const void *addr, size_t len) {
 void netlink_name(struct fd *sock, bool local, struct sockaddr_nl_ *addr) {
     *addr = (struct sockaddr_nl_) {.family = AF_NETLINK_};
     if (local) {
-        addr->pid = netlink_port(sock);
+        // getsockname does not bind an unused uevent monitor.
+        lock(&uevent_lock);
+        addr->pid = sock->socket.protocol == NETLINK_KOBJECT_UEVENT_ ?
+                sock->socket.netlink_pid : netlink_port(sock);
         addr->groups = sock->socket.netlink_groups;
+        unlock(&uevent_lock);
     }
 }
 
-bool netlink_sockopt_ignored(int level) {
-    return level == SOL_NETLINK_;
+bool netlink_sockopt_ignored(struct fd *sock, int level) {
+    // Preserve the route shim's existing option behavior. Uevent options that
+    // require unimplemented membership/filter behavior must not claim success.
+    return sock->socket.protocol == NETLINK_ROUTE_ && level == SOL_NETLINK_;
+}
+
+void netlink_close(struct fd *sock) {
+    lock(&uevent_lock);
+    list_remove_safe(&sock->socket.netlink_link);
+    unlock(&uevent_lock);
+    close(sock->socket.netlink_peer);
 }
 
 // The SIOCGIF* socket ioctls (ifconfig, busybox ip, if_nametoindex), answered

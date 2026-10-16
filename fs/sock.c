@@ -1091,13 +1091,15 @@ int_t sys_setsockopt(fd_t sock_fd, dword_t level, dword_t option, addr_t value_a
     if (user_read(value_addr, value, value_len))
         return _EFAULT;
 
-    if (sock->socket.domain == AF_NETLINK_ && netlink_sockopt_ignored(level))
+    if (sock->socket.domain == AF_NETLINK_ && netlink_sockopt_ignored(sock, level))
         return 0;
     if (level == SOL_SOCKET_ && option == SO_PASSCRED_) {
         if (value_len < sizeof(int_t))
             return _EINVAL;
         if (sock->socket.domain == AF_LOCAL_)
             sock->socket.unix_passcred = *(int_t *) value != 0;
+        else if (sock->socket.domain == AF_NETLINK_)
+            sock->socket.netlink_passcred = *(int_t *) value != 0;
         return 0;
     }
     // ICMP6_FILTER can only be set on real SOCK_RAW
@@ -1158,7 +1160,9 @@ int_t sys_getsockopt(fd_t sock_fd, dword_t level, dword_t option, addr_t value_a
     } else if (level == SOL_SOCKET_ && option == SO_PASSCRED_) {
         if (value_len != sizeof(dword_t))
             return _EINVAL;
-        *(dword_t *) value = sock->socket.domain == AF_LOCAL_ && sock->socket.unix_passcred;
+        *(dword_t *) value = sock->socket.domain == AF_LOCAL_ ?
+                sock->socket.unix_passcred :
+                sock->socket.domain == AF_NETLINK_ && sock->socket.netlink_passcred;
     } else if (level == SOL_SOCKET_ && option == SO_PEERCRED_) {
         struct ucred_ *cred = (struct ucred_ *) value;
         if (value_len != sizeof(*cred))
@@ -1973,7 +1977,7 @@ static int sock_close(struct fd *fd) {
         scm_put(dead[i]);
     free(dead);
     if (fd->socket.domain == AF_NETLINK_)
-        close(fd->socket.netlink_peer);
+        netlink_close(fd);
     return realfs_close(fd);
 }
 

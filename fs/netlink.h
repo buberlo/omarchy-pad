@@ -22,7 +22,8 @@ int netlink_socket(int type, int protocol, int *real_fd);
 ssize_t netlink_send(struct fd *sock, const void *buf, size_t len);
 int netlink_bind(struct fd *sock, const void *addr, size_t len);
 void netlink_name(struct fd *sock, bool local, struct sockaddr_nl_ *addr);
-bool netlink_sockopt_ignored(int level);
+bool netlink_sockopt_ignored(struct fd *sock, int level);
+void netlink_close(struct fd *sock);
 // SIOCGIF* interface ioctls on any socket, from the host's interfaces
 ssize_t netlink_ifioctl_size(int cmd);
 int netlink_ifioctl(int cmd, void *arg);

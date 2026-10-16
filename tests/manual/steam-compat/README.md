@@ -31,6 +31,22 @@ convenient for running them under both the CLI emulator and iPad app.
 - `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor
   directory while it exits. The old runtime crashes in `proc_pid_fd_readdir`;
   the repaired CLI completes 300 rounds.
+- `netlink-uevent-probe.c`: the idle `NETLINK_KOBJECT_UEVENT` monitor used by
+  libudev must support nonblocking/CLOEXEC creation, credential-option readback,
+  receive-buffer configuration, group/address readback, unique automatic ports,
+  explicit-bind collisions and port lifetime across dup/last close. Empty reads
+  return EAGAIN and a 100 ms input poll sleeps. Uevent send/write/sendmsg reject
+  route-shaped payloads without queuing a false reply; a separate NETLINK_ROUTE
+  dump still returns its normal sequenced response. The old runtime fails at
+  socket creation with EAFNOSUPPORT, which also makes Unity's embedded SDL haptic
+  and joystick initialization fail with `Could not initialize UDEV`.
+  This is deliberately an idle monitor: there is no host hotplug-event bridge,
+  guest-to-guest uevent transport, BPF filter installation or dynamic group
+  membership API. Unsupported sends/options return errors; no hardware events
+  or sender credentials are fabricated. Bind supports the kernel/udev group
+  mask. These limits must be addressed before adding any actual event producer.
+  The probe includes LinPad-specific unsupported-operation assertions, so it is
+  not a general Linux uevent transport conformance test.
 - `pthread-glibc-probe.c`: dynamic glibc thread creation with different stack
   sizes and repeated joins. Link against glibc and run with the isolated
   matching loader/libraries; it does not alter the musl system runtime.

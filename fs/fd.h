@@ -87,6 +87,8 @@ struct fd {
             int netlink_peer;
             uint32_t netlink_pid;
             uint32_t netlink_groups;
+            struct list netlink_link; // bound uevent monitors, protected by uevent_lock
+            bool netlink_passcred; // requested SO_PASSCRED; no uevents generated yet
         } socket;
 
         // See app/Pasteboard.m
