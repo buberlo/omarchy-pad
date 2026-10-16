@@ -1,0 +1,85 @@
+{
+  "build": "4453",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "kind": "keyboard routing fix in DesktopKit; app only, no Linux system change",
+  "source_commit": "b432013e6c413663aaecc855cb988d33517b532e",
+  "source_base": "dd179fdc404d6956bddc74d04c2347f11ab35583",
+  "source_subject": "Keyboard: give games key codes instead of iPadOS text input",
+  "source_files": [
+    {
+      "path": "desktop/DesktopKit/Sources/DesktopKit/Apps/SettingsApp.swift",
+      "sha256": "648547fbf8d29d8e0d9fb925c160d6edda49de2edc13ab714af3998fda5e4e20"
+    },
+    {
+      "path": "desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInput.swift",
+      "sha256": "5f44bbf2bdbafa06469c948d6453ea774b99e5c9b3bd717ef49a56d7038a6aac"
+    },
+    {
+      "path": "desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInputMode.swift",
+      "sha256": "196368d3f1a5adab678570e5db865eff2684cd6615f804d2ea03b93c0af61d9e"
+    },
+    {
+      "path": "desktop/DesktopKit/Tests/DesktopKitTests/LinuxTextInputModeTests.swift",
+      "sha256": "59a283c7d08863f592118494a655dfcb0151109e6ebe46f98a66f3eade959a2e"
+    }
+  ],
+  "source_patch_sha256": "eaf0a57dbfb8ad6315d43d4a255caf152e1769ddceedd917701cdd5d1e4ed0ea",
+  "build_command": "build-local.sh",
+  "build_log": "work/performance/build4453-build.log",
+  "build_log_sha256": "2451c7a54bf21b2b550d277437529ac8d6b29a9cf9b01771edb6e23f81738032",
+  "build_verified": true,
+  "signature_verified": true,
+  "signature_authority": "Apple Development: Konrad Kern (VN3ST7P784)",
+  "team_identifier": "K5TW9AU245",
+  "profile_expiry_utc": "2027-10-16T06:33:44Z",
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "8A5CEAD6-08E8-3BB6-8CF6-835E6C33B98E",
+  "executable_sha256": "08a4299de62ad9a7f16904dc26bd0cf3c7f1a5980dacbee21f8511f33fca08e3",
+  "bundled_rootfs": {
+    "archive": "root.tar.gz",
+    "root_version": "202610031701",
+    "note": "the installed system; the build embeds no root.version, so installing does not update Linux"
+  },
+  "install": {
+    "device_udid": "00008112-000924EE14D9A01E",
+    "method": "devicectl device install app",
+    "databaseSequenceNumber": 8296,
+    "record": "install.json"
+  },
+  "unit_tests": {
+    "suite": "DesktopKit",
+    "executed": 379,
+    "failures": 0,
+    "new": "DesktopKitTests/LinuxTextInputModeTests (8)",
+    "simulator": "Release Documents iPad 91EDD9F6-295B-4F04-B023-67A4BEFA6FFB"
+  },
+  "device_verification": {
+    "kind": "user report, single run",
+    "game": "Hollow Knight, started with sh /tmp/hollow4452-egl",
+    "report": "the keyboard works (\"that worked\")",
+    "captured": [
+      "which keys were tried",
+      "screenshot",
+      "recording",
+      "frame rate",
+      "audio",
+      "ishwl key log"
+    ],
+    "not_claimed": [
+      "per-key results",
+      "gameplay acceptance",
+      "Steam-to-game launch",
+      "the pending wl-bridge latency fix (not deployed)"
+    ]
+  },
+  "companion_change": {
+    "commit": "bd6e9881baf4cff895df51ba7d331510af01eddd",
+    "subject": "wl-bridge: only keys that edit text wait for the app",
+    "state": "prepared, built, not deployed and not device-verified",
+    "detail": "ishwl/README.md"
+  }
+}

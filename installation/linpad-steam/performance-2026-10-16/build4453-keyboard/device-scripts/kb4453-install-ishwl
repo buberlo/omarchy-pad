@@ -1,0 +1,30 @@
+#!/bin/sh
+# Installs the patched ishwl (textinput.c: only keys that edit text wait for the app) into
+# the running Linux system. The old binary is kept in /tmp for rollback; the running
+# session keeps its own inode, so Restart Desktop Session afterwards picks the new one up.
+set -eu
+NEW=/tmp/kb4453-ishwl.new
+wget -T 30 -qO "$NEW" http://192.168.0.104:8766/kb4453-ishwl
+echo "a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44  $NEW" | sha256sum -c - || {
+    echo SHA256_MISMATCH
+    exit 1
+}
+chmod 755 "$NEW"
+cp -a /usr/local/bin/ishwl /tmp/ishwl-before-kb4453 2>/dev/null || true
+# mv, not cp: overwriting a running executable fails with "text file busy"
+mv -f "$NEW" /usr/local/bin/ishwl
+OUT=/tmp/kb4453-install.txt
+{
+    date -u
+    echo "=== installed ==="
+    ls -l /usr/local/bin/ishwl
+    sha256sum /usr/local/bin/ishwl
+    echo "=== backup ==="
+    ls -l /tmp/ishwl-before-kb4453 2>&1
+    sha256sum /tmp/ishwl-before-kb4453 2>&1
+    echo "=== installed differs from backup? ==="
+    if cmp -s /usr/local/bin/ishwl /tmp/ishwl-before-kb4453; then echo IDENTICAL; else echo DIFFERENT; fi
+} > "$OUT" 2>&1
+wget -T 20 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"
+echo KB4453_INSTALL_DONE=1

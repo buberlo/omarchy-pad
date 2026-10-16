@@ -1,0 +1,13 @@
+Signing and install of build 4453, as run on 16 October 2026 (local time, UTC+8).
+The app was staged to work/performance/build4453/Payload/iSH ARM64.app, signed in place and
+installed with devicectl. Output verbatim.
+
+$ python3 work/sign-linpad.py "$PWD/work/performance/build4453/Payload/iSH ARM64.app"
+SIGNED AND VERIFIED /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4453/Payload/iSH ARM64.app profile expires 2027-10-16 06:33:44
+
+The script signs every Mach-O in the bundle, then the bundle with work/linpad-entitlements.plist
+(application-identifier, keychain and app groups, user-fonts, and both memory capabilities),
+and finishes with codesign --verify --deep --strict, which is the check that printed the line
+above. signed-app-verification.log records the same verification run again after the install
+(bundle valid on disk, satisfies its Designated Requirement, authority
+"Apple Development: Konrad Kern (VN3ST7P784)", team K5TW9AU245).

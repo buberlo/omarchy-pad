@@ -1,0 +1,52 @@
+abi-verification.txt -- ishwl built on this Mac for the iPad's Alpine 3.21 guest
+Recorded 16 October 2026. Commands were run inside the colima "linpad-fex" aarch64 VM
+(Alpine 3.21.8) with the same package set release/build-rootfs.sh installs to build ishwl
+(build-base wayland-dev wayland-protocols pkgconf zlib-dev libxkbcommon-dev libx11-dev).
+The guest's own files come from work/signed/Payload/iSH ARM64.app/root.tar.gz, the system
+installed on the iPad (root.version 202610031701).
+
+1. What the guest has (lib/apk/db/installed in the rootfs)
+
+   musl 1.2.6-r4            libxkbcommon 1.7.0-r1     wayland-libs-server 1.23.1-r0
+   zlib 1.3.2-r0            libx11 1.8.10-r0
+
+2. What the binaries need (readelf -d, all three the same)
+
+   libwayland-server.so.0   libxkbcommon.so.0   libz.so.1   libc.musl-aarch64.so.1
+
+3. Provenance: the compositor installed on the iPad is this repository
+
+   Build a reference ishwl from the archived revision the rootfs was made at
+   (git archive a6e0672e wl-bridge, 2026-10-03 17:19) and compare with the binary extracted
+   from the rootfs:
+
+     file                     raw bytes   strip --strip-debug   .text
+     rootfs usr/local/bin/ishwl   166920               162856    61640
+     reference build a6e0672e     530784               162856    61640
+
+   Same .text size, same stripped size, first differing byte at offset 612 of the file (the
+   ELF build-id note): the shipped compositor is that revision, so a patched binary that
+   differs from it only in .text is a patch on top of exactly what the device runs.
+
+4. The patched binary
+
+     patched ishwl                530984               162856    61736
+
+   .text +96 bytes for key_edits_text(), the one log line and the changed condition.
+
+5. Symbols: the patch adds nothing the guest cannot resolve
+
+   Undefined symbols of type U, compared against the union of the four NEEDED libraries
+   extracted from the rootfs:
+
+     rootfs usr/local/bin/ishwl   163 undefined, 17 unmatched
+     patched ishwl                163 undefined, 17 unmatched
+
+   The 17 are the same names in both, and they are an artifact of comparing versioned names
+   (compressBound@ZLIB_1.2.0, xkb_*@V_0.5.0): nm prints them with the version in the
+   undefined list and without it in the defined list. The sets are identical, and identical
+   to the shipped binary's, which is what this check establishes -- the patch introduces no
+   new undefined symbol.
+
+   What this check does not do: it does not run the binary against those libraries. The
+   first real load happens on the iPad when the session restarts on it.

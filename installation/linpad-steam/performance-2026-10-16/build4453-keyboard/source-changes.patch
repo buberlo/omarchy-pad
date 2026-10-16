@@ -1,0 +1,214 @@
+commit b432013e6c413663aaecc855cb988d33517b532e
+Author: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date:   Sat Oct 17 01:03:15 2026 +0800
+
+    Keyboard: give games key codes instead of iPadOS text input
+    
+    Hollow Knight's Unity/SDL toplevel enables zwp_text_input_v3, so every printable key was
+    routed into the iPad text system and reached the game as a commit_string, which a game
+    ignores. Only Enter survived, because insertText turns it back into a Return key press
+    for a field that is not multiline. That is the reported symptom on the Magic Keyboard:
+    Enter works, no other key does.
+    
+    LinuxTextInputMode lists the Wayland app ids whose hardware keys go to the app as key
+    codes; hollow_knight.x86_64 is the default list, "Always Send Keys" covers every app and
+    "Always Compose Text" restores the previous behaviour. Settings -> Keyboard exposes the
+    mode and the id list, so another game can be added without a rebuild. A composition in
+    progress (dictation, emoji, a dead key) still goes through the text system.
+    
+    Verified: DesktopKit's unit tests pass (379, including 8 new ones) and the user reports
+    that the keyboard in Hollow Knight works on build 4453 installed on the physical iPad.
+    Only that report is recorded: no per-key list, no measurement, and no log-level proof of
+    the arriving key codes (the ishwl key log is part of the pending wl-bridge change).
+
+diff --git a/desktop/DesktopKit/Sources/DesktopKit/Apps/SettingsApp.swift b/desktop/DesktopKit/Sources/DesktopKit/Apps/SettingsApp.swift
+index 1e66903c..8f2bf44a 100644
+--- a/desktop/DesktopKit/Sources/DesktopKit/Apps/SettingsApp.swift
++++ b/desktop/DesktopKit/Sources/DesktopKit/Apps/SettingsApp.swift
+@@ -454,6 +454,7 @@ struct SettingsAppView: View {
+                 .fixedSize(horizontal: false, vertical: true)
+             LinuxOptionKeySettingsView()
+             LinuxKeyboardLayoutSettingsView()
++            LinuxTextInputSettingsView()
+             ForEach(DesktopCommand.Group.allCases, id: \.self) { group in
+                 Text(group.rawValue)
+                     .font(.subheadline.weight(.semibold))
+diff --git a/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInput.swift b/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInput.swift
+index 8d7bce79..4ef5ece3 100644
+--- a/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInput.swift
++++ b/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInput.swift
+@@ -340,6 +340,10 @@ extension LinuxSurfaceView: UITextInput {
+         if modifiers.contains(.command) || modifiers.contains(.control) { return false }
+         // While composing, Return, Delete and the arrows belong to the composition.
+         if markedText != nil { return true }
++        // A game's text input is not a text field: it reads key codes and ignores committed
++        // text, so its keys go straight to the app as keys, like the shortcuts above. A
++        // composition already in progress keeps the text system above either way.
++        if LinuxTextInputMode.sendsKeysDirectly(appID: surface?.appID ?? "") { return false }
+         // Option types characters (dead keys: Option-E then E is é) or stays Alt for the
+         // app's shortcuts, per LinuxOptionKeyMode; with editing and arrow keys it is Alt.
+         if modifiers.contains(.alternate) {
+diff --git a/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInputMode.swift b/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInputMode.swift
+new file mode 100644
+index 00000000..db9a7365
+--- /dev/null
++++ b/desktop/DesktopKit/Sources/DesktopKit/Linux/LinuxTextInputMode.swift
+@@ -0,0 +1,82 @@
++import SwiftUI
++
++/// Whether a Linux app's hardware keys go to the iPad's text system or straight to the app.
++///
++/// With a text field focused, the iPad is the input method: printable keys become
++/// committed text (accents, dictation, emoji, CJK), which is what a terminal, an editor
++/// or a browser needs. A game is the opposite: its SDL/Unity text input is not a text
++/// field, it reads key codes and ignores committed text, so routing its keys through the
++/// iPad text system loses them (Enter survives only because a non-multiline field turns
++/// it back into a Return key press).
++enum LinuxTextInputMode: String, CaseIterable, Identifiable {
++    case automatic
++    case keys
++    case compose
++
++    static let storageKey = "desktop.linux.textInput"
++    /// Comma-separated Wayland app ids that get key codes in `automatic`.
++    static let keysAppsKey = "desktop.linux.textInputKeysApps"
++    /// Hollow Knight's Unity player name, as it arrives in the toplevel's app id.
++    static let defaultKeysApps = "hollow_knight.x86_64"
++
++    var id: String { rawValue }
++
++    var title: String {
++        switch self {
++        case .automatic: "Keys in Listed Apps"
++        case .keys: "Always Send Keys"
++        case .compose: "Always Compose Text"
++        }
++    }
++
++    static var current: LinuxTextInputMode {
++        UserDefaults.standard.string(forKey: storageKey).flatMap(LinuxTextInputMode.init) ?? .automatic
++    }
++
++    static var keysApps: Set<String> {
++        let list = UserDefaults.standard.string(forKey: keysAppsKey) ?? defaultKeysApps
++        return Set(LinuxOptionKeyMode.parse(list))
++    }
++
++    /// Whether this app's hardware keys go to it as key codes instead of to the iPad text
++    /// system. The app id is the Wayland one ishwl reports with the toplevel's title.
++    static func sendsKeysDirectly(appID: String) -> Bool {
++        switch current {
++        case .keys: true
++        case .compose: false
++        case .automatic: keysApps.contains(appID.lowercased())
++        }
++    }
++}
++
++/// Settings → Keyboard: hardware keys in Linux apps. Self-contained, so the Settings app
++/// can place it anywhere.
++struct LinuxTextInputSettingsView: View {
++    @Environment(\.desktopTheme) private var theme
++    @AppStorage(LinuxTextInputMode.storageKey) private var mode = LinuxTextInputMode.automatic
++    @AppStorage(LinuxTextInputMode.keysAppsKey) private var keysApps = LinuxTextInputMode.defaultKeysApps
++
++    var body: some View {
++        SettingsRow(title: "Keys in Linux apps") {
++            Picker("Keys in Linux apps", selection: $mode) {
++                ForEach(LinuxTextInputMode.allCases) { Text($0.title).tag($0) }
++            }
++            .labelsHidden()
++            .accessibilityIdentifier("settings.linuxTextInput")
++        }
++        if mode == .automatic {
++            SettingsRow(title: "Apps that get keys") {
++                TextField("App ids", text: $keysApps)
++                    .textInputAutocapitalization(.never)
++                    .autocorrectionDisabled()
++                    .multilineTextAlignment(.trailing)
++                    .font(.callout.monospaced())
++                    .accessibilityIdentifier("settings.linuxTextInputKeysApps")
++            }
++        }
++        Text("A Linux text field composes through the iPad keyboard: Option-E then E is é, and dictation, emoji and CJK work. A game has no text field and reads key codes instead, so committed text is lost to it; the apps listed here get their keys as keys. App ids are Wayland app ids, separated by commas.")
++            .font(.caption)
++            .foregroundStyle(theme.secondaryText)
++            .fixedSize(horizontal: false, vertical: true)
++    }
++}
+diff --git a/desktop/DesktopKit/Tests/DesktopKitTests/LinuxTextInputModeTests.swift b/desktop/DesktopKit/Tests/DesktopKitTests/LinuxTextInputModeTests.swift
+new file mode 100644
+index 00000000..df934af4
+--- /dev/null
++++ b/desktop/DesktopKit/Tests/DesktopKitTests/LinuxTextInputModeTests.swift
+@@ -0,0 +1,70 @@
++import XCTest
++@testable import DesktopKit
++
++final class LinuxTextInputModeTests: XCTestCase {
++    override func setUp() {
++        super.setUp()
++        UserDefaults.standard.removeObject(forKey: LinuxTextInputMode.storageKey)
++        UserDefaults.standard.removeObject(forKey: LinuxTextInputMode.keysAppsKey)
++    }
++
++    override func tearDown() {
++        UserDefaults.standard.removeObject(forKey: LinuxTextInputMode.storageKey)
++        UserDefaults.standard.removeObject(forKey: LinuxTextInputMode.keysAppsKey)
++        super.tearDown()
++    }
++
++    private func set(_ mode: LinuxTextInputMode, apps: String? = nil) {
++        UserDefaults.standard.set(mode.rawValue, forKey: LinuxTextInputMode.storageKey)
++        if let apps { UserDefaults.standard.set(apps, forKey: LinuxTextInputMode.keysAppsKey) }
++    }
++
++    func testDefaultIsAutomaticWithTheGameListed() {
++        XCTAssertEqual(LinuxTextInputMode.current, .automatic)
++        XCTAssertEqual(LinuxTextInputMode.keysApps, ["hollow_knight.x86_64"])
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "hollow_knight.x86_64"))
++    }
++
++    func testAutomaticOnlySendsKeysForListedApps() {
++        set(.automatic, apps: "hollow_knight.x86_64,foot")
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "hollow_knight.x86_64"))
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "foot"))
++        XCTAssertFalse(LinuxTextInputMode.sendsKeysDirectly(appID: "code"), "an editor keeps composing")
++        XCTAssertFalse(LinuxTextInputMode.sendsKeysDirectly(appID: ""), "a view without an app id keeps composing")
++    }
++
++    func testAppIDsMatchWhateverTheirCase() {
++        set(.automatic, apps: "Hollow_Knight.X86_64")
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "hollow_knight.x86_64"))
++        set(.automatic, apps: "hollow_knight.x86_64")
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "Hollow_Knight.X86_64"))
++    }
++
++    func testAlwaysKeysSendsEveryAppItsKeys() {
++        set(.keys, apps: "")
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "hollow_knight.x86_64"))
++        XCTAssertTrue(LinuxTextInputMode.sendsKeysDirectly(appID: "unknown-app"))
++    }
++
++    func testAlwaysComposeTextEvenForAListedApp() {
++        set(.compose, apps: "hollow_knight.x86_64")
++        XCTAssertFalse(LinuxTextInputMode.sendsKeysDirectly(appID: "hollow_knight.x86_64"))
++    }
++
++    func testAppListTrimsDropsEmptiesAndLowercases() {
++        set(.automatic, apps: " Foot , ,CODE ,,")
++        XCTAssertEqual(LinuxTextInputMode.keysApps, ["foot", "code"])
++    }
++
++    func testAnUnknownStoredModeFallsBackToAutomatic() {
++        UserDefaults.standard.set("nonsense", forKey: LinuxTextInputMode.storageKey)
++        XCTAssertEqual(LinuxTextInputMode.current, .automatic)
++    }
++
++    func testEveryModeHasATitle() {
++        for mode in LinuxTextInputMode.allCases {
++            XCTAssertFalse(mode.title.isEmpty, mode.rawValue)
++        }
++        XCTAssertEqual(LinuxTextInputMode.allCases.count, 3)
++    }
++}

@@ -1,0 +1,76 @@
+commit bd6e9881baf4cff895df51ba7d331510af01eddd
+Author: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date:   Sat Oct 17 01:03:45 2026 +0800
+
+    wl-bridge: only keys that edit text wait for the app
+    
+    While a focused app has an enabled text input, deliver() held the queue after every
+    non-modifier key press until the app's next commit or ORDER_TIMEOUT_MS (250 ms). A bare
+    key event sends the app no request it could acknowledge, so the release of a held key
+    and every later press waited for that timeout: movement that keeps running after the key
+    is released, and up to a quarter second of lag per key. A game feels both immediately.
+    This is the second half of the keyboard report: Enter arrived because it is delivered as
+    a key press, but nothing that came with it could have felt responsive.
+    
+    Only Return, Tab and Backspace can edit text -- the host sends them as keys for a field
+    that is not multiline -- so only their press still waits. That keeps the ordering the
+    wait was written for: committed text must not overtake a key that edits it.
+    
+    Also log one line per key at -v, like "keymap:", so a device log shows whether the host
+    sent a key code at all (host-side text input sends "ime" for a printable key instead).
+    
+    Prepared, not verified on the device. The binary is built for aarch64 against the guest's
+    Alpine 3.21 libraries and checked against the shipped revision (same undefined symbols,
+    .text +96 bytes, provenance matched), but it is not deployed and no device test has run.
+    Deploying it means copying it over /usr/local/bin/ishwl and restarting the desktop
+    session.
+
+diff --git a/wl-bridge/src/bridge.c b/wl-bridge/src/bridge.c
+index 80a9ebe0..b8bc7ed7 100644
+--- a/wl-bridge/src/bridge.c
++++ b/wl-bridge/src/bridge.c
+@@ -105,6 +105,9 @@ static void handle_line(struct server *s, char *line) {
+     } else if (strcmp(cmd, "leave") == 0) {
+         seat_pointer_leave(s);
+     } else if (strcmp(cmd, "key") == 0) {
++        /* One line per key at -v, like "keymap:": what the host sent, and whether it went
++         * to the app as a key code at all (host-side text input sends "ime" instead). */
++        log_msg(s, "key %u %s", (uint32_t) strtoul(argv[1], NULL, 10), ARGI(2) != 0 ? "down" : "up");
+         text_input_key(s, (uint32_t) strtoul(argv[1], NULL, 10), ARGI(2) != 0);
+     } else if (strcmp(cmd, "text") == 0 && argc > 1) {
+         unescape(argv[1]);
+diff --git a/wl-bridge/src/textinput.c b/wl-bridge/src/textinput.c
+index 8a04cfe8..7fec5449 100644
+--- a/wl-bridge/src/textinput.c
++++ b/wl-bridge/src/textinput.c
+@@ -152,10 +152,12 @@ void text_input_focus_changed(struct server *s, struct surface *surface) {
+     sync_host(s);
+ }
+ 
+-static bool is_modifier(uint32_t keycode) {
++/* The keys that edit text: for a field that is not multiline the host sends Return and
++ * Tab as key presses, and Backspace is how it deletes. Only their press has to wait for
++ * the app, or text committed after them could be applied before the edit they make. */
++static bool key_edits_text(uint32_t keycode) {
+     switch (keycode) {
+-    case KEY_LEFTCTRL: case KEY_RIGHTCTRL: case KEY_LEFTSHIFT: case KEY_RIGHTSHIFT:
+-    case KEY_LEFTALT: case KEY_RIGHTALT: case KEY_LEFTMETA: case KEY_RIGHTMETA: case KEY_CAPSLOCK:
++    case KEY_BACKSPACE: case KEY_TAB: case KEY_ENTER: case KEY_KPENTER:
+         return true;
+     default:
+         return false;
+@@ -189,8 +191,12 @@ static void deliver(struct server *s, struct pending_input *in) {
+                                               in->begin, in->end);
+         zwp_text_input_v3_send_done(ti->resource, ti->commits);
+     }
+-    /* Releases and modifiers edit nothing; waiting after them would only add lag. */
+-    waiting_for_app = ti && (!in->is_key || (in->pressed && !is_modifier(in->keycode)));
++    /* An update always waits for the app to take it in. A key press waits only when it
++     * edits text (Return, Tab, Backspace): a key that changes no text is followed by no
++     * request to acknowledge, so waiting after it would only hold the queue for
++     * ORDER_TIMEOUT_MS -- a release and every later key arriving up to a quarter second
++     * late, which a game feels at once. */
++    waiting_for_app = ti && (!in->is_key || (in->pressed && key_edits_text(in->keycode)));
+     waiting_since = now_ms();
+ }
+ 

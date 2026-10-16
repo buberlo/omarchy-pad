@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, plus visible Hollow Knight menu evidence; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix and its prepared compositor follow-up; no authentication or proprietary game binaries.",
   "files": [
     {
       "path": "HANDOFF-4451.md",
@@ -11,6 +11,11 @@
       "path": "HANDOFF-4452.md",
       "bytes": 3505,
       "sha256": "e47b92f1e4d4718fb69fff264dd8967e0d8608bfe3f8d431e14cdb52d75cfcba"
+    },
+    {
+      "path": "HANDOFF-4453.md",
+      "bytes": 2560,
+      "sha256": "9b0ac526f186375a33099e5866d3e880e8208e90e2745f80c6f844463aeb2885"
     },
     {
       "path": "audio-path-audit/README.md",
@@ -2436,6 +2441,96 @@
       "path": "build4452/terminate-predecessor.log",
       "bytes": 51,
       "sha256": "c05619b419cdac46794097d5c21130355532835668de6f86e5a07f21190e773b"
+    },
+    {
+      "path": "build4453-keyboard/README.md",
+      "bytes": 3952,
+      "sha256": "0367982e707f6e2497ec241da78fc7c088d284a62c14daf76bd15516d156ceff"
+    },
+    {
+      "path": "build4453-keyboard/VERIFICATION.md",
+      "bytes": 3604,
+      "sha256": "825d5792d8b3946b61cca129f49989e6c53ee59d990b467c33519691fb7ca447"
+    },
+    {
+      "path": "build4453-keyboard/build-local.sh",
+      "bytes": 1316,
+      "sha256": "931ae9e05f93d49203052fa843a5eb3657bf1a193922b3c80b76d0e7f07f94f5"
+    },
+    {
+      "path": "build4453-keyboard/build-manifest.json",
+      "bytes": 3293,
+      "sha256": "6980fea4b50efac5165233f7e2a039df751bab61a59c897f94f6759ca4c9b63c"
+    },
+    {
+      "path": "build4453-keyboard/device-scripts/kb4453-install-ishwl",
+      "bytes": 1244,
+      "sha256": "3fd0181ecdf8e66c77bd85eba5ad0e5bf480cc511909fff99f740a6a0d24cef5"
+    },
+    {
+      "path": "build4453-keyboard/device-scripts/kb4453-keylog",
+      "bytes": 1059,
+      "sha256": "b41d0b93a90c070fa2575ff133188cb6673b0af222492c06b0fad20772e138e9"
+    },
+    {
+      "path": "build4453-keyboard/device-scripts/kb4453-probe",
+      "bytes": 929,
+      "sha256": "0cfd395f436d480c6012dbe112b64584c2d55e2a352fb015541610e410942b6e"
+    },
+    {
+      "path": "build4453-keyboard/install.json",
+      "bytes": 1059,
+      "sha256": "94a3eef6de17f01a80999b06e3d8c08920435cb74855a864802fa7cb73e9a0f7"
+    },
+    {
+      "path": "build4453-keyboard/install.log",
+      "bytes": 1060,
+      "sha256": "f93d0a44e93b3e2f1c4438f8792b7afd463a708703aa68e9954aec015cff5c3e"
+    },
+    {
+      "path": "build4453-keyboard/ishwl/README.md",
+      "bytes": 5321,
+      "sha256": "2705d78d5747d2f70496ff47c223ca06fdb5d801cfb976c3007f720109725a6d"
+    },
+    {
+      "path": "build4453-keyboard/ishwl/abi-verification.txt",
+      "bytes": 2596,
+      "sha256": "9b366da346e874574afc89c8dec12be5ff456eaec79b6bd2fd3a3670a88a8299"
+    },
+    {
+      "path": "build4453-keyboard/ishwl/artifact-sha256.txt",
+      "bytes": 1129,
+      "sha256": "60647203d6298be1fec61f89287202762c53c09c332160a43294e840a1ea765f"
+    },
+    {
+      "path": "build4453-keyboard/ishwl/build-ishwl-aarch64.sh",
+      "bytes": 2006,
+      "sha256": "f0ded9d90a68ca5c201e61ec9d61170eaf0a230fdc6dde2458b0b7a7ed95568e"
+    },
+    {
+      "path": "build4453-keyboard/ishwl/source-changes.patch",
+      "bytes": 4377,
+      "sha256": "51cce77a5c3c548064f028913f6b39483bff2ca649960eadf8ea8ab8ad2a0938"
+    },
+    {
+      "path": "build4453-keyboard/signed-app-verification.log",
+      "bytes": 1453,
+      "sha256": "852cbf110e4ce6a56892c4b8406bdb1a1e4034aec04668d03bcffbf318396091"
+    },
+    {
+      "path": "build4453-keyboard/signing.log",
+      "bytes": 1002,
+      "sha256": "a9c6cfaafd03b83130120639237be083d7fb60a281827529fb6c30669fe9bc9d"
+    },
+    {
+      "path": "build4453-keyboard/source-changes.patch",
+      "bytes": 10800,
+      "sha256": "eaf0a57dbfb8ad6315d43d4a255caf152e1769ddceedd917701cdd5d1e4ed0ea"
+    },
+    {
+      "path": "build4453-keyboard/source-commit.txt",
+      "bytes": 9,
+      "sha256": "cbab43ef8c9c15552371f9c5e3736e2430953e68a76257627103ba3d39e64a13"
     },
     {
       "path": "egl-repair/ARCHIVE.md",

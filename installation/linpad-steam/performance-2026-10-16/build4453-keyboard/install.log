@@ -1,0 +1,19 @@
+Install of build 4453 on the physical iPad, as run on 16 October 2026 (local time, UTC+8).
+The app had been staged and signed in place; devicectl output is verbatim, minus the JSON
+command record, which is install.json.
+
+$ xcrun devicectl device install app --device 00008112-000924EE14D9A01E \
+      "$PWD/work/performance/build4453/Payload/iSH ARM64.app" \
+      --json-output work/performance/build4453/install.json
+App installed:
+• bundleID: com.konradkern.linpad
+• installationURL: file:///private/var/containers/Bundle/Application/39552DB0-C781-4A46-A760-9B68EFB6707C/iSH%20ARM64.app/
+• launchServicesIdentifier: unknown
+• databaseUUID: 59C97103-AA6D-419C-A7BA-757BDFF8499C
+• databaseSequenceNumber: 8296
+• options: 
+
+The install replaced the bundle in place: the same bundle id keeps the app data, and the
+app's Linux system is not touched because the bundled root.tar.gz is the installed one
+(root.version 202610031701, no bundled root.version in either build). Steam, the game and
+the save slots are inside that system, not in the bundle.

@@ -1,0 +1,18 @@
+Prepared ishwl for the pending deployment. Built and checked on this Mac; NOT deployed, NOT
+device-verified. Digests of the binaries built from bd6e9881's wl-bridge sources:
+
+a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44  ishwl (strip --strip-debug, 162856 bytes)
+bc797be640c01b8bd1fa28cc6fdbc215b410cca21f275fbde2ed235f516593e9  ishwl (unstripped, 530984 bytes)
+
+Those files, the companion libishwl-scm.so, libishwl-compat.so and ishwl-x11-wm, and the
+stripped copy staged for the device (work/performance/serve/kb4453-ishwl) live in the
+workspace and are not tracked here: .gitignore excludes build outputs, and
+build-ishwl-aarch64.sh rebuilds them. The device-side install script verifies the digest
+before it replaces /usr/local/bin/ishwl, so a wrong or stale artifact cannot be installed
+silently:
+
+    a6ed7453e2ceb0ceb7e21603489244ae0d9a0888a21921fce3c6ea2802bf7f44  kb4453-ishwl
+
+Sizes, for orientation: the shipped compositor on the device is 166920 bytes raw and 162856
+bytes after strip --strip-debug, so the deployment artifact is exactly the same size class
+and layout (see abi-verification.txt).

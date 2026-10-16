@@ -1,0 +1,24 @@
+=== signed app verification 2026-10-16T17:03:21Z ===
+$ codesign --verify --deep --strict -v "iSH ARM64.app"
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4453/Payload/iSH ARM64.app: valid on disk
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4453/Payload/iSH ARM64.app: satisfies its Designated Requirement
+verify_exit=0
+
+$ codesign -dv --verbose=2
+Identifier=com.konradkern.linpad
+Format=app bundle with Mach-O thin (arm64)
+Signature size=4779
+Authority=Apple Development: Konrad Kern (VN3ST7P784)
+Authority=Apple Worldwide Developer Relations Certification Authority
+Authority=Apple Root CA
+TeamIdentifier=K5TW9AU245
+
+$ shasum -a 256 "iSH ARM64.app/iSH ARM64"
+08a4299de62ad9a7f16904dc26bd0cf3c7f1a5980dacbee21f8511f33fca08e3  /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4453/Payload/iSH ARM64.app/iSH ARM64
+
+$ dwarfdump --uuid (app + dSYM)
+UUID: 8A5CEAD6-08E8-3BB6-8CF6-835E6C33B98E (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4453/Payload/iSH ARM64.app/iSH ARM64
+UUID: 8A5CEAD6-08E8-3BB6-8CF6-835E6C33B98E (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-build/Release-iphoneos/iSH ARM64.app.dSYM/Contents/Resources/DWARF/iSH ARM64
+
+$ profile expiry
+2027-10-16T06:33:44Z
