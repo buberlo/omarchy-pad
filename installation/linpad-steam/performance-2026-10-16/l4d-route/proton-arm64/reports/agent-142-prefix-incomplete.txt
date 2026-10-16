@@ -1,0 +1,38 @@
+AGENT_BEGIN id=142-prefix-incomplete pid=43 Fri Oct 16 23:13:59 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== prefix 500 ===
+drive_c: Program Files Program Files (x86) ProgramData openxr users vrclient windows 
+windows: Fonts Installer Microsoft.NET command explorer.exe globalization help hh.exe inf logs notepad.exe performance regedit.exe resources rundll.exe security sysarm32 system system.ini system32 syswow64 tasks temp twain.dll twain_32.dll win.ini winhelp.exe winhlp32.exe winsxs 
+system32 entries: 821
+Speech
+WindowsPowerShell
+acledit.dll
+aclui.dll
+activeds.dll
+syswow64 entries: 865
+dosdevices: total 8|lrwxrwxrwx 1 root root 10 Oct 16 20:02 c: -> ../drive_c|lrwxrwxrwx 1 root root  1 Oct 16 20:02 z: -> /|
+registry: 3 reg files
+=== prefix 999 ===
+drive_c: Program Files Program Files (x86) ProgramData openxr users vrclient windows 
+windows: Fonts Installer Microsoft.NET command explorer.exe globalization help hh.exe inf logs notepad.exe performance regedit.exe resources rundll.exe security sysarm32 system system.ini system32 syswow64 tasks temp twain.dll twain_32.dll win.ini winhelp.exe winhlp32.exe winsxs 
+system32 entries: 821
+Speech
+WindowsPowerShell
+acledit.dll
+aclui.dll
+activeds.dll
+syswow64 entries: 865
+dosdevices: total 8|lrwxrwxrwx 1 root root 10 Oct 16 22:26 c: -> ../drive_c|lrwxrwxrwx 1 root root  1 Oct 16 22:26 z: -> /|
+registry: 3 reg files
+
+=== try to finish the prefix with wineboot (workaround active) ===
+t= 30s system32=821 procs=5
+t= 60s system32=821 procs=5
+t= 90s system32=821 procs=5
+t=120s system32=821 procs=0
+t=150s system32=821 procs=0
+--- wineboot output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:16:30 UTC 2026

@@ -1,0 +1,39 @@
+AGENT_BEGIN id=147-pe-with-steam-running pid=43 Fri Oct 16 23:26:56 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+steam client: 4 procs, sockets 57
+=== our PE through the launcher, with Steam running ===
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14726/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14727/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14728/cmdline: no such file
+t= 32s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=5
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14946/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14947/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/14948/cmdline: no such file
+t= 64s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15112/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15113/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15114/cmdline: no such file
+t= 96s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15232/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15233/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15234/cmdline: no such file
+t=128s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15351/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15352/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15353/cmdline: no such file
+t=160s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15477/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15478/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15479/cmdline: no such file
+t=192s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15596/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15597/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 10: can't open /proc/15598/cmdline: no such file
+t=224s file=none our_procs=[ 14546:python3 14556:steam.exe] wine=4
+
+=== log ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:30:43 UTC 2026

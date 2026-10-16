@@ -1,0 +1,30 @@
+AGENT_BEGIN id=148-login-and-direct-wine pid=43 Fri Oct 16 23:31:00 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is the Linux Steam client logged in? ===
+[2026-10-16 19:26:53] Connectivity test (23.40.63.205:80 (23.40.63.205:80)): OK!
+[2026-10-16 19:26:53] Connectivity test: result=Connected (since 0.0s ago), prev=Unknown, in progress=0
+[2026-10-16 19:26:54] IPv6 HTTP connectivity test (ipv6check-http.steamserver.net / [2404:3fc0:0:106::670a:7c59]:80 ([24
+[2026-10-16 19:26:56] IPv6 UDP connectivity test (ipv6check-udp.steamserver.net / 2404:3fc0:2:101::671c:3697) - TIMEOUT
+[2026-10-16 19:49:15] [Logged Off, 0, 0] [U:1:0] ResetVoiceRecording() (was recording: 0) (last get voice time: 17921801
+[2026-10-16 19:49:15] [Logged Off, 0, 0] [U:1:0] Log session ended
+saved users: 1
+steam processes: 1
+
+=== our PE with wine DIRECTLY (no Proton wrapper, no steam.exe) ===
+/tmp/kb-agent-cmd.sh: line 18: can't open /proc/15862/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 18: can't open /proc/15863/cmdline: no such file
+/tmp/kb-agent-cmd.sh: line 18: can't open /proc/15864/cmdline: no such file
+t= 32s file=[gui probe ran in a 64-bit Windows process] our=[ 14546:python3:S 14556:steam.exe:S]
+
+=== log ===
+00a4:err:wineusb:DriverEntry Failed to initialize Unix library, status 0xc0000135.
+00a4:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\wineusb": c0000135
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"wineusb" failed to start: 126
+00a4:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c00000e5
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1359
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+corrupted size vs. prev_size
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:31:35 UTC 2026

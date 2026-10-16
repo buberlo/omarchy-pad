@@ -1,0 +1,15 @@
+AGENT_BEGIN id=140-status-after-timeout pid=43 Fri Oct 16 23:09:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Fri Oct 16 22:00:55 UTC 2026
+kb4453 agent started pid=43 at Fri Oct 16 22:12:37 UTC 2026
+Fri Oct 16 23:09:23 UTC 2026
+pe-noexp: --- starting aarch64 at Fri Oct 16 22:59:25 UTC 2026 NO FILE for aarch64 
+probe file: none
+procs: 4 wine-ish
+footprint_mb 2048
+allowance_mb 8192
+headroom_mb 6143
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:09:23 UTC 2026

@@ -1,0 +1,50 @@
+AGENT_BEGIN id=143-pe-process-check pid=43 Fri Oct 16 23:16:42 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine with our GUI PE, wine's process trace on ===
+t= 30s our_process=[8151 ] file=0 wine_procs=4
+t= 60s our_process=[8151 ] file=0 wine_procs=4
+t= 90s our_process=[8151 ] file=0 wine_procs=4
+t=120s our_process=[8151 ] file=0 wine_procs=4
+t=150s our_process=[8151 ] file=0 wine_procs=4
+t=180s our_process=[8151 ] file=0 wine_procs=4
+
+=== wine's process trace: what does it say about our exe? ===
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:wineusb:DriverEntry Failed to initialize Unix library, status 0xc0000135.
+00a0:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\wineusb": c0000135
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"wineusb" failed to start: 126
+00a0:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c0000142
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1114
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== last lines ===
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000000c,0x11e0dc,0x00000004,(nil))
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000000c,0x11e0dc,0x00000004,(nil))
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000000c,0x11e0dc,0x00000004,(nil))
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000000c,0x11e0dc,0x00000004,(nil))
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000001a,0x11ecf8,0x00000008,(nil))
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x00000007,0x11ef10,0x00000008,(nil))
+0024:trace:process:NtCreateUserProcess L"\\??\\C:\\windows\\system32\\explorer.exe" image L"C:\\windows\\system32\\explorer.exe" cmdline L"\"C:\\windows\\system32\\explorer.exe\" /desktop" parent (nil) machine 0
+0024:trace:process:NtCreateUserProcess L"\\??\\C:\\windows\\system32\\explorer.exe" image L"C:\\windows\\system32\\explorer.exe" cmdline L"\"C:\\windows\\system32\\explorer.exe\" /desktop" parent (nil) machine 0
+
+=== full process list (short names) ===
+12359 sh
+12372 python3
+12383 steam.exe
+12386 wineserver
+12398 services.exe
+12401 winedevice.exe
+12410 plugplay.exe
+12419 svchost.exe
+12426 winedevice.exe
+12447 steam.exe
+12783 ps
+12784 tail
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:19:46 UTC 2026

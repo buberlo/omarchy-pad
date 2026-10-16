@@ -338,3 +338,51 @@ died within seconds. A detached long run with this setting is going (`/tmp/wine-
 If it completes, this is both the workaround to get to Left 4 Dead and a precise pointer at the
 emulator defect: something about the `brk` heap, in the path glibc's main arena uses and nothing else
 does.
+
+## Round of 17 October, 06:50–07:35: **a Windows program runs under wine**
+
+The first real success in this whole investigation. With wine started **directly** (not through
+Proton), the allocator workaround, and the high layout, our own Windows program executed and did its
+work:
+
+```
+file=[gui probe ran in a 64-bit Windows process]
+```
+
+The command that produced it (on the device):
+
+```sh
+env ISH_HIGH_VA=1 LD_LIBRARY_PATH=/opt/linpad-glibc \
+    MALLOC_MMAP_THRESHOLD_=1 MALLOC_TRIM_THRESHOLD_=1 \
+    XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0-gpu \
+    WINEPREFIX=…/compatdata/500/pfx \
+    WINELOADER=…/files/bin-arm64/wine WINESERVER=…/files/bin-arm64/wineserver \
+    …/files/bin-arm64/wine /tmp/l4d-probes/gui-file-pe-aarch64.exe
+```
+
+The probe writes a file instead of printing, because a console program's stdout needs a Windows
+console that does not exist here — that is why earlier "cmd /c echo" runs looked like failures while
+wine was actually fine. `probes/guifilepe.c` is the source, built as a GUI-subsystem PE for aarch64,
+x86 and x86_64 (the x86 one is Left 4 Dead's architecture).
+
+**What the road there established:**
+
+- Proton does not run the program directly: it starts **`steam.exe <program>`** (wine's Windows Steam
+  client stub) for the DRM handshake. That process simply waits here — `ps` shows
+  `steam.exe … gui-file-pe-aarch64.exe`, state `S`, for minutes, and the program never starts.
+- The reason is now proven: **the Linux Steam client is logged off**
+  (`logs/connection_log.txt`: `[Logged Off, 0, 0] Log session ended`). `steam.exe` needs a signed-in
+  client to hand off. The client I started headless (4 processes, 57 sockets) never logged in.
+- The client needs a **display** for that, and the X bridge cannot start yet:
+  `/usr/local/bin/ishwl-x11` fails with `Xwayland: not found` — the binary exists in the desktop
+  session's PATH but not in the agent's. `/opt/steam-host/usr/lib/aarch64-linux-gnu` carries all the
+  glibc ARM64 graphics libraries (libwayland-client, libwayland-egl, libX11, libvulkan, libEGL,
+  libGL), so a display is within reach.
+- Wine's session itself comes up fine with the workaround: `services.exe`, `plugplay.exe`,
+  `svchost.exe`, `winedevice.exe`, `explorer.exe`, no corruption. The explorer respawn loop and the
+  `NtUserRegisterClassExWOW Failed to get shared session object` errors are the missing window
+  station/desktop, i.e. the same display problem.
+
+**Next:** find `Xwayland`, start the X bridge, start the Steam client with a display so it signs in,
+and then run Left 4 Dead — either through Steam's Play button (which brings Proton's `steam.exe`
+handshake with it) or through the launcher once the client is signed in.

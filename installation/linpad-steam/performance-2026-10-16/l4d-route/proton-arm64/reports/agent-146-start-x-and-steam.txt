@@ -1,0 +1,29 @@
+AGENT_BEGIN id=146-start-x-and-steam pid=43 Fri Oct 16 23:24:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== how is the X bridge started? ===
+sh: exec: line 0: Xwayland: not found
+ishwl-x11: Xwayland failed to start
+05-bus-address.sh 10-style.sh 15-lowmem.sh 20-audio.sh 90-firstrun.sh 99-kb4453-agent.sh 99-kb4453-frames.sh 
+/usr/local/bin/ishwl
+/usr/local/bin/steam-local
+/usr/local/bin/ishwl-launch
+
+=== start it on :1 and check the socket ===
+srwxrwxrwx 1 root root 0 Oct 16 07:29 X7
+srwxrwxrwx 1 root root 0 Oct 16 07:34 X8
+srwxrwxrwx 1 root root 0 Oct 16 07:43 X9
+x11 log: sh: exec: line 0: Xwayland: not found ishwl-x11: Xwayland failed to start 
+
+=== start the Linux Steam client with that display ===
+t= 25s steam_procs=4 sockets=58
+t= 50s steam_procs=4 sockets=58
+t= 75s steam_procs=4 sockets=58
+t=100s steam_procs=4 sockets=58
+t=125s steam_procs=4 sockets=58
+steam log tail: 
+footprint_mb 1374
+allowance_mb 8191
+headroom_mb 6817
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:26:41 UTC 2026

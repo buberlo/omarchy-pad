@@ -1,0 +1,24 @@
+AGENT_BEGIN id=138-file-pe-check pid=43 Fri Oct 16 22:56:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== status ===
+log: 
+probe file: (not there yet)
+procs: services.exe winedevice.exe plugplay.exe svchost.exe winedevice.exe explorer.exe explorer.exe explorer.exe explorer.exe explorer.exe explore
+wine log lines: 2
+footprint_mb 4691
+allowance_mb 8192
+headroom_mb 3500
+
+=== wait a little longer for the first run ===
+t= 30s file=0 procs=35
+t= 60s file=0 procs=35
+t= 90s file=0 procs=35
+t=120s file=0 procs=35
+t=150s file=0 procs=35
+
+=== log tail ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:59:07 UTC 2026

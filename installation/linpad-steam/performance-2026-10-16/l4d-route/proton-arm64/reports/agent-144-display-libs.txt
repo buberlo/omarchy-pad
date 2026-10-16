@@ -1,0 +1,26 @@
+AGENT_BEGIN id=144-display-libs pid=43 Fri Oct 16 23:20:03 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== where are the glibc ARM64 graphics libraries? ===
+--- /opt/steam-host/usr/lib/aarch64-linux-gnu
+    libwayland-client.so.0
+    libwayland-egl.so.1
+    libX11.so.6
+    libvulkan.so.1
+    libEGL.so.1
+    libGL.so.1
+--- /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/aarch64-linux-gnu
+
+=== what does the working Hollow Knight route use for graphics? ===
+egl=${LINPAD_EGL_PREFIX:-/opt/hollow-egl}
+base=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+mesa=${LINPAD_EGL_MESA_PREFIX:-/opt/hollow-mesa26}
+vendor="$egl/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+library_path="$egl/usr/lib/x86_64-linux-gnu:$mesa/usr/lib/x86_64-linux-gnu:$base/usr/lib/x86_64-linux-gnu:$base/usr/lib/x86_64-linux-gnu/pulseaudio"
+
+=== is there an X server we could start? ===
+found: /usr/local/bin/ishwl-x11
+   22 ishwl
+wayland socket: srwxr-xr-x 1 root root 0 Oct 16 22:12 /tmp/xdg-runtime/wayland-0|srwxr-xr-x 1 root root 0 Oct 16 22:12 /tmp/xdg-runtime/wayland-0-gpu|-rw-r----- 1 root root 0 Oct 16 17:46 /tmp/xdg-runtime/wayland-0.lock|
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:20:03 UTC 2026

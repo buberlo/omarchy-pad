@@ -1,0 +1,18 @@
+AGENT_BEGIN id=136-file-pe-run2 pid=43 Fri Oct 16 22:51:26 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+t= 35s | wine exit=1 NO FILE for x86_64 ALL DONE 
+
+=== full log ===
+wine: could not exec wineserver
+wine exit=1
+NO FILE for aarch64
+wine: could not exec wineserver
+wine exit=1
+NO FILE for x86
+wine: could not exec wineserver
+wine exit=1
+NO FILE for x86_64
+ALL DONE
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:52:01 UTC 2026

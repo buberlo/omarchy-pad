@@ -1,0 +1,26 @@
+AGENT_BEGIN id=134-wayland-display pid=43 Fri Oct 16 22:31:57 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+platform: /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files
+agent: 43
+
+=== does the platform carry the Wayland/Vulkan client libraries? ===
+libwayland-client.so.0     MISSING
+libwayland-egl.so.1        MISSING
+libvulkan.so.1             MISSING
+libEGL.so.1                MISSING
+libX11.so.6                MISSING
+
+=== wine with the full platform library set and the Wayland display ===
+t= 32s ok=0 corrupt=0 procs=0 mem=footprint_mb 383all
+t= 64s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+t= 96s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+t=128s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+t=160s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+t=192s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+t=224s ok=0 corrupt=0 procs=0 mem=footprint_mb 384all
+--- output ---
+wine: could not exec wineserver
+--- processes ---
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:35:42 UTC 2026

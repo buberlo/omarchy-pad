@@ -1,0 +1,20 @@
+AGENT_BEGIN id=141-gui-pe-run pid=43 Fri Oct 16 23:09:42 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+t= 38s | --- aarch64 started Fri Oct 16 23:09:46 UTC 2026 
+t= 76s | --- aarch64 started Fri Oct 16 23:09:46 UTC 2026 
+t=114s | --- aarch64 started Fri Oct 16 23:09:46 UTC 2026 
+t=152s | --- aarch64 started Fri Oct 16 23:09:46 UTC 2026 
+t=190s | NO FILE for aarch64 --- x86 started Fri Oct 16 23:12:52 UTC 2026 
+t=228s | NO FILE for aarch64 --- x86 started Fri Oct 16 23:12:52 UTC 2026 
+
+=== log ===
+--- aarch64 started Fri Oct 16 23:09:46 UTC 2026
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+NO FILE for aarch64
+--- x86 started Fri Oct 16 23:12:52 UTC 2026
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:13:34 UTC 2026

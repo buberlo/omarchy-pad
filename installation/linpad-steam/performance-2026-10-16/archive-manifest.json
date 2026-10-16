@@ -4504,13 +4504,18 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 13283,
-      "sha256": "2e5b5a0f23ff478983abdf911efcdbf2ffe9f36059a08d062f28c272a13c99de"
+      "bytes": 15227,
+      "sha256": "171be1dedcef7958b99ce069aa8cebd5691a3298c5697cdf61c861bcfa65bc0a"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 21668,
-      "sha256": "992f3ceb6ee6b7f9804206aa6600f31951a4192be028259cfc50b7467e3c1901"
+      "bytes": 24410,
+      "sha256": "41085db48245d2cda433d28299baf8c2861fed7757aecbd16025f56598d9f55a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
+      "bytes": 538,
+      "sha256": "c7f8d6bea5c9386f740b60e9c0e8723dc844e239e4d39d5332bcca0bbfc2f99a"
     },
     {
       "path": "l4d-route/proton-arm64/evidence-app-console-trace.log",
@@ -4568,6 +4573,11 @@
       "sha256": "0d12ce4839b443afb2bd577786b5bd7db0416ee30268b052919bb533356735a7"
     },
     {
+      "path": "l4d-route/proton-arm64/probes/filepe.c",
+      "bytes": 468,
+      "sha256": "09ebb7bcf3c61c445e996dbd07a14208ba2648a32272c4ebceaf29d218ca3d44"
+    },
+    {
       "path": "l4d-route/proton-arm64/probes/glibcfork.c",
       "bytes": 2171,
       "sha256": "bad66a16588852094bf678ee63da341194b02d8ca0bc9e4d914efea6bf435375"
@@ -4576,6 +4586,11 @@
       "path": "l4d-route/proton-arm64/probes/glibcheap.c",
       "bytes": 2244,
       "sha256": "aa2fc25eda1d8c2088b7c636b68089cda5f77d80a372aa21d953670974673276"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/guifilepe.c",
+      "bytes": 538,
+      "sha256": "c7f8d6bea5c9386f740b60e9c0e8723dc844e239e4d39d5332bcca0bbfc2f99a"
     },
     {
       "path": "l4d-route/proton-arm64/probes/heapaccount.c",
@@ -4801,6 +4816,76 @@
       "path": "l4d-route/proton-arm64/reports/agent-131-longrun-start.txt",
       "bytes": 528,
       "sha256": "00fd51cd3d704a2f5953f9ae8b7766d5186b651b140c114978306ff53b4b6286"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-134-wayland-display.txt",
+      "bytes": 1076,
+      "sha256": "47c963fce9f69fc6caba4db437e1f6f268dd2b2c5178d61fa05a9283c5294297"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-135-file-pe-start.txt",
+      "bytes": 691,
+      "sha256": "cd33b6bc995bc5c13696567ea5eaaf9c08d3ad7fd0abaa2c5130dc0df2073025"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-136-file-pe-run2.txt",
+      "bytes": 444,
+      "sha256": "2cbb64eb48e85231612c30ea27d7020347dc4586bd8d2a5be0c1ff4d17795f5e"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-137-file-pe-via-launcher.txt",
+      "bytes": 550,
+      "sha256": "cfdb120476ceef03700fd07aac4778e0fbaa72711e5b87e071565bc13878296c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-138-file-pe-check.txt",
+      "bytes": 831,
+      "sha256": "2a2fc278aa21d44ebf06906a3ded11a81ce0f4355f2057249fb7f46088f2056a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-140-status-after-timeout.txt",
+      "bytes": 519,
+      "sha256": "606ddee01be2f22a74576382d7f6195abdbbaa4a3d2d421d88869043160f953b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-141-gui-pe-run.txt",
+      "bytes": 1093,
+      "sha256": "20584595792841390dd1aebba5c54973b845b9e7d1e9135bfd657ec9de858c47"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-142-prefix-incomplete.txt",
+      "bytes": 1843,
+      "sha256": "9da8347afd1269748725c111f6744fc928526dfea1ad2ed90cb4961d3bbafd2d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-143-pe-process-check.txt",
+      "bytes": 3081,
+      "sha256": "ad8188c7f70ce7d0f4e904fde3e06c83d3daa7603aa69a581450fe2a43971a8f"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-144-display-libs.txt",
+      "bytes": 1261,
+      "sha256": "217df19201317139d8d26bac00d087a6f5d92b380f0ced118244caf8e1d19499"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-145-pe-precise.txt",
+      "bytes": 6066,
+      "sha256": "8a320ecb836d363d726a23d16d06b722e4d2f8411928cf21eb8c52b3aa9421cf"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-146-start-x-and-steam.txt",
+      "bytes": 1020,
+      "sha256": "ec148b6cfb8f83657d58750f7c1fc059b5de631e68fdf51dbdaf28a90698e9e5"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-147-pe-with-steam-running.txt",
+      "bytes": 2558,
+      "sha256": "41edc7fed138bd0ba69f6136482adc7fdb8c8e4306ff74c1d4a54b122cc8470a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-148-login-and-direct-wine.txt",
+      "bytes": 2063,
+      "sha256": "75edbd8c691bec03ede31181691d4b117b057b76c7df6cd0ffc789e796e8a2c8"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

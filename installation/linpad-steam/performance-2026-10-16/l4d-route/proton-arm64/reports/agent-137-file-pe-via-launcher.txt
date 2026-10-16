@@ -1,0 +1,17 @@
+AGENT_BEGIN id=137-file-pe-via-launcher pid=43 Fri Oct 16 22:52:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+51:export MALLOC_MMAP_THRESHOLD_=1 MALLOC_TRIM_THRESHOLD_=1 MALLOC_TOP_PAD_=0
+t= 35s | 
+t= 70s | 
+t=105s | 
+t=140s | 
+t=175s | 
+t=210s | 
+t=245s | 
+
+=== log ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:56:21 UTC 2026
