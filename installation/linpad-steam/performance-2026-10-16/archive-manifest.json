@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 10411,
-      "sha256": "900821806b7f0b0bd299e77519322bd26a60848492b6832008d642501ef5ca9b"
+      "bytes": 12541,
+      "sha256": "272a2deb20b499f38d49f8de955b17c01a4b72c56862c05ea70ac11e07d2513b"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 16751,
-      "sha256": "37bd3908b227dad6e122ed0f9afa8e993f07d24a73459558da46da674793ee44"
+      "bytes": 19905,
+      "sha256": "6307572f757780456dc9c3cb5ccca6a25e5b07b590a910d30f9db7de2f8a6519"
     },
     {
       "path": "l4d-route/proton-arm64/evidence-app-console-trace.log",
@@ -4521,6 +4521,11 @@
       "path": "l4d-route/proton-arm64/evidence-emulator-trace.log",
       "bytes": 449182,
       "sha256": "9e85ed30f4f438d08a7e77c11bb9d7cccd9d0a3cc459163ff1bf4034c2239128"
+    },
+    {
+      "path": "l4d-route/proton-arm64/fault-trace/emulator-fault-trace.log",
+      "bytes": 1290372,
+      "sha256": "e6dd8e84073ce47c5bef9b36a35c66cd56221d13027f1d89102d2465d200e539"
     },
     {
       "path": "l4d-route/proton-arm64/high-va/build-instrumented.log",
@@ -4546,6 +4551,16 @@
       "path": "l4d-route/proton-arm64/mmap-fixed-noreplace/README.md",
       "bytes": 5933,
       "sha256": "ffe801b65027df913eb7ec91d302ea7c6739187f1164d51fb4adb59d6eb4cd43"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/brkhole.c",
+      "bytes": 1921,
+      "sha256": "194f3de6fc8c33cee1f0e2f754c4d35cde2ec16c6e66bd6fe78518317a294bc1"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/brkshrink.c",
+      "bytes": 1430,
+      "sha256": "afcf993e63d0cbe253aa77a2013596717376b88f09eaced243c4c29e93c82544"
     },
     {
       "path": "l4d-route/proton-arm64/probes/envcheck.c",
@@ -4596,6 +4611,16 @@
       "path": "l4d-route/proton-arm64/probes/procmem.c",
       "bytes": 2574,
       "sha256": "6145cc8449560bd1920fd61a01ae559318de99bf3d2092c91c61519763254ace"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/shmfile.c",
+      "bytes": 3253,
+      "sha256": "8a110f17340a9618828b313d25db86a51397441bbbcb59136b78cfc576bd9793"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/shmprobe.c",
+      "bytes": 3605,
+      "sha256": "5008ab690f7fb13cd83414b935856421c2cdc88e2e8457d9d9e731d9e675ed2f"
     },
     {
       "path": "l4d-route/proton-arm64/probes/va_layout.c",
@@ -4671,6 +4696,76 @@
       "path": "l4d-route/proton-arm64/reports/agent-113-proc-pid-mem.txt",
       "bytes": 376,
       "sha256": "a793d9129a8749dfadd8272d707f2592e4b3951b5d5939319d4b914acb8fe86b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-114-wine-heap-trace.txt",
+      "bytes": 4243,
+      "sha256": "23223c2940fa1423a61ed2938821f58c9aacc2e76423c3c49863aceed57e5a71"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-115-no-preloader.txt",
+      "bytes": 911,
+      "sha256": "cc2cce4d4d18fbfb988c4303c9c1aa10b1b9438042ce3257ef9293f501bf320a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-116-trace-session-up.txt",
+      "bytes": 335,
+      "sha256": "91c6d02640726652e6b83e4cf790c1abaaae2bd1a59ae0c6bebb4d7247916664"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-117-wine-under-fault-trace.txt",
+      "bytes": 593,
+      "sha256": "c4dc10f741c3857afae997b616b55e496e84f4e8796eeb1f0c905d12089a1ea4"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-118-shared-memory.txt",
+      "bytes": 400,
+      "sha256": "00a57f0838d0e8abd1702e3f08a6c4aa75c4bfc0c809b19a47a8e98f22e253dc"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-119-shared-memory2.txt",
+      "bytes": 463,
+      "sha256": "a721bc0080d0abd8360e04fdc7f0befa5f93be0c81fb93ea95c70f04e06d2257"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-120-shared-file.txt",
+      "bytes": 490,
+      "sha256": "2fe21ed9075e2061d0c3810924a2cf48fb66ccb46d105c0ac3eedb0e03342ce8"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-121-mmap-only-malloc.txt",
+      "bytes": 661,
+      "sha256": "2b495a65f71865248e19d20e69331f38a1fb718e236de1cc304406fb879dd8cf"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-122-brk-reservation.txt",
+      "bytes": 396,
+      "sha256": "a6043acf81954d8440e22052c2e49d8be34598db6597930e5f5a8e7fca9d66e7"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-123-brk-shrink.txt",
+      "bytes": 226,
+      "sha256": "d1338259f85764c7cef4820c5c3168fd391b1e8604308e0de1c1a76651d385b1"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-124-no-brk-confirm.txt",
+      "bytes": 773,
+      "sha256": "b87cfebc5ffc98a843e33d7818e9bbcec9db5b6192b40651f9c5a8b769a9792b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-125-fresh-prefix.txt",
+      "bytes": 735,
+      "sha256": "f5d1fa6372e6e2d364d0f4e07111fe9f5d115e7692a95b0d465f2a17a2e27c60"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-126-fresh-prefix-valid.txt",
+      "bytes": 886,
+      "sha256": "852712039871bb47ab5dd3e58a134dd2bd7ad8c09ec1dd887aa8e8b962e9e911"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-127-fresh-appid.txt",
+      "bytes": 920,
+      "sha256": "58b218f5c3bd220a8765aa980edd8c9d074146251df969c308b160eaeddea014"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

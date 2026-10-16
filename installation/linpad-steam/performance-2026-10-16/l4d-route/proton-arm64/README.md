@@ -253,3 +253,53 @@ by direct comparison):
 Wine gets to Windows-process creation (`wineboot`, `services`, `svchost`, `plugdev`, ~30 builtin
 modules) and then aborts. The next useful step is wine's own heap trace (`WINEDEBUG=+heap`) around
 the abort, and a comparison against a second wine build if one can be had.
+
+## Round of 17 October, 06:10–06:30: the wild pointer behind the corruption
+
+The emulator's own fault tracing (`ISH_EXEC_TRACE`, captured through `devicectl --console` together
+with the no-JIT boot) finally shows the failure itself:
+
+```
+SIGNAL_TRACE: sig=6 pc=0x7fffede8020 pid=482 sp=0x1000fcfb0 lr=0x7fffede800c fault=0x0
+REAP: pid=482 exit=0x10100 comm=steam.exe
+INT_GPF pid=505 pc=0x7fffe876138 fault=0x167f9efd1 write=0
+  insn=0xb9400401 x0=0x167f9efd1 x1=0xe8000000 x2=0x46508001 x3=0x7fffe87b000
+  sp=0x7ff9e020 x29=0x7ff9e020 x30=0x7fffe875cc8 brk=0x7ffff020000
+```
+
+What it says:
+
+- The **first** event is the glibc abort in the process whose `comm` is **`steam.exe`** (wine's
+  Windows Steam stub, which Proton starts for the DRM handshake), `sig=6` at the address of glibc's
+  `malloc_printerr`.
+- Then **several wine processes read-fault at the same PC** with wild pointers of one shape:
+  `0x167f9efd1`, `0x167f5efd1`, `0x167f3efd1`, `0x167f4efd1`, `0x167f2efd1` — i.e.
+  `0x167f00000 + n·0x20000 + 0xefd1`, differing per process. That is a **per-process structure**
+  holding a bad pointer, not random garbage.
+- The faulting instruction is `ldr w1, [x0]` at the start of a **NEON-heavy libc routine** (the
+  instruction block is a `memset`/`memcpy` shape), so libc is the *victim*, called with a pointer that
+  was already wrong.
+- The frame pointer and stack pointer are at `0x7ff9e020` (~2 GB, the **guest/Windows stack**) while
+  the return address is high (libc). Host ARM64 code running on the guest stack is how ARM64EC works,
+  but it also means a host-side stack overflow would land in guest memory.
+
+An A/B test narrows the arena: with `MALLOC_MMAP_THRESHOLD_=1` (glibc takes nothing from `brk`) the
+assertion disappears for minutes — the wild-pointer faults do **not**, they simply no longer get
+reported. So `brk` is where the corruption becomes *visible*, not where it is caused.
+
+Cleared in this round as well, each with a probe validated on real Linux first or a controlled
+comparison:
+
+| Suspect | Evidence |
+| --- | --- |
+| the preloader | `WINELOADERNOEXEC=1` changes nothing |
+| shared memory (anonymous, memfd, `/dev/shm`, file) | `probes/shmprobe.c` and `probes/shmfile.c`: writes are visible across a fork *and* across two independent `open`+`mmap` of the same file |
+| `brk` growth not being reserved | `probes/brkhole.c`: a fresh `mmap` never lands inside 8 MB of grown-but-untouched heap |
+| `brk` shrink destroying live data | `probes/brkshrink.c` (raw `brk` clashes with glibc, identical crash on Linux, so it proves nothing on its own) |
+| a corrupt prefix | a brand-new prefix from scratch (appid 999) crashes identically |
+| two libcs, `process_vm_*`, `/proc/pid/mem`, layout, JIT, FEX architecture | earlier rounds |
+
+The two concrete next steps: (1) test the guest-stack hypothesis — host code overflowing the small
+Windows stack would corrupt exactly the neighbouring guest structures that hold those pointers — and
+(2) implement `process_vm_readv`/`process_vm_writev`, which wine prefers and this kernel stubs with
+`ENOSYS`, forcing wine onto `/proc/<pid>/mem` for every cross-process access.

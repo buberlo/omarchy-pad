@@ -1,0 +1,12 @@
+AGENT_BEGIN id=122-brk-reservation pid=43 Fri Oct 16 22:19:50 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the same probe on the iPad ===
+heap start            : 0x1021000
+heap end after brk    : 0x1821000 (8 MB grown, untouched)
+fresh mmap            : 0xefbd0000 .. 0xefcd0000
+inside the grown heap : no
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:19:50 UTC 2026

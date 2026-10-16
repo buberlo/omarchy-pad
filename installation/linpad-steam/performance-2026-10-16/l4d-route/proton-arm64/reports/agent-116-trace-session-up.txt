@@ -1,0 +1,11 @@
+AGENT_BEGIN id=116-trace-session-up pid=43 Fri Oct 16 22:13:56 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Fri Oct 16 22:12:37 UTC 2026
+Fri Oct 16 22:13:56 UTC 2026
+footprint_mb 139
+allowance_mb 8192
+headroom_mb 8052
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:13:56 UTC 2026

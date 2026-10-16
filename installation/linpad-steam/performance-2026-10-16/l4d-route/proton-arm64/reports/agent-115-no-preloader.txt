@@ -1,0 +1,21 @@
+AGENT_BEGIN id=115-no-preloader pid=43 Fri Oct 16 22:11:01 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== A: with the preloader (baseline) ===
+0
+2
+
+=== B: preloader disabled (WINELOADERNOEXEC=1) ===
+t= 25s ok=0 corrupt=2
+--- output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc_consolidate(): invalid chunk size
+free(): invalid pointer
+free(): invalid pointer
+
+=== was the preloader even started? (kernel log since the last clear) ===
+24
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:12:11 UTC 2026

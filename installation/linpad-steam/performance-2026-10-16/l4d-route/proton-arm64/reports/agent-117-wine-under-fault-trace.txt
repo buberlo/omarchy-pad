@@ -1,0 +1,12 @@
+AGENT_BEGIN id=117-wine-under-fault-trace pid=43 Fri Oct 16 22:14:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine, crash expected ===
+t= 25s corrupt=5
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+malloc_consolidate(): invalid chunk size
+corrupted size vs. prev_size
+corrupted size vs. prev_size
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:14:31 UTC 2026

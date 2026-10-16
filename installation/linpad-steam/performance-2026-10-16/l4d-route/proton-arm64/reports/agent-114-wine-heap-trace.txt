@@ -1,0 +1,56 @@
+AGENT_BEGIN id=114-wine-heap-trace pid=43 Fri Oct 16 22:10:08 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+Fri Oct 16 22:10:08 UTC 2026
+
+=== wine with its own heap trace ===
+t= 25s lines=8305 crash=4
+
+=== the 30 lines before the first corruption ===
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x3a, return 00000000006F9AE0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x28, return 00000000006F8440, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x248, return 00000000007059D0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x44, return 00000000006F6550, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x1c8, return 0000000000705C50, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0xb, return 00000000006F9280, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0xda, return 0000000000705E50, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x96, return 0000000000705F60, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0xb, return 00000000006F92C0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0xb, return 00000000006F9300, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x28, return 00000000006F84A0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x248, return 0000000000706030, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x44, return 00000000006F65D0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x1c8, return 00000000007062B0, status 0.
+004c:trace:heap:RtlFreeHeap handle 0000000000150000, flags 0, ptr 00000000007062B0, return 1, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x1c8, return 00000000007064B0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x2, return 00000000006F9340, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0xda, return 00000000007066B0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x96, return 00000000007067C0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x4, return 00000000006F9380, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x4, return 00000000006F93C0, status 0.
+0054:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x50, return 00000000007068B0, status 0.
+0054:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x110, return 0000000000707860, status 0.
+0058:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x50, return 00000000007079C0, status 0.
+0058:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x110, return 0000000000708970, status 0.
+005c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x50, return 0000000000708AD0, status 0.
+005c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x110, return 0000000000709A80, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0x8, size 0x1c0, return 0000000000709BC0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x1e, return 0000000000702CF0, status 0.
+004c:trace:heap:RtlAllocateHeap handle 0000000000150000, flags 0, size 0x76, return 00000000007013A0, status 0.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned
+0058:err:seh:call_seh_handlers invalid frame 1004fdee0 (0000000000B32000-0000000000C30000)
+
+=== which process ids appear right before it ===
+    857 0034:
+    443 002c:
+    316 0040:
+    232 0048:
+    223 004c:
+    118 0044:
+
+=== heap operations summary (last 200 lines) ===
+     52 heap:RtlAllocateHeap
+    148 heap:RtlFreeHeap
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:10:34 UTC 2026

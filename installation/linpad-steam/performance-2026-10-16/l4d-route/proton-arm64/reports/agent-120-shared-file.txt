@@ -1,0 +1,10 @@
+AGENT_BEGIN id=120-shared-file pid=43 Fri Oct 16 22:15:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== do two independent mappings of the same file share their pages? ===
+/dev/shm/linpad-shmfile-probe      parent sees 4096 of 4096 bytes the child wrote (child exit=0)
+/tmp/linpad-shmfile-probe          parent sees 4096 of 4096 bytes the child wrote (child exit=0)
+summary: file-backed shared memory ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:15:36 UTC 2026

@@ -1,0 +1,13 @@
+AGENT_BEGIN id=119-shared-memory2 pid=43 Fri Oct 16 22:15:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== shared memory semantics (glibc) ===
+shared-memory probe
+  anon MAP_SHARED        shared writes visible
+  memfd MAP_SHARED       shared writes visible
+  /dev/shm MAP_SHARED    shared writes visible
+  /tmp file MAP_SHARED   shared writes visible
+summary: shared memory ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:15:17 UTC 2026

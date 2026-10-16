@@ -1,0 +1,10 @@
+AGENT_BEGIN id=118-shared-memory pid=43 Fri Oct 16 22:15:11 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+drwxrwxrwt 2 root root 1568 Oct 16 22:14 /dev/shm
+wget: server returned error: HTTP/1.0 404 File not found
+=== shared memory semantics (glibc) ===
+env: ‘/tmp/shared-memory-probe’: No such file or directory
+exit=127
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:15:11 UTC 2026

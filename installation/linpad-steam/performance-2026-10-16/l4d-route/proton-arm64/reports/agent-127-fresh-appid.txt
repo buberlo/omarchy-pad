@@ -1,0 +1,15 @@
+AGENT_BEGIN id=127-fresh-appid pid=43 Fri Oct 16 22:26:43 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine in a brand-new prefix (appid 999) ===
+t= 32s ok=0 corrupt=4 procs=1 pfx=yes
+--- output ---
+Proton: Upgrading prefix from None to 11.0-100 (/root/.local/share/Steam/steamapps/compatdata/999/)
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/999/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc_consolidate(): invalid chunk size
+malloc_consolidate(): invalid chunk size
+corrupted size vs. prev_size
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:27:15 UTC 2026

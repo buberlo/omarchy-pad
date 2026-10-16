@@ -1,0 +1,15 @@
+AGENT_BEGIN id=126-fresh-prefix-valid pid=43 Fri Oct 16 22:25:59 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+39:# Respect a WINEPREFIX the caller set (used to test a fresh prefix).
+40:: "${WINEPREFIX:=$data/pfx}"
+41:export WINEPREFIX
+=== wine with a genuinely fresh prefix now ===
+t= 32s ok=0 corrupt=2 procs=1 pfx_files=0
+--- output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc_consolidate(): invalid chunk size
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:26:31 UTC 2026
