@@ -1,0 +1,56 @@
+AGENT_BEGIN id=24-steam-audio-baseline pid=1143 Fri Oct 16 18:20:41 UTC 2026
+AGENT_HOST=iPad
+GAME_PID=5036
+
+=== unity state ===
+2026-10-16T18:16:11.468Z|0xcc427f00|Attempting to get `timeSamples` on an audio source that has a resource assigned that is not a clip is ignored!
+2026-10-16T18:16:11.771Z|0xcc427f00|pd.maxHealth: 5 pd.maxHealthBase: 5
+2026-10-16T18:16:13.474Z|0xcc427f00|Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 46698.
+2026-10-16T18:16:13.483Z|0xcc427f00|Total: 224.592000 ms (FindLiveObjects: 7.933000 ms CreateObjectMapping: 2.355000 ms MarkObjects: 206.268000 ms  DeleteObjects: 7.992000 ms)
+
+
+=== 30 s steady-state frame capture (menu, nobody playing) ===
+SELECTED_VIEW_ID=4
+8683889 -rw-r--r--    1 0        0          1423440 Oct 16 18:15 /tmp/ishwl/v4-2.buf
+COMPOSITOR_WINDOW_EVENTS
+CAPTURE_META
+start_second=1792174841 end_second=1792174871 start_line=31951 end_line=33753 view_id=4 requested_seconds=30
+SELECTED_VIEW_ROWS
+1802
+CAPTURE_FILES=/tmp/kb4453-steam-baseline.meta /tmp/kb4453-steam-baseline.txt /tmp/kb4453-steam-baseline.status.txt
+
+=== audio stream for the game pid ===
+GAME_CHANGED=0
+FIFO_OPENED=0
+AUDIO_STREAM_CREATED=0
+/tmp/linpad-pulse-probe/client.conf.download: OK
+/tmp/linpad-pulse-probe/zero-token.download: OK
+/tmp/linpad-pulse-probe/stream-filter.awk.download: OK
+SAMPLE=1
+SAMPLE_UTC=2026-10-16T18:21:11Z
+ISHAUDIO_SINK_INDEX=0
+GAME_STREAM index=1 sink=0 pid=5036 corked=no mute=no buffer_usec=64000 sink_usec=12591
+SINK_INPUTS_TOTAL=1
+GAME_STREAMS_MATCHING_PID=1
+QUERY_EXIT=0
+SAMPLE=2
+SAMPLE_UTC=2026-10-16T18:21:16Z
+ISHAUDIO_SINK_INDEX=0
+GAME_STREAM index=1 sink=0 pid=5036 corked=no mute=no buffer_usec=64000 sink_usec=3225
+SINK_INPUTS_TOTAL=1
+GAME_STREAMS_MATCHING_PID=1
+QUERY_EXIT=0
+CAPTURE_END_UTC=2026-10-16T18:21:16Z
+SCRIPT_EXIT=0
+
+=== key lines (input through the Steam route so far) ===
+0
+
+=== memory ===
+footprint_mb 4663
+allowance_mb 8192
+headroom_mb 3528
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:21:16 UTC 2026

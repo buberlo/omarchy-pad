@@ -1,0 +1,20 @@
+AGENT_BEGIN id=23-watch-again pid=1143 Fri Oct 16 18:20:08 UTC 2026
+AGENT_HOST=iPad
+=== game still running? ===
+ 5036 FEX-apple-m1-mu
+ishwl 68565.402: map toplevel 3 '' Steam
+ishwl 68791.344: map toplevel 4 'Hollow Knight' hollow_knight.x86_64
+ishwl 68791.435: text input active in view 4
+
+=== restart the key watcher (25 min) ===
+watcher pid: 6273
+
+=== frame log ===
+30096
+=== memory ===
+footprint_mb 4648
+allowance_mb 8192
+headroom_mb 3543
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:20:10 UTC 2026

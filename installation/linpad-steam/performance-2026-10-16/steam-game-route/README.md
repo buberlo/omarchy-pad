@@ -39,9 +39,16 @@ appear in the same second for every attempt. After it (18:15:22 UTC):
 - 30 s frame capture for view 4: **1 801 deliveries** with the archived helper
   (`start_line=19845 end_line=21646`), Vulkan renderer `Virtio-GPU Venus (Apple M2 GPU)`,
   Mesa 26.2.4-1, PSO cache loaded from `/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin`.
-- App footprint 4 403 MB of the 8 192 MB allowance, headroom 3 788 MB.
-- Nobody pressed a key in this run, so `key` lines are 0 — input through the Steam route is not
-  what this record shows.
+- A second capture two minutes later, the game idling in its menu with nobody touching it:
+  **1 802 deliveries in 30 s (60.1/s)** — the compositor kept up with the 60 Hz display cadence at
+  this window size (659×540). The hand-launched session delivered 1 026 in 30 s (34.2/s) at
+  1366×950, so the two numbers are not comparable: same metric, different window.
+- **Audio through this route**: the Pulse probe found a live stream for the game's pid in two
+  samples 5 s apart — `GAME_STREAM index=1 sink=0 pid=5036 corked=no mute=no buffer_usec=64000`.
+  The stream exists, is uncorked and unmuted; that is not the same as a human hearing it.
+- App footprint 4 663 MB of the 8 192 MB allowance, headroom 3 528 MB.
+- Nobody pressed a key in either capture, so `key` lines are 0 — **input through the Steam route
+  is not what this record shows**.
 
 ## What is not verified
 

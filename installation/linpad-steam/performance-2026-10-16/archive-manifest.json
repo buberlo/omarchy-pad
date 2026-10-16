@@ -5514,13 +5514,13 @@
     },
     {
       "path": "steam-game-route/README.md",
-      "bytes": 5584,
-      "sha256": "61cb753b346e94d2ed76313d78eaa77a57b7dad26ac1da033b47ed237fbc6bab"
+      "bytes": 6245,
+      "sha256": "86d94bd991e4da4c5522a70656390203c870ef9b58a0fbcd6574188c51123da2"
     },
     {
       "path": "steam-game-route/SHA256SUMS",
-      "bytes": 1533,
-      "sha256": "692a1c5bd0e28e8d233d6177bf6f2e482a2856446b47987ce08f24adfef2cbab"
+      "bytes": 1740,
+      "sha256": "e5e604c754a88caec313df038b06cc6cb0e61928fc302a22f4ddba9ea124da58"
     },
     {
       "path": "steam-game-route/artifacts/launch-game",
@@ -5596,6 +5596,16 @@
       "path": "steam-game-route/reports/agent-22-fetch-artifacts.txt",
       "bytes": 1441,
       "sha256": "f9183b8bb6d3e36ff4f82b16b7e2d32f788c72c34609764096ee47d52911de1e"
+    },
+    {
+      "path": "steam-game-route/reports/agent-23-watch-again.txt",
+      "bytes": 507,
+      "sha256": "97ac347cf0bfaeb38ef1cb3439de74b6ba8adecc537b40af2e923bceae2b2542"
+    },
+    {
+      "path": "steam-game-route/reports/agent-24-steam-audio-baseline.txt",
+      "bytes": 2015,
+      "sha256": "c4930f101169e5529ba96d579aa6d853964c4558ce315a9180c5e81eb82e1f6d"
     },
     {
       "path": "steam-helper-repair/PROVENANCE.json",
