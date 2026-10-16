@@ -480,13 +480,22 @@ static struct proc_dir_entry proc_pid_fd;
 static bool proc_pid_fd_readdir(struct proc_entry *entry, unsigned long *index, struct proc_entry *next_entry) {
     struct task *task = proc_get_task(entry);
     if (task == NULL)
-        return _ESRCH;
+        return false;
+    // Exit detaches the table under general_lock before releasing it.
+    // Hold that same lock until the directory entry has been copied.
+    lock(&task->general_lock);
+    if (task->files == NULL) {
+        unlock(&task->general_lock);
+        proc_put_task(task);
+        return false;
+    }
     lock(&task->files->lock);
     while (*index < task->files->size && task->files->files[*index] == NULL)
         (*index)++;
     fd_t f = (*index)++;
     bool any_left = (unsigned) f < task->files->size;
     unlock(&task->files->lock);
+    unlock(&task->general_lock);
     proc_put_task(task);
     *next_entry = (struct proc_entry) {&proc_pid_fd, .pid = entry->pid, .fd = f};
     return any_left;
