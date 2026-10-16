@@ -19,10 +19,13 @@ game's pid, app footprint 2 986 MB of the 8 192 MB allowance with `kills 0`, and
    jump, attack, respond to the menus, and is it audible? The key codes prove input arrived;
    they do not prove the game reacted.
 2. **Text-field ordering**: the change deliberately lets only Return, Tab and Backspace wait
-   for the app. Nobody has typed into a text field (Terminal, Firefox, VS Code) since the
-   restart, so that half of the change is still argued from the code, not observed.
-3. **The 250 ms figure** is arithmetic from `ORDER_TIMEOUT_MS`, not a measurement; this
-   session shows that key events arrive, not how quickly they do.
+   for the app. No human has typed into a text field on the device since the restart, but the
+   rule is now **measured** headless and before/after with
+   `wl-bridge/tools/textinput-order-test.sh`: text after a bare key press arrives in 0.0 ms
+   with this change against 260.6 ms with the previous revision, while text after Backspace
+   still waits 258 ms. Container measurement of the same code, not the device.
+3. **The 250 ms figure** is arithmetic from `ORDER_TIMEOUT_MS`; the same headless test
+   measures 258 ms (in the container, not on the device).
 4. **Steam**: the game was started with `sh /tmp/hollow4452-egl` by the command agent, exactly
    as by hand. The wrapper (`linpad-hk-fex`) and the launch-options editor
    (`kb4453-steam-launchopts`, 12 local tests green) are prepared but not installed, and the

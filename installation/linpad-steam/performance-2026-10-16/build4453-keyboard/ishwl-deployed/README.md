@@ -47,6 +47,17 @@ The compositor also reports `text input active in view 1` for the game window, a
 
 ## Numbers from the same session
 
+The play session lasted from 17:48 to 17:50:58 UTC and ended with a clean shutdown (Unity:
+`Cleanup current backend`, `Input System module state changed to: Shutdown`, Vulkan PSO cache
+saved, 374 173 bytes). By its end the compositor had logged **448 key events**; the watcher's
+22 samples are in [reports/](reports/) (`kb4453-keys-0…21`), the game's own launcher and Unity
+log in [reports/hollow4452-egl-run.log](reports/hollow4452-egl-run.log).
+
+That log also shows the game *reacting*, not just receiving: Unity instantiated
+`Slash Impact R`, `Strike Nail R`, `Run Effects` and `Plat Rocks` prefabs during the session —
+nail slashes, strikes, running and jumping. Input arriving as key codes and the game playing are
+two different claims, and this is evidence for the second one, short of a human saying so.
+
 - **Frame deliveries of the game view**: 1 026 in a 30 s window during play (34.2/s), and
   6 839 rows over the whole 140.7 s session (48.6/s), measured with the archived
   `hollow4452-frame-capture` helper ([reports/agent-04-perf.txt](reports/agent-04-perf.txt)).
@@ -67,10 +78,17 @@ The compositor also reports `text input active in view 1` for the game window, a
 - No human has confirmed that the knight moves, jumps, attacks or is audible with this
   compositor, and no per-key result was recorded for the deployment round itself.
 - The text-field ordering the change deliberately preserves (only Return, Tab and Backspace
-  keep waiting for the app) has **not** been exercised: nobody typed into a text field after
-  the restart.
-- The 250 ms figure is arithmetic from `ORDER_TIMEOUT_MS`, not a measurement; this session
-  shows key events arriving, not how quickly.
+  keep waiting for the app) has **not** been exercised by a human typing into a text field on
+  the device. It is measured at the compositor instead, headless and before/after: with an
+  active text input and an app that does not answer, text after a bare key press arrives in
+  **0.0 ms** with this change and in **260.6 ms** with the revision the device ran before,
+  while text after Backspace still waits 258 ms as intended —
+  see [../ishwl/order-test-patched.txt](../ishwl/order-test-patched.txt) and
+  [../ishwl/order-test-reference.txt](../ishwl/order-test-reference.txt). That is a container
+  measurement of the same code, not the device, and it says nothing about how typing feels in
+  Firefox or VS Code.
+- The 250 ms figure is arithmetic from `ORDER_TIMEOUT_MS`; the headless test measures 258 ms,
+  still in a container rather than on the device.
 - The Steam route is untouched — the game was started with `sh /tmp/hollow4452-egl` by the
   command agent, exactly as by hand.
 

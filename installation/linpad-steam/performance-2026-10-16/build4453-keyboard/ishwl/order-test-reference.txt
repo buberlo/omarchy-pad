@@ -1,0 +1,31 @@
+=== reference: client log (build/textinput-order-test/client-reference.log) ===
+TEXTINPUT available 33505.3
+ready 33505.4 autocommit=0
+KEYMAP 33505.7
+CONFIGURED 33505.7
+CONFIGURED 34012.1
+TEXTINPUT enabled 34012.1
+ENTER 34012.1
+KEYMAP 34524.1
+KEY 17 down 35020.2
+KEY 17 up 35280.8
+TEXT A 35280.8
+PREEDIT (null) 35280.9
+DONE 35280.9
+KEY 14 down 36224.9
+KEY 14 up 36482.7
+TEXT B 36482.7
+PREEDIT (null) 36482.7
+DONE 36482.7
+TEXT C 37426.6
+PREEDIT (null) 37426.6
+DONE 37426.7
+TEXT D 37727.9
+PREEDIT (null) 37727.9
+DONE 37727.9
+
+=== reference: what followed what ===
+TEXT A after KEY 17 down: 260.6 ms
+TEXT B after KEY 14 down: 257.8 ms
+TEXT C with no key before it: 37426.6 ms
+TEXT D with no key before it: 37727.9 ms

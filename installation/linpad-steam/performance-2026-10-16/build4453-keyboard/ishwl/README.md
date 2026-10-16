@@ -107,9 +107,32 @@ has the digests.
    and restart the session. Nothing else on the device changed, and this repository's rootfs
    still carries the original binary.
 
+## The ordering rule, measured instead of argued
+
+`wl-bridge/tools/textinput-order-test.c` and `.sh` are a headless regression test for exactly
+this change: a client that enables a `zwp_text_input_v3` and deliberately does *not* answer
+with `commit`, so what gets measured is ishwl's own wait. The harness writes the host side of
+the conversation into the events FIFO and reports what the client saw:
+
+```
+$ sh tools/textinput-order-test.sh ./ishwl patched        # current source
+TEXT A after KEY 17 down: 0.0 ms        <- bare key press: no wait
+TEXT B after KEY 14 down: 258.4 ms      <- Backspace: still waits, as intended
+$ sh tools/textinput-order-test.sh /old/ishwl reference   # revision a6e0672e
+TEXT A after KEY 17 down: 260.6 ms      <- the defect, reproduced
+TEXT B after KEY 14 down: 257.8 ms
+```
+
+The same runs also show the release: in the reference build `KEY 17 up` arrives 260 ms after
+`KEY 17 down`, in the patched build both are in the same millisecond. Full logs:
+[order-test-patched.txt](order-test-patched.txt), [order-test-reference.txt](order-test-reference.txt);
+`run-order-test.sh` runs both in the aarch64 container and copies the logs here.
+
 ## What is not done
 
-- The patched binary has never run. The abi check compares symbols; it does not load it.
-- No text field has been tested with the new ordering rule, so the "typed text is not
-  overtaken by an edit key" guarantee is argued from the code, not observed.
-- The 250 ms figure is arithmetic from `ORDER_TIMEOUT_MS`, not a measurement.
+- ~~The patched binary has never run~~ — it has, on the device: see
+  [../ishwl-deployed/README.md](../ishwl-deployed/README.md).
+- The ordering rule is now measured at the compositor (above), but **no human has typed into a
+  text field on the device since the restart**, so the app-level experience is still unobserved.
+- The 250 ms figure was arithmetic from `ORDER_TIMEOUT_MS`; the test above now measures it
+  (258 ms), in a container rather than on the device.

@@ -1,0 +1,28 @@
+sample=4 keys=22 date=Fri Oct 16 17:49:28 UTC 2026
+=== key lines ===
+ishwl 67180.822: key 28 down
+ishwl 67180.888: key 28 up
+ishwl 67182.372: key 28 down
+ishwl 67182.455: key 28 up
+ishwl 67183.755: key 28 down
+ishwl 67183.871: key 28 up
+ishwl 67184.138: key 28 down
+ishwl 67184.221: key 28 up
+ishwl 67190.388: key 57 down
+ishwl 67190.455: key 57 up
+ishwl 67191.722: key 57 down
+ishwl 67191.771: key 57 up
+ishwl 67192.855: key 28 down
+ishwl 67192.938: key 28 up
+ishwl 67193.022: key 28 down
+ishwl 67193.105: key 28 up
+ishwl 67207.505: key 28 down
+ishwl 67207.605: key 28 up
+ishwl 67207.705: key 28 down
+ishwl 67207.788: key 28 up
+ishwl 67208.405: key 28 down
+ishwl 67208.505: key 28 up
+=== text input, keymap, toplevels ===
+ishwl 67059.113: keymap: de mac -
+ishwl 67127.816: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+ishwl 67127.898: text input active in view 1

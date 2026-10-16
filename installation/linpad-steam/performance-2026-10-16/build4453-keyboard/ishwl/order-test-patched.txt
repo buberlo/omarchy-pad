@@ -1,0 +1,31 @@
+=== patched: client log (build/textinput-order-test/client-patched.log) ===
+TEXTINPUT available 28177.9
+ready 28178.0 autocommit=0
+KEYMAP 28178.4
+CONFIGURED 28178.5
+CONFIGURED 28883.0
+TEXTINPUT enabled 28883.1
+ENTER 28883.1
+KEYMAP 29392.5
+KEY 17 down 29891.8
+KEY 17 up 29891.8
+TEXT A 29891.8
+PREEDIT (null) 29891.8
+DONE 29891.8
+KEY 14 down 31096.3
+KEY 14 up 31354.6
+TEXT B 31354.7
+PREEDIT (null) 31354.7
+DONE 31354.7
+TEXT C 32300.4
+PREEDIT (null) 32300.4
+DONE 32300.4
+TEXT D 32606.1
+PREEDIT (null) 32606.1
+DONE 32606.1
+
+=== patched: what followed what ===
+TEXT A after KEY 17 down: 0.0 ms
+TEXT B after KEY 14 down: 258.4 ms
+TEXT C with no key before it: 32300.4 ms
+TEXT D with no key before it: 32606.1 ms
