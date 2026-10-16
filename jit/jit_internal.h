@@ -71,6 +71,7 @@ enum jit_helper_kind {
 };
 
 struct jit_mm;
+struct jit_ss_diag;
 struct jit_ctx {
   union {
    struct {
@@ -107,6 +108,7 @@ struct jit_ctx {
     uint64_t crash_pc;
     uint32_t trim_state;           // CTX_*: an idle thread's TLB and lookup cache go back to the host
     uint64_t idle_since;           // CLOCK_UPTIME_RAW ns when it left jit_run
+    struct jit_ss_diag *ss_diag;   // opt-in, separate allocation survives idle payload trimming
    };
    char hdr_raw[JIT_TLB_OFF];
   };

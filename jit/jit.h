@@ -10,6 +10,10 @@
 struct cpu_state;
 struct tlb;
 struct jit_mm;
+struct proc_data;
+
+// Normal proc-read context only; bounded atomic snapshot, never a signal handler.
+void jit_ss_diag_show(struct proc_data *buf);
 
 // True once code memory has been acquired and ISH_JIT is not set to 0.
 // Cheap after the first call.

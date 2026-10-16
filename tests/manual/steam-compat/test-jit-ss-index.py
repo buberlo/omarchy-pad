@@ -34,6 +34,7 @@ PREAMBLE = r'''
 #include <sched.h>
 #include <stdatomic.h>
 #include <stdbool.h>
+#include <stdarg.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,8 +47,13 @@ typedef uint64_t page_t;
 #define BAD_PAGE (UINT64_C(1) << 36)
 #define SS_NOMEM_CACHED 8192
 SS_CACHE_DEFINITION
+SS_DIAG_DEFINITIONS
 struct fiber_block { int unused; };
-struct tlb { int unused; };
+struct tlb { bool readable; uint32_t insn; addr_t segfault_addr; };
+static bool tlb_read(struct tlb *t, addr_t pc, void *out, unsigned size) {
+    assert(size == 4); if (!t->readable) { t->segfault_addr = pc; return false; }
+    memcpy(out, &t->insn, 4); return true;
+}
 struct mmu { uint64_t id, changes; };
 struct ss_entry;
 struct jit_block { addr_t pc; struct jit_block *page_next; };
@@ -68,7 +74,19 @@ struct jit_ctx {
     void *lc[4];
     struct jit_ss_cache_entry ss_lc[JIT_SS_LC_SIZE];
     unsigned tlb_flushes;
+    struct jit_ss_diag *ss_diag;
+    struct jit_ctx *reg_next;
 };
+static pthread_mutex_t reg_lock = PTHREAD_MUTEX_INITIALIZER;
+static struct jit_ctx *reg_head;
+static _Atomic bool jit_ss_diag_enabled;
+static _Atomic uint64_t ss_diag_alloc_failed;
+struct proc_data { char text[1024 * 1024]; size_t used; };
+static void proc_printf(struct proc_data *b, const char *format, ...) {
+    va_list ap; va_start(ap, format);
+    int n = vsnprintf(b->text+b->used, sizeof(b->text)-b->used, format, ap);
+    va_end(ap); assert(n >= 0 && (size_t)n < sizeof(b->text)-b->used); b->used += n;
+}
 static void tlb_flush_ctx(struct jit_ctx *ctx) { ctx->tlb_flushes++; }
 static _Thread_local unsigned mutex_lock_calls;
 static int counted_mutex_lock(pthread_mutex_t *m) {
@@ -231,19 +249,19 @@ static void focused_tests(void) {
     init(&m);
     add(&m, p, 0);
     invalidation_page = p; invalidate_during_translation = &m;
-    CHECK(ss_get(&m, p << 12 | 4, NULL, true, NULL) == &dummy_block);
+    CHECK(ss_get(&m, p << 12 | 4, NULL, true, NULL, NULL) == &dummy_block);
     CHECK(atomic_load(&m.gen) == 1 && m.ss_count == 0 && retired_count(&m) == 2);
     validate(&m);
     allocation_fails = true;
-    CHECK(ss_get(&m, p << 12 | 8, NULL, true, NULL) == &dummy_block);
+    CHECK(ss_get(&m, p << 12 | 8, NULL, true, NULL, NULL) == &dummy_block);
     CHECK(m.ss_count == 0 && retired_count(&m) == 2);
     allocation_fails = false;
     for (unsigned i = 0; i < SS_NOMEM_CACHED; i++) add(&m, 100 + i, 0);
-    CHECK(ss_get(&m, (p + 2) << 12, NULL, false, NULL) == &dummy_block);
+    CHECK(ss_get(&m, (p + 2) << 12, NULL, false, NULL, NULL) == &dummy_block);
     CHECK(m.ss_count == SS_NOMEM_CACHED && retired_count(&m) == 3);
-    CHECK(ss_get(&m, (p + 2) << 12 | 4, NULL, true, NULL) == &dummy_block);
+    CHECK(ss_get(&m, (p + 2) << 12 | 4, NULL, true, NULL, NULL) == &dummy_block);
     CHECK(m.ss_count == SS_NOMEM_CACHED + 1);
-    CHECK(ss_get(&m, (p + 2) << 12 | 4, NULL, true, NULL) == &dummy_block);
+    CHECK(ss_get(&m, (p + 2) << 12 | 4, NULL, true, NULL, NULL) == &dummy_block);
     CHECK(m.ss_count == SS_NOMEM_CACHED + 1);
     validate(&m);
     jit_invalidate_range(&m, 0, BAD_PAGE);
@@ -273,10 +291,10 @@ static void context_cache_tests(void) {
     struct fiber_block *old = malloc(sizeof(*old)); assert(old);
     add(&m, PAGE(pc), 0)->block = old;
     unsigned slot = pc_hash(pc, JIT_SS_LC_SIZE), locks = mutex_lock_calls;
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == old);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == old);
     CHECK(mutex_lock_calls == locks + 1 && ctx.ss_lc[slot].block == old);
     locks = mutex_lock_calls;
-    for (unsigned i = 0; i < 100000; i++) CHECK(ss_get_cached(&ctx, pc, NULL, true) == old);
+    for (unsigned i = 0; i < 100000; i++) CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == old);
     CHECK(mutex_lock_calls == locks); // actual production fast hits take no lock
 
     // After a quiescent epoch, the retired block really is freed while its
@@ -287,7 +305,7 @@ static void context_cache_tests(void) {
     free(retired->block); free(retired);
     struct fiber_block replacement;
     generated_block = &replacement;
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &replacement);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &replacement);
     CHECK(ctx.ss_lc[slot].gen == atomic_load(&m.gen));
     generated_block = &dummy_block;
 
@@ -295,18 +313,18 @@ static void context_cache_tests(void) {
     addr_t collision = pc + 4;
     while (pc_hash(collision, JIT_SS_LC_SIZE) != slot) collision += 4;
     add(&m, PAGE(collision), collision & 4095);
-    CHECK(ss_get_cached(&ctx, collision, NULL, true) == &dummy_block);
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &replacement);
+    CHECK(ss_get_cached(&ctx, collision, NULL, true, SS_EXIT) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &replacement);
 
     // A generation change just after the slow lookup unlocks must not be
     // mistaken for the generation under which that result was obtained.
     memset(ctx.ss_lc, 0, sizeof(ctx.ss_lc));
     uint64_t before_gen = atomic_load(&m.gen);
     bump_on_unlock = &m; after_unlock_hook = bump_generation_after_unlock;
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &replacement);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &replacement);
     CHECK(ctx.ss_lc[slot].gen == before_gen && atomic_load(&m.gen) == before_gen + 1);
     locks = mutex_lock_calls;
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &replacement);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &replacement);
     CHECK(mutex_lock_calls == locks + 1 && ctx.ss_lc[slot].gen == before_gen + 1);
 
     // The exact production switch helper resets both caches. This also covers
@@ -316,14 +334,14 @@ static void context_cache_tests(void) {
     ctx.lc[0] = &replacement; ctx.lc_gen = 123;
     ctx_switch_mm(&ctx, &other);
     CHECK(ss_cache_empty(&ctx) && ctx.lc[0] == NULL && ctx.lc_gen == 0);
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &dummy_block);
     unsigned flushes = ctx.tlb_flushes;
     ctx_switch_mm(&ctx, &other);
     CHECK(ctx.tlb_flushes == flushes && !ss_cache_empty(&ctx));
     other.mmu->id++; other.mmu->changes = 42;
     ctx_switch_mm(&ctx, &other);
     CHECK(ss_cache_empty(&ctx) && ctx.tlb_flushes == flushes + 1 && ctx.mem_changes == 42);
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &dummy_block);
     ctx.mm = NULL; // same trigger set by the actual trimmed-context path
     ctx_switch_mm(&ctx, &other);
     CHECK(ss_cache_empty(&ctx) && ctx.tlb_flushes == flushes + 2);
@@ -332,31 +350,31 @@ static void context_cache_tests(void) {
     init(&m); memset(&ctx, 0, sizeof(ctx)); ctx_switch_mm(&ctx, &m);
     add(&m, PAGE(pc), 0);
     invalidate_during_translation = &m; invalidation_page = PAGE(pc);
-    CHECK(ss_get_cached(&ctx, pc + 4, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc + 4, NULL, true, SS_EXIT) == &dummy_block);
     CHECK(ss_cache_empty(&ctx) && m.ss_count == 0 && retired_count(&m) == 2);
     unsigned generated = translations;
-    CHECK(ss_get_cached(&ctx, pc + 4, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc + 4, NULL, true, SS_EXIT) == &dummy_block);
     CHECK(translations == generated + 1 && m.ss_count == 1);
     allocation_fails = true;
-    CHECK(ss_get_cached(&ctx, pc + 8, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc + 8, NULL, true, SS_EXIT) == &dummy_block);
     CHECK(ctx.ss_lc[pc_hash(pc + 8, JIT_SS_LC_SIZE)].block == NULL);
     allocation_fails = false;
     generated = translations;
-    CHECK(ss_get_cached(&ctx, pc + 8, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc + 8, NULL, true, SS_EXIT) == &dummy_block);
     CHECK(translations == generated + 1);
     destroy(&m);
 
     init(&m); memset(&ctx, 0, sizeof(ctx)); ctx_switch_mm(&ctx, &m);
     for (unsigned i = 0; i < SS_NOMEM_CACHED; i++) add(&m, 100 + i, 0);
     generated = translations;
-    CHECK(ss_get_cached(&ctx, pc, NULL, false) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, false, SS_EXIT) == &dummy_block);
     CHECK(ss_cache_empty(&ctx) && retired_count(&m) == 1);
-    CHECK(ss_get_cached(&ctx, pc, NULL, false) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, false, SS_EXIT) == &dummy_block);
     CHECK(ss_cache_empty(&ctx) && retired_count(&m) == 2 && translations == generated + 2);
     // Persistent results remain reusable even if a later caller says keep=false.
-    CHECK(ss_get_cached(&ctx, pc, NULL, true) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &dummy_block);
     locks = mutex_lock_calls;
-    CHECK(ss_get_cached(&ctx, pc, NULL, false) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, NULL, false, SS_EXIT) == &dummy_block);
     CHECK(mutex_lock_calls == locks);
     destroy(&m);
 }
@@ -376,7 +394,7 @@ static void growth_tests(void) {
     CHECK(atomic_load(&m.gen) == 0); // structural resize is not code invalidation
     unsigned before = translations;
     for (unsigned i = 0; i < N; i++)
-        CHECK(ss_get(&m, base + i * 64, NULL, true, NULL) == &blocks[i]);
+        CHECK(ss_get(&m, base + i * 64, NULL, true, NULL, NULL) == &blocks[i]);
     CHECK(translations == before);
     // Deletion through the page index uses repaired PC-chain backlinks after
     // eight growths; remaining hits and replacement blocks must stay exact.
@@ -387,7 +405,7 @@ static void growth_tests(void) {
         bool removed = PAGE(pc) >= PAGE(base) + 17 && PAGE(pc) < PAGE(base) + 131;
         CHECK(contains(&m, pc) == !removed);
         if (removed) add(&m, PAGE(pc), pc & 4095)->block = &blocks[i];
-        CHECK(ss_get(&m, pc, NULL, true, NULL) == &blocks[i]);
+        CHECK(ss_get(&m, pc, NULL, true, NULL, NULL) == &blocks[i]);
     }
     validate(&m);
     CHECK(atomic_load(&m.gen) == 1 && m.ss_count == N);
@@ -430,7 +448,7 @@ static void *lookup_reader(void *opaque) {
     while (!atomic_load(a->start)) sched_yield();
     for (unsigned i = 0; i < 100000; i++) {
         unsigned key = (i * 73) % 256;
-        assert(ss_get(a->mm, UINT64_C(0x800100000000) + key * 64, NULL, true, NULL) == &a->blocks[key]);
+        assert(ss_get(a->mm, UINT64_C(0x800100000000) + key * 64, NULL, true, NULL, NULL) == &a->blocks[key]);
     }
     return NULL;
 }
@@ -572,7 +590,7 @@ static void lookup_benchmark(void) {
         begin = clock_gettime_nsec_np(CLOCK_MONOTONIC);
         for (unsigned i = 0; i < ROUNDS; i++) {
             addr_t pc = base + (uint64_t)((i * 40503u) % N) * stride;
-            assert(ss_get(&grown, pc, NULL, true, NULL) == &dummy_block);
+            assert(ss_get(&grown, pc, NULL, true, NULL, NULL) == &dummy_block);
         }
         uint64_t grown_ns = clock_gettime_nsec_np(CLOCK_MONOTONIC) - begin;
         assert(translations == before && old.ss_size == 256 && grown.ss_size == N);
@@ -597,13 +615,13 @@ static void *cache_hit_worker(void *opaque) {
     struct cache_thread_args *a = opaque;
     struct jit_ctx ctx = {0}; ctx_switch_mm(&ctx, a->mm);
     addr_t pc = UINT64_C(0x800300000000) + a->index * 64;
-    assert(ss_get_cached(&ctx, pc, NULL, true) == &dummy_block);
+    assert(ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) == &dummy_block);
     atomic_fetch_add(a->ready, 1);
     while (!atomic_load(a->start)) sched_yield();
     unsigned before = mutex_lock_calls;
     for (unsigned i = 0; i < a->rounds; i++) {
-        struct fiber_block *block = a->local ? ss_get_cached(&ctx, pc, NULL, true) :
-            ss_get(a->mm, pc, NULL, true, NULL);
+        struct fiber_block *block = a->local ? ss_get_cached(&ctx, pc, NULL, true, SS_EXIT) :
+            ss_get(a->mm, pc, NULL, true, NULL, NULL);
         assert(block == &dummy_block);
     }
     a->lock_calls = mutex_lock_calls - before;
@@ -637,13 +655,120 @@ static void context_cache_benchmark(void) {
     }
     validate(&m); destroy(&m);
 }
+static void diagnostic_tests(void) {
+    struct jit_mm m; init(&m);
+    struct jit_ss_diag d = {0};
+    struct jit_ctx ctx = {.ss_diag = &d}; ctx_switch_mm(&ctx, &m);
+    struct tlb tlb = {.readable = true, .insn = 0xd51b4400};
+    addr_t pc = UINT64_C(0x800300001000);
+    ss_diag_begin(&d, m.mmu->id, 42, 40);
+    CHECK(ss_get_cached(&ctx, pc, &tlb, true, SS_NEGATIVE) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_COLD]) == 1 && atomic_load(&d.counters[SD_FILL]) == 1);
+    for (unsigned i = 0; i < 100000; i++)
+        CHECK(ss_get_cached(&ctx, pc, &tlb, true, i % 3) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_HIT]) == 100000);
+    CHECK(atomic_load(&d.counters[SD_NEGATIVE]) == 33335);
+    CHECK(atomic_load(&d.counters[SD_EXIT]) == 33333);
+    CHECK(atomic_load(&d.counters[SD_NOMEM]) == 33333);
+    struct ss_diag_snapshot snap;
+    ss_diag_copy(&d, &snap);
+    CHECK(snap.consistent && snap.tid == 42 && snap.tgid == 40 && snap.sampled > 64);
+    unsigned paths = 0;
+    for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++) {
+        CHECK(snap.samples[i].serial > 0 && snap.samples[i].readable);
+        CHECK(snap.samples[i].pc == pc && snap.samples[i].insn == 0xd51b4400);
+        CHECK(snap.samples[i].miss == SD_HIT);
+        paths |= 1u << snap.samples[i].origin;
+    }
+    CHECK(paths == 7); // cached hits sampled on every fallback source path
+    addr_t collision = pc + 4;
+    while (pc_hash(collision, JIT_SS_LC_SIZE) != pc_hash(pc, JIT_SS_LC_SIZE)) collision += 4;
+    CHECK(ss_get_cached(&ctx, collision, &tlb, true, SS_EXIT) == &dummy_block);
+    CHECK(ss_get_cached(&ctx, pc, &tlb, true, SS_EXIT) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_COLLISION]) == 2);
+    CHECK(atomic_load(&d.counters[SD_SHARED_HIT]) == 1);
+    atomic_fetch_add(&m.gen, 1);
+    CHECK(ss_get_cached(&ctx, pc, &tlb, true, SS_EXIT) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_GENERATION]) == 1);
+    CHECK(atomic_load(&d.counters[SD_GENERATION_SAME_PC]) == 1);
+    allocation_fails = true;
+    CHECK(ss_get_cached(&ctx, pc + 8, &tlb, true, SS_EXIT) == &dummy_block);
+    allocation_fails = false;
+    CHECK(atomic_load(&d.counters[SD_UNTRACKED_OOM]) == 1);
+    invalidation_page = PAGE(pc); invalidate_during_translation = &m;
+    CHECK(ss_get_cached(&ctx, pc + 12, &tlb, true, SS_EXIT) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_ONESHOT_GENERATION]) == 1);
+    for (unsigned i = 0; i < SS_NOMEM_CACHED; i++) add(&m, 100 + i, 0);
+    CHECK(ss_get_cached(&ctx, pc + 16, &tlb, false, SS_NOMEM) == &dummy_block);
+    CHECK(atomic_load(&d.counters[SD_ONESHOT_PRESSURE]) == 1);
+    validate(&m); destroy(&m);
+
+    ss_diag_begin(&d, UINT64_C(123456789), 99, 98);
+    ss_diag_copy(&d, &snap);
+    CHECK(snap.consistent && snap.mmu_id == UINT64_C(123456789) && snap.tid == 99);
+    CHECK(snap.sampled == 0 && snap.counters[SD_HIT] == 0);
+    struct tlb unreadable = {.segfault_addr = 0x1234};
+    for (unsigned i = 0; i < 100000; i++) ss_diag_sample(&d, pc, &unreadable, SS_EXIT, SD_COLD);
+    CHECK(unreadable.segfault_addr == 0x1234);
+    ss_diag_copy(&d, &snap);
+    CHECK(snap.sampled > 64);
+    for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++)
+        CHECK(snap.samples[i].serial && !snap.samples[i].readable && snap.samples[i].insn == 0);
+    atomic_fetch_add(&d.reset_seq, 1);
+    ss_diag_copy(&d, &snap); CHECK(!snap.consistent); // bounded retry during identity reset
+    atomic_fetch_add(&d.reset_seq, 1);
+
+    struct proc_data *buf = calloc(1, sizeof(*buf)); CHECK(buf != NULL);
+    atomic_store(&jit_ss_diag_enabled, false);
+    jit_ss_diag_show(buf); CHECK(strstr(buf->text, "enabled 0") && !strstr(buf->text, "context tid="));
+    ss_diag_begin(&d, 987654, 99, 98); // no ring output in the traversal-bound test
+    struct jit_ctx *contexts = calloc(SS_DIAG_CONTEXTS + 1, sizeof(*contexts)); CHECK(contexts != NULL);
+    for (unsigned i = 0; i <= SS_DIAG_CONTEXTS; i++) {
+        contexts[i].ss_diag = &d;
+        contexts[i].reg_next = i < SS_DIAG_CONTEXTS ? &contexts[i+1] : NULL;
+    }
+    reg_head = contexts; atomic_store(&jit_ss_diag_enabled, true);
+    memset(buf, 0, sizeof(*buf)); jit_ss_diag_show(buf);
+    CHECK(strstr(buf->text, "contexts_visited 128") && strstr(buf->text, "truncated 1"));
+    reg_head = NULL; free(contexts); free(buf);
+}
+struct diag_thread_args { struct jit_ss_diag *d; _Atomic bool done; };
+static void *diag_writer(void *p) {
+    struct diag_thread_args *a = p;
+    struct tlb tlb = {.readable = true};
+    for (unsigned i = 1; i <= 500000; i++) {
+        if ((i & 8191) == 1) ss_diag_begin(a->d, i, i, i);
+        tlb.insn = i;
+        ss_diag_count(a->d, SD_HIT);
+        ss_diag_sample(a->d, (addr_t)i << 2, &tlb, SS_EXIT, SD_HIT);
+    }
+    atomic_store(&a->done, true); return NULL;
+}
+static void diagnostic_concurrent_test(void) {
+    struct jit_ss_diag d = {0}; struct diag_thread_args a = {.d = &d};
+    pthread_t t; CHECK(pthread_create(&t, NULL, diag_writer, &a) == 0);
+    unsigned copied = 0;
+    do {
+        struct ss_diag_snapshot s; ss_diag_copy(&d, &s);
+        if (!s.consistent) continue;
+        copied++;
+        CHECK(s.mmu_id == s.tid && s.tid == s.tgid);
+        for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++) {
+            if (!s.samples[i].serial) continue;
+            CHECK(s.samples[i].readable && (s.samples[i].pc >> 2) == s.samples[i].insn);
+            CHECK(s.samples[i].origin == SS_EXIT && s.samples[i].miss == SD_HIT);
+        }
+    } while (!atomic_load(&a.done));
+    CHECK(pthread_join(t, NULL) == 0 && copied > 0);
+}
 int main(int argc, char **argv) {
     if (argc == 2 && strcmp(argv[1], "--benchmark") == 0) { benchmark(); return 0; }
     if (argc == 2 && strcmp(argv[1], "--lookup-benchmark") == 0) { lookup_benchmark(); return 0; }
     if (argc == 2 && strcmp(argv[1], "--context-benchmark") == 0) { context_cache_benchmark(); return 0; }
     focused_tests(); context_cache_tests(); growth_tests(); concurrent_growth_test(); randomized_tests();
+    diagnostic_tests(); diagnostic_concurrent_test();
     context_cache_benchmark(); // exercise independent thread caches under ASan/UBSan too
-    printf("PASS actual production cache functions: %u assertions; index integrity after every range; ASan/UBSan enabled\n", checks);
+    printf("PASS actual production cache functions: %u assertions; index integrity after every range; sanitizer flags recorded with invocation\n", checks);
     return 0;
 }
 '''
@@ -663,14 +788,19 @@ def main():
     header = header_path.read_text()
     ss_cache_definition = next(line for line in header.splitlines() if line.startswith("#define JIT_SS_LC_SIZE "))
     ss_cache_definition += "\n" + declaration(header, "struct jit_ss_cache_entry {")
-    needles = ["struct ss_entry {", "static inline size_t pc_hash(",
+    diag_definitions = "\n".join(line for line in source.splitlines() if line.startswith("#define SS_DIAG_"))
+    diag_definitions += "\n" + "\n".join(declaration(source, needle) for needle in [
+        "enum ss_diag_counter {", "enum ss_origin {", "enum ss_result {", "struct ss_diag_sample {",
+        "struct jit_ss_diag {", "struct ss_diag_snapshot {"])
+    needles = ["static void ss_diag_begin(", "static void ss_diag_count(", "static void ss_diag_sample(",
+               "static void ss_diag_copy(", "void jit_ss_diag_show(", "struct ss_entry {", "static inline size_t pc_hash(",
                "static void ss_grow_locked(", "static void ss_insert_locked(", "static bool ss_invalidate_locked(",
                "void jit_invalidate_range(", "static struct fiber_block *ss_get(",
-               "static struct fiber_block *ss_get_cached(", "static void ctx_switch_mm("]
+               "static struct fiber_block *ss_get_diagnosed(", "static struct fiber_block *ss_get_cached(", "static void ctx_switch_mm("]
     snippets = [declaration(source, needle) for needle in needles]
     args.out.mkdir(parents=True, exist_ok=True)
     generated = args.out / "jit-ss-index-harness.c"
-    generated.write_text(PREAMBLE.replace("SS_CACHE_DEFINITION", ss_cache_definition) + "\n" + "\n\n".join(snippets) + HARNESS)
+    generated.write_text(PREAMBLE.replace("SS_CACHE_DEFINITION", ss_cache_definition).replace("SS_DIAG_DEFINITIONS", diag_definitions) + "\n" + "\n\n".join(snippets) + HARNESS)
     commands = []
     for name, flags, runtime_args in [
         ("regression", ["-fsanitize=address,undefined", "-fno-omit-frame-pointer"], []),

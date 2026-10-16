@@ -22,6 +22,8 @@
 #include "asbestos/gen.h"
 #include "asbestos/frame.h"
 #include "kernel/mm.h"
+#include "kernel/task.h"
+#include "fs/proc.h"
 
 #define FPCR_GUEST_MASK 0x07c80000u
 
@@ -31,6 +33,8 @@ int fiber_enter(struct fiber_block *block, struct fiber_frame *frame, struct tlb
 
 static int jit_state = -1;   // -1 unknown, 0 off, 1 on
 static bool jit_stats;
+static _Atomic bool jit_ss_diag_enabled;
+static _Atomic uint64_t ss_diag_alloc_failed;
 static pthread_mutex_t init_lock = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t reg_lock = PTHREAD_MUTEX_INITIALIZER;
 static struct jit_ctx *reg_head;
@@ -43,6 +47,169 @@ uint32_t jit_promote_after = 128;   // tier-1 executions before tier-2 retransla
 static int force_tier;             // ISH_JIT_TIER=1/2 (testing)
 int jit_force_tier1;
 int jit_tier1_compact = 0;      // ISH_JIT_COMPACT=1: cacheable code starts compact (stubs, counted, promoted)
+
+// Opt-in diagnostic data is separate from the madvise-able context payload.
+// Only the owning guest thread writes it. Proc readers use atomics, and hold
+// reg_lock solely while copying a bounded number of live contexts.
+#define SS_DIAG_SAMPLES 64
+#define SS_DIAG_CONTEXTS 128
+enum ss_diag_counter {
+    SD_HIT, SD_COLD, SD_COLLISION, SD_GENERATION, SD_GENERATION_SAME_PC,
+    SD_SHARED_HIT, SD_FILL, SD_ONESHOT_GENERATION, SD_ONESHOT_PRESSURE,
+    SD_UNTRACKED_OOM, SD_NEGATIVE, SD_EXIT, SD_NOMEM, SD_COUNTERS
+};
+enum ss_origin { SS_NEGATIVE, SS_EXIT, SS_NOMEM };
+enum ss_result { SS_SHARED_HIT, SS_FILL, SS_ONESHOT_GENERATION, SS_ONESHOT_PRESSURE, SS_UNTRACKED_OOM };
+struct ss_diag_sample {
+    _Atomic uint64_t serial, pc, insn, readable, origin, miss;
+};
+struct jit_ss_diag {
+    uint64_t owner_mmu;   // owner-only; proc readers never inspect this field
+    uint32_t random;
+    _Atomic uint64_t reset_seq, mmu_id, tid, tgid;
+    _Atomic uint64_t counters[SD_COUNTERS], sampled;
+    struct ss_diag_sample samples[SS_DIAG_SAMPLES];
+};
+struct ss_diag_snapshot {
+    bool consistent;
+    uint64_t reset_seq, mmu_id, tid, tgid, counters[SD_COUNTERS], sampled;
+    struct { uint64_t serial, pc, insn, readable, origin, miss; } samples[SS_DIAG_SAMPLES];
+    unsigned busy_samples;
+};
+
+static void ss_diag_begin(struct jit_ss_diag *d, uint64_t mmu_id, uint64_t tid, uint64_t tgid) {
+    if (d->owner_mmu == mmu_id)
+        return;
+    atomic_fetch_add(&d->reset_seq, 1);   // odd: changing address-space identity
+    d->owner_mmu = mmu_id;
+    d->random = (uint32_t) (mmu_id ^ tid ^ 0x9e3779b9u) | 1;
+    atomic_store(&d->mmu_id, mmu_id);
+    atomic_store(&d->tid, tid);
+    atomic_store(&d->tgid, tgid);
+    for (unsigned i = 0; i < SD_COUNTERS; i++)
+        atomic_store(&d->counters[i], 0);
+    atomic_store(&d->sampled, 0);
+    for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++)
+        atomic_store(&d->samples[i].serial, 0);
+    atomic_fetch_add(&d->reset_seq, 1);
+}
+
+static void ss_diag_count(struct jit_ss_diag *d, enum ss_diag_counter counter) {
+    atomic_fetch_add_explicit(&d->counters[counter], 1, memory_order_relaxed);
+}
+
+static void ss_diag_sample(struct jit_ss_diag *d, addr_t pc, struct tlb *tlb,
+        enum ss_origin origin, enum ss_diag_counter miss) {
+    // Pseudorandom sampling avoids fixed-stride aliasing with tight guest loops.
+    uint32_t x = d->random;
+    x ^= x << 13; x ^= x >> 17; x ^= x << 5;
+    d->random = x;
+    if ((x & 1023) != 0)
+        return;
+    uint32_t insn = 0;
+    addr_t saved_fault = tlb->segfault_addr;
+    bool readable = tlb_read(tlb, pc, &insn, sizeof(insn));
+    tlb->segfault_addr = saved_fault;
+    uint64_t serial = atomic_fetch_add_explicit(&d->sampled, 1, memory_order_relaxed) + 1;
+    struct ss_diag_sample *s = &d->samples[(serial - 1) % SS_DIAG_SAMPLES];
+    // All sample fields are seq_cst atomics. A reader accepting an unchanged
+    // nonzero serial therefore cannot combine two ring-buffer publications.
+    atomic_store(&s->serial, 0);
+    atomic_store(&s->pc, pc);
+    atomic_store(&s->insn, insn);
+    atomic_store(&s->readable, readable);
+    atomic_store(&s->origin, origin);
+    atomic_store(&s->miss, miss);
+    atomic_store(&s->serial, serial);
+}
+
+static void ss_diag_copy(struct jit_ss_diag *d, struct ss_diag_snapshot *out) {
+    for (unsigned attempt = 0; attempt < 2; attempt++) {
+        memset(out, 0, sizeof(*out));
+        uint64_t seq = atomic_load(&d->reset_seq);
+        if (seq & 1)
+            continue;
+        out->reset_seq = seq;
+        out->mmu_id = atomic_load(&d->mmu_id);
+        out->tid = atomic_load(&d->tid);
+        out->tgid = atomic_load(&d->tgid);
+        for (unsigned i = 0; i < SD_COUNTERS; i++)
+            out->counters[i] = atomic_load(&d->counters[i]);
+        out->sampled = atomic_load(&d->sampled);
+        for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++) {
+            struct ss_diag_sample *s = &d->samples[i];
+            uint64_t serial = atomic_load(&s->serial);
+            if (!serial)
+                continue;
+            out->samples[i].pc = atomic_load(&s->pc);
+            out->samples[i].insn = atomic_load(&s->insn);
+            out->samples[i].readable = atomic_load(&s->readable);
+            out->samples[i].origin = atomic_load(&s->origin);
+            out->samples[i].miss = atomic_load(&s->miss);
+            if (serial == atomic_load(&s->serial))
+                out->samples[i].serial = serial;
+            else
+                out->busy_samples++;
+        }
+        if (seq == atomic_load(&d->reset_seq)) {
+            out->consistent = true;
+            return;
+        }
+    }
+}
+
+void jit_ss_diag_show(struct proc_data *buf) {
+    static const char *names[SD_COUNTERS] = {
+        "hit", "miss_cold", "miss_collision", "miss_generation", "miss_generation_same_pc",
+        "shared_hit", "persistent_fill", "oneshot_generation", "oneshot_pressure",
+        "untracked_oom", "path_negative", "path_exit", "path_nomem"
+    };
+    proc_printf(buf, "supported 1\nenabled %d\n", atomic_load(&jit_ss_diag_enabled));
+    if (!atomic_load(&jit_ss_diag_enabled))
+        return;
+    struct ss_diag_snapshot *rows = calloc(SS_DIAG_CONTEXTS, sizeof(*rows));
+    if (rows == NULL) {
+        proc_printf(buf, "snapshot_allocation_failed 1\n");
+        return;
+    }
+    unsigned visited = 0, count = 0;
+    pthread_mutex_lock(&reg_lock);
+    struct jit_ctx *c = reg_head;
+    for (; c && visited < SS_DIAG_CONTEXTS; c = c->reg_next, visited++)
+        if (c->ss_diag)
+            ss_diag_copy(c->ss_diag, &rows[count++]);
+    bool truncated = c != NULL;
+    pthread_mutex_unlock(&reg_lock);
+    proc_printf(buf, "version 1\napproximate_counters 1\ncounters_count_attempts 1\nsample_window recent\n"
+                "sample_probability_denominator 1024\npath_legend 0=negative 1=exit 2=nomem\n"
+                "miss_legend 0=hit 1=cold 2=collision 3=generation\n"
+                "sample_ring_size %u\ncontexts_visited %u\ntruncated %d\ncontext_allocation_failed %llu\n",
+                SS_DIAG_SAMPLES, visited, truncated, (unsigned long long) atomic_load(&ss_diag_alloc_failed));
+    for (unsigned r = 0; r < count; r++) {
+        struct ss_diag_snapshot *s = &rows[r];
+        if (!s->consistent) {
+            proc_printf(buf, "context_busy 1\n");
+            continue;
+        }
+        proc_printf(buf, "context tid=%llu tgid=%llu mmu=%llu reset=%llu sampled=%llu busy_samples=%u",
+                    (unsigned long long) s->tid, (unsigned long long) s->tgid,
+                    (unsigned long long) s->mmu_id, (unsigned long long) s->reset_seq,
+                    (unsigned long long) s->sampled, s->busy_samples);
+        for (unsigned i = 0; i < SD_COUNTERS; i++)
+            proc_printf(buf, " %s=%llu", names[i], (unsigned long long) s->counters[i]);
+        proc_printf(buf, "\n");
+        for (unsigned i = 0; i < SS_DIAG_SAMPLES; i++) {
+            if (!s->samples[i].serial)
+                continue;
+            proc_printf(buf, "sample tid=%llu mmu=%llu serial=%llu pc=%#llx insn=%08llx readable=%llu path=%llu miss=%llu\n",
+                        (unsigned long long) s->tid, (unsigned long long) s->mmu_id,
+                        (unsigned long long) s->samples[i].serial, (unsigned long long) s->samples[i].pc,
+                        (unsigned long long) s->samples[i].insn, (unsigned long long) s->samples[i].readable,
+                        (unsigned long long) s->samples[i].origin, (unsigned long long) s->samples[i].miss);
+        }
+    }
+    free(rows);
+}
 
 static void install_signals(void);
 static void install_pressure_handler(void);
@@ -126,6 +293,7 @@ static void ctx_destroy(void *p) {
         ctx->reg_next->reg_prev = ctx->reg_prev;
     pthread_mutex_unlock(&reg_lock);
     free(ctx->frame);
+    free(ctx->ss_diag);
     munmap(ctx, ctx_map_size());
 }
 
@@ -162,6 +330,8 @@ static bool start_locked(void) {
     }
     const char *s = getenv("ISH_JIT_STATS");
     jit_stats = s && s[0] == '1';
+    const char *sd = getenv("ISH_JIT_SS_DIAG");
+    jit_ss_diag_enabled = sd && strcmp(sd, "1") == 0;
 #if TARGET_OS_IPHONE
     bool announce = true;
 #else
@@ -255,6 +425,11 @@ static struct jit_ctx *get_ctx(void) {
         return NULL;
     }
     ctx->nfilled = JIT_FILLED_MAX + 1;   // force a full initialization
+    if (atomic_load(&jit_ss_diag_enabled)) {
+        ctx->ss_diag = calloc(1, sizeof(*ctx->ss_diag));
+        if (ctx->ss_diag == NULL)
+            atomic_fetch_add(&ss_diag_alloc_failed, 1);
+    }
     tlb_flush_ctx(ctx);
     pthread_setspecific(ctx_key, ctx);
     tls_ctx = ctx;
@@ -1599,7 +1774,7 @@ int jit_fetch_code(struct jit_ctx *ctx, addr_t pc, const uint32_t **code, int ma
 // pc run while the arena was full.
 #define SS_NOMEM_CACHED 8192
 static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb, bool keep,
-        struct jit_ss_cache_entry *cached) {
+        struct jit_ss_cache_entry *cached, enum ss_result *result) {
     pthread_mutex_lock(&mm->lock);
     size_t h = pc_hash(pc, mm->ss_size);
     for (struct ss_entry *e = mm->ss_hash[h]; e; e = e->next) {
@@ -1607,6 +1782,8 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
             struct fiber_block *b = e->block;
             if (cached)
                 *cached = (struct jit_ss_cache_entry) {pc, b, atomic_load(&mm->gen)};
+            if (result)
+                *result = SS_SHARED_HIT;
             pthread_mutex_unlock(&mm->lock);
             return b;
         }
@@ -1627,6 +1804,8 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
         // Out of host memory: the block cannot be tracked, so it cannot be
         // freed later either. It is still valid for this one step.
         mm->stats_fallback++;
+        if (result)
+            *result = SS_UNTRACKED_OOM;
         pthread_mutex_unlock(&mm->lock);
         return block;
     }
@@ -1636,7 +1815,11 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
         ss_insert_locked(mm, e);
         if (cached)
             *cached = (struct jit_ss_cache_entry) {pc, block, gen};
+        if (result)
+            *result = SS_FILL;
     } else {
+        if (result)
+            *result = atomic_load(&mm->gen) != gen ? SS_ONESHOT_GENERATION : SS_ONESHOT_PRESSURE;
         e->next = mm->ss_jetsam;   // used once, freed by reclaim
         mm->ss_jetsam = e;
     }
@@ -1645,7 +1828,42 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
     return block;
 }
 
-static struct fiber_block *ss_get_cached(struct jit_ctx *ctx, addr_t pc, struct tlb *tlb, bool keep) {
+static struct fiber_block *ss_get_diagnosed(struct jit_ctx *ctx, addr_t pc, struct tlb *tlb,
+        bool keep, enum ss_origin origin) {
+    struct jit_ss_diag *d = ctx->ss_diag;
+    struct jit_mm *mm = ctx->mm;
+    uint64_t gen = atomic_load_explicit(&mm->gen, memory_order_acquire);
+    struct jit_ss_cache_entry *cached = &ctx->ss_lc[pc_hash(pc, JIT_SS_LC_SIZE)];
+    enum ss_diag_counter reason;
+    if (cached->block == NULL)
+        reason = SD_COLD;
+    else if (cached->gen != gen) {
+        reason = SD_GENERATION;
+        if (cached->pc == pc)
+            ss_diag_count(d, SD_GENERATION_SAME_PC);
+    } else if (cached->pc != pc)
+        reason = SD_COLLISION;
+    else
+        reason = SD_HIT;
+    ss_diag_count(d, reason);
+    ss_diag_count(d, origin == SS_NEGATIVE ? SD_NEGATIVE : origin == SS_EXIT ? SD_EXIT : SD_NOMEM);
+    ss_diag_sample(d, pc, tlb, origin, reason);
+    if (reason == SD_HIT)
+        return cached->block;
+    cached->block = NULL;
+    enum ss_result result;
+    struct fiber_block *block = ss_get(mm, pc, tlb, keep, cached, &result);
+    static const enum ss_diag_counter outcomes[] = {
+        SD_SHARED_HIT, SD_FILL, SD_ONESHOT_GENERATION, SD_ONESHOT_PRESSURE, SD_UNTRACKED_OOM
+    };
+    ss_diag_count(d, outcomes[result]);
+    return block;
+}
+
+static struct fiber_block *ss_get_cached(struct jit_ctx *ctx, addr_t pc, struct tlb *tlb,
+        bool keep, enum ss_origin origin) {
+    if (__builtin_expect(ctx->ss_diag != NULL, 0))
+        return ss_get_diagnosed(ctx, pc, tlb, keep, origin);
     struct jit_mm *mm = ctx->mm;
     uint64_t gen = atomic_load_explicit(&mm->gen, memory_order_acquire);
     struct jit_ss_cache_entry *cached = &ctx->ss_lc[pc_hash(pc, JIT_SS_LC_SIZE)];
@@ -1655,15 +1873,15 @@ static struct fiber_block *ss_get_cached(struct jit_ctx *ctx, addr_t pc, struct 
     // retired without a generation bump and must never survive in this cache.
     // The active context's existing epoch protects a hit through execution.
     cached->block = NULL;
-    return ss_get(mm, pc, tlb, keep, cached);
+    return ss_get(mm, pc, tlb, keep, cached, NULL);
 }
 
-static int gadget_step(struct jit_ctx *ctx, struct tlb *tlb, bool keep) {
+static int gadget_step(struct jit_ctx *ctx, struct tlb *tlb, bool keep, enum ss_origin origin) {
     struct fiber_frame *frame = ctx->frame;
     for (int tries = 0; tries < 16; tries++) {
         if (tlb->mem_changes != __atomic_load_n(&tlb->mmu->changes, __ATOMIC_ACQUIRE))
             tlb_flush(tlb);
-        struct fiber_block *block = ss_get_cached(ctx, ctx->cpu.pc, tlb, keep);
+        struct fiber_block *block = ss_get_cached(ctx, ctx->cpu.pc, tlb, keep, origin);
         frame->cpu = ctx->cpu;
         frame->last_block = NULL;
         jit_saved_pc = ctx->cpu.pc;
@@ -1855,6 +2073,8 @@ int jit_run(struct cpu_state *cpu, struct tlb *tlb, struct jit_mm *mm) {
     }
     ctx_activate(ctx);
     ctx_switch_mm(ctx, mm);
+    if (__builtin_expect(ctx->ss_diag != NULL, 0))
+        ss_diag_begin(ctx->ss_diag, mm->mmu->id, current->pid, current->tgid);
     ctx->tlb = tlb;
     ctx->itab = (uint64_t) mm->itab;
     ctx->changes_ptr = (uint64_t) &mm->mmu->changes;
@@ -1894,7 +2114,7 @@ int jit_run(struct cpu_state *cpu, struct tlb *tlb, struct jit_mm *mm) {
         struct jit_block *b = get_block(ctx, pc);
         if (b == NULL || b->rx == NULL) {
             pending_slot = NULL;
-            interrupt = gadget_step(ctx, tlb, b != NULL);
+            interrupt = gadget_step(ctx, tlb, b != NULL, b ? SS_NEGATIVE : SS_NOMEM);
             continue;
         }
         if (pending_slot) {
@@ -1938,7 +2158,7 @@ int jit_run(struct cpu_state *cpu, struct tlb *tlb, struct jit_mm *mm) {
                 break;
             }
             case JR_FALLBACK:
-                interrupt = gadget_step(ctx, tlb, true);
+                interrupt = gadget_step(ctx, tlb, true, SS_EXIT);
                 break;
             case JR_SYSCALL:
                 interrupt = INT_SYSCALL;

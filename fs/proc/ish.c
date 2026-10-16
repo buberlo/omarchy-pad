@@ -2,6 +2,9 @@
 #include "fs/proc.h"
 #include "fs/proc/ish.h"
 #include "kernel/errno.h"
+#ifdef ISH_JIT
+#include "jit/jit.h"
+#endif
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -175,12 +178,22 @@ static int proc_ish_update_oom(struct proc_entry *UNUSED(entry), struct proc_dat
     return oom_update_policy(data->data, data->size);
 }
 
+static int proc_ish_show_jit_ss(struct proc_entry *UNUSED(entry), struct proc_data *buf) {
+#ifdef ISH_JIT
+    jit_ss_diag_show(buf);
+#else
+    proc_printf(buf, "supported 0\n");
+#endif
+    return 0;
+}
+
 struct proc_children proc_ish_children = PROC_CHILDREN({
     {"colors", .show = proc_ish_show_colors},
     {".defaults", S_IFDIR, .readdir = proc_ish_underlying_defaults_readdir},
     {"defaults", S_IFDIR, .readdir = proc_ish_defaults_readdir},
     {"documents", .show = proc_ish_show_documents},
     {"memory", .show = proc_ish_show_memory},
+    {"jit-ss", .show = proc_ish_show_jit_ss},
     {"oom", 0644, .show = proc_ish_show_oom, .update = proc_ish_update_oom},
     {"version", .show = proc_ish_show_version},
 });
