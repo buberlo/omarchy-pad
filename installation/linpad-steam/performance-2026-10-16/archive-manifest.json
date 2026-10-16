@@ -8,6 +8,11 @@
       "sha256": "aee16fca9b8c171aff884f35c46edada5e58564144e899ef099604f6044aea16"
     },
     {
+      "path": "HANDOFF-4452.md",
+      "bytes": 2659,
+      "sha256": "77399f7f1bdb6d85870897915a9efc558056f766346bd6f0fe42df39dd32f60b"
+    },
+    {
       "path": "audio-path-audit/README.md",
       "bytes": 10704,
       "sha256": "75496160fe2c692ad4b37a6cd0867ae541694ca1fb1fd6bc63c99369c37e5cfb"
@@ -2231,6 +2236,11 @@
       "path": "build4451/symbols.json",
       "bytes": 266,
       "sha256": "eb6438fb0fe0331c841c1e158014364ba93a39e91836d3b72504a7a57a1f096a"
+    },
+    {
+      "path": "build4452-release-verified.json",
+      "bytes": 1441,
+      "sha256": "2f4ed6edfb321ac4964b84bfd9c9026c278fad8937fa42aa798607a2d7ae5deb"
     },
     {
       "path": "build4452/REPOSITORY-SHA256SUMS",
