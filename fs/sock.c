@@ -12,6 +12,7 @@
 #include "fs/real.h"
 #include "fs/netlink.h"
 #include "fs/sock.h"
+#include "fs/proc.h"
 #include "debug.h"
 
 #define SOCKET_TYPE_MASK 0xf
@@ -23,6 +24,11 @@ static lock_t peer_lock = LOCK_INITIALIZER;
 static struct list unix_connecting_list = {&unix_connecting_list, &unix_connecting_list};
 static uint64_t unix_next_connect_id;
 
+// Only guest sockets are visible in procfs. Keep their anonymous inode numbers
+// consistent with fstat and /proc/<pid>/fd, including dup/fork references.
+static lock_t inet_proc_lock = LOCK_INITIALIZER;
+static struct list inet_proc_sockets = {&inet_proc_sockets, &inet_proc_sockets};
+
 static fd_t sock_fd_create(int sock_fd, int domain, int type, int protocol) {
     struct fd *fd = adhoc_fd_create(&socket_fdops);
     if (fd == NULL)
@@ -32,6 +38,12 @@ static fd_t sock_fd_create(int sock_fd, int domain, int type, int protocol) {
     fd->socket.domain = domain;
     fd->socket.type = type & SOCKET_TYPE_MASK;
     fd->socket.protocol = protocol;
+    if (domain == AF_INET_ || domain == AF_INET6_) {
+        fd->stat.uid = current->euid;
+        lock(&inet_proc_lock);
+        list_add(&inet_proc_sockets, &fd->socket.inet_proc_link);
+        unlock(&inet_proc_lock);
+    }
     if (domain == AF_LOCAL_) {
         cond_init(&fd->socket.unix_got_peer);
         list_init(&fd->socket.unix_scm);
@@ -1920,6 +1932,9 @@ static ssize_t sock_write(struct fd *fd, const void *buf, size_t size) {
 }
 
 static int sock_close(struct fd *fd) {
+    lock(&inet_proc_lock);
+    list_remove_safe(&fd->socket.inet_proc_link);
+    unlock(&inet_proc_lock);
     sockrestart_end_listen(fd);
     // FIXME next 3 lines should go in a function like release_unix_names
     inode_release_if_exist(fd->socket.unix_name_inode);
@@ -1960,6 +1975,68 @@ static int sock_close(struct fd *fd) {
     if (fd->socket.domain == AF_NETLINK_)
         close(fd->socket.netlink_peer);
     return realfs_close(fd);
+}
+
+static void proc_inet_address(const struct sockaddr_storage *addr, bool ipv6,
+        char *text, unsigned *port) {
+    if (!ipv6) {
+        const struct sockaddr_in *v4 = (const void *) addr;
+        sprintf(text, "%08X", v4->sin_addr.s_addr);
+        *port = ntohs(v4->sin_port);
+    } else {
+        const struct sockaddr_in6 *v6 = (const void *) addr;
+        uint32_t words[4];
+        memcpy(words, &v6->sin6_addr, sizeof(words));
+        sprintf(text, "%08X%08X%08X%08X", words[0], words[1], words[2], words[3]);
+        *port = ntohs(v6->sin6_port);
+    }
+}
+
+void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp) {
+    proc_printf(buf, "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n");
+    unsigned slot = 0;
+    // Close removes the socket under this lock before closing its host fd.
+    // getsockname/getpeername and TCP_CONNECTION_INFO do not wait for traffic.
+    lock(&inet_proc_lock);
+    struct fd *fd;
+    list_for_each_entry(&inet_proc_sockets, fd, socket.inet_proc_link) {
+        if (fd->socket.domain != (ipv6 ? AF_INET6_ : AF_INET_) ||
+                fd->socket.type != (udp ? SOCK_DGRAM_ : SOCK_STREAM_))
+            continue;
+        struct sockaddr_storage local = {}, remote = {};
+        socklen_t len = sizeof(local);
+        if (getsockname(fd->real_fd, (void *) &local, &len) < 0)
+            continue;
+        len = sizeof(remote);
+        bool connected = getpeername(fd->real_fd, (void *) &remote, &len) == 0;
+        unsigned state = connected ? 1 : 7;
+#ifdef __APPLE__
+        if (!udp) {
+            struct tcp_connection_info info = {};
+            len = sizeof(info);
+            if (getsockopt(fd->real_fd, IPPROTO_TCP, TCP_CONNECTION_INFO, &info, &len) == 0) {
+                static const unsigned states[] = {7, 10, 2, 3, 1, 8, 4, 11, 9, 5, 6};
+                if (info.tcpi_state < sizeof(states) / sizeof(states[0]))
+                    state = states[info.tcpi_state];
+            }
+        }
+#else
+        if (!udp && !connected) {
+            int listening = 0;
+            len = sizeof(listening);
+            if (getsockopt(fd->real_fd, SOL_SOCKET, SO_ACCEPTCONN, &listening, &len) == 0 && listening)
+                state = 10;
+        }
+#endif
+        char local_text[33], remote_text[33];
+        unsigned local_port, remote_port;
+        proc_inet_address(&local, ipv6, local_text, &local_port);
+        proc_inet_address(&remote, ipv6, remote_text, &remote_port);
+        proc_printf(buf, "%4u: %s:%04X %s:%04X %02X 00000000:00000000 00:00000000 00000000 %u 0 %llu\n",
+                slot++, local_text, local_port, remote_text, remote_port, state,
+                fd->stat.uid, (unsigned long long) fd->stat.inode);
+    }
+    unlock(&inet_proc_lock);
 }
 
 static ssize_t sock_ioctl_size(int cmd) {

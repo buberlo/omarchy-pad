@@ -10,6 +10,9 @@
 #include "misc.h"
 #include "debug.h"
 
+struct proc_data;
+void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp);
+
 int_t sys_socketcall(dword_t call_num, addr_t args_addr);
 
 int_t sys_socket(dword_t domain, dword_t type, dword_t protocol);

@@ -49,6 +49,7 @@ struct fd {
             int domain;
             int type;
             int protocol;
+            struct list inet_proc_link; // protected by sock.c's inet_proc_lock
 
             // These are only used as strong references, to keep the inode
             // alive while there is a listener.
