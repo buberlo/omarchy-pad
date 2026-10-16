@@ -1,0 +1,4 @@
+LRCPC2_VALUES cases=8190
+LRCPC2_FAULTS completed
+LRCPC2_MESSAGES iterations=10000
+LRCPC2_PROBE PASS checks=18949 failures=0 code_bytes=187008

@@ -1,0 +1,11 @@
+# Native LRCPC2 memory translation
+
+Build4451 retained1223 startup fallback samples, all LDAPUR/STLUR. The fast translator lacked this family. This change lowers the allocated scalar LRCPC2 encodings to the same ordinary scalar operation plus DMB ISH ordering used by the gadget engine. It preserves signed imm9 offsets, width/sign extension, SP/XZR, translated addresses, protection checks and original instruction maps. Reserved combinations remain unsupported. Acquire/release accesses retain the page-table coherence check.
+
+Release stores skip compact stubs: their inline cold path commits a cross-page bounce buffer immediately after the store, before any subsequent guest instruction can publish another value. Acquire loads use the ordinary path, then execute DMB at the common hot join reached by fast and helper paths. This avoids directly emitting aligned host LDAR/STLR for FEX's unaligned addresses. No FEX setting, guest memory model or advertised feature changes.
+
+Local validation: the actual private translator (included without replacing its decoder/emitter) passes393224 cases and4454512 assertions under ASan/UBSan, covering every base/data register, every size/opc, six signed offsets and both tiers/compact settings. The real ARM64 Linux guest probe passes19151 assertions in tier1 inline, tier1 compact and tier2, including8190 value/register/address cases, exact fault address/PC/destination preservation, reserved SIGILL,200 code rewrites and10000 two-thread message exchanges.
+
+The unchanged gadget-engine control passes values, message exchange, code rewrites and fault addresses/destinations but fails9 strict fault-PC checks: it reports the start of the generated block36bytes before the offending instruction. This is an existing baseline defect, not a new JIT failure; it is retained rather than suppressed. No gadget source change is part of this patch. Local timings are not physical iPad or game performance.
+
+Physical build/install/game validation remains pending. The previously rejected disablelrcpc2 override must remain off. The next game run uses the existing default FEX binary and graphics/audio route. Success requires actual playable foreground gameplay and smooth sound through Steam, not these low-level tests.

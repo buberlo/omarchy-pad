@@ -1,0 +1,22 @@
+LRCPC2_VALUES cases=8190
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=120: fault_pc==op_pc
+FAIL line=129: fault_pc==op_pc
+LRCPC2_FAULT store=0 case=0 signal=11 address=0 expected_address=0 pc=0xefc248d0 expected_pc=0xefc248f4
+LRCPC2_FAULT store=0 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc248d0 expected_pc=0xefc248f4
+LRCPC2_FAULT store=0 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248d0 expected_pc=0xefc248f4
+LRCPC2_FAULT store=0 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248d0 expected_pc=0xefc248f4
+LRCPC2_FAULT store=1 case=0 signal=11 address=0 expected_address=0 pc=0xefc24918 expected_pc=0xefc2493c
+LRCPC2_FAULT store=1 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc24918 expected_pc=0xefc2493c
+LRCPC2_FAULT store=1 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc24918 expected_pc=0xefc2493c
+LRCPC2_FAULT store=1 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc24918 expected_pc=0xefc2493c
+LRCPC2_FAULTS completed
+LRCPC2_SMC rewrites=200
+LRCPC2_MESSAGES iterations=10000
+LRCPC2_PROBE FAIL checks=19151 failures=9 code_bytes=187080

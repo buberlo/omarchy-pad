@@ -1,0 +1,23 @@
+{
+  "compile_command": [
+    "xcrun",
+    "clang",
+    "-std=gnu11",
+    "-DGUEST_ARM64=1",
+    "-DISH_JIT=1",
+    "-O1",
+    "-g",
+    "-I/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-Wl,-dead_strip",
+    "-fsanitize=address,undefined",
+    "work/performance/lrcpc2-native/translator/translator-harness.c",
+    "-o",
+    "work/performance/lrcpc2-native/translator/translator-harness"
+  ],
+  "stdout": "LRCPC2_TRANSLATOR PASS cases=393224 checks=4454512\n",
+  "stderr": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/jit/translate.c:600:29: runtime error: left shift of 2 by 30 places cannot be represented in type 'int'\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/jit/translate.c:600:29 \n",
+  "exit": 0,
+  "source_sha256": "df1cc025290b4a81848c9b729b8a88f43509af0e29ebb5b3f71765751ff2807e"
+}

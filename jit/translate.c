@@ -337,6 +337,7 @@ struct memop {
     uint64_t lit;             // AK_LIT address
     int size;
     bool write, atomic, sync;
+    bool immediate_commit;    // release stores must not leave a deferred bounce write
     uint32_t insn_base;       // Rn field = HR_T1, data fields still guest numbers
     bool regoff_ok;
     uint32_t insn_regoff;     // Rn = HR_T1, Rm = 0 (filled with A)
@@ -447,7 +448,7 @@ static int emit_mem(struct tr *t, struct memop *m) {
         case 1: szi = 0; break; case 2: szi = 1; break; case 4: szi = 2; break;
         case 8: szi = 3; break; case 16: szi = 4; break; case 32: szi = 5; break;
     }
-    if (t->tier == 1 && jit_tier1_compact && nborrow == 0 && szi >= 0) {
+    if (t->tier == 1 && jit_tier1_compact && nborrow == 0 && szi >= 0 && !m->immediate_commit) {
         if (A != HR_T0 && A != HR_SP) {
             put(t, HOT, e_mov(HR_T0, A));
             A = HR_T0;
@@ -583,6 +584,28 @@ static int tr_ldst(struct tr *t, uint32_t insn) {
     int rt = insn & 31, rn = (insn >> 5) & 31;
     m.base = rn;
     m.ak = AK_IMM;
+
+    // LRCPC2 unscaled acquire/release. Match the gadget engine's lowering
+    // to ordinary scalar memory operations plus DMB ISH. In particular, do
+    // not substitute host LDAR/STLR: FEX uses valid unaligned guest accesses.
+    if ((insn & 0x3f200c00) == 0x19000000) {
+        int size = insn >> 30, opc = (insn >> 22) & 3;
+        if ((size == 3 && opc >= 2) || (size == 2 && opc == 3))
+            return -1;  // reserved; unlike ordinary LDUR, no PRFUM alias
+        m.size = 1 << size;
+        m.write = opc == 0;
+        m.sync = true;
+        m.immediate_commit = m.write;
+        m.imm = sext((insn >> 12) & 0x1ff, 9);
+        m.insn_base = (size << 30) | 0x38000000u | (opc << 22) | (HR_T1 << 5) | rt;
+        m.data[m.ndata++] = OP(0, m.write ? R : W, false);
+        if (m.write)
+            put(t, HOT, 0xd5033bbfu);  // dmb ish: before the actual store/commit
+        int result = emit_mem(t, &m);
+        if (result > 0 && !m.write)
+            put(t, HOT, 0xd5033bbfu);  // all successful load paths rejoin here
+        return result;
+    }
 
     // Load/store exclusive, ordered, CAS
     if ((insn & 0x3f000000) == 0x08000000) {

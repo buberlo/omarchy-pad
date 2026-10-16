@@ -1,0 +1,52 @@
+[
+  {
+    "case": "tier1-inline",
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_TIER": "1",
+      "ISH_JIT_COMPACT": "0"
+    },
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.449172084001475,
+    "excerpt": "LRCPC2_VALUES cases=8190\nLRCPC2_FAULT store=0 case=0 signal=11 address=0 expected_address=0 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=1 case=0 signal=11 address=0 expected_address=0 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULTS completed\nLRCPC2_SMC rewrites=200\nLRCPC2_MESSAGES iterations=10000\nLRCPC2_PROBE PASS checks=19151 failures=0 code_bytes=187080",
+    "raw_sha256": "f151e90efd5300828c54f9a7ebb7eedfa54e00575256541a2ef30698a1d2448c"
+  },
+  {
+    "case": "gadget",
+    "environment": {
+      "ISH_JIT": "0"
+    },
+    "exit": 1,
+    "timeout": false,
+    "elapsed": 0.36025604100723285,
+    "excerpt": "LRCPC2_VALUES cases=8190\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=120: fault_pc==op_pc\nFAIL line=129: fault_pc==op_pc\nLRCPC2_FAULT store=0 case=0 signal=11 address=0 expected_address=0 pc=0xefc248d0 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc248d0 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248d0 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248d0 expected_pc=0xefc248f4\nLRCPC2_FAULT store=1 case=0 signal=11 address=0 expected_address=0 pc=0xefc24918 expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc24918 expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc24918 expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc24918 expected_pc=0xefc2493c\nLRCPC2_FAULTS completed\nLRCPC2_SMC rewrites=200\nLRCPC2_MESSAGES iterations=10000\nLRCPC2_PROBE FAIL checks=19151 failures=9 code_bytes=187080",
+    "raw_sha256": "0aef09410ea92b0a230fb727044ad41f628ff60bebdcdbe85c14ee148441f762"
+  },
+  {
+    "case": "tier1-compact",
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_TIER": "1",
+      "ISH_JIT_COMPACT": "1"
+    },
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.5880320419964846,
+    "excerpt": "LRCPC2_VALUES cases=8190\nLRCPC2_FAULT store=0 case=0 signal=11 address=0 expected_address=0 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=1 case=0 signal=11 address=0 expected_address=0 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULTS completed\nLRCPC2_SMC rewrites=200\nLRCPC2_MESSAGES iterations=10000\nLRCPC2_PROBE PASS checks=19151 failures=0 code_bytes=187080",
+    "raw_sha256": "9d926bb63cdcc21a7953eb750f4eafe253a50151c823c2b8366b7b3abe5b3d25"
+  },
+  {
+    "case": "tier2",
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_TIER": "2",
+      "ISH_JIT_COMPACT": "0"
+    },
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.29027445800602436,
+    "excerpt": "LRCPC2_VALUES cases=8190\nLRCPC2_FAULT store=0 case=0 signal=11 address=0 expected_address=0 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=0 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc248f4 expected_pc=0xefc248f4\nLRCPC2_FAULT store=1 case=0 signal=11 address=0 expected_address=0 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=1 signal=11 address=0x1 expected_address=0x1 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=2 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULT store=1 case=3 signal=11 address=0xefbf6000 expected_address=0xefbf6000 pc=0xefc2493c expected_pc=0xefc2493c\nLRCPC2_FAULTS completed\nLRCPC2_SMC rewrites=200\nLRCPC2_MESSAGES iterations=10000\nLRCPC2_PROBE PASS checks=19151 failures=0 code_bytes=187080",
+    "raw_sha256": "f14090eb2a01d0187866ef0628d1b8b119a810c88d762ea1d5e05330e577d0a0"
+  }
+]

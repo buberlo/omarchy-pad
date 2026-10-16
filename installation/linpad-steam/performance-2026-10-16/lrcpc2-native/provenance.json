@@ -1,0 +1,10 @@
+{
+  "source_base": "44ff375ebdd5ef9f1800e7f60f056b86cfc6dac7",
+  "files": {
+    "jit/translate.c": "df1cc025290b4a81848c9b729b8a88f43509af0e29ebb5b3f71765751ff2807e",
+    "tests/manual/steam-compat/jit-lrcpc2-probe.c": "4987f5f41a21bd72cf838f443afd4d7fe7a1cb6e9ea4e2050bd543e998389db1",
+    "tests/manual/steam-compat/test-jit-lrcpc2.py": "8e7fd7bb155466e36076d39ed7959cfdcdb50e3c242f827862cda7f947482760"
+  },
+  "local_cli_sha256": "4ca58cc78d8ff222b19181e6d76bf77b1813aa015577f8fedc0757373ebcccc4",
+  "probe_sha256": "7346e36e1aed025de1b233c02f8e828ca633f2af41821e4be5f6f8d6634ad7ab"
+}
