@@ -1,0 +1,41 @@
+#!/bin/sh
+# Brings the command agent back after an app restart (which kills every guest process). One
+# hand-typed line:  wget -O /tmp/a 192.168.0.104:8766/a;sh /tmp/a
+#
+# Idempotent: a running agent is stopped first, and nothing else on the device is touched.
+set -u
+SERVER=http://192.168.0.104:8766
+A=/usr/local/bin/kb-agent
+OUT=/tmp/kb4453-agent-restart.txt
+{
+    echo "KB4453_AGENT_RESTART_BEGIN"
+    date -u
+    echo "host: $(uname -n 2>/dev/null)"
+    if ! wget -T 25 -qO "$A.new" "$SERVER/kb-agent"; then
+        echo "RESULT=AGENT_DOWNLOAD_FAILED"
+        exit 1
+    fi
+    chmod 755 "$A.new"
+    mv -f "$A.new" "$A"
+    echo "agent sha: $(sha256sum "$A")"
+    if [ -f /tmp/kb-agent.pid ] && kill -0 "$(cat /tmp/kb-agent.pid)" 2>/dev/null; then
+        echo "stopping the agent already running as $(cat /tmp/kb-agent.pid)"
+        kill "$(cat /tmp/kb-agent.pid)" 2>/dev/null
+        sleep 1
+    fi
+    KB_AGENT_MINUTES=180 setsid sh "$A" >/tmp/kb-agent-start.log 2>&1 &
+    sleep 3
+    pid=$(cat /tmp/kb-agent.pid 2>/dev/null)
+    echo "agent pid: ${pid:-none}"
+    if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
+        echo "RESULT=AGENT_RUNNING"
+    else
+        echo "RESULT=AGENT_NOT_RUNNING"
+    fi
+    echo "compositor: $(sha256sum /usr/local/bin/ishwl)"
+    echo "key lines so far: $(grep -cE '^ishwl [0-9.]+: key ' /tmp/ishwl.log 2>/dev/null)"
+    echo "frame hook: $(cat /etc/ishwl/session.d/99-kb4453-frames.sh 2>/dev/null)"
+    echo KB4453_AGENT_RESTART_END
+} > "$OUT" 2>&1
+wget -T 20 -q --post-file="$OUT" "$SERVER/report?name=kb4453-agent-restart" -O /dev/null
+cat "$OUT"

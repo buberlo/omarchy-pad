@@ -91,3 +91,9 @@ one report file per name; `agent-run` queues a command and waits for its report)
 does not autostart, survives a desktop session restart (the app's stop script only kills
 ishwl, dbus-daemon and pulseaudio) and is removable with
 `kill "$(cat /tmp/kb-agent.pid)"; rm -f /usr/local/bin/kb-agent`.
+
+It does **not** survive an app restart: the emulator runs inside the app process, so an app
+relaunch (or an install) kills every guest process including the agent. The deployed `ishwl`,
+the frame-log hook and the rollback backup are files in the Linux system and stay. The same
+bootstrap line brings the agent back: `wget -O /tmp/a 192.168.0.104:8766/a;sh /tmp/a`
+(`mac-side/a`), which only restarts the agent and prints the state it found.
