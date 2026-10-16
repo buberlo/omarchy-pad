@@ -43,6 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// a staging directory that is only moved into place when complete, and stale staging
 /// directories are removed at the next launch.
 - (BOOL)importBundledRootWithProgress:(id<ProgressReporter> _Nullable)progress error:(NSError **)error;
+/// Whether a root with this name already exists. A container holds one root per app variant
+/// ("default" for the desktop, "arch" for the game app), so a variant checks its own name
+/// instead of `needsDefaultRoot`, which is true only when the container has no roots at all.
+- (BOOL)hasRootNamed:(NSString *)name;
+/// Imports the bundled rootfs under `name` (the desktop's call above is this with @"default").
+- (BOOL)importBundledRootNamed:(NSString *)name progress:(id<ProgressReporter> _Nullable)progress error:(NSError **)error;
 
 /// A Linux system downloaded from a GitHub release (Settings › Updates), kept until it is
 /// installed or the app bundles one at least as new.

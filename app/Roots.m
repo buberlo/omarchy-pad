@@ -295,16 +295,27 @@ static NSString *ReadVersion(NSURL *url) {
     return self.roots.count == 0;
 }
 
-- (BOOL)importBundledRootWithProgress:(id<ProgressReporter>)progress error:(NSError **)error {
+- (BOOL)hasRootNamed:(NSString *)name {
+    return [self.roots containsObject:name];
+}
+
+/// The named form of the import below. A container can hold several roots (the desktop's Alpine
+/// "default" and the game app's Arch one), and `needsDefaultRoot` is container-wide, so a variant
+/// whose root is not "default" must ask for its own name rather than rely on that flag.
+- (BOOL)importBundledRootNamed:(NSString *)name progress:(id<ProgressReporter>)progress error:(NSError **)error {
     NSURL *archive = self.bundledRootArchive;
     if (archive == nil) {
         *error = [NSError errorWithDomain:@"iSH" code:ENOENT userInfo:@{NSLocalizedDescriptionKey: @"The app has no bundled root filesystem"}];
         return NO;
     }
-    if (![self importRootFromArchive:archive name:@"default" error:error progressReporter:progress])
+    if (![self importRootFromArchive:archive name:name error:error progressReporter:progress])
         return NO;
     _wantsVersionFile = YES;
     return YES;
+}
+
+- (BOOL)importBundledRootWithProgress:(id<ProgressReporter>)progress error:(NSError **)error {
+    return [self importBundledRootNamed:@"default" progress:progress error:error];
 }
 
 - (NSURL *)downloadedRootArchive {
