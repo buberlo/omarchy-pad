@@ -1964,3 +1964,22 @@ Round 19 proved glibc passes descriptors natively, so the musl-era shim must not
 
 This is the true remaining work on the Mac side, and it is one container pass plus a build. The device run
 comes after it, not before.
+
+## Round 72: the image the app can run, and the corrected IPA
+
+Rebuilt the Arch root as the **app** needs it — the Round-71 gap closed — and cut a new IPA from it:
+
+```
+compat=524  steamui_missing=0  launcher=/usr/local/bin/steam-bigpicture  ishwl=/usr/local/bin/ishwl
+TAR=859M    app image 899,788,668 bytes    rootfs_version=2026101702   (no longer "unknown")
+```
+
+The image now carries, beyond the Round 51/54 recipe: `steam-bigpicture` and `steam-local` (the command
+`GameMode.swift` runs), the glibc session layer the app displays windows through (`ishwl`, `ishwl-x11-wm`,
+`libishwl-compat.so`, `ishwl-session`/`-launch`/`-x11`, `/etc/ishwl/apps`), `/etc/profile.d/gpu.sh` with
+Arch's ICD path, `/etc/linpad/steam-mode`, the desktop entry and icon, `/sbin/init`, the Steam client with
+its data-link symlinks, the 524-file compatibility layer, and a root version stamp. Deliberately **absent**:
+`libishwl-scm.so` (glibc passes descriptors natively — Round 19) and `steam.cfg`'s
+`BootStrapperInhibitAll` (a Mac-harness workaround; the device must be allowed to bootstrap).
+
+The superseded build-4512 IPA has been removed from the deliverables so it cannot be installed by mistake.
