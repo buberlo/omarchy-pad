@@ -99,3 +99,13 @@ The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
 With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static
 variants at upstream revision 5285020de passed the x86 runtime smoke test on
 the iPad. These results do not establish that Steam's Chromium UI works.
+
+### Scheduler priority bounds and inherited audio threads
+
+`sched-priority-probe.c` checks Linux policy min/max values, invalid policies,
+and the FIFO priority attributes 90/94/99 used by the installed Unity audio
+thread helper. It creates threads with inherited scheduling and verifies they
+remain SCHED_OTHER; it never requests realtime scheduling. Build for native
+ARM64 and x86-64, then run the latter under FEX. The matched before/after and
+exact guarded Unity helper controls are preserved in the private installation
+archive under `performance-2026-10-16/fmod-sched-repair`.
