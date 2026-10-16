@@ -196,11 +196,14 @@
     "file_format_version": "1.0.1"
   },
   "venus_icd_sha256": "1750a1025414936d30b9a10e6d243e2d12fe125c87f90ab1231dd6fc5593cfaa",
-  "actual_game_combined_egl_and_vulkan_selection_verified": false,
+  "actual_game_combined_egl_and_vulkan_selection_verified": true,
   "limitations": [
     "Environment strings alone do not prove every transitive runtime behavior.",
     "Shared libdrm, Wayland, XCB and related libraries resolve according to load order; absence of private Mesa ABI coupling is not a full coexistence qualification.",
-    "Prior cube GPU selection and software EGL display initialization are separate processes.",
-    "Actual game GPU identity and mapped library paths after EGL setup are pending."
-  ]
+    "Same-process renderer selection and required library mappings are verified; a later guest null-address SIGSEGV leaves game rendering and playability unverified.",
+    "The failure cause and general Mesa coexistence correctness are not established by the selection evidence."
+  ],
+  "runtime_evidence_updated_at_utc": "2026-10-16T10:59:22.031064+00:00",
+  "combined_game_evidence": "combined-game-provenance.json",
+  "rendered_game_frame_verified": false
 }

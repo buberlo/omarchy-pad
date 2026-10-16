@@ -1,0 +1,46 @@
+{
+  "report": "work/performance/reports/hollow4445-egl-trace-status-5.txt",
+  "report_sha256": "38531cf27f66844cfc8a89b3e0a29d94f58b130b25385549f00f870e77e3cc60",
+  "UnityPlayer_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+  "GNU_build_id": "687ec82915ce757a0bf9ebcd6068f093707479e4",
+  "first_fault": {
+    "signal": 11,
+    "code": 1,
+    "accessed_address": "0x0",
+    "guest_rip": "0xcde59a4a",
+    "map_start": "0xcce32000",
+    "map_file_offset": "0x6fa000",
+    "ELF_RVA": "0x1721a4a",
+    "bytes": "48 c7 00 00 00 00 00",
+    "instruction": "mov qword ptr [rax], 0",
+    "rax": "0x0",
+    "rbx": "0x0"
+  },
+  "display_count": {
+    "global_RVA": "0x2640200",
+    "read_at": "0x1721a13",
+    "success_write_at": "0x12c00f3",
+    "error_write_at": "0x12c03ab",
+    "source_video_pointer_RVA": "0x2666f28",
+    "source_num_displays_member": "0x2d8",
+    "error_strings": [
+      "Video subsystem has not been initialized",
+      "Error getting num native displays: %s"
+    ]
+  },
+  "fault_chain": "Zero native display count causes zero-sized per-display vector; allocation skipped when existing capacity>=0; data pointer remains NULL; Unity unconditionally writes element0.",
+  "scope": "Confirms the immediate nil dereference and its zero-display precursor. Separate exact embedded SDL/libudev probes physically reproduce failed initialization; see ../embedded-probe/embedded-provenance.json. Does not establish Vulkan presentation or gameplay.",
+  "source_evidence": [
+    "unity-pso-static/actual-fatal-instruction.txt",
+    "unity-pso-static/display-count-initialization.txt",
+    "unity-pso-static/global-2640200-xrefs.txt"
+  ],
+  "cache_miss": "Handled normally with zero initial data; earlier candidate of a null vkCreatePipelineCache function call excluded by actual faultRIP.",
+  "archived_source_evidence": [
+    "actual-fatal-instruction.txt",
+    "display-count-success.txt",
+    "display-count-error.txt",
+    "fault-constructor-caller.txt",
+    "string-addresses.json"
+  ]
+}

@@ -1,0 +1,108 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 1705f10: 41 57                        	push	r15
+ 1705f12: 41 56                        	push	r14
+ 1705f14: 41 55                        	push	r13
+ 1705f16: 41 54                        	push	r12
+ 1705f18: 53                           	push	rbx
+ 1705f19: 48 83 ec 60                  	sub	rsp, 0x60
+ 1705f1d: 48 89 fb                     	mov	rbx, rdi
+ 1705f20: 48 c7 44 24 40 00 00 00 00   	mov	qword ptr [rsp + 0x40], 0x0
+ 1705f29: 66 c7 44 24 48 01 00         	mov	word ptr [rsp + 0x48], 0x1
+ 1705f30: 66 0f 6f 05 28 02 bf fe      	movdqa	xmm0, xmmword ptr [rip - 0x140fdd8] # 0x2f6160
+ 1705f38: f3 0f 7f 44 24 50            	movdqu	xmmword ptr [rsp + 0x50], xmm0
+ 1705f3e: 66 0f ef c0                  	pxor	xmm0, xmm0
+ 1705f42: f3 0f 7f 47 28               	movdqu	xmmword ptr [rdi + 0x28], xmm0
+ 1705f47: f3 0f 7f 47 18               	movdqu	xmmword ptr [rdi + 0x18], xmm0
+ 1705f4c: c7 47 38 00 00 00 00         	mov	dword ptr [rdi + 0x38], 0x0
+ 1705f53: 48 0f be 47 5f               	movsx	rax, byte ptr [rdi + 0x5f]
+ 1705f58: 48 83 f8 3f                  	cmp	rax, 0x3f
+ 1705f5c: 77 66                        	ja	0x1705fc4 <_Z10PlayerMainiPPc+0x171184>
+ 1705f5e: b9 1f 00 00 00               	mov	ecx, 0x1f
+ 1705f63: 48 29 c1                     	sub	rcx, rax
+ 1705f66: 48 85 c9                     	test	rcx, rcx
+ 1705f69: 74 62                        	je	0x1705fcd <_Z10PlayerMainiPPc+0x17118d>
+ 1705f6b: 4c 8d 7b 40                  	lea	r15, [rbx + 0x40]
+ 1705f6f: 3c 3f                        	cmp	al, 0x3f
+ 1705f71: 77 62                        	ja	0x1705fd5 <_Z10PlayerMainiPPc+0x171195>
+ 1705f73: 4c 89 ff                     	mov	rdi, r15
+ 1705f76: 48 8d 35 69 da af fe         	lea	rsi, [rip - 0x1502597]  # 0x2039e6
+ 1705f7d: e8 7e f7 db 00               	call	0x24c5700 <fopen64@plt>
+ 1705f82: 48 85 c0                     	test	rax, rax
+ 1705f85: 74 62                        	je	0x1705fe9 <_Z10PlayerMainiPPc+0x1711a9>
+ 1705f87: 49 89 c6                     	mov	r14, rax
+ 1705f8a: c7 44 24 0c 00 00 00 00      	mov	dword ptr [rsp + 0xc], 0x0
+ 1705f92: 48 8b 03                     	mov	rax, qword ptr [rbx]
+ 1705f95: 48 8d 54 24 0c               	lea	rdx, [rsp + 0xc]
+ 1705f9a: 48 89 df                     	mov	rdi, rbx
+ 1705f9d: 4c 89 f6                     	mov	rsi, r14
+ 1705fa0: ff 50 18                     	call	qword ptr [rax + 0x18]
+ 1705fa3: 84 c0                        	test	al, al
+ 1705fa5: 74 64                        	je	0x170600b <_Z10PlayerMainiPPc+0x1711cb>
+ 1705fa7: 83 7c 24 0c 1f               	cmp	dword ptr [rsp + 0xc], 0x1f
+ 1705fac: 0f 87 e1 00 00 00            	ja	0x1706093 <_Z10PlayerMainiPPc+0x171253>
+ 1705fb2: 80 7b 5f 3f                  	cmp	byte ptr [rbx + 0x5f], 0x3f
+ 1705fb6: 76 03                        	jbe	0x1705fbb <_Z10PlayerMainiPPc+0x17117b>
+ 1705fb8: 4d 8b 3f                     	mov	r15, qword ptr [r15]
+ 1705fbb: 48 8d 3d 0b b0 b1 fe         	lea	rdi, [rip - 0x14e4ff5]  # 0x220fcd
+ 1705fc2: eb 57                        	jmp	0x170601b <_Z10PlayerMainiPPc+0x1711db>
+ 1705fc4: 48 8b 4b 50                  	mov	rcx, qword ptr [rbx + 0x50]
+ 1705fc8: 48 85 c9                     	test	rcx, rcx
+ 1705fcb: 75 9e                        	jne	0x1705f6b <_Z10PlayerMainiPPc+0x17112b>
+ 1705fcd: 45 31 e4                     	xor	r12d, r12d
+ 1705fd0: 45 31 ed                     	xor	r13d, r13d
+ 1705fd3: eb 5e                        	jmp	0x1706033 <_Z10PlayerMainiPPc+0x1711f3>
+ 1705fd5: 49 8b 3f                     	mov	rdi, qword ptr [r15]
+ 1705fd8: 48 8d 35 07 da af fe         	lea	rsi, [rip - 0x15025f9]  # 0x2039e6
+ 1705fdf: e8 1c f7 db 00               	call	0x24c5700 <fopen64@plt>
+ 1705fe4: 48 85 c0                     	test	rax, rax
+ 1705fe7: 75 9e                        	jne	0x1705f87 <_Z10PlayerMainiPPc+0x171147>
+ 1705fe9: 80 7b 5f 3f                  	cmp	byte ptr [rbx + 0x5f], 0x3f
+ 1705fed: 76 03                        	jbe	0x1705ff2 <_Z10PlayerMainiPPc+0x1711b2>
+ 1705fef: 4d 8b 3f                     	mov	r15, qword ptr [r15]
+ 1705ff2: 48 8d 3d 33 9f af fe         	lea	rdi, [rip - 0x15060cd]  # 0x1fff2c
+ 1705ff9: 45 31 e4                     	xor	r12d, r12d
+ 1705ffc: 4c 89 fe                     	mov	rsi, r15
+ 1705fff: 31 c0                        	xor	eax, eax
+ 1706001: e8 4a 60 93 00               	call	0x203c050 <_Z10PlayerMainiPPc+0xaa7210>
+ 1706006: 45 31 ed                     	xor	r13d, r13d
+ 1706009: eb 28                        	jmp	0x1706033 <_Z10PlayerMainiPPc+0x1711f3>
+ 170600b: 80 7b 5f 3f                  	cmp	byte ptr [rbx + 0x5f], 0x3f
+ 170600f: 76 03                        	jbe	0x1706014 <_Z10PlayerMainiPPc+0x1711d4>
+ 1706011: 4d 8b 3f                     	mov	r15, qword ptr [r15]
+ 1706014: 48 8d 3d b5 de b5 fe         	lea	rdi, [rip - 0x14a214b]  # 0x263ed0
+ 170601b: 45 31 ed                     	xor	r13d, r13d
+ 170601e: 4c 89 fe                     	mov	rsi, r15
+ 1706021: 31 c0                        	xor	eax, eax
+ 1706023: e8 28 60 93 00               	call	0x203c050 <_Z10PlayerMainiPPc+0xaa7210>
+ 1706028: 45 31 e4                     	xor	r12d, r12d
+ 170602b: 4c 89 f7                     	mov	rdi, r14
+ 170602e: e8 fd f5 db 00               	call	0x24c5630 <fclose@plt>
+ 1706033: 66 0f ef c0                  	pxor	xmm0, xmm0
+ 1706037: 66 0f 7f 44 24 10            	movdqa	xmmword ptr [rsp + 0x10], xmm0
+ 170603d: 66 0f 7f 44 24 20            	movdqa	xmmword ptr [rsp + 0x20], xmm0
+ 1706043: 48 c7 44 24 30 00 00 00 00   	mov	qword ptr [rsp + 0x30], 0x0
+ 170604c: c7 44 24 10 11 00 00 00      	mov	dword ptr [rsp + 0x10], 0x11
+ 1706054: 4d 85 e4                     	test	r12, r12
+ 1706057: 74 0a                        	je	0x1706063 <_Z10PlayerMainiPPc+0x171223>
+ 1706059: 4c 89 64 24 28               	mov	qword ptr [rsp + 0x28], r12
+ 170605e: 4c 89 6c 24 30               	mov	qword ptr [rsp + 0x30], r13
+ 1706063: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 1706067: 48 83 c3 10                  	add	rbx, 0x10
+ 170606b: 48 8d 74 24 10               	lea	rsi, [rsp + 0x10]
+ 1706070: 31 d2                        	xor	edx, edx
+ 1706072: 48 89 d9                     	mov	rcx, rbx
+ 1706075: ff 15 75 90 f4 00            	call	qword ptr [rip + 0xf49075] # 0x264f0f0
+ 170607b: 48 8d 7c 24 40               	lea	rdi, [rsp + 0x40]
+ 1706080: e8 3b 87 5e ff               	call	0xcee7c0 <.text+0x5f4780>
+ 1706085: 48 83 c4 60                  	add	rsp, 0x60
+ 1706089: 5b                           	pop	rbx
+ 170608a: 41 5c                        	pop	r12
+ 170608c: 41 5d                        	pop	r13
+ 170608e: 41 5e                        	pop	r14
+ 1706090: 41 5f                        	pop	r15
+ 1706092: c3                           	ret

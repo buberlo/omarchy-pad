@@ -1,0 +1,96 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 159aab3: fe e8                        	<unknown>
+ 159aab5: a0 cb e9 00 48 8d 3d 47 38   	movabs	al, byte ptr [0x38473d8d4800e9cb]
+ 159aabe: c7 fe                        	<unknown>
+ 159aac0: 48 89 de                     	mov	rsi, rbx
+ 159aac3: e8 91 cb e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159aac8: 8a 84 24 4f 01 00 00         	mov	al, byte ptr [rsp + 0x14f]
+ 159aacf: 24 c0                        	and	al, -0x40
+ 159aad1: 3c 40                        	cmp	al, 0x40
+ 159aad3: 75 33                        	jne	0x159ab08 <_Z10PlayerMainiPPc+0x5cc8>
+ 159aad5: 48 8b 9c 24 30 01 00 00      	mov	rbx, qword ptr [rsp + 0x130]
+ 159aadd: 48 8b 2d 44 ff 01 01         	mov	rbp, qword ptr [rip + 0x101ff44] # 0x25baa28
+ 159aae4: 8b 94 24 50 01 00 00         	mov	edx, dword ptr [rsp + 0x150]
+ 159aaeb: 48 89 ef                     	mov	rdi, rbp
+ 159aaee: 48 89 de                     	mov	rsi, rbx
+ 159aaf1: e8 ea 0b 9f ff               	call	0xf8b6e0 <.text+0x8916a0>
+ 159aaf6: 84 c0                        	test	al, al
+ 159aaf8: 75 0e                        	jne	0x159ab08 <_Z10PlayerMainiPPc+0x5cc8>
+ 159aafa: 80 7d 05 00                  	cmp	byte ptr [rbp + 0x5], 0x0
+ 159aafe: 74 08                        	je	0x159ab08 <_Z10PlayerMainiPPc+0x5cc8>
+ 159ab00: 48 89 df                     	mov	rdi, rbx
+ 159ab03: e8 f8 aa f2 00               	call	0x24c5600 <free@plt>
+ 159ab08: bf 21 32 00 00               	mov	edi, 0x3221
+ 159ab0d: e8 02 b6 e9 00               	call	0x2436114 <_Z10PlayerMainiPPc+0xea12d4>
+ 159ab12: 48 8b 05 0f c4 0c 01         	mov	rax, qword ptr [rip + 0x10cc40f] # 0x2666f28
+ 159ab19: 48 85 c0                     	test	rax, rax
+ 159ab1c: 74 05                        	je	0x159ab23 <_Z10PlayerMainiPPc+0x5ce3>
+ 159ab1e: 48 8b 18                     	mov	rbx, qword ptr [rax]
+ 159ab21: eb 10                        	jmp	0x159ab33 <_Z10PlayerMainiPPc+0x5cf3>
+ 159ab23: 48 8d 3d 9f a7 ca fe         	lea	rdi, [rip - 0x1355861]  # 0x2452c9
+ 159ab2a: 31 db                        	xor	ebx, ebx
+ 159ab2c: 31 c0                        	xor	eax, eax
+ 159ab2e: e8 3e ca e9 00               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 159ab33: 48 8d 3d 3e 46 c4 fe         	lea	rdi, [rip - 0x13bb9c2]  # 0x1df178
+ 159ab3a: 48 89 de                     	mov	rsi, rbx
+ 159ab3d: 31 c0                        	xor	eax, eax
+ 159ab3f: e8 0c 15 aa 00               	call	0x203c050 <_Z10PlayerMainiPPc+0xaa7210>
+ 159ab44: 48 8d 3d ca 98 c1 fe         	lea	rdi, [rip - 0x13e6736]  # 0x1b4415
+ 159ab4b: 48 8d 1d c0 86 c8 fe         	lea	rbx, [rip - 0x1377940]  # 0x223212
+ 159ab52: 48 89 de                     	mov	rsi, rbx
+ 159ab55: e8 ff ca e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159ab5a: 48 8d 3d 2b cd c0 fe         	lea	rdi, [rip - 0x13f32d5]  # 0x1a788c
+ 159ab61: 48 89 de                     	mov	rsi, rbx
+ 159ab64: e8 f0 ca e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159ab69: 48 8d 3d 3e cd d3 fe         	lea	rdi, [rip - 0x12c32c2]  # 0x2d78ae
+ 159ab70: 48 8d 35 d9 22 ce fe         	lea	rsi, [rip - 0x131dd27]  # 0x27ce50
+ 159ab77: e8 dd ca e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159ab7c: 48 8d 3d 91 15 c0 fe         	lea	rdi, [rip - 0x13fea6f]  # 0x19c114
+ 159ab83: 48 89 de                     	mov	rsi, rbx
+ 159ab86: e8 ce ca e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159ab8b: 48 8d 3d a2 5f d4 fe         	lea	rdi, [rip - 0x12ba05e]  # 0x2e0b34
+ 159ab92: 48 89 de                     	mov	rsi, rbx
+ 159ab95: e8 bf ca e9 00               	call	0x2437659 <_Z10PlayerMainiPPc+0xea2819>
+ 159ab9a: 48 8b 05 af 4e 09 01         	mov	rax, qword ptr [rip + 0x1094eaf] # 0x262fa50
+ 159aba1: 48 8b 70 08                  	mov	rsi, qword ptr [rax + 0x8]
+ 159aba5: 48 8b 06                     	mov	rax, qword ptr [rsi]
+ 159aba8: 48 8d 9c 24 30 01 00 00      	lea	rbx, [rsp + 0x130]
+ 159abb0: 48 89 df                     	mov	rdi, rbx
+ 159abb3: ff 90 98 01 00 00            	call	qword ptr [rax + 0x198]
+ 159abb9: 48 0f be 8c 24 4f 01 00 00   	movsx	rcx, byte ptr [rsp + 0x14f]
+ 159abc2: 48 83 f9 40                  	cmp	rcx, 0x40
+ 159abc6: 72 1b                        	jb	0x159abe3 <_Z10PlayerMainiPPc+0x5da3>
+ 159abc8: 48 8b 9c 24 30 01 00 00      	mov	rbx, qword ptr [rsp + 0x130]
+ 159abd0: 48 8b 84 24 40 01 00 00      	mov	rax, qword ptr [rsp + 0x140]
+ 159abd8: 66 0f 57 c0                  	xorpd	xmm0, xmm0
+ 159abdc: 48 85 c0                     	test	rax, rax
+ 159abdf: 75 13                        	jne	0x159abf4 <_Z10PlayerMainiPPc+0x5db4>
+ 159abe1: eb 61                        	jmp	0x159ac44 <_Z10PlayerMainiPPc+0x5e04>
+ 159abe3: b8 1f 00 00 00               	mov	eax, 0x1f
+ 159abe8: 48 29 c8                     	sub	rax, rcx
+ 159abeb: 66 0f 57 c0                  	xorpd	xmm0, xmm0
+ 159abef: 48 85 c0                     	test	rax, rax
+ 159abf2: 74 50                        	je	0x159ac44 <_Z10PlayerMainiPPc+0x5e04>
+ 159abf4: 48 8d 48 ff                  	lea	rcx, [rax - 0x1]
+ 159abf8: 48 89 ca                     	mov	rdx, rcx
+ 159abfb: 0f 1f 44 00 00               	nop	dword ptr [rax + rax]
+ 159ac00: 80 3c 13 2f                  	cmp	byte ptr [rbx + rdx], 0x2f
+ 159ac04: 75 0c                        	jne	0x159ac12 <_Z10PlayerMainiPPc+0x5dd2>
+ 159ac06: 48 83 c2 ff                  	add	rdx, -0x1
+ 159ac0a: 48 83 fa ff                  	cmp	rdx, -0x1
+ 159ac0e: 75 f0                        	jne	0x159ac00 <_Z10PlayerMainiPPc+0x5dc0>
+ 159ac10: eb 32                        	jmp	0x159ac44 <_Z10PlayerMainiPPc+0x5e04>
+ 159ac12: 48 83 fa ff                  	cmp	rdx, -0x1
+ 159ac16: 74 2c                        	je	0x159ac44 <_Z10PlayerMainiPPc+0x5e04>
+ 159ac18: 48 39 c2                     	cmp	rdx, rax
+ 159ac1b: 48 0f 43 d1                  	cmovae	rdx, rcx
+ 159ac1f: 48 83 fa ff                  	cmp	rdx, -0x1
+ 159ac23: 74 1f                        	je	0x159ac44 <_Z10PlayerMainiPPc+0x5e04>
+ 159ac25: 66 2e 0f 1f 84 00 00 00 00 00	nop	word ptr cs:[rax + rax]
+ 159ac2f: 90                           	nop
+ 159ac30: 80 3c 13 2f                  	cmp	byte ptr [rbx + rdx], 0x2f

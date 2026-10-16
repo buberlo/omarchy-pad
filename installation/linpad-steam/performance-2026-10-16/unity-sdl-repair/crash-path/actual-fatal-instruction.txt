@@ -1,0 +1,25 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 1721a13: 48 63 1d e6 e7 f1 00         	movsxd	rbx, dword ptr [rip + 0xf1e7e6] # 0x2640200
+ 1721a1a: 49 8b 86 e8 fc 00 00         	mov	rax, qword ptr [r14 + 0xfce8]
+ 1721a21: 48 d1 e8                     	shr	rax
+ 1721a24: 48 39 d8                     	cmp	rax, rbx
+ 1721a27: 4c 8b ac 24 c8 00 00 00      	mov	r13, qword ptr [rsp + 0xc8]
+ 1721a2f: 73 0b                        	jae	0x1721a3c <_Z10PlayerMainiPPc+0x18cbfc>
+ 1721a31: 4c 89 ef                     	mov	rdi, r13
+ 1721a34: 48 89 de                     	mov	rsi, rbx
+ 1721a37: e8 e4 97 fd ff               	call	0x16fb220 <_Z10PlayerMainiPPc+0x1663e0>
+ 1721a3c: 49 89 9e e0 fc 00 00         	mov	qword ptr [r14 + 0xfce0], rbx
+ 1721a43: 49 8b 86 d0 fc 00 00         	mov	rax, qword ptr [r14 + 0xfcd0]
+ 1721a4a: 48 c7 00 00 00 00 00         	mov	qword ptr [rax], 0x0
+ 1721a51: 83 fb 02                     	cmp	ebx, 0x2
+ 1721a54: 0f 8c 1f 01 00 00            	jl	0x1721b79 <_Z10PlayerMainiPPc+0x18cd39>
+ 1721a5a: 89 dd                        	mov	ebp, ebx
+ 1721a5c: bb 01 00 00 00               	mov	ebx, 0x1
+ 1721a61: 4c 8d 3d 48 48 cd fe         	lea	r15, [rip - 0x132b7b8]  # 0x3f62b0
+ 1721a68: 41 bc ff ff ff ff            	mov	r12d, 0xffffffff
+ 1721a6e: 66 90                        	nop

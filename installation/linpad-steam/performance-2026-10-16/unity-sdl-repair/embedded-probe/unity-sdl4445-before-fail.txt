@@ -1,0 +1,36 @@
+Fri Oct 16 11:09:27 UTC 2026
+12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33  /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+278f4dbbfc1e2904c2215ca046adce97571cbe8ac8fad665c2d0acd2911f4b81  /tmp/unity-sdl-init-probe
+DIRECT_UDEV_BEGIN
+UDEV_NEW pointer=0x1005200 errno=0
+UDEV_MONITOR_NEW pointer=(nil) errno=97 text=Address family not supported by protocol
+DIRECT_UDEV_EXIT=5
+EMBEDDED_SDL_BEGIN=1000
+UNITY_SDL_PROBE flags=0x1000 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x1000 result=-1 error_active=1 error=Could not initialize UDEV
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=1000:10
+EMBEDDED_SDL_BEGIN=200
+UNITY_SDL_PROBE flags=0x200 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x200 result=-1 error_active=1 error=Could not initialize UDEV
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=200:10
+EMBEDDED_SDL_BEGIN=21
+UNITY_SDL_PROBE flags=0x21 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x21 result=0 error_active=1 error=displayIndex must be in the range 0 - -1
+UNITY_SDL_VIDEO_POINTER 0x102dc90
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=21:0
+EMBEDDED_SDL_BEGIN=3221
+UNITY_SDL_PROBE flags=0x3221 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x3221 result=-1 error_active=1 error=Could not initialize UDEV
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=3221:10
+Fri Oct 16 11:09:41 UTC 2026

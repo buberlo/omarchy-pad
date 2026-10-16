@@ -1,0 +1,31 @@
+Source: work/performance/reports/hollow4445-egl-trace-status-5.txt
+SHA256: 38531cf27f66844cfc8a89b3e0a29d94f58b130b25385549f00f870e77e3cc60
+Selected original line numbers:
+
+L0001: Fri Oct 16 10:57:06 UTC 2026
+L0008: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+L0040: Segmentation fault
+L0041: GAME_EXIT=139
+L0100: 2026-10-16T10:57:16.931Z|0xcc410540|The selected window backend is (null) 
+L0104: 2026-10-16T10:58:42.506Z|0xcc410540|Error getting num native displays: Video subsystem has not been initialized
+L0107: 2026-10-16T10:58:58.764Z|0xcc410540|Error getting num native displays: Video subsystem has not been initialized
+L0108: 2026-10-16T10:58:59.931Z|0xcc410540|Desktop is 0 x 0 @ 0 Hz
+L0451: 2026-10-16T11:04:35.617Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+L0454: 2026-10-16T11:04:35.624Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+L0455: 2026-10-16T11:04:44.077Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+L0456: X86_FAULT signal=0xb code=0x1 address=0x0 rip=0xcde59a4a rsp=0x808007ffc6b0 rbp=0x82000146aef0 rax=0x0 rbx=0x0 rcx=0x1 rdx=0x4 rsi=0x8200000048f0 rdi=0x82000146aef0
+L0457: X86_MAP 0000cce32000-0000cebff000 r-xp 006fa000 00:00 0          /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+L0458: X86_RIP_FILE_OFFSET 0x1721a4a
+L0459: 2026-10-16T11:04:51.002Z|0xcc410540|Caught fatal signal - signo:11 code:1 errno:0 addr:(nil)
+L0460: 2026-10-16T11:06:08.939Z|0xcc410540|Obtained 8 stack frames.
+L0461: 2026-10-16T11:06:08.970Z|0xcc410540|#0  0x000000cdbb405f in (Unknown)
+L0462: 2026-10-16T11:06:08.984Z|0xcc410540|#1  0x000000cdd65494 in (Unknown)
+L0463: 2026-10-16T11:06:08.986Z|0xcc410540|#2  0x000000cdbb4541 in (Unknown)
+L0464: 2026-10-16T11:06:08.988Z|0xcc410540|#3  0x000000cd9f9ce4 in (Unknown)
+L0465: 2026-10-16T11:06:08.989Z|0xcc410540|#4  0x000000cdcdb61f in PlayerMain(int, char**)
+L0466: 2026-10-16T11:06:08.991Z|0xcc410540|#5  0x000000cc449ca8 in (Unknown)
+L0467: 2026-10-16T11:06:08.992Z|0xcc410540|#6  0x000000cc449d65 in __libc_start_main
+L0468: 2026-10-16T11:06:08.995Z|0xcc410540|#7  0x00000000201029 in (Unknown)
+L0469: X86_FAULT signal=0xb code=0x0 address=0x1ad6 rip=0xcc45ff85 rsp=0xefde57d0 rbp=0xb rax=0x3e rbx=0x0 rcx=0xcc45ff87 rdx=0x98 rsi=0xb rdi=0x1ad6
+L0470: X86_MAP 0000cc448000-0000cc5ab000 r-xp 00028000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.6
+L0471: X86_RIP_FILE_OFFSET 0x3ff85

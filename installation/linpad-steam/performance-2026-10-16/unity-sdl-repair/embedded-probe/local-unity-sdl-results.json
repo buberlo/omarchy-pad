@@ -1,0 +1,30 @@
+[
+  {
+    "mode": "udev",
+    "exit": 5,
+    "log": "work/performance/egl-display-audit/local-unity-sdl-udev.txt",
+    "raw_sha256": "f126ce4c9205b8b51b0615c283fd8184a2ede88f68eb39ac35be93e6c3f2b488",
+    "execution": "Local macOS-hosted LinPad ARM64 CLI + original FEX; no Wayland compositor"
+  },
+  {
+    "mode": "1000",
+    "exit": 10,
+    "log": "work/performance/egl-display-audit/local-unity-sdl-1000.txt",
+    "raw_sha256": "61cc5eeaf7c8938f724702f6d0385a39b22018324d25c870c2c608a12f1f9929",
+    "execution": "Local macOS-hosted LinPad ARM64 CLI + original FEX; no Wayland compositor"
+  },
+  {
+    "mode": "200",
+    "exit": 10,
+    "log": "work/performance/egl-display-audit/local-unity-sdl-200.txt",
+    "raw_sha256": "63d37deaf90595daa7d30dd46b2a28689139aa5ab1e702d14147dee12a9feb9b",
+    "execution": "Local macOS-hosted LinPad ARM64 CLI + original FEX; no Wayland compositor"
+  },
+  {
+    "mode": "21",
+    "exit": 10,
+    "log": "work/performance/egl-display-audit/local-unity-sdl-21.txt",
+    "raw_sha256": "457aa65dc33890a7e4f6f0113a03a0d86ab5ce3df1c23f41a32e6fb464d5d9c5",
+    "execution": "Local macOS-hosted LinPad ARM64 CLI + original FEX; no Wayland compositor"
+  }
+]

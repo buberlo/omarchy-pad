@@ -1,0 +1,181 @@
+{
+  "unity_binary": {
+    "sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+    "bytes": 39255232,
+    "included": false
+  },
+  "scope": "Exact Unity embedded SDL calls and real libudev diagnostic; no PlayerMain, renderer or binary modification",
+  "physical_before": {
+    "build": 4445,
+    "report": "unity-sdl4445-before-fail.txt",
+    "direct_udev": "NULL errno97",
+    "haptic": "FAIL -1 Could not initialize UDEV",
+    "joystick": "FAIL -1 Could not initialize UDEV",
+    "timer_video": "PASS return0 nonnull video pointer; stale SDL error is not a failure",
+    "all_0x3221": "FAIL -1 Could not initialize UDEV; video pointer NULL"
+  },
+  "files": [
+    {
+      "name": "disassembly/inventory.json",
+      "bytes": 7629,
+      "sha256": "cc6f035f56d167fdb9443caf86930b804e70950a3f54666a5fbaadde9bc22e9f"
+    },
+    {
+      "name": "disassembly/sdl-init.txt",
+      "bytes": 50021,
+      "sha256": "c12aed7f62097662e7360523fa372c97191eddc006b77ad0495da968773bb2b9"
+    },
+    {
+      "name": "disassembly/sdl-udev.txt",
+      "bytes": 100861,
+      "sha256": "8e3c75ac11f7b97ce3c15e20a43c58fd9020b11b1163d86c14c48e9d741a0b3c"
+    },
+    {
+      "name": "disassembly/sdl-x11-egl-load.txt",
+      "bytes": 6062,
+      "sha256": "b544a63b879051f1a71a51085ea5d38c93d31cee2b1324807fa69e4491390569"
+    },
+    {
+      "name": "disassembly/xref-01-159ab33.txt",
+      "bytes": 6291,
+      "sha256": "ce313dc5253b2afbab3c6e6eff11e45f8c1fd7def442b533a146295c57918dd9"
+    },
+    {
+      "name": "disassembly/xref-06-247b4b2.txt",
+      "bytes": 5413,
+      "sha256": "ff73632b4cc49bb55cdde8e4872be1d503b607bdd9e7d9a9b2bc5de2cd73b285"
+    },
+    {
+      "name": "inspect-unity-window.py",
+      "bytes": 3366,
+      "sha256": "c23a44fdde0055e6a12c046d23190dc6e186e8bb4d73c87683b410b79f9c80d1"
+    },
+    {
+      "name": "local-cli-before-netlink.json",
+      "bytes": 103,
+      "sha256": "29b0360acb94edbcad4e87b2d44ac1c103ad5999b1209bd51981b43da1e26ee5"
+    },
+    {
+      "name": "local-netlink-after-1000-excerpt.txt",
+      "bytes": 330,
+      "sha256": "13e16c3b639c05aa331c1d5327cdf8c8687e821f18a1114968b4547f6ec6d743"
+    },
+    {
+      "name": "local-netlink-after-200-excerpt.txt",
+      "bytes": 328,
+      "sha256": "a7c579f72badce9b5e29c11f93ed96639b378d5ddfea050e55c217386352eeca"
+    },
+    {
+      "name": "local-netlink-after-native-excerpt.txt",
+      "bytes": 1268,
+      "sha256": "1e03d78020cf24a8399ef876b1bcfbfaa29c3d6974d9bf97b6ac0828965afd79"
+    },
+    {
+      "name": "local-netlink-after-results.json",
+      "bytes": 982,
+      "sha256": "3c3481f80e376d875ece7a4399cf2a32d3225eb5eda1e35cd4ce57a6c9fd8e4a"
+    },
+    {
+      "name": "local-netlink-after-udev-excerpt.txt",
+      "bytes": 197,
+      "sha256": "93f18f375d78150864c3c9e96bfcfb0a8152f2d49a9467b1cb50ea1182a7e2b7"
+    },
+    {
+      "name": "local-netlink-final-native-excerpt.txt",
+      "bytes": 1348,
+      "sha256": "21f00a3bb5c5352e7a7c2878e0cba76ffeef8b2f7048842186f2016d3af3a16f"
+    },
+    {
+      "name": "local-netlink-final-provenance.json",
+      "bytes": 862,
+      "sha256": "7465f1b92bad2b17579e2f2fbd1d26dc8bd4dbeea7027f70250e9eb5b2862e60"
+    },
+    {
+      "name": "local-unity-sdl-1000-excerpt.txt",
+      "bytes": 302,
+      "sha256": "d0f7e37916a38a7c2088fcbaf8b3daee1165f344051847c7900864a05e45aa70"
+    },
+    {
+      "name": "local-unity-sdl-200-excerpt.txt",
+      "bytes": 300,
+      "sha256": "023cca0d98b05e5a950116e025dc892abd7fb27f59c9809ba414b82d29d357a2"
+    },
+    {
+      "name": "local-unity-sdl-21-excerpt.txt",
+      "bytes": 251,
+      "sha256": "bc3202d579b03f84c9c49cefba712764cfa896f3bba188d663094f9240cce843"
+    },
+    {
+      "name": "local-unity-sdl-launch.c",
+      "bytes": 649,
+      "sha256": "be4738a92928422197cb3583bd0b64ed0d3976c2c752990e163ab4b1ad04b59a"
+    },
+    {
+      "name": "local-unity-sdl-results.json",
+      "bytes": 1188,
+      "sha256": "f9f8769950b77618e7aec0f96f895f60d46847f3aadb9e08bec7ccef5ed3dcdd"
+    },
+    {
+      "name": "local-unity-sdl-udev-excerpt.txt",
+      "bytes": 168,
+      "sha256": "34f463bfd577c6cf851e21545997cffae2abe51c127372f7634a4205248f80c9"
+    },
+    {
+      "name": "unity-sdl-after-probe",
+      "bytes": 1144,
+      "sha256": "a314781e1e4ca08f696703546e43f468b111961007883fa145d2613bb526b06b"
+    },
+    {
+      "name": "unity-sdl-init-probe",
+      "bytes": 21520,
+      "sha256": "278f4dbbfc1e2904c2215ca046adce97571cbe8ac8fad665c2d0acd2911f4b81"
+    },
+    {
+      "name": "unity-sdl-init-probe-v2",
+      "bytes": 21792,
+      "sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6"
+    },
+    {
+      "name": "unity-sdl-init-probe-v2.c",
+      "bytes": 4419,
+      "sha256": "d4034679ed33b876d6be5872c53737ccd1f3eff9adb231f37301fa0e3ab94cff"
+    },
+    {
+      "name": "unity-sdl-init-probe.c",
+      "bytes": 4236,
+      "sha256": "ac62b1c69d9f80b08699fae3825ccbba1589f54a5bc5e91735e37099a6295df3"
+    },
+    {
+      "name": "unity-sdl-udev-audit.md",
+      "bytes": 6210,
+      "sha256": "aa8d4a006f5045ba27aaf00a5b8435811f5d10e467d128af1bccc33fee5b181e"
+    },
+    {
+      "name": "unity-sdl4445-before-fail.txt",
+      "bytes": 1874,
+      "sha256": "5fd72b95aed989c154d288d1b7b988e7929d2d34fe456641e0633ec6ea813d37"
+    },
+    {
+      "name": "unity-sdl4445-probe",
+      "bytes": 1133,
+      "sha256": "f8c5becd7ba38e40b71c119eaf11912c0e2838eb1fa59ca94063847ab31a73b9"
+    },
+    {
+      "name": "x11-egl-fallback-audit.md",
+      "bytes": 3668,
+      "sha256": "02a4cfc09540c1be17aa90e13e83e9574111797905503cbc398aa93021854695"
+    }
+  ],
+  "local_cli_before": {
+    "sha256": "66a5cff9320ea68b899140c276b45dcbc612e7f078b6b3a91cfa3f8d1ef26bbd",
+    "bytes": 1478256
+  },
+  "local_after": {
+    "native_endpoint": "35 checks PASS after final group-mask fix",
+    "unity_haptic": "PASS return0 before mask-only correction",
+    "unity_joystick": "PASS return0 before mask-only correction",
+    "udev_monitor_creation": "PASS nonnull",
+    "udev_filter_enable": "UNSUPPORTED: -EINVAL retained, diagnostic exit6; ignored by embedded SDL",
+    "physical_after": "pending"
+  }
+}

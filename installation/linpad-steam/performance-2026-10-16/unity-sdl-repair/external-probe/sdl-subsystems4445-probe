@@ -1,0 +1,29 @@
+#!/bin/sh
+# External SDL2 control; exact Unity embedded SDL is a separate probe.
+# Install /tmp/sdl-subsystem-probe first. Optional args choose isolated modes.
+if [ "$#" -eq 0 ]; then set -- all sequential; fi
+OUT=/tmp/sdl-subsystems4445-probe.txt
+{
+    date
+    unset LD_PRELOAD LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT DISPLAY XAUTHORITY
+    unset SDL_DYNAMIC_API SDL3_DYNAMIC_API SDL_VIDEO_DRIVER
+    unset VK_DRIVER_FILES VK_ADD_DRIVER_FILES VK_INSTANCE_LAYERS VK_LAYER_PATH VK_ADD_LAYER_PATH
+    unset LIBGL_ALWAYS_INDIRECT LP_NUM_THREADS MESA_GL_VERSION_OVERRIDE MESA_GLES_VERSION_OVERRIDE
+    export XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0-gpu SDL_VIDEODRIVER=wayland
+    export FEX_ROOTFS=/opt/hollow-runtime FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+    export __EGL_VENDOR_LIBRARY_FILENAMES=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+    export LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+    export MESA_LOADER_DRIVER_OVERRIDE=swrast GALLIUM_DRIVER=llvmpipe LIBGL_ALWAYS_SOFTWARE=1
+    export VK_ICD_FILENAMES=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json
+    export VK_LOADER_LAYERS_DISABLE='*' MESA_VK_WSI_DEBUG=sw
+    for mode do
+        echo SDL_SUBSYSTEM_MODE_BEGIN="$mode"
+        timeout -k 3 70 /opt/fex/FEX-apple-m1-munmap /tmp/sdl-subsystem-probe "$mode"
+        result=$?
+        echo SDL_SUBSYSTEM_MODE_EXIT="$mode:$result"
+        date
+    done
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"

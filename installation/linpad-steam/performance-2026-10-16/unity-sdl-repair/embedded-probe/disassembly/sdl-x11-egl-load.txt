@@ -1,0 +1,94 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 2483ccc: 41 57                        	push	r15
+ 2483cce: 41 56                        	push	r14
+ 2483cd0: 53                           	push	rbx
+ 2483cd1: 49 89 f6                     	mov	r14, rsi
+ 2483cd4: 48 89 fb                     	mov	rbx, rdi
+ 2483cd7: 4c 8b bf c8 05 00 00         	mov	r15, qword ptr [rdi + 0x5c8]
+ 2483cde: 83 bf 5c 03 00 00 04         	cmp	dword ptr [rdi + 0x35c], 0x4
+ 2483ce5: 74 1a                        	je	0x2483d01 <_Z10PlayerMainiPPc+0xeeeec1>
+ 2483ce7: 48 8d 3d 85 70 e2 fd         	lea	rdi, [rip - 0x21d8f7b]  # 0x2aad73
+ 2483cee: e8 8f 3a fb ff               	call	0x2437782 <_Z10PlayerMainiPPc+0xea2942>
+ 2483cf3: 48 89 c7                     	mov	rdi, rax
+ 2483cf6: 31 f6                        	xor	esi, esi
+ 2483cf8: e8 e1 3a fb ff               	call	0x24377de <_Z10PlayerMainiPPc+0xea299e>
+ 2483cfd: 85 c0                        	test	eax, eax
+ 2483cff: 74 15                        	je	0x2483d16 <_Z10PlayerMainiPPc+0xeeeed6>
+ 2483d01: 49 8b 17                     	mov	rdx, qword ptr [r15]
+ 2483d04: 48 89 df                     	mov	rdi, rbx
+ 2483d07: 4c 89 f6                     	mov	rsi, r14
+ 2483d0a: 31 c9                        	xor	ecx, ecx
+ 2483d0c: 5b                           	pop	rbx
+ 2483d0d: 41 5e                        	pop	r14
+ 2483d0f: 41 5f                        	pop	r15
+ 2483d11: e9 3e 01 ff ff               	jmp	0x2473e54 <_Z10PlayerMainiPPc+0xedf014>
+ 2483d16: 48 89 df                     	mov	rdi, rbx
+ 2483d19: e8 98 00 ff ff               	call	0x2473db6 <_Z10PlayerMainiPPc+0xedef76>
+ 2483d1e: 48 8d 05 8e e9 ff ff         	lea	rax, [rip - 0x1672]     # 0x24826b3 <_Z10PlayerMainiPPc+0xeed873>
+ 2483d25: 48 89 83 80 01 00 00         	mov	qword ptr [rbx + 0x180], rax
+ 2483d2c: 48 8d 05 13 f8 ff ff         	lea	rax, [rip - 0x7ed]      # 0x2483546 <_Z10PlayerMainiPPc+0xeee706>
+ 2483d33: 48 89 83 88 01 00 00         	mov	qword ptr [rbx + 0x188], rax
+ 2483d3a: 48 8d 05 26 f8 ff ff         	lea	rax, [rip - 0x7da]      # 0x2483567 <_Z10PlayerMainiPPc+0xeee727>
+ 2483d41: 48 89 83 90 01 00 00         	mov	qword ptr [rbx + 0x190], rax
+ 2483d48: 48 8d 05 42 f8 ff ff         	lea	rax, [rip - 0x7be]      # 0x2483591 <_Z10PlayerMainiPPc+0xeee751>
+ 2483d4f: 48 89 83 98 01 00 00         	mov	qword ptr [rbx + 0x198], rax
+ 2483d56: 48 8d 05 a4 fc ff ff         	lea	rax, [rip - 0x35c]      # 0x2483a01 <_Z10PlayerMainiPPc+0xeeebc1>
+ 2483d5d: 48 89 83 a0 01 00 00         	mov	qword ptr [rbx + 0x1a0], rax
+ 2483d64: 48 8d 05 94 fd ff ff         	lea	rax, [rip - 0x26c]      # 0x2483aff <_Z10PlayerMainiPPc+0xeeecbf>
+ 2483d6b: 48 89 83 b0 01 00 00         	mov	qword ptr [rbx + 0x1b0], rax
+ 2483d72: 48 8d 05 7a fe ff ff         	lea	rax, [rip - 0x186]      # 0x2483bf3 <_Z10PlayerMainiPPc+0xeeedb3>
+ 2483d79: 48 89 83 b8 01 00 00         	mov	qword ptr [rbx + 0x1b8], rax
+ 2483d80: 48 8d 05 1e ff ff ff         	lea	rax, [rip - 0xe2]       # 0x2483ca5 <_Z10PlayerMainiPPc+0xeeee65>
+ 2483d87: 48 89 83 c0 01 00 00         	mov	qword ptr [rbx + 0x1c0], rax
+ 2483d8e: 48 8d 05 3c fd ff ff         	lea	rax, [rip - 0x2c4]      # 0x2483ad1 <_Z10PlayerMainiPPc+0xeeec91>
+ 2483d95: 48 89 83 c8 01 00 00         	mov	qword ptr [rbx + 0x1c8], rax
+ 2483d9c: 48 89 df                     	mov	rdi, rbx
+ 2483d9f: 4c 89 f6                     	mov	rsi, r14
+ 2483da2: 5b                           	pop	rbx
+ 2483da3: 41 5e                        	pop	r14
+ 2483da5: 41 5f                        	pop	r15
+ 2483da7: e9 07 e9 ff ff               	jmp	0x24826b3 <_Z10PlayerMainiPPc+0xeed873>
+ 2483dac: 55                           	push	rbp
+ 2483dad: 41 56                        	push	r14
+ 2483daf: 53                           	push	rbx
+ 2483db0: 48 83 ec 50                  	sub	rsp, 0x50
+ 2483db4: 48 85 ff                     	test	rdi, rdi
+ 2483db7: 74 49                        	je	0x2483e02 <_Z10PlayerMainiPPc+0xeeefc2>
+ 2483db9: 89 d5                        	mov	ebp, edx
+ 2483dbb: 49 89 f6                     	mov	r14, rsi
+ 2483dbe: 48 89 f8                     	mov	rax, rdi
+ 2483dc1: 48 8b 7f 10                  	mov	rdi, qword ptr [rdi + 0x10]
+ 2483dc5: 48 8b 70 18                  	mov	rsi, qword ptr [rax + 0x18]
+ 2483dc9: 48 8d 5c 24 0c               	lea	rbx, [rsp + 0xc]
+ 2483dce: ba 2e 30 00 00               	mov	edx, 0x302e
+ 2483dd3: 48 89 d9                     	mov	rcx, rbx
+ 2483dd6: ff 90 c8 00 00 00            	call	qword ptr [rax + 0xc8]
+ 2483ddc: 8b 0b                        	mov	ecx, dword ptr [rbx]
+ 2483dde: 89 6c 24 20                  	mov	dword ptr [rsp + 0x20], ebp
+ 2483de2: 85 c0                        	test	eax, eax
+ 2483de4: 74 20                        	je	0x2483e06 <_Z10PlayerMainiPPc+0xeeefc6>
+ 2483de6: 85 c9                        	test	ecx, ecx
+ 2483de8: 74 1c                        	je	0x2483e06 <_Z10PlayerMainiPPc+0xeeefc6>
+ 2483dea: 48 63 c1                     	movsxd	rax, ecx
+ 2483ded: 48 8d 54 24 10               	lea	rdx, [rsp + 0x10]
+ 2483df2: 48 89 42 08                  	mov	qword ptr [rdx + 0x8], rax
+ 2483df6: 48 8d 4c 24 08               	lea	rcx, [rsp + 0x8]
+ 2483dfb: be 03 00 00 00               	mov	esi, 0x3
+ 2483e00: eb 13                        	jmp	0x2483e15 <_Z10PlayerMainiPPc+0xeeefd5>
+ 2483e02: 31 c0                        	xor	eax, eax
+ 2483e04: eb 18                        	jmp	0x2483e1e <_Z10PlayerMainiPPc+0xeeefde>
+ 2483e06: 48 8d 54 24 10               	lea	rdx, [rsp + 0x10]
+ 2483e0b: 48 8d 4c 24 08               	lea	rcx, [rsp + 0x8]
+ 2483e10: be 02 00 00 00               	mov	esi, 0x2
+ 2483e15: 4c 89 f7                     	mov	rdi, r14
+ 2483e18: ff 15 12 39 1e 00            	call	qword ptr [rip + 0x1e3912] # 0x2667730
+ 2483e1e: 48 83 c4 50                  	add	rsp, 0x50
+ 2483e22: 5b                           	pop	rbx
+ 2483e23: 41 5e                        	pop	r14
+ 2483e25: 5d                           	pop	rbp
+ 2483e26: c3                           	ret

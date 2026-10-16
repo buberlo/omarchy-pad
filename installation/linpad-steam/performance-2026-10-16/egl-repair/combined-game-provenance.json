@@ -1,0 +1,67 @@
+{
+  "curated_at_utc": "2026-10-16T10:59:22.031064+00:00",
+  "sources": [
+    {
+      "file": "work/performance/reports/hollow4445-egl-software-fatal-status.txt",
+      "sha256": "3c8918082634b0795d9c79d8b9ed111a18fd04881784cf73a97a37235bc570ee",
+      "selected_line_ranges": [
+        [
+          1,
+          9
+        ],
+        [
+          233,
+          281
+        ]
+      ]
+    },
+    {
+      "file": "work/performance/reports/hollow4445-egl-software-manual-stop.txt",
+      "sha256": "32da50dd889a9eeb2af0c4c3aae6c11c5785995d14c4c1fda6d458affc760583",
+      "selected_line_ranges": [
+        [
+          1,
+          14
+        ],
+        [
+          46,
+          47
+        ],
+        [
+          441,
+          449
+        ]
+      ]
+    }
+  ],
+  "curation": "Exact selected lines only; repeated extension lists, unrelated processes and other application files omitted.",
+  "same_process": {
+    "linpad_build": 4445,
+    "pid": 5681,
+    "started_utc": "2026-10-16T10:46:58Z",
+    "selected_renderer": "Virtio-GPU Venus (Apple M2 GPU)",
+    "driver": "venus (22), Mesa 26.2.4-1",
+    "renderer_recorded_utc": "2026-10-16T10:54:08.111Z",
+    "map_snapshot_utc": "2026-10-16T10:54:55Z",
+    "venus26_mapping": true,
+    "egl25_gallium25_llvm19_gbm25_mapping": true,
+    "combined_selection_verified": true,
+    "guest_fatal_signal": {
+      "recorded_utc": "2026-10-16T10:54:22.545Z",
+      "signo": 11,
+      "code": 1,
+      "address": "nil"
+    },
+    "manual_stop_after_guest_fatal": true,
+    "manual_stop_exit": 137,
+    "rendered_game_frame_verified": false,
+    "gameplay_verified": false,
+    "FPS_measured": false
+  },
+  "FEX_MULTIBLOCK": {
+    "effective_value": null,
+    "readback": "/proc/5681/environ open failed; fallback NOT_IN_ENV marker is not evidence the variable was unset",
+    "source_default": true,
+    "source_default_is_not_runtime_measurement": true
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "source": "work/performance/reports/hollow4445-wayland-manual-stop.txt",
+  "source_sha256": "28124d979f5fe37ef433e176d629679b45bf1de6e203ceaa6f5355c5955ba759",
+  "selected_line_ranges": [
+    [
+      1,
+      1
+    ],
+    [
+      33,
+      46
+    ],
+    [
+      232,
+      236
+    ]
+  ],
+  "started_utc": "2026-10-16T10:24:09Z",
+  "stop_capture_ended_utc": "2026-10-16T10:28:34Z",
+  "window_error": "Could not load EGL library",
+  "guest_fatal_signal": {
+    "signo": 11,
+    "code": 1,
+    "address": "nil"
+  },
+  "manual_stop_exit": 137,
+  "guest_fault_preceded_manual_stop": true,
+  "gameplay_verified": false
+}

@@ -1,0 +1,29 @@
+Exact selected source lines; see wayland-before-egl-provenance.json for original SHA256.
+The later exit137 is the manual stop result; the appended Unity log contains the earlier guest fatal signal.
+
+--- hollow4445-wayland-manual-stop.txt lines 1-1 ---
+Fri Oct 16 10:24:09 UTC 2026
+
+--- hollow4445-wayland-manual-stop.txt lines 33-46 ---
+Killed
+GAME_EXIT=137
+UNITY_LOG
+The selected window backend is (null) 
+Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+Input System module state changed to: Initialized.
+Error getting num native displays: Video subsystem has not been initialized
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Error getting num native displays: Video subsystem has not been initialized
+Desktop is 0 x 0 @ 0 Hz
+Error creating MainPlayerWindow: Could not load EGL library
+[Vulkan init] extensions: count=24
+
+--- hollow4445-wayland-manual-stop.txt lines 232-236 ---
+Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+Caught fatal signal - signo:11 code:1 errno:0 addr:(nil)
+Fri Oct 16 10:28:34 UTC 2026
+

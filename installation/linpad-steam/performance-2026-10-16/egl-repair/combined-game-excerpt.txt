@@ -1,0 +1,95 @@
+Curated exact source excerpts; original line ranges and SHA256 are recorded in combined-game-provenance.json.
+
+--- hollow4445-egl-software-fatal-status.txt lines 1-9 ---
+Fri Oct 16 10:54:55 UTC 2026
+GAME_OUTPUT
+Fri Oct 16 10:46:58 UTC 2026
+LINPAD_EGL_DIAGNOSTIC mode=swrast auxiliary_driver=llvmpipe FEX=/opt/fex/FEX-apple-m1-munmap
+LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+EGL_VENDOR=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+WAYLAND=/tmp/xdg-runtime/wayland-0-gpu SDL_VIDEODRIVER=wayland EGL_PLATFORM=wayland
+VULKAN_ICD=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json VK_LOADER_LAYERS_DISABLE=* LD_PRELOAD=unset argv_count=12
+
+--- hollow4445-egl-software-fatal-status.txt lines 233-281 ---
+2026-10-16T10:54:08.101Z|0xcc427f00|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T10:54:08.108Z|0xcc427f00|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T10:54:08.111Z|0xcc427f00|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T10:54:08.114Z|0xcc427f00|Vulkan device type 1
+2026-10-16T10:54:08.116Z|0xcc427f00|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T10:54:08.118Z|0xcc427f00|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T10:54:16.149Z|0xcc427f00|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T10:54:22.545Z|0xcc427f00|Caught fatal signal - signo:11 code:1 errno:0 addr:(nil)
+PROCESSES
+ 5681  5679 R    FEX-apple-m1-mu
+GAME_PID=5681
+GAME_STAT
+5681 (FEX-apple-m1-mun) R 5679 5679 29 34818 5679 0 0 0 0 0 47405 311 0 0 20 0 34 0 54185916 140779528523776 4131088 0 0 0 4294956736 0 0 0 2147220151 8192 3238038012 0 0 0 17 0
+GAME_GRAPHICS_MAPS
+0000ad35a000-0000ad373000 r--p 00000000 00:00 0          /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+0000ad373000-0000ad48c000 r-xp 00019000 00:00 0          /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+0000ad48c000-0000ad4fe000 r--p 00132000 00:00 0          /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+0000ad4fe000-0000ad511000 r--p 001a3000 00:00 0          /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+0000ad511000-0000ad514000 rw-p 001a3000 00:00 0          /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+0000ad516000-0000ad51e000 r--p 00000000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309
+0000ad51e000-0000ad568000 r-xp 00008000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309
+0000ad568000-0000ad597000 r--p 00052000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309
+0000ad597000-0000ad598000 r--p 00081000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309
+0000ad598000-0000ad599000 rw-p 00081000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libvulkan.so.1.4.309
+0000af6d6000-0000b6ccf000 r-xp 00000000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1
+0000b6ccf000-0000b7239000 r--p 075f8000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1
+0000b7239000-0000b7281000 rw-p 075f8000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1
+0000b73ae000-0000b73b0000 r--p 00000000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+0000b73b0000-0000b73b1000 r-xp 00002000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+0000b73b1000-0000b73b2000 r--p 00003000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+0000b73b2000-0000b73b3000 r--p 00003000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+0000b73b3000-0000b73b4000 rw-p 00003000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+0000b73b4000-0000b7495000 r--p 00000000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+0000b7495000-0000b8bd0000 r-xp 000e1000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+0000b8bd0000-0000b9b22000 r--p 0181c000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+0000b9b22000-0000b9c33000 r--p 0276e000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+0000b9c33000-0000b9c4c000 rw-p 0276e000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+0000b9e0e000-0000b9e1e000 r--p 00000000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+0000b9e1e000-0000b9e46000 r-xp 00010000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+0000b9e46000-0000b9e5b000 r--p 00038000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+0000b9e5b000-0000b9e68000 r--p 0004d000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+0000b9e68000-0000b9e69000 rw-p 0004d000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+MEMORY
+footprint_mb 1013
+allowance_mb 8192
+headroom_mb 7178
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+
+--- hollow4445-egl-software-manual-stop.txt lines 1-14 ---
+Fri Oct 16 10:55:17 UTC 2026
+PRE_STOP_IDENTITY
+5681 (FEX-apple-m1-mun) R 5679 5679 29 34818 5679 0 0 0 0 0 49505 342 0 0 20 0 34 0 54185916 140779532009472 4131939 0 0 0 4294956736 0 0 0 0 8192 3238038012 0 0 0 17 0
+BASELINE_FEX_MULTIBLOCK
+/tmp/stop-hollow4445-egl-software: line 8: can't open /proc/5681/environ: no such file
+FEX_MULTIBLOCK_NOT_IN_ENV
+MANUAL_STOP_AFTER_LOGGED_GUEST_FATAL_SIGNAL
+Fri Oct 16 10:46:58 UTC 2026
+LINPAD_EGL_DIAGNOSTIC mode=swrast auxiliary_driver=llvmpipe FEX=/opt/fex/FEX-apple-m1-munmap
+LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+EGL_VENDOR=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+WAYLAND=/tmp/xdg-runtime/wayland-0-gpu SDL_VIDEODRIVER=wayland EGL_PLATFORM=wayland
+VULKAN_ICD=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json VK_LOADER_LAYERS_DISABLE=* LD_PRELOAD=unset argv_count=12
+
+--- hollow4445-egl-software-manual-stop.txt lines 46-47 ---
+Killed
+GAME_EXIT=137
+
+--- hollow4445-egl-software-manual-stop.txt lines 441-449 ---
+2026-10-16T10:54:08.101Z|0xcc427f00|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T10:54:08.108Z|0xcc427f00|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T10:54:08.111Z|0xcc427f00|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T10:54:08.114Z|0xcc427f00|Vulkan device type 1
+2026-10-16T10:54:08.116Z|0xcc427f00|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T10:54:08.118Z|0xcc427f00|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T10:54:16.149Z|0xcc427f00|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T10:54:22.545Z|0xcc427f00|Caught fatal signal - signo:11 code:1 errno:0 addr:(nil)
+Fri Oct 16 10:55:19 UTC 2026
+

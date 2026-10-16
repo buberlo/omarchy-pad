@@ -1,0 +1,20 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+00000000006fa040 <.text>:
+ 12c037d: 48 8d 3d 45 4f f8 fe         	lea	rdi, [rip - 0x107b0bb]  # 0x2452c9
+ 12c0384: 31 ed                        	xor	ebp, ebp
+ 12c0386: 31 c0                        	xor	eax, eax
+ 12c0388: e8 e4 71 17 01               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 12c038d: e8 43 7f 17 01               	call	0x24382d5 <_Z10PlayerMainiPPc+0xea3495>
+ 12c0392: 83 38 00                     	cmp	dword ptr [rax], 0x0
+ 12c0395: 48 8d 70 04                  	lea	rsi, [rax + 0x4]
+ 12c0399: 48 0f 44 f3                  	cmove	rsi, rbx
+ 12c039d: 48 8d 3d e0 ce f8 fe         	lea	rdi, [rip - 0x1073120]  # 0x24d284
+ 12c03a4: 31 c0                        	xor	eax, eax
+ 12c03a6: e8 a5 bc d7 00               	call	0x203c050 <_Z10PlayerMainiPPc+0xaa7210>
+ 12c03ab: 89 2d 4f fe 37 01            	mov	dword ptr [rip + 0x137fe4f], ebp # 0x2640200
+ 12c03b1: 66 0f ef c0                  	pxor	xmm0, xmm0
+ 12c03b5: 66 0f 7f 84 24 10 01 00 00   	movdqa	xmmword ptr [rsp + 0x110], xmm0

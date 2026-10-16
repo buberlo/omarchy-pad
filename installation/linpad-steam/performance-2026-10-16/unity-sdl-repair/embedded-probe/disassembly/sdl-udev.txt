@@ -1,0 +1,1549 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 2468b51: 55                           	push	rbp
+ 2468b52: 41 56                        	push	r14
+ 2468b54: 53                           	push	rbx
+ 2468b55: 48 81 ec 90 00 00 00         	sub	rsp, 0x90
+ 2468b5c: 48 85 ff                     	test	rdi, rdi
+ 2468b5f: 74 0f                        	je	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468b61: 48 89 fb                     	mov	rbx, rdi
+ 2468b64: 48 89 e6                     	mov	rsi, rsp
+ 2468b67: e8 e4 ec 7c fe               	call	0xc37850 <.text+0x53d810>
+ 2468b6c: 85 c0                        	test	eax, eax
+ 2468b6e: 74 0c                        	je	0x2468b7c <_Z10PlayerMainiPPc+0xed3d3c>
+ 2468b70: 48 81 c4 90 00 00 00         	add	rsp, 0x90
+ 2468b77: 5b                           	pop	rbx
+ 2468b78: 41 5e                        	pop	r14
+ 2468b7a: 5d                           	pop	rbp
+ 2468b7b: c3                           	ret
+ 2468b7c: 48 8b 05 15 e5 1f 00         	mov	rax, qword ptr [rip + 0x1fe515] # 0x2667098
+ 2468b83: 48 85 c0                     	test	rax, rax
+ 2468b86: 74 14                        	je	0x2468b9c <_Z10PlayerMainiPPc+0xed3d5c>
+ 2468b88: 48 8b 4c 24 28               	mov	rcx, qword ptr [rsp + 0x28]
+ 2468b8d: 48 39 48 10                  	cmp	qword ptr [rax + 0x10], rcx
+ 2468b91: 74 dd                        	je	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468b93: 48 8b 40 18                  	mov	rax, qword ptr [rax + 0x18]
+ 2468b97: 48 85 c0                     	test	rax, rax
+ 2468b9a: 75 f1                        	jne	0x2468b8d <_Z10PlayerMainiPPc+0xed3d4d>
+ 2468b9c: 48 89 df                     	mov	rdi, rbx
+ 2468b9f: be 02 00 08 00               	mov	esi, 0x80002
+ 2468ba4: 31 d2                        	xor	edx, edx
+ 2468ba6: 31 c0                        	xor	eax, eax
+ 2468ba8: e8 73 cd 05 00               	call	0x24c5920 <open64@plt>
+ 2468bad: 85 c0                        	test	eax, eax
+ 2468baf: 78 bf                        	js	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468bb1: 89 c5                        	mov	ebp, eax
+ 2468bb3: 89 c7                        	mov	edi, eax
+ 2468bb5: e8 55 01 00 00               	call	0x2468d0f <_Z10PlayerMainiPPc+0xed3ecf>
+ 2468bba: 41 89 c6                     	mov	r14d, eax
+ 2468bbd: 89 ef                        	mov	edi, ebp
+ 2468bbf: e8 fc cc 05 00               	call	0x24c58c0 <close@plt>
+ 2468bc4: 45 85 f6                     	test	r14d, r14d
+ 2468bc7: 7e a7                        	jle	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468bc9: bf 01 00 00 00               	mov	edi, 0x1
+ 2468bce: be 20 00 00 00               	mov	esi, 0x20
+ 2468bd3: ff 15 5f 4d 10 00            	call	qword ptr [rip + 0x104d5f] # 0x256d938
+ 2468bd9: 48 85 c0                     	test	rax, rax
+ 2468bdc: 74 92                        	je	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468bde: 49 89 c6                     	mov	r14, rax
+ 2468be1: f0                           	lock
+ 2468be2: ff 05 68 4d 10 00            	inc	dword ptr [rip + 0x104d68] # 0x256d950
+ 2468be8: 48 89 df                     	mov	rdi, rbx
+ 2468beb: e8 44 f3 fc ff               	call	0x2437f34 <_Z10PlayerMainiPPc+0xea30f4>
+ 2468bf0: 49 89 06                     	mov	qword ptr [r14], rax
+ 2468bf3: 48 85 c0                     	test	rax, rax
+ 2468bf6: 74 3e                        	je	0x2468c36 <_Z10PlayerMainiPPc+0xed3df6>
+ 2468bf8: 48 8b 44 24 28               	mov	rax, qword ptr [rsp + 0x28]
+ 2468bfd: 49 89 46 10                  	mov	qword ptr [r14 + 0x10], rax
+ 2468c01: 48 8d 05 98 e4 1f 00         	lea	rax, [rip + 0x1fe498]   # 0x26670a0
+ 2468c08: 48 8b 0d 91 e4 1f 00         	mov	rcx, qword ptr [rip + 0x1fe491] # 0x26670a0
+ 2468c0f: 48 85 c9                     	test	rcx, rcx
+ 2468c12: 48 8d 49 18                  	lea	rcx, [rcx + 0x18]
+ 2468c16: 48 0f 44 c8                  	cmove	rcx, rax
+ 2468c1a: 48 8d 15 77 e4 1f 00         	lea	rdx, [rip + 0x1fe477]   # 0x2667098
+ 2468c21: 48 0f 45 d0                  	cmovne	rdx, rax
+ 2468c25: 4c 89 31                     	mov	qword ptr [rcx], r14
+ 2468c28: 4c 89 32                     	mov	qword ptr [rdx], r14
+ 2468c2b: ff 05 63 e4 1f 00            	inc	dword ptr [rip + 0x1fe463] # 0x2667094
+ 2468c31: e9 3a ff ff ff               	jmp	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468c36: 4c 89 f7                     	mov	rdi, r14
+ 2468c39: ff 15 09 4d 10 00            	call	qword ptr [rip + 0x104d09] # 0x256d948
+ 2468c3f: f0                           	lock
+ 2468c40: ff 0d 0a 4d 10 00            	dec	dword ptr [rip + 0x104d0a] # 0x256d950
+ 2468c46: e9 25 ff ff ff               	jmp	0x2468b70 <_Z10PlayerMainiPPc+0xed3d30>
+ 2468c4b: 41 57                        	push	r15
+ 2468c4d: 41 56                        	push	r14
+ 2468c4f: 53                           	push	rbx
+ 2468c50: 48 85 d2                     	test	rdx, rdx
+ 2468c53: 0f 84 b0 00 00 00            	je	0x2468d09 <_Z10PlayerMainiPPc+0xed3ec9>
+ 2468c59: 83 e6 04                     	and	esi, 0x4
+ 2468c5c: 0f 84 a7 00 00 00            	je	0x2468d09 <_Z10PlayerMainiPPc+0xed3ec9>
+ 2468c62: 49 89 d6                     	mov	r14, rdx
+ 2468c65: 83 ff 02                     	cmp	edi, 0x2
+ 2468c68: 74 16                        	je	0x2468c80 <_Z10PlayerMainiPPc+0xed3e40>
+ 2468c6a: 83 ff 01                     	cmp	edi, 0x1
+ 2468c6d: 0f 85 96 00 00 00            	jne	0x2468d09 <_Z10PlayerMainiPPc+0xed3ec9>
+ 2468c73: 4c 89 f7                     	mov	rdi, r14
+ 2468c76: 5b                           	pop	rbx
+ 2468c77: 41 5e                        	pop	r14
+ 2468c79: 41 5f                        	pop	r15
+ 2468c7b: e9 d1 fe ff ff               	jmp	0x2468b51 <_Z10PlayerMainiPPc+0xed3d11>
+ 2468c80: 48 8b 1d 11 e4 1f 00         	mov	rbx, qword ptr [rip + 0x1fe411] # 0x2667098
+ 2468c87: 48 85 db                     	test	rbx, rbx
+ 2468c8a: 74 7d                        	je	0x2468d09 <_Z10PlayerMainiPPc+0xed3ec9>
+ 2468c8c: 48 8b 33                     	mov	rsi, qword ptr [rbx]
+ 2468c8f: 4c 89 f7                     	mov	rdi, r14
+ 2468c92: e8 a9 c9 05 00               	call	0x24c5640 <strcmp@plt>
+ 2468c97: 85 c0                        	test	eax, eax
+ 2468c99: 74 25                        	je	0x2468cc0 <_Z10PlayerMainiPPc+0xed3e80>
+ 2468c9b: 49 89 df                     	mov	r15, rbx
+ 2468c9e: 48 8b 5b 18                  	mov	rbx, qword ptr [rbx + 0x18]
+ 2468ca2: 48 85 db                     	test	rbx, rbx
+ 2468ca5: 74 62                        	je	0x2468d09 <_Z10PlayerMainiPPc+0xed3ec9>
+ 2468ca7: 48 8b 33                     	mov	rsi, qword ptr [rbx]
+ 2468caa: 4c 89 f7                     	mov	rdi, r14
+ 2468cad: e8 8e c9 05 00               	call	0x24c5640 <strcmp@plt>
+ 2468cb2: 85 c0                        	test	eax, eax
+ 2468cb4: 75 e5                        	jne	0x2468c9b <_Z10PlayerMainiPPc+0xed3e5b>
+ 2468cb6: 48 8b 43 18                  	mov	rax, qword ptr [rbx + 0x18]
+ 2468cba: 49 89 47 18                  	mov	qword ptr [r15 + 0x18], rax
+ 2468cbe: eb 0e                        	jmp	0x2468cce <_Z10PlayerMainiPPc+0xed3e8e>
+ 2468cc0: 48 8b 43 18                  	mov	rax, qword ptr [rbx + 0x18]
+ 2468cc4: 48 89 05 cd e3 1f 00         	mov	qword ptr [rip + 0x1fe3cd], rax # 0x2667098
+ 2468ccb: 45 31 ff                     	xor	r15d, r15d
+ 2468cce: 48 3b 1d cb e3 1f 00         	cmp	rbx, qword ptr [rip + 0x1fe3cb] # 0x26670a0
+ 2468cd5: 75 07                        	jne	0x2468cde <_Z10PlayerMainiPPc+0xed3e9e>
+ 2468cd7: 4c 89 3d c2 e3 1f 00         	mov	qword ptr [rip + 0x1fe3c2], r15 # 0x26670a0
+ 2468cde: ff 0d b0 e3 1f 00            	dec	dword ptr [rip + 0x1fe3b0] # 0x2667094
+ 2468ce4: 48 8b 3b                     	mov	rdi, qword ptr [rbx]
+ 2468ce7: 48 85 ff                     	test	rdi, rdi
+ 2468cea: 74 0d                        	je	0x2468cf9 <_Z10PlayerMainiPPc+0xed3eb9>
+ 2468cec: ff 15 56 4c 10 00            	call	qword ptr [rip + 0x104c56] # 0x256d948
+ 2468cf2: f0                           	lock
+ 2468cf3: ff 0d 57 4c 10 00            	dec	dword ptr [rip + 0x104c57] # 0x256d950
+ 2468cf9: 48 89 df                     	mov	rdi, rbx
+ 2468cfc: ff 15 46 4c 10 00            	call	qword ptr [rip + 0x104c46] # 0x256d948
+ 2468d02: f0                           	lock
+ 2468d03: ff 0d 47 4c 10 00            	dec	dword ptr [rip + 0x104c47] # 0x256d950
+ 2468d09: 5b                           	pop	rbx
+ 2468d0a: 41 5e                        	pop	r14
+ 2468d0c: 41 5f                        	pop	r15
+ 2468d0e: c3                           	ret
+ 2468d0f: 48 81 ec 88 00 00 00         	sub	rsp, 0x88
+ 2468d16: 48 89 e2                     	mov	rdx, rsp
+ 2468d19: be 35 45 80 80               	mov	esi, 0x80804535
+ 2468d1e: 31 c0                        	xor	eax, eax
+ 2468d20: e8 8b cb 05 00               	call	0x24c58b0 <ioctl@plt>
+ 2468d25: 85 c0                        	test	eax, eax
+ 2468d27: 0f 88 a4 00 00 00            	js	0x2468dd1 <_Z10PlayerMainiPPc+0xed3f91>
+ 2468d2d: 48 8b 44 24 08               	mov	rax, qword ptr [rsp + 0x8]
+ 2468d32: 49 89 c0                     	mov	r8, rax
+ 2468d35: 49 c1 e8 12                  	shr	r8, 0x12
+ 2468d39: 44 89 c2                     	mov	edx, r8d
+ 2468d3c: 83 e2 01                     	and	edx, 0x1
+ 2468d3f: 89 c6                        	mov	esi, eax
+ 2468d41: c1 ee 19                     	shr	esi, 0x19
+ 2468d44: 83 e6 02                     	and	esi, 0x2
+ 2468d47: 09 d6                        	or	esi, edx
+ 2468d49: 89 c2                        	mov	edx, eax
+ 2468d4b: c1 ea 16                     	shr	edx, 0x16
+ 2468d4e: 83 e2 08                     	and	edx, 0x8
+ 2468d51: 09 f2                        	or	edx, esi
+ 2468d53: 48 89 c6                     	mov	rsi, rax
+ 2468d56: 48 c1 ee 17                  	shr	rsi, 0x17
+ 2468d5a: 89 f7                        	mov	edi, esi
+ 2468d5c: 83 e7 10                     	and	edi, 0x10
+ 2468d5f: 09 d7                        	or	edi, edx
+ 2468d61: 83 e6 20                     	and	esi, 0x20
+ 2468d64: 09 fe                        	or	esi, edi
+ 2468d66: 89 c7                        	mov	edi, eax
+ 2468d68: c1 ef 11                     	shr	edi, 0x11
+ 2468d6b: 83 e7 40                     	and	edi, 0x40
+ 2468d6e: 09 f7                        	or	edi, esi
+ 2468d70: 89 c2                        	mov	edx, eax
+ 2468d72: c1 ea 0c                     	shr	edx, 0xc
+ 2468d75: 81 e2 80 00 00 00            	and	edx, 0x80
+ 2468d7b: 09 fa                        	or	edx, edi
+ 2468d7d: 89 c6                        	mov	esi, eax
+ 2468d7f: c1 ee 0a                     	shr	esi, 0xa
+ 2468d82: 81 e6 00 04 00 00            	and	esi, 0x400
+ 2468d88: 48 89 c7                     	mov	rdi, rax
+ 2468d8b: 48 c1 ef 0d                  	shr	rdi, 0xd
+ 2468d8f: 89 f9                        	mov	ecx, edi
+ 2468d91: 81 e1 00 01 00 00            	and	ecx, 0x100
+ 2468d97: 09 f1                        	or	ecx, esi
+ 2468d99: 81 e7 00 02 00 00            	and	edi, 0x200
+ 2468d9f: 09 cf                        	or	edi, ecx
+ 2468da1: 41 81 e0 00 08 00 00         	and	r8d, 0x800
+ 2468da8: 41 09 f8                     	or	r8d, edi
+ 2468dab: 48 89 c1                     	mov	rcx, rax
+ 2468dae: 48 c1 e9 14                  	shr	rcx, 0x14
+ 2468db2: 89 ce                        	mov	esi, ecx
+ 2468db4: 81 e6 00 10 00 00            	and	esi, 0x1000
+ 2468dba: 44 09 c6                     	or	esi, r8d
+ 2468dbd: 81 e1 00 20 00 00            	and	ecx, 0x2000
+ 2468dc3: 09 f1                        	or	ecx, esi
+ 2468dc5: c1 e8 0e                     	shr	eax, 0xe
+ 2468dc8: 83 e0 04                     	and	eax, 0x4
+ 2468dcb: 09 c8                        	or	eax, ecx
+ 2468dcd: 09 d0                        	or	eax, edx
+ 2468dcf: eb 22                        	jmp	0x2468df3 <_Z10PlayerMainiPPc+0xed3fb3>
+ 2468dd1: e8 0a c8 05 00               	call	0x24c55e0 <__errno_location@plt>
+ 2468dd6: 8b 38                        	mov	edi, dword ptr [rax]
+ 2468dd8: e8 b3 d3 05 00               	call	0x24c6190 <strerror@plt>
+ 2468ddd: 48 8d 3d 14 3c d8 fd         	lea	rdi, [rip - 0x227c3ec]  # 0x1ec9f8
+ 2468de4: 48 89 c6                     	mov	rsi, rax
+ 2468de7: 31 c0                        	xor	eax, eax
+ 2468de9: e8 83 e7 fc ff               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 2468dee: b8 ff ff ff ff               	mov	eax, 0xffffffff
+ 2468df3: 48 81 c4 88 00 00 00         	add	rsp, 0x88
+ 2468dfa: c3                           	ret
+ 2468dfb: 41 56                        	push	r14
+ 2468dfd: 53                           	push	rbx
+ 2468dfe: 50                           	push	rax
+ 2468dff: 49 89 f6                     	mov	r14, rsi
+ 2468e02: 48 89 fb                     	mov	rbx, rdi
+ 2468e05: 0f 57 c0                     	xorps	xmm0, xmm0
+ 2468e08: 0f 11 47 20                  	movups	xmmword ptr [rdi + 0x20], xmm0
+ 2468e0c: 0f 11 47 10                  	movups	xmmword ptr [rdi + 0x10], xmm0
+ 2468e10: 0f 11 07                     	movups	xmmword ptr [rdi], xmm0
+ 2468e13: 0f b7 06                     	movzx	eax, word ptr [rsi]
+ 2468e16: 66 83 f8 3f                  	cmp	ax, 0x3f
+ 2468e1a: 0f 8f d7 00 00 00            	jg	0x2468ef7 <_Z10PlayerMainiPPc+0xed40b7>
+ 2468e20: 8d 48 ff                     	lea	ecx, [rax - 0x1]
+ 2468e23: 66 83 f9 07                  	cmp	cx, 0x7
+ 2468e27: 0f 87 05 01 00 00            	ja	0x2468f32 <_Z10PlayerMainiPPc+0xed40f2>
+ 2468e2d: 0f b7 c1                     	movzx	eax, cx
+ 2468e30: 48 8d 0d 35 29 ee fd         	lea	rcx, [rip - 0x211d6cb]  # 0x34b76c
+ 2468e37: 48 63 04 81                  	movsxd	rax, dword ptr [rcx + 4*rax]
+ 2468e3b: 48 01 c8                     	add	rax, rcx
+ 2468e3e: ff e0                        	jmp	rax
+ 2468e40: 66 c7 03 52 00               	mov	word ptr [rbx], 0x52
+ 2468e45: be 04 00 00 00               	mov	esi, 0x4
+ 2468e4a: 48 8d 3c 33                  	lea	rdi, [rbx + rsi]
+ 2468e4e: 4c 01 f6                     	add	rsi, r14
+ 2468e51: e8 7c 04 00 00               	call	0x24692d2 <_Z10PlayerMainiPPc+0xed4492>
+ 2468e56: 83 f8 ff                     	cmp	eax, -0x1
+ 2468e59: 0f 84 d9 03 00 00            	je	0x2469238 <_Z10PlayerMainiPPc+0xed43f8>
+ 2468e5f: 41 8b 56 14                  	mov	edx, dword ptr [r14 + 0x14]
+ 2468e63: b9 ff 7f 00 00               	mov	ecx, 0x7fff
+ 2468e68: 39 ca                        	cmp	edx, ecx
+ 2468e6a: be ff 7f 00 00               	mov	esi, 0x7fff
+ 2468e6f: 0f 42 f2                     	cmovb	esi, edx
+ 2468e72: 31 c0                        	xor	eax, eax
+ 2468e74: 83 fa ff                     	cmp	edx, -0x1
+ 2468e77: 0f 44 f0                     	cmove	esi, eax
+ 2468e7a: 66 89 73 0a                  	mov	word ptr [rbx + 0xa], si
+ 2468e7e: 41 0f b7 56 18               	movzx	edx, word ptr [r14 + 0x18]
+ 2468e83: 39 ca                        	cmp	edx, ecx
+ 2468e85: 0f 43 d1                     	cmovae	edx, ecx
+ 2468e88: 66 89 53 0c                  	mov	word ptr [rbx + 0xc], dx
+ 2468e8c: 41 0f b7 56 1a               	movzx	edx, word ptr [r14 + 0x1a]
+ 2468e91: 89 d6                        	mov	esi, edx
+ 2468e93: 81 c6 2f 01 00 00            	add	esi, 0x12f
+ 2468e99: 66 85 d2                     	test	dx, dx
+ 2468e9c: 0f 44 f0                     	cmove	esi, eax
+ 2468e9f: 66 89 73 06                  	mov	word ptr [rbx + 0x6], si
+ 2468ea3: 41 0f b7 56 1c               	movzx	edx, word ptr [r14 + 0x1c]
+ 2468ea8: 39 ca                        	cmp	edx, ecx
+ 2468eaa: 0f 43 d1                     	cmovae	edx, ecx
+ 2468ead: 66 89 53 08                  	mov	word ptr [rbx + 0x8], dx
+ 2468eb1: 41 0f b7 56 1e               	movzx	edx, word ptr [r14 + 0x1e]
+ 2468eb6: 66 89 53 10                  	mov	word ptr [rbx + 0x10], dx
+ 2468eba: 41 0f b7 56 20               	movzx	edx, word ptr [r14 + 0x20]
+ 2468ebf: 39 ca                        	cmp	edx, ecx
+ 2468ec1: 0f 43 d1                     	cmovae	edx, ecx
+ 2468ec4: 66 89 53 12                  	mov	word ptr [rbx + 0x12], dx
+ 2468ec8: 41 0f b7 56 22               	movzx	edx, word ptr [r14 + 0x22]
+ 2468ecd: 39 ca                        	cmp	edx, ecx
+ 2468ecf: 0f 43 d1                     	cmovae	edx, ecx
+ 2468ed2: 66 89 53 14                  	mov	word ptr [rbx + 0x14], dx
+ 2468ed6: 41 0f b7 56 24               	movzx	edx, word ptr [r14 + 0x24]
+ 2468edb: 39 ca                        	cmp	edx, ecx
+ 2468edd: 0f 43 d1                     	cmovae	edx, ecx
+ 2468ee0: 66 89 53 16                  	mov	word ptr [rbx + 0x16], dx
+ 2468ee4: 41 0f b7 56 26               	movzx	edx, word ptr [r14 + 0x26]
+ 2468ee9: 39 ca                        	cmp	edx, ecx
+ 2468eeb: 0f 42 ca                     	cmovb	ecx, edx
+ 2468eee: 66 89 4b 18                  	mov	word ptr [rbx + 0x18], cx
+ 2468ef2: e9 d3 03 00 00               	jmp	0x24692ca <_Z10PlayerMainiPPc+0xed448a>
+ 2468ef7: 0f bf c8                     	movsx	ecx, ax
+ 2468efa: 81 f9 ff 00 00 00            	cmp	ecx, 0xff
+ 2468f00: 0f 8e d8 00 00 00            	jle	0x2468fde <_Z10PlayerMainiPPc+0xed419e>
+ 2468f06: 0f b7 c8                     	movzx	ecx, ax
+ 2468f09: 81 f9 00 01 00 00            	cmp	ecx, 0x100
+ 2468f0f: 0f 84 e2 00 00 00            	je	0x2468ff7 <_Z10PlayerMainiPPc+0xed41b7>
+ 2468f15: 81 f9 00 02 00 00            	cmp	ecx, 0x200
+ 2468f1b: 0f 84 d6 00 00 00            	je	0x2468ff7 <_Z10PlayerMainiPPc+0xed41b7>
+ 2468f21: 81 f9 00 04 00 00            	cmp	ecx, 0x400
+ 2468f27: 0f 84 ca 00 00 00            	je	0x2468ff7 <_Z10PlayerMainiPPc+0xed41b7>
+ 2468f2d: e9 33 02 00 00               	jmp	0x2469165 <_Z10PlayerMainiPPc+0xed4325>
+ 2468f32: 66 83 f8 10                  	cmp	ax, 0x10
+ 2468f36: 74 0a                        	je	0x2468f42 <_Z10PlayerMainiPPc+0xed4102>
+ 2468f38: 66 83 f8 20                  	cmp	ax, 0x20
+ 2468f3c: 0f 85 23 02 00 00            	jne	0x2469165 <_Z10PlayerMainiPPc+0xed4325>
+ 2468f42: 66 c7 03 51 00               	mov	word ptr [rbx], 0x51
+ 2468f47: be 04 00 00 00               	mov	esi, 0x4
+ 2468f4c: 48 8d 3c 33                  	lea	rdi, [rbx + rsi]
+ 2468f50: 4c 01 f6                     	add	rsi, r14
+ 2468f53: e8 7a 03 00 00               	call	0x24692d2 <_Z10PlayerMainiPPc+0xed4492>
+ 2468f58: 83 f8 ff                     	cmp	eax, -0x1
+ 2468f5b: 0f 84 d7 02 00 00            	je	0x2469238 <_Z10PlayerMainiPPc+0xed43f8>
+ 2468f61: 41 8b 46 14                  	mov	eax, dword ptr [r14 + 0x14]
+ 2468f65: b9 ff 7f 00 00               	mov	ecx, 0x7fff
+ 2468f6a: 39 c8                        	cmp	eax, ecx
+ 2468f6c: ba ff 7f 00 00               	mov	edx, 0x7fff
+ 2468f71: 0f 42 d0                     	cmovb	edx, eax
+ 2468f74: 31 f6                        	xor	esi, esi
+ 2468f76: 83 f8 ff                     	cmp	eax, -0x1
+ 2468f79: 0f 44 d6                     	cmove	edx, esi
+ 2468f7c: 66 89 53 0a                  	mov	word ptr [rbx + 0xa], dx
+ 2468f80: 41 0f b7 46 18               	movzx	eax, word ptr [r14 + 0x18]
+ 2468f85: 39 c8                        	cmp	eax, ecx
+ 2468f87: 0f 43 c1                     	cmovae	eax, ecx
+ 2468f8a: 66 89 43 0c                  	mov	word ptr [rbx + 0xc], ax
+ 2468f8e: 41 0f b7 46 1a               	movzx	eax, word ptr [r14 + 0x1a]
+ 2468f93: 89 c2                        	mov	edx, eax
+ 2468f95: 81 c2 2f 01 00 00            	add	edx, 0x12f
+ 2468f9b: 66 85 c0                     	test	ax, ax
+ 2468f9e: 0f 44 d6                     	cmove	edx, esi
+ 2468fa1: 66 89 53 06                  	mov	word ptr [rbx + 0x6], dx
+ 2468fa5: 41 0f b7 46 1c               	movzx	eax, word ptr [r14 + 0x1c]
+ 2468faa: 39 c8                        	cmp	eax, ecx
+ 2468fac: 0f 42 c8                     	cmovb	ecx, eax
+ 2468faf: 66 89 4b 08                  	mov	word ptr [rbx + 0x8], cx
+ 2468fb3: 41 0f b7 06                  	movzx	eax, word ptr [r14]
+ 2468fb7: 66 83 f8 0f                  	cmp	ax, 0xf
+ 2468fbb: 0f 8f 30 01 00 00            	jg	0x24690f1 <_Z10PlayerMainiPPc+0xed42b1>
+ 2468fc1: 66 83 f8 02                  	cmp	ax, 0x2
+ 2468fc5: 0f 84 77 02 00 00            	je	0x2469242 <_Z10PlayerMainiPPc+0xed4402>
+ 2468fcb: 66 83 f8 08                  	cmp	ax, 0x8
+ 2468fcf: 0f 85 7b 02 00 00            	jne	0x2469250 <_Z10PlayerMainiPPc+0xed4410>
+ 2468fd5: 66 b8 59 00                  	mov	ax, 0x59
+ 2468fd9: e9 6e 02 00 00               	jmp	0x246924c <_Z10PlayerMainiPPc+0xed440c>
+ 2468fde: 66 83 f8 40                  	cmp	ax, 0x40
+ 2468fe2: 0f 84 90 01 00 00            	je	0x2469178 <_Z10PlayerMainiPPc+0xed4338>
+ 2468fe8: 0f b7 c8                     	movzx	ecx, ax
+ 2468feb: 81 f9 80 00 00 00            	cmp	ecx, 0x80
+ 2468ff1: 0f 85 6e 01 00 00            	jne	0x2469165 <_Z10PlayerMainiPPc+0xed4325>
+ 2468ff7: 83 c0 80                     	add	eax, -0x80
+ 2468ffa: 89 c1                        	mov	ecx, eax
+ 2468ffc: 66 c1 c1 09                  	rol	cx, 0x9
+ 2469000: 66 83 f9 07                  	cmp	cx, 0x7
+ 2469004: 77 22                        	ja	0x2469028 <_Z10PlayerMainiPPc+0xed41e8>
+ 2469006: 0f b7 c0                     	movzx	eax, ax
+ 2469009: c1 e8 07                     	shr	eax, 0x7
+ 246900c: ba 8b 00 00 00               	mov	edx, 0x8b
+ 2469011: 0f a3 c2                     	bt	edx, eax
+ 2469014: 73 12                        	jae	0x2469028 <_Z10PlayerMainiPPc+0xed41e8>
+ 2469016: 48 0f bf c1                  	movsx	rax, cx
+ 246901a: 48 8d 0d cf 92 e9 fd         	lea	rcx, [rip - 0x2166d31]  # 0x3022f0
+ 2469021: 0f b7 04 41                  	movzx	eax, word ptr [rcx + 2*rax]
+ 2469025: 66 89 03                     	mov	word ptr [rbx], ax
+ 2469028: 66 c7 43 04 00 00            	mov	word ptr [rbx + 0x4], 0x0
+ 246902e: 41 8b 4e 14                  	mov	ecx, dword ptr [r14 + 0x14]
+ 2469032: ba ff 7f 00 00               	mov	edx, 0x7fff
+ 2469037: 39 d1                        	cmp	ecx, edx
+ 2469039: be ff 7f 00 00               	mov	esi, 0x7fff
+ 246903e: 0f 42 f1                     	cmovb	esi, ecx
+ 2469041: 31 c0                        	xor	eax, eax
+ 2469043: 83 f9 ff                     	cmp	ecx, -0x1
+ 2469046: 0f 44 f0                     	cmove	esi, eax
+ 2469049: 66 89 73 0a                  	mov	word ptr [rbx + 0xa], si
+ 246904d: 41 0f b7 4e 18               	movzx	ecx, word ptr [r14 + 0x18]
+ 2469052: 39 d1                        	cmp	ecx, edx
+ 2469054: 0f 43 ca                     	cmovae	ecx, edx
+ 2469057: 66 89 4b 0c                  	mov	word ptr [rbx + 0xc], cx
+ 246905b: 41 0f b7 4e 1a               	movzx	ecx, word ptr [r14 + 0x1a]
+ 2469060: 89 ce                        	mov	esi, ecx
+ 2469062: 81 c6 2f 01 00 00            	add	esi, 0x12f
+ 2469068: 66 85 c9                     	test	cx, cx
+ 246906b: 0f 44 f0                     	cmove	esi, eax
+ 246906e: 66 89 73 06                  	mov	word ptr [rbx + 0x6], si
+ 2469072: 41 0f b7 4e 1c               	movzx	ecx, word ptr [r14 + 0x1c]
+ 2469077: 39 d1                        	cmp	ecx, edx
+ 2469079: 0f 42 d1                     	cmovb	edx, ecx
+ 246907c: 66 89 53 08                  	mov	word ptr [rbx + 0x8], dx
+ 2469080: 41 0f b7 4e 1e               	movzx	ecx, word ptr [r14 + 0x1e]
+ 2469085: 66 89 4b 10                  	mov	word ptr [rbx + 0x10], cx
+ 2469089: 41 0f b7 4e 24               	movzx	ecx, word ptr [r14 + 0x24]
+ 246908e: 66 89 4b 12                  	mov	word ptr [rbx + 0x12], cx
+ 2469092: 41 0f b7 4e 2a               	movzx	ecx, word ptr [r14 + 0x2a]
+ 2469097: 66 89 4b 14                  	mov	word ptr [rbx + 0x14], cx
+ 246909b: 41 0f b7 4e 30               	movzx	ecx, word ptr [r14 + 0x30]
+ 24690a0: 66 89 4b 16                  	mov	word ptr [rbx + 0x16], cx
+ 24690a4: 41 0f b7 4e 36               	movzx	ecx, word ptr [r14 + 0x36]
+ 24690a9: 66 89 4b 18                  	mov	word ptr [rbx + 0x18], cx
+ 24690ad: 41 0f b7 4e 3c               	movzx	ecx, word ptr [r14 + 0x3c]
+ 24690b2: 66 89 4b 1a                  	mov	word ptr [rbx + 0x1a], cx
+ 24690b6: 41 0f b7 4e 20               	movzx	ecx, word ptr [r14 + 0x20]
+ 24690bb: 66 89 4b 1c                  	mov	word ptr [rbx + 0x1c], cx
+ 24690bf: 41 0f b7 4e 26               	movzx	ecx, word ptr [r14 + 0x26]
+ 24690c4: 66 89 4b 1e                  	mov	word ptr [rbx + 0x1e], cx
+ 24690c8: 41 0f b7 4e 2c               	movzx	ecx, word ptr [r14 + 0x2c]
+ 24690cd: 66 89 4b 20                  	mov	word ptr [rbx + 0x20], cx
+ 24690d1: 41 0f b7 4e 32               	movzx	ecx, word ptr [r14 + 0x32]
+ 24690d6: 66 89 4b 22                  	mov	word ptr [rbx + 0x22], cx
+ 24690da: 41 0f b7 4e 38               	movzx	ecx, word ptr [r14 + 0x38]
+ 24690df: 66 89 4b 24                  	mov	word ptr [rbx + 0x24], cx
+ 24690e3: 41 0f b7 4e 3e               	movzx	ecx, word ptr [r14 + 0x3e]
+ 24690e8: 66 89 4b 26                  	mov	word ptr [rbx + 0x26], cx
+ 24690ec: e9 d9 01 00 00               	jmp	0x24692ca <_Z10PlayerMainiPPc+0xed448a>
+ 24690f1: 66 83 f8 10                  	cmp	ax, 0x10
+ 24690f5: 0f 84 4d 01 00 00            	je	0x2469248 <_Z10PlayerMainiPPc+0xed4408>
+ 24690fb: 66 83 f8 20                  	cmp	ax, 0x20
+ 24690ff: 0f 85 4b 01 00 00            	jne	0x2469250 <_Z10PlayerMainiPPc+0xed4410>
+ 2469105: 66 b8 5c 00                  	mov	ax, 0x5c
+ 2469109: e9 3e 01 00 00               	jmp	0x246924c <_Z10PlayerMainiPPc+0xed440c>
+ 246910e: 66 c7 03 50 00               	mov	word ptr [rbx], 0x50
+ 2469113: 66 c7 43 04 00 00            	mov	word ptr [rbx + 0x4], 0x0
+ 2469119: 41 8b 4e 04                  	mov	ecx, dword ptr [r14 + 0x4]
+ 246911d: ba ff 7f 00 00               	mov	edx, 0x7fff
+ 2469122: 39 d1                        	cmp	ecx, edx
+ 2469124: 0f 42 d1                     	cmovb	edx, ecx
+ 2469127: 31 c0                        	xor	eax, eax
+ 2469129: 83 f9 ff                     	cmp	ecx, -0x1
+ 246912c: 0f 44 d0                     	cmove	edx, eax
+ 246912f: 66 89 53 0a                  	mov	word ptr [rbx + 0xa], dx
+ 2469133: 89 43 06                     	mov	dword ptr [rbx + 0x6], eax
+ 2469136: 41 8b 4e 08                  	mov	ecx, dword ptr [r14 + 0x8]
+ 246913a: 89 ca                        	mov	edx, ecx
+ 246913c: 01 ca                        	add	edx, ecx
+ 246913e: 66 85 c9                     	test	cx, cx
+ 2469141: b9 fe ff 00 00               	mov	ecx, 0xfffe
+ 2469146: 0f 48 d1                     	cmovs	edx, ecx
+ 2469149: 66 89 53 10                  	mov	word ptr [rbx + 0x10], dx
+ 246914d: 41 0f b7 56 0a               	movzx	edx, word ptr [r14 + 0xa]
+ 2469152: 89 d6                        	mov	esi, edx
+ 2469154: 01 d6                        	add	esi, edx
+ 2469156: 66 85 d2                     	test	dx, dx
+ 2469159: 0f 48 f1                     	cmovs	esi, ecx
+ 246915c: 66 89 73 12                  	mov	word ptr [rbx + 0x12], si
+ 2469160: e9 65 01 00 00               	jmp	0x24692ca <_Z10PlayerMainiPPc+0xed448a>
+ 2469165: 48 8d 3d 33 80 de fd         	lea	rdi, [rip - 0x2217fcd]  # 0x25119f
+ 246916c: 31 c0                        	xor	eax, eax
+ 246916e: e8 fe e3 fc ff               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 2469173: e9 c0 00 00 00               	jmp	0x2469238 <_Z10PlayerMainiPPc+0xed43f8>
+ 2469178: 66 c7 03 57 00               	mov	word ptr [rbx], 0x57
+ 246917d: be 04 00 00 00               	mov	esi, 0x4
+ 2469182: 48 8d 3c 33                  	lea	rdi, [rbx + rsi]
+ 2469186: 4c 01 f6                     	add	rsi, r14
+ 2469189: e8 44 01 00 00               	call	0x24692d2 <_Z10PlayerMainiPPc+0xed4492>
+ 246918e: 83 f8 ff                     	cmp	eax, -0x1
+ 2469191: 0f 84 a1 00 00 00            	je	0x2469238 <_Z10PlayerMainiPPc+0xed43f8>
+ 2469197: 41 8b 56 14                  	mov	edx, dword ptr [r14 + 0x14]
+ 246919b: b9 ff 7f 00 00               	mov	ecx, 0x7fff
+ 24691a0: 39 ca                        	cmp	edx, ecx
+ 24691a2: be ff 7f 00 00               	mov	esi, 0x7fff
+ 24691a7: 0f 42 f2                     	cmovb	esi, edx
+ 24691aa: 31 c0                        	xor	eax, eax
+ 24691ac: 83 fa ff                     	cmp	edx, -0x1
+ 24691af: 0f 44 f0                     	cmove	esi, eax
+ 24691b2: 66 89 73 0a                  	mov	word ptr [rbx + 0xa], si
+ 24691b6: 41 0f b7 56 18               	movzx	edx, word ptr [r14 + 0x18]
+ 24691bb: 39 ca                        	cmp	edx, ecx
+ 24691bd: 0f 43 d1                     	cmovae	edx, ecx
+ 24691c0: 66 89 53 0c                  	mov	word ptr [rbx + 0xc], dx
+ 24691c4: 41 0f b7 56 1a               	movzx	edx, word ptr [r14 + 0x1a]
+ 24691c9: 89 d6                        	mov	esi, edx
+ 24691cb: 81 c6 2f 01 00 00            	add	esi, 0x12f
+ 24691d1: 66 85 d2                     	test	dx, dx
+ 24691d4: 0f 44 f0                     	cmove	esi, eax
+ 24691d7: 66 89 73 06                  	mov	word ptr [rbx + 0x6], si
+ 24691db: 41 0f b7 56 1c               	movzx	edx, word ptr [r14 + 0x1c]
+ 24691e0: 39 ca                        	cmp	edx, ecx
+ 24691e2: 0f 43 d1                     	cmovae	edx, ecx
+ 24691e5: 66 89 53 08                  	mov	word ptr [rbx + 0x8], dx
+ 24691e9: 41 0f b7 56 1e               	movzx	edx, word ptr [r14 + 0x1e]
+ 24691ee: 66 89 53 10                  	mov	word ptr [rbx + 0x10], dx
+ 24691f2: 41 0f b7 56 20               	movzx	edx, word ptr [r14 + 0x20]
+ 24691f7: 66 89 53 12                  	mov	word ptr [rbx + 0x12], dx
+ 24691fb: 41 0f b7 56 22               	movzx	edx, word ptr [r14 + 0x22]
+ 2469200: 39 ca                        	cmp	edx, ecx
+ 2469202: 0f 43 d1                     	cmovae	edx, ecx
+ 2469205: 66 89 53 14                  	mov	word ptr [rbx + 0x14], dx
+ 2469209: 41 0f b7 56 24               	movzx	edx, word ptr [r14 + 0x24]
+ 246920e: 39 ca                        	cmp	edx, ecx
+ 2469210: 0f 43 d1                     	cmovae	edx, ecx
+ 2469213: 66 89 53 16                  	mov	word ptr [rbx + 0x16], dx
+ 2469217: 41 0f b7 56 26               	movzx	edx, word ptr [r14 + 0x26]
+ 246921c: 39 ca                        	cmp	edx, ecx
+ 246921e: 0f 43 d1                     	cmovae	edx, ecx
+ 2469221: 66 89 53 18                  	mov	word ptr [rbx + 0x18], dx
+ 2469225: 41 0f b7 56 28               	movzx	edx, word ptr [r14 + 0x28]
+ 246922a: 39 ca                        	cmp	edx, ecx
+ 246922c: 0f 42 ca                     	cmovb	ecx, edx
+ 246922f: 66 89 4b 1a                  	mov	word ptr [rbx + 0x1a], cx
+ 2469233: e9 92 00 00 00               	jmp	0x24692ca <_Z10PlayerMainiPPc+0xed448a>
+ 2469238: b8 ff ff ff ff               	mov	eax, 0xffffffff
+ 246923d: e9 88 00 00 00               	jmp	0x24692ca <_Z10PlayerMainiPPc+0xed448a>
+ 2469242: 66 b8 5a 00                  	mov	ax, 0x5a
+ 2469246: eb 04                        	jmp	0x246924c <_Z10PlayerMainiPPc+0xed440c>
+ 2469248: 66 b8 5b 00                  	mov	ax, 0x5b
+ 246924c: 66 89 43 10                  	mov	word ptr [rbx + 0x10], ax
+ 2469250: 41 0f b7 4e 1e               	movzx	ecx, word ptr [r14 + 0x1e]
+ 2469255: b8 ff 7f 00 00               	mov	eax, 0x7fff
+ 246925a: 39 c1                        	cmp	ecx, eax
+ 246925c: 0f 43 c8                     	cmovae	ecx, eax
+ 246925f: 66 89 4b 12                  	mov	word ptr [rbx + 0x12], cx
+ 2469263: 41 0f b7 4e 20               	movzx	ecx, word ptr [r14 + 0x20]
+ 2469268: 66 89 4b 14                  	mov	word ptr [rbx + 0x14], cx
+ 246926c: 41 0f b7 4e 22               	movzx	ecx, word ptr [r14 + 0x22]
+ 2469271: 66 89 4b 16                  	mov	word ptr [rbx + 0x16], cx
+ 2469275: 41 0f b7 4e 24               	movzx	ecx, word ptr [r14 + 0x24]
+ 246927a: 48 ba 00 00 d5 52 04 e9 00 00	movabs	rdx, 0xe90452d50000
+ 2469284: 48 0f af d1                  	imul	rdx, rcx
+ 2469288: 48 c1 ea 2f                  	shr	rdx, 0x2f
+ 246928c: 66 89 53 18                  	mov	word ptr [rbx + 0x18], dx
+ 2469290: 41 0f b7 4e 26               	movzx	ecx, word ptr [r14 + 0x26]
+ 2469295: 39 c1                        	cmp	ecx, eax
+ 2469297: 0f 43 c8                     	cmovae	ecx, eax
+ 246929a: 66 89 4b 1a                  	mov	word ptr [rbx + 0x1a], cx
+ 246929e: 41 0f b7 4e 28               	movzx	ecx, word ptr [r14 + 0x28]
+ 24692a3: 39 c1                        	cmp	ecx, eax
+ 24692a5: 0f 43 c8                     	cmovae	ecx, eax
+ 24692a8: 66 89 4b 1c                  	mov	word ptr [rbx + 0x1c], cx
+ 24692ac: 41 0f b7 4e 2a               	movzx	ecx, word ptr [r14 + 0x2a]
+ 24692b1: 39 c1                        	cmp	ecx, eax
+ 24692b3: 0f 43 c8                     	cmovae	ecx, eax
+ 24692b6: 66 89 4b 1e                  	mov	word ptr [rbx + 0x1e], cx
+ 24692ba: 41 0f b7 4e 2c               	movzx	ecx, word ptr [r14 + 0x2c]
+ 24692bf: 39 c1                        	cmp	ecx, eax
+ 24692c1: 0f 42 c1                     	cmovb	eax, ecx
+ 24692c4: 66 89 43 20                  	mov	word ptr [rbx + 0x20], ax
+ 24692c8: 31 c0                        	xor	eax, eax
+ 24692ca: 48 83 c4 08                  	add	rsp, 0x8
+ 24692ce: 5b                           	pop	rbx
+ 24692cf: 41 5e                        	pop	r14
+ 24692d1: c3                           	ret
+ 24692d2: 53                           	push	rbx
+ 24692d3: 0f b6 06                     	movzx	eax, byte ptr [rsi]
+ 24692d6: 48 83 f8 03                  	cmp	rax, 0x3
+ 24692da: 77 54                        	ja	0x2469330 <_Z10PlayerMainiPPc+0xed44f0>
+ 24692dc: 48 89 fb                     	mov	rbx, rdi
+ 24692df: 48 8d 0d a6 24 ee fd         	lea	rcx, [rip - 0x211db5a]  # 0x34b78c
+ 24692e6: 48 63 04 81                  	movsxd	rax, dword ptr [rcx + 4*rax]
+ 24692ea: 48 01 c8                     	add	rax, rcx
+ 24692ed: ff e0                        	jmp	rax
+ 24692ef: 48 63 46 04                  	movsxd	rax, dword ptr [rsi + 0x4]
+ 24692f3: 48 69 c8 6b 29 82 74         	imul	rcx, rax, 0x7482296b
+ 24692fa: 48 89 ca                     	mov	rdx, rcx
+ 24692fd: 48 c1 ea 3f                  	shr	rdx, 0x3f
+ 2469301: 48 c1 e9 2e                  	shr	rcx, 0x2e
+ 2469305: 01 d1                        	add	ecx, edx
+ 2469307: 69 c9 a0 8c 00 00            	imul	ecx, ecx, 0x8ca0
+ 246930d: 29 c8                        	sub	eax, ecx
+ 246930f: c1 e0 0f                     	shl	eax, 0xf
+ 2469312: 48 98                        	cdqe
+ 2469314: 48 69 c0 6b 29 82 74         	imul	rax, rax, 0x7482296b
+ 246931b: 48 89 c1                     	mov	rcx, rax
+ 246931e: 48 c1 e9 3f                  	shr	rcx, 0x3f
+ 2469322: 48 c1 e8 2d                  	shr	rax, 0x2d
+ 2469326: 01 c8                        	add	eax, ecx
+ 2469328: 66 89 03                     	mov	word ptr [rbx], ax
+ 246932b: e9 eb 00 00 00               	jmp	0x246941b <_Z10PlayerMainiPPc+0xed45db>
+ 2469330: 48 8d 3d 08 f8 d3 fd         	lea	rdi, [rip - 0x22c07f8]  # 0x1a8b3f
+ 2469337: 31 c0                        	xor	eax, eax
+ 2469339: e8 33 e2 fc ff               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 246933e: b8 ff ff ff ff               	mov	eax, 0xffffffff
+ 2469343: e9 d5 00 00 00               	jmp	0x246941d <_Z10PlayerMainiPPc+0xed45dd>
+ 2469348: 8b 4e 04                     	mov	ecx, dword ptr [rsi + 0x4]
+ 246934b: 8b 46 08                     	mov	eax, dword ptr [rsi + 0x8]
+ 246934e: 85 c0                        	test	eax, eax
+ 2469350: 0f 84 a4 00 00 00            	je	0x24693fa <_Z10PlayerMainiPPc+0xed45ba>
+ 2469356: 85 c9                        	test	ecx, ecx
+ 2469358: 0f 84 b0 00 00 00            	je	0x246940e <_Z10PlayerMainiPPc+0xed45ce>
+ 246935e: f2 0f 2a c0                  	cvtsi2sd	xmm0, eax
+ 2469362: f2 0f 2a c9                  	cvtsi2sd	xmm1, ecx
+ 2469366: e8 85 cf 05 00               	call	0x24c62f0 <atan2@plt>
+ 246936b: f2 0f 5a c0                  	cvtsd2ss	xmm0, xmm0
+ 246936f: f3 0f 5a c0                  	cvtss2sd	xmm0, xmm0
+ 2469373: f2 0f 59 05 25 ab e9 fd      	mulsd	xmm0, qword ptr [rip - 0x21654db] # 0x303ea0
+ 246937b: f2 0f 5e 05 a5 a8 e9 fd      	divsd	xmm0, qword ptr [rip - 0x216575b] # 0x303c28
+ 2469383: f2 0f 2c c0                  	cvttsd2si	eax, xmm0
+ 2469387: 05 c8 af 00 00               	add	eax, 0xafc8
+ 246938c: 48 98                        	cdqe
+ 246938e: 48 69 c8 6b 29 82 74         	imul	rcx, rax, 0x7482296b
+ 2469395: 48 89 ca                     	mov	rdx, rcx
+ 2469398: 48 c1 ea 3f                  	shr	rdx, 0x3f
+ 246939c: 48 c1 e9 2e                  	shr	rcx, 0x2e
+ 24693a0: 01 d1                        	add	ecx, edx
+ 24693a2: 69 c9 a0 8c 00 00            	imul	ecx, ecx, 0x8ca0
+ 24693a8: 29 c8                        	sub	eax, ecx
+ 24693aa: eb 32                        	jmp	0x24693de <_Z10PlayerMainiPPc+0xed459e>
+ 24693ac: 8b 46 04                     	mov	eax, dword ptr [rsi + 0x4]
+ 24693af: 89 c1                        	mov	ecx, eax
+ 24693b1: 81 c1 28 23 00 00            	add	ecx, 0x2328
+ 24693b7: 48 63 c9                     	movsxd	rcx, ecx
+ 24693ba: 48 69 c9 6b 29 82 74         	imul	rcx, rcx, 0x7482296b
+ 24693c1: 48 89 ca                     	mov	rdx, rcx
+ 24693c4: 48 c1 ea 3f                  	shr	rdx, 0x3f
+ 24693c8: 48 c1 e9 2e                  	shr	rcx, 0x2e
+ 24693cc: 01 d1                        	add	ecx, edx
+ 24693ce: 69 c9 a0 8c 00 00            	imul	ecx, ecx, 0x8ca0
+ 24693d4: f7 d9                        	neg	ecx
+ 24693d6: 8d 04 08                     	lea	eax, [rax + rcx]
+ 24693d9: 05 28 23 00 00               	add	eax, 0x2328
+ 24693de: c1 e0 0f                     	shl	eax, 0xf
+ 24693e1: b9 d5 52 04 e9               	mov	ecx, 0xe90452d5
+ 24693e6: 48 0f af c8                  	imul	rcx, rax
+ 24693ea: 48 c1 e9 2e                  	shr	rcx, 0x2e
+ 24693ee: 66 89 0b                     	mov	word ptr [rbx], cx
+ 24693f1: eb 28                        	jmp	0x246941b <_Z10PlayerMainiPPc+0xed45db>
+ 24693f3: 66 c7 03 00 40               	mov	word ptr [rbx], 0x4000
+ 24693f8: eb 21                        	jmp	0x246941b <_Z10PlayerMainiPPc+0xed45db>
+ 24693fa: 85 c9                        	test	ecx, ecx
+ 24693fc: b8 00 40 00 00               	mov	eax, 0x4000
+ 2469401: b9 00 c0 00 00               	mov	ecx, 0xc000
+ 2469406: 0f 49 c8                     	cmovns	ecx, eax
+ 2469409: 66 89 0b                     	mov	word ptr [rbx], cx
+ 246940c: eb 0d                        	jmp	0x246941b <_Z10PlayerMainiPPc+0xed45db>
+ 246940e: c1 e8 10                     	shr	eax, 0x10
+ 2469411: f7 d0                        	not	eax
+ 2469413: 25 00 80 00 00               	and	eax, 0x8000
+ 2469418: 66 89 03                     	mov	word ptr [rbx], ax
+ 246941b: 31 c0                        	xor	eax, eax
+ 246941d: 5b                           	pop	rbx
+ 246941e: c3                           	ret
+ 246941f: 55                           	push	rbp
+ 2469420: 41 56                        	push	r14
+ 2469422: 53                           	push	rbx
+ 2469423: 48 8b 05 7e dc 1f 00         	mov	rax, qword ptr [rip + 0x1fdc7e] # 0x26670a8
+ 246942a: 31 ed                        	xor	ebp, ebp
+ 246942c: 48 85 c0                     	test	rax, rax
+ 246942f: 74 08                        	je	0x2469439 <_Z10PlayerMainiPPc+0xed45f9>
+ 2469431: ff 40 20                     	inc	dword ptr [rax + 0x20]
+ 2469434: e9 d4 01 00 00               	jmp	0x246960d <_Z10PlayerMainiPPc+0xed47cd>
+ 2469439: bf 01 00 00 00               	mov	edi, 0x1
+ 246943e: be 08 01 00 00               	mov	esi, 0x108
+ 2469443: ff 15 ef 44 10 00            	call	qword ptr [rip + 0x1044ef] # 0x256d938
+ 2469449: 48 85 c0                     	test	rax, rax
+ 246944c: 74 7e                        	je	0x24694cc <_Z10PlayerMainiPPc+0xed468c>
+ 246944e: f0                           	lock
+ 246944f: ff 05 fb 44 10 00            	inc	dword ptr [rip + 0x1044fb] # 0x256d950
+ 2469455: 48 89 05 4c dc 1f 00         	mov	qword ptr [rip + 0x1fdc4c], rax # 0x26670a8
+ 246945c: e8 b8 07 00 00               	call	0x2469c19 <_Z10PlayerMainiPPc+0xed4dd9>
+ 2469461: 31 ed                        	xor	ebp, ebp
+ 2469463: 48 8b 0d 3e dc 1f 00         	mov	rcx, qword ptr [rip + 0x1fdc3e] # 0x26670a8
+ 246946a: 85 c0                        	test	eax, eax
+ 246946c: 0f 84 f1 00 00 00            	je	0x2469563 <_Z10PlayerMainiPPc+0xed4723>
+ 2469472: 48 83 79 08 00               	cmp	qword ptr [rcx + 0x8], 0x0
+ 2469477: 0f 85 e6 00 00 00            	jne	0x2469563 <_Z10PlayerMainiPPc+0xed4723>
+ 246947d: 48 8d 3d 33 78 e5 fd         	lea	rdi, [rip - 0x21a87cd]  # 0x2c0cb7
+ 2469484: e8 8b f4 ff ff               	call	0x2468914 <_Z10PlayerMainiPPc+0xed3ad4>
+ 2469489: 48 8b 0d 18 dc 1f 00         	mov	rcx, qword ptr [rip + 0x1fdc18] # 0x26670a8
+ 2469490: 48 89 41 08                  	mov	qword ptr [rcx + 0x8], rax
+ 2469494: 48 85 c0                     	test	rax, rax
+ 2469497: 74 4a                        	je	0x24694e3 <_Z10PlayerMainiPPc+0xed46a3>
+ 2469499: e8 7b 07 00 00               	call	0x2469c19 <_Z10PlayerMainiPPc+0xed4dd9>
+ 246949e: 89 c5                        	mov	ebp, eax
+ 24694a0: 48 8b 0d 01 dc 1f 00         	mov	rcx, qword ptr [rip + 0x1fdc01] # 0x26670a8
+ 24694a7: 48 8b 79 08                  	mov	rdi, qword ptr [rcx + 0x8]
+ 24694ab: 85 c0                        	test	eax, eax
+ 24694ad: 79 38                        	jns	0x24694e7 <_Z10PlayerMainiPPc+0xed46a7>
+ 24694af: 48 85 ff                     	test	rdi, rdi
+ 24694b2: 74 14                        	je	0x24694c8 <_Z10PlayerMainiPPc+0xed4688>
+ 24694b4: e8 c7 c3 05 00               	call	0x24c5880 <dlclose@plt>
+ 24694b9: 48 8b 0d e8 db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdbe8] # 0x26670a8
+ 24694c0: 48 c7 41 08 00 00 00 00      	mov	qword ptr [rcx + 0x8], 0x0
+ 24694c8: 31 ff                        	xor	edi, edi
+ 24694ca: eb 1b                        	jmp	0x24694e7 <_Z10PlayerMainiPPc+0xed46a7>
+ 24694cc: 48 c7 05 d1 db 1f 00 00 00 00 00     	mov	qword ptr [rip + 0x1fdbd1], 0x0 # 0x26670a8
+ 24694d7: 48 8d 3d 3c d1 dd fd         	lea	rdi, [rip - 0x2222ec4]  # 0x24661a
+ 24694de: e9 1e 01 00 00               	jmp	0x2469601 <_Z10PlayerMainiPPc+0xed47c1>
+ 24694e3: 31 ff                        	xor	edi, edi
+ 24694e5: 31 ed                        	xor	ebp, ebp
+ 24694e7: 48 85 ff                     	test	rdi, rdi
+ 24694ea: 75 6f                        	jne	0x246955b <_Z10PlayerMainiPPc+0xed471b>
+ 24694ec: 31 db                        	xor	ebx, ebx
+ 24694ee: 4c 8d 35 bb 52 0e 00         	lea	r14, [rip + 0xe52bb]    # 0x254e7b0
+ 24694f5: 4a 8b 3c 33                  	mov	rdi, qword ptr [rbx + r14]
+ 24694f9: e8 16 f4 ff ff               	call	0x2468914 <_Z10PlayerMainiPPc+0xed3ad4>
+ 24694fe: 48 8b 0d a3 db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdba3] # 0x26670a8
+ 2469505: 48 89 41 08                  	mov	qword ptr [rcx + 0x8], rax
+ 2469509: 48 85 c0                     	test	rax, rax
+ 246950c: 74 38                        	je	0x2469546 <_Z10PlayerMainiPPc+0xed4706>
+ 246950e: e8 06 07 00 00               	call	0x2469c19 <_Z10PlayerMainiPPc+0xed4dd9>
+ 2469513: 89 c5                        	mov	ebp, eax
+ 2469515: 48 8b 0d 8c db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdb8c] # 0x26670a8
+ 246951c: 85 c0                        	test	eax, eax
+ 246951e: 79 30                        	jns	0x2469550 <_Z10PlayerMainiPPc+0xed4710>
+ 2469520: 48 85 c9                     	test	rcx, rcx
+ 2469523: 74 1f                        	je	0x2469544 <_Z10PlayerMainiPPc+0xed4704>
+ 2469525: 48 8b 79 08                  	mov	rdi, qword ptr [rcx + 0x8]
+ 2469529: 48 85 ff                     	test	rdi, rdi
+ 246952c: 74 18                        	je	0x2469546 <_Z10PlayerMainiPPc+0xed4706>
+ 246952e: e8 4d c3 05 00               	call	0x24c5880 <dlclose@plt>
+ 2469533: 48 8b 0d 6e db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdb6e] # 0x26670a8
+ 246953a: 48 c7 41 08 00 00 00 00      	mov	qword ptr [rcx + 0x8], 0x0
+ 2469542: eb 02                        	jmp	0x2469546 <_Z10PlayerMainiPPc+0xed4706>
+ 2469544: 31 c9                        	xor	ecx, ecx
+ 2469546: 48 83 c3 08                  	add	rbx, 0x8
+ 246954a: 48 83 fb 10                  	cmp	rbx, 0x10
+ 246954e: 75 a5                        	jne	0x24694f5 <_Z10PlayerMainiPPc+0xed46b5>
+ 2469550: 48 83 79 08 00               	cmp	qword ptr [rcx + 0x8], 0x0
+ 2469555: 0f 84 b9 00 00 00            	je	0x2469614 <_Z10PlayerMainiPPc+0xed47d4>
+ 246955b: 85 ed                        	test	ebp, ebp
+ 246955d: 0f 88 b6 00 00 00            	js	0x2469619 <_Z10PlayerMainiPPc+0xed47d9>
+ 2469563: ff 91 e8 00 00 00            	call	qword ptr [rcx + 0xe8]
+ 2469569: 48 8b 0d 38 db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdb38] # 0x26670a8
+ 2469570: 48 89 41 10                  	mov	qword ptr [rcx + 0x10], rax
+ 2469574: 48 85 c0                     	test	rax, rax
+ 2469577: 74 6e                        	je	0x24695e7 <_Z10PlayerMainiPPc+0xed47a7>
+ 2469579: 48 8d 35 c5 e7 d8 fd         	lea	rsi, [rip - 0x227183b]  # 0x1f7d45
+ 2469580: 48 89 c7                     	mov	rdi, rax
+ 2469583: ff 91 d0 00 00 00            	call	qword ptr [rcx + 0xd0]
+ 2469589: 48 8b 0d 18 db 1f 00         	mov	rcx, qword ptr [rip + 0x1fdb18] # 0x26670a8
+ 2469590: 48 89 41 18                  	mov	qword ptr [rcx + 0x18], rax
+ 2469594: 48 85 c0                     	test	rax, rax
+ 2469597: 74 5c                        	je	0x24695f5 <_Z10PlayerMainiPPc+0xed47b5>
+ 2469599: 48 8d 35 aa 38 e1 fd         	lea	rsi, [rip - 0x21ec756]  # 0x27ce4a
+ 24695a0: 48 89 c7                     	mov	rdi, rax
+ 24695a3: 31 d2                        	xor	edx, edx
+ 24695a5: ff 91 c0 00 00 00            	call	qword ptr [rcx + 0xc0]
+ 24695ab: 48 8b 05 f6 da 1f 00         	mov	rax, qword ptr [rip + 0x1fdaf6] # 0x26670a8
+ 24695b2: 48 8b 78 18                  	mov	rdi, qword ptr [rax + 0x18]
+ 24695b6: 48 8d 35 40 be dd fd         	lea	rsi, [rip - 0x22241c0]  # 0x2453fd
+ 24695bd: 31 d2                        	xor	edx, edx
+ 24695bf: ff 90 c0 00 00 00            	call	qword ptr [rax + 0xc0]
+ 24695c5: 48 8b 05 dc da 1f 00         	mov	rax, qword ptr [rip + 0x1fdadc] # 0x26670a8
+ 24695cc: 48 8b 78 18                  	mov	rdi, qword ptr [rax + 0x18]
+ 24695d0: ff 90 b8 00 00 00            	call	qword ptr [rax + 0xb8]
+ 24695d6: e8 20 01 00 00               	call	0x24696fb <_Z10PlayerMainiPPc+0xed48bb>
+ 24695db: 48 8b 05 c6 da 1f 00         	mov	rax, qword ptr [rip + 0x1fdac6] # 0x26670a8
+ 24695e2: e9 4a fe ff ff               	jmp	0x2469431 <_Z10PlayerMainiPPc+0xed45f1>
+ 24695e7: e8 34 00 00 00               	call	0x2469620 <_Z10PlayerMainiPPc+0xed47e0>
+ 24695ec: 48 8d 3d 0f b6 db fd         	lea	rdi, [rip - 0x22449f1]  # 0x224c02
+ 24695f3: eb 0c                        	jmp	0x2469601 <_Z10PlayerMainiPPc+0xed47c1>
+ 24695f5: e8 26 00 00 00               	call	0x2469620 <_Z10PlayerMainiPPc+0xed47e0>
+ 24695fa: 48 8d 3d 7e 0e d6 fd         	lea	rdi, [rip - 0x229f182]  # 0x1ca47f
+ 2469601: 31 c0                        	xor	eax, eax
+ 2469603: e8 69 df fc ff               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 2469608: bd ff ff ff ff               	mov	ebp, 0xffffffff
+ 246960d: 89 e8                        	mov	eax, ebp
+ 246960f: 5b                           	pop	rbx
+ 2469610: 41 5e                        	pop	r14
+ 2469612: 5d                           	pop	rbp
+ 2469613: c3                           	ret
+ 2469614: bd ff ff ff ff               	mov	ebp, 0xffffffff
+ 2469619: e8 02 00 00 00               	call	0x2469620 <_Z10PlayerMainiPPc+0xed47e0>
+ 246961e: eb ed                        	jmp	0x246960d <_Z10PlayerMainiPPc+0xed47cd>
+ 2469620: 50                           	push	rax
+ 2469621: 48 8b 05 80 da 1f 00         	mov	rax, qword ptr [rip + 0x1fda80] # 0x26670a8
+ 2469628: 48 85 c0                     	test	rax, rax
+ 246962b: 0f 84 c8 00 00 00            	je	0x24696f9 <_Z10PlayerMainiPPc+0xed48b9>
+ 2469631: 8b 48 20                     	mov	ecx, dword ptr [rax + 0x20]
+ 2469634: 8d 51 ff                     	lea	edx, [rcx - 0x1]
+ 2469637: 89 50 20                     	mov	dword ptr [rax + 0x20], edx
+ 246963a: 83 f9 01                     	cmp	ecx, 0x1
+ 246963d: 0f 8f b6 00 00 00            	jg	0x24696f9 <_Z10PlayerMainiPPc+0xed48b9>
+ 2469643: 48 8b 78 18                  	mov	rdi, qword ptr [rax + 0x18]
+ 2469647: 48 85 ff                     	test	rdi, rdi
+ 246964a: 74 15                        	je	0x2469661 <_Z10PlayerMainiPPc+0xed4821>
+ 246964c: ff 90 e0 00 00 00            	call	qword ptr [rax + 0xe0]
+ 2469652: 48 8b 05 4f da 1f 00         	mov	rax, qword ptr [rip + 0x1fda4f] # 0x26670a8
+ 2469659: 48 c7 40 18 00 00 00 00      	mov	qword ptr [rax + 0x18], 0x0
+ 2469661: 48 8b 78 10                  	mov	rdi, qword ptr [rax + 0x10]
+ 2469665: 48 85 ff                     	test	rdi, rdi
+ 2469668: 74 15                        	je	0x246967f <_Z10PlayerMainiPPc+0xed483f>
+ 246966a: ff 90 f0 00 00 00            	call	qword ptr [rax + 0xf0]
+ 2469670: 48 8b 05 31 da 1f 00         	mov	rax, qword ptr [rip + 0x1fda31] # 0x26670a8
+ 2469677: 48 c7 40 10 00 00 00 00      	mov	qword ptr [rax + 0x10], 0x0
+ 246967f: 48 8b 78 28                  	mov	rdi, qword ptr [rax + 0x28]
+ 2469683: 48 85 ff                     	test	rdi, rdi
+ 2469686: 74 2f                        	je	0x24696b7 <_Z10PlayerMainiPPc+0xed4877>
+ 2469688: 48 83 c0 28                  	add	rax, 0x28
+ 246968c: 48 89 c1                     	mov	rcx, rax
+ 246968f: 48 8b 47 08                  	mov	rax, qword ptr [rdi + 0x8]
+ 2469693: 48 89 01                     	mov	qword ptr [rcx], rax
+ 2469696: ff 15 ac 42 10 00            	call	qword ptr [rip + 0x1042ac] # 0x256d948
+ 246969c: f0                           	lock
+ 246969d: ff 0d ad 42 10 00            	dec	dword ptr [rip + 0x1042ad] # 0x256d950
+ 24696a3: 48 8b 05 fe d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd9fe] # 0x26670a8
+ 24696aa: 48 8d 48 28                  	lea	rcx, [rax + 0x28]
+ 24696ae: 48 8b 78 28                  	mov	rdi, qword ptr [rax + 0x28]
+ 24696b2: 48 85 ff                     	test	rdi, rdi
+ 24696b5: 75 d8                        	jne	0x246968f <_Z10PlayerMainiPPc+0xed484f>
+ 24696b7: 48 85 c0                     	test	rax, rax
+ 24696ba: 74 1d                        	je	0x24696d9 <_Z10PlayerMainiPPc+0xed4899>
+ 24696bc: 48 8b 78 08                  	mov	rdi, qword ptr [rax + 0x8]
+ 24696c0: 48 85 ff                     	test	rdi, rdi
+ 24696c3: 74 19                        	je	0x24696de <_Z10PlayerMainiPPc+0xed489e>
+ 24696c5: e8 b6 c1 05 00               	call	0x24c5880 <dlclose@plt>
+ 24696ca: 48 8b 05 d7 d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd9d7] # 0x26670a8
+ 24696d1: 48 c7 40 08 00 00 00 00      	mov	qword ptr [rax + 0x8], 0x0
+ 24696d9: 48 85 c0                     	test	rax, rax
+ 24696dc: 74 10                        	je	0x24696ee <_Z10PlayerMainiPPc+0xed48ae>
+ 24696de: 48 89 c7                     	mov	rdi, rax
+ 24696e1: ff 15 61 42 10 00            	call	qword ptr [rip + 0x104261] # 0x256d948
+ 24696e7: f0                           	lock
+ 24696e8: ff 0d 62 42 10 00            	dec	dword ptr [rip + 0x104262] # 0x256d950
+ 24696ee: 48 c7 05 af d9 1f 00 00 00 00 00     	mov	qword ptr [rip + 0x1fd9af], 0x0 # 0x26670a8
+ 24696f9: 58                           	pop	rax
+ 24696fa: c3                           	ret
+ 24696fb: 41 57                        	push	r15
+ 24696fd: 41 56                        	push	r14
+ 24696ff: 53                           	push	rbx
+ 2469700: 48 8b 05 a1 d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd9a1] # 0x26670a8
+ 2469707: 48 85 c0                     	test	rax, rax
+ 246970a: 0f 84 dc 00 00 00            	je	0x24697ec <_Z10PlayerMainiPPc+0xed49ac>
+ 2469710: 48 8b 78 10                  	mov	rdi, qword ptr [rax + 0x10]
+ 2469714: ff 90 90 00 00 00            	call	qword ptr [rax + 0x90]
+ 246971a: 48 85 c0                     	test	rax, rax
+ 246971d: 0f 84 cf 00 00 00            	je	0x24697f2 <_Z10PlayerMainiPPc+0xed49b2>
+ 2469723: 49 89 c6                     	mov	r14, rax
+ 2469726: 48 8b 05 7b d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd97b] # 0x26670a8
+ 246972d: 48 8d 35 16 37 e1 fd         	lea	rsi, [rip - 0x21ec8ea]  # 0x27ce4a
+ 2469734: 4c 89 f7                     	mov	rdi, r14
+ 2469737: ff 90 80 00 00 00            	call	qword ptr [rax + 0x80]
+ 246973d: 48 8b 05 64 d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd964] # 0x26670a8
+ 2469744: 48 8d 35 b2 bc dd fd         	lea	rsi, [rip - 0x222434e]  # 0x2453fd
+ 246974b: 4c 89 f7                     	mov	rdi, r14
+ 246974e: ff 90 80 00 00 00            	call	qword ptr [rax + 0x80]
+ 2469754: 48 8b 05 4d d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd94d] # 0x26670a8
+ 246975b: 4c 89 f7                     	mov	rdi, r14
+ 246975e: ff 90 98 00 00 00            	call	qword ptr [rax + 0x98]
+ 2469764: 48 8b 05 3d d9 1f 00         	mov	rax, qword ptr [rip + 0x1fd93d] # 0x26670a8
+ 246976b: 4c 89 f7                     	mov	rdi, r14
+ 246976e: ff 90 88 00 00 00            	call	qword ptr [rax + 0x88]
+ 2469774: 48 8b 0d 2d d9 1f 00         	mov	rcx, qword ptr [rip + 0x1fd92d] # 0x26670a8
+ 246977b: 48 85 c0                     	test	rax, rax
+ 246977e: 74 5e                        	je	0x24697de <_Z10PlayerMainiPPc+0xed499e>
+ 2469780: 49 89 c7                     	mov	r15, rax
+ 2469783: 4c 89 ff                     	mov	rdi, r15
+ 2469786: ff 91 a8 00 00 00            	call	qword ptr [rcx + 0xa8]
+ 246978c: 48 8b 0d 15 d9 1f 00         	mov	rcx, qword ptr [rip + 0x1fd915] # 0x26670a8
+ 2469793: 48 8b 79 10                  	mov	rdi, qword ptr [rcx + 0x10]
+ 2469797: 48 89 c6                     	mov	rsi, rax
+ 246979a: ff 51 68                     	call	qword ptr [rcx + 0x68]
+ 246979d: 48 85 c0                     	test	rax, rax
+ 24697a0: 74 1d                        	je	0x24697bf <_Z10PlayerMainiPPc+0xed497f>
+ 24697a2: 48 89 c3                     	mov	rbx, rax
+ 24697a5: bf 01 00 00 00               	mov	edi, 0x1
+ 24697aa: 48 89 c6                     	mov	rsi, rax
+ 24697ad: e8 58 00 00 00               	call	0x246980a <_Z10PlayerMainiPPc+0xed49ca>
+ 24697b2: 48 8b 05 ef d8 1f 00         	mov	rax, qword ptr [rip + 0x1fd8ef] # 0x26670a8
+ 24697b9: 48 89 df                     	mov	rdi, rbx
+ 24697bc: ff 50 70                     	call	qword ptr [rax + 0x70]
+ 24697bf: 48 8b 05 e2 d8 1f 00         	mov	rax, qword ptr [rip + 0x1fd8e2] # 0x26670a8
+ 24697c6: 4c 89 ff                     	mov	rdi, r15
+ 24697c9: ff 90 b0 00 00 00            	call	qword ptr [rax + 0xb0]
+ 24697cf: 49 89 c7                     	mov	r15, rax
+ 24697d2: 48 8b 0d cf d8 1f 00         	mov	rcx, qword ptr [rip + 0x1fd8cf] # 0x26670a8
+ 24697d9: 48 85 c0                     	test	rax, rax
+ 24697dc: 75 a5                        	jne	0x2469783 <_Z10PlayerMainiPPc+0xed4943>
+ 24697de: 4c 89 f7                     	mov	rdi, r14
+ 24697e1: 5b                           	pop	rbx
+ 24697e2: 41 5e                        	pop	r14
+ 24697e4: 41 5f                        	pop	r15
+ 24697e6: ff a1 a0 00 00 00            	jmp	qword ptr [rcx + 0xa0]
+ 24697ec: 5b                           	pop	rbx
+ 24697ed: 41 5e                        	pop	r14
+ 24697ef: 41 5f                        	pop	r15
+ 24697f1: c3                           	ret
+ 24697f2: e8 29 fe ff ff               	call	0x2469620 <_Z10PlayerMainiPPc+0xed47e0>
+ 24697f7: 48 8d 3d 2f f7 da fd         	lea	rdi, [rip - 0x22508d1]  # 0x218f2d
+ 24697fe: 31 c0                        	xor	eax, eax
+ 2469800: 5b                           	pop	rbx
+ 2469801: 41 5e                        	pop	r14
+ 2469803: 41 5f                        	pop	r15
+ 2469805: e9 67 dd fc ff               	jmp	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 246980a: 55                           	push	rbp
+ 246980b: 41 57                        	push	r15
+ 246980d: 41 56                        	push	r14
+ 246980f: 41 55                        	push	r13
+ 2469811: 41 54                        	push	r12
+ 2469813: 53                           	push	rbx
+ 2469814: 48 81 ec 88 00 00 00         	sub	rsp, 0x88
+ 246981b: 49 89 f6                     	mov	r14, rsi
+ 246981e: 41 89 ff                     	mov	r15d, edi
+ 2469821: 48 8b 05 80 d8 1f 00         	mov	rax, qword ptr [rip + 0x1fd880] # 0x26670a8
+ 2469828: 48 89 f7                     	mov	rdi, rsi
+ 246982b: ff 50 40                     	call	qword ptr [rax + 0x40]
+ 246982e: 48 85 c0                     	test	rax, rax
+ 2469831: 0f 84 de 02 00 00            	je	0x2469b15 <_Z10PlayerMainiPPc+0xed4cd5>
+ 2469837: 49 89 c5                     	mov	r13, rax
+ 246983a: 48 8b 05 67 d8 1f 00         	mov	rax, qword ptr [rip + 0x1fd867] # 0x26670a8
+ 2469841: 4c 89 f7                     	mov	rdi, r14
+ 2469844: ff 50 48                     	call	qword ptr [rax + 0x48]
+ 2469847: 48 89 c5                     	mov	rbp, rax
+ 246984a: 48 8d 35 ac bb dd fd         	lea	rsi, [rip - 0x2224454]  # 0x2453fd
+ 2469851: 48 89 c7                     	mov	rdi, rax
+ 2469854: e8 e7 bd 05 00               	call	0x24c5640 <strcmp@plt>
+ 2469859: 85 c0                        	test	eax, eax
+ 246985b: 74 4c                        	je	0x24698a9 <_Z10PlayerMainiPPc+0xed4a69>
+ 246985d: 48 8d 35 e6 35 e1 fd         	lea	rsi, [rip - 0x21eca1a]  # 0x27ce4a
+ 2469864: 48 89 ef                     	mov	rdi, rbp
+ 2469867: e8 d4 bd 05 00               	call	0x24c5640 <strcmp@plt>
+ 246986c: 85 c0                        	test	eax, eax
+ 246986e: 0f 85 a1 02 00 00            	jne	0x2469b15 <_Z10PlayerMainiPPc+0xed4cd5>
+ 2469874: 48 8b 05 2d d8 1f 00         	mov	rax, qword ptr [rip + 0x1fd82d] # 0x26670a8
+ 246987b: 48 8d 35 b3 db df fd         	lea	rsi, [rip - 0x220244d]  # 0x267435
+ 2469882: 4c 89 f7                     	mov	rdi, r14
+ 2469885: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 2469888: 48 85 c0                     	test	rax, rax
+ 246988b: 74 26                        	je	0x24698b3 <_Z10PlayerMainiPPc+0xed4a73>
+ 246988d: 48 8d 35 bc 35 e1 fd         	lea	rsi, [rip - 0x21eca44]  # 0x27ce50
+ 2469894: 48 89 c7                     	mov	rdi, rax
+ 2469897: e8 a4 bd 05 00               	call	0x24c5640 <strcmp@plt>
+ 246989c: 31 ed                        	xor	ebp, ebp
+ 246989e: 85 c0                        	test	eax, eax
+ 24698a0: 40 0f 94 c5                  	sete	bpl
+ 24698a4: c1 e5 02                     	shl	ebp, 0x2
+ 24698a7: eb 0c                        	jmp	0x24698b5 <_Z10PlayerMainiPPc+0xed4a75>
+ 24698a9: bd 08 00 00 00               	mov	ebp, 0x8
+ 24698ae: e9 42 02 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 24698b3: 31 ed                        	xor	ebp, ebp
+ 24698b5: 48 8b 05 ec d7 1f 00         	mov	rax, qword ptr [rip + 0x1fd7ec] # 0x26670a8
+ 24698bc: 48 8d 35 d9 90 d2 fd         	lea	rsi, [rip - 0x22d6f27]  # 0x19299c
+ 24698c3: 4c 89 f7                     	mov	rdi, r14
+ 24698c6: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 24698c9: 49 89 c4                     	mov	r12, rax
+ 24698cc: 48 8d 3d 43 a8 d4 fd         	lea	rdi, [rip - 0x22b57bd]  # 0x1b4116
+ 24698d3: e8 aa de fc ff               	call	0x2437782 <_Z10PlayerMainiPPc+0xea2942>
+ 24698d8: 48 89 c7                     	mov	rdi, rax
+ 24698db: be 01 00 00 00               	mov	esi, 0x1
+ 24698e0: e8 f9 de fc ff               	call	0x24377de <_Z10PlayerMainiPPc+0xea299e>
+ 24698e5: 4d 85 e4                     	test	r12, r12
+ 24698e8: 74 1d                        	je	0x2469907 <_Z10PlayerMainiPPc+0xed4ac7>
+ 24698ea: 85 c0                        	test	eax, eax
+ 24698ec: 74 19                        	je	0x2469907 <_Z10PlayerMainiPPc+0xed4ac7>
+ 24698ee: 48 8d 35 5b 35 e1 fd         	lea	rsi, [rip - 0x21ecaa5]  # 0x27ce50
+ 24698f5: 4c 89 e7                     	mov	rdi, r12
+ 24698f8: e8 43 bd 05 00               	call	0x24c5640 <strcmp@plt>
+ 24698fd: 85 c0                        	test	eax, eax
+ 24698ff: b8 04 00 00 00               	mov	eax, 0x4
+ 2469904: 0f 44 e8                     	cmove	ebp, eax
+ 2469907: 48 8b 05 9a d7 1f 00         	mov	rax, qword ptr [rip + 0x1fd79a] # 0x26670a8
+ 246990e: 48 8d 35 a7 78 de fd         	lea	rsi, [rip - 0x2218759]  # 0x2511bc
+ 2469915: 4c 89 f7                     	mov	rdi, r14
+ 2469918: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 246991b: 48 85 c0                     	test	rax, rax
+ 246991e: 74 18                        	je	0x2469938 <_Z10PlayerMainiPPc+0xed4af8>
+ 2469920: 48 8d 35 29 35 e1 fd         	lea	rsi, [rip - 0x21ecad7]  # 0x27ce50
+ 2469927: 48 89 c7                     	mov	rdi, rax
+ 246992a: e8 11 bd 05 00               	call	0x24c5640 <strcmp@plt>
+ 246992f: 31 c9                        	xor	ecx, ecx
+ 2469931: 85 c0                        	test	eax, eax
+ 2469933: 0f 94 c1                     	sete	cl
+ 2469936: 09 cd                        	or	ebp, ecx
+ 2469938: 48 8b 05 69 d7 1f 00         	mov	rax, qword ptr [rip + 0x1fd769] # 0x26670a8
+ 246993f: 48 8d 35 89 11 e4 fd         	lea	rsi, [rip - 0x21bee77]  # 0x2aaacf
+ 2469946: 4c 89 f7                     	mov	rdi, r14
+ 2469949: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 246994c: 48 85 c0                     	test	rax, rax
+ 246994f: 74 17                        	je	0x2469968 <_Z10PlayerMainiPPc+0xed4b28>
+ 2469951: 48 8d 35 f8 34 e1 fd         	lea	rsi, [rip - 0x21ecb08]  # 0x27ce50
+ 2469958: 48 89 c7                     	mov	rdi, rax
+ 246995b: e8 e0 bc 05 00               	call	0x24c5640 <strcmp@plt>
+ 2469960: 8d 4d 10                     	lea	ecx, [rbp + 0x10]
+ 2469963: 85 c0                        	test	eax, eax
+ 2469965: 0f 44 e9                     	cmove	ebp, ecx
+ 2469968: 48 8b 05 39 d7 1f 00         	mov	rax, qword ptr [rip + 0x1fd739] # 0x26670a8
+ 246996f: 48 8d 35 be a7 d4 fd         	lea	rsi, [rip - 0x22b5842]  # 0x1b4134
+ 2469976: 4c 89 f7                     	mov	rdi, r14
+ 2469979: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 246997c: 48 85 c0                     	test	rax, rax
+ 246997f: 74 13                        	je	0x2469994 <_Z10PlayerMainiPPc+0xed4b54>
+ 2469981: 48 8d 35 c8 34 e1 fd         	lea	rsi, [rip - 0x21ecb38]  # 0x27ce50
+ 2469988: 48 89 c7                     	mov	rdi, rax
+ 246998b: e8 b0 bc 05 00               	call	0x24c5640 <strcmp@plt>
+ 2469990: 85 c0                        	test	eax, eax
+ 2469992: 74 6f                        	je	0x2469a03 <_Z10PlayerMainiPPc+0xed4bc3>
+ 2469994: 85 ed                        	test	ebp, ebp
+ 2469996: 0f 85 59 01 00 00            	jne	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 246999c: 48 8b 05 05 d7 1f 00         	mov	rax, qword ptr [rip + 0x1fd705] # 0x26670a8
+ 24699a3: 48 8d 35 97 a7 d4 fd         	lea	rsi, [rip - 0x22b5869]  # 0x1b4141
+ 24699aa: 4c 89 f7                     	mov	rdi, r14
+ 24699ad: ff 50 58                     	call	qword ptr [rax + 0x58]
+ 24699b0: 48 85 c0                     	test	rax, rax
+ 24699b3: 74 56                        	je	0x2469a0b <_Z10PlayerMainiPPc+0xed4bcb>
+ 24699b5: 48 89 c5                     	mov	rbp, rax
+ 24699b8: 48 8d 35 f4 8f d2 fd         	lea	rsi, [rip - 0x22d700c]  # 0x1929b3
+ 24699bf: 48 89 c7                     	mov	rdi, rax
+ 24699c2: e8 79 bc 05 00               	call	0x24c5640 <strcmp@plt>
+ 24699c7: 85 c0                        	test	eax, eax
+ 24699c9: 0f 84 85 00 00 00            	je	0x2469a54 <_Z10PlayerMainiPPc+0xed4c14>
+ 24699cf: 48 8d 35 99 26 df fd         	lea	rsi, [rip - 0x220d967]  # 0x25c06f
+ 24699d6: 48 89 ef                     	mov	rdi, rbp
+ 24699d9: e8 62 bc 05 00               	call	0x24c5640 <strcmp@plt>
+ 24699de: 85 c0                        	test	eax, eax
+ 24699e0: 74 7c                        	je	0x2469a5e <_Z10PlayerMainiPPc+0xed4c1e>
+ 24699e2: 48 8d 35 1a ba dd fd         	lea	rsi, [rip - 0x22245e6]  # 0x245403
+ 24699e9: 48 89 ef                     	mov	rdi, rbp
+ 24699ec: e8 4f bc 05 00               	call	0x24c5640 <strcmp@plt>
+ 24699f1: 85 c0                        	test	eax, eax
+ 24699f3: 0f 85 1c 01 00 00            	jne	0x2469b15 <_Z10PlayerMainiPPc+0xed4cd5>
+ 24699f9: bd 02 00 00 00               	mov	ebp, 0x2
+ 24699fe: e9 f2 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a03: 83 cd 02                     	or	ebp, 0x2
+ 2469a06: e9 ea 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a0b: 4d 85 f6                     	test	r14, r14
+ 2469a0e: 74 58                        	je	0x2469a68 <_Z10PlayerMainiPPc+0xed4c28>
+ 2469a10: 4c 8d 25 33 e3 d8 fd         	lea	r12, [rip - 0x2271ccd]  # 0x1f7d4a
+ 2469a17: 48 8d 1d 2c 34 e1 fd         	lea	rbx, [rip - 0x21ecbd4]  # 0x27ce4a
+ 2469a1e: 48 8b 05 83 d6 1f 00         	mov	rax, qword ptr [rip + 0x1fd683] # 0x26670a8
+ 2469a25: 4c 89 f7                     	mov	rdi, r14
+ 2469a28: 4c 89 e6                     	mov	rsi, r12
+ 2469a2b: ff 50 60                     	call	qword ptr [rax + 0x60]
+ 2469a2e: 48 85 c0                     	test	rax, rax
+ 2469a31: 75 3c                        	jne	0x2469a6f <_Z10PlayerMainiPPc+0xed4c2f>
+ 2469a33: 48 8b 05 6e d6 1f 00         	mov	rax, qword ptr [rip + 0x1fd66e] # 0x26670a8
+ 2469a3a: 31 ed                        	xor	ebp, ebp
+ 2469a3c: 4c 89 f7                     	mov	rdi, r14
+ 2469a3f: 48 89 de                     	mov	rsi, rbx
+ 2469a42: 31 d2                        	xor	edx, edx
+ 2469a44: ff 50 50                     	call	qword ptr [rax + 0x50]
+ 2469a47: 49 89 c6                     	mov	r14, rax
+ 2469a4a: 48 85 c0                     	test	rax, rax
+ 2469a4d: 75 cf                        	jne	0x2469a1e <_Z10PlayerMainiPPc+0xed4bde>
+ 2469a4f: e9 a1 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a54: bd 04 00 00 00               	mov	ebp, 0x4
+ 2469a59: e9 97 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a5e: bd 01 00 00 00               	mov	ebp, 0x1
+ 2469a63: e9 8d 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a68: 31 ed                        	xor	ebp, ebp
+ 2469a6a: e9 86 00 00 00               	jmp	0x2469af5 <_Z10PlayerMainiPPc+0xed4cb5>
+ 2469a6f: 48 8d 35 d4 e2 d8 fd         	lea	rsi, [rip - 0x2271d2c]  # 0x1f7d4a
+ 2469a76: 48 8d 54 24 08               	lea	rdx, [rsp + 0x8]
+ 2469a7b: b9 01 00 00 00               	mov	ecx, 0x1
+ 2469a80: 4c 89 f7                     	mov	rdi, r14
+ 2469a83: e8 9f 00 00 00               	call	0x2469b27 <_Z10PlayerMainiPPc+0xed4ce7>
+ 2469a88: 48 8d 35 78 b9 dd fd         	lea	rsi, [rip - 0x2224688]  # 0x245407
+ 2469a8f: 48 8d 5c 24 18               	lea	rbx, [rsp + 0x18]
+ 2469a94: b9 01 00 00 00               	mov	ecx, 0x1
+ 2469a99: 4c 89 f7                     	mov	rdi, r14
+ 2469a9c: 48 89 da                     	mov	rdx, rbx
+ 2469a9f: e8 83 00 00 00               	call	0x2469b27 <_Z10PlayerMainiPPc+0xed4ce7>
+ 2469aa4: 48 8d 35 75 75 d7 fd         	lea	rsi, [rip - 0x2288a8b]  # 0x1e1020
+ 2469aab: 48 8d 6c 24 10               	lea	rbp, [rsp + 0x10]
+ 2469ab0: b9 01 00 00 00               	mov	ecx, 0x1
+ 2469ab5: 4c 89 f7                     	mov	rdi, r14
+ 2469ab8: 48 89 ea                     	mov	rdx, rbp
+ 2469abb: e8 67 00 00 00               	call	0x2469b27 <_Z10PlayerMainiPPc+0xed4ce7>
+ 2469ac0: 48 8d 35 d5 34 d3 fd         	lea	rsi, [rip - 0x22ccb2b]  # 0x19cf9c
+ 2469ac7: 4c 8d 64 24 20               	lea	r12, [rsp + 0x20]
+ 2469acc: b9 0c 00 00 00               	mov	ecx, 0xc
+ 2469ad1: 4c 89 f7                     	mov	rdi, r14
+ 2469ad4: 4c 89 e2                     	mov	rdx, r12
+ 2469ad7: e8 4b 00 00 00               	call	0x2469b27 <_Z10PlayerMainiPPc+0xed4ce7>
+ 2469adc: 48 8d 44 24 08               	lea	rax, [rsp + 0x8]
+ 2469ae1: 48 8b 38                     	mov	rdi, qword ptr [rax]
+ 2469ae4: 48 8b 33                     	mov	rsi, qword ptr [rbx]
+ 2469ae7: 48 8b 4d 00                  	mov	rcx, qword ptr [rbp]
+ 2469aeb: 4c 89 e2                     	mov	rdx, r12
+ 2469aee: e8 c7 05 00 00               	call	0x246a0ba <_Z10PlayerMainiPPc+0xed527a>
+ 2469af3: 89 c5                        	mov	ebp, eax
+ 2469af5: 48 8b 05 ac d5 1f 00         	mov	rax, qword ptr [rip + 0x1fd5ac] # 0x26670a8
+ 2469afc: 48 8b 58 28                  	mov	rbx, qword ptr [rax + 0x28]
+ 2469b00: 48 85 db                     	test	rbx, rbx
+ 2469b03: 74 10                        	je	0x2469b15 <_Z10PlayerMainiPPc+0xed4cd5>
+ 2469b05: 44 89 ff                     	mov	edi, r15d
+ 2469b08: 89 ee                        	mov	esi, ebp
+ 2469b0a: 4c 89 ea                     	mov	rdx, r13
+ 2469b0d: ff 13                        	call	qword ptr [rbx]
+ 2469b0f: 48 8b 5b 08                  	mov	rbx, qword ptr [rbx + 0x8]
+ 2469b13: eb eb                        	jmp	0x2469b00 <_Z10PlayerMainiPPc+0xed4cc0>
+ 2469b15: 48 81 c4 88 00 00 00         	add	rsp, 0x88
+ 2469b1c: 5b                           	pop	rbx
+ 2469b1d: 41 5c                        	pop	r12
+ 2469b1f: 41 5d                        	pop	r13
+ 2469b21: 41 5e                        	pop	r14
+ 2469b23: 41 5f                        	pop	r15
+ 2469b25: 5d                           	pop	rbp
+ 2469b26: c3                           	ret
+ 2469b27: 41 57                        	push	r15
+ 2469b29: 41 56                        	push	r14
+ 2469b2b: 41 55                        	push	r13
+ 2469b2d: 41 54                        	push	r12
+ 2469b2f: 53                           	push	rbx
+ 2469b30: 48 81 ec 00 10 00 00         	sub	rsp, 0x1000
+ 2469b37: 49 89 cf                     	mov	r15, rcx
+ 2469b3a: 49 89 d6                     	mov	r14, rdx
+ 2469b3d: 49 89 f4                     	mov	r12, rsi
+ 2469b40: 48 89 fb                     	mov	rbx, rdi
+ 2469b43: 48 8d 14 cd 00 00 00 00      	lea	rdx, [8*rcx]
+ 2469b4b: 4c 89 f7                     	mov	rdi, r14
+ 2469b4e: 31 f6                        	xor	esi, esi
+ 2469b50: e8 3b b7 05 00               	call	0x24c5290 <memset@plt>
+ 2469b55: 48 8b 05 4c d5 1f 00         	mov	rax, qword ptr [rip + 0x1fd54c] # 0x26670a8
+ 2469b5c: 48 89 df                     	mov	rdi, rbx
+ 2469b5f: 4c 89 e6                     	mov	rsi, r12
+ 2469b62: ff 50 60                     	call	qword ptr [rax + 0x60]
+ 2469b65: 48 85 c0                     	test	rax, rax
+ 2469b68: 0f 84 9a 00 00 00            	je	0x2469c08 <_Z10PlayerMainiPPc+0xed4dc8>
+ 2469b6e: 49 89 c4                     	mov	r12, rax
+ 2469b71: 48 89 c7                     	mov	rdi, rax
+ 2469b74: e8 47 b9 05 00               	call	0x24c54c0 <strlen@plt>
+ 2469b79: bb ff 0f 00 00               	mov	ebx, 0xfff
+ 2469b7e: 48 39 d8                     	cmp	rax, rbx
+ 2469b81: 48 0f 42 d8                  	cmovb	rbx, rax
+ 2469b85: 49 89 e5                     	mov	r13, rsp
+ 2469b88: 4c 89 ef                     	mov	rdi, r13
+ 2469b8b: 4c 89 e6                     	mov	rsi, r12
+ 2469b8e: 48 89 da                     	mov	rdx, rbx
+ 2469b91: e8 1a b7 05 00               	call	0x24c52b0 <memcpy@plt>
+ 2469b96: c6 04 1c 00                  	mov	byte ptr [rsp + rbx], 0x0
+ 2469b9a: 4c 89 ef                     	mov	rdi, r13
+ 2469b9d: be 20 00 00 00               	mov	esi, 0x20
+ 2469ba2: e8 a9 bf 05 00               	call	0x24c5b50 <strrchr@plt>
+ 2469ba7: 48 85 c0                     	test	rax, rax
+ 2469baa: 74 42                        	je	0x2469bee <_Z10PlayerMainiPPc+0xed4dae>
+ 2469bac: 49 89 c5                     	mov	r13, rax
+ 2469baf: 31 db                        	xor	ebx, ebx
+ 2469bb1: 49 89 e4                     	mov	r12, rsp
+ 2469bb4: 49 8d 7d 01                  	lea	rdi, [r13 + 0x1]
+ 2469bb8: 31 f6                        	xor	esi, esi
+ 2469bba: ba 10 00 00 00               	mov	edx, 0x10
+ 2469bbf: e8 ec be 05 00               	call	0x24c5ab0 <strtoul@plt>
+ 2469bc4: 4c 39 fb                     	cmp	rbx, r15
+ 2469bc7: 73 04                        	jae	0x2469bcd <_Z10PlayerMainiPPc+0xed4d8d>
+ 2469bc9: 49 89 04 de                  	mov	qword ptr [r14 + 8*rbx], rax
+ 2469bcd: 48 ff c3                     	inc	rbx
+ 2469bd0: 41 c6 45 00 00               	mov	byte ptr [r13], 0x0
+ 2469bd5: 4c 89 e7                     	mov	rdi, r12
+ 2469bd8: be 20 00 00 00               	mov	esi, 0x20
+ 2469bdd: e8 6e bf 05 00               	call	0x24c5b50 <strrchr@plt>
+ 2469be2: 49 89 c5                     	mov	r13, rax
+ 2469be5: 48 85 c0                     	test	rax, rax
+ 2469be8: 75 ca                        	jne	0x2469bb4 <_Z10PlayerMainiPPc+0xed4d74>
+ 2469bea: 89 db                        	mov	ebx, ebx
+ 2469bec: eb 02                        	jmp	0x2469bf0 <_Z10PlayerMainiPPc+0xed4db0>
+ 2469bee: 31 db                        	xor	ebx, ebx
+ 2469bf0: 48 89 e7                     	mov	rdi, rsp
+ 2469bf3: 31 f6                        	xor	esi, esi
+ 2469bf5: ba 10 00 00 00               	mov	edx, 0x10
+ 2469bfa: e8 b1 be 05 00               	call	0x24c5ab0 <strtoul@plt>
+ 2469bff: 4c 39 fb                     	cmp	rbx, r15
+ 2469c02: 73 04                        	jae	0x2469c08 <_Z10PlayerMainiPPc+0xed4dc8>
+ 2469c04: 49 89 04 de                  	mov	qword ptr [r14 + 8*rbx], rax
+ 2469c08: 48 81 c4 00 10 00 00         	add	rsp, 0x1000
+ 2469c0f: 5b                           	pop	rbx
+ 2469c10: 41 5c                        	pop	r12
+ 2469c12: 41 5d                        	pop	r13
+ 2469c14: 41 5e                        	pop	r14
+ 2469c16: 41 5f                        	pop	r15
+ 2469c18: c3                           	ret
+ 2469c19: 55                           	push	rbp
+ 2469c1a: 53                           	push	rbx
+ 2469c1b: 50                           	push	rax
+ 2469c1c: 48 8b 1d 85 d4 1f 00         	mov	rbx, qword ptr [rip + 0x1fd485] # 0x26670a8
+ 2469c23: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469c27: 48 8d 35 b6 0e e4 fd         	lea	rsi, [rip - 0x21bf14a]  # 0x2aaae4
+ 2469c2e: e8 1f ee ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469c33: 48 89 43 38                  	mov	qword ptr [rbx + 0x38], rax
+ 2469c37: bd ff ff ff ff               	mov	ebp, 0xffffffff
+ 2469c3c: 48 85 c0                     	test	rax, rax
+ 2469c3f: 0f 84 a8 03 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469c45: 48 8b 1d 5c d4 1f 00         	mov	rbx, qword ptr [rip + 0x1fd45c] # 0x26670a8
+ 2469c4c: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469c50: 48 8d 35 3e 29 e6 fd         	lea	rsi, [rip - 0x219d6c2]  # 0x2cc595
+ 2469c57: e8 f6 ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469c5c: 48 89 43 40                  	mov	qword ptr [rbx + 0x40], rax
+ 2469c60: 48 85 c0                     	test	rax, rax
+ 2469c63: 0f 84 84 03 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469c69: 48 8b 1d 38 d4 1f 00         	mov	rbx, qword ptr [rip + 0x1fd438] # 0x26670a8
+ 2469c70: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469c74: 48 8d 35 99 af db fd         	lea	rsi, [rip - 0x2245067]  # 0x224c14
+ 2469c7b: e8 d2 ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469c80: 48 89 43 48                  	mov	qword ptr [rbx + 0x48], rax
+ 2469c84: 48 85 c0                     	test	rax, rax
+ 2469c87: 0f 84 60 03 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469c8d: 48 8b 1d 14 d4 1f 00         	mov	rbx, qword ptr [rip + 0x1fd414] # 0x26670a8
+ 2469c94: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469c98: 48 8d 35 c4 ee d3 fd         	lea	rsi, [rip - 0x22c113c]  # 0x1a8b63
+ 2469c9f: e8 ae ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469ca4: 48 89 43 50                  	mov	qword ptr [rbx + 0x50], rax
+ 2469ca8: 48 85 c0                     	test	rax, rax
+ 2469cab: 0f 84 3c 03 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469cb1: 48 8b 1d f0 d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd3f0] # 0x26670a8
+ 2469cb8: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469cbc: 48 8d 35 71 a7 e2 fd         	lea	rsi, [rip - 0x21d588f]  # 0x294434
+ 2469cc3: e8 8a ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469cc8: 48 89 43 58                  	mov	qword ptr [rbx + 0x58], rax
+ 2469ccc: 48 85 c0                     	test	rax, rax
+ 2469ccf: 0f 84 18 03 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469cd5: 48 8b 1d cc d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd3cc] # 0x26670a8
+ 2469cdc: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469ce0: 48 8d 35 41 b7 d6 fd         	lea	rsi, [rip - 0x22948bf]  # 0x1d5428
+ 2469ce7: e8 66 ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469cec: 48 89 43 60                  	mov	qword ptr [rbx + 0x60], rax
+ 2469cf0: 48 85 c0                     	test	rax, rax
+ 2469cf3: 0f 84 f4 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469cf9: 48 8b 1d a8 d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd3a8] # 0x26670a8
+ 2469d00: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469d04: 48 8d 35 c0 74 de fd         	lea	rsi, [rip - 0x2218b40]  # 0x2511cb
+ 2469d0b: e8 42 ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469d10: 48 89 43 68                  	mov	qword ptr [rbx + 0x68], rax
+ 2469d14: 48 85 c0                     	test	rax, rax
+ 2469d17: 0f 84 d0 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469d1d: 48 8b 1d 84 d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd384] # 0x26670a8
+ 2469d24: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469d28: 48 8d 35 f5 2c d8 fd         	lea	rsi, [rip - 0x227d30b]  # 0x1eca24
+ 2469d2f: e8 1e ed ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469d34: 48 89 43 70                  	mov	qword ptr [rbx + 0x70], rax
+ 2469d38: 48 85 c0                     	test	rax, rax
+ 2469d3b: 0f 84 ac 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469d41: 48 8b 1d 60 d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd360] # 0x26670a8
+ 2469d48: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469d4c: 48 8d 35 92 4c d5 fd         	lea	rsi, [rip - 0x22ab36e]  # 0x1be9e5
+ 2469d53: e8 fa ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469d58: 48 89 43 78                  	mov	qword ptr [rbx + 0x78], rax
+ 2469d5c: 48 85 c0                     	test	rax, rax
+ 2469d5f: 0f 84 88 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469d65: 48 8b 1d 3c d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd33c] # 0x26670a8
+ 2469d6c: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469d70: 48 8d 35 36 28 e6 fd         	lea	rsi, [rip - 0x219d7ca]  # 0x2cc5ad
+ 2469d77: e8 d6 ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469d7c: 48 89 83 80 00 00 00         	mov	qword ptr [rbx + 0x80], rax
+ 2469d83: 48 85 c0                     	test	rax, rax
+ 2469d86: 0f 84 61 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469d8c: 48 8b 1d 15 d3 1f 00         	mov	rbx, qword ptr [rip + 0x1fd315] # 0x26670a8
+ 2469d93: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469d97: 48 8d 35 0f 32 d3 fd         	lea	rsi, [rip - 0x22ccdf1]  # 0x19cfad
+ 2469d9e: e8 af ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469da3: 48 89 83 88 00 00 00         	mov	qword ptr [rbx + 0x88], rax
+ 2469daa: 48 85 c0                     	test	rax, rax
+ 2469dad: 0f 84 3a 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469db3: 48 8b 1d ee d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd2ee] # 0x26670a8
+ 2469dba: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469dbe: 48 8d 35 29 5b e3 fd         	lea	rsi, [rip - 0x21ca4d7]  # 0x29f8ee
+ 2469dc5: e8 88 ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469dca: 48 89 83 90 00 00 00         	mov	qword ptr [rbx + 0x90], rax
+ 2469dd1: 48 85 c0                     	test	rax, rax
+ 2469dd4: 0f 84 13 02 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469dda: 48 8b 1d c7 d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd2c7] # 0x26670a8
+ 2469de1: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469de5: 48 8d 35 2c b6 dd fd         	lea	rsi, [rip - 0x22249d4]  # 0x245418
+ 2469dec: e8 61 ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469df1: 48 89 83 98 00 00 00         	mov	qword ptr [rbx + 0x98], rax
+ 2469df8: 48 85 c0                     	test	rax, rax
+ 2469dfb: 0f 84 ec 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469e01: 48 8b 1d a0 d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd2a0] # 0x26670a8
+ 2469e08: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469e0c: 48 8d 35 ac d8 e6 fd         	lea	rsi, [rip - 0x2192754]  # 0x2d76bf
+ 2469e13: e8 3a ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469e18: 48 89 83 a0 00 00 00         	mov	qword ptr [rbx + 0xa0], rax
+ 2469e1f: 48 85 c0                     	test	rax, rax
+ 2469e22: 0f 84 c5 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469e28: 48 8b 1d 79 d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd279] # 0x26670a8
+ 2469e2f: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469e33: 48 8d 35 af be e4 fd         	lea	rsi, [rip - 0x21b4151]  # 0x2b5ce9
+ 2469e3a: e8 13 ec ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469e3f: 48 89 83 a8 00 00 00         	mov	qword ptr [rbx + 0xa8], rax
+ 2469e46: 48 85 c0                     	test	rax, rax
+ 2469e49: 0f 84 9e 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469e4f: 48 8b 1d 52 d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd252] # 0x26670a8
+ 2469e56: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469e5a: 48 8d 35 9a 0c e4 fd         	lea	rsi, [rip - 0x21bf366]  # 0x2aaafb
+ 2469e61: e8 ec eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469e66: 48 89 83 b0 00 00 00         	mov	qword ptr [rbx + 0xb0], rax
+ 2469e6d: 48 85 c0                     	test	rax, rax
+ 2469e70: 0f 84 77 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469e76: 48 8b 1d 2b d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd22b] # 0x26670a8
+ 2469e7d: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469e81: 48 8d 35 60 73 de fd         	lea	rsi, [rip - 0x2218ca0]  # 0x2511e8
+ 2469e88: e8 c5 eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469e8d: 48 89 83 b8 00 00 00         	mov	qword ptr [rbx + 0xb8], rax
+ 2469e94: 48 85 c0                     	test	rax, rax
+ 2469e97: 0f 84 50 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469e9d: 48 8b 1d 04 d2 1f 00         	mov	rbx, qword ptr [rip + 0x1fd204] # 0x26670a8
+ 2469ea4: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469ea8: 48 8d 35 87 2b d8 fd         	lea	rsi, [rip - 0x227d479]  # 0x1eca36
+ 2469eaf: e8 9e eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469eb4: 48 89 83 c0 00 00 00         	mov	qword ptr [rbx + 0xc0], rax
+ 2469ebb: 48 85 c0                     	test	rax, rax
+ 2469ebe: 0f 84 29 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469ec4: 48 8b 1d dd d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd1dd] # 0x26670a8
+ 2469ecb: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469ecf: 48 8d 35 f5 30 d3 fd         	lea	rsi, [rip - 0x22ccf0b]  # 0x19cfcb
+ 2469ed6: e8 77 eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469edb: 48 89 83 c8 00 00 00         	mov	qword ptr [rbx + 0xc8], rax
+ 2469ee2: 48 85 c0                     	test	rax, rax
+ 2469ee5: 0f 84 02 01 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469eeb: 48 8b 1d b6 d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd1b6] # 0x26670a8
+ 2469ef2: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469ef6: 48 8d 35 27 43 da fd         	lea	rsi, [rip - 0x225bcd9]  # 0x20e224
+ 2469efd: e8 50 eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469f02: 48 89 83 d0 00 00 00         	mov	qword ptr [rbx + 0xd0], rax
+ 2469f09: 48 85 c0                     	test	rax, rax
+ 2469f0c: 0f 84 db 00 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469f12: 48 8b 1d 8f d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd18f] # 0x26670a8
+ 2469f19: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469f1d: 48 8d 35 e2 72 de fd         	lea	rsi, [rip - 0x2218d1e]  # 0x251206
+ 2469f24: e8 29 eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469f29: 48 89 83 d8 00 00 00         	mov	qword ptr [rbx + 0xd8], rax
+ 2469f30: 48 85 c0                     	test	rax, rax
+ 2469f33: 0f 84 b4 00 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469f39: 48 8b 1d 68 d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd168] # 0x26670a8
+ 2469f40: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469f44: 48 8d 35 05 29 e8 fd         	lea	rsi, [rip - 0x217d6fb]  # 0x2ec850
+ 2469f4b: e8 02 eb ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469f50: 48 89 83 e0 00 00 00         	mov	qword ptr [rbx + 0xe0], rax
+ 2469f57: 48 85 c0                     	test	rax, rax
+ 2469f5a: 0f 84 8d 00 00 00            	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469f60: 48 8b 1d 41 d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd141] # 0x26670a8
+ 2469f67: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469f6b: 48 8d 35 e8 dd d8 fd         	lea	rsi, [rip - 0x2272218]  # 0x1f7d5a
+ 2469f72: e8 db ea ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469f77: 48 89 83 e8 00 00 00         	mov	qword ptr [rbx + 0xe8], rax
+ 2469f7e: 48 85 c0                     	test	rax, rax
+ 2469f81: 74 6a                        	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469f83: 48 8b 1d 1e d1 1f 00         	mov	rbx, qword ptr [rip + 0x1fd11e] # 0x26670a8
+ 2469f8a: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469f8e: 48 8d 35 6d bd e4 fd         	lea	rsi, [rip - 0x21b4293]  # 0x2b5d02
+ 2469f95: e8 b8 ea ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469f9a: 48 89 83 f0 00 00 00         	mov	qword ptr [rbx + 0xf0], rax
+ 2469fa1: 48 85 c0                     	test	rax, rax
+ 2469fa4: 74 47                        	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469fa6: 48 8b 1d fb d0 1f 00         	mov	rbx, qword ptr [rip + 0x1fd0fb] # 0x26670a8
+ 2469fad: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469fb1: 48 8d 35 e8 7d e7 fd         	lea	rsi, [rip - 0x2188218]  # 0x2e1da0
+ 2469fb8: e8 95 ea ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469fbd: 48 89 83 f8 00 00 00         	mov	qword ptr [rbx + 0xf8], rax
+ 2469fc4: 48 85 c0                     	test	rax, rax
+ 2469fc7: 74 24                        	je	0x2469fed <_Z10PlayerMainiPPc+0xed51ad>
+ 2469fc9: 48 8b 1d d8 d0 1f 00         	mov	rbx, qword ptr [rip + 0x1fd0d8] # 0x26670a8
+ 2469fd0: 48 8b 7b 08                  	mov	rdi, qword ptr [rbx + 0x8]
+ 2469fd4: 48 8d 35 47 72 de fd         	lea	rsi, [rip - 0x2218db9]  # 0x251222
+ 2469fdb: e8 72 ea ff ff               	call	0x2468a52 <_Z10PlayerMainiPPc+0xed3c12>
+ 2469fe0: 48 89 83 00 01 00 00         	mov	qword ptr [rbx + 0x100], rax
+ 2469fe7: 48 83 f8 01                  	cmp	rax, 0x1
+ 2469feb: 19 ed                        	sbb	ebp, ebp
+ 2469fed: 89 e8                        	mov	eax, ebp
+ 2469fef: 48 83 c4 08                  	add	rsp, 0x8
+ 2469ff3: 5b                           	pop	rbx
+ 2469ff4: 5d                           	pop	rbp
+ 2469ff5: c3                           	ret
+ 2469ff6: 53                           	push	rbx
+ 2469ff7: 48 89 fb                     	mov	rbx, rdi
+ 2469ffa: bf 01 00 00 00               	mov	edi, 0x1
+ 2469fff: be 10 00 00 00               	mov	esi, 0x10
+ 246a004: ff 15 2e 39 10 00            	call	qword ptr [rip + 0x10392e] # 0x256d938
+ 246a00a: 48 85 c0                     	test	rax, rax
+ 246a00d: 74 24                        	je	0x246a033 <_Z10PlayerMainiPPc+0xed51f3>
+ 246a00f: f0                           	lock
+ 246a010: ff 05 3a 39 10 00            	inc	dword ptr [rip + 0x10393a] # 0x256d950
+ 246a016: 48 89 18                     	mov	qword ptr [rax], rbx
+ 246a019: 48 8b 0d 88 d0 1f 00         	mov	rcx, qword ptr [rip + 0x1fd088] # 0x26670a8
+ 246a020: 48 8b 51 30                  	mov	rdx, qword ptr [rcx + 0x30]
+ 246a024: 48 85 d2                     	test	rdx, rdx
+ 246a027: 74 1f                        	je	0x246a048 <_Z10PlayerMainiPPc+0xed5208>
+ 246a029: 48 89 42 08                  	mov	qword ptr [rdx + 0x8], rax
+ 246a02d: 48 89 41 30                  	mov	qword ptr [rcx + 0x30], rax
+ 246a031: eb 1d                        	jmp	0x246a050 <_Z10PlayerMainiPPc+0xed5210>
+ 246a033: 48 8d 3d e0 c5 dd fd         	lea	rdi, [rip - 0x2223a20]  # 0x24661a
+ 246a03a: 31 c0                        	xor	eax, eax
+ 246a03c: e8 30 d5 fc ff               	call	0x2437571 <_Z10PlayerMainiPPc+0xea2731>
+ 246a041: b8 ff ff ff ff               	mov	eax, 0xffffffff
+ 246a046: eb 0d                        	jmp	0x246a055 <_Z10PlayerMainiPPc+0xed5215>
+ 246a048: 48 89 41 30                  	mov	qword ptr [rcx + 0x30], rax
+ 246a04c: 48 89 41 28                  	mov	qword ptr [rcx + 0x28], rax
+ 246a050: b8 01 00 00 00               	mov	eax, 0x1
+ 246a055: 5b                           	pop	rbx
+ 246a056: c3                           	ret
+ 246a057: 50                           	push	rax
+ 246a058: 48 89 f8                     	mov	rax, rdi
+ 246a05b: 48 8b 0d 46 d0 1f 00         	mov	rcx, qword ptr [rip + 0x1fd046] # 0x26670a8
+ 246a062: 48 8b 79 28                  	mov	rdi, qword ptr [rcx + 0x28]
+ 246a066: 48 85 ff                     	test	rdi, rdi
+ 246a069: 74 4d                        	je	0x246a0b8 <_Z10PlayerMainiPPc+0xed5278>
+ 246a06b: 48 39 07                     	cmp	qword ptr [rdi], rax
+ 246a06e: 74 19                        	je	0x246a089 <_Z10PlayerMainiPPc+0xed5249>
+ 246a070: 48 89 fe                     	mov	rsi, rdi
+ 246a073: 48 8b 7e 08                  	mov	rdi, qword ptr [rsi + 0x8]
+ 246a077: 48 85 ff                     	test	rdi, rdi
+ 246a07a: 74 3c                        	je	0x246a0b8 <_Z10PlayerMainiPPc+0xed5278>
+ 246a07c: 48 89 f2                     	mov	rdx, rsi
+ 246a07f: 48 89 fe                     	mov	rsi, rdi
+ 246a082: 48 39 07                     	cmp	qword ptr [rdi], rax
+ 246a085: 75 ec                        	jne	0x246a073 <_Z10PlayerMainiPPc+0xed5233>
+ 246a087: eb 02                        	jmp	0x246a08b <_Z10PlayerMainiPPc+0xed524b>
+ 246a089: 31 d2                        	xor	edx, edx
+ 246a08b: 48 8d 41 28                  	lea	rax, [rcx + 0x28]
+ 246a08f: 48 8d 72 08                  	lea	rsi, [rdx + 0x8]
+ 246a093: 48 85 d2                     	test	rdx, rdx
+ 246a096: 48 0f 44 f0                  	cmove	rsi, rax
+ 246a09a: 48 8b 47 08                  	mov	rax, qword ptr [rdi + 0x8]
+ 246a09e: 48 89 06                     	mov	qword ptr [rsi], rax
+ 246a0a1: 48 3b 79 30                  	cmp	rdi, qword ptr [rcx + 0x30]
+ 246a0a5: 75 04                        	jne	0x246a0ab <_Z10PlayerMainiPPc+0xed526b>
+ 246a0a7: 48 89 51 30                  	mov	qword ptr [rcx + 0x30], rdx
+ 246a0ab: ff 15 97 38 10 00            	call	qword ptr [rip + 0x103897] # 0x256d948
+ 246a0b1: f0                           	lock
+ 246a0b2: ff 0d 98 38 10 00            	dec	dword ptr [rip + 0x103898] # 0x256d950
+ 246a0b8: 58                           	pop	rax
+ 246a0b9: c3                           	ret
+ 246a0ba: 45 31 c0                     	xor	r8d, r8d
+ 246a0bd: 40 f6 c7 08                  	test	dil, 0x8
+ 246a0c1: 75 29                        	jne	0x246a0ec <_Z10PlayerMainiPPc+0xed52ac>
+ 246a0c3: 40 f6 c7 04                  	test	dil, 0x4
+ 246a0c7: 74 15                        	je	0x246a0de <_Z10PlayerMainiPPc+0xed529e>
+ 246a0c9: 83 e1 03                     	and	ecx, 0x3
+ 246a0cc: 48 83 f9 03                  	cmp	rcx, 0x3
+ 246a0d0: 75 0c                        	jne	0x246a0de <_Z10PlayerMainiPPc+0xed529e>
+ 246a0d2: 8b 42 20                     	mov	eax, dword ptr [rdx + 0x20]
+ 246a0d5: c1 e8 10                     	shr	eax, 0x10
+ 246a0d8: 83 e0 01                     	and	eax, 0x1
+ 246a0db: 41 09 c0                     	or	r8d, eax
+ 246a0de: 40 f6 c7 02                  	test	dil, 0x2
+ 246a0e2: 75 3c                        	jne	0x246a120 <_Z10PlayerMainiPPc+0xed52e0>
+ 246a0e4: 48 8b 0a                     	mov	rcx, qword ptr [rdx]
+ 246a0e7: e9 a9 00 00 00               	jmp	0x246a195 <_Z10PlayerMainiPPc+0xed5355>
+ 246a0ec: b8 20 00 00 00               	mov	eax, 0x20
+ 246a0f1: 40 f6 c7 02                  	test	dil, 0x2
+ 246a0f5: 75 0d                        	jne	0x246a104 <_Z10PlayerMainiPPc+0xed52c4>
+ 246a0f7: 41 89 f1                     	mov	r9d, esi
+ 246a0fa: 41 83 e1 07                  	and	r9d, 0x7
+ 246a0fe: 49 83 f9 07                  	cmp	r9, 0x7
+ 246a102: 74 1b                        	je	0x246a11f <_Z10PlayerMainiPPc+0xed52df>
+ 246a104: 40 f6 c7 02                  	test	dil, 0x2
+ 246a108: 0f 85 98 00 00 00            	jne	0x246a1a6 <_Z10PlayerMainiPPc+0xed5366>
+ 246a10e: 41 89 f1                     	mov	r9d, esi
+ 246a111: 41 83 e1 38                  	and	r9d, 0x38
+ 246a115: 49 83 f9 38                  	cmp	r9, 0x38
+ 246a119: 0f 85 87 00 00 00            	jne	0x246a1a6 <_Z10PlayerMainiPPc+0xed5366>
+ 246a11f: c3                           	ret
+ 246a120: f3 0f 6f 02                  	movdqu	xmm0, xmmword ptr [rdx]
+ 246a124: f3 0f 6f 4a 10               	movdqu	xmm1, xmmword ptr [rdx + 0x10]
+ 246a129: 66 0f eb c8                  	por	xmm1, xmm0
+ 246a12d: 66 0f 70 d1 4e               	pshufd	xmm2, xmm1, 0x4e        # xmm2 = xmm1[2,3,0,1]
+ 246a132: 66 0f eb d1                  	por	xmm2, xmm1
+ 246a136: 66 49 0f 7e d1               	movq	r9, xmm2
+ 246a13b: 4d 85 c9                     	test	r9, r9
+ 246a13e: 75 43                        	jne	0x246a183 <_Z10PlayerMainiPPc+0xed5343>
+ 246a140: 31 c9                        	xor	ecx, ecx
+ 246a142: 4c 8d 15 57 bf e8 fd         	lea	r10, [rip - 0x21740a9]  # 0x2f60a0
+ 246a149: 45 31 c9                     	xor	r9d, r9d
+ 246a14c: 41 8b 34 ca                  	mov	esi, dword ptr [r10 + 8*rcx]
+ 246a150: 41 8b 44 ca 04               	mov	eax, dword ptr [r10 + 8*rcx + 0x4]
+ 246a155: 39 c6                        	cmp	esi, eax
+ 246a157: 73 21                        	jae	0x246a17a <_Z10PlayerMainiPPc+0xed533a>
+ 246a159: 48 89 f7                     	mov	rdi, rsi
+ 246a15c: 48 c1 ef 06                  	shr	rdi, 0x6
+ 246a160: 48 8b 3c fa                  	mov	rdi, qword ptr [rdx + 8*rdi]
+ 246a164: 48 0f a3 f7                  	bt	rdi, rsi
+ 246a168: 72 0a                        	jb	0x246a174 <_Z10PlayerMainiPPc+0xed5334>
+ 246a16a: 48 ff c6                     	inc	rsi
+ 246a16d: 48 39 f0                     	cmp	rax, rsi
+ 246a170: 75 e7                        	jne	0x246a159 <_Z10PlayerMainiPPc+0xed5319>
+ 246a172: eb 06                        	jmp	0x246a17a <_Z10PlayerMainiPPc+0xed533a>
+ 246a174: 41 b9 01 00 00 00            	mov	r9d, 0x1
+ 246a17a: 48 ff c1                     	inc	rcx
+ 246a17d: 48 83 f9 02                  	cmp	rcx, 0x2
+ 246a181: 75 c9                        	jne	0x246a14c <_Z10PlayerMainiPPc+0xed530c>
+ 246a183: 66 48 0f 7e c1               	movq	rcx, xmm0
+ 246a188: 44 89 c0                     	mov	eax, r8d
+ 246a18b: 83 c8 02                     	or	eax, 0x2
+ 246a18e: 4d 85 c9                     	test	r9, r9
+ 246a191: 44 0f 45 c0                  	cmovne	r8d, eax
+ 246a195: 44 89 c0                     	mov	eax, r8d
+ 246a198: 83 c8 02                     	or	eax, 0x2
+ 246a19b: f7 c1 fe ff ff ff            	test	ecx, 0xfffffffe
+ 246a1a1: 41 0f 44 c0                  	cmove	eax, r8d
+ 246a1a5: c3                           	ret
+ 246a1a6: 41 b9 03 00 00 00            	mov	r9d, 0x3
+ 246a1ac: 48 89 f0                     	mov	rax, rsi
+ 246a1af: 4c 21 c8                     	and	rax, r9
+ 246a1b2: 4c 39 c8                     	cmp	rax, r9
+ 246a1b5: 0f 85 08 ff ff ff            	jne	0x246a0c3 <_Z10PlayerMainiPPc+0xed5283>
+ 246a1bb: 4c 8b 42 28                  	mov	r8, qword ptr [rdx + 0x28]
+ 246a1bf: 45 31 c9                     	xor	r9d, r9d
+ 246a1c2: 41 f7 c0 01 08 00 00         	test	r8d, 0x801
+ 246a1c9: 75 23                        	jne	0x246a1ee <_Z10PlayerMainiPPc+0xed53ae>
+ 246a1cb: 41 b9 40 00 00 00            	mov	r9d, 0x40
+ 246a1d1: 41 f6 c0 20                  	test	r8b, 0x20
+ 246a1d5: 75 17                        	jne	0x246a1ee <_Z10PlayerMainiPPc+0xed53ae>
+ 246a1d7: 41 b9 01 00 00 00            	mov	r9d, 0x1
+ 246a1dd: f6 42 22 01                  	test	byte ptr [rdx + 0x22], 0x1
+ 246a1e1: 75 0b                        	jne	0x246a1ee <_Z10PlayerMainiPPc+0xed53ae>
+ 246a1e3: 41 c1 e8 06                  	shr	r8d, 0x6
+ 246a1e7: 41 83 e0 10                  	and	r8d, 0x10
+ 246a1eb: 45 89 c1                     	mov	r9d, r8d
+ 246a1ee: 48 b8 02 00 00 00 01 00 01 00	movabs	rax, 0x1000100000002
+ 246a1f8: 48 23 42 20                  	and	rax, qword ptr [rdx + 0x20]
+ 246a1fc: 81 e6 f8 07 00 00            	and	esi, 0x7f8
+ 246a202: 45 89 c8                     	mov	r8d, r9d
+ 246a205: 41 83 c8 04                  	or	r8d, 0x4
+ 246a209: 48 09 c6                     	or	rsi, rax
+ 246a20c: 45 0f 44 c1                  	cmove	r8d, r9d
+ 246a210: e9 ae fe ff ff               	jmp	0x246a0c3 <_Z10PlayerMainiPPc+0xed5283>
+ 246a215: 55                           	push	rbp
+ 246a216: 41 57                        	push	r15
+ 246a218: 41 56                        	push	r14
+ 246a21a: 41 55                        	push	r13
+ 246a21c: 41 54                        	push	r12
+ 246a21e: 53                           	push	rbx
+ 246a21f: 50                           	push	rax
+ 246a220: 41 89 d6                     	mov	r14d, edx
+ 246a223: 41 89 f5                     	mov	r13d, esi
+ 246a226: 41 89 fc                     	mov	r12d, edi
+ 246a229: 31 c0                        	xor	eax, eax
+ 246a22b: 41 f6 c5 01                  	test	r13b, 0x1
+ 246a22f: 0f 95 c0                     	setne	al
+ 246a232: 8d 04 40                     	lea	eax, [rax + 2*rax]
+ 246a235: 43 8d 5c 2d 00               	lea	ebx, [r13 + r13]
+ 246a23a: 83 e3 04                     	and	ebx, 0x4
+ 246a23d: 09 c3                        	or	ebx, eax
+ 246a23f: 49 89 e7                     	mov	r15, rsp
+ 246a242: 44 89 24 24                  	mov	dword ptr [rsp], r12d
+ 246a246: 66 89 5c 24 04               	mov	word ptr [rsp + 0x4], bx
+ 246a24b: be 01 00 00 00               	mov	esi, 0x1
+ 246a250: 4c 89 ff                     	mov	rdi, r15
+ 246a253: 44 89 f2                     	mov	edx, r14d
+ 246a256: e8 e5 b9 05 00               	call	0x24c5c40 <poll@plt>
+ 246a25b: 89 c5                        	mov	ebp, eax
+ 246a25d: 85 c0                        	test	eax, eax
+ 246a25f: 79 10                        	jns	0x246a271 <_Z10PlayerMainiPPc+0xed5431>
+ 246a261: e8 7a b3 05 00               	call	0x24c55e0 <__errno_location@plt>
+ 246a266: 41 f6 c5 04                  	test	r13b, 0x4
+ 246a26a: 75 05                        	jne	0x246a271 <_Z10PlayerMainiPPc+0xed5431>
+ 246a26c: 83 38 04                     	cmp	dword ptr [rax], 0x4
+ 246a26f: 74 d1                        	je	0x246a242 <_Z10PlayerMainiPPc+0xed5402>
+ 246a271: 89 e8                        	mov	eax, ebp
+ 246a273: 48 83 c4 08                  	add	rsp, 0x8
+ 246a277: 5b                           	pop	rbx
+ 246a278: 41 5c                        	pop	r12
+ 246a27a: 41 5d                        	pop	r13
+ 246a27c: 41 5e                        	pop	r14
+ 246a27e: 41 5f                        	pop	r15
+ 246a280: 5d                           	pop	rbp
+ 246a281: c3                           	ret
+ 246a282: 41 56                        	push	r14
+ 246a284: 53                           	push	rbx
+ 246a285: 50                           	push	rax
+ 246a286: 48 8d 3d a9 e8 e1 fd         	lea	rdi, [rip - 0x21e1757]  # 0x288b36
+ 246a28d: e8 f0 d4 fc ff               	call	0x2437782 <_Z10PlayerMainiPPc+0xea2942>
+ 246a292: 48 89 c3                     	mov	rbx, rax
+ 246a295: 48 8d 3d 6b 47 d5 fd         	lea	rdi, [rip - 0x22ab895]  # 0x1bea07
+ 246a29c: e8 e1 d4 fc ff               	call	0x2437782 <_Z10PlayerMainiPPc+0xea2942>
+ 246a2a1: 48 89 c7                     	mov	rdi, rax
+ 246a2a4: 31 f6                        	xor	esi, esi
+ 246a2a6: e8 33 d5 fc ff               	call	0x24377de <_Z10PlayerMainiPPc+0xea299e>
+ 246a2ab: 89 05 17 ce 1f 00            	mov	dword ptr [rip + 0x1fce17], eax # 0x26670c8
+ 246a2b1: c7 05 09 ce 1f 00 00 00 00 00	mov	dword ptr [rip + 0x1fce09], 0x0 # 0x26670c4
+ 246a2bb: 48 85 db                     	test	rbx, rbx
+ 246a2be: 74 63                        	je	0x246a323 <_Z10PlayerMainiPPc+0xed54e3>
+ 246a2c0: 48 89 df                     	mov	rdi, rbx
+ 246a2c3: e8 6c dc fc ff               	call	0x2437f34 <_Z10PlayerMainiPPc+0xea30f4>
+ 246a2c8: 48 85 c0                     	test	rax, rax
+ 246a2cb: 74 56                        	je	0x246a323 <_Z10PlayerMainiPPc+0xed54e3>
+ 246a2cd: 49 89 c6                     	mov	r14, rax
+ 246a2d0: 48 89 c7                     	mov	rdi, rax
+ 246a2d3: be 3a 00 00 00               	mov	esi, 0x3a
+ 246a2d8: e8 23 b8 05 00               	call	0x24c5b00 <strchr@plt>
+ 246a2dd: 4c 89 f3                     	mov	rbx, r14
+ 246a2e0: 48 85 c0                     	test	rax, rax
+ 246a2e3: 74 26                        	je	0x246a30b <_Z10PlayerMainiPPc+0xed54cb>
+ 246a2e5: 4c 89 f7                     	mov	rdi, r14
+ 246a2e8: c6 00 00                     	mov	byte ptr [rax], 0x0
+ 246a2eb: 48 89 c3                     	mov	rbx, rax
+ 246a2ee: 48 ff c3                     	inc	rbx
+ 246a2f1: e8 16 17 00 00               	call	0x246ba0c <_Z10PlayerMainiPPc+0xed6bcc>
+ 246a2f6: 48 89 df                     	mov	rdi, rbx
+ 246a2f9: be 3a 00 00 00               	mov	esi, 0x3a
+ 246a2fe: e8 fd b7 05 00               	call	0x24c5b00 <strchr@plt>

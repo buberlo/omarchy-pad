@@ -1,0 +1,29 @@
+{
+  "cli_sha256": "fea497a2b14c7bd2e595908e3aa894f6bb2f91aac9b656135a63e7dadfcda4e8",
+  "cases": [
+    {
+      "mode": "native",
+      "exit": 0,
+      "log": "work/performance/egl-display-audit/local-netlink-after-native.txt",
+      "raw_sha256": "8ecda4c49b773c6016350fc9004de1e554f6dbc3ab54712ce683c6e8e9f18a45"
+    },
+    {
+      "mode": "udev",
+      "exit": 6,
+      "log": "work/performance/egl-display-audit/local-netlink-after-udev.txt",
+      "raw_sha256": "a584ca362852d511eb42c0a6773f131925674e8c65f82119ae5a3d98b56c3831"
+    },
+    {
+      "mode": "1000",
+      "exit": 0,
+      "log": "work/performance/egl-display-audit/local-netlink-after-1000.txt",
+      "raw_sha256": "182340f7806cd06345fb7daeecdb2ed3d63fd2b4b458c31c16d71f04ea9f3019"
+    },
+    {
+      "mode": "200",
+      "exit": 0,
+      "log": "work/performance/egl-display-audit/local-netlink-after-200.txt",
+      "raw_sha256": "88d8bb46be60e402d296f04684cdfc82eacff3eea08ec0be02d3b3f1a0c500db"
+    }
+  ]
+}

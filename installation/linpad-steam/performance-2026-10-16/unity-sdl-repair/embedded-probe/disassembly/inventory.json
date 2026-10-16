@@ -1,0 +1,392 @@
+{
+  "file": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/game-fault-report/UnityPlayer.so",
+  "bytes": 39255232,
+  "sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+  "sections": [
+    {
+      "name": "",
+      "type": 0,
+      "flags": 0,
+      "address": 0,
+      "offset": 0,
+      "size": 0
+    },
+    {
+      "name": ".note.gnu.build-id",
+      "type": 7,
+      "flags": 2,
+      "address": 680,
+      "offset": 680,
+      "size": 36
+    },
+    {
+      "name": ".dynsym",
+      "type": 11,
+      "flags": 2,
+      "address": 720,
+      "offset": 720,
+      "size": 9240
+    },
+    {
+      "name": ".gnu.version",
+      "type": 1879048191,
+      "flags": 2,
+      "address": 9960,
+      "offset": 9960,
+      "size": 770
+    },
+    {
+      "name": ".gnu.version_r",
+      "type": 1879048190,
+      "flags": 2,
+      "address": 10732,
+      "offset": 10732,
+      "size": 400
+    },
+    {
+      "name": ".gnu.hash",
+      "type": 1879048182,
+      "flags": 2,
+      "address": 11136,
+      "offset": 11136,
+      "size": 32
+    },
+    {
+      "name": ".hash",
+      "type": 5,
+      "flags": 2,
+      "address": 11168,
+      "offset": 11168,
+      "size": 3088
+    },
+    {
+      "name": ".dynstr",
+      "type": 3,
+      "flags": 2,
+      "address": 14256,
+      "offset": 14256,
+      "size": 4167
+    },
+    {
+      "name": ".rela.dyn",
+      "type": 4,
+      "flags": 2,
+      "address": 18424,
+      "offset": 18424,
+      "size": 1575864
+    },
+    {
+      "name": ".rela.plt",
+      "type": 4,
+      "flags": 2,
+      "address": 1594288,
+      "offset": 1594288,
+      "size": 8952
+    },
+    {
+      "name": ".rodata",
+      "type": 1,
+      "flags": 50,
+      "address": 1603264,
+      "offset": 1603264,
+      "size": 2565720
+    },
+    {
+      "name": ".gcc_except_table",
+      "type": 1,
+      "flags": 2,
+      "address": 4168984,
+      "offset": 4168984,
+      "size": 16684
+    },
+    {
+      "name": ".eh_frame_hdr",
+      "type": 1,
+      "flags": 2,
+      "address": 4185668,
+      "offset": 4185668,
+      "size": 440284
+    },
+    {
+      "name": ".eh_frame",
+      "type": 1,
+      "flags": 2,
+      "address": 4625952,
+      "offset": 4625952,
+      "size": 2686124
+    },
+    {
+      "name": ".init",
+      "type": 1,
+      "flags": 6,
+      "address": 7315456,
+      "offset": 7315456,
+      "size": 36
+    },
+    {
+      "name": ".fini",
+      "type": 1,
+      "flags": 6,
+      "address": 7315492,
+      "offset": 7315492,
+      "size": 14
+    },
+    {
+      "name": ".text",
+      "type": 1,
+      "flags": 6,
+      "address": 7315520,
+      "offset": 7315520,
+      "size": 31240681
+    },
+    {
+      "name": ".plt",
+      "type": 1,
+      "flags": 6,
+      "address": 38556208,
+      "offset": 38556208,
+      "size": 5984
+    },
+    {
+      "name": ".tbss",
+      "type": 8,
+      "flags": 1027,
+      "address": 38562192,
+      "offset": 38563840,
+      "size": 56
+    },
+    {
+      "name": ".ctors",
+      "type": 1,
+      "flags": 3,
+      "address": 38563840,
+      "offset": 38563840,
+      "size": 64
+    },
+    {
+      "name": ".dtors",
+      "type": 1,
+      "flags": 3,
+      "address": 38563904,
+      "offset": 38563904,
+      "size": 16
+    },
+    {
+      "name": ".init_array",
+      "type": 14,
+      "flags": 3,
+      "address": 38563920,
+      "offset": 38563920,
+      "size": 3480
+    },
+    {
+      "name": ".data.rel.ro",
+      "type": 1,
+      "flags": 3,
+      "address": 38567424,
+      "offset": 38567424,
+      "size": 563424
+    },
+    {
+      "name": ".dynamic",
+      "type": 6,
+      "flags": 3,
+      "address": 39130848,
+      "offset": 39130848,
+      "size": 496
+    },
+    {
+      "name": ".got",
+      "type": 1,
+      "flags": 3,
+      "address": 39131344,
+      "offset": 39131344,
+      "size": 2992
+    },
+    {
+      "name": ".tm_clone_table",
+      "type": 1,
+      "flags": 3,
+      "address": 39137280,
+      "offset": 39137280,
+      "size": 0
+    },
+    {
+      "name": ".data",
+      "type": 1,
+      "flags": 3,
+      "address": 39137280,
+      "offset": 39137280,
+      "size": 111848
+    },
+    {
+      "name": ".got.plt",
+      "type": 1,
+      "flags": 3,
+      "address": 39249128,
+      "offset": 39249128,
+      "size": 3008
+    },
+    {
+      "name": ".bss",
+      "type": 8,
+      "flags": 3,
+      "address": 39252160,
+      "offset": 39252136,
+      "size": 1068464
+    },
+    {
+      "name": ".comment",
+      "type": 1,
+      "flags": 48,
+      "address": 0,
+      "offset": 39252136,
+      "size": 514
+    },
+    {
+      "name": ".symtab",
+      "type": 2,
+      "flags": 0,
+      "address": 0,
+      "offset": 39252656,
+      "size": 48
+    },
+    {
+      "name": ".shstrtab",
+      "type": 3,
+      "flags": 0,
+      "address": 0,
+      "offset": 39252704,
+      "size": 307
+    },
+    {
+      "name": ".strtab",
+      "type": 3,
+      "flags": 0,
+      "address": 0,
+      "offset": 39253011,
+      "size": 20
+    },
+    {
+      "name": ".gnu_debuglink",
+      "type": 1,
+      "flags": 0,
+      "address": 0,
+      "offset": 39253032,
+      "size": 24
+    }
+  ],
+  "strings": [
+    {
+      "file_offset": 2796915,
+      "address": 2796915,
+      "text": "SDL_VIDEO_X11_FORCE_EGL"
+    },
+    {
+      "file_offset": 1962360,
+      "address": 1962360,
+      "text": "The selected window backend is %s \n"
+    },
+    {
+      "file_offset": 2979374,
+      "address": 2979374,
+      "text": "The video driver did not add any displays"
+    },
+    {
+      "file_offset": 2687469,
+      "address": 2687469,
+      "text": "Error creating MainPlayerWindow: %s\n"
+    },
+    {
+      "file_offset": 2017713,
+      "address": 2017713,
+      "text": "SDL_VIDEODRIVER"
+    }
+  ],
+  "candidate_rip_lea_xrefs": [
+    {
+      "address": 22653606,
+      "file_offset": 22653606,
+      "target": 2017713,
+      "bytes": "488d3d041fc5fe",
+      "section": ".text"
+    },
+    {
+      "address": 22653747,
+      "file_offset": 22653747,
+      "target": 1962360,
+      "bytes": "488d3d3e46c4fe",
+      "section": ".text"
+    },
+    {
+      "address": 22688238,
+      "file_offset": 22688238,
+      "target": 2687469,
+      "bytes": "488d3df8cfcefe",
+      "section": ".text"
+    },
+    {
+      "address": 37971218,
+      "file_offset": 37971218,
+      "target": 2017713,
+      "bytes": "488d3d9864dbfd",
+      "section": ".text"
+    },
+    {
+      "address": 37972711,
+      "file_offset": 37972711,
+      "target": 2979374,
+      "bytes": "488d3d400beafd",
+      "section": ".text"
+    },
+    {
+      "address": 38170927,
+      "file_offset": 38170927,
+      "target": 2017713,
+      "bytes": "488d3d7b58d8fd",
+      "section": ".text"
+    },
+    {
+      "address": 38253746,
+      "file_offset": 38253746,
+      "target": 2796915,
+      "bytes": "488d3dbaf8e2fd",
+      "section": ".text"
+    },
+    {
+      "address": 38285045,
+      "file_offset": 38285045,
+      "target": 2796915,
+      "bytes": "488d3d777ee2fd",
+      "section": ".text"
+    },
+    {
+      "address": 38285797,
+      "file_offset": 38285797,
+      "target": 2796915,
+      "bytes": "488d3d877be2fd",
+      "section": ".text"
+    },
+    {
+      "address": 38288615,
+      "file_offset": 38288615,
+      "target": 2796915,
+      "bytes": "488d3d8570e2fd",
+      "section": ".text"
+    },
+    {
+      "address": 38294134,
+      "file_offset": 38294134,
+      "target": 2796915,
+      "bytes": "488d3df65ae2fd",
+      "section": ".text"
+    },
+    {
+      "address": 38295701,
+      "file_offset": 38295701,
+      "target": 2796915,
+      "bytes": "488d3dd754e2fd",
+      "section": ".text"
+    }
+  ]
+}

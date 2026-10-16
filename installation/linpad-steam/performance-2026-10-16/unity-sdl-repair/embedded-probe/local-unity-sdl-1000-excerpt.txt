@@ -1,0 +1,6 @@
+UNITY_SDL_PROBE flags=0x1000 library=/opt/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+1 call 198 socket(16, 526339, 15) = 0xffffff9f
+UNITY_SDL_INIT_RESULT flags=0x1000 result=-1 error_active=1 error=Could not initialize UDEV
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE

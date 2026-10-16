@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, protected-memory and vDSO repair, Vulkan, patched FEX, native Steam tool, helper repair and startup diagnosis; no authentication or exported preference files.",
+  "scope": "Curated LinPad performance, protected-memory and vDSO repair, Vulkan, patched FEX, native Steam tool, EGL startup and Unity SDL uevent diagnosis; no authentication or proprietary game binaries.",
   "files": [
     {
       "path": "build4442/SHA256SUMS",
@@ -429,8 +429,8 @@
     },
     {
       "path": "egl-repair/EGL-VULKAN-AUDIT.md",
-      "bytes": 2908,
-      "sha256": "5f16a8a612fe35b152c2492d4d35eb8f9f47bd4b45591672edf3b4c38636e6b4"
+      "bytes": 3425,
+      "sha256": "c0b4c990ca7d1e6b6b7bf31ea3990359d6ad6322951c2979857f4e67d94bbeda"
     },
     {
       "path": "egl-repair/Packages-selected.txt",
@@ -439,18 +439,28 @@
     },
     {
       "path": "egl-repair/README.md",
-      "bytes": 4774,
-      "sha256": "f2c940e281363af0fd5a2caf7ff2183611c7f1e407d50522c4f920e15ac26cba"
+      "bytes": 4998,
+      "sha256": "ef086d6adcc7e0182b372632b3be4bfb4d5b44fdb0f7f7bf1de16ee45ef62a4a"
     },
     {
       "path": "egl-repair/SHA256SUMS",
-      "bytes": 5304,
-      "sha256": "3cfd92f4989024178517878841b9517d4aa0be3fbbda0dd76aa28dbf46bc742c"
+      "bytes": 5690,
+      "sha256": "10082b58cbc003f217dc1dfd214a4f7a60630959477c0b1a629dab8900371ba0"
     },
     {
       "path": "egl-repair/build-probes.sh",
       "bytes": 523,
       "sha256": "1d3a3b82763af26c5d78e950abf7730cb76daeb55469c07ed90cb62e4c76ac8c"
+    },
+    {
+      "path": "egl-repair/combined-game-excerpt.txt",
+      "bytes": 7516,
+      "sha256": "339744ded2358469a7913e6f128cab145f86de6a27f0b3058c67c0a551463afa"
+    },
+    {
+      "path": "egl-repair/combined-game-provenance.json",
+      "bytes": 1894,
+      "sha256": "9137ae94356a6e1b23b6c0ebe07e6f8f1db57d6345d9f82506a4eb4952979774"
     },
     {
       "path": "egl-repair/egl-device-install.txt",
@@ -469,8 +479,8 @@
     },
     {
       "path": "egl-repair/egl-vulkan-elf-audit.json",
-      "bytes": 7117,
-      "sha256": "37d4926e3355117e5fad85580d894722f807792c44212f79e429143a28ea29ca"
+      "bytes": 7390,
+      "sha256": "ee837763355b37b9bebd93437febdbf952f7dea7fd17d380b3638aae7fc90bca"
     },
     {
       "path": "egl-repair/egl-vulkan-elf-readout.txt",
@@ -659,8 +669,8 @@
     },
     {
       "path": "egl-repair/provenance.json",
-      "bytes": 14147,
-      "sha256": "5dfbab19393b27dcc4579d602e7df6d71dce1ff43fcabc89e0a8cf94f7b6c742"
+      "bytes": 15790,
+      "sha256": "4b6c222fcc024b30d118da86ab35f18936f4fe8942067b16a7019c98a2471254"
     },
     {
       "path": "egl-repair/sdl-window-probe",
@@ -714,8 +724,18 @@
     },
     {
       "path": "egl-repair/verification.json",
-      "bytes": 5875,
-      "sha256": "ec25f22c13d48682cdec6ba3ad6664c73429de3cf7f5f2c8e10e9b0d68e3ed3c"
+      "bytes": 6861,
+      "sha256": "e0a7ea19a0822317a70587cce868b693ddf9c9e73ce8934d7bc9a9496f7aac48"
+    },
+    {
+      "path": "egl-repair/wayland-before-egl-excerpt.txt",
+      "bytes": 1379,
+      "sha256": "8a0a067d723f342acc369f5d1179a996f1e0369734d0759fd68935ab142cec49"
+    },
+    {
+      "path": "egl-repair/wayland-before-egl-provenance.json",
+      "bytes": 619,
+      "sha256": "954f4f4d01d266df9ef64d6efae7babd10483cd50857b32b332de44af651a582"
     },
     {
       "path": "evidence/audio-baseline-cpu-excerpt.txt",
@@ -1441,6 +1461,261 @@
       "path": "steam-helper-repair/steam-launch-wrapper",
       "bytes": 749,
       "sha256": "6909e006c403338f0e65728d771592ef0ed15dd0d46aa857941d8d37bc013342"
+    },
+    {
+      "path": "unity-sdl-repair/README.md",
+      "bytes": 5675,
+      "sha256": "7bb1cd46eda124358666087decb566385678c6fc44b8efc29136e1ebd8664d53"
+    },
+    {
+      "path": "unity-sdl-repair/SHA256SUMS",
+      "bytes": 5332,
+      "sha256": "b213d9e66a4b36c3f320270f64ca27b7fcbc11f9fa6d5da61202d927d233bb07"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/actual-fatal-instruction.txt",
+      "bytes": 1400,
+      "sha256": "fe15b8c2a9c8d2f134e817d69b7696025d9effa53d3a82f591bbb7b8fa37fd90"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/cache-miss-handler.txt",
+      "bytes": 6835,
+      "sha256": "7c1081ed7b9a92643b330548d0d2e883ad7cc0800f3d78e68462855d203f2589"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/display-count-error.txt",
+      "bytes": 1112,
+      "sha256": "bed14eb8f89b5ea665c71cab69a44312836b738fc597087f83fcc22e99d782ae"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/display-count-success.txt",
+      "bytes": 1115,
+      "sha256": "0e4e9cefce7c85dd6b85a5c380cb0b8c59edd7306a42e8e08ce58ed607f28e9a"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/fault-constructor-caller.txt",
+      "bytes": 1116,
+      "sha256": "0f65dc8fd559f85e1415a063ebe5d438eca2487a08019a002b7781f6474e1c66"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/hollow4445-egl-trace",
+      "bytes": 883,
+      "sha256": "73818bde6e4454664eb4afbf1d3b7f8ab1011f2e551d3b7a9d1e18899fa2496a"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/natural-exit-and-stop-excerpt.txt",
+      "bytes": 4924,
+      "sha256": "63ff2bc307735be6ffe5214ce775c9d3dfd6b4a9728f482f331d6d36ff37f066"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/string-addresses.json",
+      "bytes": 419,
+      "sha256": "a6f949ce44194bedfad8398993721da0a93aaf93638e61cb09bceb40b697944f"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/traced-game-fatal-excerpt.txt",
+      "bytes": 2516,
+      "sha256": "f7a3cd80e65c76e20bbdec02f23bd731ee6524f4949e16abeaf39e92e157dd72"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/unity-fatal-mapping.json",
+      "bytes": 2026,
+      "sha256": "c7aa7d0fd74149cd76f4f5cb39d4d4147b84e28b757c79aadfc0aed38a309765"
+    },
+    {
+      "path": "unity-sdl-repair/crash-path/vk-create-pipeline-cache-resolution.txt",
+      "bytes": 2592,
+      "sha256": "614d29597f9145a47a679346637e3f81fe3f4f5b53f1a73d06e6cbdb7fc88be1"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/inventory.json",
+      "bytes": 7629,
+      "sha256": "cc6f035f56d167fdb9443caf86930b804e70950a3f54666a5fbaadde9bc22e9f"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/sdl-init.txt",
+      "bytes": 50021,
+      "sha256": "c12aed7f62097662e7360523fa372c97191eddc006b77ad0495da968773bb2b9"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/sdl-udev.txt",
+      "bytes": 100861,
+      "sha256": "8e3c75ac11f7b97ce3c15e20a43c58fd9020b11b1163d86c14c48e9d741a0b3c"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/sdl-x11-egl-load.txt",
+      "bytes": 6062,
+      "sha256": "b544a63b879051f1a71a51085ea5d38c93d31cee2b1324807fa69e4491390569"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/xref-01-159ab33.txt",
+      "bytes": 6291,
+      "sha256": "ce313dc5253b2afbab3c6e6eff11e45f8c1fd7def442b533a146295c57918dd9"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/disassembly/xref-06-247b4b2.txt",
+      "bytes": 5413,
+      "sha256": "ff73632b4cc49bb55cdde8e4872be1d503b607bdd9e7d9a9b2bc5de2cd73b285"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/embedded-provenance.json",
+      "bytes": 6122,
+      "sha256": "64b5bfa7b8cdee4b3b4bb342168836f7e2f4e8734d141f6011468bdc540a965e"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/inspect-unity-window.py",
+      "bytes": 3366,
+      "sha256": "c23a44fdde0055e6a12c046d23190dc6e186e8bb4d73c87683b410b79f9c80d1"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-cli-before-netlink.json",
+      "bytes": 103,
+      "sha256": "29b0360acb94edbcad4e87b2d44ac1c103ad5999b1209bd51981b43da1e26ee5"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-after-1000-excerpt.txt",
+      "bytes": 330,
+      "sha256": "13e16c3b639c05aa331c1d5327cdf8c8687e821f18a1114968b4547f6ec6d743"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-after-200-excerpt.txt",
+      "bytes": 328,
+      "sha256": "a7c579f72badce9b5e29c11f93ed96639b378d5ddfea050e55c217386352eeca"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-after-native-excerpt.txt",
+      "bytes": 1268,
+      "sha256": "1e03d78020cf24a8399ef876b1bcfbfaa29c3d6974d9bf97b6ac0828965afd79"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-after-results.json",
+      "bytes": 982,
+      "sha256": "3c3481f80e376d875ece7a4399cf2a32d3225eb5eda1e35cd4ce57a6c9fd8e4a"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-after-udev-excerpt.txt",
+      "bytes": 197,
+      "sha256": "93f18f375d78150864c3c9e96bfcfb0a8152f2d49a9467b1cb50ea1182a7e2b7"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-final-native-excerpt.txt",
+      "bytes": 1348,
+      "sha256": "21f00a3bb5c5352e7a7c2878e0cba76ffeef8b2f7048842186f2016d3af3a16f"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-netlink-final-provenance.json",
+      "bytes": 862,
+      "sha256": "7465f1b92bad2b17579e2f2fbd1d26dc8bd4dbeea7027f70250e9eb5b2862e60"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-1000-excerpt.txt",
+      "bytes": 302,
+      "sha256": "d0f7e37916a38a7c2088fcbaf8b3daee1165f344051847c7900864a05e45aa70"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-200-excerpt.txt",
+      "bytes": 300,
+      "sha256": "023cca0d98b05e5a950116e025dc892abd7fb27f59c9809ba414b82d29d357a2"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-21-excerpt.txt",
+      "bytes": 251,
+      "sha256": "bc3202d579b03f84c9c49cefba712764cfa896f3bba188d663094f9240cce843"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-launch.c",
+      "bytes": 649,
+      "sha256": "be4738a92928422197cb3583bd0b64ed0d3976c2c752990e163ab4b1ad04b59a"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-results.json",
+      "bytes": 1188,
+      "sha256": "f9f8769950b77618e7aec0f96f895f60d46847f3aadb9e08bec7ccef5ed3dcdd"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/local-unity-sdl-udev-excerpt.txt",
+      "bytes": 168,
+      "sha256": "34f463bfd577c6cf851e21545997cffae2abe51c127372f7634a4205248f80c9"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-after-probe",
+      "bytes": 1144,
+      "sha256": "a314781e1e4ca08f696703546e43f468b111961007883fa145d2613bb526b06b"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-init-probe",
+      "bytes": 21520,
+      "sha256": "278f4dbbfc1e2904c2215ca046adce97571cbe8ac8fad665c2d0acd2911f4b81"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-init-probe-v2",
+      "bytes": 21792,
+      "sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-init-probe-v2.c",
+      "bytes": 4419,
+      "sha256": "d4034679ed33b876d6be5872c53737ccd1f3eff9adb231f37301fa0e3ab94cff"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-init-probe.c",
+      "bytes": 4236,
+      "sha256": "ac62b1c69d9f80b08699fae3825ccbba1589f54a5bc5e91735e37099a6295df3"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl-udev-audit.md",
+      "bytes": 6210,
+      "sha256": "aa8d4a006f5045ba27aaf00a5b8435811f5d10e467d128af1bccc33fee5b181e"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl4445-before-fail.txt",
+      "bytes": 1874,
+      "sha256": "5fd72b95aed989c154d288d1b7b988e7929d2d34fe456641e0633ec6ea813d37"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/unity-sdl4445-probe",
+      "bytes": 1133,
+      "sha256": "f8c5becd7ba38e40b71c119eaf11912c0e2838eb1fa59ca94063847ab31a73b9"
+    },
+    {
+      "path": "unity-sdl-repair/embedded-probe/x11-egl-fallback-audit.md",
+      "bytes": 3668,
+      "sha256": "02a4cfc09540c1be17aa90e13e83e9574111797905503cbc398aa93021854695"
+    },
+    {
+      "path": "unity-sdl-repair/external-probe/build-probe.sh",
+      "bytes": 351,
+      "sha256": "e9b8603bceeb34a9d2fff7dca040bc79f1ffe94e06be306f8156b82b82a609f1"
+    },
+    {
+      "path": "unity-sdl-repair/external-probe/sdl-subsystem-probe",
+      "bytes": 23064,
+      "sha256": "28e1a07509ff397ef36e4c3b86bae69d1d45e91b1319794d393250bdf75ec17f"
+    },
+    {
+      "path": "unity-sdl-repair/external-probe/sdl-subsystem-probe.c",
+      "bytes": 4131,
+      "sha256": "f9173b1f3e5212c6e76c956375018debe8a58dd3f87f43fc94ae1d0656c4a65a"
+    },
+    {
+      "path": "unity-sdl-repair/external-probe/sdl-subsystems4445-fail.txt",
+      "bytes": 2388,
+      "sha256": "9fdbd6d81d3fbac2ac96691a6b5ebe5ee4720e5f21aa61ebd2dacf95c46038cf"
+    },
+    {
+      "path": "unity-sdl-repair/external-probe/sdl-subsystems4445-probe",
+      "bytes": 1727,
+      "sha256": "4856eb5b7ff77d6799f4ca8fed952acaa86131f67528354269c43b5528da03c9"
+    },
+    {
+      "path": "unity-sdl-repair/physical-v2-before.txt",
+      "bytes": 1902,
+      "sha256": "11fbbeb4eb645c511e33063179380421c82f14c8430a871d17b2ea6fe25a93c9"
+    },
+    {
+      "path": "unity-sdl-repair/provenance.json",
+      "bytes": 6513,
+      "sha256": "2dbf6e5b554cfbde1e3b99f6b5fb0f6a7f1e9acc8403256943631ba6ad1c0d4d"
     }
   ]
 }

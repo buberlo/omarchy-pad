@@ -215,7 +215,31 @@
       "host_mock_checks": 50,
       "host_validation": "launcher-host-validation.txt",
       "host_validation_scope": "Actual launch-game invokes wrapper and mock translator; environment sanitation/restore, argv/cwd, timestamps and invalid inputs",
-      "actual_game": "Parent started physical game 2026-10-16T10:46:58Z; result not yet qualified by this archive"
+      "actual_game": "Physical run 2026-10-16T10:46:58Z selected Venus Apple M2 / Mesa 26.2.4 with EGL25/Gallium25 mapped; guest nil SIGSEGV at10:54:22.545Z, then manual stop exit137. No rendered game frame or gameplay verified."
+    },
+    "actual_game_combined_selection": {
+      "linpad_build": 4445,
+      "pid": 5681,
+      "started_utc": "2026-10-16T10:46:58Z",
+      "selected_renderer": "Virtio-GPU Venus (Apple M2 GPU)",
+      "driver": "venus (22), Mesa 26.2.4-1",
+      "renderer_recorded_utc": "2026-10-16T10:54:08.111Z",
+      "map_snapshot_utc": "2026-10-16T10:54:55Z",
+      "venus26_mapping": true,
+      "egl25_gallium25_llvm19_gbm25_mapping": true,
+      "combined_selection_verified": true,
+      "guest_fatal_signal": {
+        "recorded_utc": "2026-10-16T10:54:22.545Z",
+        "signo": 11,
+        "code": 1,
+        "address": "nil"
+      },
+      "manual_stop_after_guest_fatal": true,
+      "manual_stop_exit": 137,
+      "rendered_game_frame_verified": false,
+      "gameplay_verified": false,
+      "FPS_measured": false,
+      "evidence": "combined-game-provenance.json"
     }
   },
   "archive": {
@@ -227,12 +251,12 @@
     "filename": "install-egl-runtime",
     "sha256": "7147c1954d9c614e54a2ec03fd19d48193c296e4c7b08cb60abdef7a34e23907"
   },
-  "updated_utc": "2026-10-16T10:50:03.735245+00:00",
+  "updated_utc": "2026-10-16T11:03:50.271558+00:00",
   "diagnostic_sources_and_evidence": [
     {
       "file": "EGL-VULKAN-AUDIT.md",
-      "sha256": "5f16a8a612fe35b152c2492d4d35eb8f9f47bd4b45591672edf3b4c38636e6b4",
-      "bytes": 2908
+      "sha256": "c0b4c990ca7d1e6b6b7bf31ea3990359d6ad6322951c2979857f4e67d94bbeda",
+      "bytes": 3425
     },
     {
       "file": "build-probes.sh",
@@ -251,8 +275,8 @@
     },
     {
       "file": "egl-vulkan-elf-audit.json",
-      "sha256": "37d4926e3355117e5fad85580d894722f807792c44212f79e429143a28ea29ca",
-      "bytes": 7117
+      "sha256": "ee837763355b37b9bebd93437febdbf952f7dea7fd17d380b3638aae7fc90bca",
+      "bytes": 7390
     },
     {
       "file": "egl-vulkan-elf-readout.txt",
@@ -358,6 +382,26 @@
       "file": "unity-wayland-vulkan-audit.md",
       "sha256": "04a9797887b380ebe102ee9c5fbb8dfc5427bb21c0d70ea0d4f931631fdead0e",
       "bytes": 4776
+    },
+    {
+      "file": "combined-game-excerpt.txt",
+      "sha256": "339744ded2358469a7913e6f128cab145f86de6a27f0b3058c67c0a551463afa",
+      "bytes": 7516
+    },
+    {
+      "file": "combined-game-provenance.json",
+      "sha256": "9137ae94356a6e1b23b6c0ebe07e6f8f1db57d6345d9f82506a4eb4952979774",
+      "bytes": 1894
+    },
+    {
+      "file": "wayland-before-egl-excerpt.txt",
+      "sha256": "8a0a067d723f342acc369f5d1179a996f1e0369734d0759fd68935ab142cec49",
+      "bytes": 1379
+    },
+    {
+      "file": "wayland-before-egl-provenance.json",
+      "sha256": "954f4f4d01d266df9ef64d6efae7babd10483cd50857b32b332de44af651a582",
+      "bytes": 619
     }
   ]
 }

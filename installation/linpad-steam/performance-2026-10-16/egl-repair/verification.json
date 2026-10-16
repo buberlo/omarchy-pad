@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-16T10:49:29.718437+00:00",
+  "updated_utc": "2026-10-16T10:59:22.031064+00:00",
   "validation": {
     "elf_dependency_closure_count": 42,
     "unresolved_dt_needed": [],
@@ -121,7 +121,31 @@
       "host_mock_checks": 50,
       "host_validation": "launcher-host-validation.txt",
       "host_validation_scope": "Actual launch-game invokes wrapper and mock translator; environment sanitation/restore, argv/cwd, timestamps and invalid inputs",
-      "actual_game": "Parent started physical game 2026-10-16T10:46:58Z; result not yet qualified by this archive"
+      "actual_game": "Physical run 2026-10-16T10:46:58Z selected Venus Apple M2 / Mesa 26.2.4 with EGL25/Gallium25 mapped; guest nil SIGSEGV at10:54:22.545Z, then manual stop exit137. No rendered game frame or gameplay verified."
+    },
+    "actual_game_combined_selection": {
+      "linpad_build": 4445,
+      "pid": 5681,
+      "started_utc": "2026-10-16T10:46:58Z",
+      "selected_renderer": "Virtio-GPU Venus (Apple M2 GPU)",
+      "driver": "venus (22), Mesa 26.2.4-1",
+      "renderer_recorded_utc": "2026-10-16T10:54:08.111Z",
+      "map_snapshot_utc": "2026-10-16T10:54:55Z",
+      "venus26_mapping": true,
+      "egl25_gallium25_llvm19_gbm25_mapping": true,
+      "combined_selection_verified": true,
+      "guest_fatal_signal": {
+        "recorded_utc": "2026-10-16T10:54:22.545Z",
+        "signo": 11,
+        "code": 1,
+        "address": "nil"
+      },
+      "manual_stop_after_guest_fatal": true,
+      "manual_stop_exit": 137,
+      "rendered_game_frame_verified": false,
+      "gameplay_verified": false,
+      "FPS_measured": false,
+      "evidence": "combined-game-provenance.json"
     }
   },
   "artifact_scope": "Expanded validation evidence; original installed payload tar unchanged"

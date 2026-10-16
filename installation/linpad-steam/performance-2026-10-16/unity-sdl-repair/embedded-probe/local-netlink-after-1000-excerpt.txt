@@ -1,0 +1,5 @@
+UNITY_SDL_PROBE flags=0x1000 library=/opt/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x1000 result=0 error_active=1 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol: _udev_device_get_action
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE

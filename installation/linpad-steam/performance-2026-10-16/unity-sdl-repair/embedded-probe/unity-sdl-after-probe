@@ -1,0 +1,25 @@
+#!/bin/sh
+# Diagnostic only. No game entry point, renderer or binary mutation.
+OUT=/tmp/unity-sdl-after-probe.txt
+GAME='/root/.local/share/Steam/steamapps/common/Hollow Knight'
+base=/opt/hollow-runtime
+{
+    date
+    sha256sum "$GAME/UnityPlayer.so" /tmp/unity-sdl-init-probe-v2
+    unset LD_PRELOAD LD_AUDIT LD_DEBUG SDL_DYNAMIC_API SDL3_DYNAMIC_API
+    unset DISPLAY XAUTHORITY SDL_VIDEO_DRIVER
+    export SDL_VIDEODRIVER=wayland XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0-gpu
+    export FEX_ROOTFS="$base" FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH="$base/usr/lib/x86_64-linux-gnu:$base/usr/lib/x86_64-linux-gnu/pulseaudio"
+    echo DIRECT_UDEV_BEGIN
+    timeout -k 3 50 /opt/fex/FEX-apple-m1-munmap /tmp/unity-sdl-init-probe-v2 udev
+    echo DIRECT_UDEV_EXIT=$?
+    for flags in 1000 200 21 3221; do
+        echo EMBEDDED_SDL_BEGIN=$flags
+        timeout -k 3 50 /opt/fex/FEX-apple-m1-munmap /tmp/unity-sdl-init-probe-v2 "$GAME/UnityPlayer.so" "$flags"
+        echo EMBEDDED_SDL_EXIT=$flags:$?
+    done
+    date
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"

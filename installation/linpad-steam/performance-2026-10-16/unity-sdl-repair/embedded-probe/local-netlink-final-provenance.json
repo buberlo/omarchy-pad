@@ -1,0 +1,13 @@
+{
+  "exit": 0,
+  "execution": "Local macOS-hosted LinPad ARM64 CLI native JIT",
+  "files": {
+    "work/linpad-cli/ish": "9553142384ab5f818c7d068c9632828d2fac9010dc8072031ff631f665b09913",
+    "work/LinPad/fs/netlink.c": "e2e4938d0e6ab82bba89ee33e073308b1bc6783bd2490b752cf8ad5b973a63f8",
+    "work/LinPad/fs/netlink.h": "012caba25298daea59d94eeb20299b8920a4887eb9cc43b985c970e15f50072f",
+    "work/LinPad/fs/fd.h": "272426c6a0d3959d880bda6b05b6739dbe1ea939a4490d7ad9b584971425a233",
+    "work/LinPad/fs/sock.c": "c4409a7bcf31cd66caff607f41a446eb72dab8d0b76cf1efcdff2416ae2b3a6c",
+    "work/LinPad/tests/manual/steam-compat/netlink-uevent-probe.c": "67ab9513a3c744c42b385bb69e4a0c30a217bac463bdd25224799a83c9c805d1",
+    "work/performance/egl-display-audit/local-netlink-final-native.txt": "bdbcb41efd2b73bc0a519240bb85dbeff35e10ecfa30c16e0ebf375494a3c80b"
+  }
+}

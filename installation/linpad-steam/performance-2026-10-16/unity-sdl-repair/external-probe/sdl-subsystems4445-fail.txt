@@ -1,0 +1,44 @@
+Fri Oct 16 11:07:58 UTC 2026
+SDL_SUBSYSTEM_MODE_BEGIN=all
+SDL_SUBSYSTEM_PROBE mode=all flags=0x3221 deadline_seconds=60
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV SDL_VIDEODRIVER=wayland
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV SDL_AUDIODRIVER=(unset)
+ENV SDL_JOYSTICK_HIDAPI=(unset)
+STAGE 0.022 SDL_DLOPEN
+SDL_VERSION 2.32.4
+STAGE 0.245 SDL_INIT_BEGIN subsystem=all flags=0x3221
+SDL_INIT_RESULT subsystem=all requested=0x3221 result=-1 active=0x0 driver=(null) error=Could not initialize UDEV
+STAGE 2.346 SDL_INIT_END subsystem=all
+STAGE 2.347 SDL_QUIT_BEGIN
+STAGE 2.352 SDL_SUBSYSTEM_PROBE_COMPLETE status=INIT_FAILED active=0x0
+SDL_SUBSYSTEM_MODE_EXIT=all:4
+Fri Oct 16 11:08:00 UTC 2026
+SDL_SUBSYSTEM_MODE_BEGIN=sequential
+SDL_SUBSYSTEM_PROBE mode=sequential flags=0x0 deadline_seconds=60
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV SDL_VIDEODRIVER=wayland
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV SDL_AUDIODRIVER=(unset)
+ENV SDL_JOYSTICK_HIDAPI=(unset)
+STAGE 0.023 SDL_DLOPEN
+SDL_VERSION 2.32.4
+STAGE 0.217 SDL_INIT_BEGIN subsystem=timer flags=0x1
+SDL_INIT_RESULT subsystem=timer requested=0x1 result=0 active=0x1 driver=(null) error=
+STAGE 0.294 SDL_INIT_END subsystem=timer
+STAGE 0.295 SDL_INIT_BEGIN subsystem=video flags=0x20
+SDL_INIT_RESULT subsystem=video requested=0x20 result=0 active=0x4021 driver=wayland error=
+STAGE 0.475 SDL_INIT_END subsystem=video
+STAGE 0.475 SDL_INIT_BEGIN subsystem=joystick flags=0x200
+SDL_INIT_RESULT subsystem=joystick requested=0x200 result=0 active=0x4221 driver=wayland error=udev_monitor_new_from_netlink() failed
+STAGE 0.668 SDL_INIT_END subsystem=joystick
+STAGE 0.668 SDL_INIT_BEGIN subsystem=haptic flags=0x1000
+SDL_INIT_RESULT subsystem=haptic requested=0x1000 result=-1 active=0x4221 driver=wayland error=Could not initialize UDEV
+STAGE 0.719 SDL_INIT_END subsystem=haptic
+STAGE 0.719 SDL_QUIT_BEGIN
+STAGE 2.633 SDL_SUBSYSTEM_PROBE_COMPLETE status=INIT_FAILED active=0x0
+SDL_SUBSYSTEM_MODE_EXIT=sequential:4
+Fri Oct 16 11:08:03 UTC 2026

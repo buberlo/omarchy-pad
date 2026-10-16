@@ -1,0 +1,66 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 247b432: 00 00                        	add	byte ptr [rax], al
+ 247b434: 48 8d 05 78 72 00 00         	lea	rax, [rip + 0x7278]     # 0x24826b3 <_Z10PlayerMainiPPc+0xeed873>
+ 247b43b: 48 89 83 80 01 00 00         	mov	qword ptr [rbx + 0x180], rax
+ 247b442: 48 8d 05 fd 80 00 00         	lea	rax, [rip + 0x80fd]     # 0x2483546 <_Z10PlayerMainiPPc+0xeee706>
+ 247b449: 48 89 83 88 01 00 00         	mov	qword ptr [rbx + 0x188], rax
+ 247b450: 48 8d 05 10 81 00 00         	lea	rax, [rip + 0x8110]     # 0x2483567 <_Z10PlayerMainiPPc+0xeee727>
+ 247b457: 48 89 83 90 01 00 00         	mov	qword ptr [rbx + 0x190], rax
+ 247b45e: 48 8d 05 2c 81 00 00         	lea	rax, [rip + 0x812c]     # 0x2483591 <_Z10PlayerMainiPPc+0xeee751>
+ 247b465: 48 89 83 98 01 00 00         	mov	qword ptr [rbx + 0x198], rax
+ 247b46c: 48 8d 05 8e 85 00 00         	lea	rax, [rip + 0x858e]     # 0x2483a01 <_Z10PlayerMainiPPc+0xeeebc1>
+ 247b473: 48 89 83 a0 01 00 00         	mov	qword ptr [rbx + 0x1a0], rax
+ 247b47a: 48 8d 05 7e 86 00 00         	lea	rax, [rip + 0x867e]     # 0x2483aff <_Z10PlayerMainiPPc+0xeeecbf>
+ 247b481: 48 89 83 b0 01 00 00         	mov	qword ptr [rbx + 0x1b0], rax
+ 247b488: 48 8d 05 64 87 00 00         	lea	rax, [rip + 0x8764]     # 0x2483bf3 <_Z10PlayerMainiPPc+0xeeedb3>
+ 247b48f: 48 89 83 b8 01 00 00         	mov	qword ptr [rbx + 0x1b8], rax
+ 247b496: 48 8d 05 08 88 00 00         	lea	rax, [rip + 0x8808]     # 0x2483ca5 <_Z10PlayerMainiPPc+0xeeee65>
+ 247b49d: 48 89 83 c0 01 00 00         	mov	qword ptr [rbx + 0x1c0], rax
+ 247b4a4: 48 8d 05 26 86 00 00         	lea	rax, [rip + 0x8626]     # 0x2483ad1 <_Z10PlayerMainiPPc+0xeeec91>
+ 247b4ab: 48 89 83 c8 01 00 00         	mov	qword ptr [rbx + 0x1c8], rax
+ 247b4b2: 48 8d 3d ba f8 e2 fd         	lea	rdi, [rip - 0x21d0746]  # 0x2aad73
+ 247b4b9: e8 c4 c2 fb ff               	call	0x2437782 <_Z10PlayerMainiPPc+0xea2942>
+ 247b4be: 48 89 c7                     	mov	rdi, rax
+ 247b4c1: 31 f6                        	xor	esi, esi
+ 247b4c3: e8 16 c3 fb ff               	call	0x24377de <_Z10PlayerMainiPPc+0xea299e>
+ 247b4c8: 85 c0                        	test	eax, eax
+ 247b4ca: 74 7e                        	je	0x247b54a <_Z10PlayerMainiPPc+0xee670a>
+ 247b4cc: 48 8d 05 f9 87 00 00         	lea	rax, [rip + 0x87f9]     # 0x2483ccc <_Z10PlayerMainiPPc+0xeeee8c>
+ 247b4d3: 48 89 83 80 01 00 00         	mov	qword ptr [rbx + 0x180], rax
+ 247b4da: 48 8d 05 ec 87 ff ff         	lea	rax, [rip - 0x7814]     # 0x2473ccd <_Z10PlayerMainiPPc+0xedee8d>
+ 247b4e1: 48 89 83 88 01 00 00         	mov	qword ptr [rbx + 0x188], rax
+ 247b4e8: 48 8d 05 c7 88 ff ff         	lea	rax, [rip - 0x7739]     # 0x2473db6 <_Z10PlayerMainiPPc+0xedef76>
+ 247b4ef: 48 89 83 90 01 00 00         	mov	qword ptr [rbx + 0x190], rax
+ 247b4f6: 48 8d 05 2a 89 00 00         	lea	rax, [rip + 0x892a]     # 0x2483e27 <_Z10PlayerMainiPPc+0xeeefe7>
+ 247b4fd: 48 89 83 98 01 00 00         	mov	qword ptr [rbx + 0x198], rax
+ 247b504: 48 8d 05 79 89 00 00         	lea	rax, [rip + 0x8979]     # 0x2483e84 <_Z10PlayerMainiPPc+0xeef044>
+ 247b50b: 48 89 83 a0 01 00 00         	mov	qword ptr [rbx + 0x1a0], rax
+ 247b512: 48 8d 05 f4 99 ff ff         	lea	rax, [rip - 0x660c]     # 0x2474f0d <_Z10PlayerMainiPPc+0xee00cd>
+ 247b519: 48 89 83 b0 01 00 00         	mov	qword ptr [rbx + 0x1b0], rax
+ 247b520: 48 8d 05 5d 9a ff ff         	lea	rax, [rip - 0x65a3]     # 0x2474f84 <_Z10PlayerMainiPPc+0xee0144>
+ 247b527: 48 89 83 b8 01 00 00         	mov	qword ptr [rbx + 0x1b8], rax
+ 247b52e: 48 8d 05 3c 89 00 00         	lea	rax, [rip + 0x893c]     # 0x2483e71 <_Z10PlayerMainiPPc+0xeef031>
+ 247b535: 48 89 83 c0 01 00 00         	mov	qword ptr [rbx + 0x1c0], rax
+ 247b53c: 48 8d 05 ab 99 ff ff         	lea	rax, [rip - 0x6655]     # 0x2474eee <_Z10PlayerMainiPPc+0xee00ae>
+ 247b543: 48 89 83 c8 01 00 00         	mov	qword ptr [rbx + 0x1c8], rax
+ 247b54a: 48 8d 05 1c 63 00 00         	lea	rax, [rip + 0x631c]     # 0x248186d <_Z10PlayerMainiPPc+0xeeca2d>
+ 247b551: 48 89 83 88 02 00 00         	mov	qword ptr [rbx + 0x288], rax
+ 247b558: 48 8d 05 dc 64 00 00         	lea	rax, [rip + 0x64dc]     # 0x2481a3b <_Z10PlayerMainiPPc+0xeecbfb>
+ 247b55f: 48 89 83 90 02 00 00         	mov	qword ptr [rbx + 0x290], rax
+ 247b566: 48 8d 05 0a 67 00 00         	lea	rax, [rip + 0x670a]     # 0x2481c77 <_Z10PlayerMainiPPc+0xeece37>
+ 247b56d: 48 89 83 98 02 00 00         	mov	qword ptr [rbx + 0x298], rax
+ 247b574: 48 8d 05 3d 62 00 00         	lea	rax, [rip + 0x623d]     # 0x24817b8 <_Z10PlayerMainiPPc+0xeec978>
+ 247b57b: 66 48 0f 6e c0               	movq	xmm0, rax
+ 247b580: 48 8d 05 c6 61 00 00         	lea	rax, [rip + 0x61c6]     # 0x248174d <_Z10PlayerMainiPPc+0xeec90d>
+ 247b587: 66 48 0f 6e c8               	movq	xmm1, rax
+ 247b58c: 66 0f 6c c8                  	punpcklqdq	xmm1, xmm0      # xmm1 = xmm1[0],xmm0[0]
+ 247b590: f3 0f 7f 8b 40 02 00 00      	movdqu	xmmword ptr [rbx + 0x240], xmm1
+ 247b598: 48 8d 05 31 62 00 00         	lea	rax, [rip + 0x6231]     # 0x24817d0 <_Z10PlayerMainiPPc+0xeec990>
+ 247b59f: 48 89 83 50 02 00 00         	mov	qword ptr [rbx + 0x250], rax
+ 247b5a6: 48 8d 05 28 17 00 00         	lea	rax, [rip + 0x1728]     # 0x247ccd5 <_Z10PlayerMainiPPc+0xee7e95>
+ 247b5ad: 48 89 83 e8 05 00 00         	mov	qword ptr [rbx + 0x5e8], rax

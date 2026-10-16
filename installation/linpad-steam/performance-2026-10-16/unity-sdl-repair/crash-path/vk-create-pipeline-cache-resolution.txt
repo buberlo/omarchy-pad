@@ -1,0 +1,40 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000001594e40 <_Z10PlayerMainiPPc>:
+ 16ff416: 48 c7 05 cf fc f4 00 00 00 00 00     	mov	qword ptr [rip + 0xf4fccf], 0x0 # 0x264f0f0
+ 16ff421: 48 8d 35 22 a9 b7 fe         	lea	rsi, [rip - 0x14856de]  # 0x279d4a
+ 16ff428: 48 89 df                     	mov	rdi, rbx
+ 16ff42b: ff d1                        	call	rcx
+ 16ff42d: 48 89 05 bc fc f4 00         	mov	qword ptr [rip + 0xf4fcbc], rax # 0x264f0f0
+ 16ff434: 48 85 c0                     	test	rax, rax
+ 16ff437: 0f 94 c1                     	sete	cl
+ 16ff43a: 84 c9                        	test	cl, cl
+ 16ff43c: 74 1f                        	je	0x16ff45d <_Z10PlayerMainiPPc+0x16a61d>
+ 16ff43e: 48 8b 0d bb fa f4 00         	mov	rcx, qword ptr [rip + 0xf4fabb] # 0x264ef00
+ 16ff445: 48 85 c9                     	test	rcx, rcx
+ 16ff448: 74 13                        	je	0x16ff45d <_Z10PlayerMainiPPc+0x16a61d>
+ 16ff44a: 48 8d 35 f9 a8 b7 fe         	lea	rsi, [rip - 0x1485707]  # 0x279d4a
+ 16ff451: 48 89 df                     	mov	rdi, rbx
+ 16ff454: ff d1                        	call	rcx
+ 16ff456: 48 89 05 93 fc f4 00         	mov	qword ptr [rip + 0xf4fc93], rax # 0x264f0f0
+ 16ff45d: 48 85 c0                     	test	rax, rax
+ 16ff460: 75 50                        	jne	0x16ff4b2 <_Z10PlayerMainiPPc+0x16a672>
+ 16ff462: 48 8b 3d 97 00 f5 00         	mov	rdi, qword ptr [rip + 0xf50097] # 0x264f500
+ 16ff469: 48 85 ff                     	test	rdi, rdi
+ 16ff46c: 74 44                        	je	0x16ff4b2 <_Z10PlayerMainiPPc+0x16a672>
+ 16ff46e: 48 8d 35 d5 a8 b7 fe         	lea	rsi, [rip - 0x148572b]  # 0x279d4a
+ 16ff475: e8 f6 63 dc 00               	call	0x24c5870 <dlsym@plt>
+ 16ff47a: 48 89 05 6f fc f4 00         	mov	qword ptr [rip + 0xf4fc6f], rax # 0x264f0f0
+ 16ff481: 48 8b 0d 80 00 f5 00         	mov	rcx, qword ptr [rip + 0xf50080] # 0x264f508
+ 16ff488: 48 85 c9                     	test	rcx, rcx
+ 16ff48b: 75 31                        	jne	0x16ff4be <_Z10PlayerMainiPPc+0x16a67e>
+ 16ff48d: e9 a8 00 00 00               	jmp	0x16ff53a <_Z10PlayerMainiPPc+0x16a6fa>
+ 16ff492: 48 8d 35 b1 a8 b7 fe         	lea	rsi, [rip - 0x148574f]  # 0x279d4a
+ 16ff499: 4c 89 f7                     	mov	rdi, r14
+ 16ff49c: ff 15 9e fa f4 00            	call	qword ptr [rip + 0xf4fa9e] # 0x264ef40
+ 16ff4a2: 48 89 05 47 fc f4 00         	mov	qword ptr [rip + 0xf4fc47], rax # 0x264f0f0
+ 16ff4a9: 48 85 c0                     	test	rax, rax
+ 16ff4ac: 0f 84 86 40 00 00            	je	0x1703538 <_Z10PlayerMainiPPc+0x16e6f8>

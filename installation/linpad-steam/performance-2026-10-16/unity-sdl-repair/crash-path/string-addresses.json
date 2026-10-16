@@ -1,0 +1,10 @@
+{
+  "UnityPlayer_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+  "strings": {
+    "0x2452c9": "Video subsystem has not been initialized",
+    "0x24d284": "Error getting num native displays: %s",
+    "0x1a4ae4": "Display %d '%s': %dx%d (%s device).",
+    "0x2c78bd": "Display %d '%s' is not valid: unable to query bounds.",
+    "0x2033fc": "displayIndex must be in the range 0 - %d"
+  }
+}

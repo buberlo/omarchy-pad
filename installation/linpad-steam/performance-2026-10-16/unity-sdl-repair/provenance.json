@@ -1,0 +1,156 @@
+{
+  "updated_utc": "2026-10-16T11:17:03.451565+00:00",
+  "scope": "Unity SDL initialization and zero-display crash diagnosis; proprietary UnityPlayer remains outside archive.",
+  "game_binary_identity": {
+    "filename": "UnityPlayer.so",
+    "bytes": 39255232,
+    "sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+    "GNU_build_id": "687ec82915ce757a0bf9ebcd6068f093707479e4",
+    "debuglink": "UnityPlayer_s.debug",
+    "included": false
+  },
+  "physical_baseline": {
+    "linpad_build": 4445,
+    "FEX_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "EGL": "Mesa25 swrast/llvmpipe auxiliary",
+    "Vulkan": "Mesa26.2.4 Venus Apple M2 selected",
+    "game_PID": 6870,
+    "started_utc": "2026-10-16T10:57:06Z",
+    "first_fatal_utc": "2026-10-16T11:04:51Z",
+    "natural_process_exit": 139,
+    "guarded_stop": "PID already absent; identity guard did not send stop",
+    "first_fault": {
+      "signal": 11,
+      "code": 1,
+      "address": "0x0",
+      "RIP": "0xcde59a4a",
+      "ELF_offset": "0x1721a4a",
+      "RAX": "0x0",
+      "RBX": "0x0"
+    },
+    "later_signal": {
+      "signal": 11,
+      "code": 0,
+      "RIP": "0xcc45ff85",
+      "mapped_file": "libc.so.6",
+      "ELF_offset": "0x3ff85",
+      "interpretation": "signal re-raise during crash handling, not original nil dereference",
+      "reporter_address_field": "0x1ad6",
+      "reporter_field_interpretation": "With si_code=0, reporter si_addr output overlaps the signal sender fields; 0x1ad6 equals game PID6870, not a second memory access address."
+    }
+  },
+  "source_reports": [
+    {
+      "source": "work/performance/reports/hollow4445-egl-trace-status-5.txt",
+      "source_bytes": 44643,
+      "source_sha256": "38531cf27f66844cfc8a89b3e0a29d94f58b130b25385549f00f870e77e3cc60",
+      "excerpt": "crash-path/traced-game-fatal-excerpt.txt",
+      "excerpt_sha256": "f7a3cd80e65c76e20bbdec02f23bd731ee6524f4949e16abeaf39e92e157dd72"
+    },
+    {
+      "source": "work/performance/reports/hollow4445-egl-trace-exit-and-stop-attempt.txt",
+      "source_bytes": 86958,
+      "source_sha256": "68f18f6913b370654cb7df0cf4fdb99f5a6c16559dd37093725e0b1ee73c2794",
+      "excerpt": "crash-path/natural-exit-and-stop-excerpt.txt",
+      "excerpt_sha256": "63ff2bc307735be6ffe5214ce775c9d3dfd6b4a9728f482f331d6d36ff37f066"
+    }
+  ],
+  "external_SDL_probe": {
+    "library_version": "2.32.4",
+    "binary_sha256": "28e1a07509ff397ef36e4c3b86bae69d1d45e91b1319794d393250bdf75ec17f",
+    "source_sha256": "f9173b1f3e5212c6e76c956375018debe8a58dd3f87f43fc94ae1d0656c4a65a",
+    "wrapper_sha256": "4856eb5b7ff77d6799f4ca8fed952acaa86131f67528354269c43b5528da03c9",
+    "compiler": "zig cc -target x86_64-linux-gnu -O2 -Wall -Wextra -Werror -ldl",
+    "same_flags": "0x3221",
+    "physical_combined": {
+      "result": -1,
+      "SDL_error": "Could not initialize UDEV",
+      "active_flags": "0x0",
+      "driver": null,
+      "probe_exit": 4
+    },
+    "physical_sequential": [
+      {
+        "name": "timer",
+        "result": 0,
+        "active_flags": "0x1"
+      },
+      {
+        "name": "video",
+        "result": 0,
+        "active_flags": "0x4021",
+        "driver": "wayland"
+      },
+      {
+        "name": "joystick",
+        "result": 0,
+        "active_flags": "0x4221",
+        "driver": "wayland",
+        "SDL_error_string": "udev_monitor_new_from_netlink() failed",
+        "note": "SDL error string with success return is not itself a failed subsystem result"
+      },
+      {
+        "name": "haptic",
+        "result": -1,
+        "active_flags": "0x4221",
+        "driver": "wayland",
+        "SDL_error": "Could not initialize UDEV"
+      }
+    ],
+    "report": "external-probe/sdl-subsystems4445-fail.txt",
+    "report_sha256": "9fdbd6d81d3fbac2ac96691a6b5ebe5ee4720e5f21aa61ebd2dacf95c46038cf"
+  },
+  "verification_gates": {
+    "immediate_fault_instruction": "confirmed on device and exact ELF",
+    "zero_display_precursor": "confirmed by registers, log, setter/fault disassembly",
+    "external_SDL_combined_failure": "confirmed physical build4445",
+    "embedded_SDL_udev_failure": "confirmed physical build4445: direct monitor NULL errno97; isolated haptic/joystick and combined0x3221 fail, timer/video succeeds",
+    "host_protocol15_fix": "local native endpoint regression35PASS on final source; local embedded haptic/joystick PASS before final mask-only correction; filter/enable-EINVAL remains unsupported",
+    "post_fix_device_game": "pending",
+    "gameplay": "unverified",
+    "hotplug_event_delivery": "unverified"
+  },
+  "embedded_SDL_probe": {
+    "provenance": "embedded-probe/embedded-provenance.json",
+    "provenance_sha256": "64b5bfa7b8cdee4b3b4bb342168836f7e2f4e8734d141f6011468bdc540a965e",
+    "physical_before": {
+      "build": 4445,
+      "report": "unity-sdl4445-before-fail.txt",
+      "direct_udev": "NULL errno97",
+      "haptic": "FAIL -1 Could not initialize UDEV",
+      "joystick": "FAIL -1 Could not initialize UDEV",
+      "timer_video": "PASS return0 nonnull video pointer; stale SDL error is not a failure",
+      "all_0x3221": "FAIL -1 Could not initialize UDEV; video pointer NULL"
+    },
+    "local_after": {
+      "native_endpoint": "35 checks PASS after final group-mask fix",
+      "unity_haptic": "PASS return0 before mask-only correction",
+      "unity_joystick": "PASS return0 before mask-only correction",
+      "udev_monitor_creation": "PASS nonnull",
+      "udev_filter_enable": "UNSUPPORTED: -EINVAL retained, diagnostic exit6; ignored by embedded SDL",
+      "physical_after": "pending"
+    },
+    "physical_v2_before": {
+      "source": "work/performance/reports/unity-sdl-v2-4445-before.txt",
+      "report": "physical-v2-before.txt",
+      "report_sha256": "11fbbeb4eb645c511e33063179380421c82f14c8430a871d17b2ea6fe25a93c9",
+      "linpad_build": 4445,
+      "started_utc": "2026-10-16T11:16:02Z",
+      "finished_utc": "2026-10-16T11:16:15Z",
+      "probe_sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6",
+      "timer_video": {
+        "result": 0,
+        "num_displays": 1,
+        "probe_exit": 0
+      },
+      "combined_0x3221": {
+        "result": -1,
+        "error": "Could not initialize UDEV",
+        "video_pointer": null,
+        "probe_exit": 10
+      },
+      "purpose": "Exact v2 binary baseline for the planned post-build4446 comparison; does not imply a post-fix result."
+    }
+  },
+  "host_source_commit": "72e1eef8b3125b39e7c852abf2d16bf7a1f82029"
+}
