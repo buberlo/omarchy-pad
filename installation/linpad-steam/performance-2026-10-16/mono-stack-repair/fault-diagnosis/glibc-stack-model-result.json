@@ -1,0 +1,20 @@
+{
+  "recorded_bad_map_end": "0x1000000000000",
+  "actual_stack_map_end": "0x808008000000",
+  "soft_stack_limit": "0x8000000",
+  "bad": {
+    "base": "0x800157d5e000",
+    "size": "0x7eb02a2000",
+    "unclamped_size": "0xffff808010000000",
+    "guard_base": "0x800157d5f000",
+    "guard_end": "0x800157d67000"
+  },
+  "correct": {
+    "base": "0x808000000000",
+    "size": "0x8000000",
+    "unclamped_size": "0x8000000",
+    "guard_base": "0x808000001000",
+    "guard_end": "0x808000009000"
+  },
+  "result": "PASS: bad maps reproduce the protected FEX-node range; corrected end yields stable 128MiB stack extent"
+}

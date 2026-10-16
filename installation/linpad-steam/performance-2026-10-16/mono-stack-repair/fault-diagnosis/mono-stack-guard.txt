@@ -1,0 +1,77 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+00000000000bbba2 <mono_debugger_run_finally>:
+   bd887: 55                           	pushq	%rbp
+   bd888: 41 56                        	pushq	%r14
+   bd88a: 53                           	pushq	%rbx
+   bd88b: 48 83 ec 30                  	subq	$0x30, %rsp
+   bd88f: 48 89 fb                     	movq	%rdi, %rbx
+   bd892: 31 c0                        	xorl	%eax, %eax
+   bd894: 48 89 44 24 08               	movq	%rax, 0x8(%rsp)
+   bd899: 48 89 44 24 10               	movq	%rax, 0x10(%rsp)
+   bd89e: e8 7d 22 f8 ff               	callq	0x3fb20 <.text+0x6c90>
+   bd8a3: 85 c0                        	testl	%eax, %eax
+   bd8a5: 0f 85 4b 01 00 00            	jne	0xbd9f6 <mono_debugger_run_finally+0x1e54>
+   bd8ab: 4c 8d 74 24 10               	leaq	0x10(%rsp), %r14
+   bd8b0: 48 8d 74 24 08               	leaq	0x8(%rsp), %rsi
+   bd8b5: 4c 89 f7                     	movq	%r14, %rdi
+   bd8b8: e8 08 89 19 00               	callq	0x2561c5 <mono_thread_info_set_flags+0xec4>
+   bd8bd: 49 8b 2e                     	movq	(%r14), %rbp
+   bd8c0: 48 85 ed                     	testq	%rbp, %rbp
+   bd8c3: 0f 84 36 01 00 00            	je	0xbd9ff <mono_debugger_run_finally+0x1e5d>
+   bd8c9: 48 8b 44 24 08               	movq	0x8(%rsp), %rax
+   bd8ce: 48 8d 0c 28                  	leaq	(%rax,%rbp), %rcx
+   bd8d2: 48 89 0b                     	movq	%rcx, (%rbx)
+   bd8d5: 89 43 08                     	movl	%eax, 0x8(%rbx)
+   bd8d8: e8 0b ee 18 00               	callq	0x24c6e8 <mono_pagesize>
+   bd8dd: 48 98                        	cltq
+   bd8df: 48 01 e8                     	addq	%rbp, %rax
+   bd8e2: 48 89 43 38                  	movq	%rax, 0x38(%rbx)
+   bd8e6: e8 fd ed 18 00               	callq	0x24c6e8 <mono_pagesize>
+   bd8eb: 89 c5                        	movl	%eax, %ebp
+   bd8ed: 81 c5 ff 7f 00 00            	addl	$0x7fff, %ebp           # imm = 0x7FFF
+   bd8f3: e8 f0 ed 18 00               	callq	0x24c6e8 <mono_pagesize>
+   bd8f8: f7 d8                        	negl	%eax
+   bd8fa: 21 e8                        	andl	%ebp, %eax
+   bd8fc: 89 43 40                     	movl	%eax, 0x40(%rbx)
+   bd8ff: 48 8b 7b 38                  	movq	0x38(%rbx), %rdi
+   bd903: 48 8d 0c 07                  	leaq	(%rdi,%rax), %rcx
+   bd907: 48 8d 54 24 18               	leaq	0x18(%rsp), %rdx
+   bd90c: 48 39 d1                     	cmpq	%rdx, %rcx
+   bd90f: 0f 87 02 01 00 00            	ja	0xbda17 <mono_debugger_run_finally+0x1e75>
+   bd915: 48 89 c6                     	movq	%rax, %rsi
+   bd918: 31 d2                        	xorl	%edx, %edx
+   bd91a: e8 d9 f2 18 00               	callq	0x24cbf8 <mono_mprotect>
+   bd91f: 85 c0                        	testl	%eax, %eax
+   bd921: 74 4f                        	je	0xbd972 <mono_debugger_run_finally+0x1dd0>
+   bd923: 48 8b 7b 38                  	movq	0x38(%rbx), %rdi
+   bd927: 8b 73 40                     	movl	0x40(%rbx), %esi
+   bd92a: ba d0 00 00 00               	movl	$0xd0, %edx
+   bd92f: b9 0b 00 00 00               	movl	$0xb, %ecx
+   bd934: e8 3a ef 18 00               	callq	0x24c873 <mono_valloc>
+   bd939: 48 85 c0                     	testq	%rax, %rax
+   bd93c: 74 10                        	je	0xbd94e <mono_debugger_run_finally+0x1dac>
+   bd93e: 48 3b 43 38                  	cmpq	0x38(%rbx), %rax
+   bd942: 0f 85 17 01 00 00            	jne	0xbda5f <mono_debugger_run_finally+0x1ebd>
+   bd948: 80 4b 44 01                  	orb	$0x1, 0x44(%rbx)
+   bd94c: eb 24                        	jmp	0xbd972 <mono_debugger_run_finally+0x1dd0>
+   bd94e: 48 8d 15 e9 49 1d 00         	leaq	0x1d49e9(%rip), %rdx    # 0x29233e
+   bd955: 31 ff                        	xorl	%edi, %edi
+   bd957: be 10 00 00 00               	movl	$0x10, %esi
+   bd95c: 31 c0                        	xorl	%eax, %eax
+   bd95e: e8 08 1c 1a 00               	callq	0x25f56b <monoeg_g_log>
+   bd963: 48 c7 43 38 00 00 00 00      	movq	$0x0, 0x38(%rbx)
+   bd96b: c7 43 40 00 00 00 00         	movl	$0x0, 0x40(%rbx)
+   bd972: be 00 40 00 00               	movl	$0x4000, %esi           # imm = 0x4000
+   bd977: 31 ff                        	xorl	%edi, %edi
+   bd979: ba 53 00 00 00               	movl	$0x53, %edx
+   bd97e: b9 0b 00 00 00               	movl	$0xb, %ecx
+   bd983: e8 eb ee 18 00               	callq	0x24c873 <mono_valloc>
+   bd988: 48 89 43 28                  	movq	%rax, 0x28(%rbx)
+   bd98c: c7 43 30 00 40 00 00         	movl	$0x4000, 0x30(%rbx)     # imm = 0x4000
+   bd993: 48 85 c0                     	testq	%rax, %rax
+   bd996: 0f 84 93 00 00 00            	je	0xbda2f <mono_debugger_run_finally+0x1e8d>
+   bd99c: 48 8d 7c 24 18               	leaq	0x18(%rsp), %rdi

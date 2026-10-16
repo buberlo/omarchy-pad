@@ -1,0 +1,30 @@
+1: Fri Oct 16 11:36:39 UTC 2026
+2: TARGET=1729
+3: SAMPLE_SEND pid=1729 tid=1752 signal=23 result=0 errno=0
+4: SAMPLE_SEND pid=1729 tid=1743 signal=23 result=0 errno=0
+5: SAMPLE_SEND pid=1729 tid=1742 signal=23 result=0 errno=0
+6: SAMPLE_SEND pid=1729 tid=1741 signal=23 result=0 errno=0
+7: SAMPLE_SEND pid=1729 tid=1740 signal=23 result=0 errno=0
+8: SAMPLE_SEND pid=1729 tid=1739 signal=23 result=0 errno=0
+9: SAMPLE_SEND pid=1729 tid=1738 signal=23 result=0 errno=0
+10: SAMPLE_SEND pid=1729 tid=1734 signal=23 result=0 errno=0
+11: SAMPLE_SEND pid=1729 tid=1729 signal=23 result=0 errno=0
+12: SAMPLE_SEND_COMPLETE count=9 result=0
+13: STAT
+14: 1729 (FEX-apple-m1-mun) R 1727 1727 11 34816 1727 0 0 0 0 0 2094 22 0 0 20 0 9 0 54479712 140754738823168 1999865 0 0 0 4294956528 0 0 0 4194304 8192 3246426620 0 0 0 17 0
+178: 0000ef782000-0000ef922000 r--p 00000000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+179: 0000ef931000-0000efc71000 r--p 0019f000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+180: 0000efc80000-0000efdda000 r--p 004de000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+181: 0000efde9000-0000efdec000 rw-p 00637000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+281: 800307aab000-8003092ab000 rw-p 00000000 00:00 0          
+282: 800310000000-800329200000 rw-p 00000000 00:00 0          
+283: 8003292ab000-8003292d5000 rw-p 00000000 00:00 0          
+284: 8003292d5000-8003292dd000 ---p 00000000 00:00 0          
+285: 8003292dd000-800329312000 rw-p 00000000 00:00 0          
+286: 808007800000-810000100000 rw-p 00000000 00:00 0          
+297: 1729 (FEX-apple-m1-mun) R 1727 1727 11 34816 1727 0 0 0 0 0 2094 22 0 0 20 0 9 0 54479712 140754738823168 1999865 0 0 0 4294956528 0 0 0 4194304 8192 3246426620 0 0 0 17 0
+307: 2026-10-16T11:36:07.535Z|0xcc407780|The selected window backend is wayland 
+308: 2026-10-16T11:36:08.330Z|0xcc407780|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+309: 2026-10-16T11:36:08.331Z|0xcc407780|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+318: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+319: X86_SAMPLE_READY signal=23 (SIGURG; opt-in; returns without termination)

@@ -1,0 +1,3 @@
+STACK_LIMITS local=0x808007fffb0c base=0x800137d45000 size=0x7ed02bb000 soft=0x8000000 hard=0xffffffffffffffff
+STACK_LIMITS MAP 808007800000-1000000000000 rw-p 00000000 00:00 0          
+STACK_LIMITS FAIL contains_local=1 within_soft_limit=0 one_mapping=1 mapping_bounded=0

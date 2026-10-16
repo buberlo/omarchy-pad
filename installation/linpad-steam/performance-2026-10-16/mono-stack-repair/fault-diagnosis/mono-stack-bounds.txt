@@ -1,0 +1,38 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000000255301 <mono_thread_info_set_flags>:
+  2561c5: 41 57                        	pushq	%r15
+  2561c7: 41 56                        	pushq	%r14
+  2561c9: 53                           	pushq	%rbx
+  2561ca: 48 83 ec 10                  	subq	$0x10, %rsp
+  2561ce: 49 89 f7                     	movq	%rsi, %r15
+  2561d1: 49 89 fe                     	movq	%rdi, %r14
+  2561d4: 48 89 74 24 08               	movq	%rsi, 0x8(%rsp)
+  2561d9: e8 06 29 00 00               	callq	0x258ae4 <mono_native_thread_join+0x608>
+  2561de: 49 8b 1e                     	movq	(%r14), %rbx
+  2561e1: 48 85 db                     	testq	%rbx, %rbx
+  2561e4: 74 24                        	je	0x25620a <mono_thread_info_set_flags+0xf09>
+  2561e6: 48 8d 44 24 08               	leaq	0x8(%rsp), %rax
+  2561eb: 48 39 c3                     	cmpq	%rax, %rbx
+  2561ee: 73 24                        	jae	0x256214 <mono_thread_info_set_flags+0xf13>
+  2561f0: 49 8b 0f                     	movq	(%r15), %rcx
+  2561f3: 48 01 d9                     	addq	%rbx, %rcx
+  2561f6: 48 39 c1                     	cmpq	%rax, %rcx
+  2561f9: 76 19                        	jbe	0x256214 <mono_thread_info_set_flags+0xf13>
+  2561fb: e8 e8 64 ff ff               	callq	0x24c6e8 <mono_pagesize>
+  256200: f7 d8                        	negl	%eax
+  256202: 48 98                        	cltq
+  256204: 48 21 c3                     	andq	%rax, %rbx
+  256207: 49 89 1e                     	movq	%rbx, (%r14)
+  25620a: 48 83 c4 10                  	addq	$0x10, %rsp
+  25620e: 5b                           	popq	%rbx
+  25620f: 41 5e                        	popq	%r14
+  256211: 41 5f                        	popq	%r15
+  256213: c3                           	retq
+  256214: 48 8d 3d 39 27 0d 00         	leaq	0xd2739(%rip), %rdi     # 0x328954 <mono_opcodes+0x63284>
+  25621b: 48 8d 15 c5 2a 0d 00         	leaq	0xd2ac5(%rip), %rdx     # 0x328ce7 <mono_opcodes+0x63617>
+  256222: be 5b 06 00 00               	movl	$0x65b, %esi            # imm = 0x65B
+  256227: e8 83 94 00 00               	callq	0x25f6af <mono_assertion_message>

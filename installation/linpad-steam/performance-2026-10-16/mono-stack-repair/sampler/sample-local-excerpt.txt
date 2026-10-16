@@ -1,0 +1,19 @@
+X86_SAMPLE_READY signal=23 (SIGURG; opt-in; returns without termination)
+SAMPLE_TEST active token PASS
+SAMPLE_TEST logical default query PASS
+SAMPLE_TEST busy thread created PASS
+SAMPLE_TEST futex thread created PASS
+X86_SAMPLE tid=0x4 signal=0x17 code=0x0 rip=0xcecc14f7 rsp=0x818007fffeb8 rbp=0x818007fffed0 rax=0xca rbx=0x1004b24 rcx=0xcecc14f9 rdx=0x0 rsi=0x80 rdi=0x1004b24
+X86_SAMPLE tid=0x3 signal=0x17 code=0x0 rip=0x100249d rsp=0x810007fffed0 rbp=0x810007fffed0 rax=0x3 rbx=0x810008000cdc rcx=0xcecc14f9 rdx=0xcec4575b rsi=0x0 rdi=0x810008000fb0
+X86_SAMPLE tid=0x2 signal=0x17 code=0x0 rip=0xcec4d72c rsp=0x808007fff7f8 rbp=0x808007fffb10 rax=0xe6 rbx=0xceba8340 rcx=0xcec4d72e rdx=0x808007fff850 rsi=0x0 rdi=0x0
+NATIVE_HELPER_ACTIVE_EXIT=0
+SAMPLE_TEST both threads resume and join PASS
+X86_SAMPLE_DISARMED application claimed SIGURG
+SAMPLE_TEST app ownership preserved PASS
+SAMPLE_TEST app handler receives signal PASS
+SAMPLE_TEST replacement disarms token PASS
+SAMPLE_REFUSED initial token
+NATIVE_HELPER_DISARMED_EXIT=2
+SAMPLE_TEST refused helper never signals app handler PASS
+SAMPLE_TEST_COMPLETE failures=0
+SAMPLE_ORCHESTRATOR child_exit=0 active_send=0 disarmed_refusal=2

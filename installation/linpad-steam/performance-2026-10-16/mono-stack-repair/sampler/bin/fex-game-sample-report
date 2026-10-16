@@ -1,0 +1,8 @@
+#!/bin/sh
+# One-launch diagnostic. No effect unless selected explicitly as the FEX wrapper.
+set -eu
+fex=${LINPAD_FEX_REAL_BINARY:-/opt/fex/FEX-apple-m1-munmap}
+sampler=${LINPAD_X86_SAMPLER:-/tmp/x86-thread-sample.so}
+crash=${LINPAD_X86_CRASH_REPORTER:-/tmp/x86-game-crash-report.so}
+[ -x "$fex" ] && [ -r "$sampler" ] && [ -r "$crash" ] || exit 126
+exec env LINPAD_X86_SAMPLE=1 LD_PRELOAD="$sampler:$crash" "$fex" "$@"

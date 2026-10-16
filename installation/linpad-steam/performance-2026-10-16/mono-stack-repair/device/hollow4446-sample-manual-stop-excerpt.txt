@@ -1,0 +1,10 @@
+1: Fri Oct 16 11:35:56 UTC 2026
+2: LINPAD_EGL_DIAGNOSTIC mode=swrast auxiliary_driver=llvmpipe FEX=/tmp/fex-game-sample-report
+8: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+9: X86_SAMPLE_READY signal=23 (SIGURG; opt-in; returns without termination)
+41: Killed
+42: GAME_EXIT=137
+44: 2026-10-16T11:36:07.535Z|0xcc407780|The selected window backend is wayland 
+45: 2026-10-16T11:36:08.330Z|0xcc407780|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+46: 2026-10-16T11:36:08.331Z|0xcc407780|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+47: Fri Oct 16 11:41:24 UTC 2026

@@ -1,0 +1,69 @@
+{
+  "fex_runtime_base": "0xef782000",
+  "physical_fault_pc": "0xef94a278",
+  "physical_fault_elf_vma": "0x1c8278",
+  "caller_lr": "0xefb2c100",
+  "caller_elf_vma": "0x3aa100",
+  "local_fault_elf_vmas": [
+    "0x1c82a4",
+    "0x1c82b0"
+  ],
+  "mono_guard_call_elf_vma": "0xbd91a",
+  "mono_guard_return_elf_vma": "0xbd91f",
+  "glibc_reference": "https://raw.githubusercontent.com/bminor/glibc/glibc-2.41/nptl/pthread_getattr_np.c",
+  "sources": [
+    {
+      "path": "work/performance/serve/FEX-apple-m1-munmap",
+      "size": 6530992,
+      "sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d"
+    },
+    {
+      "path": "work/performance/game-fault-report/libmonobdwgc-2.0.so",
+      "size": 3856176,
+      "sha256": "682d74f03efd9cebd05d38e82c4b296a0a1865f070440281aa1ac51022220b94"
+    },
+    {
+      "path": "work/performance/mono-init-probe/mono-0-fault-report.txt",
+      "size": 1293687,
+      "sha256": "7d9deb2c7d9722d13d56594315746f53b2f100240cd778fe18a5c434d9db555d"
+    },
+    {
+      "path": "work/performance/mono-init-probe/mono-0-mprotect-excerpt.txt",
+      "size": 757,
+      "sha256": "4cff75c8268d9af34368d9385d41c38d0996f8ec2303460f082c905e2fd113f8"
+    },
+    {
+      "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "size": 1995216,
+      "sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92"
+    },
+    {
+      "path": "work/performance/fex-build/FEX/FEXCore/Source/Interface/Core/JIT/JIT.cpp",
+      "size": 46968,
+      "sha256": "e2426d022d7fcea1d10d078eb01dd289d318119a8786fd5d89cf835b23a95783"
+    },
+    {
+      "path": "work/performance/fex-build/FEX/FEXCore/Source/Interface/Core/LookupCache.h",
+      "size": 18603,
+      "sha256": "0c5825c7153e98ae3bb7bee95dac07e7a8253720196813fa0eb68174ef973384"
+    },
+    {
+      "path": "work/performance/fex-build/FEX/FEXCore/include/FEXCore/fextl/memory_resource.h",
+      "size": 5229,
+      "sha256": "075a098eb77a428797a9b6a123fc6273c32bead8cc00273d925d99b6abeacaa6"
+    },
+    {
+      "path": "work/performance/fex-build/FEX/Source/Tools/LinuxEmulation/LinuxSyscalls/EmulatedFiles/EmulatedFiles.cpp",
+      "size": 26226,
+      "sha256": "2c5574dca799c4a4a5ac89d8814b3a3d710cd7501a28fb0d23ae0e7984d40ee9"
+    },
+    {
+      "path": "work/performance/mono-init-probe/stack-limits-before-excerpt.txt",
+      "size": 510,
+      "sha256": "61fc315280f5f1ea5121bc2ceccf912f8e9aeda262bd2462372dd922b8fec29e"
+    }
+  ],
+  "proprietary_binaries_included": false,
+  "status": "Fault chain confirmed; local host correction/regression and unchanged-FEX Mono controls pass; physical4447pending",
+  "artifact_scope": "Read-only fault diagnosis; production fix owned by graphics_path"
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "phase": "before",
+    "command": [
+      "work/performance/proc-maps-regression/ish-before",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/stack-launch"
+    ],
+    "exit_code": 1,
+    "cli_sha256": "9553142384ab5f818c7d068c9632828d2fac9010dc8072031ff631f665b09913"
+  },
+  {
+    "phase": "after",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/stack-launch"
+    ],
+    "exit_code": 0,
+    "cli_sha256": "3209f92653dfca707c6a08f4e0a7935070164e00c6f64644c9d62c7ab643fbc1"
+  }
+]

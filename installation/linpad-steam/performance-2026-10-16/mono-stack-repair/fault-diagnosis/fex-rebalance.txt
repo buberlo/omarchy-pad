@@ -1,0 +1,44 @@
+
+work/performance/serve/FEX-apple-m1-munmap:	file format elf64-littleaarch64
+
+Disassembly of section .text:
+
+00000000001c8240 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_>:
+  1c8240: d503245f     	bti	c
+  1c8244: b900003f     	str	wzr, [x1]
+  1c8248: a900fc22     	stp	x2, xzr, [x1, #0x8]
+  1c824c: f9000c3f     	str	xzr, [x1, #0x18]
+  1c8250: 36000140     	tbz	w0, #0x0, 0x1c8278 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x38>
+  1c8254: f9000841     	str	x1, [x2, #0x10]
+  1c8258: eb02007f     	cmp	x3, x2
+  1c825c: 54001200     	b.eq	0x1c849c <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x25c>
+  1c8260: a9408065     	ldp	x5, x0, [x3, #0x8]
+  1c8264: aa0503e4     	mov	x4, x5
+  1c8268: eb02001f     	cmp	x0, x2
+  1c826c: 54000121     	b.ne	0x1c8290 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x50>
+  1c8270: f9000861     	str	x1, [x3, #0x10]
+  1c8274: 14000007     	b	0x1c8290 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x50>
+  1c8278: f9000c41     	str	x1, [x2, #0x18]
+  1c827c: f9400c60     	ldr	x0, [x3, #0x18]
+  1c8280: f9400465     	ldr	x5, [x3, #0x8]
+  1c8284: eb02001f     	cmp	x0, x2
+  1c8288: 54001060     	b.eq	0x1c8494 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x254>
+  1c828c: aa0503e4     	mov	x4, x5
+  1c8290: 52800026     	mov	w6, #0x1                // =1
+  1c8294: eb05003f     	cmp	x1, x5
+  1c8298: 54000181     	b.ne	0x1c82c8 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x88>
+  1c829c: 14000033     	b	0x1c8368 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x128>
+  1c82a0: b4000324     	cbz	x4, 0x1c8304 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0xc4>
+  1c82a4: b9400087     	ldr	w7, [x4]
+  1c82a8: 350002e7     	cbnz	w7, 0x1c8304 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0xc4>
+  1c82ac: b9000046     	str	w6, [x2]
+  1c82b0: b9000086     	str	w6, [x4]
+  1c82b4: aa0003e1     	mov	x1, x0
+  1c82b8: b900001f     	str	wzr, [x0]
+  1c82bc: aa0503e4     	mov	x4, x5
+  1c82c0: eb0100bf     	cmp	x5, x1
+  1c82c4: 54000520     	b.eq	0x1c8368 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x128>
+  1c82c8: f9400422     	ldr	x2, [x1, #0x8]
+  1c82cc: b9400040     	ldr	w0, [x2]
+  1c82d0: 350004c0     	cbnz	w0, 0x1c8368 <_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_+0x128>
+  1c82d4: f9400440     	ldr	x0, [x2, #0x8]

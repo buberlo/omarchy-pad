@@ -1,0 +1,89 @@
+{
+  "utc": "2026-10-16T11:35:44.993863+00:00",
+  "purpose": "Opt-in nonfatal x86 thread-register sampler; no production configuration change",
+  "signal": 23,
+  "signal_name": "SIGURG",
+  "signal_selection": "Default ignored in LinPad; no handler or block bit in captured physical Unity thread state. Exact Mono GC defaults30 and24; FEX pause63. Runtime refuses a preexisting handler or SIG_IGN and disarms on later public sigaction/signal replacement.",
+  "local_validation": {
+    "execution": "macOS LinPad CLI, native ARM64 sender, patched ARM64 FEX, x86 multi-thread probe",
+    "exit": 0,
+    "sampled_threads": [
+      "main nanosleep",
+      "running loop",
+      "blocked futex"
+    ],
+    "unique_x86_RIP_records": 3,
+    "both_workers_resumed_and_joined": true,
+    "application_replacement_preserved": true,
+    "disarmed_sender_exit": 2,
+    "disarmed_sender_did_not_deliver_signal": true,
+    "linpad_cli_sha256": "9553142384ab5f818c7d068c9632828d2fac9010dc8072031ff631f665b09913",
+    "FEX_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d"
+  },
+  "device_validation": {
+    "build": 4446,
+    "pid": 1729,
+    "tgkill_successes": 9,
+    "guest_sample_records": 0,
+    "result": "Reproduced host FEX metadata fault; guest callbacks did not arrive; manual termination produced wrapper exit137.",
+    "evidence": "../device/hollow4446-thread-samples-1-excerpt.txt"
+  },
+  "limitations": [
+    "No stack unwind or renderer/gameplay qualification.",
+    "A thread with blocked/deferred SIGURG may not report until it can deliver the signal.",
+    "Direct raw signal syscalls or hidden libc calls can bypass public interposition. Readiness checks are not an atomic transaction with arbitrary application signal changes. SIGURG default-ignore avoids fatal-default behavior.",
+    "Sender allows two ticks of LinPad proc starttime drift, observed from current generated proc implementation."
+  ],
+  "files": [
+    {
+      "path": "work/performance/game-fault-report/sample-state.h",
+      "bytes": 958,
+      "sha256": "04382978a2b29d16805c1b3684ee8c18e1711d8a81651faf70530ea13e15ef90"
+    },
+    {
+      "path": "work/performance/game-fault-report/x86-thread-sample.c",
+      "bytes": 4110,
+      "sha256": "c7afc6f68c89a7b3390d20426ef2dc48a6961f821efa0af75a8e8975b08cb2d8"
+    },
+    {
+      "path": "work/performance/game-fault-report/thread-sample-send.c",
+      "bytes": 2156,
+      "sha256": "838e5bfa7b3f55b6686f73d3a950c43a2200ff75297c579b4869d241883bd956"
+    },
+    {
+      "path": "work/performance/game-fault-report/thread-sample-probe.c",
+      "bytes": 3144,
+      "sha256": "c96d826ba762b0ef32038ef66b368859e33a36fcc950134a741835df30a21770"
+    },
+    {
+      "path": "work/performance/game-fault-report/thread-sample-launch.c",
+      "bytes": 1677,
+      "sha256": "a5bfe43b70bcc2b705719df19d0bb5e02497dc4b1df827080b1ff88a45aeb509"
+    },
+    {
+      "path": "work/performance/game-fault-report/sample-local.txt",
+      "bytes": 533054,
+      "sha256": "84ae9414ad9bf858c54867e01929d18e49c907aa50e903b671e5d797fd71afe7"
+    },
+    {
+      "path": "work/performance/game-fault-report/sample-local-excerpt.txt",
+      "bytes": 1187,
+      "sha256": "193534b3721ccb3c23cff09cebabcc25694568b58eac2e30fca444a8f4a87518"
+    },
+    {
+      "path": "work/performance/serve/x86-thread-sample.so",
+      "bytes": 22776,
+      "sha256": "63e675cc8da56f65ea423c22b53d86a55877a77a43e3cd426414516666444684"
+    },
+    {
+      "path": "work/performance/serve/thread-sample-send",
+      "bytes": 1654288,
+      "sha256": "582e689f3a4b6b41a8bdbaaa6d98229e5e2788ee3738c423fa7948ac7ab4bfa4"
+    },
+    {
+      "path": "work/performance/serve/fex-game-sample-report",
+      "bytes": 419,
+      "sha256": "deca0256857ee8f46648de1f130f01e78cfa080127e0c689e396ba3c3583801e"
+    }
+  ]
+}

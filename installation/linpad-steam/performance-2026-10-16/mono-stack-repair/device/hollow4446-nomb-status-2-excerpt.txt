@@ -1,0 +1,16 @@
+1: Fri Oct 16 11:45:11 UTC 2026
+10: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+11: X86_SAMPLE_READY signal=23 (SIGURG; opt-in; returns without termination)
+44: 2026-10-16T11:41:49.330Z|0xcc407780|The selected window backend is wayland 
+45: 2026-10-16T11:41:50.244Z|0xcc407780|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+46: 2026-10-16T11:41:50.249Z|0xcc407780|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+47: 2026-10-16T11:42:38.945Z|0xcc407780|Input System module state changed to: Initialized.
+48: 2026-10-16T11:42:41.088Z|0xcc407780|Display 0 'DesktopKit': 1180x780 (primary device).
+49: X86_FAULT signal=0xb code=0x2 address=0x8002ea906000 rip=0xcd9f333a rsp=0x808007ffe068 rbp=0x24e9d0 rax=0x1 rbx=0xced7324c rcx=0x1 rdx=0xe57a0009 rsi=0x0 rdi=0xceceda30
+50: X86_MAP 0000cce2d000-0000cebfa000 r-xp 006fa000 00:00 0          /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+51: X86_RIP_FILE_OFFSET 0x12c033a
+52: X86_MAP 8002ea906000-8002ea90e000 ---p 00000000 00:00 0          
+55: GAME_PID=2331
+56: GAME_STAT
+57: 2331 (FEX-apple-m1-mun) R 2329 2329 11 34816 2329 0 0 0 0 0 5762 75 0 0 20 0 35 0 54514350 140775681888256 3979368 0 0 0 4294956496 0 0 0 536870912 8192 3246426620 0 0 0 17 0
+58: GAME_GRAPHICS_MAPS

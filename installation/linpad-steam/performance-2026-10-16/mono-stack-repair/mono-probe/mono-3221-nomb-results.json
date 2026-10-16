@@ -1,0 +1,10 @@
+{
+  "exit": -9,
+  "host_timeout_seconds": 45,
+  "host_terminated_after_timeout": true,
+  "seconds": 45.041,
+  "FEX_MULTIBLOCK": "0",
+  "sdl_flags": "0x3221",
+  "local_video_driver": "dummy",
+  "excerpt": "MONO_PROBE MODE stage=mono sdl=0x3221 order=before pid=1\nMONO_PROBE 121355.208 UNITY_LOAD_BEGIN\nMONO_PROBE 121356.292 SDL_INIT_BEGIN\nMONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol1 call 64  (fast) = 0x80\nMONO_PROBE 121357.446 MONO_LOAD_BEGIN\nMONO_PROBE 121357.580 MONO_LOAD_END\nMONO_PROBE 121357.633 MONO_JIT_INIT_BEGIN\nINT_GPF pid=1 pc=0xefb2c03c fault=0x80018b1d88a0 write=0\nINT_GPF pid=1 pc=0xefb2c058 fault=0x80018b1d8898 write=0\nINT_GPF pid=1 pc=0xefb2c0b4 fault=0x80018b1d88a0 write=0\nINT_GPF pid=1 pc=0xef94a278 fault=0x80018b1d8898 write=1"
+}

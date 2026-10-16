@@ -1,0 +1,22 @@
+MONO_PROBE MODE stage=mono sdl=0x0 order=before pid=1
+MONO_PROBE 120893.432 MONO_LOAD_BEGIN
+MONO_PROBE 120893.550 MONO_LOAD_END
+MONO_PROBE 120893.571 MONO_JIT_INIT_BEGIN
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff5a0, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff5a0, 0x100) = 0xffffffffffffffea
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xffffffffffffffea
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x0, 0x0) = 0x3
+1 call 78  readlinkat(-100, "/proc/self/fd/3", 0xffffb2a8, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(-100, "/proc/self/fd/3", 0xffffb1c0, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xffffffffffffffea
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x0, 0x0) = 0x3
+1 call 78  readlinkat(-100, "/proc/self/fd/3", 0xffffb2a8, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(-100, "/proc/self/fd/3", 0xffffb1c0, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.so", 0x80000, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.so.la", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so", 0x80000, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so.la", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.config", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/etc/mono/assemblies/mscorlib/mscorlib.config", 0x0, 0x0) = 0xfffffffffffffffe

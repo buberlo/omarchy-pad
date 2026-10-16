@@ -1,0 +1,11 @@
+MONO_PROBE MODE stage=mono sdl=0x3221 order=before pid=1
+MONO_PROBE 121355.208 UNITY_LOAD_BEGIN
+MONO_PROBE 121356.292 SDL_INIT_BEGIN
+MONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol1 call 64  (fast) = 0x80
+MONO_PROBE 121357.446 MONO_LOAD_BEGIN
+MONO_PROBE 121357.580 MONO_LOAD_END
+MONO_PROBE 121357.633 MONO_JIT_INIT_BEGIN
+INT_GPF pid=1 pc=0xefb2c03c fault=0x80018b1d88a0 write=0
+INT_GPF pid=1 pc=0xefb2c058 fault=0x80018b1d8898 write=0
+INT_GPF pid=1 pc=0xefb2c0b4 fault=0x80018b1d88a0 write=0
+INT_GPF pid=1 pc=0xef94a278 fault=0x80018b1d8898 write=1

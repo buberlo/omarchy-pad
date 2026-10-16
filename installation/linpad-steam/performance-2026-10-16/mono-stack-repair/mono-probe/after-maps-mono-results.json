@@ -1,0 +1,36 @@
+[
+  {
+    "case": "after-maps-mono-0-before",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "mono",
+      "0",
+      "before"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 13.794,
+    "excerpt": "MONO_PROBE MODE stage=mono sdl=0x0 order=before pid=1\nMONO_PROBE 121826.923 MONO_LOAD_BEGIN\nMONO_PROBE 121827.016 MONO_LOAD_END\nMONO_PROBE 121827.031 MONO_JIT_INIT_BEGIN\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff5a0, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff5a0, 0x100) = 0xffffffffffffffea\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xffffffffffffffea\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x0, 0x0) = 0x3\n1 call 78  readlinkat(-100, \"/proc/self/fd/3\", 0xffffb2a8, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(-100, \"/proc/self/fd/3\", 0xffffb1c0, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xffffffffffffffea\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x0, 0x0) = 0x3\n1 call 78  readlinkat(-100, \"/proc/self/fd/3\", 0xffffb2a8, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(-100, \"/proc/self/fd/3\", 0xffffb1c0, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.so\", 0x80000, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.so.la\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so\", 0x80000, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so.la\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.config\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/etc/mono/assemblies/mscorlib/mscorlib.config\", 0x0, 0x0) = 0xfffffffffffffffe\nMONO_PROBE MONO_JIT_INIT_END domain=0xce182d80\nMONO_PROBE 121839.929 PASS"
+  },
+  {
+    "case": "after-maps-mono-3221-before",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "mono",
+      "3221",
+      "before"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 27.971,
+    "excerpt": "MONO_PROBE MODE stage=mono sdl=0x3221 order=before pid=1\nMONO_PROBE 121840.321 UNITY_LOAD_BEGIN\nMONO_PROBE 121841.224 SDL_INIT_BEGIN\nMONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol1 call 64  (fast) = 0x80\nMONO_PROBE 121842.625 MONO_LOAD_BEGIN\nMONO_PROBE 121842.756 MONO_LOAD_END\nMONO_PROBE 121842.786 MONO_JIT_INIT_BEGIN\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff5a0, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff5a0, 0x100) = 0xffffffffffffffea\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xffffffffffffffea\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x0, 0x0) = 0x4\n1 call 78  readlinkat(-100, \"/proc/self/fd/4\", 0xffffb2a8, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(-100, \"/proc/self/fd/4\", 0xffffb1c0, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(5, \"opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xfffffffffffffffe\n1 call 78  readlinkat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x7fff520, 0x100) = 0xffffffffffffffea\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll\", 0x0, 0x0) = 0x4\n1 call 78  readlinkat(-100, \"/proc/self/fd/4\", 0xffffb2a8, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 78  readlinkat(-100, \"/proc/self/fd/4\", 0xffffb1c0, 0x1000) \"/opt/mono-init/data/Managed/mscorlib.dll\" = 0x28\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.so\", 0x80000, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.so.la\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so\", 0x80000, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so.la\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/Managed/mscorlib.dll.config\", 0x0, 0x0) = 0xfffffffffffffffe\n1 call 56  openat(-100, \"/opt/mono-init/data/etc/mono/assemblies/mscorlib/mscorlib.config\", 0x0, 0x0) = 0xfffffffffffffffe\nMONO_PROBE MONO_JIT_INIT_END domain=0xcb942d80\nMONO_PROBE 121867.885 PASS"
+  }
+]

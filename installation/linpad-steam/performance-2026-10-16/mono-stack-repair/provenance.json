@@ -1,0 +1,50 @@
+{
+  "stage": "Host maps fix implemented; local boundary and default-FEX exactMono before/after comparison passed; physical build4447 pending",
+  "physical_build_before": 4446,
+  "host_source_before_commit": "72e1eef8b3125b39e7c852abf2d16bf7a1f82029",
+  "runtime_fex_unchanged_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+  "physical_gameplay_verified": false,
+  "physical_rendered_frame_verified": false,
+  "proprietary_binaries_included": false,
+  "github_actions_used": false,
+  "archive_policy": "Only enumerated authored diagnostics, narrow disassembly/excerpts and source/input hashes. No complete game or device-console binaries/logs.",
+  "host_boundary_regression": {
+    "before_failures": 6,
+    "before_exit": 1,
+    "after_checks": 10,
+    "after_failures": 0,
+    "after_exit": 0,
+    "probe_sha256": "e349c2f648bdb1d8b9ed8b8b370fc4cc8866f16f04cd743e01637405313861ff"
+  },
+  "local_mono_after": {
+    "FEX_runtime_changed": false,
+    "normal_probe_changed": false,
+    "normal_launcher_changed": false,
+    "LD_PRELOAD": "unset",
+    "FEX_MULTIBLOCK": "pinned default; no override",
+    "cases": [
+      {
+        "SDL_flags": "0",
+        "exit": 0,
+        "seconds": 13.794
+      },
+      {
+        "SDL_flags": "0x3221",
+        "display_backend": "dummy",
+        "exit": 0,
+        "seconds": 27.971
+      }
+    ],
+    "stack_base": "0x808000000000",
+    "stack_size_bytes": 134217728,
+    "guard_base": "0x808000001000",
+    "guard_bytes": 32768,
+    "guard_caller_mono_rva": "0xbd91f",
+    "standalone_stack_probe": {
+      "before_exit": 1,
+      "after_exit": 0,
+      "sha256": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43"
+    }
+  },
+  "host_source_fix_commit": "9beb5dea2eeaffd7ebd27952592cba658fe12bb4"
+}

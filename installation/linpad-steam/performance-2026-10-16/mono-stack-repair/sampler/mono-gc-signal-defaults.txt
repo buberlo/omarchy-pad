@@ -1,0 +1,38 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+000000000027a36a <GC_set_suspend_signal>:
+  27a36a: 48 8d 05 a7 a5 33 00         	lea	rax, [rip + 0x33a5a7]   # 0x5b4918 <GC_is_initialized>
+  27a371: 83 38 00                     	cmp	dword ptr [rax], 0x0
+  27a374: 74 01                        	je	0x27a377 <GC_set_suspend_signal+0xd>
+  27a376: c3                           	ret
+  27a377: 48 8d 05 4e 2b 33 00         	lea	rax, [rip + 0x332b4e]   # 0x5acecc <GC_sig_suspend>
+  27a37e: 89 38                        	mov	dword ptr [rax], edi
+  27a380: c3                           	ret
+
+000000000027a381 <GC_set_thr_restart_signal>:
+  27a381: 48 8d 05 90 a5 33 00         	lea	rax, [rip + 0x33a590]   # 0x5b4918 <GC_is_initialized>
+  27a388: 83 38 00                     	cmp	dword ptr [rax], 0x0
+  27a38b: 74 01                        	je	0x27a38e <GC_set_thr_restart_signal+0xd>
+  27a38d: c3                           	ret
+  27a38e: 48 8d 05 3b 2b 33 00         	lea	rax, [rip + 0x332b3b]   # 0x5aced0 <GC_sig_thr_restart>
+  27a395: 89 38                        	mov	dword ptr [rax], edi
+  27a397: c3                           	ret
+
+000000000027a398 <GC_get_suspend_signal>:
+  27a398: 48 8d 05 2d 2b 33 00         	lea	rax, [rip + 0x332b2d]   # 0x5acecc <GC_sig_suspend>
+  27a39f: 8b 08                        	mov	ecx, dword ptr [rax]
+  27a3a1: 83 f9 ff                     	cmp	ecx, -0x1
+  27a3a4: b8 1e 00 00 00               	mov	eax, 0x1e
+  27a3a9: 0f 45 c1                     	cmovne	eax, ecx
+  27a3ac: c3                           	ret
+
+000000000027a3ad <GC_get_thr_restart_signal>:
+  27a3ad: 48 8d 05 1c 2b 33 00         	lea	rax, [rip + 0x332b1c]   # 0x5aced0 <GC_sig_thr_restart>
+  27a3b4: 8b 08                        	mov	ecx, dword ptr [rax]
+  27a3b6: 83 f9 ff                     	cmp	ecx, -0x1
+  27a3b9: b8 18 00 00 00               	mov	eax, 0x18
+  27a3be: 0f 45 c1                     	cmovne	eax, ecx
+  27a3c1: c3                           	ret

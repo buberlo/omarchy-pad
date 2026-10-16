@@ -1,0 +1,807 @@
+{
+  "scope": "No proprietary executable/library/core-assembly bytes; no complete private device console or account data.",
+  "files": [
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/README.md",
+      "destination": "fault-diagnosis/README.md",
+      "source_sha256": "31f3754c79645c66cf96a19958ed482ab95699d196455d8d4030f148e1b12a2d",
+      "bytes": 3715,
+      "mode": "curated status update; original source fingerprint retained",
+      "archived_sha256": "63e912766874070cfaafc158be148cbbe78560427d1af101be915cd18b9f32fa"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/SHA256SUMS",
+      "destination": "fault-diagnosis/SHA256SUMS",
+      "source_sha256": "c267dd09b2865c4125752b39cff22f4789ac5b6e9bc5d5e1b01ed6bf8a7ad585",
+      "bytes": 1088,
+      "mode": "curated status update; original source fingerprint retained",
+      "archived_sha256": "8a9827c99b28c6e9ab5b78f4f36c9aae52fff0b69f2135565614473e6c1faf7b"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/fex-block-link-caller-xrefs.txt",
+      "destination": "fault-diagnosis/fex-block-link-caller-xrefs.txt",
+      "source_sha256": "a97b1a4881400ce22f9a13a2d0a22cfeb88ce7633c19dc8caa7fa0623e9552b9",
+      "bytes": 2571,
+      "mode": "byte-identical",
+      "archived_sha256": "a97b1a4881400ce22f9a13a2d0a22cfeb88ce7633c19dc8caa7fa0623e9552b9"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/fex-map-insert.txt",
+      "destination": "fault-diagnosis/fex-map-insert.txt",
+      "source_sha256": "c88b36fb7e2dc98a82aa8d9b40615084efac852fc479e07b6dbf80f3395c5344",
+      "bytes": 4416,
+      "mode": "byte-identical",
+      "archived_sha256": "c88b36fb7e2dc98a82aa8d9b40615084efac852fc479e07b6dbf80f3395c5344"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/fex-rebalance.txt",
+      "destination": "fault-diagnosis/fex-rebalance.txt",
+      "source_sha256": "bb708bbb9b8c037e342fe4641a6cd2217dcff3b6e789742572a388b4740b7515",
+      "bytes": 2507,
+      "mode": "byte-identical",
+      "archived_sha256": "bb708bbb9b8c037e342fe4641a6cd2217dcff3b6e789742572a388b4740b7515"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/glibc-stack-model-result.json",
+      "destination": "fault-diagnosis/glibc-stack-model-result.json",
+      "source_sha256": "469e5676463598f7b3e245f04a1bacd730e60881c6bdd1b32d896d11483cdd6b",
+      "bytes": 613,
+      "mode": "byte-identical",
+      "archived_sha256": "469e5676463598f7b3e245f04a1bacd730e60881c6bdd1b32d896d11483cdd6b"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/glibc-stack-model.py",
+      "destination": "fault-diagnosis/glibc-stack-model.py",
+      "source_sha256": "7eed963c7a75613dee9480ded98cdcd6d0217927cbc141ff72bcb1963dc314a4",
+      "bytes": 1661,
+      "mode": "byte-identical",
+      "archived_sha256": "7eed963c7a75613dee9480ded98cdcd6d0217927cbc141ff72bcb1963dc314a4"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/guest-mprotect-observer-excerpt.txt",
+      "destination": "fault-diagnosis/guest-mprotect-observer-excerpt.txt",
+      "source_sha256": "4cff75c8268d9af34368d9385d41c38d0996f8ec2303460f082c905e2fd113f8",
+      "bytes": 757,
+      "mode": "byte-identical",
+      "archived_sha256": "4cff75c8268d9af34368d9385d41c38d0996f8ec2303460f082c905e2fd113f8"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/local-protection-fault-excerpt.txt",
+      "destination": "fault-diagnosis/local-protection-fault-excerpt.txt",
+      "source_sha256": "3fd6c08e2c45f03aec0537fec6a53c8e6777bd412fcbac07427ceafc48d3363d",
+      "bytes": 1638,
+      "mode": "byte-identical",
+      "archived_sha256": "3fd6c08e2c45f03aec0537fec6a53c8e6777bd412fcbac07427ceafc48d3363d"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/mono-stack-bounds.txt",
+      "destination": "fault-diagnosis/mono-stack-bounds.txt",
+      "source_sha256": "0d32667fe01e0a7922fd71966ceba0917e4fa2cbdcbde0a40ae289152cae8396",
+      "bytes": 2197,
+      "mode": "byte-identical",
+      "archived_sha256": "0d32667fe01e0a7922fd71966ceba0917e4fa2cbdcbde0a40ae289152cae8396"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/mono-stack-guard.txt",
+      "destination": "fault-diagnosis/mono-stack-guard.txt",
+      "source_sha256": "aa893b369f1a4425bb842962c2eb2cc7b956070bebfddb99da45c19a0ace78fb",
+      "bytes": 4732,
+      "mode": "byte-identical",
+      "archived_sha256": "aa893b369f1a4425bb842962c2eb2cc7b956070bebfddb99da45c19a0ace78fb"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/provenance.json",
+      "destination": "fault-diagnosis/provenance.json",
+      "source_sha256": "85d1f010988e0c89183c85f26645f0493c205fa21c5ceab8b1075ae4bf6271fd",
+      "bytes": 2702,
+      "mode": "curated status update; original source fingerprint retained",
+      "archived_sha256": "73abae97a44e9d467216abbffda1c2182e66aa70729fe664daf768fee2ae634c"
+    },
+    {
+      "source": "work/performance/game-fault-report/fex-stack-guard-audit/x86-stack-limits-before-excerpt.txt",
+      "destination": "fault-diagnosis/x86-stack-limits-before-excerpt.txt",
+      "source_sha256": "61fc315280f5f1ea5121bc2ceccf912f8e9aeda262bd2462372dd922b8fec29e",
+      "bytes": 510,
+      "mode": "byte-identical",
+      "archived_sha256": "61fc315280f5f1ea5121bc2ceccf912f8e9aeda262bd2462372dd922b8fec29e"
+    },
+    {
+      "source": "work/performance/game-fault-report/sample-state.h",
+      "destination": "sampler/sample-state.h",
+      "source_sha256": "04382978a2b29d16805c1b3684ee8c18e1711d8a81651faf70530ea13e15ef90",
+      "bytes": 958,
+      "mode": "byte-identical",
+      "archived_sha256": "04382978a2b29d16805c1b3684ee8c18e1711d8a81651faf70530ea13e15ef90"
+    },
+    {
+      "source": "work/performance/game-fault-report/x86-thread-sample.c",
+      "destination": "sampler/x86-thread-sample.c",
+      "source_sha256": "c7afc6f68c89a7b3390d20426ef2dc48a6961f821efa0af75a8e8975b08cb2d8",
+      "bytes": 4110,
+      "mode": "byte-identical",
+      "archived_sha256": "c7afc6f68c89a7b3390d20426ef2dc48a6961f821efa0af75a8e8975b08cb2d8"
+    },
+    {
+      "source": "work/performance/game-fault-report/thread-sample-send.c",
+      "destination": "sampler/thread-sample-send.c",
+      "source_sha256": "838e5bfa7b3f55b6686f73d3a950c43a2200ff75297c579b4869d241883bd956",
+      "bytes": 2156,
+      "mode": "byte-identical",
+      "archived_sha256": "838e5bfa7b3f55b6686f73d3a950c43a2200ff75297c579b4869d241883bd956"
+    },
+    {
+      "source": "work/performance/game-fault-report/thread-sample-probe.c",
+      "destination": "sampler/thread-sample-probe.c",
+      "source_sha256": "c96d826ba762b0ef32038ef66b368859e33a36fcc950134a741835df30a21770",
+      "bytes": 3144,
+      "mode": "byte-identical",
+      "archived_sha256": "c96d826ba762b0ef32038ef66b368859e33a36fcc950134a741835df30a21770"
+    },
+    {
+      "source": "work/performance/game-fault-report/thread-sample-launch.c",
+      "destination": "sampler/thread-sample-launch.c",
+      "source_sha256": "a5bfe43b70bcc2b705719df19d0bb5e02497dc4b1df827080b1ff88a45aeb509",
+      "bytes": 1677,
+      "mode": "byte-identical",
+      "archived_sha256": "a5bfe43b70bcc2b705719df19d0bb5e02497dc4b1df827080b1ff88a45aeb509"
+    },
+    {
+      "source": "work/performance/game-fault-report/thread-sample-README.md",
+      "destination": "sampler/thread-sample-README.md",
+      "source_sha256": "6daed283456d2db52bf459f7ad58f99fe739ba025f109691b04ec3901da4d662",
+      "bytes": 3269,
+      "mode": "curated update to device-result boundary; source fingerprint retained",
+      "archived_sha256": "508f5eb57bbee094daf3db9a1c53ebfc145dab9a3afd7bc4da9b750209891a6e"
+    },
+    {
+      "source": "work/performance/game-fault-report/thread-sample-provenance.json",
+      "destination": "sampler/thread-sample-provenance.json",
+      "source_sha256": "dc6e6b388aa4b83159fee866dce5d7a83bad4179cf1f00678660fb4132601d8b",
+      "bytes": 3524,
+      "mode": "curated update to device-result boundary; source fingerprint retained",
+      "archived_sha256": "71b6ba9c5447c2bcf3150eb4af6e17a047567cb48a294af65e7d9f75bed54ac5"
+    },
+    {
+      "source": "work/performance/game-fault-report/sample-local-excerpt.txt",
+      "destination": "sampler/sample-local-excerpt.txt",
+      "source_sha256": "193534b3721ccb3c23cff09cebabcc25694568b58eac2e30fca444a8f4a87518",
+      "bytes": 1187,
+      "mode": "byte-identical",
+      "archived_sha256": "193534b3721ccb3c23cff09cebabcc25694568b58eac2e30fca444a8f4a87518"
+    },
+    {
+      "source": "work/performance/game-fault-report/mono-gc-signal-defaults.txt",
+      "destination": "sampler/mono-gc-signal-defaults.txt",
+      "source_sha256": "cd21b3516c2cdfd917da0b2124d1d03541c7cb3cef14e5f016dee6247bae84ab",
+      "bytes": 2029,
+      "mode": "byte-identical",
+      "archived_sha256": "cd21b3516c2cdfd917da0b2124d1d03541c7cb3cef14e5f016dee6247bae84ab"
+    },
+    {
+      "source": "work/performance/game-fault-report/mono-gc-stop-init.txt",
+      "destination": "sampler/mono-gc-stop-init.txt",
+      "source_sha256": "c1212cc5717da3ef6cbd55fa4a55e3337338b74fd0778035dc5f77d69550a834",
+      "bytes": 3838,
+      "mode": "byte-identical",
+      "archived_sha256": "c1212cc5717da3ef6cbd55fa4a55e3337338b74fd0778035dc5f77d69550a834"
+    },
+    {
+      "source": "work/performance/game-fault-report/mono-no-parallel-markers.txt",
+      "destination": "sampler/mono-no-parallel-markers.txt",
+      "source_sha256": "de065a2d37476a9d6795cfc838e386b2657a12fc9f070f94182b15f81fc26141",
+      "bytes": 200,
+      "mode": "byte-identical",
+      "archived_sha256": "de065a2d37476a9d6795cfc838e386b2657a12fc9f070f94182b15f81fc26141"
+    },
+    {
+      "source": "work/performance/game-fault-report/mono-gc-thread-init.txt",
+      "destination": "sampler/mono-gc-thread-init.txt",
+      "source_sha256": "9b7dc5e6353396215c95a72b98aef17d8ba504c41e628b1c143e648a8d758179",
+      "bytes": 1907,
+      "mode": "byte-identical",
+      "archived_sha256": "9b7dc5e6353396215c95a72b98aef17d8ba504c41e628b1c143e648a8d758179"
+    },
+    {
+      "source": "work/performance/serve/x86-thread-sample.so",
+      "destination": "sampler/bin/x86-thread-sample.so",
+      "source_sha256": "63e675cc8da56f65ea423c22b53d86a55877a77a43e3cd426414516666444684",
+      "bytes": 22776,
+      "mode": "byte-identical",
+      "archived_sha256": "63e675cc8da56f65ea423c22b53d86a55877a77a43e3cd426414516666444684"
+    },
+    {
+      "source": "work/performance/serve/thread-sample-send",
+      "destination": "sampler/bin/thread-sample-send",
+      "source_sha256": "582e689f3a4b6b41a8bdbaaa6d98229e5e2788ee3738c423fa7948ac7ab4bfa4",
+      "bytes": 1654288,
+      "mode": "byte-identical",
+      "archived_sha256": "582e689f3a4b6b41a8bdbaaa6d98229e5e2788ee3738c423fa7948ac7ab4bfa4"
+    },
+    {
+      "source": "work/performance/serve/fex-game-sample-report",
+      "destination": "sampler/bin/fex-game-sample-report",
+      "source_sha256": "deca0256857ee8f46648de1f130f01e78cfa080127e0c689e396ba3c3583801e",
+      "bytes": 419,
+      "mode": "byte-identical",
+      "archived_sha256": "deca0256857ee8f46648de1f130f01e78cfa080127e0c689e396ba3c3583801e"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/thread-sample-probe",
+      "destination": "sampler/bin/thread-sample-probe",
+      "source_sha256": "873f0ea34d7ef9fe0466e2a51ca917130e2f79a9b060338022eda746b5891877",
+      "bytes": 24168,
+      "mode": "byte-identical",
+      "archived_sha256": "873f0ea34d7ef9fe0466e2a51ca917130e2f79a9b060338022eda746b5891877"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/thread-sample-launch",
+      "destination": "sampler/bin/thread-sample-launch",
+      "source_sha256": "388b751e79356216ce09d5cc3ebfa5ad7378619914380d109a4d59cbe2a2c858",
+      "bytes": 1672200,
+      "mode": "byte-identical",
+      "archived_sha256": "388b751e79356216ce09d5cc3ebfa5ad7378619914380d109a4d59cbe2a2c858"
+    },
+    {
+      "source": "work/performance/mono-init-probe/build.sh",
+      "destination": "mono-probe/build.sh",
+      "source_sha256": "8bfbc1bdd825dbce6a3be9de9f73c0876c5c7cffe4ab601403a2069f00fc27e9",
+      "bytes": 515,
+      "mode": "byte-identical",
+      "archived_sha256": "8bfbc1bdd825dbce6a3be9de9f73c0876c5c7cffe4ab601403a2069f00fc27e9"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-0-before-excerpt.txt",
+      "destination": "mono-probe/gc-0-before-excerpt.txt",
+      "source_sha256": "0945b4dc8cacf41b8b80910999cd2b488340fdd15839beb97a9253af9d0a4448",
+      "bytes": 299,
+      "mode": "byte-identical",
+      "archived_sha256": "0945b4dc8cacf41b8b80910999cd2b488340fdd15839beb97a9253af9d0a4448"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-1-after-excerpt.txt",
+      "destination": "mono-probe/gc-1-after-excerpt.txt",
+      "source_sha256": "a4198d58810728c6a3aa8beced609af76c0e5c7ae2fc889a27dffa702bae7e0d",
+      "bytes": 424,
+      "mode": "byte-identical",
+      "archived_sha256": "a4198d58810728c6a3aa8beced609af76c0e5c7ae2fc889a27dffa702bae7e0d"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-1-before-excerpt.txt",
+      "destination": "mono-probe/gc-1-before-excerpt.txt",
+      "source_sha256": "4b27fb478a5ed7c8aa168c38b5206f2380f68c34e5a423a7f8d16a1ea9327f8e",
+      "bytes": 425,
+      "mode": "byte-identical",
+      "archived_sha256": "4b27fb478a5ed7c8aa168c38b5206f2380f68c34e5a423a7f8d16a1ea9327f8e"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-3221-before-excerpt.txt",
+      "destination": "mono-probe/gc-3221-before-excerpt.txt",
+      "source_sha256": "ec6a795d58f586559e7d15b6ed409e0dfab7ef876934be96e2bdc70d1cb21541",
+      "bytes": 531,
+      "mode": "byte-identical",
+      "archived_sha256": "ec6a795d58f586559e7d15b6ed409e0dfab7ef876934be96e2bdc70d1cb21541"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-provenance.json",
+      "destination": "mono-probe/gc-provenance.json",
+      "source_sha256": "9c8ddf2f17b59fdb789f4924eac17f0e1f321cb083498926ee6981875343dbbd",
+      "bytes": 910,
+      "mode": "byte-identical",
+      "archived_sha256": "9c8ddf2f17b59fdb789f4924eac17f0e1f321cb083498926ee6981875343dbbd"
+    },
+    {
+      "source": "work/performance/mono-init-probe/gc-results.json",
+      "destination": "mono-probe/gc-results.json",
+      "source_sha256": "d028089b5fc55f1415d90ca83968af755c9a17ff99277ef62dd4be3b55122716",
+      "bytes": 3151,
+      "mode": "byte-identical",
+      "archived_sha256": "d028089b5fc55f1415d90ca83968af755c9a17ff99277ef62dd4be3b55122716"
+    },
+    {
+      "source": "work/performance/mono-init-probe/inputs-and-diagnostic-source.json",
+      "destination": "mono-probe/inputs-and-diagnostic-source.json",
+      "source_sha256": "436077371743216eb914c0b5442a3511bb8c81ddcdc3d8417eb9246520c017cc",
+      "bytes": 1180,
+      "mode": "byte-identical",
+      "archived_sha256": "436077371743216eb914c0b5442a3511bb8c81ddcdc3d8417eb9246520c017cc"
+    },
+    {
+      "source": "work/performance/mono-init-probe/launch.c",
+      "destination": "mono-probe/launch.c",
+      "source_sha256": "b1b49d8e853d9ef2a859f51cf05396608ba5cbefbdbbf8e820a0e931c832000a",
+      "bytes": 961,
+      "mode": "byte-identical",
+      "archived_sha256": "b1b49d8e853d9ef2a859f51cf05396608ba5cbefbdbbf8e820a0e931c832000a"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-before-excerpt.txt",
+      "destination": "mono-probe/mono-0-before-excerpt.txt",
+      "source_sha256": "e3cc315c73b0a5aa8bbfbf8919118b77eb717a9d8bf9dca2064847bfe7e593cf",
+      "bytes": 2137,
+      "mode": "byte-identical",
+      "archived_sha256": "e3cc315c73b0a5aa8bbfbf8919118b77eb717a9d8bf9dca2064847bfe7e593cf"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-fault-report-excerpt.txt",
+      "destination": "mono-probe/mono-0-fault-report-excerpt.txt",
+      "source_sha256": "9d75d1692aa8ad10b70ec86a5703742f794ad89876f883fbc018e864d3fe7266",
+      "bytes": 340,
+      "mode": "byte-identical",
+      "archived_sha256": "9d75d1692aa8ad10b70ec86a5703742f794ad89876f883fbc018e864d3fe7266"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-mprotect-excerpt.txt",
+      "destination": "mono-probe/mono-0-mprotect-excerpt.txt",
+      "source_sha256": "4cff75c8268d9af34368d9385d41c38d0996f8ec2303460f082c905e2fd113f8",
+      "bytes": 757,
+      "mode": "byte-identical",
+      "archived_sha256": "4cff75c8268d9af34368d9385d41c38d0996f8ec2303460f082c905e2fd113f8"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-mprotect-results.json",
+      "destination": "mono-probe/mono-0-mprotect-results.json",
+      "source_sha256": "283b8b61867ab78a25577fc1cdda4f5d380bf7e7606fe349f85ca574c31a9919",
+      "bytes": 891,
+      "mode": "byte-identical",
+      "archived_sha256": "283b8b61867ab78a25577fc1cdda4f5d380bf7e7606fe349f85ca574c31a9919"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-nomb-excerpt.txt",
+      "destination": "mono-probe/mono-0-nomb-excerpt.txt",
+      "source_sha256": "7ada1b0dab12654af5b89607cb8bfa1ee99bb4c109b29049656264e71020ee99",
+      "bytes": 871,
+      "mode": "byte-identical",
+      "archived_sha256": "7ada1b0dab12654af5b89607cb8bfa1ee99bb4c109b29049656264e71020ee99"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-nomb-results.json",
+      "destination": "mono-probe/mono-0-nomb-results.json",
+      "source_sha256": "55f43f5e1f9c0b48219c0eab01ddcf50e25854b75aa49297b9ac3fe4b560f155",
+      "bytes": 1037,
+      "mode": "byte-identical",
+      "archived_sha256": "55f43f5e1f9c0b48219c0eab01ddcf50e25854b75aa49297b9ac3fe4b560f155"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-1-after-excerpt.txt",
+      "destination": "mono-probe/mono-1-after-excerpt.txt",
+      "source_sha256": "a665e1ce230730f8ebca07dea7854130337f7e47b34c2b1f4e60b05c1fb4a6b0",
+      "bytes": 2136,
+      "mode": "byte-identical",
+      "archived_sha256": "a665e1ce230730f8ebca07dea7854130337f7e47b34c2b1f4e60b05c1fb4a6b0"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-1-before-excerpt.txt",
+      "destination": "mono-probe/mono-1-before-excerpt.txt",
+      "source_sha256": "a81556d6a43e967f85d16b1679dcfe74796657b372b01be157ed821b360efeb2",
+      "bytes": 2263,
+      "mode": "byte-identical",
+      "archived_sha256": "a81556d6a43e967f85d16b1679dcfe74796657b372b01be157ed821b360efeb2"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-3221-before-excerpt.txt",
+      "destination": "mono-probe/mono-3221-before-excerpt.txt",
+      "source_sha256": "c3abce34c7a7f0d182aed3323dc78dfce7401ac11f2b88e5257a15ff4f0c8866",
+      "bytes": 2369,
+      "mode": "byte-identical",
+      "archived_sha256": "c3abce34c7a7f0d182aed3323dc78dfce7401ac11f2b88e5257a15ff4f0c8866"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-3221-nomb-excerpt.txt",
+      "destination": "mono-probe/mono-3221-nomb-excerpt.txt",
+      "source_sha256": "28921e0aecb91d3a2897dfcc36e16b7c505f2d26efa1439099ed7c49ac55403c",
+      "bytes": 630,
+      "mode": "byte-identical",
+      "archived_sha256": "28921e0aecb91d3a2897dfcc36e16b7c505f2d26efa1439099ed7c49ac55403c"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-3221-nomb-results.json",
+      "destination": "mono-probe/mono-3221-nomb-results.json",
+      "source_sha256": "6e68949231868538c4e1d4c47a13f9561f162658d24dd0c6847ed67f285557f3",
+      "bytes": 848,
+      "mode": "byte-identical",
+      "archived_sha256": "6e68949231868538c4e1d4c47a13f9561f162658d24dd0c6847ed67f285557f3"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-provenance.json",
+      "destination": "mono-probe/mono-provenance.json",
+      "source_sha256": "9c8ddf2f17b59fdb789f4924eac17f0e1f321cb083498926ee6981875343dbbd",
+      "bytes": 910,
+      "mode": "byte-identical",
+      "archived_sha256": "9c8ddf2f17b59fdb789f4924eac17f0e1f321cb083498926ee6981875343dbbd"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-results.json",
+      "destination": "mono-probe/mono-results.json",
+      "source_sha256": "a8875c961a61576b0c52adf04abdb2f358b8b4e6f90161da624c334127043021",
+      "bytes": 10625,
+      "mode": "byte-identical",
+      "archived_sha256": "a8875c961a61576b0c52adf04abdb2f358b8b4e6f90161da624c334127043021"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mprotect-observer.c",
+      "destination": "mono-probe/mprotect-observer.c",
+      "source_sha256": "1fa3b4bd4931a55343c256f9a62c225747b53f3f061da434f33d8b295b062b7f",
+      "bytes": 3079,
+      "mode": "byte-identical",
+      "archived_sha256": "1fa3b4bd4931a55343c256f9a62c225747b53f3f061da434f33d8b295b062b7f"
+    },
+    {
+      "source": "work/performance/mono-init-probe/probe.c",
+      "destination": "mono-probe/probe.c",
+      "source_sha256": "ac3dbfb84c6dca55c53279f3fcfc8a5f37d61eb6dbf35dc4e1bc4aa38fe921d7",
+      "bytes": 3382,
+      "mode": "byte-identical",
+      "archived_sha256": "ac3dbfb84c6dca55c53279f3fcfc8a5f37d61eb6dbf35dc4e1bc4aa38fe921d7"
+    },
+    {
+      "source": "work/performance/mono-init-probe/run-local.py",
+      "destination": "mono-probe/run-local.py",
+      "source_sha256": "afa5cf6b26a642bf04aa5a0c0de5b813b12c31709433e6d8c4602cb8307ba35c",
+      "bytes": 2619,
+      "mode": "byte-identical",
+      "archived_sha256": "afa5cf6b26a642bf04aa5a0c0de5b813b12c31709433e6d8c4602cb8307ba35c"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/mono-init/probe",
+      "destination": "mono-probe/bin/probe",
+      "source_sha256": "9359890704d5fc5b9a0302a45765fa016dbe704738d5f3487b163f312f11a789",
+      "bytes": 18840,
+      "mode": "byte-identical",
+      "archived_sha256": "9359890704d5fc5b9a0302a45765fa016dbe704738d5f3487b163f312f11a789"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/mono-init/launch",
+      "destination": "mono-probe/bin/launch",
+      "source_sha256": "82775d5b51b1901ec2aad9664f617d8929ed14988f45580cf21a7e2d534b3059",
+      "bytes": 1531904,
+      "mode": "byte-identical",
+      "archived_sha256": "82775d5b51b1901ec2aad9664f617d8929ed14988f45580cf21a7e2d534b3059"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/mono-init/nomb-launch",
+      "destination": "mono-probe/bin/nomb-launch",
+      "source_sha256": "98f4046cf1ec919c3d766433e9ea6c4f21fbbbffce913e8bc2246d5aeec98397",
+      "bytes": 1532008,
+      "mode": "byte-identical",
+      "archived_sha256": "98f4046cf1ec919c3d766433e9ea6c4f21fbbbffce913e8bc2246d5aeec98397"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/mono-init/mprotect-observer.so",
+      "destination": "mono-probe/bin/mprotect-observer.so",
+      "source_sha256": "dc610d81cb37ce54d6b99e56b474e7ba8a80d23035b59a49908a1a25f5c6ff6e",
+      "bytes": 12240,
+      "mode": "byte-identical",
+      "archived_sha256": "dc610d81cb37ce54d6b99e56b474e7ba8a80d23035b59a49908a1a25f5c6ff6e"
+    },
+    {
+      "source": "work/performance/serve/hollow4446-egl",
+      "destination": "device/scripts/hollow4446-egl",
+      "source_sha256": "5eb026e4cb7c56bd831e79c5c787da51730df2b99ec487b0d76203884676d420",
+      "bytes": 843,
+      "mode": "byte-identical",
+      "archived_sha256": "5eb026e4cb7c56bd831e79c5c787da51730df2b99ec487b0d76203884676d420"
+    },
+    {
+      "source": "work/performance/serve/hollow4446-sample",
+      "destination": "device/scripts/hollow4446-sample",
+      "source_sha256": "3a96f631c226a20ae37dae464cd90956244645a75868bb79524ca93976fd30cf",
+      "bytes": 853,
+      "mode": "byte-identical",
+      "archived_sha256": "3a96f631c226a20ae37dae464cd90956244645a75868bb79524ca93976fd30cf"
+    },
+    {
+      "source": "work/performance/serve/hollow4446-nomb",
+      "destination": "device/scripts/hollow4446-nomb",
+      "source_sha256": "19aa2a38301bea943335247c0616c37fa75a47291e2fd844385f04f470d49887",
+      "bytes": 871,
+      "mode": "byte-identical",
+      "archived_sha256": "19aa2a38301bea943335247c0616c37fa75a47291e2fd844385f04f470d49887"
+    },
+    {
+      "source": "work/performance/serve/prepare4446-sampler",
+      "destination": "device/scripts/prepare4446-sampler",
+      "source_sha256": "b5f97e2cf7a2c669f4484bf35f61d4255cc483a8d66e736ea79f5fa6c2f3763e",
+      "bytes": 1000,
+      "mode": "byte-identical",
+      "archived_sha256": "b5f97e2cf7a2c669f4484bf35f61d4255cc483a8d66e736ea79f5fa6c2f3763e"
+    },
+    {
+      "source": "work/performance/serve/sample4446-threads",
+      "destination": "device/scripts/sample4446-threads",
+      "source_sha256": "9302b65253ff3a053b5be3aeed523a255cb565e692c26f5b57e54dd81203f6b4",
+      "bytes": 656,
+      "mode": "byte-identical",
+      "archived_sha256": "9302b65253ff3a053b5be3aeed523a255cb565e692c26f5b57e54dd81203f6b4"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-status-1.txt",
+      "destination": "device/hollow4446-status-1-excerpt.txt",
+      "source_sha256": "ea6d7b4a5c3fea641db52bac13211e0c6f1e902dd36dc791bed978b28b5f40f9",
+      "source_bytes": 3530,
+      "selected_line_count": 9,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "c6e32e90d8ca80c8b2fdae75a43031e56db362f8c22c164b5ae499e5346b4e60"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-status-2.txt",
+      "destination": "device/hollow4446-status-2-excerpt.txt",
+      "source_sha256": "023ea4237bc7f65c77c8272bb25ee3d45e25d72413c8d74313cd85679a1e3a98",
+      "source_bytes": 3530,
+      "selected_line_count": 9,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "250e35cb1d588b4f56922b230cd48c8c386e51427f08fc0e1fc2f132c03cf30f"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-stall-1.txt",
+      "destination": "device/hollow4446-stall-1-excerpt.txt",
+      "source_sha256": "05abcc7338301c15958bd156a23995a69a5beaa70891a4c80719e5843fb46a1c",
+      "source_bytes": 27460,
+      "selected_line_count": 18,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "1ac53c90f0c32e61b814ff230478ed6d74b8805ab6127de82134dfbc1b706ec6"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-threads-1.txt",
+      "destination": "device/hollow4446-threads-1-excerpt.txt",
+      "source_sha256": "6129b702e31571d20d64cf94bfdc54969a66eaa64512d725f07a78ab81df868c",
+      "source_bytes": 1444,
+      "selected_line_count": 1,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "6aee6b706140e4e3a42f1d7a66fe3798d1f45bb0c0485f6c20307dc32a9caf1b"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-thread-samples-1.txt",
+      "destination": "device/hollow4446-thread-samples-1-excerpt.txt",
+      "source_sha256": "b003754abc9a938b20a872a2e02cd37663903888f08b14d768eaba6699ae87c6",
+      "source_bytes": 28514,
+      "selected_line_count": 30,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "3d6af3a576535fecd8c9c72d8f0f24b826a6c923df4b5ce1cc4d05f43fb4b792"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-nomb-status-1.txt",
+      "destination": "device/hollow4446-nomb-status-1-excerpt.txt",
+      "source_sha256": "eb93d07a4f61bc31cbf7a8c946c26235c248ce473737917a169631181eb0bd2b",
+      "source_bytes": 3601,
+      "selected_line_count": 10,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "2a20728a5e46c2fb4e9602bb159c71a46800d8a8e901d9bd31832b9434d96a3f"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-nomb-status-2.txt",
+      "destination": "device/hollow4446-nomb-status-2-excerpt.txt",
+      "source_sha256": "03c90902e548dd52cfbf09c7a82d04c95a6589982d3fabe5fbcb9d18e6f95676",
+      "source_bytes": 4184,
+      "selected_line_count": 16,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "64a7cee68e9380b30d1f33602313228824cc97ffca19fc015d69a3ef43e0ac15"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-manual-stop-for-sampler.txt",
+      "destination": "device/hollow4446-manual-stop-for-sampler-excerpt.txt",
+      "source_sha256": "1dad9cbeb7f440562030a5d5f49ea7cefefa8ba026597d4f0aed74ec92ae7f1f",
+      "source_bytes": 2919,
+      "selected_line_count": 9,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "15dbff35d0b6c450321c5e83b1607fac9dfa4498505aa8a164e2856f648dd55e"
+    },
+    {
+      "source": "work/performance/reports/hollow4446-sample-manual-stop.txt",
+      "destination": "device/hollow4446-sample-manual-stop-excerpt.txt",
+      "source_sha256": "068f8d6837d2aa1b4433ac043a7020023237fe7915dc7594df34c3ba74948005",
+      "source_bytes": 2993,
+      "selected_line_count": 10,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "60629d896cd9dc6a8913c77e426c8555f6f48d53b0ce2f7b484ae1ba9f60f0f7"
+    },
+    {
+      "source": "work/performance/build4446/device-console.log",
+      "destination": "device/arm64-fex-protected-faults.txt",
+      "source_sha256": "4141f6b87475e4521c65a9f3dd2b5e38e7d62f9e2a12d37adf10de211ff210a6",
+      "source_bytes": 192971,
+      "selected_line_count": 2,
+      "mode": "numbered selected lines; control character U+0001 retained as escaped form if present",
+      "archived_sha256": "eddbd92eab27c18cd5176ffc1f6d9c1d13b3f63cbd6302d57d7a240f7069eada"
+    },
+    {
+      "source": "work/performance/proc-maps-regression/before.txt",
+      "destination": "host-fix/before.txt",
+      "source_sha256": "29f05a18cd07362a91e4c330156eb49f0edb37f3f97628e8f1bbb380188d0d6d",
+      "archived_sha256": "29f05a18cd07362a91e4c330156eb49f0edb37f3f97628e8f1bbb380188d0d6d",
+      "bytes": 1271,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/proc-maps-regression/after.txt",
+      "destination": "host-fix/after.txt",
+      "source_sha256": "a0c85f973a008088b534e439f8155d7e77c79f86ed46046c4e65def5b8df551e",
+      "archived_sha256": "a0c85f973a008088b534e439f8155d7e77c79f86ed46046c4e65def5b8df551e",
+      "bytes": 1202,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/proc-maps-regression/provenance.json",
+      "destination": "host-fix/provenance.json",
+      "source_sha256": "aab9fc2f08ba33a2feafdab55eb62cf0f6d21bafd735b900c8c0885923687ca8",
+      "archived_sha256": "aab9fc2f08ba33a2feafdab55eb62cf0f6d21bafd735b900c8c0885923687ca8",
+      "bytes": 1788,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/proc-maps-regression/proc-maps-boundary-probe",
+      "destination": "host-fix/proc-maps-boundary-probe",
+      "source_sha256": "e349c2f648bdb1d8b9ed8b8b370fc4cc8866f16f04cd743e01637405313861ff",
+      "archived_sha256": "e349c2f648bdb1d8b9ed8b8b370fc4cc8866f16f04cd743e01637405313861ff",
+      "bytes": 1694240,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/LinPad/tests/manual/steam-compat/proc-maps-boundary-probe.c",
+      "destination": "host-fix/proc-maps-boundary-probe.c",
+      "source_sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102",
+      "archived_sha256": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102",
+      "bytes": 3333,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-results.json",
+      "destination": "mono-probe/after-maps-mono-results.json",
+      "source_sha256": "329cd6e76306ac8a40a699ef2ac09281b84121240f6033f180580378bf6fd579",
+      "archived_sha256": "329cd6e76306ac8a40a699ef2ac09281b84121240f6033f180580378bf6fd579",
+      "bytes": 5546,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-provenance.json",
+      "destination": "mono-probe/after-maps-mono-provenance.json",
+      "source_sha256": "690ac87cac919fd89878c4688c2f2ca8911c3da3c13cb9ba6174ed4ea6c3bf55",
+      "archived_sha256": "690ac87cac919fd89878c4688c2f2ca8911c3da3c13cb9ba6174ed4ea6c3bf55",
+      "bytes": 1033,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-0-before-excerpt.txt",
+      "destination": "mono-probe/after-maps-mono-0-before-excerpt.txt",
+      "source_sha256": "a5d87aa2e7118ce29f8cb8749e5f4dceaee2b4d5e153f4aca7507eccab292875",
+      "archived_sha256": "a5d87aa2e7118ce29f8cb8749e5f4dceaee2b4d5e153f4aca7507eccab292875",
+      "bytes": 2211,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-3221-before-excerpt.txt",
+      "destination": "mono-probe/after-maps-mono-3221-before-excerpt.txt",
+      "source_sha256": "6ff7638befc21991e7438979da49569fb86c199d75b99ea471fc5baf864f3dc9",
+      "archived_sha256": "6ff7638befc21991e7438979da49569fb86c199d75b99ea471fc5baf864f3dc9",
+      "bytes": 2443,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/README.md",
+      "destination": "mono-probe/README.md",
+      "source_sha256": "c5fbdd8252fdc25dc4a495d85abb7a4f24589fab35d7c89d3495300d367b567d",
+      "archived_sha256": "c5fbdd8252fdc25dc4a495d85abb7a4f24589fab35d7c89d3495300d367b567d",
+      "bytes": 7796,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/allocation-audit.md",
+      "destination": "mono-probe/allocation-audit.md",
+      "source_sha256": "ebff8270e8eb77e8c9edab1747f0bda63b9d66379c485e489811ca74aaa17afb",
+      "archived_sha256": "ebff8270e8eb77e8c9edab1747f0bda63b9d66379c485e489811ca74aaa17afb",
+      "bytes": 8972,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-probe.c",
+      "destination": "mono-probe/stack-limits-probe.c",
+      "source_sha256": "850c6f0348a349f100a15fb6bcc62b4241d9c6fb99924cb5f7a86e15c0e2c94a",
+      "archived_sha256": "850c6f0348a349f100a15fb6bcc62b4241d9c6fb99924cb5f7a86e15c0e2c94a",
+      "bytes": 2007,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-launch.c",
+      "destination": "mono-probe/stack-launch.c",
+      "source_sha256": "81cc8e39309593e02b7886a073d61ebf7ac269f66a8b05c486bd2108f0815f18",
+      "archived_sha256": "81cc8e39309593e02b7886a073d61ebf7ac269f66a8b05c486bd2108f0815f18",
+      "bytes": 441,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono4447-probe",
+      "destination": "mono-probe/mono4447-probe",
+      "source_sha256": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43",
+      "archived_sha256": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43",
+      "bytes": 3206,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-diagnostic-provenance.json",
+      "destination": "mono-probe/after-maps-diagnostic-provenance.json",
+      "source_sha256": "218ad7a6957788fc7a69b388997951e98535e30676d09cf713fd4f96a8b1b0b4",
+      "archived_sha256": "218ad7a6957788fc7a69b388997951e98535e30676d09cf713fd4f96a8b1b0b4",
+      "bytes": 3014,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-before-excerpt.txt",
+      "destination": "mono-probe/stack-limits-before-excerpt.txt",
+      "source_sha256": "61fc315280f5f1ea5121bc2ceccf912f8e9aeda262bd2462372dd922b8fec29e",
+      "archived_sha256": "61fc315280f5f1ea5121bc2ceccf912f8e9aeda262bd2462372dd922b8fec29e",
+      "bytes": 510,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-after-excerpt.txt",
+      "destination": "mono-probe/stack-limits-after-excerpt.txt",
+      "source_sha256": "f45ee830874f639ad71053f7934077ba442862ecd00021ebd4925a73da3eeaf2",
+      "archived_sha256": "f45ee830874f639ad71053f7934077ba442862ecd00021ebd4925a73da3eeaf2",
+      "bytes": 507,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-mprotect-after-maps-excerpt.txt",
+      "destination": "mono-probe/mono-0-mprotect-after-maps-excerpt.txt",
+      "source_sha256": "976199bed6dab415bb7d4ed815ee331259d18a85c0eea91dc9acce2b9dbcc9cd",
+      "archived_sha256": "976199bed6dab415bb7d4ed815ee331259d18a85c0eea91dc9acce2b9dbcc9cd",
+      "bytes": 1332,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/mono-0-mprotect-after-maps-results.json",
+      "destination": "mono-probe/mono-0-mprotect-after-maps-results.json",
+      "source_sha256": "1d6281c2c48f50485075fdd75b2f7c5e104ddde4894b21e6f0f41c61dde8806a",
+      "archived_sha256": "1d6281c2c48f50485075fdd75b2f7c5e104ddde4894b21e6f0f41c61dde8806a",
+      "bytes": 293,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-probe-before-excerpt.txt",
+      "destination": "mono-probe/stack-limits-probe-before-excerpt.txt",
+      "source_sha256": "b56ebe75960278687c20d8fb7ada797f68b582be0f342c3099c69fda57091770",
+      "archived_sha256": "b56ebe75960278687c20d8fb7ada797f68b582be0f342c3099c69fda57091770",
+      "bytes": 274,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-probe-after-excerpt.txt",
+      "destination": "mono-probe/stack-limits-probe-after-excerpt.txt",
+      "source_sha256": "b48eef91e6193d25ab9d30ddeb39bffe3fcbc06dafd215008da67ce3a3546abe",
+      "archived_sha256": "b48eef91e6193d25ab9d30ddeb39bffe3fcbc06dafd215008da67ce3a3546abe",
+      "bytes": 270,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/stack-limits-probe-results.json",
+      "destination": "mono-probe/stack-limits-probe-results.json",
+      "source_sha256": "3e108f228c81bbc8d303412fd6dac512855197b6ba88281ec0418e2666da485a",
+      "archived_sha256": "3e108f228c81bbc8d303412fd6dac512855197b6ba88281ec0418e2666da485a",
+      "bytes": 595,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/stack-limits-probe",
+      "destination": "mono-probe/bin/stack-limits-probe",
+      "source_sha256": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43",
+      "archived_sha256": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43",
+      "bytes": 14848,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/vulkan-repro-root/opt/mono-init/stack-launch",
+      "destination": "mono-probe/bin/stack-launch",
+      "source_sha256": "7801b3a697325353407f7d9d672f98eabc272b985ef91ce0417e335a0e2a645b",
+      "archived_sha256": "7801b3a697325353407f7d9d672f98eabc272b985ef91ce0417e335a0e2a645b",
+      "bytes": 1531408,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-cli-build.txt",
+      "destination": "mono-probe/after-maps-cli-build-completion.txt",
+      "source_sha256": "287fd0d633816de76fd6b67488113b994c329e5d5804b11135e269078b97c281",
+      "archived_sha256": "287fd0d633816de76fd6b67488113b994c329e5d5804b11135e269078b97c281",
+      "source_bytes": 213,
+      "mode": "last12 CLI build lines only"
+    }
+  ]
+}

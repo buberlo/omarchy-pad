@@ -1,0 +1,61 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+000000000027ac82 <GC_stop_init>:
+  27ac82: 41 57                        	push	r15
+  27ac84: 41 56                        	push	r14
+  27ac86: 53                           	push	rbx
+  27ac87: 48 81 ec a0 00 00 00         	sub	rsp, 0xa0
+  27ac8e: 4c 8d 3d 37 22 33 00         	lea	r15, [rip + 0x332237]   # 0x5acecc <GC_sig_suspend>
+  27ac95: 41 8b 07                     	mov	eax, dword ptr [r15]
+  27ac98: 83 f8 ff                     	cmp	eax, -0x1
+  27ac9b: 75 0c                        	jne	0x27aca9 <GC_stop_init+0x27>
+  27ac9d: 41 c7 07 1e 00 00 00         	mov	dword ptr [r15], 0x1e
+  27aca4: b8 1e 00 00 00               	mov	eax, 0x1e
+  27aca9: 4c 8d 35 20 22 33 00         	lea	r14, [rip + 0x332220]   # 0x5aced0 <GC_sig_thr_restart>
+  27acb0: 41 8b 0e                     	mov	ecx, dword ptr [r14]
+  27acb3: 83 f9 ff                     	cmp	ecx, -0x1
+  27acb6: 75 0c                        	jne	0x27acc4 <GC_stop_init+0x42>
+  27acb8: 41 c7 06 18 00 00 00         	mov	dword ptr [r14], 0x18
+  27acbf: b9 18 00 00 00               	mov	ecx, 0x18
+  27acc4: 39 c8                        	cmp	eax, ecx
+  27acc6: 0f 84 47 01 00 00            	je	0x27ae13 <GC_stop_init+0x191>
+  27accc: 48 8d 3d 55 fa 33 00         	lea	rdi, [rip + 0x33fa55]   # 0x5ba728 <GC_suspend_ack_sem>
+  27acd3: 31 f6                        	xor	esi, esi
+  27acd5: 31 d2                        	xor	edx, edx
+  27acd7: e8 64 da db ff               	call	0x38740 <sem_init@plt>
+  27acdc: 85 c0                        	test	eax, eax
+  27acde: 0f 85 3f 01 00 00            	jne	0x27ae23 <GC_stop_init+0x1a1>
+  27ace4: 48 8d 5c 24 10               	lea	rbx, [rsp + 0x10]
+  27ace9: c7 83 80 00 00 00 04 00 00 10	mov	dword ptr [rbx + 0x80], 0x10000004
+  27acf3: 48 89 df                     	mov	rdi, rbx
+  27acf6: e8 a5 d0 db ff               	call	0x37da0 <sigfillset@plt>
+  27acfb: 85 c0                        	test	eax, eax
+  27acfd: 0f 85 00 01 00 00            	jne	0x27ae03 <GC_stop_init+0x181>
+  27ad03: 48 89 df                     	mov	rdi, rbx
+  27ad06: e8 03 f6 ff ff               	call	0x27a30e <GC_remove_allowed_signals>
+  27ad0b: 48 8d 05 16 f7 ff ff         	lea	rax, [rip - 0x8ea]      # 0x27a428 <GC_suspend_handler>
+  27ad12: 48 8d 74 24 08               	lea	rsi, [rsp + 0x8]
+  27ad17: 48 89 06                     	mov	qword ptr [rsi], rax
+  27ad1a: 41 8b 3f                     	mov	edi, dword ptr [r15]
+  27ad1d: 31 d2                        	xor	edx, edx
+  27ad1f: e8 ec d6 db ff               	call	0x38410 <sigaction@plt>
+  27ad24: 85 c0                        	test	eax, eax
+  27ad26: 0f 85 07 01 00 00            	jne	0x27ae33 <GC_stop_init+0x1b1>
+  27ad2c: 48 8d 74 24 08               	lea	rsi, [rsp + 0x8]
+  27ad31: 80 a6 88 00 00 00 fb         	and	byte ptr [rsi + 0x88], -0x5
+  27ad38: 48 8d 05 57 f9 ff ff         	lea	rax, [rip - 0x6a9]      # 0x27a696 <GC_restart_handler>
+  27ad3f: 48 89 06                     	mov	qword ptr [rsi], rax
+  27ad42: 41 8b 3e                     	mov	edi, dword ptr [r14]
+  27ad45: 31 d2                        	xor	edx, edx
+  27ad47: e8 c4 d6 db ff               	call	0x38410 <sigaction@plt>
+  27ad4c: 85 c0                        	test	eax, eax
+  27ad4e: 0f 85 ef 00 00 00            	jne	0x27ae43 <GC_stop_init+0x1c1>
+  27ad54: 48 8d 3d d5 a4 33 00         	lea	rdi, [rip + 0x33a4d5]   # 0x5b5230 <GC_world_is_stopped+0x8>
+  27ad5b: e8 40 d0 db ff               	call	0x37da0 <sigfillset@plt>
+  27ad60: 85 c0                        	test	eax, eax
+  27ad62: 0f 85 9b 00 00 00            	jne	0x27ae03 <GC_stop_init+0x181>
+  27ad68: 48 8d 1d c1 a4 33 00         	lea	rbx, [rip + 0x33a4c1]   # 0x5b5230 <GC_world_is_stopped+0x8>
+  27ad6f: 48 89 df                     	mov	rdi, rbx

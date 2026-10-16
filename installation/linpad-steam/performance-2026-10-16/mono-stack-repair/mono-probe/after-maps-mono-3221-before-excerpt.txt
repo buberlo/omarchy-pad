@@ -1,0 +1,27 @@
+MONO_PROBE MODE stage=mono sdl=0x3221 order=before pid=1
+MONO_PROBE 121840.321 UNITY_LOAD_BEGIN
+MONO_PROBE 121841.224 SDL_INIT_BEGIN
+MONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol1 call 64  (fast) = 0x80
+MONO_PROBE 121842.625 MONO_LOAD_BEGIN
+MONO_PROBE 121842.756 MONO_LOAD_END
+MONO_PROBE 121842.786 MONO_JIT_INIT_BEGIN
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff5a0, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff5a0, 0x100) = 0xffffffffffffffea
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xffffffffffffffea
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x0, 0x0) = 0x4
+1 call 78  readlinkat(-100, "/proc/self/fd/4", 0xffffb2a8, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(-100, "/proc/self/fd/4", 0xffffb1c0, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(5, "opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x7fff520, 0x100) = 0xffffffffffffffea
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll", 0x0, 0x0) = 0x4
+1 call 78  readlinkat(-100, "/proc/self/fd/4", 0xffffb2a8, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 78  readlinkat(-100, "/proc/self/fd/4", 0xffffb1c0, 0x1000) "/opt/mono-init/data/Managed/mscorlib.dll" = 0x28
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.so", 0x80000, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.so.la", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so", 0x80000, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/mono/aot-cache/amd64/mscorlib.dll.so.la", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/Managed/mscorlib.dll.config", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/opt/mono-init/data/etc/mono/assemblies/mscorlib/mscorlib.config", 0x0, 0x0) = 0xfffffffffffffffe
+MONO_PROBE MONO_JIT_INIT_END domain=0xcb942d80
+MONO_PROBE 121867.885 PASS

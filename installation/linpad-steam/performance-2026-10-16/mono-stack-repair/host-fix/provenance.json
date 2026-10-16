@@ -1,0 +1,23 @@
+{
+  "test": "native AArch64 guest /proc/self/maps boundary probe on Mac-hosted LinPad CLI",
+  "device_test": false,
+  "guest_environment": {
+    "ISH_JIT": "1"
+  },
+  "before_failures": 6,
+  "after_exit": 0,
+  "after_expected_checks": 10,
+  "sha256": {
+    "work/performance/proc-maps-regression/ish-before": "9553142384ab5f818c7d068c9632828d2fac9010dc8072031ff631f665b09913",
+    "work/linpad-cli/ish": "3209f92653dfca707c6a08f4e0a7935070164e00c6f64644c9d62c7ab643fbc1",
+    "work/performance/proc-maps-regression/proc-maps-boundary-probe": "e349c2f648bdb1d8b9ed8b8b370fc4cc8866f16f04cd743e01637405313861ff",
+    "work/LinPad/fs/proc/pid.c": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72",
+    "work/LinPad/tests/manual/steam-compat/proc-maps-boundary-probe.c": "90072bbf53a4f1d183497383418a4283f0e5e4a251bdeaafa7251cace8036102",
+    "work/performance/proc-maps-regression/before.txt": "29f05a18cd07362a91e4c330156eb49f0edb37f3f97628e8f1bbb380188d0d6d",
+    "work/performance/proc-maps-regression/after.txt": "a0c85f973a008088b534e439f8155d7e77c79f86ed46046c4e65def5b8df551e",
+    "work/performance/proc-maps-regression/before-trace.txt": "7bee58faa8ae4f4fbac3ba047d81680e7801aa5a94b341e85f94ceef9d7da76c",
+    "work/performance/proc-maps-regression/after-trace.txt": "b23c5a13b34ede1953c65f57615e19d44a6c303f5f654005a698e3e2c3fba0be"
+  },
+  "compile_command": "ZIG_GLOBAL_CACHE_DIR=\"$PWD/work/proc-maps-zig-cache\" work/build-tools/bin/python -m ziglang cc -target aarch64-linux-musl -static -O2 -Wall -Wextra -Werror work/LinPad/tests/manual/steam-compat/proc-maps-boundary-probe.c -o work/performance/proc-maps-regression/proc-maps-boundary-probe",
+  "run_command": "ISH_JIT=1 <CLI> -r \"$PWD/work/performance/vulkan-repro-root\" /opt/proc-maps-boundary-probe"
+}

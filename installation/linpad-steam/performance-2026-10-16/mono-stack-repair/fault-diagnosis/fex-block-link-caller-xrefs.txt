@@ -1,0 +1,47 @@
+  39ff40: 52801008     	mov	w8, #0x80               // =128
+  39ff44: 72ab0008     	movk	w8, #0x5800, lsl #16
+  39ff48: b81f02a8     	stur	w8, [x21, #-0x10]
+  39ff4c: 91001341     	add	x1, x26, #0x4
+  39ff50: aa1a03e0     	mov	x0, x26
+  39ff54: 97fd512f     	bl	0x2f4410 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0x1e54>
+  39ff58: f9401268     	ldr	x8, [x19, #0x20]
+  39ff5c: f9400108     	ldr	x8, [x8]
+  39ff60: f9402900     	ldr	x0, [x8, #0x50]
+  39ff64: a900d7f6     	stp	x22, x21, [sp, #0x8]
+  39ff68: d503201f     	nop
+  39ff6c: 10001548     	adr	x8, 0x3a0214 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xadc58>
+  39ff70: f9000fe8     	str	x8, [sp, #0x18]
+  39ff74: 910023e1     	add	x1, sp, #0x8
+  39ff78: 94002823     	bl	0x3aa004 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xb7a48>
+  39ff7c: 14000033     	b	0x3a0048 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xada8c>
+  39ff80: f9400e68     	ldr	x8, [x19, #0x18]
+  39ff84: a9416119     	ldp	x25, x24, [x8, #0x10]
+  39ff88: b4000db8     	cbz	x24, 0x3a013c <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xadb80>
+  39ff8c: 90001648     	adrp	x8, 0x667000
+  39ff90: 913d0108     	add	x8, x8, #0xf40
+  39ff94: 39400108     	ldrb	w8, [x8]
+  39ff98: 34000cc8     	cbz	w8, 0x3a0130 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xadb74>
+--
+  39fffc: d2800005     	mov	x5, #0x0                // =0
+  3a0000: 52800046     	mov	w6, #0x2                // =2
+  3a0004: 97fc7e3f     	bl	0x2bf900 <syscall>
+  3a0008: b9400308     	ldr	w8, [x24]
+  3a000c: 7201411f     	tst	w8, #0x8000ffff
+  3a0010: 54fffda1     	b.ne	0x39ffc4 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xada08>
+  3a0014: 17ffffee     	b	0x39ffcc <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xada10>
+  3a0018: 52a28009     	mov	w9, #0x14000000         // =335544320
+  3a001c: 2a09011a     	orr	w26, w8, w9
+  3a0020: a900d7f6     	stp	x22, x21, [sp, #0x8]
+  3a0024: d503201f     	nop
+  3a0028: 100509e8     	adr	x8, 0x3aa164 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xb7ba8>
+  3a002c: f9000fe8     	str	x8, [sp, #0x18]
+  3a0030: 910023e1     	add	x1, sp, #0x8
+  3a0034: 940027f4     	bl	0x3aa004 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0xb7a48>
+  3a0038: b900033a     	str	w26, [x25]
+  3a003c: 91001321     	add	x1, x25, #0x4
+  3a0040: aa1903e0     	mov	x0, x25
+  3a0044: 97fd50f3     	bl	0x2f4410 <_ZN7FEXCore9DiskCache16GetFormatVersionEv+0x1e54>
+  3a0048: b9400308     	ldr	w8, [x24]
+  3a004c: 7210351f     	tst	w8, #0x3fff0000
+  3a0050: 12b00009     	mov	w9, #0x7fffffff         // =2147483647
+  3a0054: 529fffea     	mov	w10, #0xffff            // =65535

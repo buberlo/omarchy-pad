@@ -1,0 +1,7 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+000000000027858c <GC_start_mark_threads>:
+  27858c: c3                           	ret

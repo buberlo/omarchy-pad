@@ -1,0 +1,25 @@
+#!/bin/sh
+OUT=/tmp/hollow4446-thread-samples.txt
+{
+ date
+ for pid in $(ps -o pid,comm | awk '/FEX-apple-m1-mu/ {print $1}'); do
+  if tr '\000' ' ' < /proc/$pid/cmdline | grep -q hollow_knight.x86_64; then
+   echo TARGET=$pid
+   /tmp/thread-sample-send "$pid" all
+   sleep 1
+   echo STAT
+   cat /proc/$pid/stat
+   echo MAPS
+   cat /proc/$pid/maps
+   echo THREADS
+   for t in /proc/$pid/task/*; do cat "$t/stat"; done
+  fi
+ done
+ echo UNITY_LOG
+ cat /tmp/hollow4446-sample-unity.txt
+ echo GAME_OUTPUT
+ tail -80 /tmp/hollow4446-sample-fex.txt
+ date
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+tail -20 "$OUT"

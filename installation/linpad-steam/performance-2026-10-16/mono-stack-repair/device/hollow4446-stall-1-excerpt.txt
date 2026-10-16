@@ -1,0 +1,18 @@
+1: Fri Oct 16 11:23:38 UTC 2026
+2: 295 (FEX-apple-m1-mun) R 293 293 11 34816 293 0 0 0 0 0 1989 25 0 0 20 0 9 0 54388779 140754738798592 1999859 0 0 0 4294956576 0 0 0 536870912 8192 3238038012 0 0 0 17 0
+3: Name:	FEX-apple-m1-mun
+19: Threads:	9
+190: 0000ef782000-0000ef922000 r--p 00000000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+191: 0000ef931000-0000efc71000 r--p 0019f000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+192: 0000efc80000-0000efdda000 r--p 004de000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+193: 0000efde9000-0000efdec000 rw-p 00637000 00:00 0          /opt/fex/FEX-apple-m1-munmap
+291: 800307aab000-8003092ab000 rw-p 00000000 00:00 0          
+292: 800310000000-800329200000 rw-p 00000000 00:00 0          
+293: 8003292ab000-8003292d5000 rw-p 00000000 00:00 0          
+294: 8003292d5000-8003292dd000 ---p 00000000 00:00 0          
+295: 8003292dd000-800329312000 rw-p 00000000 00:00 0          
+296: 808007800000-810000100000 rw-p 00000000 00:00 0          
+336: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+368: 2026-10-16T11:20:57.865Z|0xcc410540|The selected window backend is wayland 
+369: 2026-10-16T11:20:58.659Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+370: 2026-10-16T11:20:58.659Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'

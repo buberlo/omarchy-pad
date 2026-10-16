@@ -1,0 +1,70 @@
+[
+  {
+    "case": "gc-0-before",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "gc",
+      "0",
+      "before"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 0.617,
+    "excerpt": "MONO_PROBE MODE stage=gc sdl=0x0 order=before pid=1\nMONO_PROBE 120855.880 MONO_LOAD_BEGIN\nMONO_PROBE 120855.995 MONO_LOAD_END\nMONO_PROBE 120855.999 GC_INIT_BEGIN\nMONO_PROBE 120856.145 GC_INIT_END\nMONO_PROBE 120856.146 GC_COLLECT_BEGIN\nMONO_PROBE 120856.150 GC_COLLECT_END\nMONO_PROBE 120856.150 PASS"
+  },
+  {
+    "case": "gc-1-before",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "gc",
+      "1",
+      "before"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 2.386,
+    "excerpt": "MONO_PROBE MODE stage=gc sdl=0x1 order=before pid=1\nMONO_PROBE 120856.476 UNITY_LOAD_BEGIN\nMONO_PROBE 120857.340 SDL_INIT_BEGIN\nMONO_PROBE SDL_INIT_END flags=0x1 result=0 error=\nMONO_PROBE 120857.812 MONO_LOAD_BEGIN\nMONO_PROBE 120858.045 MONO_LOAD_END\nMONO_PROBE 120858.046 GC_INIT_BEGIN\nMONO_PROBE 120858.455 GC_INIT_END\nMONO_PROBE 120858.456 GC_COLLECT_BEGIN\nMONO_PROBE 120858.466 GC_COLLECT_END\nMONO_PROBE 120858.466 PASS"
+  },
+  {
+    "case": "gc-1-after",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "gc",
+      "1",
+      "after"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 2.444,
+    "excerpt": "MONO_PROBE MODE stage=gc sdl=0x1 order=after pid=1\nMONO_PROBE 120858.847 MONO_LOAD_BEGIN\nMONO_PROBE 120858.946 MONO_LOAD_END\nMONO_PROBE 120858.950 GC_INIT_BEGIN\nMONO_PROBE 120859.100 GC_INIT_END\nMONO_PROBE 120859.101 UNITY_LOAD_BEGIN\nMONO_PROBE 120860.183 SDL_INIT_BEGIN\nMONO_PROBE SDL_INIT_END flags=0x1 result=0 error=\nMONO_PROBE 120860.784 GC_COLLECT_BEGIN\nMONO_PROBE 120860.869 GC_COLLECT_END\nMONO_PROBE 120860.870 PASS"
+  },
+  {
+    "case": "gc-3221-before",
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/mono-init/launch",
+      "gc",
+      "3221",
+      "before"
+    ],
+    "exit_code": 0,
+    "host_timeout_seconds": 45,
+    "host_terminated_after_timeout": false,
+    "elapsed_seconds": 3.475,
+    "excerpt": "MONO_PROBE MODE stage=gc sdl=0x3221 order=before pid=1\nMONO_PROBE 120861.297 UNITY_LOAD_BEGIN\nMONO_PROBE 120862.131 SDL_INIT_BEGIN\nMONO_PROBE SDL_INIT_END flags=0x3221 result=0 error=Failed loading udev_device_get_action: /opt/UnityPlayer.so: undefined symbol1 call 64  (fast) = 0x80\nMONO_PROBE 120863.823 MONO_LOAD_BEGIN\nMONO_PROBE 120863.949 MONO_LOAD_END\nMONO_PROBE 120863.952 GC_INIT_BEGIN\nMONO_PROBE 120864.377 GC_INIT_END\nMONO_PROBE 120864.378 GC_COLLECT_BEGIN\nMONO_PROBE 120864.388 GC_COLLECT_END\nMONO_PROBE 120864.388 PASS"
+  }
+]

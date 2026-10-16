@@ -1,0 +1,12 @@
+FAIL first sparse island address=8000101ff000 found=1 actual=8000101ff000-800010400000 expected=8000101ff000-800010200000
+FAIL second sparse island address=8000105ff000 found=1 actual=8000105ff000-1000000000000 expected=8000105ff000-800010600000
+FAIL hole between anonymous islands address=8000103ff000 found=1 actual=8000101ff000-800010400000 expected=0-0
+FAIL final high stack-like mapping address=808007800000 found=1 actual=8000105ff000-1000000000000 expected=808007800000-808008000000
+FAIL first byte beyond final mapping address=808008000000 found=1 actual=8000105ff000-1000000000000 expected=0-0
+PASS adjacent anonymous mappings still coalesce address=8000101ff000 found=1 actual=8000101ff000-800010201000 expected=8000101ff000-800010201000
+PASS permission boundary first page address=8000101ff000 found=1 actual=8000101ff000-800010200000 expected=8000101ff000-800010200000
+PASS permission boundary second page address=800010200000 found=1 actual=800010200000-800010201000 expected=800010200000-800010201000
+PASS unmapped final region absent address=808007800000 found=0 expected=0-0
+FAIL new final mapping ends exactly address=8000105ff000 found=1 actual=8000105ff000-808007800000 expected=8000105ff000-800010600000
+PROC_MAPS_BOUNDARY checks=10 failures=6
+EXIT=1

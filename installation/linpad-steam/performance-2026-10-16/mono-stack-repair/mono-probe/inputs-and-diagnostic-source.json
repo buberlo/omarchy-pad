@@ -1,0 +1,24 @@
+{
+  "proprietary_files_local_only": {
+    "work/performance/game-fault-report/libmonobdwgc-2.0.so": {
+      "bytes": 3856176,
+      "sha256": "682d74f03efd9cebd05d38e82c4b296a0a1865f070440281aa1ac51022220b94"
+    },
+    "work/performance/game-fault-report/mscorlib.dll": {
+      "bytes": 4623360,
+      "sha256": "19c81960f79980f14cd4dc271ed42c3e7f031f024c17977fc0f4a9f672a23b86"
+    },
+    "work/performance/game-fault-report/UnityPlayer.so": {
+      "bytes": 39255232,
+      "sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33"
+    }
+  },
+  "diagnostic_sources": {
+    "probe.c": "ac3dbfb84c6dca55c53279f3fcfc8a5f37d61eb6dbf35dc4e1bc4aa38fe921d7",
+    "launch.c": "b1b49d8e853d9ef2a859f51cf05396608ba5cbefbdbbf8e820a0e931c832000a",
+    "mprotect-observer.c": "1fa3b4bd4931a55343c256f9a62c225747b53f3f061da434f33d8b295b062b7f",
+    "build.sh": "8bfbc1bdd825dbce6a3be9de9f73c0876c5c7cffe4ab601403a2069f00fc27e9",
+    "run-local.py": "afa5cf6b26a642bf04aa5a0c0de5b813b12c31709433e6d8c4602cb8307ba35c"
+  },
+  "scope": "Local macOS-hosted LinPad CLI; root separately owns physical tests; no proprietary binary is intended for repository or release assets."
+}

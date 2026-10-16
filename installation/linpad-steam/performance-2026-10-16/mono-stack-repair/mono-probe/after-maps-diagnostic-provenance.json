@@ -1,0 +1,38 @@
+{
+  "scope": "Local diagnostics and prepared device script; proprietary game inputs excluded",
+  "source_and_evidence": {
+    "README.md": "c5fbdd8252fdc25dc4a495d85abb7a4f24589fab35d7c89d3495300d367b567d",
+    "probe.c": "ac3dbfb84c6dca55c53279f3fcfc8a5f37d61eb6dbf35dc4e1bc4aa38fe921d7",
+    "launch.c": "b1b49d8e853d9ef2a859f51cf05396608ba5cbefbdbbf8e820a0e931c832000a",
+    "build.sh": "8bfbc1bdd825dbce6a3be9de9f73c0876c5c7cffe4ab601403a2069f00fc27e9",
+    "run-local.py": "afa5cf6b26a642bf04aa5a0c0de5b813b12c31709433e6d8c4602cb8307ba35c",
+    "mprotect-observer.c": "1fa3b4bd4931a55343c256f9a62c225747b53f3f061da434f33d8b295b062b7f",
+    "stack-limits-probe.c": "850c6f0348a349f100a15fb6bcc62b4241d9c6fb99924cb5f7a86e15c0e2c94a",
+    "stack-launch.c": "81cc8e39309593e02b7886a073d61ebf7ac269f66a8b05c486bd2108f0815f18",
+    "mono4447-probe": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43",
+    "after-maps-cli-build.txt": "287fd0d633816de76fd6b67488113b994c329e5d5804b11135e269078b97c281",
+    "after-maps-mono-results.json": "329cd6e76306ac8a40a699ef2ac09281b84121240f6033f180580378bf6fd579",
+    "after-maps-mono-provenance.json": "690ac87cac919fd89878c4688c2f2ca8911c3da3c13cb9ba6174ed4ea6c3bf55",
+    "stack-limits-after-excerpt.txt": "f45ee830874f639ad71053f7934077ba442862ecd00021ebd4925a73da3eeaf2",
+    "mono-0-mprotect-after-maps-excerpt.txt": "976199bed6dab415bb7d4ed815ee331259d18a85c0eea91dc9acce2b9dbcc9cd",
+    "mono-0-mprotect-after-maps-results.json": "1d6281c2c48f50485075fdd75b2f7c5e104ddde4894b21e6f0f41c61dde8806a",
+    "stack-limits-probe-results.json": "3e108f228c81bbc8d303412fd6dac512855197b6ba88281ec0418e2666da485a",
+    "stack-limits-probe-before-excerpt.txt": "b56ebe75960278687c20d8fb7ada797f68b582be0f342c3099c69fda57091770",
+    "stack-limits-probe-after-excerpt.txt": "b48eef91e6193d25ab9d30ddeb39bffe3fcbc06dafd215008da67ce3a3546abe"
+  },
+  "served": {
+    "mono-init-probe": "9359890704d5fc5b9a0302a45765fa016dbe704738d5f3487b163f312f11a789",
+    "stack-limits-probe": "db0530145541799b6694745dac090b1f4c6a05371cadcff226d97cd26ca07a43",
+    "mono4447-probe": "6f79e9b3b64a78090ce691690981db23bf35417eac7f30d617c2b39f03fb3f43"
+  },
+  "raw_logs": {
+    "after-maps-cli-build.txt": "287fd0d633816de76fd6b67488113b994c329e5d5804b11135e269078b97c281",
+    "mono-1-after.txt": "8cff377171a0d970676064351742182d9ee38c564651343c77f199f68e70f061",
+    "gc-1-after.txt": "787694267a9a57f4836944a01dc049087348a410c5ff51594b210682106b3ca8",
+    "stack-limits-after.txt": "5b8ce604b43ac9119bba0f99a3aae65557257269f8696fbcc883538f15d3bdb7",
+    "mono-0-mprotect-after-maps.txt": "6c23410cf3a7c05cf44f7d70ef40ccf8104b102bd8cab6e323965212e97a84d8",
+    "stack-limits-probe-after.txt": "1e9b44856e211c3373c9f13eddb23ee5a70e865b1edad730c34b290fde08dde6",
+    "after-maps-mono-3221-before.txt": "dcadda2a5f538466e92ae6e57dd9b2246b4bad78fe280fca932deee0b9a06792",
+    "after-maps-mono-0-before.txt": "7a8c7227c977d93a50c1495fcba05c80fad860d8cc4332cc8ce850cfc5523f56"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "exit": -9,
+  "host_timeout_seconds": 20,
+  "host_terminated_after_timeout": true,
+  "seconds": 20.013,
+  "excerpt": "MPROTECT_OBSERVER STACK phase=startup local=0x808007fffb1c getattr=0 getstack=0 base=0x800137d45000 size=0x7ed02bb000\nMONO_PROBE MODE stage=mono sdl=0x0 order=before pid=1\nMONO_PROBE 121340.390 MONO_LOAD_BEGIN\nMONO_PROBE 121340.471 MONO_LOAD_END\nMONO_PROBE 121340.484 MONO_JIT_INIT_BEGIN\nMPROTECT_OBSERVER CALL addr=0x800157d5f000 len=0x8000 prot=0 caller=0xce2bd91f module=/opt/mono-init/libmonobdwgc-2.0.so base=0xce200000 offset=0xbd91f\nMPROTECT_OBSERVER STACK phase=before-call local=0x808007fff54c getattr=0 getstack=0 base=0x800157d8b000 size=0x7eb0275000\nMPROTECT_OBSERVER RETURN addr=0x800157d5f000 len=0x8000 prot=0 result=0 errno=22\nINT_GPF pid=1 pc=0xef94a2a4 fault=0x800157d640b0 write=0\nINT_GPF pid=1 pc=0xef94a2b0 fault=0x800157d640b0 write=1"
+}

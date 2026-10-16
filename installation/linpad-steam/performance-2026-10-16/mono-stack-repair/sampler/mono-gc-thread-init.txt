@@ -1,0 +1,31 @@
+
+work/performance/game-fault-report/libmonobdwgc-2.0.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+00000000002782c5 <GC_thr_init>:
+  278387: e8 f6 28 00 00               	call	0x27ac82 <GC_stop_init>
+  27838c: 48 8d 3d fc f1 0b 00         	lea	rdi, [rip + 0xbf1fc]    # 0x33758f <GC_version+0x2147>
+  278393: e8 e8 02 dc ff               	call	0x38680 <getenv@plt>
+  278398: 48 8d 1d 35 4b 33 00         	lea	rbx, [rip + 0x334b35]   # 0x5aced4 <GC_nprocs>
+  27839f: c7 03 ff ff ff ff            	mov	dword ptr [rbx], 0xffffffff
+  2783a5: 48 85 c0                     	test	rax, rax
+  2783a8: 74 0e                        	je	0x2783b8 <GC_thr_init+0xf3>
+  2783aa: 48 89 c7                     	mov	rdi, rax
+  2783ad: e8 5e 01 dc ff               	call	0x38510 <atoi@plt>
+  2783b2: 89 03                        	mov	dword ptr [rbx], eax
+  2783b4: 85 c0                        	test	eax, eax
+  2783b6: 7f 29                        	jg	0x2783e1 <GC_thr_init+0x11c>
+  2783b8: e8 2c 2e 00 00               	call	0x27b1e9 <GC_get_nprocs>
+  2783bd: 89 03                        	mov	dword ptr [rbx], eax
+  2783bf: 85 c0                        	test	eax, eax
+  2783c1: 7f 1e                        	jg	0x2783e1 <GC_thr_init+0x11c>
+  2783c3: 48 8d 0d 06 47 33 00         	lea	rcx, [rip + 0x334706]   # 0x5acad0 <GC_current_warn_proc>
+  2783ca: 48 63 f0                     	movsxd	rsi, eax
+  2783cd: 48 8d 3d c5 f1 0b 00         	lea	rdi, [rip + 0xbf1c5]    # 0x337599 <GC_version+0x2151>
+  2783d4: ff 11                        	call	qword ptr [rcx]
+  2783d6: c7 03 02 00 00 00            	mov	dword ptr [rbx], 0x2
+  2783dc: b8 02 00 00 00               	mov	eax, 0x2
+  2783e1: 48 8d 0d e0 c4 33 00         	lea	rcx, [rip + 0x33c4e0]   # 0x5b48c8 <GC_print_stats>
+  2783e8: 83 39 00                     	cmp	dword ptr [rcx], 0x0
+  2783eb: 75 07                        	jne	0x2783f4 <GC_thr_init+0x12f>

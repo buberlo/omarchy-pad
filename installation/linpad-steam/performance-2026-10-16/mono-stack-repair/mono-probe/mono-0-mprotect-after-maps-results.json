@@ -1,0 +1,15 @@
+{
+  "command": [
+    "work/linpad-cli/ish",
+    "-r",
+    "work/performance/vulkan-repro-root",
+    "/opt/mono-init/mprotect-launch",
+    "mono",
+    "0",
+    "before"
+  ],
+  "exit_code": 0,
+  "host_timeout_seconds": 45,
+  "host_terminated_after_timeout": false,
+  "elapsed_seconds": 14.348
+}

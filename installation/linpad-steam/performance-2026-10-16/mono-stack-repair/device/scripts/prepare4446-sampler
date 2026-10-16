@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+wget -T 8 -qO /tmp/x86-thread-sample.so.download http://192.168.0.104:8766/x86-thread-sample.so
+echo '63e675cc8da56f65ea423c22b53d86a55877a77a43e3cd426414516666444684  /tmp/x86-thread-sample.so.download' | sha256sum -c -
+mv /tmp/x86-thread-sample.so.download /tmp/x86-thread-sample.so
+chmod 755 /tmp/x86-thread-sample.so
+wget -T 8 -qO /tmp/thread-sample-send.download http://192.168.0.104:8766/thread-sample-send
+echo '582e689f3a4b6b41a8bdbaaa6d98229e5e2788ee3738c423fa7948ac7ab4bfa4  /tmp/thread-sample-send.download' | sha256sum -c -
+mv /tmp/thread-sample-send.download /tmp/thread-sample-send
+chmod 755 /tmp/thread-sample-send
+wget -T 8 -qO /tmp/fex-game-sample-report.download http://192.168.0.104:8766/fex-game-sample-report
+echo 'deca0256857ee8f46648de1f130f01e78cfa080127e0c689e396ba3c3583801e  /tmp/fex-game-sample-report.download' | sha256sum -c -
+mv /tmp/fex-game-sample-report.download /tmp/fex-game-sample-report
+chmod 755 /tmp/fex-game-sample-report
+echo SAMPLER_READY
