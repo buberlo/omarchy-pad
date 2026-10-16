@@ -14,6 +14,13 @@ lookups during growth, repaired invalidation backlinks, overflow prevention,
 and allocation-failure backoff/recovery. A second benchmark compares the
 original 256-bucket lookup with the growing table for 65,536 live instructions
 at high addresses and several code strides, reporting exact node visits.
+Per-context checks cover generation changes during publication, a reclaimed
+stale block, slot collisions, one-shot and allocation-failure exclusions, and
+the actual address-space switch/reset helper. The trim check uses the same
+null-mm trigger as the production reactivation path; it does not emulate host
+`madvise`. An eight-thread repeated-hit comparison reports exact mutex counts
+for the shared lookup and warmed context caches, with both paths also checked
+under ASan/UBSan.
 Its benchmark compares the original full-cache walk with the page index for
 nonmatching writes that collide in both the bloom filter and page hash.
 That synthetic host timing does not measure game startup or frame rate.

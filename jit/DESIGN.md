@@ -278,8 +278,18 @@ link, leaving the page index and entry/block addresses unchanged. The old
 bucket array can then be freed immediately; code generations and deferred
 block reclamation are unchanged. Failed allocation retains the existing table
 and defers the next attempt until the live count doubles. Capacity arithmetic
-is checked before allocation. This avoids long fallback lookup chains in large
-FEX workloads without adding another executable-block cache or lock-free path.
+is checked before allocation. This bounds average lookup chains as FEX
+workloads grow.
+
+Repeated single-step lookups also use a 256-entry, 6 KiB cache in each thread's
+context. Entries carry the guest PC and mm generation; a hit avoids the shared
+mutex. The locked slow path fills it only for a persistent shared SS entry and
+records the generation before unlocking. One-shot, failed-allocation and
+stale-generation results never enter it, since one-shot retirement does not
+advance the generation. Code invalidation rejects old entries through the
+existing generation check, while the active context's epoch protects a block
+through execution. Address-space/id switches clear both context lookup caches;
+idle trimming sets ctx->mm to NULL and takes that same reset path on reentry.
 
 ## 10. Executable memory on iOS (TXM) and macOS
 
