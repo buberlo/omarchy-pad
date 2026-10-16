@@ -454,6 +454,7 @@ struct SettingsAppView: View {
                 .fixedSize(horizontal: false, vertical: true)
             LinuxOptionKeySettingsView()
             LinuxKeyboardLayoutSettingsView()
+            LinuxTextInputSettingsView()
             ForEach(DesktopCommand.Group.allCases, id: \.self) { group in
                 Text(group.rawValue)
                     .font(.subheadline.weight(.semibold))

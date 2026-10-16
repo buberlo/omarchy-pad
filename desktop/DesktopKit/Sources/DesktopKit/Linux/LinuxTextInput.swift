@@ -340,6 +340,10 @@ extension LinuxSurfaceView: UITextInput {
         if modifiers.contains(.command) || modifiers.contains(.control) { return false }
         // While composing, Return, Delete and the arrows belong to the composition.
         if markedText != nil { return true }
+        // A game's text input is not a text field: it reads key codes and ignores committed
+        // text, so its keys go straight to the app as keys, like the shortcuts above. A
+        // composition already in progress keeps the text system above either way.
+        if LinuxTextInputMode.sendsKeysDirectly(appID: surface?.appID ?? "") { return false }
         // Option types characters (dead keys: Option-E then E is é) or stays Alt for the
         // app's shortcuts, per LinuxOptionKeyMode; with editing and arrow keys it is Alt.
         if modifiers.contains(.alternate) {
