@@ -1,0 +1,12 @@
+Fri Oct 16 09:23:04 UTC 2026
+PASS: Linux depot 367523 appears in InstalledDepots.
+PASS: x86-64 Linux ELF: /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64
+This checks installed files only; launch, rendering and gameplay need separate verification.
+NATIVE_VERIFY_EXIT=0
+GAME_LAUNCH_LINES
+GAME_PROCESSES
+  668   663 R    Xwayland
+UNITY_LOG
+Filesystem                Size      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                        106.0G     78.0G     28.0G  74% /

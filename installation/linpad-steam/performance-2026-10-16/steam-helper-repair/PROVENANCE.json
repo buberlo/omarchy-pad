@@ -1,0 +1,22 @@
+{
+  "source": "https://client-update.steamstatic.com/bins_sdk_linuxarm64_linuxarm64.zip.b3f9a0dd42c502579f35e4b6389688277fd94f75",
+  "archive_sha256": "4c7dfe5c8a334b51af2181f0905e1a88f93c903536969521a9aec5461d56522e",
+  "manifest": "work/steam/steam_client_publicbeta_linuxarm64",
+  "manifest_version": "1792110651",
+  "member": "linuxarm64/steam-launch-wrapper",
+  "member_sha256": "e6bc99d6732cd42af52006ae5803edb93b771051a0d7f78ece63c760ca8ac48e",
+  "bytes": 73208,
+  "elf": "AArch64",
+  "interpreter": "/lib/ld-linux-aarch64.so.1",
+  "needed": [
+    "libc.so.6",
+    "ld-linux-aarch64.so.1"
+  ],
+  "glibc_max_version": "2.38",
+  "modified": false,
+  "manifest_archive_reference": "official-manifest-excerpt.vdf",
+  "retained_full_manifest_sha256": "9aea03301c1ee053046c725c62b39b82ad63e7c7eda627e810d05deb6c5cf12d",
+  "archive_size_bytes": 16136762,
+  "local_archive_member_equality_verified": true,
+  "archive_scope": "Unmodified SDK launch helper and narrow installation scripts only; SDK ZIP, bootstrap ZIP, audio helper, Steam account data and game files are excluded."
+}

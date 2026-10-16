@@ -1,0 +1,12 @@
+FEX source commit 5285020de0b30dbdae7b44d0d83541af2d13d002
+Source/Tools/LinuxEmulation/LinuxSyscalls/SyscallsSMCTracking.cpp
+369:     if (reinterpret_cast<uintptr_t>(addr) < 0x1'0000'0000ULL) {
+370:       Result = Get32BitAllocator()->Munmap(addr, length);
+371:       if (FEX::HLE::HasSyscallError(Result)) {
+372:         return Result;
+373:       }
+374:     } else {
+375:       Result = ::munmap(addr, length);
+376:       if (Result == -1) {
+377:         return -errno;
+378:       }

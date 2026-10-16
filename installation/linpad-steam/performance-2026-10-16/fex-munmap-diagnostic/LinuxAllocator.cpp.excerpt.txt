@@ -1,0 +1,26 @@
+FEX source commit 5285020de0b30dbdae7b44d0d83541af2d13d002
+Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
+246: int MemAllocator32Bit::Munmap(void* addr, size_t length) {
+247:   std::scoped_lock<std::mutex> lk {AllocMutex};
+248:   size_t PagesLength = FEXCore::AlignUp(length, FEXCore::Utils::FEX_PAGE_SIZE) >> FEXCore::Utils::FEX_PAGE_SHIFT;
+249:
+250:   uintptr_t Addr = reinterpret_cast<uintptr_t>(addr);
+251:   uintptr_t PageAddr = Addr >> FEXCore::Utils::FEX_PAGE_SHIFT;
+252:
+253:   uintptr_t PageEnd = PageAddr + PagesLength;
+254:
+255:   // Both Addr and length must be page aligned
+256:   if (Addr & ~FEXCore::Utils::FEX_PAGE_MASK) {
+257:     return -EINVAL;
+258:   }
+259:
+260:   if (length & ~FEXCore::Utils::FEX_PAGE_MASK) {
+261:     return -EINVAL;
+262:   }
+263:
+264:   if (Addr + length > std::numeric_limits<uint32_t>::max()) {
+265:     return -EOVERFLOW;
+266:   }
+267:
+268:   // Check reserved range
+269:   if (PageAddr < 16) {

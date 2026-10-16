@@ -2,8 +2,9 @@
 
 This directory contains the custom Linux-to-Linux compatibility tool installed
 on the physical iPad. Steam recognizes **LinPad FEX (Linux Vulkan)** and Hollow
-Knight's Compatibility dropdown visibly shows it selected. Native depot
-verification, game launch and gameplay remain **unverified**. Build 4443's direct
+Knight's Compatibility dropdown visibly shows it selected. The native Linux depot 367523 and x86-64 ELF are verified. The first direct
+Unity/Mono start aborts with `mono_pe_file_unmap` / `EINVAL`; successful game
+startup and gameplay remain **unverified**. Build 4443's direct
 x86 Wayland Vulkan cube completed bounded 120-frame and 1200-frame runs, and two
 captures show visible rotation. Game qualification remains a separate gate.
 

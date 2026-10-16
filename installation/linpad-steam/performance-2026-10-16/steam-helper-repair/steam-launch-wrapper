@@ -1,0 +1,15 @@
+#!/bin/sh
+# Start the unmodified Valve helper using LinPad's existing private ARM64 glibc.
+set -eu
+runtime=${LINPAD_STEAM_ARM64_LIBDIR:-/opt/steam-host/usr/lib/aarch64-linux-gnu}
+loader=${LINPAD_STEAM_ARM64_LOADER:-$runtime/ld-linux-aarch64.so.1}
+helper_dir=${LINPAD_STEAM_HELPER_DIR:-/opt/steam-host/libexec/linpad-steam}
+helper="$helper_dir/steam-launch-wrapper.real"
+[ -x "$loader" ] && [ -x "$helper" ] || {
+    printf '%s\n' 'LinPad Steam: official launch helper or ARM64 loader is missing.' >&2
+    exit 127
+}
+# The optional PipeWire namespace helper is not used in LinPad.
+# Explicit loader invocation also changes /proc/self/exe helper discovery.
+unset LD_PRELOAD
+exec "$loader" --library-path "$runtime" "$helper" --no-audio-namespace "$@"

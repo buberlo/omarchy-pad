@@ -1,0 +1,84 @@
+1 call 96  getpid() = 0x1
+1 call 123 sched_getaffinity(0, 128, 0xffffdb60) = 0x2
+1 call 222 mmap64(0x0, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffd8000
+1 call 215 munmap(0xeffd8000, 0x8000) = 0x0
+1 call 215 munmap(0xefff0000, 0x7000) = 0x0
+1 call 222 mmap64(0xeffc1000, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffc1000
+1 call 215 munmap(0xeffc1000, 0xf000) = 0x0
+1 call 222 mmap64(0xeffb1000, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffb1000
+1 call 215 munmap(0xeffb1000, 0xf000) = 0x0
+1 call 222 mmap64(0xeffa1000, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffa1000
+1 call 215 munmap(0xeffa1000, 0xf000) = 0x0
+1 call 221 execve("/opt/glibc/ld-linux-aarch64.so.1", {"/opt/glibc/ld-linux-aarch64.so.1", "--library-path", "/opt/glibc", "/opt/steam-launch-wrapper.real", "--no-audio-namespace", "--", "/opt/steam-helper-child", "hello", }, {"TERM=dumb", "HOME=/root", "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "PYTHONMALLOC=malloc", "GODEBUG=asyncpreemptoff=1", "GOMAXPROCS=2", "NO_COLOR=1", "PYTHONDONTWRITEBYTECODE=1", "UV_THREADPOOL_SIZE=1", "XDG_RUNTIME_DIR=/tmp", "STEAM_LAUNCH_WRAPPER_DEBUG=1", }) = 0x0
+1 call 214 brk(0x0) = 0xefffe000
+1 call 56  openat(-100, "/opt/steam-launch-wrapper.real", 0x80000, 0x0) = 0x3
+1 call 63  (fast) = 0x340
+1 call 222 mmap64(0x0, 0x30228, 0x0, 0x822, -1, 0x0) = 0xeff84000
+1 call 222 mmap64(0xeff90000, 0x20228, 0x5, 0x812, 3, 0x0) = 0xeff90000
+1 call 215 munmap(0xeff84000, 0xc000) = 0x0
+1 call 215 munmap(0xeffb1000, 0x3228) = 0x0
+1 call 226 mprotect(0xeff95000, 0x1a000, 0x0) = 0x0
+1 call 222 mmap64(0xeffaf000, 0x2000, 0x3, 0x812, 3, 0xf000) = 0xeffaf000
+1 call 57  close(3) = 0x0
+1 call 222 mmap64(0x0, 0x2000, 0x3, 0x22, -1, 0x0) = 0xeffb3000
+1 call 48  faccessat(-100, "/etc/ld.so.preload", 0x4, 256152) = 0xfffffffe
+1 call 56  openat(-100, "/opt/glibc/libc.so.6", 0x80000, 0x0) = 0x3
+1 call 63  (fast) = 0x340
+1 call 80  (fast) = 0x0
+1 call 222 mmap64(0x0, 0x1ce010, 0x0, 0x822, -1, 0x0) = 0xefdc1000
+1 call 222 mmap64(0xefdd0000, 0x1be010, 0x5, 0x812, 3, 0x0) = 0xefdd0000
+1 call 215 munmap(0xefdc1000, 0xf000) = 0x0
+1 call 215 munmap(0xeff8f000, 0x10) = 0x0
+1 call 226 mprotect(0xeff6c000, 0x11000, 0x0) = 0x0
+1 call 222 mmap64(0xeff7d000, 0x5000, 0x3, 0x812, 3, 0x19d000) = 0xeff7d000
+1 call 222 mmap64(0xeff82000, 0xc010, 0x3, 0x32, -1, 0x0) = 0xeff82000
+1 call 57  close(3) = 0x0
+1 call 222 mmap64(0x0, 0x2000, 0x3, 0x22, -1, 0x0) = 0xefdce000
+1 call 96  getpid() = 0x1
+1 call 99  set_robust_list(0xefdce100, 24) = 0x0
+1 call 293  = 0xffffffda
+1 call 226 mprotect(0xeff7d000, 0x3000, 0x1) = 0x0
+1 call 226 mprotect(0xeffaf000, 0x1000, 0x1) = 0x0
+1 call 226 mprotect(0xefffa000, 0x2000, 0x1) = 0x0
+1 call 261 prlimit64(0, 3) old={cur=0x8000000, max=0xffffffff} = 0x0
+1 call 278  = 0x8
+1 call 214 brk(0x0) = 0xefffe000
+1 call 214 brk(0xf001f000) = 0xf001f000
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_DEBUG", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_GAME_BIN", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_JOURNAL", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_SCOPE", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_AUDIO_NAMESPACE", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_RPO", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/STEAM_LAUNCH_WRAPPER_FDM", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 78  readlinkat(-100, "/proc/self/exe", 0xffff9a48, 0xfff) "/opt/glibc/ld-linux-aarch64.so.1" = 0x20
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+1 call 64  (fast) = 0x59
+1 call 56  openat(-100, "/tmp/steam/env/gfx.txt", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/root/.config/steam/env/gfx.txt", 0x0, 0x0) = 0xfffffffffffffffe
+steam-launch-wrapper.real: 1 call 64  (fast) = 0x1b
+STEAM_RUNTIME not in use1 call 64  (fast) = 0x18
+
+1 call 64  (fast) = 0x1
+1 call 56  openat(-100, "/tmp/steam/env/ENABLE_VULKAN_RENDERDOC_CAPTURE", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/PROTON_LOG", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 56  openat(-100, "/tmp/steam/env/WINEDEBUG", 0x0, 0x0) = 0xfffffffffffffffe
+1 call 436 close_range(3, 4294967295, 0x4) = 0x0
+1 call 56  openat(-100, "/tmp/tu_debug_file.txt", 0x41, 0x1b6) = 0x3
+1 call 57  close(3) = 0x0
+1 call 56  openat(-100, "/tmp/tu_debug_info.txt", 0x241, 0x1b6) = 0x3
+1 call 80  (fast) = 0x0
+1 call 64  (fast) = 0x3c
+1 call 57  close(3) = 0x0
+1 call 221 execve("/opt/steam-helper-child", {"/opt/steam-helper-child", "hello", }, {"TERM=dumb", "HOME=/root", "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin", "GODEBUG=asyncpreemptoff=1", "GOMAXPROCS=2", "NO_COLOR=1", "PYTHONDONTWRITEBYTECODE=1", "UV_THREADPOOL_SIZE=1", "XDG_RUNTIME_DIR=/tmp", "STEAM_LAUNCH_WRAPPER_DEBUG=1", "PYTHONMALLOC=malloc", "PIP_PROGRESS_BAR=off", "VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection", "LD_LIBRARY_PATH=/opt/glibc", "TU_DEBUG_FILE=/tmp/tu_debug_file.txt", }) = 0x0
+1 call 96  getpid() = 0x1
+1 call 29  ioctl(1, 0x5413, 0xffffdb58) = 0xffffffe7
+1 call 66  writev(1, 0xffffdae0, 2) {"STEAM_HELPER_CHILD_EXECUTED", 27} {"
+STEAM_HELPER_CHILD_EXECUTED
+", 1} = 0x1c
+1 call 66  writev(1, 0xffffdb20, 2) {"argv[0]=/opt/steam-helper-child
+argv[1]=hello
+argv[0]=/opt/steam-helper-child
+argv[1]=hello
+", 46} {"", 0} = 0x2e
+1 call 94  exit_group(0)

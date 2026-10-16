@@ -1,0 +1,63 @@
+{
+  "scope": "Physical Hollow Knight startup with temporary FEX munmap diagnostic preload; no gameplay reached",
+  "build": 4443,
+  "app_uuid": "c8b4ffa5-adc8-3c76-9faf-1986637fc46f",
+  "exception": {
+    "codes": "0x0000000000000002, 0x000000727ae54000",
+    "rawCodes": [
+      2,
+      491688116224
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGBUS",
+    "subtype": "KERN_PROTECTION_FAILURE at 0x000000727ae54000"
+  },
+  "thread_name": "FEX-apple--4320",
+  "frames": [
+    {
+      "imageOffset": 4444,
+      "symbol": "_platform_memmove",
+      "symbolLocation": 444,
+      "imageIndex": 14
+    },
+    {
+      "imageOffset": 7653200,
+      "symbol": "user_read_task",
+      "symbolLocation": 128,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 7635244,
+      "symbol": "handle_interrupt",
+      "symbolLocation": 3432,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 7656932,
+      "symbol": "task_run_current",
+      "symbolLocation": 116,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 7657536,
+      "symbol": "task_thread",
+      "symbolLocation": 40,
+      "imageIndex": 0
+    },
+    {
+      "imageOffset": 16440,
+      "symbol": "_pthread_start",
+      "symbolLocation": 136,
+      "imageIndex": 9
+    },
+    {
+      "imageOffset": 2332,
+      "symbol": "thread_start",
+      "symbolLocation": 8,
+      "imageIndex": 9
+    }
+  ],
+  "raw_crash_sha256": "d615613195b9a34067c2e7fe63493c8f8eec1d0426ac4334ce210e06b8a42647",
+  "symbolicated_caller": "kernel/calls.c:511, user_get while walking guest frame-pointer chain",
+  "unity_log": "Only window backend and Mono path/config lines; no prior munmap EINVAL line in this run"
+}

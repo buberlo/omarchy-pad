@@ -1,0 +1,20 @@
+diff --git a/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp b/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
+index 60b0ef1..a96b2f4 100644
+--- a/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
++++ b/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
+@@ -252,12 +252,13 @@ int MemAllocator32Bit::Munmap(void* addr, size_t length) {
+ 
+   uintptr_t PageEnd = PageAddr + PagesLength;
+ 
+-  // Both Addr and length must be page aligned
++  // Only Addr must be page aligned. Linux rounds any nonzero length up,
++  // which PagesLength already does above.
+   if (Addr & ~FEXCore::Utils::FEX_PAGE_MASK) {
+     return -EINVAL;
+   }
+ 
+-  if (length & ~FEXCore::Utils::FEX_PAGE_MASK) {
++  if (length == 0) {
+     return -EINVAL;
+   }
+ 

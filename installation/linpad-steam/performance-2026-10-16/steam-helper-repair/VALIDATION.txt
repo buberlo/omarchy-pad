@@ -1,0 +1,6 @@
+PASS official archive SHA-256 matches retained Valve manifest
+PASS ARM64 ELF interpreter/dependency inspection
+PASS shell syntax
+PASS mock install preserves previous file and is idempotent
+PASS shell entry preserves cwd/argv with explicit private loader
+No device execution or Steam Play qualification performed.

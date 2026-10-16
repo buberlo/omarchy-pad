@@ -1,0 +1,27 @@
+Fri Oct 16 09:41:45 UTC 2026
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+HELPER_SMOKE_PASS
+PASS 24 exact-address SIGSEGV deliveries; valid and crossing accesses
+NATIVE_PROBE_PASS
+footprint_mb 704
+allowance_mb 8192
+headroom_mb 7487
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 65 9 0 0 thunar
+proc 118 5 0 0 xfconfd
+proc 30 5 0 1 pulseaudio
+proc 16 1 0 1 ishwl
+proc 14 1 0 1 -sh
+proc 28 1 0 1 -sh
+proc 33 1 0 1 -sh
+proc 22 1 0 1 dbus-daemon
+proc 447 1 0 1 sh
+proc 93 1 0 1 getty
+proc 1 1 0 1 init
+proc 5 1 0 1 getty
+Filesystem                Size      Used Available Use% Mounted on
+[LinPad shared root directory]
+                        106.0G     77.9G     28.2G  73% /

@@ -1,0 +1,21 @@
+Selected result lines from the original local Mac-hosted LinPad CLI trace.
+Native output includes syscall/stdout interleaving; original raw trace retained locally.
+5999: anon len=1 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6000: file len=1 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6001: anon len=129 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6002: file len=129 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6003: anon len=4095 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6004: file len=4095 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6005: anon len=4096 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6006: file len=4096 offset=0 addr=0xcebc9000 munmap=0 errno=0 PASS
+6007: anon len=4097 offset=0 addr=0xcebc8000 munmap=0 errno=0 PASS
+6008: file len=4097 offset=0 addr=0xcebc8000 munmap=0 errno=0 PASS
+6009: anon len=8191 offset=0 addr=0xcebc8000 munmap=0 errno=0 PASS
+6010: file len=8191 offset=0 addr=0xcebc8000 munmap=0 errno=0 PASS
+6011: anon len=16385 offset=0 addr=0xcebc5000 munmap=0 errno=0 PASS
+6012: file len=16385 offset=0 addr=0xcebc5000 munmap=0 errno=0 PASS
+6013: file-offset len=5001 offset=4096 addr=0xcebc8000 munmap=0 errno=0 PASS
+6014: unaligned_address result=-1 errno=22 PASS
+6015: zero_length result=-1 errno=22 PASS
+6016: partial_4k_unmap result=0 errno=0 neighbors=17,31 PASS
+6017: MUNMAP_PROBE failures=0

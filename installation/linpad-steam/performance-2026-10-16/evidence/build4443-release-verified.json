@@ -1,0 +1,60 @@
+{
+  "checked_at_utc": "2026-10-16T09:28:43.120555+00:00",
+  "repository": "buberlo/linpad-ipad-steam",
+  "private": true,
+  "actions_enabled": false,
+  "release_id": 414765780,
+  "tag_name": "ipad-steam-build-4443",
+  "tag_commit": "83a2e42e6e29ecad0db634c66d77e7d42b66dabd",
+  "target_commitish": "83a2e42e6e29ecad0db634c66d77e7d42b66dabd",
+  "draft": false,
+  "published_at": "2026-10-16T09:27:55Z",
+  "release_url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4443",
+  "asset_count": 7,
+  "all_asset_sizes_and_digests_match_local": true,
+  "release_notes_match_file": true,
+  "assets": [
+    {
+      "name": "build-manifest.json",
+      "size": 6414,
+      "digest": "sha256:93b8eaa52026f853d84a36a48ea66536fca5547321b4ec890a36bacc428eba9f",
+      "state": "uploaded"
+    },
+    {
+      "name": "build4443-cube1200.txt",
+      "size": 182,
+      "digest": "sha256:0f64ab91504a7cbbb321c94d78e9283e4d5f8f463dad8e179a75bd65c822dde7",
+      "state": "uploaded"
+    },
+    {
+      "name": "device-gpu-validation.txt",
+      "size": 1735,
+      "digest": "sha256:518bc2c46c6adef8260f20592d051b3044155441978f0439a6cef4fcc91c127a",
+      "state": "uploaded"
+    },
+    {
+      "name": "LinPad-1.5.0-build4443-dSYM.zip",
+      "size": 13518295,
+      "digest": "sha256:06c99aea9587d3360016338518cd58d44cf298099413fbc82773ea800b1b9b7f",
+      "state": "uploaded"
+    },
+    {
+      "name": "LinPad-1.5.0-build4443-Konrad.ipa",
+      "size": 637273138,
+      "digest": "sha256:165fa39f6757548f14c54604f60945607d5e95f17d09a6ae14372ac1982af48a",
+      "state": "uploaded"
+    },
+    {
+      "name": "SHA256SUMS",
+      "size": 2996,
+      "digest": "sha256:39fa176e674a0dd37e3165be6b98bbcc80b54acf8c9494d483d00742e18200db",
+      "state": "uploaded"
+    },
+    {
+      "name": "VERIFICATION.md",
+      "size": 4000,
+      "digest": "sha256:7df98c33e1838c2056c72efca52929e93cd0723f1690fdfb5dcb07f78cb7d63f",
+      "state": "uploaded"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "scope": "Curated first 30 lines of Unity report plus exact installed-native-depot report. Original raw reports remain separately preserved in the local workspace.",
+  "excerpt": "hollow-unity-first-30-lines.txt",
+  "excerpt_lines": 30,
+  "raw_reports": [
+    {
+      "local_source": "work/performance/reports/hollow-unity-head.txt",
+      "bytes": 7631,
+      "sha256": "837839b813bb6f9e9faf75ab1f9c469f572621795e1194c4268b55fab6c2c65e",
+      "preserved_unmodified": true
+    },
+    {
+      "local_source": "work/performance/reports/hollow-direct-first-fault.txt",
+      "bytes": 7487,
+      "sha256": "195c1e075db93ac15f73160a9e42621c46786e384c68b43d668df67ef5ad0636",
+      "preserved_unmodified": true
+    }
+  ],
+  "native_depot_verified": 367523,
+  "native_executable": "hollow_knight.x86_64",
+  "gameplay_verified": false
+}

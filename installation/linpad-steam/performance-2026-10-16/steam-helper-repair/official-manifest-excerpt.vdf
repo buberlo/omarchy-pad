@@ -1,0 +1,12 @@
+"linuxarm64"
+{
+	"version"		"1792110651"
+	"bins_sdk_linuxarm64_linuxarm64"
+	{
+		"file"		"bins_sdk_linuxarm64_linuxarm64.zip.b3f9a0dd42c502579f35e4b6389688277fd94f75"
+		"size"		"16136762"
+		"sha2"		"4c7dfe5c8a334b51af2181f0905e1a88f93c903536969521a9aec5461d56522e"
+		"zipvz"		"bins_sdk_linuxarm64_linuxarm64.zip.vz.c93027c8c8dac09a5ae617bf4e59f1cb55397274_10177770"
+		"sha2vz"		"2ab085c8290723afb7bc04c7dc9993fa6885d6b0624a952548df21c79b632bef"
+	}
+}

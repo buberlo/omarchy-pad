@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated build 4442 and 4443 performance, Vulkan, and native Steam-tool evidence; no exported preferences or account files; binary packages remain outside Git.",
+  "scope": "Curated LinPad performance, Vulkan, native Steam-tool, helper repair and startup diagnosis; no authentication or exported preference files.",
   "files": [
     {
       "path": "build4442/SHA256SUMS",
@@ -223,6 +223,16 @@
       "sha256": "255f41a8f69105b9af0d407602c2b9c6b493e3dbce40cb369d3a0c99ddd089a7"
     },
     {
+      "path": "evidence/build4443-native-fault-validation.txt",
+      "bytes": 723,
+      "sha256": "04eb1d752c1d651bcfb7bed55d340df4bbea63f6de64fffc7ad3c2e25d179e69"
+    },
+    {
+      "path": "evidence/build4443-release-verified.json",
+      "bytes": 1967,
+      "sha256": "e102e014233dc985a357575643368350eea66d81bafc68968981cdf2d62ec8c8"
+    },
+    {
       "path": "evidence/cache-cleanup.txt",
       "bytes": 983,
       "sha256": "e1ccf107da6342b4a95cf0f60f2a23198df43c98da0f07ae4c1aa5f4aefa578f"
@@ -248,6 +258,26 @@
       "sha256": "82ab530a421919ea5472335f5673611cd07cd1cf2b4c3bdd035f76f0c409a774"
     },
     {
+      "path": "evidence/hollow-first-start-provenance.json",
+      "bytes": 835,
+      "sha256": "231e2b51329dd20384e198d31953df2ac4b948df43fd31ec81b0ceb79bae3a44"
+    },
+    {
+      "path": "evidence/hollow-munmap-host-crash.json",
+      "bytes": 1668,
+      "sha256": "e415f006f4c4a18f23832bf5999b58464265331c33a5804551636c856dacec5e"
+    },
+    {
+      "path": "evidence/hollow-native-installed.txt",
+      "bytes": 594,
+      "sha256": "4507867ea03e9b9fcde6e41aabbca9c514410e1cc569c9749e41ad3ad63bf1a8"
+    },
+    {
+      "path": "evidence/hollow-unity-first-30-lines.txt",
+      "bytes": 1740,
+      "sha256": "03888f9bd88d45ee7c313a9bae9422c991bf788f77853a05a99b1c008be124ae"
+    },
+    {
       "path": "evidence/null-fault-jit-before.txt",
       "bytes": 13505,
       "sha256": "a4fd67a3de8ff3b6be78812d4fdf5740c480fb662a35053240c5dd4a534dbcc4"
@@ -266,6 +296,66 @@
       "path": "evidence/steam-clean-shutdown.txt",
       "bytes": 600,
       "sha256": "ec338e6f1c6762ad7570f6436b12e674ceb7affe8ee52d1a0e4206dc65fe58d6"
+    },
+    {
+      "path": "fex-munmap-diagnostic/LinuxAllocator.cpp.excerpt.txt",
+      "bytes": 953,
+      "sha256": "1358e75d9254f81a598edbe877bd66ccb20384938e30bac6abcada62d360bf44"
+    },
+    {
+      "path": "fex-munmap-diagnostic/PROVENANCE.json",
+      "bytes": 2022,
+      "sha256": "d5f910a3f307592a4e205be908c23c1b729617225d5854959e0a7cb7b60b071d"
+    },
+    {
+      "path": "fex-munmap-diagnostic/README.md",
+      "bytes": 2055,
+      "sha256": "68018d4d06bb2e1a7798b2b43f6cf980150ab86eedf89266e7e90ce0b8fce12f"
+    },
+    {
+      "path": "fex-munmap-diagnostic/SHA256SUMS",
+      "bytes": 988,
+      "sha256": "609e79f0fdaca0b9afa830644a3878249db8d5340a06232dd2ad5ad4c935c696"
+    },
+    {
+      "path": "fex-munmap-diagnostic/SyscallsSMCTracking.cpp.excerpt.txt",
+      "bytes": 484,
+      "sha256": "1749a61f77bf2c8040a9b01e997bf21318a508c0a8a4226f8b9c7c4ac4f19b50"
+    },
+    {
+      "path": "fex-munmap-diagnostic/fex-munmap-length.patch",
+      "bytes": 775,
+      "sha256": "d3a97701c38c82f79dce880c3b2db4bd188850d3a8953a6918c89e45882447c0"
+    },
+    {
+      "path": "fex-munmap-diagnostic/fex-munmap-round.c",
+      "bytes": 476,
+      "sha256": "c746b8f91cabde618867e6f432266f927697e5dc5eb980cbb5b497d87fea55ae"
+    },
+    {
+      "path": "fex-munmap-diagnostic/munmap-length-fex-before.txt",
+      "bytes": 1381,
+      "sha256": "9c635d15f4f2e10ec08fc89e7c80ab38cfff056b26769f03400d62381c681d47"
+    },
+    {
+      "path": "fex-munmap-diagnostic/munmap-length-fex-shim.txt",
+      "bytes": 1354,
+      "sha256": "3fc3c56bf9b433054594144c5a87c98b0ed204f92d763b44afe49aee342ec8a4"
+    },
+    {
+      "path": "fex-munmap-diagnostic/munmap-length-launch.c",
+      "bytes": 435,
+      "sha256": "3665f2e16bbf946edd208a76924fa99727222865c726ea0fe5da09ecf580b657"
+    },
+    {
+      "path": "fex-munmap-diagnostic/munmap-length-native.txt",
+      "bytes": 1422,
+      "sha256": "21b878e0c3038080ab753f44ac9f4764f1d87c0ab1a89d87000ece175f9dc290"
+    },
+    {
+      "path": "fex-munmap-diagnostic/munmap-length-probe.c",
+      "bytes": 1985,
+      "sha256": "57f5a2adb37c756b1d2554616562f428a3e7e22a9afb34f71fbad72d502e62ce"
     },
     {
       "path": "scripts/guest/audio-idle-mitigation",
@@ -314,13 +404,13 @@
     },
     {
       "path": "steam-compat/README.md",
-      "bytes": 8844,
-      "sha256": "4dc8728ba6b419ef6b5355df6d530ccb45de3b640c44b0f6e7eb87b74b9f689c"
+      "bytes": 8967,
+      "sha256": "f4f2cdb8215d2a9d96fe1089f39292ee93a66a1ec8da26fd3914883abe4f73ba"
     },
     {
       "path": "steam-compat/SHA256SUMS",
       "bytes": 1067,
-      "sha256": "f61384a9d4c31ea36796d5a56211cb7640f6d5a03c5bda79f2c242ee5674a658"
+      "sha256": "48859ff19eea7375760fbd0cf07f3c67684635c4b74111137f13defd8605c44a"
     },
     {
       "path": "steam-compat/VALIDATION.txt",
@@ -371,6 +461,56 @@
       "path": "steam-compat/verify-native.sh",
       "bytes": 1853,
       "sha256": "a68e6594e6b7131b25c6b912bf473b90abaef8abedbe9be39a2f7ff460edb05a"
+    },
+    {
+      "path": "steam-helper-repair/PROVENANCE.json",
+      "bytes": 1081,
+      "sha256": "f7960ce6c8884d7d97de4d094fc50cdd8766ae7fc012a2ab714fd600ad60ff48"
+    },
+    {
+      "path": "steam-helper-repair/README.md",
+      "bytes": 3735,
+      "sha256": "a1048609538ec70dde7a9ca13c7def9ad7cdafdaaa65740fe41b993e5a6e277a"
+    },
+    {
+      "path": "steam-helper-repair/SHA256SUMS",
+      "bytes": 767,
+      "sha256": "b24279cc7b561702e70517ad7629ba91a8f174323809a8d4c2d55462401e85fa"
+    },
+    {
+      "path": "steam-helper-repair/VALIDATION.txt",
+      "bytes": 313,
+      "sha256": "5c59af41cf86b263f46b8f83eda715ca880990ea5fdb4b247162a707f3f98ce8"
+    },
+    {
+      "path": "steam-helper-repair/helper-default.txt",
+      "bytes": 5311,
+      "sha256": "91d491518b527d4371adf302376572a17556ccb9a518b91c1ee94e3429a2a654"
+    },
+    {
+      "path": "steam-helper-repair/helper-noaudio.txt",
+      "bytes": 5513,
+      "sha256": "8e1426418808ab4111848df6ba7a5298c425df8f738cfaad94ddc130ab3315e8"
+    },
+    {
+      "path": "steam-helper-repair/install.sh",
+      "bytes": 1323,
+      "sha256": "fe68efef6210fb9c9d6b90c53d6af10c8bf455623eff148e8e7d53dc68d54873"
+    },
+    {
+      "path": "steam-helper-repair/linuxarm64/steam-launch-wrapper",
+      "bytes": 73208,
+      "sha256": "e6bc99d6732cd42af52006ae5803edb93b771051a0d7f78ece63c760ca8ac48e"
+    },
+    {
+      "path": "steam-helper-repair/official-manifest-excerpt.vdf",
+      "bytes": 448,
+      "sha256": "3d71ffbcb5d4804ec7f4c1ef204bb3d0bd037e27987ed2f1dbe888ef3b44d150"
+    },
+    {
+      "path": "steam-helper-repair/steam-launch-wrapper",
+      "bytes": 749,
+      "sha256": "6909e006c403338f0e65728d771592ef0ed15dd0d46aa857941d8d37bc013342"
     }
   ]
 }

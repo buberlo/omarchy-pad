@@ -1,0 +1,21 @@
+Selected result lines from the original local Mac-hosted LinPad CLI trace.
+Native output includes syscall/stdout interleaving; original raw trace retained locally.
+5898: anon len=1 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5899: file len=1 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5900: anon len=129 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5901: file len=129 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5902: anon len=4095 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5903: file len=4095 offset=0 addr=0xcebcc000 munmap=-1 errno=22 FAIL
+5904: anon len=4096 offset=0 addr=0xcebcc000 munmap=0 errno=0 PASS
+5905: file len=4096 offset=0 addr=0xcebcc000 munmap=0 errno=0 PASS
+5906: anon len=4097 offset=0 addr=0xcebcb000 munmap=-1 errno=22 FAIL
+5907: file len=4097 offset=0 addr=0xcebcb000 munmap=-1 errno=22 FAIL
+5908: anon len=8191 offset=0 addr=0xcebcb000 munmap=-1 errno=22 FAIL
+5909: file len=8191 offset=0 addr=0xcebcb000 munmap=-1 errno=22 FAIL
+5910: anon len=16385 offset=0 addr=0xcebc8000 munmap=-1 errno=22 FAIL
+5911: file len=16385 offset=0 addr=0xcebc8000 munmap=-1 errno=22 FAIL
+5912: file-offset len=5001 offset=4096 addr=0xcebcb000 munmap=-1 errno=22 FAIL
+5913: unaligned_address result=-1 errno=22 PASS
+5914: zero_length result=0 errno=0 FAIL
+5915: partial_4k_unmap result=-1 errno=22 neighbors=17,31 FAIL
+5916: MUNMAP_PROBE failures=15

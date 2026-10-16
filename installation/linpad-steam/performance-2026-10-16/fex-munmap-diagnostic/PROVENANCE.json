@@ -1,0 +1,58 @@
+{
+  "scope": "Local regression and source diagnosis; no physical game test. Diagnostic preload is not a deployed final runtime fix.",
+  "test_count": 18,
+  "native_failures": 0,
+  "fex_before_failures": 15,
+  "fex_preload_failures": 0,
+  "raw_reports": [
+    {
+      "local_source": "work/performance/munmap-length-native.txt",
+      "bytes": 3736,
+      "sha256": "f8cb54c640fb941dec5ebe551fac35a6ff328e09109681ae4246443bdb2ff6f2",
+      "archive_excerpt": "munmap-length-native.txt",
+      "physical_device_test": false
+    },
+    {
+      "local_source": "work/performance/munmap-length-fex-before.txt",
+      "bytes": 347563,
+      "sha256": "cffa080a70bbde258e6eca62181da8c63468f9955fbecfdcd8c591124f6195b5",
+      "archive_excerpt": "munmap-length-fex-before.txt",
+      "physical_device_test": false
+    },
+    {
+      "local_source": "work/performance/munmap-length-fex-shim.txt",
+      "bytes": 354138,
+      "sha256": "85cda4ed282a215ce6c44bb4f5542ea67b5b91ba61493175e3285f724f3102f6",
+      "archive_excerpt": "munmap-length-fex-shim.txt",
+      "physical_device_test": false
+    }
+  ],
+  "sources": [
+    {
+      "path": "Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp",
+      "commit": "5285020de0b30dbdae7b44d0d83541af2d13d002",
+      "sha256": "bf320cc02577e2e6c56d47f568ddc73ef0f23e45e44de69254ce8a29e4372e25",
+      "excerpt_lines": [
+        246,
+        269
+      ]
+    },
+    {
+      "path": "Source/Tools/LinuxEmulation/LinuxSyscalls/SyscallsSMCTracking.cpp",
+      "commit": "5285020de0b30dbdae7b44d0d83541af2d13d002",
+      "sha256": "38ea1441f7f4693497b4a7575fe93df67502912aceb75f12fb01cdf73335e279",
+      "excerpt_lines": [
+        369,
+        378
+      ]
+    }
+  ],
+  "prepared_patch": {
+    "file": "fex-munmap-length.patch",
+    "sha256": "d3a97701c38c82f79dce880c3b2db4bd188850d3a8953a6918c89e45882447c0",
+    "base_commit": "5285020de0b30dbdae7b44d0d83541af2d13d002",
+    "applied_to_local_source": true,
+    "rebuilt": false,
+    "runtime_tested_as_source_patch": false
+  }
+}

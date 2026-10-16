@@ -1,0 +1,30 @@
+Fri Oct 16 09:29:32 UTC 2026
+The selected window backend is (null) 
+Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+mono_pe_file_unmap: mono_file_unmap failed, error: "Invalid argument" (22)
+Caught fatal signal - signo:6 code:0 errno:0 addr:0xa71
+
+=================================================================
+	Native Crash Reporting
+=================================================================
+Got a SIGSEGV while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+=================================================================
+
+=================================================================
+	Native stacktrace:
+=================================================================
+	0xc7515376 - /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so : 
+	0xc74bdeaa - /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so : 
+	0xc74433c0 - /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/x86_64/libmonobdwgc-2.0.so : 
+	0xcc479d70 - /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.6 : 
+
+=================================================================
+	Telemetry Dumper:
+=================================================================
+
+=================================================================
+	External Debugger Dump:
+=================================================================
