@@ -1919,3 +1919,48 @@ offers no OTA update for this root. Boot and import are unaffected — Phase 3 k
 
 Copied to the session workspace: `steamos/deliverables/LinPad-Steam-1.4.0-build4512.ipa` with its
 `SHA256SUMS`, `ipa.json` and `build-facts.txt`.
+
+## Round 71, correction: the IPA's Arch image is the CLI test image, not an image the app can run
+
+**Do not use `LinPad-Steam-1.4.0-build4512.ipa` for the device test.** The image inside it
+(`work/steam-distro/arch-bp6.tar.gz`) was built to run Steam under Xvnc from the Mac harness, and it is
+missing everything the *app* needs:
+
+```
+$ tar -tzf arch-bp6.tar.gz | grep -E 'usr/local/bin/(steam-bigpicture|steam-local|ishwl|ishwl-session)|etc/ishwl|steam.desktop|linpad/steam-mode'
+(nothing)
+```
+
+Yet `GameMode.swift:13` sets `steamCommand = "steam-bigpicture"` and the app shows guest windows *through
+ishwl*, so on install the game app would boot Arch, fail to spawn its launcher, and after 180 s report
+"Steam did not appear" — a failure that says nothing about Steam, CEF or Big Picture. My Round-70 sentence
+"starts `steam-bigpicture` on the Arch root" was wrong: the script exists in the repository
+(`release/guest/steam-bigpicture`, 4,327 bytes) but was never installed into that image.
+
+### The image the app needs (one container pass, then build/sign/cut)
+
+Everything from the Round 51/54 recipe **plus** the app's own guest files:
+
+```sh
+$D cp work/LinPad/release/guest/steam-bigpicture "$id:/usr/local/bin/steam-bigpicture"
+$D cp work/LinPad/release/guest/steam-local     "$id:/usr/local/bin/steam-local"
+$D cp work/LinPad/release/guest/steam.desktop   "$id:/usr/share/applications/steam.desktop"
+$D cp work/LinPad/release/guest/steam.svg       "$id:/usr/share/icons/hicolor/scalable/apps/steam.svg"
+# the glibc session layer built in Round 16/18, and the app displays windows through these:
+$D cp work/steam-distro/guest-tools/arch/ishwl              "$id:/usr/local/bin/ishwl"
+$D cp work/steam-distro/guest-tools/arch/ishwl-x11-wm       "$id:/usr/local/bin/ishwl-x11-wm"
+$D cp work/steam-distro/guest-tools/arch/libishwl-compat.so "$id:/usr/local/lib/libishwl-compat.so"
+for f in ishwl-session ishwl-launch ishwl-x11; do $D cp work/LinPad/wl-bridge/$f "$id:/usr/local/bin/$f"; done
+$D cp work/LinPad/wl-bridge/apps "$id:/etc/ishwl/apps"
+printf 'bigpicture\n' | $D exec -i "$id" sh -c 'mkdir -p /etc/linpad && cat > /etc/linpad/steam-mode'
+# /etc/profile.d/gpu.sh with Arch's ICD path, /sbin/init, the Steam client, the compat layer,
+# the ~/.steam symlinks -- but NOT steam.cfg's BootStrapperInhibitAll (that was a harness workaround).
+# Also write /usr/share/ish/rootfs-version and a sibling root.version so the image is stamped.
+```
+
+Then: `build-local.sh steam` with `ROOTFS_ARCHIVE=<new image>` → `sign-variant.py --variant steam` →
+`cut-ipa.py --variant steam`, and only then a device run. Note `libishwl-scm.so` is deliberately **absent**:
+Round 19 proved glibc passes descriptors natively, so the musl-era shim must not be installed.
+
+This is the true remaining work on the Mac side, and it is one container pass plus a build. The device run
+comes after it, not before.
