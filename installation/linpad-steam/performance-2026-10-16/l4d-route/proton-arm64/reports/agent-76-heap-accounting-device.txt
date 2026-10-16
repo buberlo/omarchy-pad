@@ -1,0 +1,27 @@
+AGENT_BEGIN id=76-heap-accounting-device pid=92 Fri Oct 16 20:39:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== glibc build on the device (the allocator wine uses) ===
+sbrk(0)=0x1061000
+maps [heap]: NO (0x0-0x0)
+MAP_FIXED_NOREPLACE inside the heap at 0x105f000: got=0xffffffffffffffff errno=17 -- correct (EEXIST)
+MAP_FIXED_NOREPLACE over a live malloc block at 0x1062000: got=0xffffffffffffffff errno=17 -- correct (EEXIST)
+glibc-probe exit=0
+
+=== musl build (native, for comparison) ===
+sbrk growth failed
+sbrk(0)=0x1047000
+maps [heap]: NO (0x0-0x0)
+MAP_FIXED_NOREPLACE inside the heap at 0x1045000: got=0xffffffffffffffff errno=17 -- correct (EEXIST)
+MAP_FIXED_NOREPLACE over a live malloc block at 0xeffd0000: got=0xffffffffffffffff errno=17 -- correct (EEXIST)
+musl-probe exit=0
+
+=== what does the emulator's own /proc/self/maps look like for a glibc process? ===
+0000efe00000-0000efe01000 rw-p 00000000 00:00 0          
+0000efe21000-0000efe22000 rw-p 0000f000 00:00 0          /usr/local/lib/libishaudio-compat.so
+0000efe42000-0000efe43000 rw-p 0000f000 00:00 0          /usr/local/lib/libishwl-scm.so
+0000eff0a000-0000eff0b000 rw-p 000af000 00:00 0          /lib/ld-musl-aarch64.so.1
+0000eff0b000-0000eff0d000 rw-p 00000000 00:00 0          
+0000efffd000-0000efffe000 rw-p 000dc000 00:00 0          /bin/busybox
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:39:16 UTC 2026

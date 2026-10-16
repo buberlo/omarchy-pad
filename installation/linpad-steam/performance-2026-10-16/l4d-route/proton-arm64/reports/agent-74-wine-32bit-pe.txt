@@ -1,0 +1,21 @@
+AGENT_BEGIN id=74-wine-32bit-pe pid=92 Fri Oct 16 20:37:25 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 32-bit Windows PE through ARM64 Proton (the Left 4 Dead shape) ===
+t= 30s markers=2 procs=[]
+
+=== output ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+malloc_consolidate(): invalid chunk size
+
+=== verdict ===
+(not yet / failed)
+footprint_mb 735
+allowance_mb 8192
+headroom_mb 7456
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:37:55 UTC 2026

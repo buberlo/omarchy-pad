@@ -1,0 +1,28 @@
+AGENT_BEGIN id=73-mapfixed-acceptance pid=92 Fri Oct 16 20:37:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== fetch and run the acceptance probe (this is the fix) ===
+base=0xeffef000 page=4096
+MAP_FIXED mid: replaced exactly the requested range
+MAP_FIXED_NOREPLACE on a live page: refused with EEXIST
+MAP_FIXED_NOREPLACE on a free page: placed at 0xefff4000
+MAP_FIXED|MAP_FIXED_NOREPLACE on a live page: refused with EEXIST
+ok
+probe exit=0
+
+=== before/after: the old build said ===
+   MAP_FIXED_NOREPLACE on a live page: got=0xeffee000 errno=0 (unexpected; want MAP_FAILED/EEXIST)
+=== the new build must say ===
+   MAP_FIXED_NOREPLACE on a live page: refused with EEXIST ... ok (exit 0)
+
+=== is the glibc dir and the launcher still in place after the app update? ===
+/opt/linpad-glibc
+/usr/local/bin/linpad-proton-arm64
+/usr/share/guestos/fex-mesa
+hello-x86-linux-gnu
+hello-x86-windows-gnu
+hello-x86_64-linux-gnu
+hello-x86_64-windows-gnu
+steam mapping still there: 1
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:37:14 UTC 2026

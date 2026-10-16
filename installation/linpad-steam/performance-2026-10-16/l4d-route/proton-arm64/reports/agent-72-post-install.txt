@@ -1,0 +1,37 @@
+AGENT_BEGIN id=72-post-install pid=92 Fri Oct 16 20:37:03 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== session and hook ===
+boot log: kb4453 agent started pid=92
+hook still there: ls: cannot access '/etc/ishwl/session.d/99-kb4453-agent.sh': No such file or directory
+agent pid: 92
+ 20:37:03 up 6 days, 16:21,  0 users,  load average: 2.89, 3.21, 2.59
+Fri Oct 16 20:37:03 UTC 2026
+
+=== the guest came up cleanly? ===
+PID   COMMAND
+    1 init
+    6 getty
+    8 getty
+   12 login
+   14 sh
+   16 ishwl
+   22 dbus-daemon
+   37 getty
+   54 getty
+   68 getty
+   71 getty
+footprint_mb 683
+allowance_mb 8192
+headroom_mb 7508
+soft_mb 1638
+
+=== the new build's own identity ===
+-r--r--r--  1 root root 0 Jan  1  1970 /proc/ish/colors
+-r--r--r--  1 root root 0 Jan  1  1970 /proc/ish/documents
+-r--r--r--  1 root root 0 Jan  1  1970 /proc/ish/jit-ss
+-r--r--r--  1 root root 0 Jan  1  1970 /proc/ish/memory
+-rw-r--r--  1 root root 0 Jan  1  1970 /proc/ish/oom
+(no version file)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:37:03 UTC 2026

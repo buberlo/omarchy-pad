@@ -1,0 +1,8 @@
+AGENT_BEGIN id=78-reinstall-hook pid=92 Fri Oct 16 20:40:50 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+hook reinstalled
+-rwxr-xr-x 1 root root 403 Oct 16 20:40 /etc/ishwl/session.d/99-kb4453-agent.sh
+current agent pid: 92
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:40:50 UTC 2026

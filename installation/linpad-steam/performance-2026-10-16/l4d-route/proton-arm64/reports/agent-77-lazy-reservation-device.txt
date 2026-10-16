@@ -1,0 +1,14 @@
+AGENT_BEGIN id=77-lazy-reservation-device pid=92 Fri Oct 16 20:39:43 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the same probe on the iPad (glibc build) ===
+reservation: 0x8000000000 .. 0x8040000000
+anon block : 0xefbd0000 .. 0xefcd0000
+anon block inside the reservation: no
+anon bytes damaged by using the reservation: 0
+ok
+probe exit=0
+
+=== and with a smaller (non-lazy) reservation for contrast ===
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:39:43 UTC 2026

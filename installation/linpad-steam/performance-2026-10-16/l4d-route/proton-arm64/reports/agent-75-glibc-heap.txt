@@ -1,0 +1,30 @@
+AGENT_BEGIN id=75-glibc-heap pid=92 Fri Oct 16 20:38:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== fetch the glibc heap probe ===
+interpreter: 
+loader present: lrwxrwxrwx 1 root root 63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+
+=== run it with the device's glibc ===
+glibc-heap probe: pid=521
+small brk-driven allocations: ok
+mmap threshold + realloc (mremap): ok
+malloc_trim returned 1 (released memory)
+malloc_trim + regrow: ok
+summary: glibc heap ok
+exit=0
+
+=== and with the platform glibc, in case the first one is the wrong build ===
+glibc-heap probe: pid=525
+small brk-driven allocations: ok
+mmap threshold + realloc (mremap): ok
+malloc_trim returned 1 (released memory)
+malloc_trim + regrow: ok
+summary: glibc heap ok
+exit=0
+
+=== glibc version in use ===
+ld.so (Debian GLIBC 2.41-12+deb13u4) stable release version 2.41.
+Copyright (C) 2025 Free Software Foundation, Inc.
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:38:24 UTC 2026

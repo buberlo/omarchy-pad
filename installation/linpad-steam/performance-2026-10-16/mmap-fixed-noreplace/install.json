@@ -1,0 +1,37 @@
+{
+  "info" : {
+    "arguments" : [
+      "devicectl",
+      "device",
+      "install",
+      "app",
+      "--device",
+      "00008112-000924EE14D9A01E",
+      "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build-mmapfix/Payload/iSH ARM64.app",
+      "--json-output",
+      "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build-mmapfix/install.json"
+    ],
+    "commandType" : "devicectl.device.install.app",
+    "environment" : {
+      "TERM" : "dumb"
+    },
+    "jsonVersion" : 5,
+    "outcome" : "success",
+    "version" : "642.16"
+  },
+  "result" : {
+    "deviceIdentifier" : "87335B57-0430-5B18-ABF9-20A3B37871C2",
+    "installedApplications" : [
+      {
+        "bundleID" : "com.konradkern.linpad",
+        "databaseSequenceNumber" : 8316,
+        "databaseUUID" : "59C97103-AA6D-419C-A7BA-757BDFF8499C",
+        "installationURL" : "file:///private/var/containers/Bundle/Application/80C5318F-1A5A-47D4-A772-9504F9F568AD/iSH%20ARM64.app/",
+        "launchServicesIdentifier" : "unknown",
+        "options" : {
+
+        }
+      }
+    ]
+  }
+}

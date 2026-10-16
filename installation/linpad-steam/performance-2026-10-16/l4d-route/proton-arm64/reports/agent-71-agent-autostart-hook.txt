@@ -1,0 +1,32 @@
+AGENT_BEGIN id=71-agent-autostart-hook pid=1143 Fri Oct 16 20:32:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== what exists for the session start path ===
+total 24
+-rw-r--r-- 1 root root  300 Oct  3 17:16 05-bus-address.sh
+-rw-r--r-- 1 root root  786 Oct  3 17:16 10-style.sh
+-rw-r--r-- 1 root root  545 Oct  3 17:51 15-lowmem.sh
+-rw-r--r-- 1 root root  597 Oct  3 17:16 20-audio.sh
+-rw-r--r-- 1 root root 1027 Oct  3 17:51 90-firstrun.sh
+-rw-r--r-- 1 root root   49 Oct 16 17:46 99-kb4453-frames.sh
+-rwxr-xr-x 1 root root 2210 Oct 16 18:00 /usr/local/bin/kb-agent
+#!/bin/sh
+# Command agent for the iPad's Linux system: asks the Mac for one command at a time, runs it,
+# and posts the output back as reports/agent-<name>.txt. Started detached by the bootstrap.
+
+=== install a one-shot hook that brings the agent back after an app restart ===
+hook syntax ok
+total 28
+-rw-r--r-- 1 root root  300 Oct  3 17:16 05-bus-address.sh
+-rw-r--r-- 1 root root  786 Oct  3 17:16 10-style.sh
+-rw-r--r-- 1 root root  545 Oct  3 17:51 15-lowmem.sh
+-rw-r--r-- 1 root root  597 Oct  3 17:16 20-audio.sh
+-rw-r--r-- 1 root root 1027 Oct  3 17:51 90-firstrun.sh
+-rwxr-xr-x 1 root root  467 Oct 16 20:32 99-kb4453-agent.sh
+-rw-r--r-- 1 root root   49 Oct 16 17:46 99-kb4453-frames.sh
+
+=== does the hook mechanism have a log to check later? ===
+ls: cannot access '/tmp/kb-agent-boot.log': No such file or directory
+(ishwl handles session.d itself)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:32:16 UTC 2026
