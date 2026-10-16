@@ -1,0 +1,20 @@
+page_size=4096
+anon len=1 offset=0 addr=0x7fffe000 munmap=0 errno=0 PASS
+file len=1 offset=0 addr=0x7fffd000 munmap=0 errno=0 PASS
+anon len=129 offset=0 addr=0x7fffc000 munmap=0 errno=0 PASS
+file len=129 offset=0 addr=0x7fffb000 munmap=0 errno=0 PASS
+anon len=4095 offset=0 addr=0x7fffa000 munmap=0 errno=0 PASS
+file len=4095 offset=0 addr=0x7fff9000 munmap=0 errno=0 PASS
+anon len=4096 offset=0 addr=0x7fff8000 munmap=0 errno=0 PASS
+file len=4096 offset=0 addr=0x7fff7000 munmap=0 errno=0 PASS
+anon len=4097 offset=0 addr=0x7fff5000 munmap=0 errno=0 PASS
+file len=4097 offset=0 addr=0x7fff3000 munmap=0 errno=0 PASS
+anon len=8191 offset=0 addr=0x7fff1000 munmap=0 errno=0 PASS
+file len=8191 offset=0 addr=0x7ffef000 munmap=0 errno=0 PASS
+anon len=16385 offset=0 addr=0x7ffea000 munmap=0 errno=0 PASS
+file len=16385 offset=0 addr=0x7ffe5000 munmap=0 errno=0 PASS
+file-offset len=5001 offset=4096 addr=0x7ffe3000 munmap=0 errno=0 PASS
+unaligned_address result=-1 errno=22 PASS
+zero_length result=-1 errno=22 PASS
+partial_4k_unmap result=0 errno=0 neighbors=17,31 PASS
+MUNMAP_PROBE failures=0

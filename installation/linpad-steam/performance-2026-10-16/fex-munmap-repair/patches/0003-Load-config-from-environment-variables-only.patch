@@ -1,0 +1,20 @@
+Load config from environment variables only
+
+diff --git a/Source/Common/Config.cpp b/Source/Common/Config.cpp
+index 58ea2d021..e746a2c7c 100644
+--- a/Source/Common/Config.cpp
++++ b/Source/Common/Config.cpp
+@@ -479,6 +479,13 @@ void LoadConfig(fextl::string ProgramName, char** const envp, const PortableInfo
+   const bool IsPortable = PortableInfo.IsPortable;
+   FEX::Config::InitializeConfigs(PortableInfo);
+   FEXCore::Config::Initialize();
++
++  // FEX-static: hermetic config - honor FEX_* environment variables only, never
++  // config files that could silently reconfigure the binary (or slow down exec).
++  FEXCore::Config::AddLayer(CreateEnvironmentLayer(envp));
++  FEXCore::Config::Load();
++  return;
++
+   if (!IsPortable) {
+     FEXCore::Config::AddLayer(CreateGlobalMainLayer());
+   }

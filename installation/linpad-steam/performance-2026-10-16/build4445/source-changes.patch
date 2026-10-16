@@ -1,0 +1,178 @@
+diff --git a/kernel/exec.c b/kernel/exec.c
+index 5cf87a22..bfdb4890 100644
+--- a/kernel/exec.c
++++ b/kernel/exec.c
+@@ -308,7 +308,9 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
+     if (vdso_page == BAD_PAGE)
+         goto beyond_hope;
+     vdso_page += 1;
+-    if ((err = pt_map(current->mem, vdso_page, vdso_pages, (void *) vdso_data, 0, 0)) < 0)
++    // The loader reads the vDSO ELF headers before calling its entry points.
++    // Give this kernel-provided mapping real permissions, not PROT_NONE.
++    if ((err = pt_map(current->mem, vdso_page, vdso_pages, (void *) vdso_data, 0, P_READ | P_EXEC)) < 0)
+         goto beyond_hope;
+     mem_pt(current->mem, vdso_page)->data->name = "[vdso]";
+     current->mm->vdso = vdso_page << PAGE_BITS;
+@@ -320,7 +322,7 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
+     page_t vvar_page = pt_find_hole(current->mem, VVAR_PAGES);
+     if (vvar_page == BAD_PAGE)
+         goto beyond_hope;
+-    if ((err = pt_map_nothing(current->mem, vvar_page, VVAR_PAGES, 0)) < 0)
++    if ((err = pt_map_nothing(current->mem, vvar_page, VVAR_PAGES, P_READ)) < 0)
+         goto beyond_hope;
+     mem_pt(current->mem, vvar_page)->data->name = "[vvar]";
+ 
+diff --git a/kernel/memory.c b/kernel/memory.c
+index 2f99e0d5..1df462e2 100644
+--- a/kernel/memory.c
++++ b/kernel/memory.c
+@@ -929,6 +929,11 @@ static void *mem_ptr_nofault(struct mem *mem, addr_t addr, int type) {
+     struct pt_entry *entry = mem_pt(mem, PAGE(addr));
+     if (entry == NULL || (entry->flags & P_PAST_EOF))
+         return NULL;
++    // PROT_NONE backing can also be inaccessible on the host. Never expose
++    // it to kernel copies or diagnostic frame walks. A neighbouring guest
++    // page may have made the shared host page readable; guest flags still win.
++    if (type == MEM_READ && !(entry->flags & P_RWX))
++        return NULL;
+     if (type == MEM_WRITE && !P_WRITABLE(entry->flags))
+         return NULL;
+     return entry->data->data + entry->offset + PGOFFSET(addr);
+@@ -1066,6 +1071,8 @@ check_reservation: ;
+         struct mem_reservation *res = mem_find_reservation(mem, page);
+         if (res == NULL)
+             return NULL;
++        if (type == MEM_READ && !(res->flags & P_RWX))
++            return NULL;
+         read_wrunlock(&mem->lock);
+         // BLOCKING: avoid NULL → INT_GPF retry (which re-runs the JIT
+         // block's prologue and can compound sub-sp or other side
+diff --git a/kernel/memory.h b/kernel/memory.h
+index edb0a1cc..660a485e 100644
+--- a/kernel/memory.h
++++ b/kernel/memory.h
+@@ -131,7 +131,7 @@ struct pt_entry {
+     unsigned flags;
+ };
+ // page flags
+-// P_READ and P_EXEC are ignored for now
++// Read and execute are not separately enforced; PROT_NONE reads are rejected.
+ #define P_READ (1 << 0)
+ #define P_WRITE (1 << 1)
+ #undef P_EXEC // defined in sys/proc.h on darwin
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 6ec470b3..32999cd2 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -44,6 +44,18 @@ convenient for running them under both the CLI emulator and iPad app.
+   `ISH_JIT=1 ISH_JIT_TIER=1 ISH_JIT_COMPACT=1`, and `ISH_JIT=0`.
+   The former invalid-TLB-tag arithmetic sent FEX's deliberate null load into
+   a 257-fault loop instead of delivering its guest SIGSEGV.
++- `prot-none-read-probe.c`: a syscall reading a PROT_NONE guest buffer must
++  return EFAULT, including adjacent guest pages that share a readable host
++  page. Readable pages and protection transitions must keep working. Run
++  again with `fault` and `fault-lazy` to check that a null fault with x29
++  pointing into backed or reservation-only PROT_NONE memory reaches its
++  guest signal handler. The old diagnostic
++  frame walk dereferenced that host-inaccessible pointer and crashed LinPad.
++  Also run the bundled Alpine dynamic loader, for example
++  `/bin/busybox sh -c '/bin/busybox true && /bin/busybox date +%s'`, in all four
++  execution modes above. Static probes do not exercise musl's startup read of
++  the vDSO ELF headers. The vDSO requires explicit read/execute permissions and
++  the vvar pages require read permission when PROT_NONE reads are enforced.
+ 
+ The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
+ With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static
+diff --git a/tests/manual/steam-compat/prot-none-read-probe.c b/tests/manual/steam-compat/prot-none-read-probe.c
+new file mode 100644
+index 00000000..8fe481c7
+--- /dev/null
++++ b/tests/manual/steam-compat/prot-none-read-probe.c
+@@ -0,0 +1,87 @@
++#define _GNU_SOURCE
++#include <errno.h>
++#include <signal.h>
++#include <setjmp.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <string.h>
++#include <sys/mman.h>
++#include <unistd.h>
++
++static sigjmp_buf resume;
++static volatile sig_atomic_t caught;
++
++static void on_segv(int signal_number, siginfo_t *info, void *context) {
++    (void)context;
++    if (signal_number == SIGSEGV && info->si_addr == NULL) caught = 1;
++    siglongjmp(resume, 1);
++}
++
++// FEX uses x29 for its own state, so a kernel diagnostic must not assume it
++// points to a readable frame chain. Recover via siglongjmp, which restores it.
++__attribute__((naked)) static void null_fault_with_guard_fp(void *guard) {
++    __asm__ volatile("mov x29,x0\n\tmov x1,#0\n\tldr x1,[x1]\n\tret");
++}
++
++static int expect_read(int fds[2], void *address, int readable) {
++    errno = 0;
++    ssize_t n = write(fds[1], address, 1);
++    if (!readable) {
++        if (n == -1 && errno == EFAULT) return 0;
++        fprintf(stderr, "FAIL protected buffer write=%zd errno=%d\n", n, errno);
++        return 1;
++    }
++    unsigned char value;
++    if (n == 1 && read(fds[0], &value, 1) == 1) return 0;
++    fprintf(stderr, "FAIL accessible buffer write=%zd errno=%d\n", n, errno);
++    return 1;
++}
++
++int main(int argc, char **argv) {
++    alarm(10);
++    int fds[2];
++    if (pipe(fds)) return 2;
++    int fault_test = argc > 1 && !strncmp(argv[1], "fault", 5);
++    size_t length = argc > 1 && !strcmp(argv[1], "fault-lazy") ? 128*1024*1024 : 16384;
++    unsigned char *p = mmap(NULL, length, PROT_NONE,
++                            MAP_PRIVATE|MAP_ANONYMOUS, -1, 0);
++    if (p == MAP_FAILED) return 2;
++
++    if (fault_test) {
++        struct sigaction sa = {.sa_sigaction = on_segv, .sa_flags = SA_SIGINFO};
++        sigemptyset(&sa.sa_mask);
++        if (sigaction(SIGSEGV, &sa, NULL)) return 2;
++        if (sigsetjmp(resume, 1) == 0) null_fault_with_guard_fp(p);
++        if (!caught) { fputs("FAIL guest fault not delivered\n", stderr); return 1; }
++        puts("PASS null fault with PROT_NONE frame pointer reaches guest handler");
++    } else {
++        // Initially the backing host page itself is PROT_NONE.
++        if (expect_read(fds, p, 0)) return 1;
++        if (mprotect(p, 4096, PROT_READ|PROT_WRITE)) return 2;
++        p[0] = 17;
++        if (expect_read(fds, p, 1)) return 1;
++        // These guest pages share a 16 KiB host page. Promoting p must not
++        // accidentally make the other PROT_NONE guest pages readable.
++        if (expect_read(fds, p + 4096, 0) || expect_read(fds, p + 8192, 0)) return 1;
++        if (mprotect(p, 4096, PROT_NONE)) return 2;
++        if (expect_read(fds, p, 0)) return 1;
++        if (mprotect(p, 4096, PROT_READ)) return 2;
++        if (expect_read(fds, p, 1)) return 1;
++        if (mprotect(p, 4096, PROT_READ|PROT_WRITE)) return 2;
++        p[0] = 31;
++        if (expect_read(fds, p, 1)) return 1;
++        // Large mappings are reservation-only until protection is raised.
++        unsigned char *lazy = mmap(NULL, 128*1024*1024, PROT_NONE,
++                                    MAP_PRIVATE|MAP_ANONYMOUS, -1, 0);
++        if (lazy == MAP_FAILED) return 2;
++        if (expect_read(fds, lazy, 0)) return 1;
++        if (mprotect(lazy, 4096, PROT_READ|PROT_WRITE)) return 2;
++        lazy[0] = 42;
++        if (expect_read(fds, lazy, 1) || expect_read(fds, lazy + 4096, 0)) return 1;
++        munmap(lazy, 128*1024*1024);
++        puts("PASS syscall EFAULT for PROT_NONE; readable pages and transitions preserved");
++    }
++    munmap(p, length);
++    close(fds[0]); close(fds[1]);
++    return 0;
++}

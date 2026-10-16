@@ -1,0 +1,25 @@
+Fri Oct 16 09:57:39 UTC 2026
+PASS syscall EFAULT for PROT_NONE; readable pages and transitions preserved
+PASS null fault with PROT_NONE frame pointer reaches guest handler
+PASS null fault with PROT_NONE frame pointer reaches guest handler
+PASS 24 exact-address SIGSEGV deliveries; valid and crossing accesses
+ALL4445_PROBES_PASS
+footprint_mb 706
+allowance_mb 8192
+headroom_mb 7485
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 73 9 0 0 thunar
+proc 120 5 0 0 xfconfd
+proc 32 5 0 1 pulseaudio
+proc 16 1 0 1 ishwl
+proc 14 1 0 1 -sh
+proc 27 1 0 1 -sh
+proc 31 1 0 1 -sh
+proc 22 1 0 1 dbus-daemon
+proc 182 1 0 1 sh
+proc 99 1 0 1 getty
+proc 1 1 0 1 init
+proc 7 1 0 1 getty

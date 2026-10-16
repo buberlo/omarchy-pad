@@ -1,0 +1,43 @@
+Fri Oct 16 10:07:27 UTC 2026
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+No virgl contexts available on hostNo virgl contexts available on hostRefusing to try glamor on llvmpipe
+XWAYLAND: Disabling GLAMOR support
+EGL setup failed, disabling glamor
+Failed to initialize glamor, falling back to sw
+ENV DISPLAY=:14
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV SDL_VIDEODRIVER=(unset)
+ENV SDL_VIDEO_DRIVER=(unset)
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+DLOPEN libX11.so.6 PASS
+DLOPEN libXext.so.6 PASS
+DLOPEN libXcursor.so.1 PASS
+DLOPEN libXi.so.6 PASS
+DLOPEN libXfixes.so.3 PASS
+DLOPEN libXrandr.so.2 PASS
+DLOPEN libXss.so.1 PASS
+DLOPEN libwayland-client.so.0 PASS
+DLOPEN libxkbcommon.so.0 PASS
+DLOPEN libSDL2-2.0.so.0 PASS
+XOPEN_BEGIN
+XOPEN PASS
+XDISPLAY screens=1 width=659 height=540
+SDL2_DRIVER x11
+SDL2_DRIVER wayland
+SDL2_DRIVER KMSDRM
+SDL2_DRIVER offscreen
+SDL2_DRIVER dummy
+SDL2_DRIVER evdev
+SDL2_VIDEO_INIT_BEGIN driver=x11
+SDL2_VIDEO_INIT result=0 error=
+SDL2_CURRENT_DRIVER x11
+SDL2_DISPLAYS 1
+X connection to :14 broken (explicit kill or server shutdown).

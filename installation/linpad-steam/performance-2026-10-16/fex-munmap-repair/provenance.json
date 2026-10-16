@@ -1,0 +1,125 @@
+{
+  "created_utc": "2026-10-16T10:01:14.192889+00:00",
+  "source": {
+    "repository": "https://github.com/FEX-Emu/FEX",
+    "commit": "5285020de0b30dbdae7b44d0d83541af2d13d002"
+  },
+  "release_recipe": {
+    "repository": "https://github.com/PeronGH/FEX-static",
+    "commit": "da8478086d7fa5067d8522a212f902834f222359"
+  },
+  "build": {
+    "host": "local macOS Colima ARM64 Linux VM",
+    "profile": "linpad-fex",
+    "cpus": 4,
+    "memory_gib": 8,
+    "compiler": "Ubuntu clang 18.1.3 (1ubuntu1)",
+    "cmake": "3.28.3",
+    "ninja": "1.11.1",
+    "image_id": "sha256:05d9c6c86f1708cc5f618c1605b6f3554a7e579f32f85f3f3b45832582e8fda1",
+    "base_image_manifest": "ubuntu:24.04@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+    "runtime_flags": "Release; apple-m1; ThinLTO; static-pie; lld; FEXConfig, ccache, telemetry, GDB symbols disabled",
+    "additional_build_tool_path": "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS=/usr/bin/clang-scan-deps-18",
+    "packages_count": 126,
+    "official_package_bytes": 202075992
+  },
+  "validation": {
+    "aarch64_static_pie": true,
+    "pt_interp": false,
+    "dt_needed": false,
+    "native_control": {
+      "checks": 18,
+      "failures": 0,
+      "exit": 0
+    },
+    "original_fex": {
+      "checks": 18,
+      "failures": 15,
+      "exit": 1
+    },
+    "patched_fex": {
+      "checks": 18,
+      "failures": 0,
+      "exit": 0
+    },
+    "preload_used": false,
+    "physical_device": {
+      "status": "pass",
+      "device": "physical iPad",
+      "linpad_build": 4445,
+      "run_timestamp_utc": "2026-10-16T10:01:28Z",
+      "checks": 18,
+      "failures": 0,
+      "exit": 0,
+      "preload_used": false,
+      "binary_installed_path": "/opt/fex/FEX-apple-m1-munmap",
+      "binary_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+      "probe_installed_path": "/tmp/munmap-length-x86-low",
+      "probe_sha256": "913c6ca016e2bf2922e4a4c424a070c3b5b1cd355cb0ca4cedcbf5f95664e3fe",
+      "environment": {
+        "LD_PRELOAD": "unset",
+        "FEX_DISABLETELEMETRY": "1",
+        "FEX_ROOTFS": "/opt/hollow-runtime",
+        "LD_LIBRARY_PATH": "/opt/hollow-runtime/usr/lib/x86_64-linux-gnu"
+      },
+      "report": {
+        "filename": "patched-fex-device-validation.txt",
+        "sha256": "56cfa7b6e85d79d116f958e82a41081ae134195584573fb1d0ebd538ca27d3f1"
+      },
+      "invoking_script": {
+        "filename": "install-patched-fex-device.sh",
+        "source": "work/performance/serve/install-patched-fex",
+        "sha256": "3d3a26ea4dbbea543dc32b16f37502c7bc2d97b43ffb33c52736166e80f79a76"
+      },
+      "provenance_note": "LinPad build and physical-device identity supplied by the device operator; archived script verifies exact runtime and probe hashes, unsets preload, and requires probe success before printing PASS."
+    },
+    "hollow_knight_gameplay": "unverified"
+  },
+  "original_binary_sha256": "6e8538abff0ffca4fe3aa813a3f4095443570ac0185f405b9592f2f8c84f971d",
+  "binary": {
+    "filename": "FEX-apple-m1-munmap",
+    "bytes": 6530992,
+    "sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d"
+  },
+  "patches": [
+    {
+      "filename": "0001-Run-without-a-FEXServer.patch",
+      "sha256": "3e9317c414479785eb54608c5ce3cab19072281b6b35db6d9f4d28a11460670f"
+    },
+    {
+      "filename": "0003-Load-config-from-environment-variables-only.patch",
+      "sha256": "7ad2dcdada3e61a9977e6f96c998babe26fe2fbfb1cd505fd2e59fca2171c5f6"
+    },
+    {
+      "filename": "0004-Fix-madvise-overshoot-past-end-of-VMA-region.patch",
+      "sha256": "b60c1326efd29342dd7fe5da460b53a85e25da91ae54e571f698cee25c58e070"
+    },
+    {
+      "filename": "0005-Linux-munmap-round-nonzero-length.patch",
+      "sha256": "d3a97701c38c82f79dce880c3b2db4bd188850d3a8953a6918c89e45882447c0"
+    }
+  ],
+  "test_fixtures": [
+    {
+      "path": "munmap-length-arm64",
+      "bytes": 1605792,
+      "sha256": "60004473aea00066b3265ad6608216c67e5772e2160ec9e52e7c6c4a8dc7dc30"
+    },
+    {
+      "path": "munmap-length-x86-low",
+      "bytes": 20256,
+      "sha256": "913c6ca016e2bf2922e4a4c424a070c3b5b1cd355cb0ca4cedcbf5f95664e3fe"
+    },
+    {
+      "path": "probe-root/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "bytes": 1995216,
+      "sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92"
+    },
+    {
+      "path": "probe-root/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "bytes": 225672,
+      "sha256": "c8438e4fde1934e61c88311633f00949ff645d5c04cdb8671fa3d78164d2f307"
+    }
+  ],
+  "updated_utc": "2026-10-16T10:08:18.666648+00:00"
+}

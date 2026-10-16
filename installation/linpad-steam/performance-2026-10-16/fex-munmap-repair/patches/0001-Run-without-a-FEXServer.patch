@@ -1,0 +1,39 @@
+Run without a FEXServer
+
+diff --git a/Source/Common/FEXServerClient.cpp b/Source/Common/FEXServerClient.cpp
+index be2736080..b0f30ab42 100644
+--- a/Source/Common/FEXServerClient.cpp
++++ b/Source/Common/FEXServerClient.cpp
+@@ -352,12 +352,10 @@ int StartServer(std::string_view InterpreterPath, int watch_fd) {
+   return LocalServerFD;
+ }
+ 
+-int ConnectToAndStartServer(std::string_view InterpreterPath) {
+-  int LocalServerFD = ConnectToServer(ConnectionOption::NoPrintConnectionError);
+-  if (LocalServerFD == -1) {
+-    LocalServerFD = StartServer(InterpreterPath);
+-  }
+-  return LocalServerFD;
++int ConnectToAndStartServer([[maybe_unused]] std::string_view InterpreterPath) {
++  // FEX-static: hermetic - never connect to nor fork a FEXServer, so no external
++  // process can override config (e.g. RootFS) and exec stays syscall-minimal.
++  return -1;
+ }
+ 
+ /**
+diff --git a/Source/Tools/FEXInterpreter/FEXInterpreter.cpp b/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
+index d0b639e8a..a92eb3674 100644
+--- a/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
++++ b/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
+@@ -424,10 +424,7 @@ int main(int argc, char** argv, char** const envp) {
+ 
+   // Ensure FEXServer is setup before config options try to pull CONFIG_ROOTFS
+   auto SelfPath = FEX::GetSelfPath();
+-  if (!FEXServerClient::SetupClient(SelfPath.value_or(argv[0]))) {
+-    LogMan::Msg::EFmt("FEXServerClient: Failure to setup client");
+-    return -1;
+-  }
++  FEXServerClient::SetupClient(SelfPath.value_or(argv[0]));
+ 
+   FEX_CONFIG_OPT(LDPath, ROOTFS);
+   FEX_CONFIG_OPT(Environment, ENV);

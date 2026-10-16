@@ -1,0 +1,86 @@
+{
+  "execution_environment": "Local macOS LinPad CLI; no physical-device execution claimed",
+  "cli_path": "work/linpad-cli/ish",
+  "cli_sha256_at_postfix_test": "66a5cff9320ea68b899140c276b45dcbc612e7f078b6b3a91cfa3f8d1ef26bbd",
+  "probe_source": "tests/manual/steam-compat/prot-none-read-probe.c",
+  "probe_binary_sha256": "f0f3086f9c477aa8c10b4e32c597534d13b4cfefabc8224fb86309d6b8eb4671",
+  "alpine_busybox_sha256": "4fdbb21a7598f076e5ca490f73ff370a5363e461a0be381e4efde2bc7c7dccee",
+  "alpine_musl_sha256": "a51759ae98460199928655e59ab2843b8b7e8af6620c7e141e1fce1f107bf9aa",
+  "alpine_source_archive_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "logs": [
+    {
+      "name": "prot-none-read-before.txt",
+      "sha256": "a79d185f8249771885967342e91daed74ca391d8f619b6f21135989798610ae6"
+    },
+    {
+      "name": "prot-none-fp-before.txt",
+      "sha256": "4dfd6d0956499ef70f64edda991e3634430b0e2bd52a5761551dff6d3985d24e"
+    },
+    {
+      "name": "prot-none-read-after.txt",
+      "sha256": "9d9d60f9b145af62636ba9fc7ef8f429f66d88a8fd1c0fd29a8434a5c9396def"
+    },
+    {
+      "name": "prot-none-fp-after.txt",
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "name": "prot-none-fp-lazy-after.txt",
+      "sha256": "bc84678a53186fb6ae1b5c5e612add35e3cde111d6e70c3e6392ce1bd440844f"
+    },
+    {
+      "name": "prot-none-read-gadget.txt",
+      "sha256": "4595fc96f688d00477458548df005dedeffab7129763b15e12500bd56fe82d14"
+    },
+    {
+      "name": "prot-none-fp-gadget.txt",
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "name": "prot-none-fp-tier2.txt",
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "name": "prot-none-fp-compact.txt",
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "name": "prot-none-jit-null-control.txt",
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "name": "prot-none-host-crash.md",
+      "sha256": "9215e66ecb618898e8e4b118351938a6699d7b294f269c31bc5493c5a9ed0fac"
+    },
+    {
+      "name": "alpine-boot-before.txt",
+      "sha256": "02d340c2002ead6402a96336a47b0c6063b7a60a1b6cb13edd3ec5fb7bb22f3e"
+    },
+    {
+      "name": "alpine-boot-after.txt",
+      "sha256": "33e0c8bcf1e7a851f1c6575e5a48f901af6c73a83493fbe08b743f523fb9e61c"
+    },
+    {
+      "name": "vdso-permissions-host-regressions.txt",
+      "sha256": "72eca99d95c0c1a9ae4d29d50c547e62bc5b8007c306c2b13001ce7339541d8e"
+    },
+    {
+      "name": "vdso-permissions-jit-null-control.txt",
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    }
+  ],
+  "build_logs": [
+    {
+      "path": "../prot-none-build.txt",
+      "sha256": "f23bbb94ebe7bb78b381c35000063703700ced362033b48b562b4cb0a74e6573"
+    },
+    {
+      "path": "../vdso-permissions-build.txt",
+      "sha256": "82e927a64d8ddb8d00a8eec7439d684764ec18e5dda6f5546566ff9290144b76"
+    },
+    {
+      "path": "../build4445-build.log",
+      "sha256": "1c1092f6438fa2b665145fbfac01db57eb1215a36a8459806e672a90b2e35b73"
+    }
+  ]
+}

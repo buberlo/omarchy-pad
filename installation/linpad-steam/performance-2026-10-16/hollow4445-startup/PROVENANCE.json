@@ -1,0 +1,60 @@
+{
+  "linpad_build": 4445,
+  "fex_binary_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+  "game_started_utc": "2026-10-16T10:08:19Z",
+  "game_stopped_utc": "2026-10-16T10:11:47Z",
+  "termination": "operator-requested SIGKILL; exit 137 is not a spontaneous crash",
+  "unity_version": "6000.0.61f1",
+  "vulkan_physical_device_selected": true,
+  "main_window_created": false,
+  "gameplay_verified": false,
+  "force_sdl_x11_applied": false,
+  "sources": [
+    {
+      "source": "work/performance/reports/hollow4445-patched-unity-full.txt",
+      "size_bytes": 15424,
+      "sha256": "747f07e00f96fd5bef2f6621433b5c21855045cc49973e49d7f0a911d0946a5c",
+      "archive": "unity-window-and-vulkan-excerpt.txt",
+      "selected_source_lines_1_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        37,
+        39,
+        41,
+        42,
+        69,
+        70,
+        71
+      ]
+    },
+    {
+      "source": "work/performance/reports/hollow4445-patched-manual-stop.txt",
+      "size_bytes": 10953,
+      "sha256": "971982bd1fed739617d42d7db19a1690fb3c2eb3e581f0f3102ec00f5f0d1578",
+      "archive": "manual-stop-excerpt.txt",
+      "selected_source_lines_1_based": [
+        1,
+        46,
+        47,
+        48,
+        150
+      ]
+    },
+    {
+      "source": "work/performance/reports/sdl4445-probe.txt",
+      "size_bytes": 1580,
+      "sha256": "9b5cff3c8fba5bb97a58a8a213cedb8e5b9b74f8d6322c7e8af3aeaade6c2923",
+      "archive": "sdl4445-probe.txt",
+      "copy": "byte-identical"
+    }
+  ]
+}

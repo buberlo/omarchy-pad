@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, Vulkan, native Steam-tool, helper repair and startup diagnosis; no authentication or exported preference files.",
+  "scope": "Curated LinPad performance, protected-memory and vDSO repair, Vulkan, patched FEX, native Steam tool, helper repair and startup diagnosis; no authentication or exported preference files.",
   "files": [
     {
       "path": "build4442/SHA256SUMS",
@@ -198,6 +198,231 @@
       "sha256": "5eb8c760e5a358c00829d2fc456a1290b13d39d83b967b513694b194e5e89dfa"
     },
     {
+      "path": "build4444-rejected/PROVENANCE.json",
+      "bytes": 2602,
+      "sha256": "e7225338fc5b54a9eaf6112bc88599e6f5371211e1b33ad9f25a2c4ecaa5f52c"
+    },
+    {
+      "path": "build4444-rejected/README.md",
+      "bytes": 2156,
+      "sha256": "5a970bd81d3009edd6fd4367a46f607a1f7240b88207eddbf96175ad1e216f30"
+    },
+    {
+      "path": "build4444-rejected/SHA256SUMS",
+      "bytes": 350,
+      "sha256": "127639a6bd599be79609060cf766c12dc83f1332c3b782b399c1fe083897b125"
+    },
+    {
+      "path": "build4444-rejected/device-console-excerpt.log",
+      "bytes": 566,
+      "sha256": "895dd4175884834a641ca4105f675303b7f04529e62bb3fc386bb36b77e28293"
+    },
+    {
+      "path": "build4444-rejected/device-console-retry-excerpt.log",
+      "bytes": 566,
+      "sha256": "202ac5c4cde3eaea2b34e60d13e2b9b563125d5e8be01ea5479a6524d94136eb"
+    },
+    {
+      "path": "build4445/REPOSITORY-SHA256SUMS",
+      "bytes": 3610,
+      "sha256": "b6c1ba9261f73c3397ebb0f18000f2875af0c95558858c6a6dbbb0b4b29c2e67"
+    },
+    {
+      "path": "build4445/SHA256SUMS",
+      "bytes": 3731,
+      "sha256": "a008c4b1cfff86eed850476ea539b81fa99186eee30e8bf722118392e5173d4d"
+    },
+    {
+      "path": "build4445/VERIFICATION.md",
+      "bytes": 3968,
+      "sha256": "003fbcd8ae00dcfb2b20bcc39f1c43feb26d5159526b431b748daa025a3c9de6"
+    },
+    {
+      "path": "build4445/alpine-boot-after.txt",
+      "bytes": 325,
+      "sha256": "33e0c8bcf1e7a851f1c6575e5a48f901af6c73a83493fbe08b743f523fb9e61c"
+    },
+    {
+      "path": "build4445/alpine-boot-before.txt",
+      "bytes": 192,
+      "sha256": "02d340c2002ead6402a96336a47b0c6063b7a60a1b6cb13edd3ec5fb7bb22f3e"
+    },
+    {
+      "path": "build4445/build-manifest.json",
+      "bytes": 7662,
+      "sha256": "a813d85f9eaae8567465d96977171107c1063626dbc5da6a04872e871f4355e8"
+    },
+    {
+      "path": "build4445/build-summary.log",
+      "bytes": 1257,
+      "sha256": "d59041ff1e8158bdd6c6c4dd50a4ea8e5ef4cbc741b1fb6c0d6faca966aab3e8"
+    },
+    {
+      "path": "build4445/build4445-patched-cube.txt",
+      "bytes": 182,
+      "sha256": "7e74d368a458d0d9080707f866b85c85b41ec6ab7215bd21daac537dd5dc8dde"
+    },
+    {
+      "path": "build4445/build4445-protection-validation.txt",
+      "bytes": 672,
+      "sha256": "fe7c481062817e8da2fbc5a5ec77595ef584c47b5be4a18546a2f77fc232dd21"
+    },
+    {
+      "path": "build4445/codesign-verification.txt",
+      "bytes": 151,
+      "sha256": "9e66dc29d467952485b690bb8e51fe8217373e2f4112817caa1432bcd34e8b1c"
+    },
+    {
+      "path": "build4445/cube4445-patched",
+      "bytes": 832,
+      "sha256": "a656802f1764baabd6affab6b8aafbf2e49d9dd0c624867e4386e09a20acb502"
+    },
+    {
+      "path": "build4445/cube4445-patched-visible-a.png",
+      "bytes": 289547,
+      "sha256": "fd0f8c62480c7b47eccd98fc0566e71806f9a80aed43ac0b717f07ab819cdecc"
+    },
+    {
+      "path": "build4445/cube4445-patched-visible-b.png",
+      "bytes": 291995,
+      "sha256": "867b04851fc334762ca41179ba0543694a6394d124dd4ffb5463d8e01a4328d3"
+    },
+    {
+      "path": "build4445/device-launch-evidence.txt",
+      "bytes": 530,
+      "sha256": "39fbd62d04b15b8cd6681694c3762b84ffcb49b4e96b8b6e54f0e4b116bc4e11"
+    },
+    {
+      "path": "build4445/gpu-validation-provenance.json",
+      "bytes": 1261,
+      "sha256": "fffa804916e1f6b23cdbdb43c21ed1a19aafc3dfaad8ea56a67e261e49848321"
+    },
+    {
+      "path": "build4445/host-regression-provenance.json",
+      "bytes": 3231,
+      "sha256": "c6c72fdd8cda65a44685f0080029f3f48993982af570eefd0cd3fda15820251c"
+    },
+    {
+      "path": "build4445/install.json",
+      "bytes": 980,
+      "sha256": "6aeffb8af38097002776f5797bd1446fcaba8fb841c901012409d19bca4307cb"
+    },
+    {
+      "path": "build4445/prot-none-fp-after.txt",
+      "bytes": 901,
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "path": "build4445/prot-none-fp-before.txt",
+      "bytes": 1166,
+      "sha256": "4dfd6d0956499ef70f64edda991e3634430b0e2bd52a5761551dff6d3985d24e"
+    },
+    {
+      "path": "build4445/prot-none-fp-compact.txt",
+      "bytes": 901,
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "path": "build4445/prot-none-fp-gadget.txt",
+      "bytes": 901,
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "path": "build4445/prot-none-fp-lazy-after.txt",
+      "bytes": 911,
+      "sha256": "bc84678a53186fb6ae1b5c5e612add35e3cde111d6e70c3e6392ce1bd440844f"
+    },
+    {
+      "path": "build4445/prot-none-fp-tier2.txt",
+      "bytes": 901,
+      "sha256": "d833debc1494f65264d209f292e36d0f0a018050d187d4d3e9e28c29d574bb26"
+    },
+    {
+      "path": "build4445/prot-none-host-crash.md",
+      "bytes": 2967,
+      "sha256": "9215e66ecb618898e8e4b118351938a6699d7b294f269c31bc5493c5a9ed0fac"
+    },
+    {
+      "path": "build4445/prot-none-jit-null-control.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "path": "build4445/prot-none-read-after.txt",
+      "bytes": 1334,
+      "sha256": "9d9d60f9b145af62636ba9fc7ef8f429f66d88a8fd1c0fd29a8434a5c9396def"
+    },
+    {
+      "path": "build4445/prot-none-read-before.txt",
+      "bytes": 904,
+      "sha256": "a79d185f8249771885967342e91daed74ca391d8f619b6f21135989798610ae6"
+    },
+    {
+      "path": "build4445/prot-none-read-gadget.txt",
+      "bytes": 1053,
+      "sha256": "4595fc96f688d00477458548df005dedeffab7129763b15e12500bd56fe82d14"
+    },
+    {
+      "path": "build4445/release-notes.md",
+      "bytes": 1032,
+      "sha256": "14ba0dd9a051cc67bc5252a825d9ab355770874d88230078c6cc29a98177c1c1"
+    },
+    {
+      "path": "build4445/signed-entitlements.plist",
+      "bytes": 796,
+      "sha256": "1a58d5ab7a63fceeca221b483a7f1a47f0e4838fa658561459878b0b5c3402f6"
+    },
+    {
+      "path": "build4445/signing.log",
+      "bytes": 184,
+      "sha256": "239d77b363d809729ea95d3b34935e1210a260d3f86823de43699bad27042988"
+    },
+    {
+      "path": "build4445/source-changes.patch",
+      "bytes": 8319,
+      "sha256": "9a020eb7be303b10dd6ccc32af56fa515db868d5b578bb9bfea9d751e1fadb99"
+    },
+    {
+      "path": "build4445/source-snapshot/kernel/exec.c",
+      "bytes": 37910,
+      "sha256": "2f386dee72de11c6af81a27b9d603338aa3741275896617d190f03a2851b399c"
+    },
+    {
+      "path": "build4445/source-snapshot/kernel/memory.c",
+      "bytes": 52633,
+      "sha256": "ca2913d96ce8fa7b2dece0aa501c30c65e024b067a08cb3d6aae26ca863951b9"
+    },
+    {
+      "path": "build4445/source-snapshot/kernel/memory.h",
+      "bytes": 7363,
+      "sha256": "394f56ceac2b05bfc687da68e149e267ff9969c714af218422187dcae582713c"
+    },
+    {
+      "path": "build4445/source-snapshot/tests/manual/steam-compat/README.md",
+      "bytes": 4222,
+      "sha256": "a09351c33b65d29f9b4db532fbfc15f98ad803f12c9c5d57746f135cb6d76c13"
+    },
+    {
+      "path": "build4445/source-snapshot/tests/manual/steam-compat/prot-none-read-probe.c",
+      "bytes": 3542,
+      "sha256": "ff3691484f410fbd6be08d02b138167adc2ad08db32e2052fb3d52b69806e4d3"
+    },
+    {
+      "path": "build4445/validate4445",
+      "bytes": 629,
+      "sha256": "208b2b877cf71891c33aea3914a71e3c32e28ce4e55caf333c1ed442947d056f"
+    },
+    {
+      "path": "build4445/vdso-permissions-host-regressions.txt",
+      "bytes": 34979,
+      "sha256": "72eca99d95c0c1a9ae4d29d50c547e62bc5b8007c306c2b13001ce7339541d8e"
+    },
+    {
+      "path": "build4445/vdso-permissions-jit-null-control.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
       "path": "evidence/audio-baseline-cpu-excerpt.txt",
       "bytes": 691,
       "sha256": "b871b9596bae61e6f8f24fc939e086d834514a6445ef8170cf798c5d4940db1b"
@@ -298,6 +523,16 @@
       "sha256": "ec338e6f1c6762ad7570f6436b12e674ceb7affe8ee52d1a0e4206dc65fe58d6"
     },
     {
+      "path": "evidence/steam-library-low-load-provenance.json",
+      "bytes": 550,
+      "sha256": "8ccc87be8fdf07eaad8b3a83f969cc7a9ec2264801649f4ad80e1e479f43f977"
+    },
+    {
+      "path": "evidence/steam-library-low-load.png",
+      "bytes": 313706,
+      "sha256": "deb3190215548341a076106bb740b1ef8d7381f1da9f5d92e20f6dfb77439bfa"
+    },
+    {
       "path": "fex-munmap-diagnostic/LinuxAllocator.cpp.excerpt.txt",
       "bytes": 953,
       "sha256": "1358e75d9254f81a598edbe877bd66ccb20384938e30bac6abcada62d360bf44"
@@ -356,6 +591,186 @@
       "path": "fex-munmap-diagnostic/munmap-length-probe.c",
       "bytes": 1985,
       "sha256": "57f5a2adb37c756b1d2554616562f428a3e7e22a9afb34f71fbad72d502e62ce"
+    },
+    {
+      "path": "fex-munmap-repair/Dockerfile",
+      "bytes": 535,
+      "sha256": "ff0e803d1929727b4247a4eb599c43333cb093f6b3b6ebb31b69f501befdce42"
+    },
+    {
+      "path": "fex-munmap-repair/FEX-apple-m1-munmap",
+      "bytes": 6530992,
+      "sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d"
+    },
+    {
+      "path": "fex-munmap-repair/LICENSE-FEX",
+      "bytes": 1094,
+      "sha256": "f34a779f56b36d22b20e1b990d23e583a6a7ca071331925fa46156441c77a1ee"
+    },
+    {
+      "path": "fex-munmap-repair/LICENSE-FEXCore",
+      "bytes": 1094,
+      "sha256": "f34a779f56b36d22b20e1b990d23e583a6a7ca071331925fa46156441c77a1ee"
+    },
+    {
+      "path": "fex-munmap-repair/README.md",
+      "bytes": 4667,
+      "sha256": "f9122767b65e94dd95d107aab110bc5178007e89677d0925dd1a61894919d35d"
+    },
+    {
+      "path": "fex-munmap-repair/SHA256SUMS",
+      "bytes": 2653,
+      "sha256": "aecfc1f7463339ce0f8c10670587233a1769677e31721f607f317c1cd58f9e7c"
+    },
+    {
+      "path": "fex-munmap-repair/applied-source.patch",
+      "bytes": 4543,
+      "sha256": "6298103205e82edfe7e486e84b6121b7915f49ceb59e7bdad1534390d315fcd3"
+    },
+    {
+      "path": "fex-munmap-repair/build-inside.sh",
+      "bytes": 632,
+      "sha256": "c9b9549e902604c00e74b90736723c68eaae096ddf87e0e06e2ee7d6ce04a626"
+    },
+    {
+      "path": "fex-munmap-repair/builder-package-metadata.txt",
+      "bytes": 323635,
+      "sha256": "add69cb72bd2b86f99ace96424ba5f28a99545b75d40720bb15323dbdc501dd2"
+    },
+    {
+      "path": "fex-munmap-repair/builder-package-uris.txt",
+      "bytes": 28219,
+      "sha256": "7007e4903a4ebcc6838b2eaf9d5a1c734fb176b87cedf3a9487b88386d6beb85"
+    },
+    {
+      "path": "fex-munmap-repair/builder-packages.json",
+      "bytes": 44191,
+      "sha256": "e51340db06c7c6d8361e43436a6a6d50774655bf77228982c695bbe8a2377b2f"
+    },
+    {
+      "path": "fex-munmap-repair/builder-versions.txt",
+      "bytes": 7449,
+      "sha256": "9af63d99a4db7f965848e2f0cdd571150445acf863bc57a0b8a32aa7b18a00b6"
+    },
+    {
+      "path": "fex-munmap-repair/compile-complete.log",
+      "bytes": 27786,
+      "sha256": "59bb3cb833837c3986f597442fbe76dd784e0bc913cf0c86fddb9b230c67630f"
+    },
+    {
+      "path": "fex-munmap-repair/elf-verification.txt",
+      "bytes": 4788,
+      "sha256": "714d0310cbff10c34d5fd3291148dc87476129f6a2ac434cf6accdc7b5cb476a"
+    },
+    {
+      "path": "fex-munmap-repair/fetch-builder-debs.py",
+      "bytes": 1892,
+      "sha256": "37495b27b8105f3919fd2042b61dbab18a0451d8186ce351cbfda8765656d055"
+    },
+    {
+      "path": "fex-munmap-repair/install-patched-fex-device.sh",
+      "bytes": 984,
+      "sha256": "3d3a26ea4dbbea543dc32b16f37502c7bc2d97b43ffb33c52736166e80f79a76"
+    },
+    {
+      "path": "fex-munmap-repair/munmap-length-low-probe.c",
+      "bytes": 2149,
+      "sha256": "3b874fa602a421a1bb6c6fc4f5e02e638a7f36791e9e4a206993f4fc8b590dfd"
+    },
+    {
+      "path": "fex-munmap-repair/munmap-length-probe.c",
+      "bytes": 1985,
+      "sha256": "57f5a2adb37c756b1d2554616562f428a3e7e22a9afb34f71fbad72d502e62ce"
+    },
+    {
+      "path": "fex-munmap-repair/native-control.txt",
+      "bytes": 1151,
+      "sha256": "30c6a8a4ce92d7c8efd2d2b21b3e90408f390b1d0d9a033e9c32b81c338ed54d"
+    },
+    {
+      "path": "fex-munmap-repair/original-low-address.txt",
+      "bytes": 1118,
+      "sha256": "14b38c7872b4d040988e561c20ba98dad1914a4f9d3a1ff4352fd7361829380b"
+    },
+    {
+      "path": "fex-munmap-repair/patched-fex-device-validation.txt",
+      "bytes": 1144,
+      "sha256": "56cfa7b6e85d79d116f958e82a41081ae134195584573fb1d0ebd538ca27d3f1"
+    },
+    {
+      "path": "fex-munmap-repair/patched-low-address.txt",
+      "bytes": 1091,
+      "sha256": "a7da449d5138eb51b84622351d488512c7dad1b8e3576edf7e28ad20a606a77e"
+    },
+    {
+      "path": "fex-munmap-repair/patches/0001-Run-without-a-FEXServer.patch",
+      "bytes": 1603,
+      "sha256": "3e9317c414479785eb54608c5ce3cab19072281b6b35db6d9f4d28a11460670f"
+    },
+    {
+      "path": "fex-munmap-repair/patches/0003-Load-config-from-environment-variables-only.patch",
+      "bytes": 795,
+      "sha256": "7ad2dcdada3e61a9977e6f96c998babe26fe2fbfb1cd505fd2e59fca2171c5f6"
+    },
+    {
+      "path": "fex-munmap-repair/patches/0004-Fix-madvise-overshoot-past-end-of-VMA-region.patch",
+      "bytes": 1506,
+      "sha256": "b60c1326efd29342dd7fe5da460b53a85e25da91ae54e571f698cee25c58e070"
+    },
+    {
+      "path": "fex-munmap-repair/patches/0005-Linux-munmap-round-nonzero-length.patch",
+      "bytes": 775,
+      "sha256": "d3a97701c38c82f79dce880c3b2db4bd188850d3a8953a6918c89e45882447c0"
+    },
+    {
+      "path": "fex-munmap-repair/provenance.json",
+      "bytes": 4593,
+      "sha256": "f6611286a83b413008eab0d2c76108d449f556722da23b8c89846eead5b755e4"
+    },
+    {
+      "path": "fex-munmap-repair/regression-summary.txt",
+      "bytes": 244,
+      "sha256": "e70aaf25692f8f04050c919cbabeda0d2d7b187d7f03e200f88e5c9e619c635c"
+    },
+    {
+      "path": "fex-munmap-repair/submodules.txt",
+      "bytes": 1117,
+      "sha256": "8a1b75b719f4594905bc0c83ea5c539bf1e4ad9381dedd125b9b9369acd6becd"
+    },
+    {
+      "path": "fex-munmap-repair/test-inside.sh",
+      "bytes": 1003,
+      "sha256": "b77bad2c80a73ce8abfbab9a5910e7502a0853bdddeea6727549497ed4143b8a"
+    },
+    {
+      "path": "hollow4445-startup/PROVENANCE.json",
+      "bytes": 1608,
+      "sha256": "2f54bf299a671d63dae6a2469320d5fcf6100d3b24bd04fc3c44f3661d20e72e"
+    },
+    {
+      "path": "hollow4445-startup/README.md",
+      "bytes": 2092,
+      "sha256": "d36534f603bfcdc86d2ea9877ee427122af64a176f9583b7625dda55ce34c1a6"
+    },
+    {
+      "path": "hollow4445-startup/SHA256SUMS",
+      "bytes": 434,
+      "sha256": "3931c1e5c42831ce62169d3ed6ff725750232568167bb4350f9814d9ec51c2b5"
+    },
+    {
+      "path": "hollow4445-startup/manual-stop-excerpt.txt",
+      "bytes": 142,
+      "sha256": "bd86944c41bb451e067069eff1ca28808711c718641ee278cae5ceb561ec9ba9"
+    },
+    {
+      "path": "hollow4445-startup/sdl4445-probe.txt",
+      "bytes": 1580,
+      "sha256": "9b5cff3c8fba5bb97a58a8a213cedb8e5b9b74f8d6322c7e8af3aeaade6c2923"
+    },
+    {
+      "path": "hollow4445-startup/unity-window-and-vulkan-excerpt.txt",
+      "bytes": 1201,
+      "sha256": "43c7cc81dc84aa422a15c17bb679c7bd2f51a71075c077571e09d5d98d2d91a6"
     },
     {
       "path": "scripts/guest/audio-idle-mitigation",

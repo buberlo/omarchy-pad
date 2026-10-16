@@ -1,0 +1,98 @@
+diff --git a/FEXCore/Source/Utils/Allocator/64BitAllocator.cpp b/FEXCore/Source/Utils/Allocator/64BitAllocator.cpp
+index b136ec5..7870f12 100644
+--- a/FEXCore/Source/Utils/Allocator/64BitAllocator.cpp
++++ b/FEXCore/Source/Utils/Allocator/64BitAllocator.cpp
+@@ -123,13 +123,15 @@ private:
+ 
+       // Use madvise to set the full tracking region to zero.
+       // This ensures unused pages are zero, while not having the backing pages consuming memory.
+-      auto* MemoryAsBytes = reinterpret_cast<uint8_t*>(Region->UsedPages.Memory);
++      // ManagedSize is measured from the region base; base the madvise ranges on
++      // the region too, not the UsedPages bitset which starts one page in.
++      auto* RegionAsBytes = reinterpret_cast<uint8_t*>(Region);
+       const auto TrackingRegionSize = Region->SlabInfo->RegionSize - ManagedSize;
+-      ::madvise(MemoryAsBytes + ManagedSize, TrackingRegionSize, MADV_DONTNEED);
++      ::madvise(RegionAsBytes + ManagedSize, TrackingRegionSize, MADV_DONTNEED);
+ 
+       // Use madvise to claim WILLNEED on the beginning pages for initial state tracking.
+       // Improves performance of the following MemClear by not doing a page level fault dance for data necessary to track >170TB of used pages.
+-      ::madvise(MemoryAsBytes, ManagedSize, MADV_WILLNEED);
++      ::madvise(RegionAsBytes, ManagedSize, MADV_WILLNEED);
+ 
+       // Set our reserved pages
+       Region->UsedPages.MemSet(NumManagedPages);
+diff --git a/Source/Common/Config.cpp b/Source/Common/Config.cpp
+index 676b2f5..de1c966 100644
+--- a/Source/Common/Config.cpp
++++ b/Source/Common/Config.cpp
+@@ -486,6 +486,13 @@ void LoadConfig(fextl::string ProgramName, char** const envp, const PortableInfo
+   const bool IsPortable = PortableInfo.IsPortable;
+   FEX::Config::InitializeConfigs(PortableInfo);
+   FEXCore::Config::Initialize();
++
++  // FEX-static: hermetic config - honor FEX_* environment variables only, never
++  // config files that could silently reconfigure the binary (or slow down exec).
++  FEXCore::Config::AddLayer(CreateEnvironmentLayer(envp));
++  FEXCore::Config::Load();
++  return;
++
+   if (!IsPortable) {
+     FEXCore::Config::AddLayer(CreateGlobalMainLayer());
+   }
+diff --git a/Source/Common/FEXServerClient.cpp b/Source/Common/FEXServerClient.cpp
+index 6e2d084..e6946f5 100644
+--- a/Source/Common/FEXServerClient.cpp
++++ b/Source/Common/FEXServerClient.cpp
+@@ -366,12 +366,10 @@ int StartServer(std::string_view InterpreterPath, int watch_fd) {
+   return LocalServerFD;
+ }
+ 
+-int ConnectToAndStartServer(std::string_view InterpreterPath) {
+-  int LocalServerFD = ConnectToServer(ConnectionOption::NoPrintConnectionError);
+-  if (LocalServerFD == -1) {
+-    LocalServerFD = StartServer(InterpreterPath);
+-  }
+-  return LocalServerFD;
++int ConnectToAndStartServer([[maybe_unused]] std::string_view InterpreterPath) {
++  // FEX-static: hermetic - never connect to nor fork a FEXServer, so no external
++  // process can override config (e.g. RootFS) and exec stays syscall-minimal.
++  return -1;
+ }
+ 
+ /**
+diff --git a/Source/Tools/FEXInterpreter/FEXInterpreter.cpp b/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
+index 52bdba1..2e02db8 100644
+--- a/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
++++ b/Source/Tools/FEXInterpreter/FEXInterpreter.cpp
+@@ -440,10 +440,7 @@ int main(int argc, char** argv, char** const envp) {
+ 
+   // Ensure FEXServer is setup before config options try to pull CONFIG_ROOTFS
+   auto SelfPath = FEX::GetSelfPath();
+-  if (!FEXServerClient::SetupClient(SelfPath.value_or(argv[0]))) {
+-    LogMan::Msg::EFmt("FEXServerClient: Failure to setup client");
+-    return -1;
+-  }
++  FEXServerClient::SetupClient(SelfPath.value_or(argv[0]));
+ 
+   FEX_CONFIG_OPT(LDPath, ROOTFS);
+   FEX_CONFIG_OPT(Environment, ENV);
+diff --git a/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp b/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
+index 60b0ef1..a96b2f4 100644
+--- a/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
++++ b/Source/Tools/LinuxEmulation/LinuxSyscalls/LinuxAllocator.cpp
+@@ -252,12 +252,13 @@ int MemAllocator32Bit::Munmap(void* addr, size_t length) {
+ 
+   uintptr_t PageEnd = PageAddr + PagesLength;
+ 
+-  // Both Addr and length must be page aligned
++  // Only Addr must be page aligned. Linux rounds any nonzero length up,
++  // which PagesLength already does above.
+   if (Addr & ~FEXCore::Utils::FEX_PAGE_MASK) {
+     return -EINVAL;
+   }
+ 
+-  if (length & ~FEXCore::Utils::FEX_PAGE_MASK) {
++  if (length == 0) {
+     return -EINVAL;
+   }
+ 

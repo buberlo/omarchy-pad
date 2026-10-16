@@ -1,0 +1,9 @@
+{
+  "source": "work/performance/reports/steam-library-low-load.png",
+  "sha256": "deb3190215548341a076106bb740b1ef8d7381f1da9f5d92e20f6dfb77439bfa",
+  "bytes": 313706,
+  "archived_image": "steam-library-low-load.png",
+  "observation": "Physical iPad Steam Settings > Library: Low Bandwidth Mode ON and Low Performance Mode ON. Visible clock 17:46.",
+  "qualification": "Configuration change verified visually; no matched CPU, response-time or FPS measurement.",
+  "unchanged_visible_option": "The separate Disable Community Content toggle is OFF."
+}

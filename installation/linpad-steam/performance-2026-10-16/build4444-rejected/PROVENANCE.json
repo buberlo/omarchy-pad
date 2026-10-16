@@ -1,0 +1,74 @@
+{
+  "build": "4444",
+  "version": "1.5.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_fix_commit": "29c99bc46075a048f422fe4b714e7d531be726ee",
+  "status": "signed and installed; two physical boot attempts rejected; no desktop/game validation",
+  "install_outcome": "success",
+  "logs": [
+    {
+      "source": "work/performance/build4444/device-console.log",
+      "source_sha256": "7bf976323e17956cbe1b850706ccfd8427c261d306cd8b1c73edf0ffc666f936",
+      "source_bytes": 1809,
+      "excerpt": "device-console-excerpt.log",
+      "source_lines": [
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "excerpt_sha256": "895dd4175884834a641ca4105f675303b7f04529e62bb3fc386bb36b77e28293",
+      "transformation": "Selected complete lines; line endings normalized to LF. Omitted FileProvider/sandbox/JIT URL noise."
+    },
+    {
+      "source": "work/performance/build4444/device-console-retry.log",
+      "source_sha256": "37dba196b5b8f69872f8fd7e1d389fc9d039fcafe0069076b7052c26d0d6c2da",
+      "source_bytes": 1809,
+      "excerpt": "device-console-retry-excerpt.log",
+      "source_lines": [
+        8,
+        9,
+        11,
+        12,
+        13,
+        14
+      ],
+      "excerpt_sha256": "202ac5c4cde3eaea2b34e60d13e2b9b563125d5e8be01ea5479a6524d94136eb",
+      "transformation": "Selected complete lines; line endings normalized to LF. Omitted FileProvider/sandbox/JIT URL noise."
+    }
+  ],
+  "other_local_sources": [
+    {
+      "source": "work/performance/build4444/install.json",
+      "bytes": 980,
+      "sha256": "9078c1f59b3beaf7bdfb8b303e90a044a52e4afd76261e34eca2ac6c38107ab1",
+      "included_in_this_folder": false
+    },
+    {
+      "source": "work/performance/build4444/signing.log",
+      "bytes": 184,
+      "sha256": "6a12630784967822639f5777cc4f330402e4f914471fc3744792bad9522e11be",
+      "included_in_this_folder": false
+    },
+    {
+      "source": "work/performance/build4444/DEVICE-REJECTED.md",
+      "bytes": 693,
+      "sha256": "7dd2b741729289f078692ffc3606adaebef5579abfeba436478e1f837faab8fb",
+      "included_in_this_folder": false
+    },
+    {
+      "source": "work/performance/build4444/LinPad-1.5.0-build4444-Konrad.ipa",
+      "bytes": 637273899,
+      "sha256": "9c3c9b6cadf796709f677cdea773db0c14533bd98b3878adbccb4e6d429f4de7",
+      "included_in_this_folder": false
+    },
+    {
+      "source": "work/performance/build4444/LinPad-1.5.0-build4444-dSYM.zip",
+      "bytes": 13518677,
+      "sha256": "18edfbf272ce3f532992b8586cfd6ece4ced33c089bb25803338f89d070d6f5a",
+      "included_in_this_folder": false
+    }
+  ]
+}

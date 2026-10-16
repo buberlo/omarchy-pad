@@ -1,0 +1,22 @@
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {10s 0us, 0s 0us}, 0xffffdbe0) = 0x0
+1 call 59  pipe2(0xffffdcc8, 0) [3 4] = 0x0
+1 call 222 mmap64(0x0, 0x4000, 0x0, 0x22, -1, 0x0) = 0xefff3000
+
+=== HOST CRASH: signal 10 ===
+fault addr: 0x101694000
+pc:  0x198233f1c
+lr:  0x100f27ce4
+sp:  0x16eeda360
+x0:  0x16eeda520
+x1:  0x101694000
+x2:  0x1
+x7:  0x0
+x28: 0xcc
+0   ish                                 0x0000000100f21e88 crash_handler + 492
+1   libsystem_platform.dylib            0x0000000198234144 _sigtramp + 56
+2   ish                                 0x0000000100f27ce4 user_read_task + 128
+3   ish                                 0x0000000100f23110 handle_interrupt + 2388
+4   ish                                 0x0000000100f28be4 task_run_current + 140
+5   ish                                 0x0000000100f21930 main + 2504
+6   dyld                                0x0000000197e53e80 start + 6688

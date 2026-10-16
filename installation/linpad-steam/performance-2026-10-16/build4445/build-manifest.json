@@ -1,0 +1,175 @@
+{
+  "build": "4445",
+  "version": "1.5.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_head": "08528edebc03aa4f07f6b49fdae5d8c08cd2bcd0",
+  "source_base": "e188cfe5a891f61f164dcc552d74ca8e82d1c151",
+  "source_fix_commits": [
+    "29c99bc46075a048f422fe4b714e7d531be726ee",
+    "08528edebc03aa4f07f6b49fdae5d8c08cd2bcd0"
+  ],
+  "source_capture_note": "Both fix commits precede xcodebuild; snapshots equal committed blobs and the source files rechecked after compilation. No independent pre-build dirty-state snapshot is claimed.",
+  "source_files": [
+    {
+      "path": "kernel/exec.c",
+      "sha256": "2f386dee72de11c6af81a27b9d603338aa3741275896617d190f03a2851b399c",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "kernel/memory.c",
+      "sha256": "ca2913d96ce8fa7b2dece0aa501c30c65e024b067a08cb3d6aae26ca863951b9",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "kernel/memory.h",
+      "sha256": "394f56ceac2b05bfc687da68e149e267ff9969c714af218422187dcae582713c",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "a09351c33b65d29f9b4db532fbfc15f98ad803f12c9c5d57746f135cb6d76c13",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "tests/manual/steam-compat/prot-none-read-probe.c",
+      "sha256": "ff3691484f410fbd6be08d02b138167adc2ad08db32e2052fb3d52b69806e4d3",
+      "matches_source_commit_and_postbuild_worktree": true
+    }
+  ],
+  "source_patch_sha256": "9a020eb7be303b10dd6ccc32af56fa515db868d5b578bb9bfea9d751e1fadb99",
+  "build_verified": true,
+  "build_log_sha256": "1c1092f6438fa2b665145fbfac01db57eb1215a36a8459806e672a90b2e35b73",
+  "build_log_path": "../build4445-build.log",
+  "signing_verified": true,
+  "signing_evidence": "codesign-verification.txt",
+  "memory_entitlements": [
+    "com.apple.developer.kernel.increased-memory-limit",
+    "com.apple.developer.kernel.extended-virtual-addressing"
+  ],
+  "entitlements_evidence": "signed-entitlements.plist",
+  "binary_uuid": "1E4E9B30-C8D1-3F7C-918B-59CFE8B7CCBB",
+  "dsym_uuid": "1E4E9B30-C8D1-3F7C-918B-59CFE8B7CCBB",
+  "executable_sha256": "dd486124b80cecccf27bfe736a6a155d65c762fb2949000ab6396910dd7bf48a",
+  "dsym_dwarf_sha256": "0cabc8ff07ed4a051f5f8d737a9649f6becb873286ba0c270d3bfedc003e0781",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from_build4443": true,
+  "archives": [
+    {
+      "name": "LinPad-1.5.0-build4445-Konrad.ipa",
+      "size_bytes": 637273907,
+      "sha256": "fc1986ef643e61656bd1e128f7e18e205932e1cbbcc5ae80827d4bdb45ecca72",
+      "zip_crc_verified": true,
+      "zip_entries": 1063
+    },
+    {
+      "name": "LinPad-1.5.0-build4445-dSYM.zip",
+      "size_bytes": 13518692,
+      "sha256": "870ae56634de35556821e80f8d0264415f88773cfbdf0524cddc062e7109d029",
+      "zip_crc_verified": true,
+      "zip_entries": 9
+    }
+  ],
+  "installed": true,
+  "launched": true,
+  "device_accepted": true,
+  "physical_device_validation": "Physical iPad boots to desktop with native JIT and 512 MiB arena. All protection probes and 24 exact-address SIGSEGV cases pass. Patched FEX and isolated Mesa 26 overlay complete 1200 Vulkan cube frames at 640x360 with exit 0 in 59.09 seconds including startup; two captures show changed cube orientation. Hollow Knight is not playable: the captured Unity run reports missing libGL.so.1 during main-window creation. No steady-state FPS qualification.",
+  "publication_status": "Artifacts and evidence prepared for the main task to publish privately; not uploaded or released by this packaging task",
+  "host_regressions": {
+    "prot_none_and_alpine_boot": {
+      "result": "pass",
+      "case_count": 16,
+      "execution_modes": [
+        "inline JIT",
+        "compact tier 1",
+        "tier 2",
+        "gadget interpreter"
+      ],
+      "log": "vdso-permissions-host-regressions.txt",
+      "negative_control": "Exact bundled Alpine musl/BusyBox SIGSEGV reproduced before explicit vDSO/vvar permission repair; alpine-boot-before.txt."
+    },
+    "jit_null_fault": {
+      "result": "pass",
+      "fault_cases": 24,
+      "valid_and_crossing_accesses": true,
+      "log": "vdso-permissions-jit-null-control.txt"
+    },
+    "provenance": "host-regression-provenance.json"
+  },
+  "device_boot_and_protection_accepted": true,
+  "installation_evidence": "install.json",
+  "launch_evidence": "device-launch-evidence.txt",
+  "jit_cache_active_mib": 512,
+  "device_validation": {
+    "boot": "pass",
+    "native_jit": true,
+    "jit_cache_mib": 512,
+    "protection_probes": {
+      "result": "pass",
+      "evidence": "build4445-protection-validation.txt",
+      "script": "validate4445",
+      "cases": [
+        "PROT_NONE syscall EFAULT and readable transitions",
+        "PROT_NONE frame-pointer guest fault delivery",
+        "lazy PROT_NONE frame-pointer guest fault delivery",
+        "24 exact-address SIGSEGV cases plus valid and crossing accesses"
+      ]
+    },
+    "memory_snapshot": {
+      "footprint_mib": 706,
+      "allowance_mib": 8192,
+      "headroom_mib": 7485,
+      "oom_enabled": true,
+      "oom_kills": 0
+    },
+    "gpu_test": "pass",
+    "gameplay_verified": false,
+    "gameplay_status": "Not playable in the captured run: missing libGL.so.1 prevents MainPlayerWindow creation. Dependency repair is pending; game was manually stopped with 137, not a natural-crash result.",
+    "visual_motion_verified": true,
+    "steady_state_performance_qualified": false,
+    "wayland_x86_cube_1200": {
+      "result": "completed_without_hang",
+      "requested_frames": 1200,
+      "width": 640,
+      "height": 360,
+      "exit": 0,
+      "elapsed_seconds_including_startup": 59.09,
+      "user_seconds": 47.79,
+      "system_seconds": 1.05,
+      "renderer": "Virtio-GPU Venus (Apple M2 GPU)",
+      "date_utc": "2026-10-16",
+      "log": "build4445-patched-cube.txt",
+      "script": "cube4445-patched",
+      "visual_motion_evidence": [
+        "cube4445-patched-visible-a.png",
+        "cube4445-patched-visible-b.png"
+      ],
+      "interpretation": "The two captures visibly show different cube orientations. Elapsed time includes startup and does not measure steady-state FPS or game performance."
+    },
+    "guest_runtime_additions": {
+      "embedded_in_ipa": false,
+      "note": "These are separately installed guest-runtime components in the existing Linux data, required to reproduce this test. The IPA root archive remains unchanged.",
+      "fex": {
+        "device_path": "/opt/fex/FEX-apple-m1-munmap",
+        "sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+        "upstream_commit": "5285020de0b30dbdae7b44d0d83541af2d13d002",
+        "release_recipe_commit": "da8478086d7fa5067d8522a212f902834f222359",
+        "patch": "Linux munmap nonzero length rounding in low-address allocator",
+        "archive_reference": "../fex-munmap-repair/",
+        "preload_shim_used": false
+      },
+      "mesa": {
+        "device_prefix": "/opt/hollow-mesa26",
+        "overlay_archive": "hollow-mesa26.tar.gz",
+        "overlay_sha256": "6d57bfe03e088a4bf885c6ee41cecfd41c1c8b10a1454d029b8924348607fefc",
+        "base_runtime_prefix": "/opt/hollow-runtime"
+      },
+      "wsi": "Wayland socket wayland-0-gpu; MESA_VK_WSI_DEBUG=sw; Vulkan render device is Venus on Apple M2 GPU"
+    }
+  },
+  "device_acceptance_scope": [
+    "desktop boot",
+    "native JIT and 512 MiB arena",
+    "memory-protection regression probes",
+    "bounded 1200-frame x86 Wayland Vulkan cube with visible motion"
+  ]
+}

@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/validate4445.txt
+wget -T 8 -qO /tmp/prot-none-read-probe http://192.168.0.104:8766/prot-none-read-probe
+printf '%s  %s\n' f0f3086f9c477aa8c10b4e32c597534d13b4cfefabc8224fb86309d6b8eb4671 /tmp/prot-none-read-probe | sha256sum -c -
+chmod +x /tmp/prot-none-read-probe
+{
+ date
+ /tmp/prot-none-read-probe
+ /tmp/prot-none-read-probe fault
+ /tmp/prot-none-read-probe fault-lazy
+ if [ -x /tmp/jit-null-fault-probe ]; then /tmp/jit-null-fault-probe; fi
+ echo ALL4445_PROBES_PASS
+ cat /proc/ish/memory
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+tail -15 "$OUT"

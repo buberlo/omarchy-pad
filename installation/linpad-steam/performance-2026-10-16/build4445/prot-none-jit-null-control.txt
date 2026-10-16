@@ -1,0 +1,83 @@
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {10s 0us, 0s 0us}, 0xffffdba0) = 0x0
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 134 rt_sigaction(11, 0xffffdba0 {handler=0x1012440, flags=0x4000004, restorer=0x1012f18, mask=0}, 0x0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x2000, 0x3, 0x22, -1, 0x0) = 0xefff5000
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037658, 8) = 0x0
+1 receiving signal 11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 215 munmap(0xefff5000, 0x2000) = 0x0
+1 call 29  ioctl(1, 0x5413, 0xffffdb88) = 0xffffffe7
+1 call 66  writev(1, 0xffffdb10, 2) {"PASS 24 exact-address SIGSEGV deliveries; valid and crossing accesses", 69} {"
+PASS 24 exact-address SIGSEGV deliveries; valid and crossing accesses
+", 1} = 0x46
+1 call 94  exit_group(0)

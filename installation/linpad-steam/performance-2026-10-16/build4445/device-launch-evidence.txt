@@ -1,0 +1,8 @@
+Launched application with com.konradkern.linpad bundle identifier.
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x11b154000
+2026-10-16 17:56:59.057 iSH ARM64[21259:4225599] [boot] fast_mode=on
+2026-10-16 17:56:59.771 iSH ARM64[21259:4225599] [boot] boot_seconds=0.71
+
+Parent task observed successful desktop startup before running the protection script.
+Raw console snapshot retained locally: device-console-protection-snapshot.log
+SHA256 43fdb7155f0fab48c89e8715fddb25ec04420df50cc3c94193369e9216fc0aab

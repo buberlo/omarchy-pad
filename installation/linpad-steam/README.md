@@ -1,6 +1,6 @@
 # Verified handoff: LinPad, Steam and FEX
 
-Current runtime: **build 4443**. See the [16 October performance update](PERFORMANCE-2026-10-16.md) for the idle-audio fix, persistent 512 MiB JIT cache, precise guest fault delivery, and completed physical x86 Vulkan cube test. Visible cube rotation and Hollow Knight's native Linux depot are verified. The first direct game start aborts in Mono; playability remains pending. The build 4441 sections below preserve the original sign-in milestone.
+Current runtime: **build 4445**, signed, installed and booted to the physical iPad desktop; protected-memory checks and all 24 prior exact-address fault cases pass. **Build 4444 is rejected** after two boot failures. See the [16 October performance update](PERFORMANCE-2026-10-16.md) for the fixes, persistent 512 MiB JIT cache, and enabled Steam Library Low Performance/Low Bandwidth settings. The rebuilt FEX passes all 18 allocator checks on this device. Build 4445 also completes a 1200-frame x86 Vulkan cube run with visible rotation; the elapsed time includes startup and is not an FPS result. Hollow Knight's native Linux depot is installed and Unity reaches Vulkan GPU selection, but its window startup reports missing `libGL.so.1`; gameplay is not yet established. The build 4441 sections below preserve the original sign-in milestone.
 
 ## Build 4441 sign-in milestone
 

@@ -1,0 +1,2 @@
+work/performance/build4445/Payload/iSH ARM64.app: valid on disk
+work/performance/build4445/Payload/iSH ARM64.app: satisfies its Designated Requirement

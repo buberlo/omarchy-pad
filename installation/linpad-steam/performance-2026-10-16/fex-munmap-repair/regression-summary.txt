@@ -1,0 +1,9 @@
+Original FEX low-address probe exited 1; patched and native probes exited 0.
+==> native-control.txt <==
+MUNMAP_PROBE failures=0
+
+==> original-low-address.txt <==
+MUNMAP_PROBE failures=15
+
+==> patched-low-address.txt <==
+MUNMAP_PROBE failures=0

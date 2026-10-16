@@ -1,0 +1,13 @@
+Local Release build 4445, 2026-10-16
+Source commit: 08528edebc03aa4f07f6b49fdae5d8c08cd2bcd0 (committed before build)
+
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project work/LinPad/iSH.xcodeproj -target iSH-ARM64 -configuration Release -sdk iphoneos SYMROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-build OBJROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-obj IPHONEOS_DEPLOYMENT_TARGET=17.0 ISH_JIT_BUILD=enabled CODE_SIGNING_ALLOWED=NO "ROOTFS_ARCHIVE=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/signed/Payload/iSH ARM64.app/root.tar.gz" build
+
+Result: BUILD SUCCEEDED.
+Fresh app and dSYM copied from Release-iphoneos; copied app CFBundleVersion set to 4445 before developer signing.
+Signing: python3 work/sign-linpad.py work/performance/build4445/Payload/iSH\ ARM64.app
+Independent deep/strict codesign verification: exit 0, normal macOS trust context.
+Matching app/dSYM UUID: 1E4E9B30-C8D1-3F7C-918B-59CFE8B7CCBB
+Full build log retained locally: work/performance/build4445-build.log
+Full build log SHA256: 1c1092f6438fa2b665145fbfac01db57eb1215a36a8459806e672a90b2e35b73

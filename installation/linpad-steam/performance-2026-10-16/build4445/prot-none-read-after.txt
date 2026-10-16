@@ -1,0 +1,33 @@
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {10s 0us, 0s 0us}, 0xffffdbd0) = 0x0
+1 call 59  pipe2(0xffffdcd8, 0) [3 4] = 0x0
+1 call 222 mmap64(0x0, 0x4000, 0x0, 0x22, -1, 0x0) = 0xefff3000
+1 call 64  (fast) = 0xfffffff2
+1 call 226 mprotect(0xefff3000, 0x1000, 0x3) = 0x0
+1 call 64  (fast) = 0x1
+1 call 63  (fast) = 0x1
+1 call 64  (fast) = 0xfffffff2
+1 call 64  (fast) = 0xfffffff2
+1 call 226 mprotect(0xefff3000, 0x1000, 0x0) = 0x0
+1 call 64  (fast) = 0xfffffff2
+1 call 226 mprotect(0xefff3000, 0x1000, 0x1) = 0x0
+1 call 64  (fast) = 0x1
+1 call 63  (fast) = 0x1
+1 call 226 mprotect(0xefff3000, 0x1000, 0x3) = 0x0
+1 call 64  (fast) = 0x1
+1 call 63  (fast) = 0x1
+1 call 222 mmap64(0x0, 0x8000000, 0x0, 0x22, -1, 0x0) = 0x8000000000
+1 call 64  (fast) = 0xfffffff2
+1 call 226 mprotect(0x8000000000, 0x1000, 0x3) = 0x0
+1 call 64  (fast) = 0x1
+1 call 63  (fast) = 0x1
+1 call 64  (fast) = 0xfffffff2
+1 call 215 munmap(0x8000000000, 0x8000000) = 0x0
+1 call 29  ioctl(1, 0x5413, 0xffffdbb8) = 0xffffffe7
+1 call 66  writev(1, 0xffffdb40, 2) {"PASS syscall EFAULT for PROT_NONE; readable pages and transitions preserved", 75} {"
+PASS syscall EFAULT for PROT_NONE; readable pages and transitions preserved
+", 1} = 0x4c
+1 call 215 munmap(0xefff3000, 0x4000) = 0x0
+1 call 57  close(3) = 0x0
+1 call 57  close(4) = 0x0
+1 call 94  exit_group(0)

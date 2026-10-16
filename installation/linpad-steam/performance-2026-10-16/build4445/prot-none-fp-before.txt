@@ -1,0 +1,25 @@
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {10s 0us, 0s 0us}, 0xffffdbd0) = 0x0
+1 call 59  pipe2(0xffffdcb8, 0) [3 4] = 0x0
+1 call 222 mmap64(0x0, 0x4000, 0x0, 0x22, -1, 0x0) = 0xefff3000
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 134 rt_sigaction(11, 0xffffdbd0 {handler=0x1012860, flags=0x4000004, restorer=0x1013340, mask=0}, 0x0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xffffffffffffffff, 0x1037fd0, 8) = 0x0
+
+=== HOST CRASH: signal 10 ===
+fault addr: 0x105634000
+pc:  0x198233f1c
+lr:  0x104ec7ce4
+sp:  0x16af3a360
+x0:  0x16af3a520
+x1:  0x105634000
+x2:  0x1
+x7:  0x0
+x28: 0xcc
+0   ish                                 0x0000000104ec1e88 crash_handler + 492
+1   libsystem_platform.dylib            0x0000000198234144 _sigtramp + 56
+2   ish                                 0x0000000104ec7ce4 user_read_task + 128
+3   ish                                 0x0000000104ec36ec handle_interrupt + 3888
+4   ish                                 0x0000000104ec8be4 task_run_current + 140
+5   ish                                 0x0000000104ec1930 main + 2504
+6   dyld                                0x0000000197e53e80 start + 6688

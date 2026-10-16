@@ -1,0 +1,6 @@
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x11aa90000
+2026-10-16 17:51:41.541 iSH ARM64[21240:4222824] [boot] fast_mode=on
+2026-10-16 17:51:41.714 iSH ARM64[21240:4222824] [boot] boot_seconds=0.17
+ish crash: pid 1 tgid 1 (init) signal 11 code 1 addr 0 pc 0xefeb5c0c /lib/ld-musl-aarch64.so.1+0x6bc0c lr 0xefeb73c8 /lib/ld-musl-aarch64.so.1+0x6d3c8 sp 0xffffd990
+ish crash:   last syscalls (oldest first): 96(0xeff0ce88)=1 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648
+The app terminated with the exit code 139.

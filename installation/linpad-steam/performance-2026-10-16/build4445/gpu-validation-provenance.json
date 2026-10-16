@@ -1,0 +1,29 @@
+{
+  "result": "pass; bounded cube presentation and motion only",
+  "captured_on": "physical iPad Air13-inch (M2), mirrored in DeviceHub",
+  "source_report": "work/performance/reports/build4445-patched-cube.txt",
+  "source_script": "work/performance/serve/cube4445-patched",
+  "evidence": [
+    {
+      "name": "build4445-patched-cube.txt",
+      "sha256": "7e74d368a458d0d9080707f866b85c85b41ec6ab7215bd21daac537dd5dc8dde"
+    },
+    {
+      "name": "cube4445-patched-visible-a.png",
+      "sha256": "fd0f8c62480c7b47eccd98fc0566e71806f9a80aed43ac0b717f07ab819cdecc"
+    },
+    {
+      "name": "cube4445-patched-visible-b.png",
+      "sha256": "867b04851fc334762ca41179ba0543694a6394d124dd4ffb5463d8e01a4328d3"
+    },
+    {
+      "name": "cube4445-patched",
+      "sha256": "a656802f1764baabd6affab6b8aafbf2e49d9dd0c624867e4386e09a20acb502"
+    }
+  ],
+  "visual_review": "Both PNGs inspected by packaging agent: same cube window, visibly different cube orientations. Original images preserved byte-for-byte.",
+  "fex_binary_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+  "mesa_overlay_sha256": "6d57bfe03e088a4bf885c6ee41cecfd41c1c8b10a1454d029b8924348607fefc",
+  "no_steady_state_fps_claim": true,
+  "no_gameplay_claim": true
+}
