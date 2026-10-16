@@ -4,6 +4,17 @@ These standalone guest programs exercise runtime contracts used during Steam
 startup. Compile the native probes for AArch64 Linux. A static musl build is
 convenient for running them under both the CLI emulator and iPad app.
 
+`test-jit-ss-index.py --out /tmp/linpad-ss-index` is a separate host test.
+It extracts the production single-step cache functions into a small fixture,
+runs ASan/UBSan checks for page collisions, high/range boundaries, PC-chain
+unlinking, one-shot retirement, allocation failure and generation changes
+during translation, then compares randomized survivors with a range oracle.
+Its benchmark compares the original full-cache walk with the page index for
+nonmatching writes that collide in both the bloom filter and page hash.
+That synthetic host timing does not measure game startup or frame rate.
+Translation and compiled-block machinery are stubbed; also run the real guest
+`tests/arm64-insn/smc.c` to check execution after code modification.
+
 - `runtime-probe.c`: MIDR_EL1 and relative faccessat through pipe, file and
   directory descriptors. Requires `/opt/fex/hello-x86_64` to exist.
 - `eventfd-probe.c`: semaphore reads, ordinary counter reads, nonblocking

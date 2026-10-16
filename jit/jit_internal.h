@@ -200,6 +200,7 @@ struct jit_mm {
     uint64_t retired_epoch;
     _Atomic uint64_t gen;             // bumped on invalidation
     struct ss_entry **ss_hash;        // gadget single-step blocks
+    struct ss_entry **ss_page_hash;   // page -> single-step blocks; page_hash_size buckets
     size_t ss_size, ss_count;
     uint64_t ss_bloom;                // bit (page & 63) set for pages with single-step blocks
     void *ss_jetsam;                  // invalidated single-step blocks: see reclaim

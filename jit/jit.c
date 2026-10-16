@@ -333,6 +333,8 @@ struct ss_entry {
     addr_t pc;
     struct fiber_block *block;
     struct ss_entry *next;
+    struct ss_entry **hash_prev;      // link pointing here in the fixed-size PC hash
+    struct ss_entry *page_next;
 };
 
 // An empty indirect-table slot. Not 0: the lookup in JIT code only compares the pc,
@@ -366,8 +368,9 @@ struct jit_mm *jit_mm_new(struct mmu *mmu) {
         mm->itab = NULL;
     mm->ss_size = 256;
     mm->ss_hash = calloc(mm->ss_size, sizeof(*mm->ss_hash));
+    mm->ss_page_hash = calloc(mm->page_hash_size, sizeof(*mm->ss_page_hash));
     if (mm->hash == NULL || mm->counters == MAP_FAILED || mm->htpub == NULL || mm->page_hash == NULL ||
-            mm->bucket_page == NULL || mm->itab == NULL || mm->ss_hash == NULL) {
+            mm->bucket_page == NULL || mm->itab == NULL || mm->ss_hash == NULL || mm->ss_page_hash == NULL) {
         free(mm->hash);
         if (mm->counters != MAP_FAILED)
             munmap(mm->counters, JIT_COUNTERS * sizeof(uint32_t));
@@ -376,6 +379,7 @@ struct jit_mm *jit_mm_new(struct mmu *mmu) {
         free(mm->bucket_page);
         free(mm->itab);
         free(mm->ss_hash);
+        free(mm->ss_page_hash);
         free(mm);
         return NULL;
     }
@@ -490,6 +494,7 @@ void jit_mm_free(struct jit_mm *mm) {
     free_dead(mm->dead, mm->ss_jetsam);
     free_dead(mm->dead_pending, mm->ss_pending);
     free(mm->ss_hash);
+    free(mm->ss_page_hash);
     free(mm->itab);
     free_tables(mm->htpub);   // its table is mm->hash
     free_tables(mm->ht_old);
@@ -1031,22 +1036,46 @@ void jit_invalidate_block_locked(struct jit_mm *mm, struct jit_block *b) {
     invalidate_block_locked(mm, b);
 }
 
-static void ss_invalidate_locked(struct jit_mm *mm, page_t start, page_t end) {
-    for (size_t i = 0; i < mm->ss_size; i++) {
-        struct ss_entry **pp = &mm->ss_hash[i];
+static void ss_insert_locked(struct jit_mm *mm, struct ss_entry *e) {
+    size_t h = pc_hash(e->pc, mm->ss_size);
+    e->next = mm->ss_hash[h];
+    e->hash_prev = &mm->ss_hash[h];
+    if (e->next)
+        e->next->hash_prev = &e->next;
+    mm->ss_hash[h] = e;
+    size_t bucket = PAGE(e->pc) % mm->page_hash_size;
+    e->page_next = mm->ss_page_hash[bucket];
+    mm->ss_page_hash[bucket] = e;
+    mm->ss_count++;
+    __atomic_fetch_or(&mm->ss_bloom, 1ull << (PAGE(e->pc) & 63), __ATOMIC_RELEASE);
+}
+
+static bool ss_invalidate_locked(struct jit_mm *mm, page_t start, page_t end) {
+    bool did = false;
+    // Writes to data pages often collide with the coarse 64-bit bloom filter.
+    // Only visit their page buckets, not every cached fallback instruction.
+    size_t buckets = end - start < mm->page_hash_size ? end - start : mm->page_hash_size;
+    for (size_t i = 0; i < buckets; i++) {
+        size_t bucket = (start + i) % mm->page_hash_size;
+        struct ss_entry **pp = &mm->ss_page_hash[bucket];
         while (*pp) {
             struct ss_entry *e = *pp;
             if (PAGE(e->pc) >= start && PAGE(e->pc) < end) {
-                *pp = e->next;
+                *pp = e->page_next;
+                *e->hash_prev = e->next;
+                if (e->next)
+                    e->next->hash_prev = e->hash_prev;
                 if (--mm->ss_count == 0)
                     __atomic_store_n(&mm->ss_bloom, 0, __ATOMIC_RELEASE);
                 e->next = mm->ss_jetsam;
                 mm->ss_jetsam = e;
+                did = true;
             } else {
-                pp = &e->next;
+                pp = &e->page_next;
             }
         }
     }
+    return did;
 }
 
 // The address space is being torn down (mm_release dropped the last
@@ -1112,7 +1141,7 @@ void jit_invalidate_range(struct jit_mm *mm, page_t start, page_t end) {
         patch_flush();
         jit_write_finish();
     }
-    ss_invalidate_locked(mm, start, end);
+    did |= ss_invalidate_locked(mm, start, end);
     if (did) {
         atomic_fetch_add(&mm->gen, 1);
         mm->stats_inval++;
@@ -1562,10 +1591,7 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
     e->pc = pc;
     e->block = block;
     if ((keep || mm->ss_count < SS_NOMEM_CACHED) && atomic_load(&mm->gen) == gen) {
-        e->next = mm->ss_hash[h];
-        mm->ss_hash[h] = e;
-        mm->ss_count++;
-        __atomic_fetch_or(&mm->ss_bloom, 1ull << (PAGE(pc) & 63), __ATOMIC_RELEASE);
+        ss_insert_locked(mm, e);
     } else {
         e->next = mm->ss_jetsam;   // used once, freed by reclaim
         mm->ss_jetsam = e;
