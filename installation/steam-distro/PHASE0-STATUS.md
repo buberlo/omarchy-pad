@@ -1854,3 +1854,37 @@ The end-to-end proof (game app boots `roots/arch`, desktop keeps `roots/default`
 
 Also still pending from the record: the per-root session lock (`roots/<name>/.session.lock` instead of one
 lock for the container) and removing the temporary `FOOTIOCTL` print in `kernel/fs.c:753`.
+
+## Round 67: the last code item — gate the Alpine repair kit off the Arch root, with its call sites
+
+Located precisely (transcript above):
+
+* `Core/System/Maintenance/SystemMaintenance.swift` — `kit: RepairKit?` (`:63`), `init(host:kit:defaults:)`
+  (`:70`), the installed-version probe (`:92`), and the automatic path after boot (`:97-110`, "repairs
+  silently once when the app bundles a newer kit"). `guestKitDirectory = "/tmp/linpad-repair-kit"` (`:68`).
+* Triggered from `MaintenanceSettingsSection.swift:147` ("Repair System") and `:181` ("Repair Again").
+
+The kit is **Alpine-specific** — `release/guest/linpad-repair` runs `apk info/add/update`, installs Firefox
+ESR prefs, lifecycle scripts and the theme packs. The game app boots the Arch root, where none of that
+belongs: it would print `apk: not found`-style failures and could half-apply files.
+
+**The patch** (one guard + one small helper, in the same spirit as `FsIsAlpineRoot()` in `CurrentRoot.m` —
+ask the guest, do not guess from the variant):
+
+```swift
+/// The bundled kit is the Alpine system's (apk, Firefox ESR, lifecycle, themes). The game app boots its
+/// own Arch root, where it does not apply — ask the guest rather than trusting the variant.
+private func rootIsAlpine() async -> Bool {
+    (await host.run("[ -f /etc/apk/world ] && echo alpine")).stdout.contains("alpine")
+}
+```
+
+then, at the top of `repair(automatic:)` and of the automatic path in `afterBoot`, `guard await rootIsAlpine()
+else { … }` — returning the existing "nothing to do" outcome rather than an error, so the Settings row can
+say the system does not use the Alpine kit instead of failing.
+
+Verification available here: the DesktopKit suite (the mock host answers `run`, so the guard is unit-testable
+in both directions), plus a simulator build. The end-to-end proof stays the device run.
+
+With this, the only remaining items are this guard and **the iPad run**, which needs `libcef.so` — present
+only on the device.
