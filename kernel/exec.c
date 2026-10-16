@@ -175,10 +175,9 @@ static bool exec_env_has(struct exec_args envp, const char *name) {
 
 static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, struct exec_args envp) {
     int err = 0;
-    current->mem->high_va = exec_env_has(envp, "ISH_HIGH_VA");
-    printk("ish-highva: %s envp.count=%zu -> high_va=%d stack_page=%#llx\n", file,
-            (size_t) envp.count, (int) current->mem->high_va,
-            (unsigned long long) STACK_TOP_PAGE(current->mem));
+    // Read the layout request now, but apply it after the mm switch below: elf_exec installs a
+    // fresh mm, and a fresh mm comes from mem_init with the default (low) layout.
+    bool want_high_va = exec_env_has(envp, "ISH_HIGH_VA");
 
     // read the headers
     exec_elf_header header;
@@ -252,6 +251,10 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
     lock(&current->general_lock);
     mm_release(current->mm);
     task_set_mm(current, new_mm);
+    current->mem->high_va = want_high_va;
+    if (want_high_va)
+        printk("ish-highva: %s asked for the high address-space layout (stack page %#llx)\n",
+                file, (unsigned long long) STACK_TOP_PAGE(current->mem));
     unlock(&current->general_lock);
     write_wrlock(&current->mem->lock);
 
@@ -497,9 +500,6 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
     current->mm->stack_start = sp;
 #if defined(GUEST_ARM64)
     current->cpu.sp = sp;
-    printk("ish-highva: exec %s -> sp=%#llx high_va=%d stack_map_page=%#llx\n", file,
-            (unsigned long long) sp, (int) current->mem->high_va,
-            (unsigned long long) STACK_TOP_PAGE(current->mem));
     current->cpu.pc = entry;
     // Zero all general-purpose registers
     memset(current->cpu.regs, 0, sizeof(current->cpu.regs));
