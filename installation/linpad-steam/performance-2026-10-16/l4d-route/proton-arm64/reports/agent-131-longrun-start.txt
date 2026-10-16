@@ -1,0 +1,10 @@
+AGENT_BEGIN id=131-longrun-start pid=43 Fri Oct 16 22:30:26 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== detached long run: wine with mmap-only malloc, started Fri Oct 16 22:30:27 UTC 2026 ===
+started; first lines:
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+procs: services.exe wineserver 
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:30:47 UTC 2026

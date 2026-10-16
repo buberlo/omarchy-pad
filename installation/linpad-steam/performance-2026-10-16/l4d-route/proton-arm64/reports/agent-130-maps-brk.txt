@@ -1,0 +1,16 @@
+AGENT_BEGIN id=130-maps-brk pid=43 Fri Oct 16 22:30:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+brk (heap end) : 0x1021000
+entries below 256 MB:
+  000001000000-000001001000 r--p 00000000 00:00 0          /tmp/maps-brk-probe
+  000001010000-000001011000 r--p 00000000 00:00 0          /tmp/maps-brk-probe
+  000001020000-000001021000 r--p 00000000 00:00 0          /tmp/maps-brk-probe
+  000001021000-000001042000 -w-p 00000000 00:00 0          
+entries below 256 MB: 4, covering up to 0x1042000
+brk (0x1021000) covered by a maps entry: yes
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:30:06 UTC 2026

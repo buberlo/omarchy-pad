@@ -1,0 +1,13 @@
+AGENT_BEGIN id=129-maps-heap pid=43 Fri Oct 16 22:29:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+malloc block : 0xef8cf010 .. 0xefccf010
+sbrk(0)      : 0x1042000
+maps ranges  : 33 (0x1000000 .. 0xfffff000)
+a maps entry covers the malloc block : yes
+[heap] labelled                      : no
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:29:53 UTC 2026

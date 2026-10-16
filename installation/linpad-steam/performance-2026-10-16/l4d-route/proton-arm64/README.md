@@ -303,3 +303,38 @@ The two concrete next steps: (1) test the guest-stack hypothesis — host code o
 Windows stack would corrupt exactly the neighbouring guest structures that hold those pointers — and
 (2) implement `process_vm_readv`/`process_vm_writev`, which wine prefers and this kernel stubs with
 `ENOSYS`, forcing wine onto `/proc/<pid>/mem` for every cross-process access.
+
+## Round of 17 October, 06:28–06:40: the workaround lets wine past the crash
+
+Two more suspects cleared, both with probes that run against real Linux first:
+
+- **Guest stack size**: Windows PEs built with a 1 MB and a 64 MB stack reserve
+  (`probes/stackpe.c`, `zig cc -target x86_64-windows-gnu -Wl,--stack,<bytes>`) crash identically, and
+  so does wine started **directly** (no Proton, no steam.exe) — so neither the stack nor Proton's
+  launcher is the trigger.
+- **`/proc/self/maps` coverage** (`probes/mapsheap.c`, `probes/mapsbrk.c`): wine finds free address
+  ranges by parsing that file, so a missing heap entry would let it map over glibc's heap. The brk
+  heap *is* listed (`000001021000-000001042000 -w-p`, covering `sbrk(0)`), only the `[heap]` label is
+  missing — cosmetic, not the bug.
+
+**The A/B result from the previous round is what matters.** With
+
+```
+MALLOC_MMAP_THRESHOLD_=1 MALLOC_TRIM_THRESHOLD_=1 MALLOC_TOP_PAD_=0
+```
+
+(glibc takes nothing from `brk`) wine no longer aborts and — for the first time in this whole
+investigation — gets to a **running `services.exe`**:
+
+```
+Proton: Error while copying … amdxcffx64.dll: No such file or directory
+wineserver: using server-side synchronization.
+procs: services.exe wineserver
+```
+
+That is the first configuration in which wine progresses *past* the point where every previous run
+died within seconds. A detached long run with this setting is going (`/tmp/wine-long.log`,
+`/tmp/wine-long.done` on the device) so the next round can tell whether it completes or merely hangs.
+If it completes, this is both the workaround to get to Left 4 Dead and a precise pointer at the
+emulator defect: something about the `brk` heap, in the path glibc's main arena uses and nothing else
+does.

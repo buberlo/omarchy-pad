@@ -1,0 +1,20 @@
+AGENT_BEGIN id=128-stack-size-test pid=43 Fri Oct 16 22:28:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1 MB stack (the Windows default) ===
+pe1 t= 25s ok=0 corrupt=2
+--- pe1 output ---
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+malloc(): invalid size (unsorted)
+corrupted size vs. prev_size
+
+=== 64 MB stack ===
+pe64 t= 25s ok=0 corrupt=2
+--- pe64 output ---
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+free(): invalid pointer
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 22:29:14 UTC 2026
