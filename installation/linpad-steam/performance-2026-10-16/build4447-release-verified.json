@@ -1,0 +1,32 @@
+{
+  "url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4447",
+  "prerelease": true,
+  "assets": [
+    {
+      "name": "build-manifest.json",
+      "bytes": 3304,
+      "sha256": "7691f2dd16d5c8930801f4cdcab8d59222991607c37fd7e86d823ae5d92b749f"
+    },
+    {
+      "name": "LinPad-1.4.0-build4447-dSYM.zip",
+      "bytes": 13520950,
+      "sha256": "69015a16409b9d1725e9995bb1560f4efa6dcf1dd5e11f4c2f73aa65f7617c8b"
+    },
+    {
+      "name": "LinPad-1.4.0-build4447-Konrad.ipa",
+      "bytes": 637224848,
+      "sha256": "69a194ec07bf807ab06e47740e41919ef0453ce7baefd8e314b93536e8b6f430"
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 198,
+      "sha256": "03af3195513d73efebaa1dabf6a74f7adc7f507bcd681960b33eeeab669c6b91"
+    },
+    {
+      "name": "VERIFICATION.md",
+      "bytes": 1977,
+      "sha256": "21f3d2860ad9f7f73a048a0c9bf28fb6236d746bca5b902bd9f2e3d0ed016104"
+    }
+  ],
+  "server_digests_match": true
+}

@@ -6,7 +6,7 @@ Two startup defects are repaired: build 4446 added the uevent monitor support ne
 
 Hollow Knight's native Linux depot is installed. The separate [EGL runtime](performance-2026-10-16/egl-repair/README.md) provides auxiliary SDL/Wayland initialization; explicit Vulkan selects Mesa 26 Venus on Apple M2. FEX/Mesa/EGL, Steam and game data are separate guest additions, not a complete filesystem export in the IPA. Linux storage is directory-backed and uses the iPad's available filesystem space; the build 4447 physical report shows about 28 GiB available. [Physical storage and memory report](performance-2026-10-16/build4447/maps4447-device-pass.txt)
 
-The [private build 4446 prerelease](https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4446) remains a frozen checkpoint. The sections below preserve the original build 4441 sign-in handoff and historical limitations; use the current verification records for subsequent results. The older GPU cube establishes a separate smoke test, not game performance.
+The [private build 4447 prerelease](https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4447) is published; all five server asset sizes and SHA-256 digests match the verified local checkpoint. The sections below preserve the original build 4441 sign-in handoff and historical limitations; use the current verification records for subsequent results. The older GPU cube establishes a separate smoke test, not game performance.
 
 ## Build 4441 sign-in milestone
 
