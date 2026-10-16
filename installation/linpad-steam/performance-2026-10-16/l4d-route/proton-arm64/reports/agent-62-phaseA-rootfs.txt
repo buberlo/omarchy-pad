@@ -1,0 +1,38 @@
+AGENT_BEGIN id=62-phaseA-rootfs pid=1143 Fri Oct 16 20:01:59 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== A1: compose /usr/share/guestos/fex-mesa from the device's x86_64 stack ===
+total 24
+lrwxrwxrwx 1 root root 23 Oct 16 20:01 bin -> /opt/hollow-runtime/bin
+lrwxrwxrwx 1 root root 23 Oct 16 20:01 etc -> /opt/hollow-runtime/etc
+lrwxrwxrwx 1 root root 23 Oct 16 20:01 lib -> /opt/hollow-runtime/lib
+lrwxrwxrwx 1 root root 25 Oct 16 20:01 lib64 -> /opt/hollow-runtime/lib64
+lrwxrwxrwx 1 root root 24 Oct 16 20:01 sbin -> /opt/hollow-runtime/sbin
+lrwxrwxrwx 1 root root 23 Oct 16 20:01 usr -> /opt/hollow-runtime/usr
+
+=== A2: graphics_provider.json + note (in the real dir, not in the runtime) ===
+{
+  "note": "LinPad: this directory is composed of symlinks into the iPad's own x86_64 stack (/opt/hollow-runtime for the loader and libraries, /opt/hollow-mesa26 for the Venus Vulkan ICD, /opt/hollow-egl for the EGL vendor manifest). The graphics stack itself is passed to the guest through the environment (LD_LIBRARY_PATH, __EGL_VENDOR_LIBRARY_FILENAMES, VK_ICD_FILENAMES), the way /usr/local/bin/linpad-egl-hook does it for Hollow Knight.",
+  "runtime": "/opt/hollow-runtime",
+  "vulkan_icd": "/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json",
+exists: yes
+loader through the symlink: /usr/share/guestos/fex-mesa/usr/lib64/ld-linux-x86-64.so.2
+
+=== fetch the probes and the launcher ===
+got hello-x86_64-linux-gnu (10072 bytes)
+got hello-x86-linux-gnu (6632 bytes)
+got hello-x86_64-windows-gnu (220160 bytes)
+got hello-x86-windows-gnu (272896 bytes)
+launcher installed
+
+=== A3 smoke test: 32-bit Linux ELF through the device FEX (the rootfs proves out) ===
+timeout: warning: timer_create: Bad address
+./hello-x86_64-linux-gnu: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+64-bit linux exit=0
+timeout: warning: timer_create: Bad address
+Invalid or Unsupported elf file.
+This is likely due to a misconfigured x86-64 RootFS
+Current RootFS path set to '/usr/share/guestos/fex-mesa'
+32-bit linux exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:01:59 UTC 2026

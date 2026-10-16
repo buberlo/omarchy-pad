@@ -1,0 +1,39 @@
+AGENT_BEGIN id=61-phase0-state pid=1143 Fri Oct 16 20:00:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== agent ===
+pid 1143
+Fri Oct 16 19:58:06 UTC 2026 ran id=60-proton-inventory AGENT_EXIT=0
+
+=== app / steam / game ===
+webhelpers: 0
+
+=== mapping + reaper ===
+					"367520"
+						"name"		"linpad-fex-native"
+					"500"
+						"name"		"proton_11-arm64"
+69bfb2117f6a7ecd895015bbc6df6f28f36a07f91db23cbf99f67af1140b4f9c  /root/.local/share/Steam/steamrtarm64/reaper
+stub 25a0ae87... / original 6105162a...
+
+=== compatdata ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+
+=== memory ===
+footprint_mb 1418
+allowance_mb 8192
+headroom_mb 6773
+soft_mb 1638
+
+=== /usr/share and /opt/fex ===
+ls: cannot access '/usr/share/guestos': No such file or directory
+drwxr-xr-x 50 root root 1632 Oct 16 19:58 /usr/share
+FEX
+FEX-apple-m1
+FEX-apple-m1-munmap
+FEX-cortex-a76
+epoll-oneshot-probe
+eventfd-probe
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:00:24 UTC 2026

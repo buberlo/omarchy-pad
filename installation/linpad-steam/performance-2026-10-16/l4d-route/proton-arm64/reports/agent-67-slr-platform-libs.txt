@@ -1,0 +1,43 @@
+AGENT_BEGIN id=67-slr-platform-libs pid=1143 Fri Oct 16 20:14:25 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+SLR platform files: /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files
+alsa-lib
+avahi
+engines-3
+gbm
+gconv
+gdk-pixbuf-2.0
+gio
+glib-2.0
+ls: cannot access '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/ld-linux-aarch64.so.1': No such file or directory
+ls: cannot access '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/steamrt4_platform_4.0.20260928.262390/files/lib/libc.so.6': No such file or directory
+
+=== point the glibc dir at the SLR platform (what Proton ARM64 is built against) ===
+9
+musl check: ok
+wine: wine-11.0
+wineserver: Wine 11.0
+
+=== retry the 64-bit PE with the platform glibc ===
+t= 28s procs=[]
+t= 56s procs=[]
+t= 84s procs=[]
+t=112s procs=[]
+t=140s procs=[]
+t=168s procs=[]
+--- log ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+free(): invalid pointer
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+
+=== alternative: run the proton script with the platform's own glibc python ===
+python3.13
+footprint_mb 1444
+allowance_mb 8192
+headroom_mb 6747
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:17:14 UTC 2026

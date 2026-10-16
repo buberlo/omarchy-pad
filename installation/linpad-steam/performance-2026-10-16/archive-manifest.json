@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs; the build 4453 keyboard routing fix; the deployed compositor follow-up with its device key log; the Steam-to-game launch route with its reaper finding; and the Left 4 Dead route diagnosis (python3, printenv, missing guest rootfs, ARM64 Proton mapping, stalled Steam client). No authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs; the build 4453 keyboard routing fix; the deployed compositor follow-up with its device key log; the Steam-to-game launch route with its reaper finding; and the Left 4 Dead route work: the x86_64 route measured (no 32-bit support in the device FEX, a composeable guest rootfs), ARM64 Proton brought up to wine 11.0 in the guest, and the emulator's missing MAP_FIXED_NOREPLACE reproduced as the reason wine cannot build its address space. No authentication or proprietary game binaries.",
   "files": [
     {
       "path": "HANDOFF-4451.md",
@@ -4504,8 +4504,83 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 3400,
-      "sha256": "64a78d9c7dec70c09d3e8076b0102195f3f8fd635f4aaa33cf5d87ef555e1cd1"
+      "bytes": 5023,
+      "sha256": "84040eda3960e0af2513d927b12374f972a19a581baa2b89d3a4a15fac9bfae5"
+    },
+    {
+      "path": "l4d-route/proton-arm64/README.md",
+      "bytes": 7880,
+      "sha256": "505d7fd91b14fa71973fa3ed09073c21c6aca304f41d4f1ece837ee7c58e35f4"
+    },
+    {
+      "path": "l4d-route/proton-arm64/linpad-proton-arm64",
+      "bytes": 2733,
+      "sha256": "f25abb545f0b075b52b47b6b1d2f6e0b3af39c54dc61f254629e04ba460306d1"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/hello.c",
+      "bytes": 220,
+      "sha256": "ac5f8c5e2b70fe2eb6d61388b192a00369241c8ee586676288307435ba16de41"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/ishrepro.c",
+      "bytes": 2109,
+      "sha256": "0b09fe68a97f1c39e6ec54aec4eec717f054e82b9cf0debeaded0842bd330b2b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/mapfixed.c",
+      "bytes": 2054,
+      "sha256": "2a145519d29b0cb909594a48df5c7c6e7ec38e67235511616342c7ea8116806d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
+      "bytes": 1031,
+      "sha256": "8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-62-phaseA-rootfs.txt",
+      "bytes": 2150,
+      "sha256": "9e93b5493349bcdb92b26acb825b851a4a37cc621baea811ebd7d798f55518bc"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-63-proton-pe-control.txt",
+      "bytes": 2734,
+      "sha256": "6db0881b75310144f64f2e0d50aedaece4b2ec9fb9d152287d839ba17bb8cbc3"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-64-glibc-registration.txt",
+      "bytes": 2920,
+      "sha256": "fb609af085a6353645e9d49a9cfba3725133693f787f53f2009b608095702595"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-65-glibc-path-test.txt",
+      "bytes": 2321,
+      "sha256": "f88d545d7047b2d6d5ce892912206cc9efdd3f12602b139f360bbf3030cac55b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-66-pe-both.txt",
+      "bytes": 1992,
+      "sha256": "c3fdc776586500691cc5697386cefafeb4cf01d38b48b554e49ab53d9d93a30a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-67-slr-platform-libs.txt",
+      "bytes": 1882,
+      "sha256": "88712c547d22a17aca7873a3b2d91db56478675f11465ae5caef2ab27421e66f"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-68-repro-fork-threads.txt",
+      "bytes": 852,
+      "sha256": "d2e1bfa8c7c9b4a3f3ed09d4ad0288989a09dca191bbd457714bcfa6f23c47a4"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-69-rseq-tunable.txt",
+      "bytes": 2023,
+      "sha256": "56c97e0239e8ec2c69530d45994b6be75df0fe8e3636f7260190427dccdc151d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-70-mapfixed.txt",
+      "bytes": 518,
+      "sha256": "06815b94ed5e7d8f5fc120879ea67fc1465786c0c00a84545d49c642563007d6"
     },
     {
       "path": "l4d-route/reports/agent-29-l4d-state.txt",

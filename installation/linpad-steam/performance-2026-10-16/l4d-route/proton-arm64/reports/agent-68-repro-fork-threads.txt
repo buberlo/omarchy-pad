@@ -1,0 +1,31 @@
+AGENT_BEGIN id=68-repro-fork-threads pid=1143 Fri Oct 16 20:18:35 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== fetch the native reproducer (isolates the emulator, no FEX) ===
+-rwxr-xr-x 1 root root 1695392 Oct 16 20:18 /tmp/ishrepro
+
+=== run 1 ===
+ish-repro: pid=948
+fork_heap ok
+thread_heap ok
+summary: fork_heap=0 thread_heap=0
+exit=0
+
+=== run 2 (again, in case it is timing dependent) ===
+ish-repro: pid=1042
+fork_heap ok
+thread_heap ok
+summary: fork_heap=0 thread_heap=0
+exit=0
+
+=== and the same program with glibc (the other allocator) ===
+no glibc build available
+
+=== wineserver with a simpler allocator setting ===
+Wine 11.0
+
+=== wineserver foreground with -f? (does it survive without forking) ===
+wineserver: chdir to /root/.wine: No such file or directory
+done
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:18:43 UTC 2026

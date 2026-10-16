@@ -1,0 +1,54 @@
+#!/bin/sh
+# Runs a Windows program with Valve's ARM64 Proton — without the Steam Linux Runtime stage.
+#
+#   linpad-proton-arm64 [-a APPID] PROGRAM [ARGS...]
+#
+# Why without the runtime: SteamLinuxRuntime_4-arm64/_v2-entry-point is a shell script, and
+# steam-launch-wrapper hands it a glibc LD_LIBRARY_PATH. It therefore runs in this guest's musl
+# shell, fails to relocate the glibc libraries and dies before Proton is reached
+# (installation/linpad-steam/performance-2026-10-16/l4d-route/README.md, reports 52-57).
+# Proton itself is a python3 script and brings its own wine
+# (files/bin-arm64/wine plus files/lib/wine/aarch64-unix/libwow64fex.so), so it runs here.
+#
+# Nothing is set globally for LD_LIBRARY_PATH: that would break every musl binary in this shell.
+# Proton sets wine's library paths itself.
+set -eu
+B=${LINPAD_STEAM_ROOT:-/root/.local/share/Steam}
+P="$B/steamapps/common/Proton 11.0 (ARM64)"
+appid=500
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -a) appid=${2:?-a needs an appid}; shift 2 ;;
+        *) break ;;
+    esac
+done
+[ "$#" -gt 0 ] || { echo "usage: linpad-proton-arm64 [-a APPID] PROGRAM [ARGS...]" >&2; exit 64; }
+prog=$1
+[ -f "$prog" ] || { echo "no such program: $prog" >&2; exit 66; }
+[ -x "$P/proton" ] || { echo "proton not found: $P/proton" >&2; exit 80; }
+command -v python3 >/dev/null || { echo "python3 missing (Proton needs it)" >&2; exit 80; }
+
+data="$B/steamapps/compatdata/$appid"
+mkdir -p "$data"
+export STEAM_COMPAT_DATA_PATH="$data"
+export STEAM_COMPAT_CLIENT_INSTALL_PATH="$B"
+export STEAM_COMPAT_INSTALL_PATH="$(cd "$(dirname "$prog")" && pwd)"
+export STEAM_COMPAT_APP_ID="$appid"
+export STEAM_COMPAT_MACHINE_ARCHITECTURE=aarch64-linux-gnu
+export STEAM_COMPAT_EMULATOR="$B/steamapps/common/FEX-Emu/emulator.json"
+export WINEPREFIX="$data/pfx"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0-gpu}"
+mkdir -p "$XDG_RUNTIME_DIR"
+
+# Wine and wineserver are glibc ARM64 binaries; this guest is Alpine/musl, so without help they
+# die on "libc.so.6: cannot open shared object file". /opt/linpad-glibc holds symlinks to the
+# core glibc libraries only (libc, libm, libdl, libpthread, librt, libresolv, libgcc_s,
+# libstdc++, libutil, libnsl) — no libz/libffi/expat that the musl tools would pick up instead of
+# their own. Verified on the device: wine prints wine-11.0, and python3, ls and ps still work with
+# this directory on LD_LIBRARY_PATH.
+glibc_dir="${LINPAD_GLIBC_DIR:-/opt/linpad-glibc}"
+[ -d "$glibc_dir" ] || { echo "missing $glibc_dir (core glibc libraries for wine)" >&2; exit 80; }
+export LD_LIBRARY_PATH="$glibc_dir${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+exec python3 "$P/proton" waitforexitandrun "$@"

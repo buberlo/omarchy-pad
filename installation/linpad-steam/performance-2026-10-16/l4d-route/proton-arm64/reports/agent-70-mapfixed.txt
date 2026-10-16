@@ -1,0 +1,13 @@
+AGENT_BEGIN id=70-mapfixed pid=1143 Fri Oct 16 20:23:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+base=0xeffef000 page=4096
+MAP_FIXED mid: got=0xefff1000 want=0xefff1000 errno=0
+neighbour bytes changed by MAP_FIXED: 0
+MAP_FIXED_NOREPLACE on a live page: got=0xeffee000 errno=0 (unexpected; want MAP_FAILED/EEXIST)
+MAP_FIXED at 64G: got=0x1000000000 errno=0
+MAP_FIXED low 64K: got=0x10000 errno=0 (granted)
+summary: neighbours_bad=0
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:23:36 UTC 2026

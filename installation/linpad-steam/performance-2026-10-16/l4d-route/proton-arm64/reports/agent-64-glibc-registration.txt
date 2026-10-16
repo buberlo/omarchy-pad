@@ -1,0 +1,40 @@
+AGENT_BEGIN id=64-glibc-registration pid=1143 Fri Oct 16 20:06:46 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is there a glibc ldconfig in the device's ARM64 userland? ===
+ls: cannot access '/opt/steam-host/usr/sbin/ldconfig': No such file or directory
+ls: cannot access '/opt/steam-host/sbin/ldconfig': No such file or directory
+aarch64-linux-gnu.conf
+core glibc libs present?
+libc.so.6            /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6
+libm.so.6            /opt/steam-host/usr/lib/aarch64-linux-gnu/libm.so.6
+libdl.so.2           /opt/steam-host/usr/lib/aarch64-linux-gnu/libdl.so.2
+libpthread.so.0      /opt/steam-host/usr/lib/aarch64-linux-gnu/libpthread.so.0
+librt.so.1           /opt/steam-host/usr/lib/aarch64-linux-gnu/librt.so.1
+libresolv.so.2       /opt/steam-host/usr/lib/aarch64-linux-gnu/libresolv.so.2
+libgcc_s.so.1        /opt/steam-host/usr/lib/aarch64-linux-gnu/libgcc_s.so.1
+libstdc++.so.6       /opt/steam-host/usr/lib/aarch64-linux-gnu/libstdc++.so.6
+
+=== register the device's ARM64 glibc with glibc's own loader (musl ignores it) ===
+/opt/steam-host/usr/lib/aarch64-linux-gnu
+NO_LDCONFIG: will fall back to a minimal LD_LIBRARY_PATH directory
+
+=== does wine start now? ===
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+wine --version exit=0
+wineserver: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+
+=== sanity: musl python3 unaffected ===
+musl python3 ok
+
+=== and the 64-bit PE through the launcher ===
+procs=[]
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+  ...tail:
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:08:46 UTC 2026

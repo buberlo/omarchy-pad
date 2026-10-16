@@ -1,0 +1,37 @@
+AGENT_BEGIN id=69-rseq-tunable pid=1143 Fri Oct 16 20:19:02 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wineserver in the foreground, with and without the rseq tunable ===
+--- without tunable
+alive: 1
+wineserver: using server-side synchronization.
+--- with glibc.pthread.rseq=0
+alive: 1
+wineserver: using server-side synchronization.
+
+=== 64-bit PE with rseq=0 ===
+t= 25s procs=[]
+t= 50s procs=[]
+t= 75s procs=[]
+t=100s procs=[]
+t=125s procs=[]
+--- log ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+corrupted size vs. prev_size
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+
+=== 32-bit PE with rseq=0 ===
+--- log ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+footprint_mb 1453
+allowance_mb 8192
+headroom_mb 6738
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:23:11 UTC 2026

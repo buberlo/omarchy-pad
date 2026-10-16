@@ -1,0 +1,45 @@
+AGENT_BEGIN id=63-proton-pe-control pid=1143 Fri Oct 16 20:02:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== rootfs lib dir (for the Linux probes) ===
+drwxr-xr-x 5 501 dialout 5408 Oct 16 10:19 /opt/hollow-runtime/usr/lib/x86_64-linux-gnu
+drwxr-xr-x 2 501 dialout   96 Oct 16 08:34 /opt/hollow-runtime/usr/lib64
+/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.6
+--- 64-bit linux ELF with the library path ---
+l4d-probe: hello from 64-bit linux
+
+=== B3 control: 64-bit Windows PE through the ARM64 Proton (creates the prefix) ===
+t= 32s pfx=yes procs=[]
+t= 64s pfx=yes procs=[]
+t= 96s pfx=yes procs=[]
+t=128s pfx=yes procs=[]
+t=160s pfx=yes procs=[]
+t=192s pfx=yes procs=[]
+t=224s pfx=yes procs=[]
+
+=== pe64 output (first 30 / last 20) ===
+Proton: Upgrading prefix from None to 11.0-100 (/root/.local/share/Steam/steamapps/compatdata/500/)
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+  ...
+Proton: Upgrading prefix from None to 11.0-100 (/root/.local/share/Steam/steamapps/compatdata/500/)
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+
+=== prefix contents ===
+/root/.local/share/Steam/steamapps/compatdata/500/pfx
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/creation_sync_guard
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/system.reg
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/user.reg
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/dosdevices
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/.update-timestamp
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/userdef.reg
+/root/.local/share/Steam/steamapps/compatdata/500/pfx/system.reg.old
+footprint_mb 1424
+allowance_mb 8192
+headroom_mb 6767
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:06:03 UTC 2026

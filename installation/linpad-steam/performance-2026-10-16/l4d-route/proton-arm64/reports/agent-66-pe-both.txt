@@ -1,0 +1,45 @@
+AGENT_BEGIN id=66-pe-both pid=1143 Fri Oct 16 20:09:54 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+launcher updated
+
+=== TEST 1: 64-bit Windows PE (control) ===
+t= 25s procs=[]
+t= 50s procs=[]
+t= 75s procs=[]
+t=100s procs=[]
+t=125s procs=[]
+--- 64-bit PE log ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+malloc_consolidate(): invalid chunk size
+
+=== TEST 2: 32-bit Windows PE (the L4D question) ===
+t= 25s procs=[]
+t= 50s procs=[]
+t= 75s procs=[]
+t=100s procs=[]
+t=125s procs=[]
+--- 32-bit PE log ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+corrupted size vs. prev_size
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+
+=== does the wow64 module exist in the Proton? ===
+-r-xr-xr-x 1 root root   71600 Oct 16 08:19 libarm64ecfex.so
+-r-xr-xr-x 1 root root   71600 Oct 16 08:19 libwow64fex.so
+libarm64ecfex.dll
+libwow64fex.dll
+wow64.dll
+wow64win.dll
+xtajit64.dll
+footprint_mb 1443
+allowance_mb 8192
+headroom_mb 6748
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:14:05 UTC 2026
