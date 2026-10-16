@@ -159,8 +159,23 @@ static addr_t find_hole_for_elf(exec_elf_header *header, exec_prg_header *ph) {
     return pt_find_hole(current->mem, size) << PAGE_BITS;
 }
 
+// Does the program's environment ask for the high address-space layout? (see kernel/memory.h)
+// Wine sets ISH_HIGH_VA=1 for itself so that its 32-bit view can live at base 0.
+static bool exec_env_has(struct exec_args envp, const char *name) {
+    // The entries are packed NUL-separated strings in one buffer, not an array of pointers.
+    size_t len = strlen(name);
+    const char *entry = envp.args;
+    for (int i = 0; i < envp.count; i++) {
+        if (strncmp(entry, name, len) == 0 && entry[len] == '=')
+            return true;
+        entry += strlen(entry) + 1;
+    }
+    return false;
+}
+
 static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, struct exec_args envp) {
     int err = 0;
+    current->mem->high_va = exec_env_has(envp, "ISH_HIGH_VA");
 
     // read the headers
     exec_elf_header header;
@@ -335,12 +350,12 @@ static int elf_exec(struct fd *fd, const char *file, struct exec_args argv, stru
             (argv.count + envp.count + 2) * sizeof(addr_t) + PAGE_SIZE) / PAGE_SIZE + 2;
 #ifdef GUEST_ARM64
     // ARM64: stack near top of 48-bit address space
-    if ((err = pt_map_nothing(current->mem, STACK_INIT_PAGE - stack_pages + 1, stack_pages, P_WRITE | P_GROWSDOWN)) < 0)
+    if ((err = pt_map_nothing(current->mem, STACK_INIT_PAGE(current->mem) - stack_pages + 1, stack_pages, P_WRITE | P_GROWSDOWN)) < 0)
         goto beyond_hope;
-    if ((err = pt_map_nothing(current->mem, STACK_TOP_PAGE, 1, P_READ)) < 0)
+    if ((err = pt_map_nothing(current->mem, STACK_TOP_PAGE(current->mem), 1, P_READ)) < 0)
         goto beyond_hope;
     write_wrunlock(&current->mem->lock);
-    addr_t sp = STACK_TOP_ADDR;
+    addr_t sp = STACK_TOP_ADDR(current->mem);
 #else
     // allocate the argument pages of stack below 0xffffe, and let it grow down
     if ((err = pt_map_nothing(current->mem, 0xffffd - stack_pages + 1, stack_pages, P_WRITE | P_GROWSDOWN)) < 0)

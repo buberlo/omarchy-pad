@@ -152,7 +152,7 @@ static addr_t do_mmap(addr_t addr, uint64_t len, dword_t prot, dword_t flags, fd
         // metadata is consistent with the actual arena layout).
         bool low_hint = (page < 0x100000);  // < 4GB
         if (low_hint) {
-            if (page + pages > STACK_TOP_PAGE) {
+            if (page + pages > STACK_TOP_PAGE(current->mem)) {
                 if (flags & MMAP_FIXED)
                     return _ENOMEM;
                 addr = 0;
@@ -166,7 +166,7 @@ static addr_t do_mmap(addr_t addr, uint64_t len, dword_t prot, dword_t flags, fd
             rlim_t_ stack_limit = rlimit(RLIMIT_STACK_);
             pages_t stack_gap = stack_limit == RLIM_INFINITY_ || stack_limit > (128ull << 20) ?
                 (128ull << 20) / PAGE_SIZE : stack_limit / PAGE_SIZE;
-            if (page != 0 && !(flags & MMAP_FIXED) && page + pages > STACK_TOP_PAGE - stack_gap) {
+            if (page != 0 && !(flags & MMAP_FIXED) && page + pages > STACK_TOP_PAGE(current->mem) - stack_gap) {
                 addr = 0;
                 page = 0;
             }
@@ -237,7 +237,7 @@ static addr_t do_mmap(addr_t addr, uint64_t len, dword_t prot, dword_t flags, fd
                 pages_t align_pages = pages;
                 if (align_pages > 0x40000) align_pages = 0x40000;
                 page_t aligned = (page / align_pages) * align_pages;
-                if (aligned >= MMAP_HOLE_END && pt_is_hole(current->mem, aligned, pages))
+                if (aligned >= MMAP_HOLE_END(current->mem) && pt_is_hole(current->mem, aligned, pages))
                     page = aligned;
             }
             if ((err = pt_map_lazy(current->mem, page, pages, prot)) < 0)

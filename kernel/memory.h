@@ -50,6 +50,9 @@ struct mem {
 
     struct mem_reservation *reservations;
 
+    // Set from the program's environment at exec (ISH_HIGH_VA=1): see the layout note below.
+    bool high_va;
+
     wrlock_t lock;
     lock_t cow_lock;
 };
@@ -60,11 +63,30 @@ struct mem {
 // walks are shallow (L0[0]→L1[0]→L2→L3 — the first two levels are always
 // index 0 and stay hot in cache). The 48-bit infrastructure remains available
 // for explicit high-address mmap hints (e.g., V8 CodeRange).
-#define STACK_TOP_PAGE    0xffffeULL        // guard page at 0xffffe000
-#define STACK_INIT_PAGE   0xffffdULL        // initial stack page (growsdown)
-#define STACK_TOP_ADDR    0xffffe000ULL     // SP starts here
-#define MMAP_HOLE_START   0xefffdULL        // mmap search starts here (same as x86)
-#define MMAP_HOLE_END     0x100ULL          // mmap search ends here (above guard pages)
+//
+// A program can ask for the opposite layout by starting with ISH_HIGH_VA=1 in its environment:
+// stack just below the 47-bit limit, mmap area above 4 GB, and the low 4 GB left free. Wine needs
+// exactly that. With the low 4 GB free it keeps its 32-bit (WoW64) view at base 0, so every guest
+// address is its own host address. With the default layout — loader, libraries and heap all below
+// 4 GB — it has to offset that view by 4 GB, and its WoW64 address translation then corrupts memory:
+// "corrupted size vs. prev_size" in wine and wineserver, and SEH frames whose addresses carry the
+// 4 GB offset ("Exception frame is not in stack limits"). The switch is per process, so only the
+// programs that ask for it pay the deeper page-table walks.
+#define STACK_TOP_PAGE_LOW    0xffffeULL        // guard page at 0xffffe000
+#define STACK_INIT_PAGE_LOW   0xffffdULL        // initial stack page (growsdown)
+#define STACK_TOP_ADDR_LOW    0xffffe000ULL     // SP starts here
+#define MMAP_HOLE_START_LOW   0xefffdULL        // mmap search starts here (same as x86)
+#define MMAP_HOLE_END_LOW     0x100ULL          // mmap search ends here (above guard pages)
+#define STACK_TOP_PAGE_HIGH   0x7ffffffULL      // guard page at 0x7ffffff000
+#define STACK_INIT_PAGE_HIGH  0x7fffffeULL      // initial stack page right below it
+#define STACK_TOP_ADDR_HIGH   0x7ffffff000ULL   // SP starts here
+#define MMAP_HOLE_START_HIGH  0x7fffeffeULL     // the same 16 MB gap below the stack as the low layout
+#define MMAP_HOLE_END_HIGH    0x100000ULL       // 4 GB: never place anything below the 32-bit view
+#define STACK_TOP_PAGE(mem)   ((mem)->high_va ? STACK_TOP_PAGE_HIGH : STACK_TOP_PAGE_LOW)
+#define STACK_INIT_PAGE(mem)  ((mem)->high_va ? STACK_INIT_PAGE_HIGH : STACK_INIT_PAGE_LOW)
+#define STACK_TOP_ADDR(mem)   ((mem)->high_va ? STACK_TOP_ADDR_HIGH : STACK_TOP_ADDR_LOW)
+#define MMAP_HOLE_START(mem)  ((mem)->high_va ? MMAP_HOLE_START_HIGH : MMAP_HOLE_START_LOW)
+#define MMAP_HOLE_END(mem)    ((mem)->high_va ? MMAP_HOLE_END_HIGH : MMAP_HOLE_END_LOW)
 // Upper bound for valid user addresses (page number, 48-bit / 4K = 36-bit)
 #define USER_ADDR_MAX_PAGE  0xFFFFFFFFFULL
 

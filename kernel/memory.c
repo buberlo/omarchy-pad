@@ -67,6 +67,7 @@ int mem_init(struct mem *mem) {
     mem->pgdir_used = 0;
     mem->mmap_hint = 0;
     mem->reservations = NULL;
+    mem->high_va = false;
     mem->mmu.ops = &mem_mmu_ops;
     mem->mmu.asbestos = asbestos_new(&mem->mmu);
     if (mem->mmu.asbestos == NULL) {
@@ -242,14 +243,14 @@ static page_t pt_find_hole_from(struct mem *mem, pages_t size, page_t start) {
     bool in_hole = false;
 
     page_t page = start;
-    while (page > MMAP_HOLE_END) {
+    while (page > MMAP_HOLE_END(mem)) {
         // Fast-skip unallocated L0 subtrees
         int i0 = PT_INDEX(page, 0);
         struct pt_node *l1 = l0 ? l0->children[i0] : NULL;
         if (l1 == NULL) {
             page_t l0_base = (page_t)i0 << (PT_BITS * 3);
             if (!in_hole) { in_hole = true; hole_end = page + 1; }
-            page_t effective_base = (l0_base > MMAP_HOLE_END) ? l0_base : MMAP_HOLE_END + 1;
+            page_t effective_base = (l0_base > MMAP_HOLE_END(mem)) ? l0_base : MMAP_HOLE_END(mem) + 1;
             if (in_hole && hole_end - effective_base >= size)
                 return hole_end - size;
             if (l0_base == 0) break;
@@ -263,7 +264,7 @@ static page_t pt_find_hole_from(struct mem *mem, pages_t size, page_t start) {
         if (l2 == NULL) {
             page_t l1_base = ((page_t)i0 << (PT_BITS * 3)) | ((page_t)i1 << (PT_BITS * 2));
             if (!in_hole) { in_hole = true; hole_end = page + 1; }
-            page_t effective_base = (l1_base > MMAP_HOLE_END) ? l1_base : MMAP_HOLE_END + 1;
+            page_t effective_base = (l1_base > MMAP_HOLE_END(mem)) ? l1_base : MMAP_HOLE_END(mem) + 1;
             if (in_hole && hole_end - effective_base >= size)
                 return hole_end - size;
             if (l1_base == 0) break;
@@ -277,7 +278,7 @@ static page_t pt_find_hole_from(struct mem *mem, pages_t size, page_t start) {
         if (l3 == NULL) {
             page_t l2_base = ((page_t)i0 << (PT_BITS * 3)) | ((page_t)i1 << (PT_BITS * 2)) | ((page_t)i2 << PT_BITS);
             if (!in_hole) { in_hole = true; hole_end = page + 1; }
-            page_t effective_base = (l2_base > MMAP_HOLE_END) ? l2_base : MMAP_HOLE_END + 1;
+            page_t effective_base = (l2_base > MMAP_HOLE_END(mem)) ? l2_base : MMAP_HOLE_END(mem) + 1;
             if (in_hole && hole_end - effective_base >= size)
                 return hole_end - size;
             if (l2_base == 0) break;
@@ -288,7 +289,7 @@ static page_t pt_find_hole_from(struct mem *mem, pages_t size, page_t start) {
         // L3 exists — check its pages directly, down to the start of this
         // leaf (walking from the root for each page was most of the cost)
         for (int i3 = PT_INDEX(page, 3); ; i3--) {
-            if (page <= MMAP_HOLE_END)
+            if (page <= MMAP_HOLE_END(mem))
                 return BAD_PAGE;
             if (l3[i3].data != NULL) {
                 in_hole = false;
@@ -380,8 +381,8 @@ static page_t pt_find_hole_impl(struct mem *mem, pages_t size, bool prefer_high)
     }
 
     page_t start = mem->mmap_hint;
-    if (start == 0 || start > MMAP_HOLE_START || start <= MMAP_HOLE_END + size)
-        start = MMAP_HOLE_START;
+    if (start == 0 || start > MMAP_HOLE_START(mem) || start <= MMAP_HOLE_END(mem) + size)
+        start = MMAP_HOLE_START(mem);
 
     // Try low address space with reservation awareness.
     // If a candidate overlaps a reservation, retry below the reservation.
@@ -403,8 +404,8 @@ static page_t pt_find_hole_impl(struct mem *mem, pages_t size, bool prefer_high)
     }
 
     // Wrap around from top
-    if (start < MMAP_HOLE_START) {
-        start = MMAP_HOLE_START;
+    if (start < MMAP_HOLE_START(mem)) {
+        start = MMAP_HOLE_START(mem);
         for (int attempt = 0; attempt < 10; attempt++) {
             page_t result = pt_find_hole_from(mem, size, start);
             if (result == BAD_PAGE)
@@ -452,6 +453,7 @@ int mem_init(struct mem *mem) {
     mem->pgdir_used = 0;
     mem->mmap_hint = 0;
     mem->reservations = NULL;
+    mem->high_va = false;
     mem->mmu.ops = &mem_mmu_ops;
     mem->mmu.asbestos = asbestos_new(&mem->mmu);
     if (mem->mmu.asbestos == NULL) {
@@ -982,7 +984,7 @@ void *mem_ptr(struct mem *mem, addr_t addr, int type) {
         // Enforce RLIMIT_STACK: don't grow stack beyond the limit.
 #ifdef GUEST_ARM64
         // Stack top is at STACK_TOP_PAGE (guard page), stack grows down from STACK_INIT_PAGE.
-        pages_t guard_page = STACK_TOP_PAGE;
+        pages_t guard_page = STACK_TOP_PAGE(mem);
 #else
         // Stack top is at page 0xffffe (guard page), stack grows down from 0xffffd.
         pages_t guard_page = 0xffffe;
