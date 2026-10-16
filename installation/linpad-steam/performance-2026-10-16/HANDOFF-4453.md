@@ -32,6 +32,15 @@ game's pid, app footprint 2 986 MB of the 8 192 MB allowance with `kills 0`, and
    Steam route is not qualified. Note that a Steam toplevel appeared in the log before this
    session and a launch attempt from it failed with `hollow_knight.x86_64: not found`, so the
    Steam entry currently starts nothing.
+
+   The parallel LinPad Steam work (`dd7f06f0`, builds 4478 desktop and 4480 steam, both
+   installed) leaves exactly this out of scope: *"Still open ... Steam → game launching (the
+   `linpad-fex-native` compat tool ...)"*. The prepared step is therefore: bring the command
+   agent back, run `kb4453-steam-probe` (read-only), then `kb4453-steam-setup` (installs
+   `/usr/local/bin/linpad-hk-fex` and sets the app's launch options to
+   `linpad-hk-fex %command%`; refuses while Steam runs), start Steam, and verify with
+   `steam -applaunch 367520` — the same code path the Play button uses — by watching
+   `/tmp/ishwl.log` for the Hollow Knight toplevel and the frame log for deliveries.
 5. **A numerical FPS result** in the usual sense. Frame *deliveries* are not frames per second
    and are not presented as such.
 
