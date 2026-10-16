@@ -14,6 +14,14 @@ convenient for running them under both the CLI emulator and iPad app.
   and hangup stays disabled until rearmed.
 - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
   wakes a thread blocked on an outer edge-triggered epoll set.
+- `fifo-idle-poll-probe.c`: idle polls with no requested events sleep even
+  when FIFOs, pipes or sockets contain unread data; requested readability stays
+  level triggered and anonymous pipe/socket peer closure still reports HUP.
+  The old Darwin runtime spins on the queued microphone FIFO until the
+  probe's five-second alarm.
+  Its separate `--named-fifo-hup` diagnostic exposes an existing Darwin gap:
+  named FIFO writer closure is not reported by host poll/kqueue. That diagnostic
+  remains failing; this repair does not claim to add named FIFO HUP support.
 - `parent-pid-probe.c`: getppid from a worker and a forked child, plus
   the child procfs stat/status parent fields, use process IDs rather than TIDs.
 - `proc-thread-list-probe.c`: lists only process leaders at /proc, while

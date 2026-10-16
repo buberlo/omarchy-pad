@@ -574,12 +574,20 @@ static int real_poll_update(struct real_poll *real, int fd, int types, void *dat
     struct kevent e[3] = {
         {.filter = EVFILT_READ, .flags = types & (POLL_READ | POLL_HUP) ? EV_ADD : EV_DELETE},
         {.filter = EVFILT_WRITE, .flags = types & POLL_WRITE ? EV_ADD : EV_DELETE},
-        {.filter = EVFILT_EXCEPT, .flags = types & POLL_ERR ? EV_ADD : EV_DELETE},
+        // EVFILT_EXCEPT with no NOTE_OOB also wakes for ordinary socket data
+        // on Darwin. Only use it as a wakeup hint; realfs_poll checks errors.
+        {.filter = EVFILT_EXCEPT, .flags = types & POLL_ERR ? EV_ADD | EV_CLEAR : EV_DELETE},
     };
     if (!(types & POLL_READ) && types & POLL_HUP) {
         // Set the low water mark really high so we'll only get woken up on a hangup
         e[0].fflags = NOTE_LOWAT;
         e[0].data = INT_MAX;
+        // Darwin FIFOs ignore NOTE_LOWAT: queued data would wake this filter
+        // forever even though the guest only wants HUP/ERR (PulseAudio's idle
+        // microphone does this). Clear unmatched read notifications after one
+        // delivery; a later host EOF event still wakes us. POLLIN stays level
+        // triggered, and realfs_poll still decides whether to report HUP.
+        e[0].flags |= EV_CLEAR;
     }
     for (int i = 0; i < 3; i++) {
         e[i].ident = fd;
