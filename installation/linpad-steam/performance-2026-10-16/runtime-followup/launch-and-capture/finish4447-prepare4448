@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/finish4447-prepare4448.txt
+{
+ date
+ printf 'STOP_REASON=operator ending bounded 4447 startup to install measured JIT invalidation repair\n'
+ cmd=$(tr '\000' ' ' < /proc/340/cmdline)
+ printf 'TARGET_CMD=%s\n' "$cmd"
+ case "$cmd" in *FEX-apple-m1-munmap*hollow_knight.x86_64*) ;; *) echo IDENTITY_MISMATCH; exit 70;; esac
+ cat /proc/340/stat
+ cat /tmp/hollow4447-egl-unity.txt
+ tail -30 /tmp/ishwl.log
+ kill -9 340
+ echo OPERATOR_SENT_SIGKILL=340
+ hook=/etc/ishwl/session.d/99-hollow-frame-capture.sh
+ test ! -e "$hook"
+ printf '%s\n' 'export ISHWL_FRAMELOG=/tmp/hollow4448-frames.txt' > "$hook"
+ echo NEXT_BOOT_FRAME_CAPTURE_READY=4448
+ date
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+tail -10 "$OUT"

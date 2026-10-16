@@ -1,0 +1,20 @@
+1: Fri Oct 16 12:01:06 UTC 2026
+3: Fri Oct 16 11:57:56 UTC 2026
+10: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+43: 2026-10-16T11:58:06.906Z|0xcc410540|The selected window backend is wayland 
+44: 2026-10-16T11:58:07.718Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+45: 2026-10-16T11:58:07.719Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+46: 2026-10-16T11:59:00.070Z|0xcc410540|Input System module state changed to: Initialized.
+47: 2026-10-16T11:59:01.704Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+48: 2026-10-16T11:59:05.105Z|0xcc410540|[Physics::Module] Initialized fallback backend.
+49: 2026-10-16T11:59:05.107Z|0xcc410540|[Physics::Module] Id: 0xdecafbad
+50: 2026-10-16T11:59:18.442Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+53: GAME_PID=340
+55: 340 (FEX-apple-m1-mun) R 338 338 24 34818 338 0 0 0 0 0 18835 128 0 0 20 0 35 0 54611643 140778730127360 4081440 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+57: 0000af7ed000-0000b6de6000 r-xp 00000000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1
+66: 0000b75ac000-0000b8ce7000 r-xp 000e1000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+71: 0000b9f35000-0000b9f5d000 r-xp 00010000 00:00 0          /opt/hollow-egl/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+76: footprint_mb 957
+77: allowance_mb 8192
+78: headroom_mb 7234
+82: kills 0

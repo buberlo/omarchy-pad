@@ -1,0 +1,7 @@
+1: Fri Oct 16 12:05:07 UTC 2026
+57: 2026-10-16T12:04:29.136Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+67: 340 (FEX-apple-m1-mun) R 338 338 24 34818 338 0 0 0 0 0 45038 283 0 0 20 0 36 0 54611644 140781443325952 4204520 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+85: footprint_mb 994
+86: allowance_mb 8192
+87: headroom_mb 7197
+91: kills 0

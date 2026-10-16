@@ -1,0 +1,223 @@
+{
+  "files": [
+    {
+      "source": "work/performance/cpu-accounting-audit/README.md",
+      "destination": "cpu-accounting/README.md",
+      "source_sha256": "3faa60c7f3a2963cfb6cf2c9eec0a0733ee9361860e1fdbec4b6ab91757bbf1d",
+      "archived_sha256": "3faa60c7f3a2963cfb6cf2c9eec0a0733ee9361860e1fdbec4b6ab91757bbf1d",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/cpu-accounting-audit/probe.c",
+      "destination": "cpu-accounting/probe.c",
+      "source_sha256": "088af43ad52192ee01c68acbfb99232634895652436a948220186748e89a5320",
+      "archived_sha256": "088af43ad52192ee01c68acbfb99232634895652436a948220186748e89a5320",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/cpu-accounting-audit/local-excerpt.txt",
+      "destination": "cpu-accounting/local-excerpt.txt",
+      "source_sha256": "0a2754ded9251a1ad6cfc5372392c726f854626d87c2cf4a0fa7a8348722c665",
+      "archived_sha256": "0a2754ded9251a1ad6cfc5372392c726f854626d87c2cf4a0fa7a8348722c665",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/cpu-accounting-audit/provenance.json",
+      "destination": "cpu-accounting/provenance.json",
+      "source_sha256": "0ca6a6cfb5083a363a3512a7e6261bc95bcee0373554ed4ece969298ff076ff1",
+      "archived_sha256": "0ca6a6cfb5083a363a3512a7e6261bc95bcee0373554ed4ece969298ff076ff1",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/limit8-launch.c",
+      "destination": "stack-limit8/limit8-launch.c",
+      "source_sha256": "b74e576dfe4c6a7474420700e1e03a8f68b07213e8c4e516f595ebf97f8b2f11",
+      "archived_sha256": "b74e576dfe4c6a7474420700e1e03a8f68b07213e8c4e516f595ebf97f8b2f11",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-limit8-results.json",
+      "destination": "stack-limit8/after-maps-mono-limit8-results.json",
+      "source_sha256": "e9685c60cc12f14cbc367972c4873a0554b40aa5021fb57e6ca878c613965ea8",
+      "archived_sha256": "e9685c60cc12f14cbc367972c4873a0554b40aa5021fb57e6ca878c613965ea8",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-limit8-provenance.json",
+      "destination": "stack-limit8/after-maps-mono-limit8-provenance.json",
+      "source_sha256": "851815f88dd1b9a8a5a8fd279c1450ee23d66fd29c5eb893f2fa15bda665e9c5",
+      "archived_sha256": "851815f88dd1b9a8a5a8fd279c1450ee23d66fd29c5eb893f2fa15bda665e9c5",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-limit8-0-excerpt.txt",
+      "destination": "stack-limit8/after-maps-mono-limit8-0-excerpt.txt",
+      "source_sha256": "ec62d16e1a5b02c371d58268bb7ffcb26527f2ac98c47573e23cae6026b23011",
+      "archived_sha256": "ec62d16e1a5b02c371d58268bb7ffcb26527f2ac98c47573e23cae6026b23011",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/mono-init-probe/after-maps-mono-limit8-3221-excerpt.txt",
+      "destination": "stack-limit8/after-maps-mono-limit8-3221-excerpt.txt",
+      "source_sha256": "4ecee50c112c8791b03ccb386c0f2788ffa47e9a8b47a5af7da84a51f8c1e77d",
+      "archived_sha256": "4ecee50c112c8791b03ccb386c0f2788ffa47e9a8b47a5af7da84a51f8c1e77d",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/hollow-graphics-qualification.md",
+      "destination": "graphics/hollow-graphics-qualification.md",
+      "source_sha256": "4e6eaf17d33a6a3a04eaf5828e62808176c178605ef4987179b0184c1f8139bf",
+      "archived_sha256": "4e6eaf17d33a6a3a04eaf5828e62808176c178605ef4987179b0184c1f8139bf",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/parse-hollow-frame-window.py",
+      "destination": "graphics/parse-hollow-frame-window.py",
+      "source_sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "archived_sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/frame-parser-test-results.json",
+      "destination": "graphics/frame-parser-test-results.json",
+      "source_sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432",
+      "archived_sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/test-hollow-frame-parser.py",
+      "destination": "graphics/test-hollow-frame-parser.py",
+      "source_sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba",
+      "archived_sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4447-egl",
+      "destination": "launch-and-capture/hollow4447-egl",
+      "source_sha256": "9af5b6c9575a649f66d2fe070eae0a082e61d70f9364e208cacc10670145c228",
+      "archived_sha256": "9af5b6c9575a649f66d2fe070eae0a082e61d70f9364e208cacc10670145c228",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4447-status",
+      "destination": "launch-and-capture/hollow4447-status",
+      "source_sha256": "f6c4f1c41848f99019e53245e3e8efdd6b2b5bd4bf96e12d9ab1db18cee4fec9",
+      "archived_sha256": "f6c4f1c41848f99019e53245e3e8efdd6b2b5bd4bf96e12d9ab1db18cee4fec9",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4447-detail",
+      "destination": "launch-and-capture/hollow4447-detail",
+      "source_sha256": "250a5822dbbe4e74eaac5858b9cebc4cb1cc4876fe4268a6912e146011a026b1",
+      "archived_sha256": "250a5822dbbe4e74eaac5858b9cebc4cb1cc4876fe4268a6912e146011a026b1",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4447-short",
+      "destination": "launch-and-capture/hollow4447-short",
+      "source_sha256": "ccf5f1d29beb8a03c5374a0b2fb48ff8f45c7d986e4f4d6a18d0167c7d358240",
+      "archived_sha256": "ccf5f1d29beb8a03c5374a0b2fb48ff8f45c7d986e4f4d6a18d0167c7d358240",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/finish4447-prepare4448",
+      "destination": "launch-and-capture/finish4447-prepare4448",
+      "source_sha256": "f6eda4e16af1854a549606bd148017c2ee9ca87d12a04b4dbf3d8f2e48edb3e5",
+      "archived_sha256": "f6eda4e16af1854a549606bd148017c2ee9ca87d12a04b4dbf3d8f2e48edb3e5",
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-status-1.txt",
+      "destination": "game-progress/hollow4447-status-1.txt",
+      "source_sha256": "e1d2b2b1d97aa563f9f1c18449e3fd7390a2c93cc13e198e8501e71ad79e9768",
+      "source_bytes": 3521,
+      "archived_sha256": "793d1d2e43786f4073198c0efd5f57f5847d1b11067d9914f95ce75acf8215b8",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-status-2.txt",
+      "destination": "game-progress/hollow4447-status-2.txt",
+      "source_sha256": "0b4d2d620a9ad6ba693dd41e074c8c827a42f62476c9ea0bb77404f4d5e164a2",
+      "source_bytes": 6100,
+      "archived_sha256": "e98728268726f253ad879aec7ca9f5946b2746eb37b216783667aaaead75da33",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-status-3.txt",
+      "destination": "game-progress/hollow4447-status-3.txt",
+      "source_sha256": "2f2b11923025a11cdd9913e03dec7976d4887a0b2c6bb1e42fe70ade4684bcc1",
+      "source_bytes": 6101,
+      "archived_sha256": "a38d8d659cbf47a81227475289ae47c1daf3c81122c592febe1cfec4a99e0d06",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-detail-1.txt",
+      "destination": "game-progress/hollow4447-detail-1.txt",
+      "source_sha256": "0129fe04c6f9fd0c0322211eb2ac35bf922c03b74bb6628561d43080d3e172f8",
+      "source_bytes": 82701,
+      "archived_sha256": "e3c87b599478a9c517c4786772217ebf412fb578054e45a9246f3281318d6e36",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-short-1.txt",
+      "destination": "game-progress/hollow4447-short-1.txt",
+      "source_sha256": "d29e19c56d48afc067e757d2f83a444f53e37345d1c3d0c8639b7fb07509b0e0",
+      "source_bytes": 4822,
+      "archived_sha256": "bb48ac5aa3e71ca808089a9a34ea7940c6d370ea3eab5f4b9d21ed4fd9af0e67",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-short-2.txt",
+      "destination": "game-progress/hollow4447-short-2.txt",
+      "source_sha256": "df8fbaa4e39949c58421df823af24fb02ba62bb514215e1a9b1d23b554f97cd1",
+      "source_bytes": 8490,
+      "archived_sha256": "1e790381749c4b7f41f67faad3621d761f524561f072a1767e9899711c812b17",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-short-3.txt",
+      "destination": "game-progress/hollow4447-short-3.txt",
+      "source_sha256": "a618f44b9b376717fbbf50f7ea71c0f587368be1f1cd6c08cae69fc5068bc298",
+      "source_bytes": 8814,
+      "archived_sha256": "76219096c131594a91e7258e61abcc273017955234aeef9b3eebee9560e5f81c",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-short-4.txt",
+      "destination": "game-progress/hollow4447-short-4.txt",
+      "source_sha256": "10e37aab7e1486d1a7ace71ea4ec28d8876daeab862bc099c0b45d08d4207321",
+      "source_bytes": 8662,
+      "archived_sha256": "0430482e6f840d05c34365c49bda038844e400b0cb8d9c0a9aabfa95dd01a811",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-short-5.txt",
+      "destination": "game-progress/hollow4447-short-5.txt",
+      "source_sha256": "9534a5d3a7b608da7e773a97856b36bcc85c5b7b95cfbc9ae6db1c4c8fbc0097",
+      "source_bytes": 8667,
+      "archived_sha256": "287be6872e27bee0fea1a7572b241c5c7f4f931f84ad75986542adf4b3e9e4cf",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-manual-stop-game-output.txt",
+      "destination": "game-progress/hollow4447-manual-stop-game-output.txt",
+      "source_sha256": "7140a7fec09eeee711522c190346c47cee1f250995307c42e9845e42fd34c20b",
+      "source_bytes": 25404,
+      "archived_sha256": "c253b1572ae6a045a475a433af06bf60f321388a3bc5714c818ffcb734730166",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "source": "work/performance/reports/finish4447-prepare4448.txt",
+      "destination": "game-progress/finish4447-prepare4448.txt",
+      "source_sha256": "17acc842dea3187b6da07747e63694019d6470adcc8a912b7417c225ca38aad6",
+      "source_bytes": 23736,
+      "archived_sha256": "e3b149f7d114cd17d7b0318c4b813b846b2d57f91ca2b2eed4a4f40ffc8cc5a0",
+      "mode": "numbered phase lines, targetPID340 stat, aggregate memory and selected executable-map anchors only"
+    },
+    {
+      "destination": "profiler/startup-profile-summary.json",
+      "archived_sha256": "2e16869eec1d4027ca75fb0b5d827b10c8a1d0a970a5932db3430ab31a2cd44f",
+      "mode": "selected summary fields and two relevant threads; capture metadata without user/device identifiers; source hashes embedded"
+    }
+  ]
+}

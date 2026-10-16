@@ -1,0 +1,24 @@
+{
+  "scope": "local macOS LinPad CLI, not iPad execution",
+  "command": [
+    "work/linpad-cli/ish",
+    "-r",
+    "work/performance/vulkan-repro-root",
+    "/opt/cpu-accounting-probe"
+  ],
+  "environment": {
+    "ISH_JIT": "1"
+  },
+  "exit_code": 0,
+  "sha256": {
+    "work/LinPad/kernel/resource.c": "7d4bcecd48404b9831ebfdca2d5dfc056d10504549605448ae7ce306ef71b923",
+    "work/LinPad/kernel/task.c": "0b61066ed98c69474abeba0590054eaae3ad74247138e8b29b2bf11f9065f062",
+    "work/LinPad/kernel/exit.c": "637d28f910c05ff230bd066ee7b2aee41132f334954a13e4d18915913eda1c2d",
+    "work/LinPad/fs/proc/pid.c": "8b37326732ffa9267e1ecddd2bec675206b43a49668b61b6d970982921e03e72",
+    "work/linpad-cli/ish": "3209f92653dfca707c6a08f4e0a7935070164e00c6f64644c9d62c7ab643fbc1",
+    "work/performance/vulkan-repro-root/opt/cpu-accounting-probe": "fd9e6f9012a976450a0f01e9fd0bca727fab03da7e13f9a0b57d9408423a027d",
+    "work/performance/cpu-accounting-audit/probe.c": "088af43ad52192ee01c68acbfb99232634895652436a948220186748e89a5320",
+    "work/performance/cpu-accounting-audit/local.txt": "c0726bfafecab677d92bf65bf5f9835fbbcd7ed4ad66406a05792c0c0909030d",
+    "work/performance/cpu-accounting-audit/local-excerpt.txt": "0a2754ded9251a1ad6cfc5372392c726f854626d87c2cf4a0fa7a8348722c665"
+  }
+}

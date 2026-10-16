@@ -1,0 +1,20 @@
+#!/bin/sh
+OUT=/tmp/hollow4447-detail.txt
+{
+ date
+ cat /tmp/hollow4447-egl-unity.txt
+ echo COMPOSITOR
+ tail -120 /tmp/ishwl.log
+ echo PROCESSES
+ ps -o pid,ppid,stat,comm
+ for gamepid in $(ps -o pid,comm | awk '/FEX-apple-m1-mu/ {print $1}'); do
+  echo GAME_PID=$gamepid
+  cat /proc/$gamepid/stat
+  cat /proc/$gamepid/maps
+  ls -l /proc/$gamepid/fd
+  for tid in /proc/$gamepid/task/*; do echo THREAD=$tid; cat "$tid/status"; done
+ done
+ cat /proc/ish/memory
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+tail -20 "$OUT"

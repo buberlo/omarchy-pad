@@ -1,0 +1,12 @@
+#!/bin/sh
+OUT=/tmp/hollow4447-short.txt
+{
+ date
+ tail -65 /tmp/hollow4447-egl-unity.txt
+ cat /proc/340/stat
+ cat /proc/340/status
+ cat /proc/ish/memory
+ tail -45 /tmp/ishwl.log
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+tail -15 "$OUT"

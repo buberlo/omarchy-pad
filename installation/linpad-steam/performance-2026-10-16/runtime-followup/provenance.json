@@ -1,0 +1,20 @@
+{
+  "status": "frozen: manually stopped build4447 startup, no visible game frame",
+  "build": 4447,
+  "source_fix_commit": "9beb5dea2eeaffd7ebd27952592cba658fe12bb4",
+  "frozen_release_receipt_commit": "a2bd0e2bf6e14b10cc4cb70289761bd0467db302",
+  "game_pid": 340,
+  "game_launch_utc": "2026-10-16T11:57:56Z",
+  "game_stop_utc": "2026-10-16T12:13:22Z",
+  "run_elapsed_seconds": 926,
+  "stop_cause": "operator SIGKILL after verified target PID; GAME_EXIT=137 is manual, not a spontaneous crash",
+  "last_included_unity_phase_utc": "2026-10-16T12:12:01.499Z",
+  "last_included_unity_phase": "FMOD failed to initialize output device, error33",
+  "frozen": true,
+  "visible_game_frame_qualified": false,
+  "gameplay_qualified": false,
+  "performance_qualified": false,
+  "graphics_parser_tests": "synthetic only",
+  "frozen_build_and_mono_archives_modified": false,
+  "proprietary_binary_bytes_included": false
+}

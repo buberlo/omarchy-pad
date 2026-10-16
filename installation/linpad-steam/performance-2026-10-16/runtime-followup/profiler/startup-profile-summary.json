@@ -1,0 +1,271 @@
+{
+  "samples": 5592,
+  "missing_backtrace_rows": 2,
+  "sample_weight_seconds": 5.592,
+  "sample_span_seconds": 5.462562083,
+  "top_self": [
+    {
+      "function": "ss_invalidate_locked",
+      "weighted_seconds": 5.346,
+      "percent": 95.60085836909872
+    },
+    {
+      "function": "__psynch_mutexwait",
+      "weighted_seconds": 0.034,
+      "percent": 0.6080114449213162
+    },
+    {
+      "function": "__psynch_mutexdrop",
+      "weighted_seconds": 0.026,
+      "percent": 0.46494992846924177
+    },
+    {
+      "function": "ss_get",
+      "weighted_seconds": 0.026,
+      "percent": 0.46494992846924177
+    },
+    {
+      "function": "ticker_main",
+      "weighted_seconds": 0.018,
+      "percent": 0.3218884120171674
+    },
+    {
+      "function": "_platform_memmove",
+      "weighted_seconds": 0.01,
+      "percent": 0.17882689556509299
+    },
+    {
+      "function": "__semwait_signal",
+      "weighted_seconds": 0.007,
+      "percent": 0.1251788268955651
+    },
+    {
+      "function": "jit_icache_sync",
+      "weighted_seconds": 0.006,
+      "percent": 0.1072961373390558
+    },
+    {
+      "function": "AG::Graph::UpdateStack::update()",
+      "weighted_seconds": 0.005,
+      "percent": 0.08941344778254649
+    },
+    {
+      "function": "lookup_lockfree",
+      "weighted_seconds": 0.004,
+      "percent": 0.0715307582260372
+    },
+    {
+      "function": "0x12135409d",
+      "weighted_seconds": 0.004,
+      "percent": 0.0715307582260372
+    },
+    {
+      "function": "stat",
+      "weighted_seconds": 0.004,
+      "percent": 0.0715307582260372
+    },
+    {
+      "function": "AG::Graph::propagate_dirty(AG::AttributeID)",
+      "weighted_seconds": 0.003,
+      "percent": 0.0536480686695279
+    },
+    {
+      "function": "__getattrlist",
+      "weighted_seconds": 0.003,
+      "percent": 0.0536480686695279
+    },
+    {
+      "function": "_xzm_free_tc",
+      "weighted_seconds": 0.002,
+      "percent": 0.0357653791130186
+    }
+  ],
+  "top_inclusive": [
+    {
+      "function": "asbestos_invalidate_page",
+      "weighted_seconds": 5.365,
+      "percent": 95.94062947067239
+    },
+    {
+      "function": "jit_invalidate_range",
+      "weighted_seconds": 5.351,
+      "percent": 95.69027181688126
+    },
+    {
+      "function": "ss_invalidate_locked",
+      "weighted_seconds": 5.346,
+      "percent": 95.60085836909872
+    },
+    {
+      "function": "mem_ptr",
+      "weighted_seconds": 3.735,
+      "percent": 66.79184549356223
+    },
+    {
+      "function": "mmu_translate",
+      "weighted_seconds": 3.298,
+      "percent": 58.97711015736767
+    },
+    {
+      "function": "jit_helper",
+      "weighted_seconds": 3.16,
+      "percent": 56.509298998569385
+    },
+    {
+      "function": "jtlb_fill",
+      "weighted_seconds": 3.159,
+      "percent": 56.49141630901288
+    },
+    {
+      "function": "0x11c75428f",
+      "weighted_seconds": 2.567,
+      "percent": 45.90486409155937
+    },
+    {
+      "function": "thread_start",
+      "weighted_seconds": 2.222,
+      "percent": 39.735336194563665
+    },
+    {
+      "function": "_pthread_start",
+      "weighted_seconds": 2.222,
+      "percent": 39.735336194563665
+    },
+    {
+      "function": "task_run_current",
+      "weighted_seconds": 2.184,
+      "percent": 39.05579399141631
+    },
+    {
+      "function": "task_thread",
+      "weighted_seconds": 2.184,
+      "percent": 39.05579399141631
+    },
+    {
+      "function": "cpu_run_to_interrupt",
+      "weighted_seconds": 1.737,
+      "percent": 31.06223175965665
+    },
+    {
+      "function": "jit_run",
+      "weighted_seconds": 1.726,
+      "percent": 30.86552217453505
+    },
+    {
+      "function": "commit_bounce",
+      "weighted_seconds": 1.091,
+      "percent": 19.510014306151646
+    }
+  ],
+  "top_stacks": [
+    {
+      "stack": "ss_invalidate_locked -> jit_invalidate_range -> asbestos_invalidate_page -> jit_run -> cpu_run_to_interrupt -> task_run_current -> task_thread -> _pthread_start",
+      "seconds": 1.621,
+      "percent": 28.987839771101573
+    },
+    {
+      "stack": "ss_invalidate_locked -> jit_invalidate_range -> asbestos_invalidate_page -> mem_ptr -> mmu_translate -> jtlb_fill -> jit_helper -> 0x11c75428f",
+      "seconds": 1.615,
+      "percent": 28.880543633762517
+    },
+    {
+      "stack": "ss_invalidate_locked -> jit_invalidate_range -> asbestos_invalidate_page -> mem_ptr -> mmu_translate -> jtlb_fill -> commit_bounce -> jit_helper",
+      "seconds": 1.09,
+      "percent": 19.492131616595135
+    },
+    {
+      "stack": "ss_invalidate_locked -> jit_invalidate_range -> asbestos_invalidate_page -> mem_ptr -> __user_write_mem -> user_write_task -> sys_clock_gettime -> handle_interrupt",
+      "seconds": 0.435,
+      "percent": 7.778969957081545
+    },
+    {
+      "stack": "ss_invalidate_locked -> jit_invalidate_range -> asbestos_invalidate_page -> mem_ptr -> mmu_translate -> jtlb_fill -> jit_helper -> 0x11c55428f",
+      "seconds": 0.322,
+      "percent": 5.758226037195994
+    }
+  ],
+  "threads": [
+    {
+      "thread": "FEX-apple-m-340 (Linux for iPad, pid: 21341)",
+      "weighted_seconds": 4.785,
+      "percent": 85.568669527897,
+      "top_self": [
+        {
+          "function": "ss_invalidate_locked",
+          "seconds": 4.687
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "seconds": 0.021
+        },
+        {
+          "function": "ss_get",
+          "seconds": 0.021
+        },
+        {
+          "function": "__psynch_mutexwait",
+          "seconds": 0.007
+        }
+      ]
+    },
+    {
+      "thread": "UnityGfxDe-1350 (Linux for iPad, pid: 21341)",
+      "weighted_seconds": 0.722,
+      "percent": 12.911301859799714,
+      "top_self": [
+        {
+          "function": "ss_invalidate_locked",
+          "seconds": 0.659
+        },
+        {
+          "function": "__psynch_mutexwait",
+          "seconds": 0.027
+        },
+        {
+          "function": "_platform_memmove",
+          "seconds": 0.007
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "seconds": 0.005
+        }
+      ]
+    }
+  ],
+  "capture": {
+    "tool": "Xcode Instruments Time Profiler",
+    "instruments_version": "27.0 (27A266a)",
+    "device_model": "iPad Air 13-inch (M2)",
+    "process": "Linux for iPad",
+    "native_pid": 21341,
+    "game_pid": 340,
+    "start_utc": "2026-10-16T12:07:55.066Z",
+    "end_utc": "2026-10-16T12:08:00.864Z",
+    "configured_time_limit_seconds": 5,
+    "trace_duration_seconds": 5.797403,
+    "end_reason": "Time limit reached"
+  },
+  "qualification": "Sampled native CPU during this bounded startup interval, not elapsed-time share, GPU workload, FPS or playback evidence. Trace ending does not mean game exit.",
+  "source_files": [
+    {
+      "path": "work/performance/build4447/startup-profile-summary.json",
+      "sha256": "987eafdcdb20fe210bddd8550d9342f303b50e969a855ca2e354bd33657f771d",
+      "bytes": 9398
+    },
+    {
+      "path": "work/performance/build4447/startup-profile-samples.xml",
+      "sha256": "1001d97bf3971a6bb46e75cf11c8f3ef74f8cbd8d940f2fc3326293e3d9349c4",
+      "bytes": 1213643
+    },
+    {
+      "path": "work/performance/build4447/startup-profile-toc.xml",
+      "sha256": "9987be14cba27ffb447a34bfe9572a31fcb82c92f9391dc9770a5fc39c074fbb",
+      "bytes": 8082
+    },
+    {
+      "path": "work/performance/build4447/startup-profile.log",
+      "sha256": "50006bc4fe8057b8d60a7062f3ba7e546b7597292181528ddc359253a804a7a3",
+      "bytes": 274
+    }
+  ]
+}

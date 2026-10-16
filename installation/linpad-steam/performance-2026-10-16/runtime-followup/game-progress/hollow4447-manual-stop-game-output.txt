@@ -1,0 +1,36 @@
+1: Fri Oct 16 11:57:56 UTC 2026
+8: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+40: Killed
+41: GAME_EXIT=137
+43: 2026-10-16T11:58:06.906Z|0xcc410540|The selected window backend is wayland 
+44: 2026-10-16T11:58:07.718Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+45: 2026-10-16T11:58:07.719Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+46: 2026-10-16T11:59:00.070Z|0xcc410540|Input System module state changed to: Initialized.
+47: 2026-10-16T11:59:01.704Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+48: 2026-10-16T11:59:05.105Z|0xcc410540|[Physics::Module] Initialized fallback backend.
+49: 2026-10-16T11:59:05.107Z|0xcc410540|[Physics::Module] Id: 0xdecafbad
+50: 2026-10-16T11:59:18.442Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+51: 2026-10-16T12:01:41.837Z|0xcc410540|[Vulkan init] extensions: count=24
+76: 2026-10-16T12:03:16.011Z|0xcc410540|[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
+77: 2026-10-16T12:03:18.551Z|0xcc410540|[Vulkan init] Physical Device 0x500100 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+78: 2026-10-16T12:03:24.051Z|0xcc410540|Vulkan detection: 2
+79: 2026-10-16T12:03:26.750Z|0xcc410540|Initialize engine version: 6000.0.61f1 (74a0adb02c31)
+80: 2026-10-16T12:03:31.808Z|0xcc410540|[Subsystems] Discovering subsystems at path /root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/UnitySubsystems
+81: 2026-10-16T12:03:32.946Z|0xcc410540|Forcing GfxDevice: Vulkan
+82: 2026-10-16T12:03:33.032Z|0xcc410540|GfxDevice: creating device client; kGfxThreadingModeThreaded
+83: 2026-10-16T12:03:48.823Z|0xcc410540|[Vulkan init] extensions: count=24
+108: 2026-10-16T12:04:08.118Z|0xcc410540|[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
+109: 2026-10-16T12:04:27.087Z|0xcc410540|[Vulkan init] Physical Device 0x50a000 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+110: 2026-10-16T12:04:27.099Z|0xcc410540|[Vulkan init] Selected physical device 0x50a000
+111: 2026-10-16T12:04:27.121Z|0xcc410540|[Vulkan init] Graphics queue count=1
+112: 2026-10-16T12:04:28.941Z|0xcc410540|[Vulkan init] extensions: count=120
+223: 2026-10-16T12:04:29.136Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+233: 2026-10-16T12:05:49.625Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+234: 2026-10-16T12:05:49.634Z|0xcc410540|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+235: 2026-10-16T12:05:49.637Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+236: 2026-10-16T12:05:49.640Z|0xcc410540|Vulkan device type 1
+237: 2026-10-16T12:05:49.642Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+238: 2026-10-16T12:05:49.644Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+239: 2026-10-16T12:06:01.358Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+240: 2026-10-16T12:12:01.499Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+241: Fri Oct 16 12:13:22 UTC 2026

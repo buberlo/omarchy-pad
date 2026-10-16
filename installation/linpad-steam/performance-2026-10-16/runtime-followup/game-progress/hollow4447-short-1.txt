@@ -1,0 +1,15 @@
+1: Fri Oct 16 12:02:46 UTC 2026
+2: 2026-10-16T11:58:06.906Z|0xcc410540|The selected window backend is wayland 
+3: 2026-10-16T11:58:07.718Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+4: 2026-10-16T11:58:07.719Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+5: 2026-10-16T11:59:00.070Z|0xcc410540|Input System module state changed to: Initialized.
+6: 2026-10-16T11:59:01.704Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+7: 2026-10-16T11:59:05.105Z|0xcc410540|[Physics::Module] Initialized fallback backend.
+8: 2026-10-16T11:59:05.107Z|0xcc410540|[Physics::Module] Id: 0xdecafbad
+9: 2026-10-16T11:59:18.442Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+10: 2026-10-16T12:01:41.837Z|0xcc410540|[Vulkan init] extensions: count=24
+35: 340 (FEX-apple-m1-mun) R 338 338 24 34818 338 0 0 0 0 0 28856 182 0 0 20 0 35 0 54611643 140778767880192 4090657 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+53: footprint_mb 961
+54: allowance_mb 8192
+55: headroom_mb 7230
+59: kills 0

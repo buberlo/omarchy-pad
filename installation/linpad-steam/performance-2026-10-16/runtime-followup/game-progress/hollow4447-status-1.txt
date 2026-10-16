@@ -1,0 +1,12 @@
+1: Fri Oct 16 11:58:44 UTC 2026
+3: Fri Oct 16 11:57:56 UTC 2026
+10: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+43: 2026-10-16T11:58:06.906Z|0xcc410540|The selected window backend is wayland 
+44: 2026-10-16T11:58:07.718Z|0xcc410540|Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+45: 2026-10-16T11:58:07.719Z|0xcc410540|Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+48: GAME_PID=340
+50: 340 (FEX-apple-m1-mun) R 338 338 24 34818 338 0 0 0 0 0 4758 38 0 0 20 0 10 0 54611643 140756163731456 2098538 0 0 0 4294956576 0 0 0 0 8192 3238038012 0 0 0 17 0
+53: footprint_mb 796
+54: allowance_mb 8192
+55: headroom_mb 7395
+59: kills 0

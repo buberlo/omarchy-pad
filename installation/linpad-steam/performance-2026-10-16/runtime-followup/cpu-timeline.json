@@ -1,0 +1,122 @@
+{
+  "scope": "PID340 group CPU accounting; not per-thread sums, useful-progress proof, or frame-rate result",
+  "samples": [
+    {
+      "source": "hollow4447-status-1.txt",
+      "capture_utc": "2026-10-16T11:58:44+00:00",
+      "pid": 340,
+      "user_ticks": 4758,
+      "system_ticks": 38,
+      "cpu_seconds": 47.96,
+      "threads": 10
+    },
+    {
+      "source": "hollow4447-status-2.txt",
+      "capture_utc": "2026-10-16T11:59:51+00:00",
+      "pid": 340,
+      "user_ticks": 11460,
+      "system_ticks": 87,
+      "cpu_seconds": 115.47,
+      "threads": 35,
+      "seconds_since_previous_capture": 67.0,
+      "cpu_seconds_since_previous_capture": 67.51,
+      "average_host_cpu_cores_since_previous_capture": 1.0076
+    },
+    {
+      "source": "hollow4447-status-3.txt",
+      "capture_utc": "2026-10-16T12:01:06+00:00",
+      "pid": 340,
+      "user_ticks": 18835,
+      "system_ticks": 128,
+      "cpu_seconds": 189.63,
+      "threads": 35,
+      "seconds_since_previous_capture": 75.0,
+      "cpu_seconds_since_previous_capture": 74.16,
+      "average_host_cpu_cores_since_previous_capture": 0.9888
+    },
+    {
+      "source": "hollow4447-detail-1.txt",
+      "capture_utc": "2026-10-16T12:01:38+00:00",
+      "pid": 340,
+      "user_ticks": 22072,
+      "system_ticks": 145,
+      "cpu_seconds": 222.17,
+      "threads": 35,
+      "seconds_since_previous_capture": 32.0,
+      "cpu_seconds_since_previous_capture": 32.54,
+      "average_host_cpu_cores_since_previous_capture": 1.0169
+    },
+    {
+      "source": "hollow4447-short-1.txt",
+      "capture_utc": "2026-10-16T12:02:46+00:00",
+      "pid": 340,
+      "user_ticks": 28856,
+      "system_ticks": 182,
+      "cpu_seconds": 290.38,
+      "threads": 35,
+      "seconds_since_previous_capture": 68.0,
+      "cpu_seconds_since_previous_capture": 68.21,
+      "average_host_cpu_cores_since_previous_capture": 1.0031
+    },
+    {
+      "source": "hollow4447-short-2.txt",
+      "capture_utc": "2026-10-16T12:04:03+00:00",
+      "pid": 340,
+      "user_ticks": 36439,
+      "system_ticks": 228,
+      "cpu_seconds": 366.67,
+      "threads": 35,
+      "seconds_since_previous_capture": 77.0,
+      "cpu_seconds_since_previous_capture": 76.29,
+      "average_host_cpu_cores_since_previous_capture": 0.9908
+    },
+    {
+      "source": "hollow4447-short-3.txt",
+      "capture_utc": "2026-10-16T12:05:07+00:00",
+      "pid": 340,
+      "user_ticks": 45038,
+      "system_ticks": 283,
+      "cpu_seconds": 453.21,
+      "threads": 36,
+      "seconds_since_previous_capture": 64.0,
+      "cpu_seconds_since_previous_capture": 86.54,
+      "average_host_cpu_cores_since_previous_capture": 1.3522
+    },
+    {
+      "source": "hollow4447-short-4.txt",
+      "capture_utc": "2026-10-16T12:07:13+00:00",
+      "pid": 340,
+      "user_ticks": 55401,
+      "system_ticks": 363,
+      "cpu_seconds": 557.64,
+      "threads": 36,
+      "seconds_since_previous_capture": 126.0,
+      "cpu_seconds_since_previous_capture": 104.43,
+      "average_host_cpu_cores_since_previous_capture": 0.8288
+    },
+    {
+      "source": "hollow4447-short-5.txt",
+      "capture_utc": "2026-10-16T12:08:40+00:00",
+      "pid": 340,
+      "user_ticks": 64172,
+      "system_ticks": 443,
+      "cpu_seconds": 646.15,
+      "threads": 37,
+      "seconds_since_previous_capture": 87.0,
+      "cpu_seconds_since_previous_capture": 88.51,
+      "average_host_cpu_cores_since_previous_capture": 1.0174
+    },
+    {
+      "source": "finish4447-prepare4448.txt",
+      "capture_utc": "2026-10-16T12:12:55+00:00",
+      "pid": 340,
+      "user_ticks": 92059,
+      "system_ticks": 635,
+      "cpu_seconds": 926.94,
+      "threads": 37,
+      "seconds_since_previous_capture": 255.0,
+      "cpu_seconds_since_previous_capture": 280.79,
+      "average_host_cpu_cores_since_previous_capture": 1.1011
+    }
+  ]
+}
