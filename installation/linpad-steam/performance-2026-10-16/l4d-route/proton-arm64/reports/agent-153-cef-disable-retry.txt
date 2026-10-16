@@ -1,0 +1,26 @@
+AGENT_BEGIN id=153-cef-disable-retry pid=43 Fri Oct 16 23:37:00 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+killing: 16107 16110 16115 16116 16120 16121 16122 16123 16128 16139 
+left: 0
+t= 40s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+t= 80s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+t=120s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+t=160s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+t=200s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+t=240s steam=1 X=X9 | [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+
+=== client log (login-related) ===
+[2026-10-16 18:13:34] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '367
+[2026-10-16 18:15:23] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '367
+[2026-10-16 18:44:15] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '500
+[2026-10-16 18:47:38] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '500
+[2026-10-16 18:55:23] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '500
+[2026-10-16 19:06:32] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-shutdown'"
+=== tail ===
+[2026-10-16 23:40:31] Created mapping SteamChrome_MasterStream_uid0_spid17264_mem when set to fail if created
+[2026-10-16 23:40:41] Created mapping SteamChrome_MasterStream_uid0_spid17264_mem when set to fail if created
+[2026-10-16 23:40:51] Created mapping SteamChrome_MasterStream_uid0_spid17264_mem when set to fail if created
+[2026-10-16 23:41:01] Created mapping SteamChrome_MasterStream_uid0_spid17264_mem when set to fail if created
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:41:06 UTC 2026

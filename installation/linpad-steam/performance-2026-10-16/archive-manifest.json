@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 15227,
-      "sha256": "171be1dedcef7958b99ce069aa8cebd5691a3298c5697cdf61c861bcfa65bc0a"
+      "bytes": 15819,
+      "sha256": "a50fe8c9e12f711206dcf1a193dc991c879c131535df183b45fc57c87c9d185c"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 24410,
-      "sha256": "41085db48245d2cda433d28299baf8c2861fed7757aecbd16025f56598d9f55a"
+      "bytes": 26411,
+      "sha256": "5655679e105b1e3efe808e7d9ec601c000acc88bee80005453b76088d3738531"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -4886,6 +4886,31 @@
       "path": "l4d-route/proton-arm64/reports/agent-148-login-and-direct-wine.txt",
       "bytes": 2063,
       "sha256": "75edbd8c691bec03ede31181691d4b117b057b76c7df6cd0ffc789e796e8a2c8"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-149-xwayland-and-login.txt",
+      "bytes": 1436,
+      "sha256": "14ad5bd4ddc3b35108382edbc386c264c51476842ceb037164189116243304c9"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-150-steam-with-display.txt",
+      "bytes": 1815,
+      "sha256": "f35376320b86eca473e7c07f36704a14286ab90dba08521e50b5d14abcda184a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-151-login-reason.txt",
+      "bytes": 883,
+      "sha256": "4b93ed6e04e57ddd17509dc2a1d7b429b2e731d7f8e01c8ba3b4117febce696b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-152-cef-disable-login.txt",
+      "bytes": 185,
+      "sha256": "d39dee53e778980978bcc472bfece6b5ba443614aad31f0d03506e5413768850"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-153-cef-disable-retry.txt",
+      "bytes": 2246,
+      "sha256": "e946d3816cb69afbd0eebc607605f5a93884bcc9322c79250f46d97dd0440dc9"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

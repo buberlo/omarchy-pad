@@ -1,0 +1,40 @@
+AGENT_BEGIN id=149-xwayland-and-login pid=43 Fri Oct 16 23:32:04 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== where is Xwayland? ===
+/opt/steam-x11/usr/bin/Xwayland
+/opt/steam-x11/bin/Xwayland
+-rwxr-xr-x 1 root root 147 Oct 16 05:14 /opt/steam-x11/bin/Xwayland
+-rwxr-xr-x 1 root root 147 Oct 16 05:14 /opt/steam-x11/bin/Xwayland
+PATH in the desktop session (from the ishwl session scripts):
+
+=== how the desktop starts the X bridge ===
+#!/bin/sh
+# Runs an X11-only app (VLC 3's Qt interface, Dillo, ...) inside its own rootful
+# Xwayland, which shows up through ishwl as one ordinary window.
+#   ishwl-x11 [-g WIDTHxHEIGHT] command [args...]
+# Rootless Xwayland would need an X window manager inside ishwl; one X server per app
+# keeps ishwl a plain Wayland compositor. ishwl-x11-wm makes the app's main window
+# fill the server's screen. The server, and with it the WM, exits with the app.
+geometry=1024x700
+if [ "$1" = "-g" ]; then
+    geometry=$2
+    shift 2
+fi
+[ $# -gt 0 ] || { echo "usage: ishwl-x11 [-g WxH] command [args...]" >&2; exit 2; }
+
+display=1
+while [ -e "/tmp/.X11-unix/X$display" ] || [ -e "/tmp/.X$display-lock" ]; do
+    display=$((display + 1))
+done
+
+# ishwl names the window after the app rather than "Xwayland on :N": it looks up
+
+=== login state of the saved account ===
+"users"
+{
+	"76561197999143396"
+	{
+		"AccountName"		"buberlo"
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:32:06 UTC 2026

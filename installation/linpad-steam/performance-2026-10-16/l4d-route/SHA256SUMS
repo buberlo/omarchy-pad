@@ -1,5 +1,5 @@
 afd7591ca4cf16d7f86eb5745997b07f8e4bdc9a15bd27bedc068e353bb41754  README.md
-41085db48245d2cda433d28299baf8c2861fed7757aecbd16025f56598d9f55a  proton-arm64/README.md
+5655679e105b1e3efe808e7d9ec601c000acc88bee80005453b76088d3738531  proton-arm64/README.md
 c7f8d6bea5c9386f740b60e9c0e8723dc844e239e4d39d5332bcca0bbfc2f99a  proton-arm64/breakthrough/gui-file-pe.c
 e030be1208c1b6f6789c1949462497fd19af5c9b301f5300241761da16a07fb4  proton-arm64/evidence-app-console-trace.log
 9e85ed30f4f438d08a7e77c11bb9d7cccd9d0a3cc459163ff1bf4034c2239128  proton-arm64/evidence-emulator-trace.log
@@ -75,6 +75,11 @@ ad8188c7f70ce7d0f4e904fde3e06c83d3daa7603aa69a581450fe2a43971a8f  proton-arm64/r
 ec148b6cfb8f83657d58750f7c1fc059b5de631e68fdf51dbdaf28a90698e9e5  proton-arm64/reports/agent-146-start-x-and-steam.txt
 41edc7fed138bd0ba69f6136482adc7fdb8c8e4306ff74c1d4a54b122cc8470a  proton-arm64/reports/agent-147-pe-with-steam-running.txt
 75edbd8c691bec03ede31181691d4b117b057b76c7df6cd0ffc789e796e8a2c8  proton-arm64/reports/agent-148-login-and-direct-wine.txt
+14ad5bd4ddc3b35108382edbc386c264c51476842ceb037164189116243304c9  proton-arm64/reports/agent-149-xwayland-and-login.txt
+f35376320b86eca473e7c07f36704a14286ab90dba08521e50b5d14abcda184a  proton-arm64/reports/agent-150-steam-with-display.txt
+4b93ed6e04e57ddd17509dc2a1d7b429b2e731d7f8e01c8ba3b4117febce696b  proton-arm64/reports/agent-151-login-reason.txt
+d39dee53e778980978bcc472bfece6b5ba443614aad31f0d03506e5413768850  proton-arm64/reports/agent-152-cef-disable-login.txt
+e946d3816cb69afbd0eebc607605f5a93884bcc9322c79250f46d97dd0440dc9  proton-arm64/reports/agent-153-cef-disable-retry.txt
 8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c  proton-arm64/reports/agent-61-phase0-state.txt
 9e93b5493349bcdb92b26acb825b851a4a37cc621baea811ebd7d798f55518bc  proton-arm64/reports/agent-62-phaseA-rootfs.txt
 6db0881b75310144f64f2e0d50aedaece4b2ec9fb9d152287d839ba17bb8cbc3  proton-arm64/reports/agent-63-proton-pe-control.txt

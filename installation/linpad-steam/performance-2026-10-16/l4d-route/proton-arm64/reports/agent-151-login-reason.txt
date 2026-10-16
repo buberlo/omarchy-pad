@@ -1,0 +1,29 @@
+AGENT_BEGIN id=151-login-reason pid=43 Fri Oct 16 23:36:35 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== login-related log lines ===
+
+=== the saved account settings ===
+		"AccountName"		"buberlo"
+		"PersonaName"		"buberlo"
+		"RememberPassword"		"1"
+
+=== is the client waiting for something? (its own log tail) ===
+total 14264
+-rwxr-xr-x 1 root root 2698292 Oct 16 23:36 console_log.txt
+-rw-r--r-- 1 root root      59 Oct 16 23:36 steamwebhelper.log
+-rwxr-xr-x 1 root root   94473 Oct 16 23:36 steamui_html.txt
+-rwxr-xr-x 1 root root   47954 Oct 16 23:34 systemmanager.txt
+-rwxr-xr-x 1 root root   92769 Oct 16 23:34 bootstrap_log.txt
+
+=== the X window that is now on screen ===
+   22 ishwl
+16107 ishwl-x11
+16110 Xwayland
+16115 ishwl-x11-wm
+16116 steam-local
+16120 steam-local
+16121 steam
+16122 ishwl-x11
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:36:35 UTC 2026

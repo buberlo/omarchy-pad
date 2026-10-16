@@ -386,3 +386,40 @@ x86 and x86_64 (the x86 one is Left 4 Dead's architecture).
 **Next:** find `Xwayland`, start the X bridge, start the Steam client with a display so it signs in,
 and then run Left 4 Dead — either through Steam's Play button (which brings Proton's `steam.exe`
 handshake with it) or through the launcher once the client is signed in.
+
+## Same round, second half: the Steam path needs a signed-in client, and its UI cannot start
+
+With wine proven to run Windows programs, the remaining blocker for *Left 4 Dead* is Steam's DRM
+handshake, and that handshake runs through Proton's `steam.exe`, which needs the Linux Steam client
+signed in. The client is not:
+
+```
+logs/connection_log.txt: [2026-10-16 19:49:15] [Logged Off, 0, 0] [U:1:0] Log session ended
+logs/connection_log.txt: [2026-10-16 23:37:08] [Logged Off, 0, 0] [U:1:0] CCMInterface::SetSteamID( [U:1:0] )
+```
+
+The account is saved (`loginusers.vdf`: `buberlo`, `RememberPassword 1`), so an automatic login was
+plausible. It never starts, because the client's own UI backend fails: `logs/steamwebhelper.log` is 59
+bytes and `console_log.txt` repeats
+
+```
+Created mapping SteamChrome_MasterStream_uid0_spid…_mem when set to fail if created
+```
+
+every ten seconds, with no `steamwebhelper` process at all. `-cef-disable` (with `-no-cef-sandbox
+-cef-disable-gpu`) changes nothing; the same loop continues.
+
+**The display itself works.** Xwayland lives in `/opt/steam-x11/bin` (the agent's PATH simply lacks
+it), and `ishwl-x11` is designed to run one X11 app inside its own rootful Xwayland:
+
+```sh
+PATH=/opt/steam-x11/bin:$PATH XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0 \
+    /usr/local/bin/ishwl-x11 -g 1280x800 /usr/local/bin/steam -no-cef-sandbox -cef-disable-gpu
+```
+
+That brings up `ishwl-x11`, `Xwayland`, `ishwl-x11-wm` and the Steam window — the login window is on
+the iPad's screen right now. Note for the next attempt: the client's CEF backend worked earlier today
+when the emulator ran with the **JIT** enabled, and every attempt in this round ran on the
+**interpreter** (the app was booted with `-fastMode.setting off` so it would start without StikDebug
+while the iPad is locked). CEF timing out in interpreter mode is plausible and would explain the
+regression, so the next attempt should be made with the JIT — which needs the iPad unlocked.
