@@ -12,6 +12,8 @@ convenient for running them under both the CLI emulator and iPad app.
 - `epoll-oneshot-probe.c`: registrations persist after delivery, MOD rearms
   an already-ready edge and updates data, DEL accepts disabled registrations,
   and hangup stays disabled until rearmed.
+- `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+  wakes a thread blocked on an outer edge-triggered epoll set.
 - `pthread-glibc-probe.c`: dynamic glibc thread creation with different stack
   sizes and repeated joins. Link against glibc and run with the isolated
   matching loader/libraries; it does not alter the musl system runtime.

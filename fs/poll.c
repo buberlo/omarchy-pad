@@ -39,6 +39,7 @@ static void *rpe_data(struct real_poll_event *rpe);
 static int rpe_events(struct real_poll_event *rpe);
 static int real_poll_wait(struct real_poll *real, struct real_poll_event *events, int max, struct timespec *timeout);
 static int real_poll_update(struct real_poll *real, int fd, int types, void *data);
+static bool fd_try_retain(struct fd *fd);
 
 /// Safe close that skips fds 0-2 (stdin/stdout/stderr).
 /// iOS guards these descriptors — closing them triggers EXC_GUARD and kills the app.
@@ -190,6 +191,7 @@ out:
 
 int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info info) {
     int err;
+    struct fd *owner = NULL;
     lock(&fd->poll_lock);
     lock(&poll->lock);
     struct poll_fd *poll_fd = poll_find_fd(poll, fd);
@@ -212,11 +214,20 @@ int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info 
     poll_fd->disabled = false;
     if (poll->notify_pipe[1] != -1)
         write(poll->notify_pipe[1], "", 1);
+    if (poll->owner != NULL && fd_try_retain(poll->owner))
+        owner = poll->owner;
 
     err = 0;
 out:
     unlock(&poll->lock);
     unlock(&fd->poll_lock);
+    if (owner != NULL) {
+        // Rearming an already-ready virtual member changes this set's
+        // readiness even when no thread is directly waiting on the set.
+        // Wake outer sets after dropping locks to preserve lock ordering.
+        poll_wakeup(owner, POLL_READ);
+        fd_close(owner);
+    }
     return err;
 }
 
