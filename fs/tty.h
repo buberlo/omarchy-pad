@@ -66,6 +66,12 @@ struct termios_ {
 #define TCSETSF_ 0x5404
 #define TCFLSH_ 0x540b
 #define TIOCSCTTY_ 0x540e
+// Linux termios2 family: same idea as TCGETS/TCSETS, 44-byte struct with c_ispeed/c_ospeed.
+// glibc's tcgetattr prefers these, and returns ENOTTY without them (foot's slave did).
+#define TCGETS2_ 0x802c542a
+#define TCSETS2_ 0x402c542b
+#define TCSETSW2_ 0x402c542c
+#define TCSETSF2_ 0x402c542d
 #define TIOCGPGRP_ 0x540f
 #define TIOCSPGRP_ 0x5410
 #define TIOCGWINSZ_ 0x5413

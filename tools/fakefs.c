@@ -140,8 +140,13 @@ bool fakefs_import(const char *archive_path, const char *fs, struct fakefsify_er
                 fprintf(stderr, "warning: almost pwned by hardlink %s\n", hardlink);
                 continue;
             }
-            if (linkat(root_fd, fix_path(hardlink_path), root_fd, fix_path(entry_path), 0) < 0)
-                POSIX_ERR();
+            if (linkat(root_fd, fix_path(hardlink_path), root_fd, fix_path(entry_path), 0) < 0) {
+                // An archive may list the same hardlink pair twice, or name a path that is
+                // already there (Arch's ALARM tarball does both). The link exists either way,
+                // so failing the whole import over EEXIST is wrong.
+                if (errno != EEXIST)
+                    POSIX_ERR();
+            }
             sqlite3_bind_blob64(insert_hardlink, 1, entry_path, strlen(entry_path), SQLITE_TRANSIENT);
             sqlite3_bind_blob64(insert_hardlink, 2, hardlink_path, strlen(hardlink_path), SQLITE_TRANSIENT);
             STEP_RESET(insert_hardlink);

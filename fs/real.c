@@ -317,6 +317,11 @@ int realfs_poll(struct fd *fd) {
 
     if (p.revents & POLLNVAL) {
         printk("pollnval %d flags %d events %d revents %d\n", fd->real_fd, flags, p.events, p.revents);
+        // LinPad: Darwin reports POLLNVAL for host-backed fds that are perfectly valid (see the
+        // retry below). Callers that read POLLNVAL as "no such file descriptor" give up — foot's
+        // fdm does exactly that ("no such FD: 6") — so only report it when the fd is really gone.
+        if (fcntl(fd->real_fd, F_GETFD) >= 0)
+            p.revents &= ~POLLNVAL;
         // Seriously, fuck Darwin. I just want to poll on POLLIN|POLLOUT|POLLPRI.
         // But if there's almost any kind of error, you just get POLLNVAL back,
         // and no information about the bits that are in fact set. So ask for each

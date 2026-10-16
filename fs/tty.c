@@ -654,6 +654,7 @@ static int tty_poll(struct fd *fd) {
 static ssize_t tty_ioctl_size(int cmd) {
     switch (cmd) {
         case TCGETS_: case TCSETS_: case TCSETSF_: case TCSETSW_:
+        case TCGETS2_: case TCSETS2_: case TCSETSF2_: case TCSETSW2_:
             return sizeof(struct termios_);
         case TIOCGWINSZ_: case TIOCSWINSZ_:
             return sizeof(struct winsize_);
@@ -668,7 +669,7 @@ static ssize_t tty_ioctl_size(int cmd) {
     return -1;
 }
 
-static int tiocsctty(struct tty *tty, int force) {
+int tiocsctty(struct tty *tty, int force) {
     int err = 0;
     unlock(&tty->lock); //aaaaaaaa
     // it's safe because literally nothing happens between that unlock and the last lock, and repulsive for the same reason
@@ -740,7 +741,7 @@ static int tty_mode_ioctl(struct tty *in_tty, int cmd, void *arg) {
     }
 
     switch (cmd) {
-        case TCGETS_:
+        case TCGETS_: case TCGETS2_:
             *(struct termios_ *) arg = tty->termios;
             break;
         case TCSETSF_:
@@ -749,7 +750,7 @@ static int tty_mode_ioctl(struct tty *in_tty, int cmd, void *arg) {
             fallthrough;
         case TCSETSW_:
             // we have no output buffer currently
-        case TCSETS_:
+        case TCSETS_: case TCSETS2_: case TCSETSW2_: case TCSETSF2_:
             tty->termios = *(struct termios_ *) arg;
             break;
 

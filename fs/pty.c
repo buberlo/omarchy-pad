@@ -119,10 +119,22 @@ const struct tty_driver_ops pty_master_ops = {
 };
 DEFINE_TTY_DRIVER(pty_master, &pty_master_ops, TTY_PSEUDO_MASTER_MAJOR, MAX_PTYS);
 
+int tiocsctty(struct tty *tty, int force);
+
+/// The slave driver had no ioctl handler, so a program that opens /dev/pts/N and makes it
+/// its controlling terminal — foot's slave does exactly that before execve — got ENOTTY
+/// and died. Only TIOCSCTTY_ is answered here; the rest keeps the previous behaviour.
+static int pty_slave_ioctl(struct tty *tty, int cmd, void *UNUSED(arg)) {
+    if (cmd == TIOCSCTTY_)
+        return tiocsctty(tty, 0);
+    return _ENOTTY;
+}
+
 const struct tty_driver_ops pty_slave_ops = {
     .init = pty_return_eio,
     .open = pty_slave_open,
     .close = pty_slave_close,
+    .ioctl = pty_slave_ioctl,
     .write = pty_write,
     .cleanup = pty_slave_cleanup,
 };

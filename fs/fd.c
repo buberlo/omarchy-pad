@@ -345,6 +345,12 @@ int fd_setflags(struct fd *fd, int flags) {
     return 0;
 }
 
+// LinPad: the fakefs never resizes a client's shared memory behind its back, so the seals
+// a client asks for are already effectively in force. Accepting them is what foot (and
+// Chromium's shm paths) need; without this, fcntl(F_ADD_SEALS) returned EINVAL.
+#define F_ADD_SEALS_ 1033
+#define F_GET_SEALS_ 1034
+
 dword_t sys_fcntl(fd_t f, dword_t cmd, addr_t arg) {
     struct fdtable *table = current->files;
     struct fd *fd = f_get(f);
@@ -357,6 +363,8 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, addr_t arg) {
 #endif
     fd_t new_f;
     switch (cmd) {
+        case F_ADD_SEALS_: return 0;
+        case F_GET_SEALS_: return 0;
         case F_DUPFD_:
             STRACE("fcntl(%d, F_DUPFD, %d)", f, arg);
             fd->refcount++;
