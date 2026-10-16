@@ -1,0 +1,17 @@
+Cache persistence verification: 2026-10-16T08:57:27Z
+
+Launch controls recorded by the device test session:
+  bundle: com.konradkern.linpad
+  application arguments: none
+  environment supplied: {"ISH_CRASHLOG":"2","ISH_EXEC_TRACE":"1"}
+  ISH_JIT_CACHE_MB override: absent
+
+Source: reports/mesa26-trace-device.txt, lines 1-3
+Fri Oct 16 08:57:27 UTC 2026
+CACHE_PERSISTED
+512
+
+Source: build4442/device-trace.log, native JIT startup
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x11c400000
+
+Result: persisted numeric setting 512 and active 512 MiB arena after relaunch without a cache override.

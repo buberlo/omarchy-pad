@@ -1,0 +1,23 @@
+empty named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+empty named FIFO events=0 sleeps PASS errno=0
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {5s 0us, 0s 0us}, 0xffffdbe0) = 0x0
+1 call 172 getpid() = 0x1
+1 call 33  mknodat(-100, "/tmp/fifo-idle-poll-1", 0x1180, 0) = 0x0
+1 call 56  openat(-100, "/tmp/fifo-idle-poll-1", 0x20802, 0x0) = 0x3
+1 call 35  unlinkat(-100, "/tmp/fifo-idle-poll-1", 0) = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109733s 997724000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109734s 98817000ns} = 0x0
+1 call 66  writev(1, 0xffffd8b0, 2) {"empty named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+", 69} {"", 0} = 0x45
+1 call 66  writev(1, 0xffffd8d0, 2) {"empty named FIFO events=0 sleeps PASS errno=0
+", 46} {"", 0} = 0x2e
+1 call 64  (fast) = 0x1
+1 call 113 clock_gettime(1, 0xffffdbf0) {109734s 99030000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0xfffffffc
+1 receiving signal 14
+
+EXIT=142

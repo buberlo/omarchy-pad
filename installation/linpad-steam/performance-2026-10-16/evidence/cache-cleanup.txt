@@ -1,0 +1,20 @@
+Fri Oct 16 08:27:07 UTC 2026
+BEFORE
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                     111194304 109142304   2052000  98% /
+removed verified archive steam-cef-extra.tar.gz
+removed verified archive steam-cef-glibc.tar.gz
+removed verified archive steam-client.tar.gz
+removed verified archive steam-glibc.tar.gz
+removed verified archive steam-glx-tools.tar.gz
+removed verified archive steam-gtk.tar.gz
+removed verified archive steam-lsof.tar.gz
+removed verified archive steam-mesa.tar.gz
+removed verified archive steam-sdl.tar.gz
+removed verified archive steam-vnc.tar.gz
+removed verified archive vnc-fix.tar.gz
+AFTER
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                     111194304 109362304   1832000  98% /

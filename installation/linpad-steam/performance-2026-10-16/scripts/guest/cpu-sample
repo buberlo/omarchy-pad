@@ -1,0 +1,11 @@
+#!/bin/sh
+OUT=/tmp/cpu-sample.txt
+{
+ date
+ for pass in 1 2; do
+  echo "PROCESS_SAMPLE $pass";cat /proc/uptime
+  for p in /proc/[0-9]*;do [ ! -r "$p/stat" ] || cat "$p/stat";done
+  [ "$pass" = 2 ] || sleep 5
+ done
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null

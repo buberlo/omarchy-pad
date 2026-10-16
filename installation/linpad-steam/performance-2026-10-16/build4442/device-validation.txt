@@ -1,0 +1,68 @@
+Fri Oct 16 08:46:00 UTC 2026
+CACHE_SETTING
+"512"
+MEMORY
+footprint_mb 704
+allowance_mb 8192
+headroom_mb 7487
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 84 9 0 0 thunar
+proc 120 5 0 0 xfconfd
+proc 32 5 0 1 pulseaudio
+proc 16 1 0 1 ishwl
+proc 14 1 0 1 -sh
+proc 27 1 0 1 -sh
+proc 30 1 0 1 -sh
+proc 22 1 0 1 dbus-daemon
+proc 156 1 0 1 sh
+proc 97 1 0 1 getty
+proc 1 1 0 1 init
+proc 7 1 0 1 getty
+POLL_PROBE
+empty named FIFO events=0 sleeps elapsed_ms=101.3 result=0 revents=0
+empty named FIFO events=0 sleeps PASS errno=0
+queued named FIFO events=0 sleeps elapsed_ms=101.3 result=0 revents=0
+queued named FIFO events=0 sleeps PASS errno=0
+FIFO requested readability PASS errno=0
+FIFO readability remains level triggered PASS errno=0
+queued pipe events=0 sleeps elapsed_ms=103.6 result=0 revents=0
+queued pipe events=0 sleeps PASS errno=0
+pipe HUP without requested events PASS errno=0
+queued socket events=0 sleeps elapsed_ms=101.4 result=0 revents=0
+queued socket events=0 sleeps PASS errno=0
+socket HUP without requested events PASS errno=0
+POLL_EXIT=0
+AUDIO_MODULES
+0	module-native-protocol-unix	auth-anonymous=1 socket=/tmp/ishaudio/native	
+1	module-pipe-sink	file=/tmp/ishaudio/pcm sink_name=ishaudio format=s16le rate=48000 channels=2 use_system_clock_for_timing=yes sink_properties=device.description=iPad	
+2	module-suspend-on-idle	timeout=3	
+3	module-pipe-source	file=/tmp/ishaudio/mic source_name=ipad_mic format=s16le rate=48000 channels=1 source_properties=device.description="iPad\ Microphone"	
+4	module-stream-restore	restore_device=false	
+5	module-position-event-sounds		
+CPU_BEFORE
+   32 pulseaudio
+32 (pulseaudio) R 1 31 31 0 0 0 0 0 0 0 5 3 0 0 20 0 3 0 53458302 79577088 19428 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0
+534601.56 534601.56
+CPU_AFTER
+32 (pulseaudio) R 1 31 31 0 0 0 0 0 0 0 5 3 0 0 20 0 3 0 53458303 79577088 19428 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0
+534606.59 534606.59
+DISPLAY_ENV
+/tmp/ishwl:
+total 0
+-rw-------    1 root     root             0 Oct 16 08:45 alive
+-rw-------    1 root     root             0 Oct 16 08:45 clipboard-in
+prw-------    1 root     root             0 Oct 16 08:45 dnd
+prw-------    1 root     root             0 Oct 16 08:45 events
+prw-------    1 root     root             0 Oct 16 08:45 notify
+
+/tmp/xdg-runtime:
+total 12
+drwx------    3 root     root            96 Oct 16 04:18 dbus-1
+drwx------    2 root     root            64 Oct 16 04:18 pulse
+-rw-r--r--    1 root     root         12152 Oct 16 05:16 server-1.xkm
+srwxr-xr-x    1 root     root             0 Oct 16 08:45 wayland-0
+srwxr-xr-x    1 root     root             0 Oct 16 08:45 wayland-0-gpu
+-rw-r-----    1 root     root             0 Oct 16 04:18 wayland-0.lock

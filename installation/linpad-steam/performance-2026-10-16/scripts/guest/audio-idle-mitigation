@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/audio-idle-mitigation.txt
+{
+ date;echo MEMORY;cat /proc/ish/memory;df -h /opt
+ pulse() { timeout 5 pactl --server=unix:/tmp/ishaudio/native "$@"; }
+ echo SOURCE_OUTPUTS
+ clients=$(pulse list short source-outputs);printf '%s\n' "$clients"
+ [ -z "$clients" ] || { echo RECORDING_ACTIVE_SKIP;exit 1; }
+ pulse list short sources | grep 'ipad_mic.*SUSPENDED'
+ module=$(pulse list short modules | awk '$2=="module-pipe-source" && /source_name=ipad_mic/ {print $1}')
+ [ -n "$module" ]
+ echo "UNLOAD_UNUSED_MIC_MODULE=$module"
+ pulse unload-module "$module"
+ echo SINK; pulse list short sinks
+ for i in 1 2;do echo SAMPLE;cat /proc/uptime;cat /proc/30/stat;[ "$i" = 2 ] || sleep 5;done
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+echo AUDIO_IDLE_DONE

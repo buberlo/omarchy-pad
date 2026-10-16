@@ -1,0 +1,82 @@
+{
+  "bundle_id": "com.konradkern.linpad",
+  "version": "1.5.0",
+  "build": "4442",
+  "app_path": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4442/Payload/iSH ARM64.app",
+  "executable_sha256": "59a66aa3b2b4b4e6cbe2df2aa81526bdacc3512b1afe4d98f5a05897a104f73b",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "binary_uuid": "UUID: 56F68939-0E1D-3F07-A975-B5615A2DA5B4 (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4442/Payload/iSH ARM64.app/iSH ARM64",
+  "dsym_uuid": "UUID: 56F68939-0E1D-3F07-A975-B5615A2DA5B4 (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4442/iSH ARM64.app.dSYM/Contents/Resources/DWARF/iSH ARM64",
+  "rollback_4441_sha256": "2f2c3aa2a42807e73687a5d162cb41e72071993163ba7c2c2887f33ba301cef7",
+  "source_head": "37b03b7b8f0f54781ec06f63d2d6ba693f2ff305",
+  "source_dirty": "M fs/poll.c\n M tests/manual/steam-compat/README.md\n?? tests/manual/steam-compat/fifo-idle-poll-probe.c",
+  "installed": true,
+  "source_patch_sha256": "cc62825e45ea8ea2d0aa267dd970a5db03733e2734015f3f42775863a279c4d5",
+  "fifo_probe_sha256": "5152714bc54c9b48e83a30050cfe3ea5b210b1f1aa9618b45be0d120be374207",
+  "signing_verified": true,
+  "memory_entitlements": [
+    "com.apple.developer.kernel.increased-memory-limit",
+    "com.apple.developer.kernel.extended-virtual-addressing"
+  ],
+  "launched": true,
+  "device_validation": {
+    "recorded_at_utc": "2026-10-16T08:46:00Z",
+    "evidence": "device-validation.txt",
+    "evidence_sha256": "9f4618b80b690430f6b75ca879b77d00915de0b4702070d9dc33e4bb9d114feb",
+    "jit_mode": "txm (StikDebug universal.js)",
+    "jit_arena_mb": 512,
+    "cache_preference_persistence_verified": true,
+    "memory": {
+      "footprint_mb": 704,
+      "allowance_mb": 8192,
+      "headroom_mb": 7487,
+      "soft_mb": 1638,
+      "hard_mb": 819,
+      "oom_enabled": 1,
+      "kills": 0
+    },
+    "fifo_idle_poll_probe_exit": 0,
+    "pulseaudio_microphone_module_enabled": true,
+    "pulseaudio_user_system_ticks_before": [
+      5,
+      3
+    ],
+    "pulseaudio_user_system_ticks_after": [
+      5,
+      3
+    ],
+    "pulseaudio_idle_window_seconds": 5.03,
+    "hollow_knight_playability_verified": false,
+    "graphics_performance_qualified": false,
+    "cache_preference_persistence": {
+      "recorded_at_utc": "2026-10-16T08:57:27Z",
+      "evidence": "cache-persistence-evidence.txt",
+      "evidence_sha256": "788987472233eed53e78041c6afe2a443f58d6294138cf3e66ad20ef984c4522",
+      "application_arguments": [],
+      "environment_supplied": {
+        "ISH_CRASHLOG": "2",
+        "ISH_EXEC_TRACE": "1"
+      },
+      "jit_cache_environment_override_present": false,
+      "persisted_numeric_value_mb": 512,
+      "jit_arena_mb": 512
+    }
+  },
+  "packages": [
+    {
+      "name": "LinPad-1.5.0-build4442-Konrad.ipa",
+      "bytes": 637273821,
+      "sha256": "4d1539adb8f463073d15da3c2a5bfec5ce21d7d0b9c2db370ffd173f12a92d30",
+      "archive_crc_verified": true
+    },
+    {
+      "name": "LinPad-1.5.0-build4442-dSYM.zip",
+      "bytes": 13518505,
+      "sha256": "ce97daff4381fc69c7b9ee6fd424ee7d7466f64588a56a680daeffd4d0e4ddee",
+      "archive_crc_verified": true
+    }
+  ],
+  "source_fix_commit": "2dd9da3ac0c30db8fa94f8d243d76044fc84cf95",
+  "source_fix_commit_matches_built_sources": true,
+  "source_provenance_note": "source_head and source_dirty preserve the original build-time state; source_fix_commit subsequently records those exact changes."
+}

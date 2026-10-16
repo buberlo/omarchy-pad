@@ -1,0 +1,25 @@
+#!/bin/sh
+OUT=/tmp/verify4442.txt
+{
+ date
+ echo CACHE_SETTING
+ printf '512\n' > /proc/ish/.defaults/fastMode.codeCacheMB
+ cat /proc/ish/.defaults/fastMode.codeCacheMB
+ echo MEMORY;cat /proc/ish/memory
+ wget -qO /tmp/fifo-idle-poll-probe http://192.168.0.104:8766/fifo-idle-poll-probe
+ chmod +x /tmp/fifo-idle-poll-probe
+ echo POLL_PROBE; timeout 12 /tmp/fifo-idle-poll-probe;echo POLL_EXIT=$?
+ echo AUDIO_MODULES;pactl --server=unix:/tmp/ishaudio/native list short modules
+ echo CPU_BEFORE
+ ps -eo pid,comm | sed -n '/pulseaudio/p'
+ for pid in $(pidof pulseaudio);do cat /proc/$pid/stat;done
+ cat /proc/uptime
+ sleep 5
+ echo CPU_AFTER
+ for pid in $(pidof pulseaudio);do cat /proc/$pid/stat;done
+ cat /proc/uptime
+ echo DISPLAY_ENV
+ env | sed -n '/DISPLAY\|XDG_RUNTIME/p'
+ ls -l /tmp/ishwl /tmp/xdg-runtime
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null

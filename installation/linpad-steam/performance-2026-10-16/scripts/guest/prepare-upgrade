@@ -1,0 +1,12 @@
+#!/bin/sh
+OUT=/tmp/prepare-upgrade.txt
+{
+ date
+ timeout 20 /usr/local/bin/steam-local --client :55 -shutdown
+ echo SHUTDOWN_REQUEST_EXIT=$?
+ sleep 5
+ ps -eo pid,comm,args | sed -n '/steamrtarm64\/steam\|steamwebhelper\|Xtigervnc/p'
+ sync
+ df -h /
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null

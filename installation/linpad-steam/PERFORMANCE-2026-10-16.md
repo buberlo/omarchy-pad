@@ -1,0 +1,53 @@
+# Performance follow-up — 16 October 2026
+
+LinPad 1.5.0 build 4442 is signed, installed and running on the M2 iPad. The FIFO polling repair removes the observed idle PulseAudio CPU loop while keeping the microphone module enabled. The native JIT code arena is now 512 MiB. Hollow Knight playability and FEX/Vulkan game compatibility remain under investigation.
+
+This update supersedes build 4441 as the current runtime status. The earlier handoff remains the record of the first working Steam sign-in screen. The user subsequently signed in and downloaded Hollow Knight. Completing a download does not establish that the game launches or is playable; an observed Proton startup dialog also does not establish successful execution. The user approved switching to the Linux version once the direct Linux/Vulkan path is verified; that gate is still open.
+
+## Polling repair and measured effect
+
+Source commit [`2dd9da3a`](https://github.com/buberlo/linpad-ipad-steam/commit/2dd9da3ac0c30db8fa94f8d243d76044fc84cf95) fixes idle FIFO and socket polling on Darwin. A poll entry requesting no events must not repeatedly wake on an unrequested readable FIFO. The new regression covers that condition while retaining requested level-triggered readability and pipe/socket hangup reporting.
+
+The controlled idle audio measurements were:
+
+| Measurement | Before repair | Build 4442 |
+| --- | --- | --- |
+| PulseAudio CPU ticks, user + system | 13749 + 123929 → 13788 + 124381 | 5 + 3 → 5 + 3 |
+| Sample duration | 5.32 seconds | 5.03 seconds |
+| CPU time relative to one core | 92.29% | 0% at the counters' resolution |
+| Microphone pipe-source module | Loaded, suspended | Loaded |
+
+The counters use 100 Hz (`fs/proc/pid.c`, `RU_TICKS`). The measurements establish elimination of the observed idle busy loop during those windows. They do not establish an overall Steam speed ratio, game FPS, audio playback quality, or continuous microphone recording quality. Aggregate Steam CPU snapshots have different download/progress states and are not a controlled before/after performance comparison.
+
+Evidence: [baseline CPU excerpt](performance-2026-10-16/evidence/audio-baseline-cpu-excerpt.txt), [original idle audio state](performance-2026-10-16/evidence/audio-idle.txt), and [physical build 4442 probe](performance-2026-10-16/build4442/device-validation.txt). A temporary experiment unloaded the unused microphone module and stopped the loop; build 4442 fixes the polling path with the module restored. That workaround is historical, not the final configuration.
+
+The physical FIFO probe passed with exit 0; empty or queued descriptors with no requested events slept for approximately 101–104 ms. Local epoll one-shot, nested epoll, pselect and eventfd regressions also passed. A separate named-FIFO last-writer HUP test still fails on both the old and repaired runtime; it is a documented pre-existing limitation, not a passing claim. [Local regression record](performance-2026-10-16/evidence/fifo-poll-regressions.txt)
+
+## Memory and storage
+
+Both approved Apple capabilities remain signed and provisioned: Increased Memory Limit and Extended Virtual Addressing. At the post-launch sample, LinPad reported 8192 MiB of app allowance, 704 MiB of footprint and 7487 MiB of headroom. OOM protection was enabled, with zero recorded kills. These are runtime values, not a promise that the same amount will remain available under another workload.
+
+The native JIT startup log confirms a **512 MiB code arena**. Its prior automatic maximum was 256 MiB. The larger arena holds more translated code; it does not add physical RAM. The value was passed as a launch argument and written through `/proc/ish/.defaults/fastMode.codeCacheMB`. Persistence was then verified at 08:57:27 UTC on a second launch with no application arguments or `ISH_JIT_CACHE_MB` override: the single-key read returned numeric 512, and the native startup log again confirmed a 512 MiB arena. [Persistence evidence](performance-2026-10-16/build4442/cache-persistence-evidence.txt) The full preferences database and Steam authentication data are excluded from this archive. [JIT startup evidence](performance-2026-10-16/build4442/device-console-validation-excerpt.log)
+
+Linux storage grows with the iPad's available storage. The root is a directory-backed fake filesystem, not a fixed-size VM disk: `fs/fake.c` assigns `.statfs = realfs_statfs`; `fs/real.c:621` calls `fstatvfs` on the root directory and returns the host's total/free/available blocks. There is no separate virtual disk size to increase in this implementation.
+
+After the user's iPad cleanup, the saved `df -h /` sample showed **29.7G available** on the 106.0G host volume. That value can shrink as Steam downloads and unpacks files. The assistant's narrower cache cleanup removed only SHA-256-matched transfer archives already backed up on the Mac; it does not account for the user's larger storage recovery. Its before/after free-space numbers are also affected by the simultaneous download. [Storage sample](performance-2026-10-16/evidence/steam-clean-shutdown.txt) · [bounded archive cleanup](performance-2026-10-16/evidence/cache-cleanup.txt)
+
+## Build, artifacts and reproduction
+
+Build 4442 was produced locally with the existing Release/iPhoneOS/native-JIT configuration and the same bootstrap rootfs. Its developer signature passed deep/strict verification. Installing it over the same bundle ID preserved the installed Linux environment. Build 4441 remains available as a rollback.
+
+The build happened before commit `2dd9da3a` was created. The manifest retains the original base commit and dirty working-tree record, and now maps the exact patch and regression source to that subsequent commit. The mapping was checked byte-for-byte; the build is not relabelled as a fresh build from a later checkout.
+
+The signed IPA, matching dSYM ZIP and SHA-256 manifest were prepared under the original workspace's `work/performance/build4442/`. They are not embedded in Git. This documentation staging does not imply a new GitHub release was uploaded. App and symbols share UUID `56F68939-0E1D-3F07-A975-B5615A2DA5B4`.
+
+- [Build manifest](performance-2026-10-16/build4442/build-manifest.json)
+- [Verification record](performance-2026-10-16/build4442/VERIFICATION.md)
+- [Package and record checksums](performance-2026-10-16/build4442/SHA256SUMS)
+- [Build command/result](performance-2026-10-16/build4442/build-summary.log)
+- [Signing result](performance-2026-10-16/build4442/signing.log)
+- [Curated diagnostic scripts](performance-2026-10-16/scripts/guest)
+
+The checksum manifest names the package files kept outside Git. Download or copy those packages beside it before checking all entries. Paths in the copied verification record refer to the original build workspace; the repository equivalents are linked above. The existing [signing helper](scripts/host/sign-linpad.py) and [rebuild instructions](README.md#rebuild-and-re-sign) remain applicable. Session scripts retain the original local report-server address and require adaptation before reuse; do not run historical mitigation or upgrade scripts as background services.
+
+No global speedup or playable-game claim is made. The remaining gate is the actual Linux game/runtime path, followed by visible rendering, input, audio and a sustained on-device performance test. No GitHub Actions, full preferences export, credentials, private signing keys, or Steam account files are included.

@@ -1,0 +1,9 @@
+Fri Oct 16 08:44:26 UTC 2026
+CProcessEnvironmentManager is ready, 5 preallocated environment variables.
+WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.
+Steam is already running, exiting (command line was forwarded).
+SHUTDOWN_REQUEST_EXIT=0
+ 8564 sed              sed -n /steamrtarm64\/steam\|steamwebhelper\|Xtigervnc/p
+Filesystem                Size      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                        106.0G     76.3G     29.7G  72% /

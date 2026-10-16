@@ -1,0 +1,132 @@
+Fri Oct 16 08:25:37 UTC 2026
+# PulseAudio for the iSH desktop: one sink that streams raw PCM to the iOS app.
+# The iOS side (app/Desktop/ISHAudioBridge.swift) reads /tmp/ishaudio/pcm, which is a
+# host FIFO under the fakefs data directory.
+.fail
+load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/ishaudio/native
+
+# use_system_clock_for_timing: the sink paces itself and drops data when nobody reads,
+# so a missing or stalled reader can never block guest audio clients.
+load-module module-pipe-sink file=/tmp/ishaudio/pcm sink_name=ishaudio format=s16le rate=48000 channels=2 use_system_clock_for_timing=yes sink_properties=device.description=iPad
+set-default-sink ishaudio
+
+# Stops the sink (and so the FIFO traffic) a few seconds after the last stream ends;
+# the host gives the iOS audio session back to other apps once data stops.
+load-module module-suspend-on-idle timeout=3
+
+# The iPad microphone. The iOS side (app/Desktop/ISHMicBridge.swift) writes s16le mono
+# 48 kHz into /tmp/ishaudio/mic. The source only reads while a client records, so the
+# host sees the FIFO drain and starts the microphone then, and stops it when data piles up.
+load-module module-pipe-source file=/tmp/ishaudio/mic source_name=ipad_mic format=s16le rate=48000 channels=1 source_properties=device.description="iPad\ Microphone"
+set-default-source ipad_mic
+
+.nofail
+load-module module-stream-restore restore_device=false
+load-module module-position-event-sounds
+# This file is part of PulseAudio.
+#
+# PulseAudio is free software; you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# PulseAudio is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+
+## Configuration file for the PulseAudio daemon. See pulse-daemon.conf(5) for
+## more information. Default values are commented out.  Use either ; or # for
+## commenting.
+
+; daemonize = no
+; fail = yes
+; allow-module-loading = yes
+; allow-exit = yes
+; use-pid-file = yes
+; system-instance = no
+; local-server-type = user
+; enable-shm = yes
+; enable-memfd = yes
+; shm-size-bytes = 0 # setting this 0 will use the system-default, usually 64 MiB
+; lock-memory = no
+; cpu-limit = no
+
+; high-priority = yes
+; nice-level = -11
+
+; realtime-scheduling = yes
+; realtime-priority = 5
+
+; exit-idle-time = 20
+; scache-idle-time = 20
+
+; dl-search-path = (depends on architecture)
+
+; load-default-script-file = yes
+; default-script-file = /etc/pulse/default.pa
+
+; log-target = auto
+; log-level = notice
+; log-meta = no
+; log-time = no
+; log-backtrace = 0
+
+; resample-method = speex-float-1
+; avoid-resampling = false
+; enable-remixing = yes
+; remixing-use-all-sink-channels = yes
+; remixing-produce-lfe = no
+; remixing-consume-lfe = no
+; lfe-crossover-freq = 0
+
+flat-volumes = no
+; flat-volumes = no
+
+; rescue-streams = yes
+
+; rlimit-fsize = -1
+; rlimit-data = -1
+; rlimit-stack = -1
+; rlimit-core = -1
+; rlimit-as = -1
+; rlimit-rss = -1
+; rlimit-nproc = -1
+; rlimit-nofile = 256
+; rlimit-memlock = -1
+; rlimit-locks = -1
+; rlimit-sigpending = -1
+; rlimit-msgqueue = -1
+; rlimit-nice = 31
+; rlimit-rtprio = 9
+; rlimit-rttime = 200000
+
+; default-sample-format = s16le
+; default-sample-rate = 44100
+; alternate-sample-rate = 48000
+; default-sample-channels = 2
+; default-channel-map = front-left,front-right
+
+; default-fragments = 4
+; default-fragment-size-msec = 25
+
+; enable-deferred-volume = yes
+; deferred-volume-safety-margin-usec = 8000
+; deferred-volume-extra-delay-usec = 0
+W: [(null)] main.c: This program is not intended to be run as root (unless --system is specified).
+W: [(null)] socket-util.c: SO_PRIORITY failed: Invalid argument
+W: [(null)] socket-util.c: SO_PRIORITY failed: Invalid argument
+W: [(null)] socket-util.c: SO_PRIORITY failed: Invalid argument
+ls: /dev/ish*: No such file or directory
+/tmp/ishaudio:
+total 4
+prw-rw-rw-    1 root     root             0 Oct 16 07:58 mic
+srwxrwxrwx    1 root     root             0 Oct 16 07:58 native
+prw-rw-rw-    1 root     root             0 Oct 16 07:58 pcm
+-rw-------    1 root     root           291 Oct 16 07:59 pulse.log
+0	ishaudio	module-pipe-sink.c	s16le 2ch 48000Hz	SUSPENDED
+0	ishaudio.monitor	module-pipe-sink.c	s16le 2ch 48000Hz	SUSPENDED
+1	ipad_mic	module-pipe-source.c	s16le 1ch 48000Hz	SUSPENDED

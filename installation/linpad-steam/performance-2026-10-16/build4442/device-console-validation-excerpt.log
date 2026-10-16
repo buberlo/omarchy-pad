@@ -1,0 +1,2 @@
+2026-10-16 16:45:22.577 iSH ARM64[20762:4068866] [fast mode] opening stikdebug://enable-jit?bundle-id=com.konradkern.linpad&pid=20762&script-name=universal.js
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x119954000

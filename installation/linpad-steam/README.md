@@ -1,6 +1,8 @@
 # Verified handoff: LinPad, Steam and FEX
 
-## Final state
+Current runtime: **build 4442**. See the [16 October performance update](PERFORMANCE-2026-10-16.md) for the verified idle-audio fix, active 512 MiB JIT cache, memory/storage measurements and remaining Hollow Knight gate. The build 4441 sections below preserve the original sign-in milestone.
+
+## Build 4441 sign-in milestone
 
 The physical iPad Air 13-inch M2 ran signed LinPad 1.5.0 build 4441 and displayed
 Steam's account sign-in screen. The assistant entered no Steam credentials.

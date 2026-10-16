@@ -1,0 +1,151 @@
+{
+  "date": "2026-10-16",
+  "scope": "Curated build4442 performance evidence; no exported preferences or account files; binary packages remain outside Git.",
+  "files": [
+    {
+      "path": "build4442/SHA256SUMS",
+      "bytes": 831,
+      "sha256": "638a5042867a73162da554dc4c5a5b8de8b96ac7c431121169d119b84a0d59aa"
+    },
+    {
+      "path": "build4442/VERIFICATION.md",
+      "bytes": 3511,
+      "sha256": "d1b5eb14a7b5bbec03a7ca36934a7670aed037ee82726f9a08aeb4c753d7e37d"
+    },
+    {
+      "path": "build4442/build-manifest.json",
+      "bytes": 3622,
+      "sha256": "7d577dbfd04c25d0820d1923960939d0b0e1f80ff3da445eab244b640ab0ad1d"
+    },
+    {
+      "path": "build4442/build-summary.log",
+      "bytes": 717,
+      "sha256": "3c8163cb83c67493249865f3ccdb791dcaab2db62d5bea6badca717e8d515483"
+    },
+    {
+      "path": "build4442/cache-persistence-evidence.txt",
+      "bytes": 616,
+      "sha256": "788987472233eed53e78041c6afe2a443f58d6294138cf3e66ad20ef984c4522"
+    },
+    {
+      "path": "build4442/device-console-validation-excerpt.log",
+      "bytes": 242,
+      "sha256": "d0f90de3737725e793f65f59d5dbe4faaea10d3cdfb0e9d3154ff006001a29fc"
+    },
+    {
+      "path": "build4442/device-validation.txt",
+      "bytes": 2718,
+      "sha256": "9f4618b80b690430f6b75ca879b77d00915de0b4702070d9dc33e4bb9d114feb"
+    },
+    {
+      "path": "build4442/fifo-idle-poll-probe.c",
+      "bytes": 3347,
+      "sha256": "5152714bc54c9b48e83a30050cfe3ea5b210b1f1aa9618b45be0d120be374207"
+    },
+    {
+      "path": "build4442/signing.log",
+      "bytes": 342,
+      "sha256": "47db980d4f27544e896ecd277e6e20553e47ec924a7b0c46ce857d808ffe824e"
+    },
+    {
+      "path": "build4442/source-changes.patch",
+      "bytes": 2732,
+      "sha256": "cc62825e45ea8ea2d0aa267dd970a5db03733e2734015f3f42775863a279c4d5"
+    },
+    {
+      "path": "evidence/audio-baseline-cpu-excerpt.txt",
+      "bytes": 691,
+      "sha256": "b871b9596bae61e6f8f24fc939e086d834514a6445ef8170cf798c5d4940db1b"
+    },
+    {
+      "path": "evidence/audio-idle-after.txt",
+      "bytes": 1246,
+      "sha256": "c9e55055a3854fbab7ec488417838f44829bcdb8ae8cd781fa190c1a7ea5941a"
+    },
+    {
+      "path": "evidence/audio-idle.txt",
+      "bytes": 4700,
+      "sha256": "de7880c9db6e56b17e5d67f7fadbd2faa883c0165a1249db45c14bbfab71f6ea"
+    },
+    {
+      "path": "evidence/cache-cleanup.txt",
+      "bytes": 983,
+      "sha256": "e1ccf107da6342b4a95cf0f60f2a23198df43c98da0f07ae4c1aa5f4aefa578f"
+    },
+    {
+      "path": "evidence/fifo-poll-after.txt",
+      "bytes": 5171,
+      "sha256": "bb05f83861bfd5f3a5130774a03437a40b7e2f531bbef909e431a5c20d4b591d"
+    },
+    {
+      "path": "evidence/fifo-poll-before.txt",
+      "bytes": 1063,
+      "sha256": "65c4783f149b1420f2bfdc2c5e5c79f83cee3595970f68f9cd0778f0cdf52b70"
+    },
+    {
+      "path": "evidence/fifo-poll-named-hup-existing.txt",
+      "bytes": 1459,
+      "sha256": "48bf6f9b0e63cfbee1245a767aca2e3d2f438d30202b4b2d828fdd4e3d329921"
+    },
+    {
+      "path": "evidence/fifo-poll-regressions.txt",
+      "bytes": 1557,
+      "sha256": "82ab530a421919ea5472335f5673611cd07cd1cf2b4c3bdd035f76f0c409a774"
+    },
+    {
+      "path": "evidence/steam-after4442-downloading.txt",
+      "bytes": 9900,
+      "sha256": "ee0cba8abef4b492e262e3bffd80018433db63f26f9647d4b182d02c739dc485"
+    },
+    {
+      "path": "evidence/steam-after4442-store.txt",
+      "bytes": 10335,
+      "sha256": "a9315541049885a9b31d616cf8655bf4b77378185f22b0e1a48917ff5035971e"
+    },
+    {
+      "path": "evidence/steam-clean-shutdown.txt",
+      "bytes": 600,
+      "sha256": "ec338e6f1c6762ad7570f6436b12e674ceb7affe8ee52d1a0e4206dc65fe58d6"
+    },
+    {
+      "path": "scripts/guest/audio-idle-mitigation",
+      "bytes": 815,
+      "sha256": "9840e1152181091087f489cb539ed7d3e29d2847be8fcd9b94b104de72a15618"
+    },
+    {
+      "path": "scripts/guest/audio-probe",
+      "bytes": 411,
+      "sha256": "e2728ca3d53c9b6e871101f892dd42832ff87e5366ccebaa30fc1b05a5b150f7"
+    },
+    {
+      "path": "scripts/guest/clean-transfer-cache",
+      "bytes": 3050,
+      "sha256": "a528f50e41e33823b40403123c06bd610c91a5240c75380ed6daa864c41c85db"
+    },
+    {
+      "path": "scripts/guest/cpu-sample",
+      "bytes": 302,
+      "sha256": "7e241ec503c6c14d129f3679a9a4b1baf7fd5b6a745e3970da81271e6fe3550a"
+    },
+    {
+      "path": "scripts/guest/memory-cache",
+      "bytes": 455,
+      "sha256": "3f5517053728cc8e972e11da78ec3beb767e1245984c6e24647f5a5d2b06b49a"
+    },
+    {
+      "path": "scripts/guest/prepare-upgrade",
+      "bytes": 336,
+      "sha256": "1570574bdfbf6ff0fc9e04c05cbd339d4c2adec29a638367de902333db781782"
+    },
+    {
+      "path": "scripts/guest/verify4442",
+      "bytes": 895,
+      "sha256": "371ba97a1c0c88aec53f534d396c97f64b06ce25f62b8eb0590b49680353d009"
+    },
+    {
+      "path": "scripts/host/defaults-argument-probe.m",
+      "bytes": 848,
+      "sha256": "8942a4d2dcee8d2aa5f0db49900accb81c0ec7194974f4e61c16d7589e067e58"
+    }
+  ]
+}

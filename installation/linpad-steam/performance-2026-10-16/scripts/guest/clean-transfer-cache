@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/linpad-cache-cleanup.txt
+{
+date
+echo BEFORE; df -k /tmp
+if [ -f /tmp/steam-cef-extra.tar.gz ] && [ "$(sha256sum /tmp/steam-cef-extra.tar.gz | cut -d " " -f 1)" = fb41f47179a3a28a4038526955470d57d84f575b598987e854a8dad1b0f00475 ]; then rm -- /tmp/steam-cef-extra.tar.gz; echo "removed verified archive steam-cef-extra.tar.gz"; fi
+if [ -f /tmp/steam-cef-glibc.tar.gz ] && [ "$(sha256sum /tmp/steam-cef-glibc.tar.gz | cut -d " " -f 1)" = 43a3c68b484cbd9f30881f2473fbf6c8553688a34e63033f5f8229bc3e282771 ]; then rm -- /tmp/steam-cef-glibc.tar.gz; echo "removed verified archive steam-cef-glibc.tar.gz"; fi
+if [ -f /tmp/steam-client.tar.gz ] && [ "$(sha256sum /tmp/steam-client.tar.gz | cut -d " " -f 1)" = 32dbcc48ad6aaf0b1eb6b2db97a900651efb98400987a3cb865065c1005c0118 ]; then rm -- /tmp/steam-client.tar.gz; echo "removed verified archive steam-client.tar.gz"; fi
+if [ -f /tmp/steam-glibc.tar.gz ] && [ "$(sha256sum /tmp/steam-glibc.tar.gz | cut -d " " -f 1)" = 8911ba343db01adc0172ac161af7678a9ed118a3acc4a21edf96c1f2e0a59b39 ]; then rm -- /tmp/steam-glibc.tar.gz; echo "removed verified archive steam-glibc.tar.gz"; fi
+if [ -f /tmp/steam-glx-tools.tar.gz ] && [ "$(sha256sum /tmp/steam-glx-tools.tar.gz | cut -d " " -f 1)" = a9fa9a22e863931116cbf12d940a008009976f693dc334e67a44afe2801251bb ]; then rm -- /tmp/steam-glx-tools.tar.gz; echo "removed verified archive steam-glx-tools.tar.gz"; fi
+if [ -f /tmp/steam-gtk.tar.gz ] && [ "$(sha256sum /tmp/steam-gtk.tar.gz | cut -d " " -f 1)" = 5f86da23b68a9561cc2adcc38a74a307c33f2050dd5a2fb62da9227004e13275 ]; then rm -- /tmp/steam-gtk.tar.gz; echo "removed verified archive steam-gtk.tar.gz"; fi
+if [ -f /tmp/steam-lsof.tar.gz ] && [ "$(sha256sum /tmp/steam-lsof.tar.gz | cut -d " " -f 1)" = 0beb742be26bc3eb3a0a03f2a60c910bdc3ad66be482bb25346af675b34eaf70 ]; then rm -- /tmp/steam-lsof.tar.gz; echo "removed verified archive steam-lsof.tar.gz"; fi
+if [ -f /tmp/steam-mesa.tar.gz ] && [ "$(sha256sum /tmp/steam-mesa.tar.gz | cut -d " " -f 1)" = eea1f1d908dec5d9c40df46945ad1d6f8f591f27c156cfeb3089e0ef7992869a ]; then rm -- /tmp/steam-mesa.tar.gz; echo "removed verified archive steam-mesa.tar.gz"; fi
+if [ -f /tmp/steam-sdl.tar.gz ] && [ "$(sha256sum /tmp/steam-sdl.tar.gz | cut -d " " -f 1)" = c54157ed2c89c26e02d872b8e508b59e38ee3ccec1153a7502a3e5c7f67de170 ]; then rm -- /tmp/steam-sdl.tar.gz; echo "removed verified archive steam-sdl.tar.gz"; fi
+if [ -f /tmp/steam-vnc.tar.gz ] && [ "$(sha256sum /tmp/steam-vnc.tar.gz | cut -d " " -f 1)" = c018aebba80a98cbac595aa6077b9b6d78440c6c8270c51fc02458ca7740678e ]; then rm -- /tmp/steam-vnc.tar.gz; echo "removed verified archive steam-vnc.tar.gz"; fi
+if [ -f /tmp/vnc-fix.tar.gz ] && [ "$(sha256sum /tmp/vnc-fix.tar.gz | cut -d " " -f 1)" = 4b8c9c7e537c4ea0b22cf67eb814d2b2804ba7764a4d356ccb44b9f3aca3e7f6 ]; then rm -- /tmp/vnc-fix.tar.gz; echo "removed verified archive vnc-fix.tar.gz"; fi
+echo AFTER; df -k /tmp
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+echo CACHE_CLEANUP_DONE

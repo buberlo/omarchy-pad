@@ -1,0 +1,13 @@
+Source: baseline-details.txt (curated CPU-only excerpt; unrelated command/config fields omitted).
+Fri Oct 16 08:24:19 UTC 2026
+PROCESS_SAMPLE 1
+533311.45 533311.45
+30 (pulseaudio) R 1 29 29 0 0 0 0 0 0 0 13749 123929 0 0 20 0 3 0 53177131 79597568 19433 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0
+PROCESS_SAMPLE 2
+533316.77 533316.77
+30 (pulseaudio) R 1 29 29 0 0 0 0 0 0 0 13788 124381 0 0 20 0 3 0 53177130 79597568 19433 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0
+
+Counter units: 100 Hz (fs/proc/pid.c RU_TICKS).
+Delta: (13788 + 124381) - (13749 + 123929) = 491 ticks.
+Elapsed: 533316.77 - 533311.45 = 5.32 seconds.
+491 / (100 * 5.32) * 100 = 92.29 percent of one CPU core.

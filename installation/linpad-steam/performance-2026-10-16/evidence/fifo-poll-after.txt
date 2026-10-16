@@ -1,0 +1,103 @@
+TEST=fifo-idle-poll-probe 
+empty named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+empty named FIFO events=0 sleeps PASS errno=0
+queued named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+queued named FIFO events=0 sleeps PASS errno=0
+FIFO requested readability PASS errno=0
+FIFO readability remains level triggered PASS errno=0
+queued pipe events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+queued pipe events=0 sleeps PASS errno=0
+pipe HUP without requested events PASS errno=0
+queued socket events=0 sleeps elapsed_ms=100.1 result=0 revents=0
+queued socket events=0 sleeps PASS errno=0
+socket HUP without requested events PASS errno=0
+EXIT=0
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {5s 0us, 0s 0us}, 0xffffdbe0) = 0x0
+1 call 172 getpid() = 0x1
+1 call 33  mknodat(-100, "/tmp/fifo-idle-poll-1", 0x1180, 0) = 0x0
+1 call 56  openat(-100, "/tmp/fifo-idle-poll-1", 0x20802, 0x0) = 0x3
+1 call 35  unlinkat(-100, "/tmp/fifo-idle-poll-1", 0) = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 110966000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 212044000ns} = 0x0
+1 call 66  writev(1, 0xffffd8b0, 2) {"empty named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+", 69} {"", 0} = 0x45
+1 call 66  writev(1, 0xffffd8d0, 2) {"empty named FIFO events=0 sleeps PASS errno=0
+", 46} {"", 0} = 0x2e
+1 call 64  (fast) = 0x1
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 212609000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 313680000ns} = 0x0
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued named FIFO events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+", 70} {"", 0} = 0x46
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued named FIFO events=0 sleeps PASS errno=0
+", 47} {"", 0} = 0x2f
+1 call 73  poll(0xffffdcb8, 1, 0) {3, 0x1}...
+1 end poll {3, 0x1} = 0x1
+1 call 66  writev(1, 0xffffd920, 2) {"FIFO requested readability PASS errno=0
+", 40} {"", 0} = 0x28
+1 call 73  poll(0xffffdcb8, 1, 0) {3, 0x1}...
+1 end poll {3, 0x1} = 0x1
+1 call 66  writev(1, 0xffffd920, 2) {"FIFO readability remains level triggered PASS errno=0
+", 54} {"", 0} = 0x36
+1 call 57  close(3) = 0x0
+1 call 59  pipe2(0xffffdc38, 0) [3 4] = 0x0
+1 call 64  (fast) = 0x1
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 313983000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 415036000ns} = 0x0
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued pipe events=0 sleeps elapsed_ms=101.1 result=0 revents=0
+", 64} {"", 0} = 0x40
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued pipe events=0 sleeps PASS errno=0
+", 41} {"", 0} = 0x29
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x803000, 0x0, 0x22, -1, 0x0) = 0xef7f4000
+1 call 226 mprotect(0xef7f6000, 0x801000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdac0, 8) = 0x0
+1 call 220 clone(0x7d0f00, 0xefff6ef0, 0xefff6f40, 0xefff6fe8, 0x10396b8) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 73  poll(0xffffdbf0, 1, 500) {3, 0}...
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 101 nanosleep({0, 30000000}, 0xefff6ea0 = 0x0
+2 call 57  close(4) = 0x0
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6e30, 8) = 0x0
+1 end poll {3, 0x10} = 0x1
+2 call 98  futex(FUTEX_WAKE, 0xefff6f48, 1) = 0x0
+2 call 93  exit(0)
+1 call 66  writev(1, 0xffffd8e0, 2) {"pipe HUP without requested events PASS errno=0
+", 47} {"", 0} = 0x2f
+1 call 215 munmap(0xef7f4000, 0x803000) = 0x0
+1 call 57  close(3) = 0x0
+1 call 199 socketpair(1, 1, 0, 0xffffdc30) [3, 4] = 0x0
+1 call 64  write(4, "x", 1) = 0x1
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 449743000ns} = 0x0
+1 call 73  poll(0xffffdc18, 1, 100) {3, 0}...
+1 end poll {3, 0} = 0x0
+1 call 113 clock_gettime(1, 0xffffdbf0) {109980s 549834000ns} = 0x0
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued socket events=0 sleeps elapsed_ms=100.1 result=0 revents=0
+", 66} {"", 0} = 0x42
+1 call 66  writev(1, 0xffffd8d0, 2) {"queued socket events=0 sleeps PASS errno=0
+", 43} {"", 0} = 0x2b
+1 call 222 mmap64(0x0, 0x803000, 0x0, 0x22, -1, 0x0) = 0xef7f4000
+1 call 226 mprotect(0xef7f6000, 0x801000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdac0, 8) = 0x0
+1 call 220 clone(0x7d0f00, 0xefff6ef0, 0xefff6f40, 0xefff6fe8, 0x10396b8) = 0x3
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 73  poll(0xffffdbf0, 1, 500) {3, 0}...
+3 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+3 call 101 nanosleep({0, 30000000}, 0xefff6ea0 = 0x0
+3 call 57  close(4) = 0x0
+3 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6e30, 8) = 0x0
+1 end poll {3, 0x10} = 0x1
+3 call 98  futex(FUTEX_WAKE, 0xefff6f48, 1) = 0x0
+3 call 93  exit(0)
+1 call 66  writev(1, 0xffffd8e0, 2) {"socket HUP without requested events PASS errno=0
+", 49} {"", 0} = 0x31
+1 call 215 munmap(0xef7f4000, 0x803000) = 0x0
+1 call 57  close(3) = 0x0
+1 call 103 setitimer(0, {0s 0us, 0s 0us}, 0xffffdbe0) = 0x0
+1 call 94  exit_group(0)

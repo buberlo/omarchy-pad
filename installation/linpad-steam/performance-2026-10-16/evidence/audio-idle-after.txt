@@ -1,0 +1,36 @@
+Fri Oct 16 08:28:56 UTC 2026
+MEMORY
+footprint_mb 3216
+allowance_mb 8192
+headroom_mb 4975
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 514 671 0 0 steam
+proc 698 628 300 0 steamwebhelper
+proc 583 498 0 0 steamwebhelper
+proc 2003 77 300 0 steamwebhelper
+proc 3479 46 300 0 steamwebhelper
+proc 655 41 200 0 steamwebhelper
+proc 667 35 200 0 steamwebhelper
+proc 512 27 0 0 ld-linux-aarch64.so.1
+proc 607 24 0 0 steamwebhelper
+proc 606 24 0 0 steamwebhelper
+proc 536 13 0 0 ld-linux-aarch64.so.1
+proc 520 11 0 1 Xwayland
+Filesystem                Size      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                        106.0G    104.9G      1.1G  99% /
+SOURCE_OUTPUTS
+
+1	ipad_mic	module-pipe-source.c	s16le 1ch 48000Hz	SUSPENDED
+UNLOAD_UNUSED_MIC_MODULE=3
+SINK
+0	ishaudio	module-pipe-sink.c	s16le 2ch 48000Hz	SUSPENDED
+SAMPLE
+533578.1 533578.1
+30 (pulseaudio) R 1 29 29 0 0 0 0 0 0 0 15346 142453 0 0 20 0 2 0 53177130 79454208 19398 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0
+SAMPLE
+533583.3 533583.3
+30 (pulseaudio) R 1 29 29 0 0 0 0 0 0 0 15346 142453 0 0 20 0 2 0 53177131 79454208 19398 0 0 0 4294956976 0 0 0 0 7348224 38022 0 0 0 17 0

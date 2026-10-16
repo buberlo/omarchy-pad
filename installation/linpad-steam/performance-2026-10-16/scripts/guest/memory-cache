@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/linpad-memory-cache.txt
+{
+ date;cat /proc/ish/memory
+ echo CACHE_BEFORE
+ cat /proc/ish/.defaults/fastMode.codeCacheMB 2>/dev/null || true
+ printf '512' > /proc/ish/.defaults/fastMode.codeCacheMB
+ echo CACHE_AFTER
+ cat /proc/ish/.defaults/fastMode.codeCacheMB
+ echo 'Cache preference takes effect after next JIT initialization'
+ df -h /opt
+} > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null

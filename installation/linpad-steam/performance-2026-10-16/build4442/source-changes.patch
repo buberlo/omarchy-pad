@@ -1,0 +1,45 @@
+diff --git a/fs/poll.c b/fs/poll.c
+index cf92d557..5b504c7f 100644
+--- a/fs/poll.c
++++ b/fs/poll.c
+@@ -574,12 +574,20 @@ static int real_poll_update(struct real_poll *real, int fd, int types, void *dat
+     struct kevent e[3] = {
+         {.filter = EVFILT_READ, .flags = types & (POLL_READ | POLL_HUP) ? EV_ADD : EV_DELETE},
+         {.filter = EVFILT_WRITE, .flags = types & POLL_WRITE ? EV_ADD : EV_DELETE},
+-        {.filter = EVFILT_EXCEPT, .flags = types & POLL_ERR ? EV_ADD : EV_DELETE},
++        // EVFILT_EXCEPT with no NOTE_OOB also wakes for ordinary socket data
++        // on Darwin. Only use it as a wakeup hint; realfs_poll checks errors.
++        {.filter = EVFILT_EXCEPT, .flags = types & POLL_ERR ? EV_ADD | EV_CLEAR : EV_DELETE},
+     };
+     if (!(types & POLL_READ) && types & POLL_HUP) {
+         // Set the low water mark really high so we'll only get woken up on a hangup
+         e[0].fflags = NOTE_LOWAT;
+         e[0].data = INT_MAX;
++        // Darwin FIFOs ignore NOTE_LOWAT: queued data would wake this filter
++        // forever even though the guest only wants HUP/ERR (PulseAudio's idle
++        // microphone does this). Clear unmatched read notifications after one
++        // delivery; a later host EOF event still wakes us. POLLIN stays level
++        // triggered, and realfs_poll still decides whether to report HUP.
++        e[0].flags |= EV_CLEAR;
+     }
+     for (int i = 0; i < 3; i++) {
+         e[i].ident = fd;
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 7f55850a..4e8adbde 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,14 @@ convenient for running them under both the CLI emulator and iPad app.
+   and hangup stays disabled until rearmed.
+ - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+   wakes a thread blocked on an outer edge-triggered epoll set.
++- `fifo-idle-poll-probe.c`: idle polls with no requested events sleep even
++  when FIFOs, pipes or sockets contain unread data; requested readability stays
++  level triggered and anonymous pipe/socket peer closure still reports HUP.
++  The old Darwin runtime spins on the queued microphone FIFO until the
++  probe's five-second alarm.
++  Its separate `--named-fifo-hup` diagnostic exposes an existing Darwin gap:
++  named FIFO writer closure is not reported by host poll/kqueue. That diagnostic
++  remains failing; this repair does not claim to add named FIFO HUP support.
+ - `parent-pid-probe.c`: getppid from a worker and a forked child, plus
+   the child procfs stat/status parent fields, use process IDs rather than TIDs.
+ - `proc-thread-list-probe.c`: lists only process leaders at /proc, while

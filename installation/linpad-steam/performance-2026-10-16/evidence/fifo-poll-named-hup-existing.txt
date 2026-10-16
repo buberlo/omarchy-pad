@@ -1,0 +1,30 @@
+TEST=fifo-idle-poll-probe --named-fifo-hup
+named FIFO HUP without requested events FAIL errno=0
+EXIT=1
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {5s 0us, 0s 0us}, 0xffffdbc0) = 0x0
+1 call 172 getpid() = 0x1
+1 call 33  mknodat(-100, "/tmp/fifo-idle-poll-1", 0x1180, 0) = 0x0
+1 call 56  openat(-100, "/tmp/fifo-idle-poll-1", 0x20800, 0x0) = 0x3
+1 call 56  openat(-100, "/tmp/fifo-idle-poll-1", 0x20801, 0x0) = 0x4
+1 call 35  unlinkat(-100, "/tmp/fifo-idle-poll-1", 0) = 0x0
+1 call 64  (fast) = 0x1
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x803000, 0x0, 0x22, -1, 0x0) = 0xef7f4000
+1 call 226 mprotect(0xef7f6000, 0x801000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdaa0, 8) = 0x0
+1 call 220 clone(0x7d0f00, 0xefff6ef0, 0xefff6f40, 0xefff6fe8, 0x10396b8) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 73  poll(0xffffdbd0, 1, 500) {3, 0}...
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 101 nanosleep({0, 30000000}, 0xefff6ea0 = 0x0
+2 call 57  close(4) = 0x0
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6e30, 8) = 0x0
+2 call 98  futex(FUTEX_WAKE, 0xefff6f48, 1) = 0x0
+2 call 93  exit(0)
+1 end poll {3, 0} = 0x0
+1 call 66  writev(1, 0xffffd8a0, 2) {"named FIFO HUP without requested events FAIL errno=0
+", 53} {"", 0} = 0x35
+1 call 215 munmap(0xef7f4000, 0x803000) = 0x0
+1 call 57  close(3) = 0x0
+1 call 94  exit_group(1)
