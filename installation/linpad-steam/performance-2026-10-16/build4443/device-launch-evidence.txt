@@ -1,0 +1,5 @@
+Frozen excerpt from device-console.log; full device validation was pending at packaging.
+Launched application with com.konradkern.linpad bundle identifier.
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x118d54000
+2026-10-16 17:12:32.553 iSH ARM64[20957:4121536] [boot] fast_mode=on
+2026-10-16 17:12:33.259 iSH ARM64[20957:4121536] [boot] boot_seconds=0.71

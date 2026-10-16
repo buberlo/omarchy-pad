@@ -1,0 +1,8 @@
+PASS installer and verifier shell syntax
+PASS four exact tool files installed with executable launchers
+PASS identical reinstall makes no backup or content changes
+PASS replacement preserves previous tool; unrelated marker unchanged
+PASS verifier accepts Linux depot plus x86-64 ELF and changes neither file
+PASS verifier rejects wrong depot and non-ELF executable
+
+Only temporary synthetic directories/files were used; no Steam account or device access.

@@ -1,0 +1,153 @@
+diff --git a/fs/dev_virtgpu.c b/fs/dev_virtgpu.c
+index d80fbdd4..37189d01 100644
+--- a/fs/dev_virtgpu.c
++++ b/fs/dev_virtgpu.c
+@@ -193,9 +193,10 @@ struct vgpu_ctx {
+     uint32_t id;
+     atomic_uint refcount;
+     atomic_uint_fast64_t next_fence;
+-    // Guards signaled[] and fences; taken by the renderer's fence thread.
++    // Guards submitted[] and fences; taken by the renderer's fence thread.
++    // signaled[] is atomic because poll readiness runs under the poll-set lock.
+     pthread_mutex_t fence_lock;
+-    uint64_t signaled[MAX_RINGS];
++    atomic_uint_fast64_t signaled[MAX_RINGS];
+     uint64_t submitted[MAX_RINGS];
+     struct list fences;
+ };
+@@ -440,6 +441,8 @@ static struct vgpu_ctx *ctx_create(uint32_t capset_id, const char *name) {
+         return NULL;
+     ctx->refcount = 1;
+     ctx->next_fence = 1;
++    for (int i = 0; i < MAX_RINGS; i++)
++        atomic_init(&ctx->signaled[i], 0);
+     pthread_mutex_init(&ctx->fence_lock, NULL);
+     list_init(&ctx->fences);
+     pthread_mutex_lock(&ctx_table_lock);
+@@ -472,9 +475,11 @@ static struct vgpu_ctx *ctx_create(uint32_t capset_id, const char *name) {
+ 
+ static int fence_poll(struct fd *fd) {
+     struct vgpu_fence *fence = fd->data;
+-    pthread_mutex_lock(&fence->ctx->fence_lock);
+-    bool signaled = fence->ctx->signaled[fence->ring] >= fence->id;
+-    pthread_mutex_unlock(&fence->ctx->fence_lock);
++    // poll_wait/epoll_fd_poll hold their poll-set lock here. The completion
++    // callback holds fence_lock while poll_wakeup takes that same poll-set
++    // lock, so acquiring fence_lock here would deadlock both threads.
++    bool signaled = atomic_load_explicit(&fence->ctx->signaled[fence->ring],
++                                         memory_order_acquire) >= fence->id;
+     return signaled ? POLL_READ : 0;
+ }
+ 
+diff --git a/gpu/DESIGN.md b/gpu/DESIGN.md
+index 18ba6f93..d4e92824 100644
+--- a/gpu/DESIGN.md
++++ b/gpu/DESIGN.md
+@@ -91,7 +91,12 @@ MoltenVK -> Metal -> Apple GPU
+   pointer to `pt_map`, which owns and later munmaps it. Zero copy; the emulator's page table
+   points straight at the Metal-visible pages.
+ * Fence fds: an adhoc fd that holds a ref on the context and its `(ring, fence_id)`; `poll`
+-  reports POLLIN once `signaled[ring] >= fence_id`.
++  reports POLLIN once `signaled[ring] >= fence_id`. Completion counters are atomic:
++  readiness must not take the context fence mutex while the poll-set mutex is held,
++  because the completion callback holds the context mutex while waking that poll set.
++  `python3 gpu/tests/fence-lock-regression.py --check-legacy-lock` forces this collision
++  using the production fence functions and verifies the former locking deadlock as a
++  negative control. It needs a host C compiler and no GPU or guest.
+ 
+ ## Things that had to change outside fs/dev_virtgpu.c
+ 
+diff --git a/jit/DESIGN.md b/jit/DESIGN.md
+index 5437edb2..4aa4a576 100644
+--- a/jit/DESIGN.md
++++ b/jit/DESIGN.md
+@@ -30,6 +30,7 @@ address. The inline lookup:
+   ubfx  x13, x13, #12, #13
+   add   x13, x11, x13, lsl #5       ; &ctx->tlbe[index]
+   ldr   x14, [x13, #0x800 (+8 for writes)]   ; tag = guest page if readable/writable
++  tbnz  x14, #0, slow               ; invalid tag 1 must miss before range arithmetic
+   sub   x14, A, x14                 ; offset into the page, huge if other page
+   add   x14, x14, #size-1           ; page-crossing check
+   lsr   x14, x14, #12
+diff --git a/jit/emit.h b/jit/emit.h
+index 43d0e694..e8910bad 100644
+--- a/jit/emit.h
++++ b/jit/emit.h
+@@ -46,6 +46,7 @@ static inline uint32_t e_cbz_x(int rt, int32_t woff) { return 0xb4000000u | (((u
+ static inline uint32_t e_cbnz_x(int rt, int32_t woff) { return 0xb5000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
+ static inline uint32_t e_cbz_w(int rt, int32_t woff) { return 0x34000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
+ static inline uint32_t e_cbnz_w(int rt, int32_t woff) { return 0x35000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
++static inline uint32_t e_tbnz(int rt, int bit, int32_t woff) { return 0x37000000u | ((uint32_t)(bit & 32) << 26) | ((uint32_t)(bit & 31) << 19) | (((uint32_t)woff & 0x3fff) << 5) | rt; }
+ static inline uint32_t e_br(int rn) { return 0xd61f0000u | (rn << 5); }
+ static inline uint32_t e_blr(int rn) { return 0xd63f0000u | (rn << 5); }
+ static inline uint32_t e_ret(void) { return 0xd65f03c0u; }
+diff --git a/jit/jit.c b/jit/jit.c
+index 4cbb431f..f009f2d0 100644
+--- a/jit/jit.c
++++ b/jit/jit.c
+@@ -1288,6 +1288,9 @@ uint32_t jit_emit_trampolines(struct jit_chunk *c, uint32_t *rw, uint32_t *rx) {
+                     ab_put(&b, e_ubfx(HR_T1, HR_T1, 12, JIT_TLB_BITS));
+                     ab_put(&b, e_add_sh(HR_T1, HR_CTX, HR_T1, 0, 5));
+                     ab_put(&b, e_ldr_x(HR_T2, HR_T1, JIT_TLB_OFF + (write ? 8 : 0)));
++                    // As in the inline path, reject tag 1 before adding size-1.
++                    uint32_t invalid_tag = b.n;
++                    ab_put(&b, e_tbnz(HR_T2, 0, 0));
+                     ab_put(&b, e_sub_sh(HR_T2, A, HR_T2, 0, 0));
+                     if (size > 1)
+                         ab_put(&b, e_add_imm(HR_T2, HR_T2, size - 1, 0));
+@@ -1296,6 +1299,8 @@ uint32_t jit_emit_trampolines(struct jit_chunk *c, uint32_t *rw, uint32_t *rx) {
+                     ab_put(&b, e_ldr_x(HR_T1, HR_T1, JIT_TLB_OFF + 16));
+                     ab_put(&b, e_ret());
+                     // miss
++                    if (!b.oom)
++                        b.w[invalid_tag] = fix_b14(b.w[invalid_tag], b.n - invalid_tag);
+                     uint32_t desc = size | (write << 8) | (atomic << 9) | (1 << 10) | (A << 11) | (1 << 16);
+                     ab_put(&b, e_adr(HR_T2, 8));
+                     ab_put(&b, e_b((int32_t) helper_stub - (int32_t) b.n));
+diff --git a/jit/translate.c b/jit/translate.c
+index 70a58869..ea755bba 100644
+--- a/jit/translate.c
++++ b/jit/translate.c
+@@ -496,6 +496,9 @@ static int emit_mem(struct tr *t, struct memop *m) {
+     put(t, HOT, e_ubfx(HR_T1, HR_T1, 12, JIT_TLB_BITS));
+     put(t, HOT, e_add_sh(HR_T1, HR_CTX, HR_T1, 0, 5));
+     put(t, HOT, e_ldr_x(HR_T2, HR_T1, JIT_TLB_OFF + (m->write ? 8 : 0)));
++    // Invalid tag 1 must miss before the range check: for a null access,
++    // 0 - 1 + size - 1 wraps back into the first page when size > 1.
++    put_fix(t, HOT, e_tbnz(HR_T2, 0, 0), FX_B14, TGT_LABEL, slow);
+     put(t, HOT, e_sub_sh(HR_T2, A, HR_T2, 0, 0));
+     if (m->size > 1)
+         put(t, HOT, e_add_imm(HR_T2, HR_T2, m->size - 1, 0));
+diff --git a/kernel/calls.c b/kernel/calls.c
+index bd0ee82c..398e3788 100644
+--- a/kernel/calls.c
++++ b/kernel/calls.c
+@@ -798,7 +798,9 @@ void handle_interrupt(int interrupt) {
+             // mapped) but crash in iSH (because we have unmapped gaps).
+             // Rate-limited to prevent infinite loops on true null-pointer derefs.
+ #ifdef GUEST_ARM64
+-            if (!cpu->segfault_was_write) {
++            // Null-page faults must reach the guest handler. FEX also uses a
++            // deliberate null load to deliver an x86 SIGSEGV.
++            if (!cpu->segfault_was_write && cpu->segfault_addr >= PAGE_SIZE) {
+                 static _Thread_local int read_recovery_count = 0;
+                 static _Thread_local addr_t last_recovery_addr = 0;
+                 // Reset counter when faulting address changes (scanner moving through memory)
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 4e8adbde..6ec470b3 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -37,6 +37,13 @@ convenient for running them under both the CLI emulator and iPad app.
+ - `x86-runtime-smoke.c`: compile for x86-64 Linux with pthread support and run
+   through FEX. Checks threads/mutexes, SSE2 arithmetic, generated executable
+   code and signal delivery. This does not qualify a full application or game.
++- `jit-null-fault-probe.c`: native AArch64 reads/writes of 1, 2, 4, 8, 16 and
++  32 bytes at addresses 0 and 1 must reach a SIGSEGV handler with the exact
++  address, while mapped and page-crossing accesses succeed. Run with
++  `ISH_JIT=1`, `ISH_JIT=1 ISH_JIT_TIER=2`,
++  `ISH_JIT=1 ISH_JIT_TIER=1 ISH_JIT_COMPACT=1`, and `ISH_JIT=0`.
++  The former invalid-TLB-tag arithmetic sent FEX's deliberate null load into
++  a 257-fault loop instead of delivering its guest SIGSEGV.
+ 
+ The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
+ With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static

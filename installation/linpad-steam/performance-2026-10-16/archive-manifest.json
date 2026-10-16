@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated build4442 performance evidence; no exported preferences or account files; binary packages remain outside Git.",
+  "scope": "Curated build 4442 and 4443 performance, Vulkan, and native Steam-tool evidence; no exported preferences or account files; binary packages remain outside Git.",
   "files": [
     {
       "path": "build4442/SHA256SUMS",
@@ -53,6 +53,151 @@
       "sha256": "cc62825e45ea8ea2d0aa267dd970a5db03733e2734015f3f42775863a279c4d5"
     },
     {
+      "path": "build4443/SHA256SUMS",
+      "bytes": 2996,
+      "sha256": "39fa176e674a0dd37e3165be6b98bbcc80b54acf8c9494d483d00742e18200db"
+    },
+    {
+      "path": "build4443/VERIFICATION.md",
+      "bytes": 4000,
+      "sha256": "7df98c33e1838c2056c72efca52929e93cd0723f1690fdfb5dcb07f78cb7d63f"
+    },
+    {
+      "path": "build4443/build-manifest.json",
+      "bytes": 6414,
+      "sha256": "93b8eaa52026f853d84a36a48ea66536fca5547321b4ec890a36bacc428eba9f"
+    },
+    {
+      "path": "build4443/build-summary.log",
+      "bytes": 963,
+      "sha256": "7e979fdd370a9e488f52b1ab88fafdbe1fa87d08881982ce1544c42f2cc793ac"
+    },
+    {
+      "path": "build4443/build4443-cube1200.txt",
+      "bytes": 182,
+      "sha256": "0f64ab91504a7cbbb321c94d78e9283e4d5f8f463dad8e179a75bd65c822dde7"
+    },
+    {
+      "path": "build4443/build4443-motion-1.png",
+      "bytes": 302648,
+      "sha256": "2672fb12b6bacf26d267cd516c2f8a49891f126cd6c159fa49fa04af92f6998e"
+    },
+    {
+      "path": "build4443/build4443-motion-2.png",
+      "bytes": 301783,
+      "sha256": "b6857d658f4296bf57da26bd172a494ec4c701b8f5caa111051e2729d09023c4"
+    },
+    {
+      "path": "build4443/cube4443-visible.sh",
+      "bytes": 825,
+      "sha256": "f78acbf6b2a208be1a51ae0262c0f505568a1fe2375a03353850d7d5110131a4"
+    },
+    {
+      "path": "build4443/device-gpu-validation.txt",
+      "bytes": 1735,
+      "sha256": "518bc2c46c6adef8260f20592d051b3044155441978f0439a6cef4fcc91c127a"
+    },
+    {
+      "path": "build4443/device-launch-evidence.txt",
+      "bytes": 382,
+      "sha256": "a3ca7d59673301a0cecc7b71964552a0b6c3971ae0435cabf3b16ff019fbcb09"
+    },
+    {
+      "path": "build4443/fence-lock-regression.txt",
+      "bytes": 612,
+      "sha256": "9a1ae14067b94b4123fe224d030d3d35ef13bdc0f519be0a0cb3fe540cea227b"
+    },
+    {
+      "path": "build4443/install.json",
+      "bytes": 980,
+      "sha256": "07f09032d41b03f4c58faab99766f39aed2b12530d389fddd5cc6b2c1e927b6d"
+    },
+    {
+      "path": "build4443/jit-null-regression-compact.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "path": "build4443/jit-null-regression-gadget.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "path": "build4443/jit-null-regression-inline.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "path": "build4443/jit-null-regression-tier2.txt",
+      "bytes": 4376,
+      "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
+    },
+    {
+      "path": "build4443/null-fault-jit-after.txt",
+      "bytes": 2670,
+      "sha256": "520c863b86ee5f73e54a8dcb4e2aa492887ccb41da11ca4653cf80ac89095abf"
+    },
+    {
+      "path": "build4443/signing.log",
+      "bytes": 184,
+      "sha256": "6a50305e8fadbbc566ad80087a6e155c8e9ed831836841a6859c7454f0cd69e0"
+    },
+    {
+      "path": "build4443/source-changes.patch",
+      "bytes": 8526,
+      "sha256": "ad5bbd8795c9f2e590c1a6501732627edec3e93d25c0fe66e16c7a97cc74b146"
+    },
+    {
+      "path": "build4443/source-snapshot/fs/dev_virtgpu.c",
+      "bytes": 34223,
+      "sha256": "6a40f1ebd0b419706eaad5e5089e33b367affee9806862013937bb07bb7b6281"
+    },
+    {
+      "path": "build4443/source-snapshot/gpu/DESIGN.md",
+      "bytes": 13621,
+      "sha256": "c88173309997b9552713b18c4e1c38f6ba27bdfda0877d05ee44462e4c3ea3fe"
+    },
+    {
+      "path": "build4443/source-snapshot/gpu/tests/fence-lock-regression.py",
+      "bytes": 5325,
+      "sha256": "b74ca1c57030670ddfe2ac7b7d8fe29c9c46ae350b094101399aadb33f9ba98d"
+    },
+    {
+      "path": "build4443/source-snapshot/jit/DESIGN.md",
+      "bytes": 22778,
+      "sha256": "54ee28566755a5802f865d812d4c275eec8e0e9bbc7688534d01e49921bee746"
+    },
+    {
+      "path": "build4443/source-snapshot/jit/emit.h",
+      "bytes": 6714,
+      "sha256": "3812bded81f3d6b975defbb6739555cac817ba83af3c52c56da2c156f3047953"
+    },
+    {
+      "path": "build4443/source-snapshot/jit/jit.c",
+      "bytes": 81338,
+      "sha256": "700dbed2d66f3916134332481409e32956d4206ba24950af99a4ac69e7164f2a"
+    },
+    {
+      "path": "build4443/source-snapshot/jit/translate.c",
+      "bytes": 54761,
+      "sha256": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061"
+    },
+    {
+      "path": "build4443/source-snapshot/kernel/calls.c",
+      "bytes": 61666,
+      "sha256": "0dc16c6958ebe419655068694cac10d1da198bd59165977c4bf4474fe869900c"
+    },
+    {
+      "path": "build4443/source-snapshot/tests/manual/steam-compat/README.md",
+      "bytes": 3359,
+      "sha256": "6491db0b28dca0e2567174d7e2c844fc94498e9cef0a101b91da38490042d138"
+    },
+    {
+      "path": "build4443/source-snapshot/tests/manual/steam-compat/jit-null-fault-probe.c",
+      "bytes": 3069,
+      "sha256": "5eb8c760e5a358c00829d2fc456a1290b13d39d83b967b513694b194e5e89dfa"
+    },
+    {
       "path": "evidence/audio-baseline-cpu-excerpt.txt",
       "bytes": 691,
       "sha256": "b871b9596bae61e6f8f24fc939e086d834514a6445ef8170cf798c5d4940db1b"
@@ -66,6 +211,16 @@
       "path": "evidence/audio-idle.txt",
       "bytes": 4700,
       "sha256": "de7880c9db6e56b17e5d67f7fadbd2faa883c0165a1249db45c14bbfab71f6ea"
+    },
+    {
+      "path": "evidence/build4442-release-verified.json",
+      "bytes": 1493,
+      "sha256": "df551b02b4d9a9f02651c5f36d462e89028dfecbfa732bb1d9654009c0d61bed"
+    },
+    {
+      "path": "evidence/build4442-x86-headless-cube-stall.txt",
+      "bytes": 1124,
+      "sha256": "255f41a8f69105b9af0d407602c2b9c6b493e3dbce40cb369d3a0c99ddd089a7"
     },
     {
       "path": "evidence/cache-cleanup.txt",
@@ -91,6 +246,11 @@
       "path": "evidence/fifo-poll-regressions.txt",
       "bytes": 1557,
       "sha256": "82ab530a421919ea5472335f5673611cd07cd1cf2b4c3bdd035f76f0c409a774"
+    },
+    {
+      "path": "evidence/null-fault-jit-before.txt",
+      "bytes": 13505,
+      "sha256": "a4fd67a3de8ff3b6be78812d4fdf5740c480fb662a35053240c5dd4a534dbcc4"
     },
     {
       "path": "evidence/steam-after4442-downloading.txt",
@@ -146,6 +306,71 @@
       "path": "scripts/host/defaults-argument-probe.m",
       "bytes": 848,
       "sha256": "8942a4d2dcee8d2aa5f0db49900accb81c0ec7194974f4e61c16d7589e067e58"
+    },
+    {
+      "path": "steam-compat/INSTALL-VALIDATION.txt",
+      "bytes": 455,
+      "sha256": "f83f6a9502abb3454d67124378cc901e266e0b930eaa3cbce45102224381b6e7"
+    },
+    {
+      "path": "steam-compat/README.md",
+      "bytes": 8844,
+      "sha256": "4dc8728ba6b419ef6b5355df6d530ccb45de3b640c44b0f6e7eb87b74b9f689c"
+    },
+    {
+      "path": "steam-compat/SHA256SUMS",
+      "bytes": 1067,
+      "sha256": "f61384a9d4c31ea36796d5a56211cb7640f6d5a03c5bda79f2c242ee5674a658"
+    },
+    {
+      "path": "steam-compat/VALIDATION.txt",
+      "bytes": 992,
+      "sha256": "622a18a4e881f52eaf6b19e06e8dc3386283162ebaa445d3b4926222390e140b"
+    },
+    {
+      "path": "steam-compat/install.sh",
+      "bytes": 2587,
+      "sha256": "40f73d9e6be4bdd2a1992168c8051beb92066387f703ca4960f7833204d7bd25"
+    },
+    {
+      "path": "steam-compat/linpad-fex-native/compatibilitytool.vdf",
+      "bytes": 214,
+      "sha256": "33e641a84ff5bcc3618054e2d264dd3da30b0c7f6f5dc30f66dc3c567fddb1d4"
+    },
+    {
+      "path": "steam-compat/linpad-fex-native/launch-game",
+      "bytes": 4507,
+      "sha256": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3"
+    },
+    {
+      "path": "steam-compat/linpad-fex-native/run",
+      "bytes": 456,
+      "sha256": "b4af1093d8a8afbea048c36a13a1889a2546db2b7264def15ecb651e3618f685"
+    },
+    {
+      "path": "steam-compat/linpad-fex-native/toolmanifest.vdf",
+      "bytes": 106,
+      "sha256": "72c315005680393243541168b194df4c8b216938651b3736b95a5dd1ef6ec0dd"
+    },
+    {
+      "path": "steam-compat/steam-native-tool-selected.png",
+      "bytes": 253151,
+      "sha256": "840fdfc8f7774e425a83f5404cdf8fbd7bf2ad95947f127f32f53f327ee61027"
+    },
+    {
+      "path": "steam-compat/validate-install.py",
+      "bytes": 3358,
+      "sha256": "af319422408165985bdaa9a550a024e6f17b0a8f03e5581f135649bbd53400ad"
+    },
+    {
+      "path": "steam-compat/validate-launcher.py",
+      "bytes": 7257,
+      "sha256": "54f413690dcef72609ab77f36ddab4fc39659ed726be7b60b968ec15122e8f57"
+    },
+    {
+      "path": "steam-compat/verify-native.sh",
+      "bytes": 1853,
+      "sha256": "a68e6594e6b7131b25c6b912bf473b90abaef8abedbe9be39a2f7ff460edb05a"
     }
   ]
 }

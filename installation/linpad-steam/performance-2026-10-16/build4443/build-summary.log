@@ -1,0 +1,10 @@
+Local Release build 4443, 2026-10-16
+
+PATH="$PWD/work/compiler-bin:$PWD/work/build-tools/bin:/opt/homebrew/bin:$PATH" ZIG_GLOBAL_CACHE_DIR="$PWD/work/zig-cache" /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project work/LinPad/iSH.xcodeproj -target iSH-ARM64 -configuration Release -sdk iphoneos SYMROOT="$PWD/work/ios-build" OBJROOT="$PWD/work/ios-obj" IPHONEOS_DEPLOYMENT_TARGET=17.0 ISH_JIT_BUILD=enabled CODE_SIGNING_ALLOWED=NO ROOTFS_ARCHIVE="$PWD/work/signed/Payload/iSH ARM64.app/root.tar.gz" build
+
+Result: BUILD SUCCEEDED; exit 0.
+Fresh app and dSYM copied from Release-iphoneos. Copied app's CFBundleShortVersionString=1.5.0 and CFBundleVersion=4443 before developer signing.
+Signing: python3 work/sign-linpad.py 'work/performance/build4443/Payload/iSH ARM64.app'
+Deep/strict codesign verify: exit 0.
+Matching app/dSYM UUID: C8B4FFA5-ADC8-3C76-9FAF-1986637FC46F.
+Full build log retained locally at work/performance/build4443-build.log.

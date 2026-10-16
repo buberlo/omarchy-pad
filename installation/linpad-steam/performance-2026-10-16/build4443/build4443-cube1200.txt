@@ -1,0 +1,7 @@
+Fri Oct 16 09:15:44 UTC 2026
+Selected GPU 0: Virtio-GPU Venus (Apple M2 GPU), type: IntegratedGpu
+real	0m 58.44s
+user	0m 46.06s
+sys	0m 1.14s
+CUBE_EXIT=0
+Fri Oct 16 09:16:43 UTC 2026

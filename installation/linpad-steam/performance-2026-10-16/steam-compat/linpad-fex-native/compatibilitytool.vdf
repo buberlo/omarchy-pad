@@ -1,0 +1,13 @@
+"compatibilitytools"
+{
+  "compat_tools"
+  {
+    "linpad-fex-native"
+    {
+      "install_path" "."
+      "display_name" "LinPad FEX (Linux Vulkan)"
+      "from_oslist" "linux"
+      "to_oslist" "linux"
+    }
+  }
+}

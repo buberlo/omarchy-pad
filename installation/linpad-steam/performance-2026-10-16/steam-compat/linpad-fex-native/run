@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+case "${1:-}" in
+    run|waitforexitandrun) shift ;;
+    *) printf '%s\n' 'LinPad FEX: expected run or waitforexitandrun.' >&2; exit 64 ;;
+esac
+[ "${1:-}" != -- ] || shift
+[ "$#" -gt 0 ] || { printf '%s\n' 'LinPad FEX: missing Linux game command.' >&2; exit 64; }
+
+# Resolve this script without changing the game's Steam-provided working directory.
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec "$tool_dir/launch-game" "$@"

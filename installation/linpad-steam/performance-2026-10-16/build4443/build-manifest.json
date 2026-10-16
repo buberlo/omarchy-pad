@@ -1,0 +1,155 @@
+{
+  "source_head": "af48046889d93adb04cd6ac35f1cd49aa76764f0",
+  "source_dirty": "M fs/dev_virtgpu.c\n M gpu/DESIGN.md\n M jit/DESIGN.md\n M jit/emit.h\n M jit/jit.c\n M jit/translate.c\n M kernel/calls.c\n M tests/manual/steam-compat/README.md\n?? gpu/tests/fence-lock-regression.py\n?? tests/manual/steam-compat/jit-null-fault-probe.c",
+  "source_patch_sha256": "ad5bbd8795c9f2e590c1a6501732627edec3e93d25c0fe66e16c7a97cc74b146",
+  "source_files": [
+    {
+      "path": "fs/dev_virtgpu.c",
+      "sha256": "6a40f1ebd0b419706eaad5e5089e33b367affee9806862013937bb07bb7b6281"
+    },
+    {
+      "path": "gpu/DESIGN.md",
+      "sha256": "c88173309997b9552713b18c4e1c38f6ba27bdfda0877d05ee44462e4c3ea3fe"
+    },
+    {
+      "path": "gpu/tests/fence-lock-regression.py",
+      "sha256": "b74ca1c57030670ddfe2ac7b7d8fe29c9c46ae350b094101399aadb33f9ba98d"
+    },
+    {
+      "path": "jit/DESIGN.md",
+      "sha256": "54ee28566755a5802f865d812d4c275eec8e0e9bbc7688534d01e49921bee746"
+    },
+    {
+      "path": "jit/emit.h",
+      "sha256": "3812bded81f3d6b975defbb6739555cac817ba83af3c52c56da2c156f3047953"
+    },
+    {
+      "path": "jit/jit.c",
+      "sha256": "700dbed2d66f3916134332481409e32956d4206ba24950af99a4ac69e7164f2a"
+    },
+    {
+      "path": "jit/translate.c",
+      "sha256": "dd11c2cdc236fdf256ac3cdedd22a4d04840ee19805394b1245a4f2c04a3b061"
+    },
+    {
+      "path": "kernel/calls.c",
+      "sha256": "0dc16c6958ebe419655068694cac10d1da198bd59165977c4bf4474fe869900c"
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "6491db0b28dca0e2567174d7e2c844fc94498e9cef0a101b91da38490042d138"
+    },
+    {
+      "path": "tests/manual/steam-compat/jit-null-fault-probe.c",
+      "sha256": "5eb8c760e5a358c00829d2fc456a1290b13d39d83b967b513694b194e5e89dfa"
+    }
+  ],
+  "source_capture_note": "Tracked changes are in source-changes.patch; source-snapshot includes every changed source and new regression test.",
+  "build": "4443",
+  "version": "1.5.0",
+  "installed": true,
+  "launched": true,
+  "bundle_id": "com.konradkern.linpad",
+  "app_path": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4443/Payload/iSH ARM64.app",
+  "executable_sha256": "ea57c26dce2d10c57cba48756336346a02b85e0ca70fb313325321f60d546459",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "binary_uuid": "UUID: C8B4FFA5-ADC8-3C76-9FAF-1986637FC46F (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4443/Payload/iSH ARM64.app/iSH ARM64",
+  "dsym_uuid": "UUID: C8B4FFA5-ADC8-3C76-9FAF-1986637FC46F (arm64) /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4443/iSH ARM64.app.dSYM/Contents/Resources/DWARF/iSH ARM64",
+  "signing_verified": true,
+  "memory_entitlements": [
+    "com.apple.developer.kernel.increased-memory-limit",
+    "com.apple.developer.kernel.extended-virtual-addressing"
+  ],
+  "source_unchanged_during_build": true,
+  "device_jit_cache_preference_note": "Existing 512 MiB preference was verified persistent on build 4442; no preference edits made for this build.",
+  "build_verified": true,
+  "host_regressions": {
+    "jit_null_fault": {
+      "result": "pass",
+      "variants": [
+        "inline JIT",
+        "compact tier 1",
+        "tier 2",
+        "gadget interpreter"
+      ],
+      "fault_cases": 24,
+      "logs": [
+        "jit-null-regression-inline.txt",
+        "jit-null-regression-compact.txt",
+        "jit-null-regression-tier2.txt",
+        "jit-null-regression-gadget.txt"
+      ],
+      "minimal_probe_log": "null-fault-jit-after.txt"
+    },
+    "gpu_fence_lock": {
+      "result": "pass",
+      "legacy_negative_control": "reproduced the former deadlock",
+      "log": "fence-lock-regression.txt",
+      "evidence_note": "Agent-recorded earlier run, no second execution claimed."
+    }
+  },
+  "physical_device_validation": "Installed and launched; native JIT active with 512 MiB arena. Headless Vulkan probe and bounded 120/1200-frame x86 Wayland cube runs completed with exit 0. Two captures show visible cube rotation. Hollow Knight gameplay validation pending.",
+  "dsym_dwarf_sha256": "bff8b302f98024f9afe6aaebc30242bca5514fe443e80740226efcb9a0dc340b",
+  "installation_evidence": "install.json",
+  "launch_evidence": "device-launch-evidence.txt",
+  "jit_cache_active_mib": 512,
+  "archives": [
+    {
+      "name": "LinPad-1.5.0-build4443-Konrad.ipa",
+      "size_bytes": 637273138,
+      "sha256": "165fa39f6757548f14c54604f60945607d5e95f17d09a6ae14372ac1982af48a",
+      "zip_crc_verified": true,
+      "zip_entries": 1063
+    },
+    {
+      "name": "LinPad-1.5.0-build4443-dSYM.zip",
+      "size_bytes": 13518295,
+      "sha256": "06c99aea9587d3360016338518cd58d44cf298099413fbc82773ea800b1b9b7f",
+      "zip_crc_verified": true,
+      "zip_entries": 9
+    }
+  ],
+  "device_validation": {
+    "evidence": "device-gpu-validation.txt",
+    "headless_vulkan": {
+      "result": "pass",
+      "exit": 0,
+      "elapsed_seconds": 8.85,
+      "renderer": "Virtio-GPU Venus (Apple M2 GPU)",
+      "api": "1.1"
+    },
+    "wayland_x86_cube": {
+      "result": "completed_without_hang",
+      "requested_frames": 120,
+      "exit": 0,
+      "elapsed_seconds": 38.12,
+      "interpretation": "Elapsed time includes startup; no FPS or gameplay claim."
+    },
+    "jit_cache_preference_mib": 512,
+    "filesystem_available_gib_reported": 28.3,
+    "memory_snapshot": {
+      "footprint_mib": 700,
+      "allowance_mib": 8192,
+      "headroom_mib": 7491,
+      "oom_enabled": true,
+      "oom_kills": 0
+    },
+    "visual_motion_verified": true,
+    "gameplay_verified": false,
+    "visual_motion_evidence": [
+      "build4443-motion-1.png",
+      "build4443-motion-2.png"
+    ],
+    "wayland_x86_cube_1200": {
+      "result": "completed_without_hang",
+      "requested_frames": 1200,
+      "exit": 0,
+      "elapsed_seconds": 58.44,
+      "log": "build4443-cube1200.txt",
+      "script": "cube4443-visible.sh",
+      "interpretation": "Elapsed time includes startup; no FPS or gameplay claim."
+    }
+  },
+  "source_fix_commit": "7238c32fe4de31cd8f81db13a623d83e57bbe372",
+  "source_fix_commit_mapping": "All ten build-time source snapshot hashes match this subsequent commit byte-for-byte. Original source_head and source_dirty retain actual build provenance."
+}

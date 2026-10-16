@@ -1,0 +1,31 @@
+Fri Oct 16 08:59:03 UTC 2026
+HEADLESS_PROBE
+E FEX requires kernel 5.15 minimum. Expect problems.
+E Failed to remap /proc/pid/cmdline data (GetCurrentMap failed)
+STAGE 535384.324 dlopen libvulkan RTLD_NOW
+STAGE 535384.373 create(&ci,NULL,&instance)
+RESULT 0
+STAGE 535385.445 vkEnumeratePhysicalDevices(instance,&n,gpu)
+RESULT 0
+STAGE 535387.423 vkGetPhysicalDeviceProperties
+GPU Virtio-GPU Venus (Apple M2 GPU) API 1.1
+STAGE 535387.424 vkEnumerateDeviceExtensionProperties(gpu[0],NULL,&ne,NULL)
+RESULT 0
+STAGE 535387.573 vkEnumerateDeviceExtensionProperties(gpu[0],NULL,&ne,ext)
+RESULT 0
+SWAPCHAIN available
+STAGE 535387.579 vkGetPhysicalDeviceQueueFamilyProperties count
+STAGE 535387.580 vkGetPhysicalDeviceQueueFamilyProperties data
+QUEUE family 0 count 1 flags 0x7
+STAGE 535387.595 vkCreateDevice(gpu[0],&di,NULL,&device)
+RESULT 0
+STAGE 535392.675 vkGetDeviceQueue
+QUEUE_HANDLE 0x102d8e0
+STAGE 535392.708 vkDeviceWaitIdle(device)
+RESULT 0
+STAGE 535392.880 vkDestroyDevice
+STAGE 535392.949 vkDestroyInstance
+STAGE 535393.426 PASS
+EXIT=0
+CUBE_120_SECONDS
+Selected GPU 0: Virtio-GPU Venus (Apple M2 GPU), type: IntegratedGpu

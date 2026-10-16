@@ -1,0 +1,61 @@
+Fri Oct 16 09:12:59 UTC 2026
+BUILD_4443_GPU_TEST
+Filesystem                Size      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                        106.0G     77.7G     28.3G  73% /
+footprint_mb 700
+allowance_mb 8192
+headroom_mb 7491
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 93 9 0 0 thunar
+proc 118 5 0 0 xfconfd
+proc 58 5 0 1 pulseaudio
+proc 16 1 0 1 ishwl
+proc 14 1 0 1 -sh
+proc 26 1 0 1 -sh
+proc 30 1 0 1 -sh
+proc 22 1 0 1 dbus-daemon
+proc 171 1 0 1 sh
+proc 85 1 0 1 getty
+proc 1 1 0 1 init
+proc 6 1 0 1 getty
+512
+HEADLESS_PROBE
+STAGE 536220.124 dlopen libvulkan RTLD_NOW
+STAGE 536220.178 create(&ci,NULL,&instance)
+RESULT 0
+STAGE 536221.336 vkEnumeratePhysicalDevices(instance,&n,gpu)
+RESULT 0
+STAGE 536223.413 vkGetPhysicalDeviceProperties
+GPU Virtio-GPU Venus (Apple M2 GPU) API 1.1
+STAGE 536223.414 vkEnumerateDeviceExtensionProperties(gpu[0],NULL,&ne,NULL)
+RESULT 0
+STAGE 536223.556 vkEnumerateDeviceExtensionProperties(gpu[0],NULL,&ne,ext)
+RESULT 0
+SWAPCHAIN available
+STAGE 536223.561 vkGetPhysicalDeviceQueueFamilyProperties count
+STAGE 536223.562 vkGetPhysicalDeviceQueueFamilyProperties data
+QUEUE family 0 count 1 flags 0x7
+STAGE 536223.577 vkCreateDevice(gpu[0],&di,NULL,&device)
+RESULT 0
+STAGE 536228.090 vkGetDeviceQueue
+QUEUE_HANDLE 0x1027c20
+STAGE 536228.120 vkDeviceWaitIdle(device)
+RESULT 0
+STAGE 536228.275 vkDestroyDevice
+STAGE 536228.337 vkDestroyInstance
+STAGE 536228.769 PASS
+real	0m 8.85s
+user	0m 8.68s
+sys	0m 0.15s
+HEADLESS_EXIT=0
+CUBE_120_FRAMES
+Selected GPU 0: Virtio-GPU Venus (Apple M2 GPU), type: IntegratedGpu
+real	0m 38.12s
+user	0m 36.65s
+sys	0m 0.41s
+CUBE_EXIT=0
+Fri Oct 16 09:13:46 UTC 2026

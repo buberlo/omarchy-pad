@@ -1,6 +1,6 @@
 # Verified handoff: LinPad, Steam and FEX
 
-Current runtime: **build 4442**. See the [16 October performance update](PERFORMANCE-2026-10-16.md) for the verified idle-audio fix, active 512 MiB JIT cache, memory/storage measurements and remaining Hollow Knight gate. The build 4441 sections below preserve the original sign-in milestone.
+Current runtime: **build 4443**. See the [16 October performance update](PERFORMANCE-2026-10-16.md) for the idle-audio fix, persistent 512 MiB JIT cache, precise guest fault delivery, and completed physical x86 Vulkan cube test. Visible cube rotation is verified; Hollow Knight playability remains pending. The build 4441 sections below preserve the original sign-in milestone.
 
 ## Build 4441 sign-in milestone
 

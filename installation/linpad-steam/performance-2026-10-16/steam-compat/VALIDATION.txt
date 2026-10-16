@@ -1,0 +1,17 @@
+Local wrapper validation
+
+PASS shell syntax: run
+PASS shell syntax: launch-game
+PASS Steam waitforexitandrun argv preserved, including spaces and shell metacharacters
+PASS Steam/game working directory and SteamAppId preserved
+PASS fresh X11 display and GPU Wayland socket selected; inherited Xvnc removed
+PASS ARM64 libraries, software GL, overlays and loader selectors removed before X11
+PASS full x86 library/ICD paths added only for FEX; all Vulkan layers disabled
+PASS CLI mode preserves argv and empty FEX_ROOTFS; display variables removed
+PASS force-vulkan appended only when explicitly configured
+PASS optional Mesa overlay precedes base runtime; extra game libraries follow it
+PASS Mesa26 overlay is the default; explicit empty/custom overlays still work
+PASS invalid protocol verb and Windows executable rejected with status 64
+
+All executions used mock FEX and X11 executables in a temporary directory.
+No device, real GPU, Steam registration/depot selection or game was exercised.
