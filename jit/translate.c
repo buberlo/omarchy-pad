@@ -496,6 +496,9 @@ static int emit_mem(struct tr *t, struct memop *m) {
     put(t, HOT, e_ubfx(HR_T1, HR_T1, 12, JIT_TLB_BITS));
     put(t, HOT, e_add_sh(HR_T1, HR_CTX, HR_T1, 0, 5));
     put(t, HOT, e_ldr_x(HR_T2, HR_T1, JIT_TLB_OFF + (m->write ? 8 : 0)));
+    // Invalid tag 1 must miss before the range check: for a null access,
+    // 0 - 1 + size - 1 wraps back into the first page when size > 1.
+    put_fix(t, HOT, e_tbnz(HR_T2, 0, 0), FX_B14, TGT_LABEL, slow);
     put(t, HOT, e_sub_sh(HR_T2, A, HR_T2, 0, 0));
     if (m->size > 1)
         put(t, HOT, e_add_imm(HR_T2, HR_T2, m->size - 1, 0));

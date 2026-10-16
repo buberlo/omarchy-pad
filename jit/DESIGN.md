@@ -30,6 +30,7 @@ address. The inline lookup:
   ubfx  x13, x13, #12, #13
   add   x13, x11, x13, lsl #5       ; &ctx->tlbe[index]
   ldr   x14, [x13, #0x800 (+8 for writes)]   ; tag = guest page if readable/writable
+  tbnz  x14, #0, slow               ; invalid tag 1 must miss before range arithmetic
   sub   x14, A, x14                 ; offset into the page, huge if other page
   add   x14, x14, #size-1           ; page-crossing check
   lsr   x14, x14, #12

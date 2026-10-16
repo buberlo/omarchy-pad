@@ -46,6 +46,7 @@ static inline uint32_t e_cbz_x(int rt, int32_t woff) { return 0xb4000000u | (((u
 static inline uint32_t e_cbnz_x(int rt, int32_t woff) { return 0xb5000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
 static inline uint32_t e_cbz_w(int rt, int32_t woff) { return 0x34000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
 static inline uint32_t e_cbnz_w(int rt, int32_t woff) { return 0x35000000u | (((uint32_t)woff & 0x7ffff) << 5) | rt; }
+static inline uint32_t e_tbnz(int rt, int bit, int32_t woff) { return 0x37000000u | ((uint32_t)(bit & 32) << 26) | ((uint32_t)(bit & 31) << 19) | (((uint32_t)woff & 0x3fff) << 5) | rt; }
 static inline uint32_t e_br(int rn) { return 0xd61f0000u | (rn << 5); }
 static inline uint32_t e_blr(int rn) { return 0xd63f0000u | (rn << 5); }
 static inline uint32_t e_ret(void) { return 0xd65f03c0u; }

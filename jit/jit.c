@@ -1288,6 +1288,9 @@ uint32_t jit_emit_trampolines(struct jit_chunk *c, uint32_t *rw, uint32_t *rx) {
                     ab_put(&b, e_ubfx(HR_T1, HR_T1, 12, JIT_TLB_BITS));
                     ab_put(&b, e_add_sh(HR_T1, HR_CTX, HR_T1, 0, 5));
                     ab_put(&b, e_ldr_x(HR_T2, HR_T1, JIT_TLB_OFF + (write ? 8 : 0)));
+                    // As in the inline path, reject tag 1 before adding size-1.
+                    uint32_t invalid_tag = b.n;
+                    ab_put(&b, e_tbnz(HR_T2, 0, 0));
                     ab_put(&b, e_sub_sh(HR_T2, A, HR_T2, 0, 0));
                     if (size > 1)
                         ab_put(&b, e_add_imm(HR_T2, HR_T2, size - 1, 0));
@@ -1296,6 +1299,8 @@ uint32_t jit_emit_trampolines(struct jit_chunk *c, uint32_t *rw, uint32_t *rx) {
                     ab_put(&b, e_ldr_x(HR_T1, HR_T1, JIT_TLB_OFF + 16));
                     ab_put(&b, e_ret());
                     // miss
+                    if (!b.oom)
+                        b.w[invalid_tag] = fix_b14(b.w[invalid_tag], b.n - invalid_tag);
                     uint32_t desc = size | (write << 8) | (atomic << 9) | (1 << 10) | (A << 11) | (1 << 16);
                     ab_put(&b, e_adr(HR_T2, 8));
                     ab_put(&b, e_b((int32_t) helper_stub - (int32_t) b.n));

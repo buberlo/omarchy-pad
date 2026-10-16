@@ -193,9 +193,10 @@ struct vgpu_ctx {
     uint32_t id;
     atomic_uint refcount;
     atomic_uint_fast64_t next_fence;
-    // Guards signaled[] and fences; taken by the renderer's fence thread.
+    // Guards submitted[] and fences; taken by the renderer's fence thread.
+    // signaled[] is atomic because poll readiness runs under the poll-set lock.
     pthread_mutex_t fence_lock;
-    uint64_t signaled[MAX_RINGS];
+    atomic_uint_fast64_t signaled[MAX_RINGS];
     uint64_t submitted[MAX_RINGS];
     struct list fences;
 };
@@ -440,6 +441,8 @@ static struct vgpu_ctx *ctx_create(uint32_t capset_id, const char *name) {
         return NULL;
     ctx->refcount = 1;
     ctx->next_fence = 1;
+    for (int i = 0; i < MAX_RINGS; i++)
+        atomic_init(&ctx->signaled[i], 0);
     pthread_mutex_init(&ctx->fence_lock, NULL);
     list_init(&ctx->fences);
     pthread_mutex_lock(&ctx_table_lock);
@@ -472,9 +475,11 @@ static struct vgpu_ctx *ctx_create(uint32_t capset_id, const char *name) {
 
 static int fence_poll(struct fd *fd) {
     struct vgpu_fence *fence = fd->data;
-    pthread_mutex_lock(&fence->ctx->fence_lock);
-    bool signaled = fence->ctx->signaled[fence->ring] >= fence->id;
-    pthread_mutex_unlock(&fence->ctx->fence_lock);
+    // poll_wait/epoll_fd_poll hold their poll-set lock here. The completion
+    // callback holds fence_lock while poll_wakeup takes that same poll-set
+    // lock, so acquiring fence_lock here would deadlock both threads.
+    bool signaled = atomic_load_explicit(&fence->ctx->signaled[fence->ring],
+                                         memory_order_acquire) >= fence->id;
     return signaled ? POLL_READ : 0;
 }
 

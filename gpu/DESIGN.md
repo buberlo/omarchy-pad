@@ -91,7 +91,12 @@ MoltenVK -> Metal -> Apple GPU
   pointer to `pt_map`, which owns and later munmaps it. Zero copy; the emulator's page table
   points straight at the Metal-visible pages.
 * Fence fds: an adhoc fd that holds a ref on the context and its `(ring, fence_id)`; `poll`
-  reports POLLIN once `signaled[ring] >= fence_id`.
+  reports POLLIN once `signaled[ring] >= fence_id`. Completion counters are atomic:
+  readiness must not take the context fence mutex while the poll-set mutex is held,
+  because the completion callback holds the context mutex while waking that poll set.
+  `python3 gpu/tests/fence-lock-regression.py --check-legacy-lock` forces this collision
+  using the production fence functions and verifies the former locking deadlock as a
+  negative control. It needs a host C compiler and no GPU or guest.
 
 ## Things that had to change outside fs/dev_virtgpu.c
 
