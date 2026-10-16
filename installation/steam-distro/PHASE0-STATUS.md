@@ -1799,3 +1799,58 @@ device's `steamwebhelper` ran with a full CEF process tree (zygotes, network ser
 Everything else in the Arch image is verified: closure 0/0 for the *shipped* set, session layer running, image
 booting. The only missing input is one library the harness could not obtain, and the plan's last step (run it
 on the iPad, with the bootstrap allowed) is exactly what supplies it.
+
+## Round 59: Phase 3, item 1 — the container-wide root trap, with the exact fix
+
+Verified in the code (transcript above):
+
+```objc
+// app/Roots.m:294-296
+- (BOOL)needsDefaultRoot { return self.roots.count == 0; }        // container-wide, not per app
+
+// app/Roots.m:298-308
+- (BOOL)importBundledRootWithProgress:… { … importRootFromArchive:archive name:@"default" … }
+
+// app/Roots.m:100-107  (on init)
+if ((!self.defaultRoot || ![self.roots containsObject:self.defaultRoot]) && self.roots.count)
+    self.defaultRoot = self.roots.firstObject;                    // picks LinPad's Alpine root
+
+// app/AppDelegate.m:478-485
+if (Roots.instance.needsDefaultRoot) { …importBundledRootWithProgress:… }
+```
+
+So in a container where LinPad has already created its `default` (Alpine) root, the game app:
+`needsDefaultRoot` → **false**, `defaultRoot` → **"default"**, and it boots **Alpine** — never importing its
+own Arch image. The two-root design cannot work until this changes, and it is the first Phase 3 item.
+
+**The fix, three small parts:**
+
+1. `app/Roots.h/.m` — generalise the import and add a name query:
+   ```objc
+   - (BOOL)hasRootNamed:(NSString *)name;
+   - (BOOL)importBundledRootNamed:(NSString *)name progress:(id<ProgressReporter>)progress error:(NSError **)error;
+   // keep -importBundledRootWithProgress:error: as a call through with @"default"
+   ```
+2. `app/AppDelegate.m` — pick the name from the variant (the Info.plist key the build already sets) and import
+   **that** root when it is missing, in both the synchronous path (`:478-485`) and the async one (`:813-859`):
+   ```objc
+   static NSString *VariantRootName(void) {
+       NSString *v = [NSBundle.mainBundle objectForInfoDictionaryKey:@"LinPadVariant"];
+       return [v isEqualToString:@"steam"] ? @"arch" : @"default";
+   }
+   NSString *root = VariantRootName();
+   if (![Roots.instance hasRootNamed:root]) { import bundled into `root`; [Roots.instance setDefaultRoot:root]; }
+   ```
+   Note `defaultRoot` is persisted per app in `NSUserDefaults` (`Roots.m:113-117`), which is exactly what makes
+   two apps with two roots in one container workable.
+3. `app/CurrentRoot.m` — gate `FsUpdateRepositories()` / `FsUpdateOnlyRepositoriesFile()` (`:91-111`) on the
+   booted root actually being Alpine (`[NSFileManager … fileExistsAtPath:<root>/data/etc/apk]`), so nothing
+   writes `/etc/apk/repositories` into an Arch root. Likewise skip the Alpine repair kit for the Arch root
+   (`RepairKit`/`SystemMaintenance`), which the game variant does not need.
+
+**Verification available on this Mac**: a DesktopKit unit test for the variant→root-name mapping (the Swift
+side already models `LinPadVariant`), plus a simulator build of the app target to prove the ObjC compiles.
+The end-to-end proof (game app boots `roots/arch`, desktop keeps `roots/default`) is a device run.
+
+Also still pending from the record: the per-root session lock (`roots/<name>/.session.lock` instead of one
+lock for the container) and removing the temporary `FOOTIOCTL` print in `kernel/fs.c:753`.
