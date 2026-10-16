@@ -45,6 +45,18 @@ static int remove_directory(const char *path) {
 #define remove_directory linux_remove_directory
 #endif
 
+/// Whether the booted root is the desktop's Alpine system. Everything in this file edits apk state
+/// (/etc/apk/repositories, /ish/apk-version, /ish/apk), which is meaningless on a root without apk —
+/// the game app's Arch system — and writing an Alpine repositories file into it would be wrong.
+bool FsIsAlpineRoot(void) {
+    static int isAlpine = -1;
+    if (isAlpine < 0) {
+        char buf[1];
+        isAlpine = read_file("/etc/apk/world", buf, sizeof(buf)) >= 0;
+    }
+    return isAlpine == 1;
+}
+
 void FsInitialize(void) {
     // /ish/version is the last ish version that opened this root. Used to migrate the filesystem.
     char buf[1000];
@@ -85,10 +97,12 @@ bool FsIsManaged(void) {
 }
 
 bool FsNeedsRepositoryUpdate(void) {
-    return FsIsManaged() && fs_ish_apk_version < CURRENT_APK_VERSION;
+    return FsIsAlpineRoot() && FsIsManaged() && fs_ish_apk_version < CURRENT_APK_VERSION;
 }
 
 void FsUpdateOnlyRepositoriesFile(void) {
+    if (!FsIsAlpineRoot())
+        return;
     NSURL *repositories = [NSBundle.mainBundle URLForResource:@"repositories" withExtension:@"txt"];
     if (repositories != nil) {
         NSMutableData *repositoriesData = [@"# This file contains pinned repositories managed by iSH. If the /ish directory\n"
@@ -100,6 +114,8 @@ void FsUpdateOnlyRepositoriesFile(void) {
 }
 
 void FsUpdateRepositories(void) {
+    if (!FsIsAlpineRoot())
+        return;
     FsUpdateOnlyRepositoriesFile();
     fs_ish_apk_version = CURRENT_APK_VERSION;
     NSString *currentVersionFile = [NSString stringWithFormat:@"%d\n", fs_ish_apk_version];
