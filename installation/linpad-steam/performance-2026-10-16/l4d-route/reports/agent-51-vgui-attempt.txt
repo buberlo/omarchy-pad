@@ -1,0 +1,26 @@
+AGENT_BEGIN id=51-vgui-attempt pid=1143 Fri Oct 16 19:26:39 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== start Steam with -vgui (no CEF) ===
+processes: steam-local steam-local steam 
+webhelpers: 0
+console tail:
+[2026-10-16 19:26:16] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+[2026-10-16 19:26:26] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+[2026-10-16 19:26:37] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+
+=== applaunch 500 ===
+--- console log for 500 (this attempt) ---
+[2026-10-16 19:06:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 19083, IP 0.0.0.0:0
+[2026-10-16 19:06:31] GameAction [AppID 500, ActionID 5] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 19:06:31] GameAction [AppID 500, ActionID 5] : LaunchApp changed task to Completed with ""
+[2026-10-16 19:06:32] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 19083 
+--- processes ---
+--- prefix ---
+--- memory ---
+footprint_mb 1678
+allowance_mb 8192
+headroom_mb 6513
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:30:51 UTC 2026

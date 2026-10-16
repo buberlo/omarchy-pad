@@ -1,0 +1,69 @@
+AGENT_BEGIN id=34-l4d-steam-launch pid=1143 Fri Oct 16 18:47:38 UTC 2026
+AGENT_HOST=iPad
+=== applaunch 500 through the client ===
+=== processes ===
+ 4146 steam-local
+ 4152 steam-local
+ 4153 steam
+ 4203 steamwebhelper
+ 4222 steamwebhelper
+ 4223 steamwebhelper
+ 4271 steamwebhelper
+ 4284 steamwebhelper
+ 4313 steamwebhelper
+ 4444 steamwebhelper
+
+=== chain output (client stdio tail) ===
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+env: can't execute 'python3': No such file or directory
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+10/16 18:44:17 Failed writing minidump, nothing to upload.
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 14372 for gameID 500
+env: can't execute 'python3': No such file or directory
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 14372 for gameID 500
+LINPAD_THREAD attr=0xcb51cbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 15161 for gameID 500
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 15161 for gameID 500
+
+=== proton prefix now ===
+total 0
+/root/.local/share/Steam/steamapps/compatdata/500
+
+=== console log: this attempt ===
+[2026-10-16 18:47:43] GameAction [AppID 500, ActionID 4] : LaunchApp changed task to DelayLaunch with ""
+[2026-10-16 18:47:43] GameAction [AppID 500, ActionID 4] : LaunchApp changed task to CreatingProcess with ""
+[2026-10-16 18:47:43] GameAction [AppID 500, ActionID 4] : LaunchApp waiting for user response to CreatingProcess ""
+[2026-10-16 18:47:44] GameAction [AppID 500, ActionID 4] : LaunchApp continues with user response "CreatingProcess"
+[2026-10-16 18:47:44] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 15161, IP 0.0.0.0:0
+[2026-10-16 18:47:44] GameAction [AppID 500, ActionID 4] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 18:47:44] GameAction [AppID 500, ActionID 4] : LaunchApp changed task to Completed with ""
+[2026-10-16 18:47:44] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 15161 
+
+=== memory ===
+footprint_mb 3317
+allowance_mb 8192
+headroom_mb 4874
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:51:08 UTC 2026

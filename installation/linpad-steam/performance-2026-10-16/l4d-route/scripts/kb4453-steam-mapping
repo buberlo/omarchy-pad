@@ -1,0 +1,124 @@
+#!/bin/sh
+# Sets one app's compatibility tool in a Steam config.vdf, in place, with a backup.
+#
+#   kb4453-steam-mapping FILE APPID TOOLNAME
+#
+# Ensures "CompatToolMapping"/"<appid>"/"name" is TOOLNAME, keeping the "config" and "priority"
+# fields Steam writes. Handles an existing app entry (replace the name), a missing one (insert the
+# whole block as the first entry of CompatToolMapping) and refuses when there is no
+# CompatToolMapping block at all rather than guessing where it belongs. Prints VERIFY=<readback>
+# and restores the backup when the readback is not the requested name.
+#
+# Steam must not be running: it rewrites this file when it exits.
+set -eu
+file=${1:?usage: kb4453-steam-mapping FILE APPID TOOLNAME}
+app=${2:?}
+tool=${3:?}
+case "$app" in ''|*[!0-9]*) echo "APPID_MUST_BE_NUMERIC" >&2; exit 64;; esac
+case "$tool" in ''|*[!A-Za-z0-9._-]*) echo "TOOL_NAME_INVALID" >&2; exit 64;; esac
+test -f "$file" || { echo "NO_SUCH_FILE $file" >&2; exit 66; }
+test ! -L "$file" || { echo "REFUSING_SYMLINK $file" >&2; exit 65; }
+grep -q '"CompatToolMapping"' "$file" || { echo "NO_COMPAT_TOOL_MAPPING_BLOCK" >&2; exit 71; }
+
+backup="$file.kb4453-mapping-backup"
+# Not cp -p: preserving times trips over this filesystem ("Not a directory" on the fresh copy),
+# and the file's contents are what the backup is for.
+cp "$file" "$backup" 2>/dev/null || cat "$file" > "$backup"
+temporary="$file.kb4453-mapping-new"
+
+awk -v app="$app" -v tool="$tool" '
+function ind(line) { match(line, /^[ \t]*/); return substr(line, 1, RLENGTH) }
+function opening(line) { return line ~ /^[ \t]*\{/ }
+function closing(line) { return line ~ /^[ \t]*\}/ }
+{
+    line = $0
+    # in_app first: while an app block is open, in_map is still true and would swallow its keys.
+    if (in_app) {
+        if (opening(line)) { app_depth++; print; next }
+        if (closing(line)) {
+            app_depth--
+            if (app_depth == 0) { in_app = 0 }
+            print
+            next
+        }
+        if (!done_name && line ~ /^[ \t]*"name"/) {
+            print ind(line) "\"name\"\t\t\"" tool "\""
+            done_name = 1
+            next
+        }
+        print
+        next
+    }
+    if (in_map) {
+        if (want_app) {
+            want_app = 0
+            if (opening(line)) { print; in_app = 1; app_depth = 1; seen_app = 1; next }
+            print
+            next
+        }
+        if (opening(line)) { depth++; print; next }
+        if (closing(line)) {
+            depth--
+            if (depth == 0) {
+                if (!seen_app) {
+                    outer = ind(line)
+                    print outer "\t\"" app "\""
+                    print outer "\t{"
+                    print outer "\t\t\"name\"\t\t\"" tool "\""
+                    print outer "\t\t\"config\"\t\t\"\""
+                    print outer "\t\t\"priority\"\t\t\"250\""
+                    print outer "\t}"
+                    created = 1
+                }
+                in_map = 0
+            }
+            print
+            next
+        }
+        if (depth == 1 && line ~ ("^[ \t]*\"" app "\"[ \t]*$")) { print; want_app = 1; next }
+        print
+        next
+    }
+    if (want_map) {
+        want_map = 0
+        if (opening(line)) { print; in_map = 1; depth = 1; next }
+        print
+        next
+    }
+    if (line ~ /^[ \t]*"CompatToolMapping"[ \t]*$/) { print; want_map = 1; next }
+    print
+}
+' "$file" > "$temporary"
+
+readback=$(awk -v app="$app" '
+function opening(line) { return line ~ /^[ \t]*\{/ }
+function closing(line) { return line ~ /^[ \t]*\}/ }
+{
+    line = $0
+    if (in_app) {
+        if (opening(line)) { depth++; next }
+        if (closing(line)) { depth--; if (depth == 0) in_app = 0; next }
+        if (line ~ /^[ \t]*"name"/) {
+            v = line
+            sub(/^[^"]*"name"[ \t]*/, "", v)
+            gsub(/^"|"[ \t]*$/, "", v)
+            print v
+            exit
+        }
+        next
+    }
+    if (want_app) { want_app = 0; if (opening(line)) { in_app = 1; depth = 1 }; next }
+    if (line ~ "^[ \t]*\"" app "\"[ \t]*$") { want_app = 1 }
+}
+' "$temporary")
+
+if [ "$readback" = "$tool" ]; then
+    mv -f "$temporary" "$file"
+    echo "VERIFY=$readback"
+    echo "BACKUP=$backup"
+    exit 0
+fi
+rm -f "$temporary"
+cat "$backup" > "$file"
+echo "VERIFY_FAILED readback=[$readback] wanted=[$tool]" >&2
+exit 70

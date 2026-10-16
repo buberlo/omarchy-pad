@@ -1,0 +1,38 @@
+AGENT_BEGIN id=29-l4d-state pid=1143 Fri Oct 16 18:43:17 UTC 2026
+AGENT_HOST=iPad
+=== agent/session ===
+agent pid: 1143
+
+=== installed apps (acf) ===
+1493710  name=[Proton Experimental] size=1537142909 build=25936768 state=4
+3127680  name=[FEX] size=24805692 build=24136555 state=4
+367520  name=[Hollow Knight] size=5241907316 build=22529139 state=4
+4183110  name=[Steam Linux Runtime 4.0] size=672859485 build=25607596 state=4
+4185400  name=[Steam Linux Runtime 4.0 - Arm64] size=427379277 build=25607623 state=4
+4628740  name=[Proton 11.0 (ARM64)] size=2018286735 build=25833186 state=4
+500  name=[Left 4 Dead] size=7162259623 build=23968273 state=4
+
+=== compat tools installed ===
+total 0
+drwx------    2 root     root           224 Oct 16 18:06 linpad-fex-native
+/root/.local/share/Steam/steamapps/common/FEX-Emu/
+/root/.local/share/Steam/steamapps/common/Hollow Knight/
+/root/.local/share/Steam/steamapps/common/Proton - Experimental/
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/
+/root/.local/share/Steam/steamapps/common/Steam.dll/
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4/
+/root/.local/share/Steam/steamapps/common/left 4 dead/
+
+=== left 4 dead directory ===
+total 4
+drwxr-xr-x    5 root     root           384 Oct 16 17:03 FEX-Emu
+drwxr-xr-x    3 root     root           256 Oct 16 09:27 Hollow Knight
+drwxr-xr-x    4 root     root           480 Oct 16 17:21 Proton - Experimental
+drwxr-xr-x    3 root     root           448 Oct 16 08:34 Proton 11.0 (ARM64)
+lrwxrwxrwx    1 root     root            47 Oct 16 08:51 Steam.dll -> /root/.local/share/Steam/legacycompat/Steam.dll
+drwxr-xr-x    5 root     root           320 Oct 16 17:20 SteamLinuxRuntime_4
+drwxr-xr-x    4 root     root           288 Oct 16 08:32 SteamLinuxRuntime_4-arm64
+drwxr-xr-x   19 root     root           672 Oct 16 17:22 left 4 dead
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:43:17 UTC 2026

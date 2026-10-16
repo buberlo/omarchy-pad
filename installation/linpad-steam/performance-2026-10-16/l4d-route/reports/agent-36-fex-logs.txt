@@ -1,0 +1,70 @@
+AGENT_BEGIN id=36-fex-logs pid=1143 Fri Oct 16 18:51:41 UTC 2026
+AGENT_HOST=iPad
+=== os provided fex+mesa rootfs? ===
+ls: /usr/share/guestos/: No such file or directory
+ls: /usr/share/guestos/fex-mesa/graphics_provider.json: No such file or directory
+
+=== fex compat tool logs ===
+-rwxr-xr-x    1 root     root           664 Oct 16 18:47 /tmp/fex-compat-tool-15161.log
+-rwxr-xr-x    1 root     root           664 Oct 16 18:47 /tmp/fex-compat-tool-15149.log
+--- /tmp/fex-compat-tool-15161.log (11 lines) ---
+Traceback (most recent call last):
+  File "/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool", line 155, in <module>
+    subprocess.call(['/usr/bin/printenv'])
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/printenv'
+  ...tail:
+Traceback (most recent call last):
+  File "/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool", line 155, in <module>
+    subprocess.call(['/usr/bin/printenv'])
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/printenv'
+--- /tmp/fex-compat-tool-15149.log (11 lines) ---
+Traceback (most recent call last):
+  File "/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool", line 155, in <module>
+    subprocess.call(['/usr/bin/printenv'])
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/printenv'
+  ...tail:
+Traceback (most recent call last):
+  File "/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool", line 155, in <module>
+    subprocess.call(['/usr/bin/printenv'])
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/printenv'
+
+=== fex config written? ===
+/root/.local/share/Steam/steamapps/compatdata/500
+cat: can't open '/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json': No such file or directory
+
+=== what the device's x86 runtime looks like (the HK route uses these) ===
+/opt/hollow-egl
+/opt/hollow-mesa26
+/opt/hollow-runtime
+/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+virtio_icd.json
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:51:41 UTC 2026

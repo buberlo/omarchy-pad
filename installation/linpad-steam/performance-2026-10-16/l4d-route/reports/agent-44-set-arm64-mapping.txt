@@ -1,0 +1,42 @@
+AGENT_BEGIN id=44-set-arm64-mapping pid=1143 Fri Oct 16 19:06:28 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== clear the stuck chain ===
+killing 16756
+killing 16758
+19083 python3
+19085 FEX
+19087 FEXServer
+
+=== stop Steam so config.vdf can be edited ===
+steam processes left: 0
+
+=== map appid 500 to Proton 11.0 (ARM64) ===
+cp: preserving times for '/root/.local/share/Steam/config/config.vdf.kb4453-mapping-backup': Not a directory
+editor exit=1
+--- mapping block now ---
+				"CompatToolMapping"
+				{
+					"367520"
+					{
+						"name"		"linpad-fex-native"
+						"config"		""
+						"priority"		"250"
+					}
+				}
+
+=== restart Steam ===
+19164 steam-local
+19170 steam-local
+19171 steam
+19179 steam
+
+=== compat log: which tool is now chosen for 500 ===
+[2026-10-16 19:06:31] Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- ".
+[2026-10-16 19:06:31] Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- ".
+[2026-10-16 19:06:31] Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun ".
+[2026-10-16 19:06:31] Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- ".
+[2026-10-16 19:06:31] Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- ".
+[2026-10-16 19:06:31] Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton run ".
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:08:22 UTC 2026

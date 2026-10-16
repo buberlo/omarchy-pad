@@ -1,0 +1,60 @@
+AGENT_BEGIN id=50-loader-check pid=1143 Fri Oct 16 19:21:37 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== loaders and what apk may have shadowed ===
+lrwxrwxrwx 1 root root     63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+-rwxr-xr-x 1 root root 723480 Sep 28 18:26 /lib/ld-musl-aarch64.so.1
+env       /usr/bin/env
+sh        /bin/sh
+cp        /bin/cp
+printenv  /usr/bin/printenv
+coreutils files that land in /bin:
+base64 -> ../usr/bin/coreutils
+cat -> ../usr/bin/coreutils
+chgrp -> ../usr/bin/coreutils
+chmod -> ../usr/bin/coreutils
+chown -> ../usr/bin/coreutils
+cp -> ../usr/bin/coreutils
+date -> ../usr/bin/coreutils
+dd -> ../usr/bin/coreutils
+df -> ../usr/bin/coreutils
+echo -> ../usr/bin/coreutils
+false -> ../usr/bin/coreutils
+ln -> ../usr/bin/coreutils
+
+=== restart Steam once more and watch the helpers ===
+t=25s webhelpers=0  all-steam=3
+t=50s webhelpers=0  all-steam=3
+t=75s webhelpers=0  all-steam=3
+t=100s webhelpers=0  all-steam=3
+t=125s webhelpers=0  all-steam=3
+t=150s webhelpers=0  all-steam=3
+
+=== console log tail ===
+[2026-10-16 19:23:53] Skipping Virtual to VGUI translation for keyMap Key 143
+[2026-10-16 19:23:53] Skipping Virtual to VGUI translation for keyMap Key 144
+[2026-10-16 19:23:53] Console Log Start
+[2026-10-16 19:23:54] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+[2026-10-16 19:24:04] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+[2026-10-16 19:24:14] Created mapping SteamChrome_MasterStream_uid0_spid22464_mem when set to fail if created
+
+=== applaunch 500 right away ===
+--- console log for 500 ---
+[2026-10-16 19:06:31] GameAction [AppID 500, ActionID 5] : LaunchApp continues with user response "CreatingProcess"
+[2026-10-16 19:06:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 19083, IP 0.0.0.0:0
+[2026-10-16 19:06:31] GameAction [AppID 500, ActionID 5] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 19:06:31] GameAction [AppID 500, ActionID 5] : LaunchApp changed task to Completed with ""
+[2026-10-16 19:06:32] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 19083 
+--- processes ---
+--- prefix ---
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+footprint_mb 1672
+allowance_mb 8192
+headroom_mb 6519
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:26:20 UTC 2026

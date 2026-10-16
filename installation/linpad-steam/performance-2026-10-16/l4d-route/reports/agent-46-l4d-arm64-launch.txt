@@ -1,0 +1,61 @@
+AGENT_BEGIN id=46-l4d-arm64-launch pid=1143 Fri Oct 16 19:11:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== applaunch 500 (now mapped to Proton 11 ARM64) ===
+t= 30s pfx=no  procs=[]
+t= 60s pfx=no  procs=[]
+t= 90s pfx=no  procs=[]
+t=120s pfx=no  procs=[]
+t=150s pfx=no  procs=[]
+t=180s pfx=no  procs=[]
+t=210s pfx=no  procs=[]
+t=240s pfx=no  procs=[]
+t=270s pfx=no  procs=[]
+
+=== client stdio tail ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+setting LIBGL_KOPPER_DISABLE=true for steamwebhelper to get store working properly
+reaping pid: 21021 -- unknown
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memset_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __vfprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+setting LIBGL_KOPPER_DISABLE=true for steamwebhelper to get store working properly
+
+=== the command Steam built ===
+/root/.local/share/Steam/logs/compat_log.txt:[2026-10-16 18:03:04] Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton run ".
+/root/.local/share/Steam/logs/compat_log.txt:[2026-10-16 18:07:55] Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton run ".
+/root/.local/share/Steam/logs/compat_log.txt:[2026-10-16 18:12:26] Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton run ".
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+
+=== memory ===
+footprint_mb 1692
+allowance_mb 8192
+headroom_mb 6499
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:15:55 UTC 2026

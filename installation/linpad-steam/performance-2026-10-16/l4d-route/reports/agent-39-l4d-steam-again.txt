@@ -1,0 +1,76 @@
+AGENT_BEGIN id=39-l4d-steam-again pid=1143 Fri Oct 16 18:55:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== what is Valve's FEX? ===
+-rwxr-xr-x 1 root root 4347112 Oct 16 17:01 /root/.local/share/Steam/steamapps/common/FEX-Emu/usr/bin/FEX
+/lib/ld-linux-aarch64.so.1
+--- glibc loaders present? ---
+ls: cannot access '/usr/lib/ld-linux-aarch64.so.1': No such file or directory
+lrwxrwxrwx 1 root root 63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+-rwxr-xr-x 1 root root 723480 Sep 28 18:26 /lib/ld-musl-aarch64.so.1
+total 353260
+drwxr-xr-x  2  501 dialout      3648 Oct 16 06:11 dri
+drwxr-xr-x  2  501 dialout       192 Oct 16 07:59 engines-3
+drwxr-xr-x  2  501 dialout       128 Oct 16 06:21 gbm
+drwxr-xr-x  3  501 dialout     16448 Oct 16 07:59 gconv
+-rw-r--r-- 1 501 dialout 591960 Jun 29 21:37 /opt/steam-host/usr/lib/aarch64-linux-gnu/libm.so.6
+
+=== the device's own working FEX (used by the Hollow Knight route) ===
+total 33264
+-rwxr-xr-x 1 root root 6612160 Oct 16 05:03 FEX
+-rwxr-xr-x 1 root root 6583200 Oct 16 06:37 FEX-apple-m1
+-rwxr-xr-x 1 root root 6530992 Oct 16 10:01 FEX-apple-m1-munmap
+-rwxr-xr-x 1 root root 6614992 Oct 16 06:37 FEX-cortex-a76
+-rwxr-xr-x 1 root root 1577408 Oct 16 06:21 epoll-oneshot-probe
+ld-linux-aarch64.so.1
+
+=== launch 500 through Steam again ===
+=== processes ===
+16753 python3
+16756 FEX
+16758 FEXServer
+
+=== client stdio tail ===
+Removing process 14372 for gameID 500
+LINPAD_THREAD attr=0xcb51cbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 15161 for gameID 500
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 15161 for gameID 500
+LINPAD_THREAD attr=0xc64dcbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+
+=== newest fex tool log ===
+/tmp/fex-compat-tool-16753.log
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+graphics_provider '/usr/share/guestos/fex-mesa/graphics_provider.json' didn't provide graphics_provider.json
+fex compat fixups
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+=== memory ===
+footprint_mb 3349
+allowance_mb 8192
+headroom_mb 4842
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:58:44 UTC 2026

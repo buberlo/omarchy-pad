@@ -1,0 +1,35 @@
+AGENT_BEGIN id=45-map-arm64 pid=1143 Fri Oct 16 19:09:20 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== clear leftovers ===
+
+=== stop Steam ===
+steam processes left: 0
+
+=== set the mapping ===
+VERIFY=proton_11-arm64
+BACKUP=/root/.local/share/Steam/config/config.vdf.kb4453-mapping-backup
+editor exit=0
+--- mapping block ---
+				"CompatToolMapping"
+				{
+					"367520"
+					{
+						"name"		"linpad-fex-native"
+						"config"		""
+						"priority"		"250"
+					}
+					"500"
+					{
+						"name"		"proton_11-arm64"
+						"config"		""
+						"priority"		"250"
+					}
+				}
+
+=== restart Steam ===
+19814 steam-local
+19820 steam-local
+19821 steam
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:11:10 UTC 2026

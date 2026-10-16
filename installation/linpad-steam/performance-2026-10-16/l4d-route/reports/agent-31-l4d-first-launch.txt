@@ -1,0 +1,71 @@
+AGENT_BEGIN id=31-l4d-first-launch pid=1143 Fri Oct 16 18:44:05 UTC 2026
+AGENT_HOST=iPad
+=== stop the idle Hollow Knight (menu only, no save loaded) ===
+hollow knight pid: 5036
+PID   COMMAND
+ 4146 steam-local
+ 4152 steam-local
+ 4153 steam
+ 4203 steamwebhelper
+ 4222 steamwebhelper
+ 4223 steamwebhelper
+ 4271 steamwebhelper
+ 4284 steamwebhelper
+ 4313 steamwebhelper
+ 4444 steamwebhelper
+
+=== launch Left 4 Dead (appid 500) ===
+=== applaunch log ===
+CProcessEnvironmentManager is ready, 5 preallocated environment variables.
+WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.
+Steam is already running, exiting (command line was forwarded).
+
+=== processes ===
+ 4146 steam-local
+ 4152 steam-local
+ 4153 steam
+ 4203 steamwebhelper
+ 4222 steamwebhelper
+ 4223 steamwebhelper
+ 4271 steamwebhelper
+ 4284 steamwebhelper
+ 4313 steamwebhelper
+ 4444 steamwebhelper
+
+=== steam console: what it built and what happened ===
+[2026-10-16 18:44:21] GameAction [AppID 500, ActionID 3] : LaunchApp changed task to SiteLicenseSeatCheckout with ""
+[2026-10-16 18:44:21] GameAction [AppID 500, ActionID 3] : LaunchApp changed task to DelayLaunch with ""
+[2026-10-16 18:44:21] GameAction [AppID 500, ActionID 3] : LaunchApp changed task to CreatingProcess with ""
+[2026-10-16 18:44:21] GameAction [AppID 500, ActionID 3] : LaunchApp waiting for user response to CreatingProcess ""
+[2026-10-16 18:44:22] GameAction [AppID 500, ActionID 3] : LaunchApp continues with user response "CreatingProcess"
+[2026-10-16 18:44:22] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'\0
+[2026-10-16 18:44:22] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 14372, IP 0.0.0.0:0
+[2026-10-16 18:44:22] GameAction [AppID 500, ActionID 3] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 18:44:22] GameAction [AppID 500, ActionID 3] : LaunchApp changed task to Completed with ""
+[2026-10-16 18:44:22] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun  '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 14372 
+
+=== compat log tail ===
+[2026-10-16 18:44:22] Tool 1493710 "Proton Experimental" has a dependency on tool 4183110.
+[2026-10-16 18:44:22] Tool 4183110 "Steam Linux Runtime 4.0" has a dependency on tool 3127680.
+[2026-10-16 18:44:22] Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- ".
+[2026-10-16 18:44:22] Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- ".
+[2026-10-16 18:44:22] Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun ".
+[2026-10-16 18:44:22] DEBUG: setting env var: STEAM_COMPAT_FEX_CONFIG = 
+[2026-10-16 18:44:22] Tool 1493710 "Proton Experimental" has a dependency on tool 4183110.
+[2026-10-16 18:44:22] Tool 4183110 "Steam Linux Runtime 4.0" has a dependency on tool 3127680.
+[2026-10-16 18:44:22] Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- ".
+[2026-10-16 18:44:22] Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- ".
+[2026-10-16 18:44:22] Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton run ".
+[2026-10-16 18:44:22] OnAppLifetimeNotification: release session(s) for appID 500
+
+=== proton prefix ===
+total 0
+
+=== memory ===
+footprint_mb 3305
+allowance_mb 8192
+headroom_mb 4886
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:46:36 UTC 2026

@@ -1,0 +1,46 @@
+AGENT_BEGIN id=49-client-pipeline pid=1143 Fri Oct 16 19:21:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== console log: everything after 19:18 ===
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 138
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 139
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 140
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 141
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 142
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 143
+[2026-10-16 19:18:51] Skipping Virtual to VGUI translation for keyMap Key 144
+[2026-10-16 19:18:51] Console Log Start
+
+=== applaunch attempt log ===
+CProcessEnvironmentManager is ready, 5 preallocated environment variables.
+WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.
+Steam is already running, exiting (command line was forwarded).
+
+=== is the client responsive? (its IPC socket + state) ===
+-rw-r--r-- 1 root root  1000000 Oct 16 05:33 /tmp/steam-access-head.log
+-rw------- 1 root root 73025873 Oct 16 05:34 /tmp/steam-access.log
+-rw-r--r-- 1 root root      401 Oct 16 08:48 /tmp/steam-after4442
+-rw-r--r-- 1 root root    10335 Oct 16 08:49 /tmp/steam-after4442.txt
+-rw-r--r-- 1 root root      608 Oct 16 06:25 /tmp/steam-apk.log
+-rw-r--r-- 1 root root     5851 Oct 16 06:45 /tmp/steam-clean-diagnostic.log
+
+=== webhelper binary sanity ===
+/root/.local/share/Steam/steamrtarm64/steamwebhelper
+/root/.local/share/Steam/ubuntu12_64/steamwebhelper
+/root/.local/share/Steam/steamrt64/steamwebhelper
+
+=== the mapping survived the restart? ===
+						"name"		"linpad-fex-native"
+					"500"
+						"name"		"proton_11-arm64"
+
+=== memory + processes ===
+footprint_mb 1666
+allowance_mb 8192
+headroom_mb 6525
+soft_mb 1638
+21334 steam-local
+21340 steam-local
+21341 steam
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:21:19 UTC 2026

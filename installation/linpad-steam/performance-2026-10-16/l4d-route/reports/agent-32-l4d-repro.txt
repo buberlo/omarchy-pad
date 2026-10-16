@@ -1,0 +1,50 @@
+AGENT_BEGIN id=32-l4d-repro pid=1143 Fri Oct 16 18:47:00 UTC 2026
+AGENT_HOST=iPad
+=== client stdio tail (chain output lands here) ===
+    "memorysetup-temp-allocator-size-gfx=262144"
+Loading in SingleInstance mode
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=367520]
+Removing process 5036 for gameID 367520
+LINPAD_THREAD attr=0xd4001578 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xcb51cbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+env: can't execute 'python3': No such file or directory
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+10/16 18:44:17 Failed writing minidump, nothing to upload.
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 14372 for gameID 500
+env: can't execute 'python3': No such file or directory
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 14372 for gameID 500
+
+=== the three stages ===
+/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool        -rwxr-xr-x 6536
+23212f75 (magic)
+  shebang: #!/usr/bin/env python3
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4/_v2-entry-point -rwxr-xr-x 9257
+23212f62 (magic)
+  shebang: #!/bin/sh
+/root/.local/share/Steam/steamapps/common/Proton - Experimental/proton   -rwxr-xr-x 96351
+23212f75 (magic)
+  shebang: #!/usr/bin/env python3
+
+=== run the exact chain by hand (60 s cap) ===
+exit=127
+--- first 40 lines of output ---
+env: can't execute 'python3': No such file or directory
+--- last 15 ---
+env: can't execute 'python3': No such file or directory
+
+=== processes after ===
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:47:00 UTC 2026

@@ -1,0 +1,76 @@
+AGENT_BEGIN id=43-tool-names pid=1143 Fri Oct 16 19:04:51 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== every tool Steam registered ===
+Command prefix for tool 0 "LinPad FEX (Linux Vulkan)" set to: "'/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun -- ".
+Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton run ".
+Command prefix for tool 1493710 "Proton Experimental" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton waitforexitandrun ".
+Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- ".
+Command prefix for tool 3127680 "fex" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- ".
+Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- ".
+Command prefix for tool 4183110 "Steam Linux Runtime 4.0" set to: "'/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=waitforexitandrun -- ".
+Command prefix for tool 4185400 "Steam Linux Runtime 4.0 for arm64" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- ".
+Command prefix for tool 4185400 "Steam Linux Runtime 4.0 for arm64" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=waitforexitandrun -- ".
+Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton run ".
+Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton waitforexitandrun ".
+Loaded manifest for tool 1493710.
+Loaded manifest for tool 3127680.
+Loaded manifest for tool 4183110.
+Loaded manifest for tool 4185400.
+Loaded manifest for tool 4628740.
+Loaded manifest for tool linpad-fex-native.
+Registering tool fex, AppID 3127680
+Registering tool legacysteamruntime, AppID 4690330
+Registering tool lepton, AppID 3029110
+Registering tool lepton_14, AppID 5181730
+Registering tool linpad-fex-native, AppID 0
+Registering tool proton-experimental-arm64, AppID 4427310
+Registering tool proton_10, AppID 3658110
+Registering tool proton_11, AppID 4628710
+
+=== arm64 mentions in the compat log ===
+Command prefix for tool 4185400 "Steam Linux Runtime 4.0 for arm64" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- ".
+Command prefix for tool 4185400 "Steam Linux Runtime 4.0 for arm64" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=waitforexitandrun -- ".
+Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton run ".
+Command prefix for tool 4628740 "Proton 11.0-2 (ARM64)" set to: "'/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=waitforexitandrun -- '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)'/proton waitforexitandrun ".
+Posting queued tool registration callback 4185400 steamlinuxruntime_steamrt4-arm64
+Posting queued tool registration callback 4628740 proton_11-arm64
+Posting tool registration callback 4185400 steamlinuxruntime_steamrt4-arm64
+Posting tool registration callback 4628740 proton_11-arm64
+Processing local tool list at /root/.local/share/Steam/steamrtarm64/../compatibilitytools.d/linpad-fex-native/compatibilitytool.vdf...
+Registering tool proton-experimental-arm64, AppID 4427310
+Registering tool proton_11-arm64, AppID 4628740
+Registering tool steamlinuxruntime_steamrt4-arm64, AppID 4185400
+Tool 4628740 "Proton 11.0-2 (ARM64)" has a dependency on tool 4185400.
+
+=== the ARM64 proton's own fixups (may name the tool) ===
+{
+    "empty_dirs": [
+        "files/lib/aarch64-linux-gnu/cmake/openxr",
+        "files/lib/aarch64-linux-gnu/fst",
+        "files/lib/aarch64-linux-gnu/glslang",
+        "files/lib/aarch64-linux-gnu/graphene-1.0/include",
+        "files/lib/aarch64-linux-gnu/gstreamer-1.0/include/gst/gl",
+        "files/lib/aarch64-linux-gnu/pkgconfig",
+        "files/lib/arm64ec-w64-mingw32",
+        "files/lib/cmake/kaldi",
+        "files/lib/i386-w64-mingw32",
+        "files/lib/pkgconfig",
+        "files/lib/x86_64-w64-mingw32",
+        "files/share/default_pfx_arm64/dosdevices",
+        "files/share/default_pfx_arm64/drive_c/Program Files/Common Files/Microsoft Shared/TextConv",
+        "files/share/default_pfx_arm64/drive_c/ProgramData/Microsoft/Windows/Start Menu/Programs/Administrative Tools",
+        "files/share/default_pfx_arm64/drive_c/ProgramData/Microsoft/Windows/Start Menu/Programs/StartUp",
+        "files/share/default_pfx_arm64/drive_c/ProgramData/Microsoft/Windows/Templates",
+        "files/share/default_pfx_arm64/drive_c/users/Public/Desktop",
+        "files/share/default_pfx_arm64/drive_c/users/Public/Documents",
+        "files/share/default_pfx_arm64/drive_c/users/Public/Music",
+        "files/share/default_pfx_arm64/drive_c/users/Public/Pictures",
+        "files/share/default_pfx_arm64/drive_c/users/Public/Videos",
+        "files/share/default_pfx_arm64/drive_c/users/steamuser/AppData/Local/Microsoft/Windows/History",
+        "files/share/default_pfx_arm64/drive_c/users/steamuser/AppData/Local/Microsoft/Windows/INetCache",
+
+=== what the client knows about installed tools ===
+Config.json
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:04:51 UTC 2026

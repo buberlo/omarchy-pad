@@ -1,0 +1,43 @@
+AGENT_BEGIN id=38-l4d-chain-detached pid=1143 Fri Oct 16 18:52:26 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== layout ===
+drwxr-xr-x 2 root root  2720 Oct 16 18:52 /bin
+drwxr-xr-x 2 root root 13024 Oct 16 18:52 /usr/bin
+lrwxrwxrwx 1 root root 20 Oct 16 18:52 /bin/printenv -> ../usr/bin/coreutils
+=== make the path the tool expects ===
+lrwxrwxrwx 1 root root 13 Oct 16 18:52 /usr/bin/printenv -> /bin/printenv
+MESA_VK_WSI_DEBUG=sw
+USER=root
+MESA_LOADER_DRIVER_OVERRIDE=zink
+
+=== tool dry run (usage) ===
+
+=== run the chain detached, then observe ===
+--- output ---
+/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/bin/FEX: error while loading shared libraries: libm.so.6: cannot open shared object file: No such file or directory
+--- tail ---
+/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/bin/FEX: error while loading shared libraries: libm.so.6: cannot open shared object file: No such file or directory
+
+=== tool log ===
+STEAM_COMPAT_CLIENT_INSTALL_PATH=/root/.local/share/Steam
+FEX_PORTABLE=1
+tu_override_uncached_as_cache_coherent=true
+STEAM_COMPAT_MACHINE_ARCHITECTURE=aarch64-linux-gnu
+STEAM_COMPAT_EMULATOR=/root/.local/share/Steam/steamapps/common/FEX-Emu/emulator.json
+PYTHONMALLOC=malloc
+graphics_provider '/usr/share/guestos/fex-mesa/graphics_provider.json' didn't provide graphics_provider.json
+fex compat fixups
+
+=== config ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+
+=== processes ===
+footprint_mb 3325
+allowance_mb 8192
+headroom_mb 4866
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:54:56 UTC 2026

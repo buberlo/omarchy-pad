@@ -1,0 +1,33 @@
+AGENT_BEGIN id=33-python3-and-run pid=1143 Fri Oct 16 18:47:17 UTC 2026
+AGENT_HOST=iPad
+=== install python3 in the guest (Proton and the FEX compat tool are python3 scripts) ===
+(3/6) Installing python3 (3.12.15-r0)
+(4/6) Installing python3-pycache-pyc0 (3.12.15-r0)
+(5/6) Installing pyc (3.12.15-r0)
+(6/6) Installing python3-pyc (3.12.15-r0)
+Executing busybox-1.37.0-r8.trigger
+OK: 1281 MiB in 305 packages
+/usr/bin/python3
+Python 3.12.15
+
+=== the FEX compat tool now runs? ===
+No compat data path?
+exit=0
+
+=== run the chain again (bounded) ===
+chain exit=1
+--- output (first 45 lines) ---
+No compat data path?
+--- last 20 ---
+No compat data path?
+
+=== processes ===
+
+=== prefix ===
+total 0
+footprint_mb 3309
+allowance_mb 8192
+headroom_mb 4882
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:47:23 UTC 2026

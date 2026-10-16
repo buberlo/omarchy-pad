@@ -1,0 +1,58 @@
+AGENT_BEGIN id=42-arm64-proton pid=1143 Fri Oct 16 19:04:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== Proton 11.0 (ARM64) contents ===
+total 392
+-rwxr-xr-x 1 root root  20069 Oct 16 08:21 LICENSE
+-rwxr-xr-x 1 root root   4414 Oct 16 08:22 LICENSE.OFL
+-rwxr-xr-x 1 root root   5730 Oct 16 08:21 PATENTS.AV1
+-rwxr-xr-x 1 root root  12778 Oct 16 08:19 filelock.py
+drwxr-xr-x 5 root root    160 Oct 16 08:33 files
+-rwxr-xr-x 1 root root  94468 Oct 16 08:22 proton
+-rwxr-xr-x 1 root root  90540 Oct 16 08:21 proton_3.7_tracked_files
+-rwxr-xr-x 1 root root 137469 Oct 16 08:22 steampipe_fixups.json
+-rwxr-xr-x 1 root root   3252 Oct 16 08:22 steampipe_fixups.py
+-rwxr-xr-x 1 root root    156 Oct 16 08:21 toolmanifest.vdf
+-rwxr-xr-x 1 root root   1606 Oct 16 08:21 user_settings.sample.py
+--- compatibilitytool.vdf ---
+cat: '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/compatibilitytool.vdf': No such file or directory
+--- toolmanifest.vdf ---
+"manifest"
+{
+  "version" "2"
+  "commandline" "/proton %verb%"
+  "require_tool_appid" "4185400"
+  "use_sessions" "1"
+  "compatmanager_layer_name" "proton"
+}
+
+=== does it bundle FEX? ===
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/share/fex-emu
+
+=== full CompatToolMapping block ===
+				"CompatToolMapping"
+				{
+					"367520"
+					{
+						"name"		"linpad-fex-native"
+						"config"		""
+						"priority"		"250"
+					}
+				}
+
+=== appmanifest for the ARM64 Proton ===
+name=Proton 11.0 (ARM64)
+StateFlags=4
+buildid=25833186
+
+=== ARM64 runtime present? ===
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64
+VERSIONS.txt
+_v2-entry-point
+mtree.txt.gz
+pressure-vessel
+run
+steamrt4_platform_4.0.20260928.262390
+toolmanifest.vdf
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:04:33 UTC 2026

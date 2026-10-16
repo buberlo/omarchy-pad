@@ -1,0 +1,163 @@
+#!/bin/sh
+# Sets one app's Steam launch options in a localconfig.vdf, in place, with a backup.
+#
+#   kb4453-steam-launchopts FILE APPID "OPTIONS"
+#
+# Handles every shape: the app block already has LaunchOptions (replace it), the app block
+# exists without one (insert it after the opening brace) or the app has no block yet (create
+# it as the last entry of "apps"). Brackets are depth-tracked, so nested blocks inside an app
+# entry do not end the block early. Duplicate LaunchOptions keys would make Steam use the last
+# one, so the block is scanned first and the readback afterwards rejects anything but exactly
+# one key with the requested value; on any mismatch the backup is restored.
+#
+# Steam must not be running: it rewrites this file when it exits.
+set -eu
+file=${1:?usage: kb4453-steam-launchopts FILE APPID OPTIONS}
+app=${2:?}
+value=${3:-}
+case "$app" in ''|*[!0-9]*) echo "APPID_MUST_BE_NUMERIC" >&2; exit 64;; esac
+test -f "$file" || { echo "NO_SUCH_FILE $file" >&2; exit 66; }
+test ! -L "$file" || { echo "REFUSING_SYMLINK $file" >&2; exit 65; }
+
+backup="$file.kb4453-backup"
+cp -p "$file" "$backup"
+temporary="$file.kb4453-new"
+
+# Every LaunchOptions value already in the app block, one "OPT=<value>" line per key: no line
+# means the block has none (or does not exist), more than one means the file is inconsistent.
+# The prefix keeps a key with an empty value (the rollback) distinguishable from no key at all.
+scan() {
+    awk -v app="$app" '
+    function opening(line) { return line ~ /^[ \t]*\{/ }
+    function closing(line) { return line ~ /^[ \t]*\}/ }
+    {
+        line = $0
+        if (in_app) {
+            if (opening(line)) { depth++; next }
+            if (closing(line)) { depth--; if (depth == 0) in_app = 0; next }
+            if (line ~ /^[ \t]*"LaunchOptions"/) {
+                v = line
+                sub(/^[^"]*"LaunchOptions"[ \t]*/, "", v)
+                gsub(/^"|"[ \t]*$/, "", v)
+                print "OPT=" v
+            }
+            next
+        }
+        if (want_app) { want_app = 0; if (opening(line)) { in_app = 1; depth = 1 }; next }
+        if (line ~ "^[ \t]*\"" app "\"[ \t]*$") { want_app = 1 }
+    }
+    ' "$1"
+}
+
+existing=$(scan "$file")
+count=$(printf '%s\n' "$existing" | grep -c '^OPT=' || true)
+if [ "$count" -gt 1 ]; then
+    echo "ALREADY_INCONSISTENT ($count LaunchOptions keys in the block)" >&2
+    exit 71
+fi
+need_insert=1
+if [ "$count" -eq 1 ]; then
+    if [ "${existing#OPT=}" = "$value" ]; then
+        echo "VERIFY=$value"
+        echo "ALREADY_SET=1"
+        exit 0
+    fi
+    need_insert=0
+fi
+
+awk -v app="$app" -v value="$value" -v need_insert="$need_insert" '
+function ind(line) { match(line, /^[ \t]*/); return substr(line, 1, RLENGTH) }
+function opening(line) { return line ~ /^[ \t]*\{/ }
+function closing(line) { return line ~ /^[ \t]*\}/ }
+
+{
+    line = $0
+
+    if (in_app) {
+        if (opening(line)) { depth++; print; next }
+        if (closing(line)) {
+            depth--
+            if (depth == 0) { in_app = 0 }
+            print
+            next
+        }
+        if (!done_opts && line ~ /^[ \t]*"LaunchOptions"/) {
+            print ind(line) "\"LaunchOptions\"\t\t\"" value "\""
+            done_opts = 1
+            next
+        }
+        print
+        next
+    }
+
+    if (want_app) {
+        want_app = 0
+        if (opening(line)) {
+            print
+            in_app = 1
+            depth = 1
+            seen_app = 1
+            if (need_insert == 1 && !done_opts) {
+                print ind(line) "\t\"LaunchOptions\"\t\t\"" value "\""
+                done_opts = 1
+            }
+            next
+        }
+        print
+        next
+    }
+
+    if (in_apps) {
+        if (opening(line)) { depth++; print; next }
+        if (closing(line)) {
+            depth--
+            if (depth == 0) {
+                if (!seen_app) {
+                    outer = ind(line)
+                    print outer "\t\"" app "\""
+                    print outer "\t{"
+                    print outer "\t\t\"LaunchOptions\"\t\t\"" value "\""
+                    print outer "\t}"
+                    created = 1
+                }
+                in_apps = 0
+            }
+            print
+            next
+        }
+        # The app key is the only place the block can start: look for it here, at the depth of
+        # "apps" itself, or the in_apps branch would swallow it.
+        if (depth == 1 && line ~ "^[ \t]*\"" app "\"[ \t]*$") { print; want_app = 1; next }
+        print
+        next
+    }
+
+    if (want_apps) {
+        want_apps = 0
+        if (opening(line)) { print; in_apps = 1; depth = 1; next }
+        print
+        next
+    }
+
+    if (line ~ /^[ \t]*"apps"[ \t]*$/) { print; want_apps = 1; next }
+    if (line ~ "^[ \t]*\"" app "\"[ \t]*$") { print; want_app = 1; next }
+    print
+}
+' need_insert="$need_insert" "$file" > "$temporary" 2>/dev/null || {
+    rm -f "$temporary"
+    cp -p "$backup" "$file"
+    echo "EDITOR_FAILED" >&2
+    exit 70
+}
+
+readback=$(scan "$temporary" | tr '\n' '|')
+if [ "$readback" = "OPT=$value|" ]; then
+    mv -f "$temporary" "$file"
+    echo "VERIFY=$value"
+    echo "BACKUP=$backup"
+    exit 0
+fi
+rm -f "$temporary"
+cp -p "$backup" "$file"
+echo "VERIFY_FAILED readback=[$readback] wanted=[OPT=$value|]" >&2
+exit 70

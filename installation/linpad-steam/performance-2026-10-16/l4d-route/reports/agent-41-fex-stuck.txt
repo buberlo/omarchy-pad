@@ -1,0 +1,57 @@
+AGENT_BEGIN id=41-fex-stuck pid=1143 Fri Oct 16 19:04:01 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the two FEX processes ===
+--- pid 16756
+/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/bin/FEX /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4/_v2-entry-point --verb=run -- /root/.local/share/Steam/steamapps/common/Proton - Experimental/proton run /root/.local/share/Steam/legacycompat/iscriptevaluator.exe legacycompat\evaluatorscript_500.vdf  
+Name:	FEX
+State:	S
+VmRSS:	 1068468 kB
+Threads:	1
+syscall: 
+stat: state=R utime=1 stime=2
+--- pid 16758
+/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/bin/FEXServer --wait_pipe 4  
+Name:	FEXServer
+State:	S
+VmRSS:	    5820 kB
+Threads:	1
+syscall: 
+stat: state=R utime=0 stime=3
+
+=== CPU delta over 6 s (is it working or blocked?) ===
+pid 16756: ticks 3 -> 3 (delta 0)
+pid 16758: ticks 3 -> 3 (delta 0)
+
+=== FEX config it was given ===
+{
+    "Config": {
+        "X87ReducedPrecision": "1",
+        "RootFS": "/usr/share/guestos/fex-mesa/",
+        "ThunkHostLibs": "/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/lib/aarch64-linux-gnu/fex-emu/HostThunks",
+        "ThunkGuestLibs": "/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/share/fex-emu/GuestThunks",
+        "ProfileStats": "1"
+    }
+}
+
+=== open fds of the main FEX process (what is it holding?) ===
+--- pid 16756
+  
+0 -> /dev/null
+1 -> /tmp/steam-main.log
+2 -> /tmp/steam-main.log
+3 -> socket:[235932]
+--- pid 16758
+  
+0 -> /dev/null
+1 -> /tmp/steam-main.log
+2 -> /tmp/steam-main.log
+3 -> /root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server/Server.lock
+4 -> pipe:[235933]
+5 -> socket:[235931]
+6 -> pipe:[235934]
+
+=== FEX env (log level, rootfs) ===
+/tmp/kb-agent-cmd.sh: line 29: can't open /proc/16756/environ: no such file
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:04:08 UTC 2026

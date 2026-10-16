@@ -1,0 +1,84 @@
+AGENT_BEGIN id=40-l4d-progress pid=1143 Fri Oct 16 18:59:02 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+t= 28s pfx=no drive_c=no procs=[FEX FEXServer ]
+t= 56s pfx=no drive_c=no procs=[FEX FEXServer ]
+t= 84s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=112s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=140s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=168s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=196s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=224s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=252s pfx=no drive_c=no procs=[FEX FEXServer ]
+t=280s pfx=no drive_c=no procs=[FEX FEXServer ]
+
+=== client stdio tail (proton/wine output) ===
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+10/16 18:44:17 Failed writing minidump, nothing to upload.
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 14372 for gameID 500
+env: can't execute 'python3': No such file or directory
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 14372 for gameID 500
+LINPAD_THREAD attr=0xcb51cbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+src/clientdll/installscript_posix.cpp (526) : Assertion Failed: Standalone evaluator returned error code for app 500
+Fossilize ERROR: Failed to set PR_SET_PDEATHSIG, aborting child startup.
+chdir "/root/.local/share/Steam/steamapps/common/left 4 dead"
+Game Recording - would start recording game 500, but recording for this game is disabled
+Adding process 15161 for gameID 500
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=500]
+Removing process 15161 for gameID 500
+LINPAD_THREAD attr=0xc64dcbd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+
+=== new tool logs ===
+--- /tmp/fex-compat-tool-16753.log
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+graphics_provider '/usr/share/guestos/fex-mesa/graphics_provider.json' didn't provide graphics_provider.json
+fex compat fixups
+--- /tmp/fex-compat-tool-16186.log
+STEAM_COMPAT_MACHINE_ARCHITECTURE=aarch64-linux-gnu
+STEAM_COMPAT_EMULATOR=/root/.local/share/Steam/steamapps/common/FEX-Emu/emulator.json
+PYTHONMALLOC=malloc
+graphics_provider '/usr/share/guestos/fex-mesa/graphics_provider.json' didn't provide graphics_provider.json
+fex compat fixups
+--- /tmp/fex-compat-tool-16183.log
+STEAM_COMPAT_EMULATOR=/root/.local/share/Steam/steamapps/common/FEX-Emu/emulator.json
+PYTHONMALLOC=malloc
+graphics_provider '/usr/share/guestos/fex-mesa/graphics_provider.json' didn't provide graphics_provider.json
+fex compat fixups
+usage: fex-compat-tool [-h] {run,waitforexitandrun} ...
+
+=== prefix contents ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server/Server.lock
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server/0.FEXServer.Socket
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+
+=== any proton log? ===
+
+=== memory ===
+footprint_mb 3358
+allowance_mb 8192
+headroom_mb 4833
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:03:43 UTC 2026

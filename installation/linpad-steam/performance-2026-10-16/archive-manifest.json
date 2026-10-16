@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix, the deployed compositor follow-up with its device key log, and the Steam-to-game launch route with its reaper finding; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs; the build 4453 keyboard routing fix; the deployed compositor follow-up with its device key log; the Steam-to-game launch route with its reaper finding; and the Left 4 Dead route diagnosis (python3, printenv, missing guest rootfs, ARM64 Proton mapping, stalled Steam client). No authentication or proprietary game binaries.",
   "files": [
     {
       "path": "HANDOFF-4451.md",
@@ -4496,6 +4496,146 @@
       "path": "jit-ss-repair/source/tests/manual/steam-compat/test-jit-ss-index.py",
       "bytes": 14294,
       "sha256": "070ee92f00a7f4f06cb3ac76673fc13d9b766e79ded84bfe10bfe8176d8036a2"
+    },
+    {
+      "path": "l4d-route/README.md",
+      "bytes": 6943,
+      "sha256": "ebc5126bfd2fceb95699fac8a697453d554bc4c02bd4867c1605b4743e68438e"
+    },
+    {
+      "path": "l4d-route/SHA256SUMS",
+      "bytes": 2669,
+      "sha256": "cc253e412c2094180848b4b9a1f92edf62dfda30479d30eec0df772c7538f625"
+    },
+    {
+      "path": "l4d-route/reports/agent-29-l4d-state.txt",
+      "bytes": 1973,
+      "sha256": "fbf1534e8415ef48332ad9d000e5aa979444ba46bdbeba8019247c4850f5ddff"
+    },
+    {
+      "path": "l4d-route/reports/agent-30-l4d-binary.txt",
+      "bytes": 3766,
+      "sha256": "4a3bc0338ec30ea11bf9666c79eaaf8de34def91ec3018f50599ce89773e8a29"
+    },
+    {
+      "path": "l4d-route/reports/agent-31-l4d-first-launch.txt",
+      "bytes": 5670,
+      "sha256": "6421e9786c0deb5745bafb793ea05d9455e3bbb450e84598b68e02f3c06220aa"
+    },
+    {
+      "path": "l4d-route/reports/agent-32-l4d-repro.txt",
+      "bytes": 2430,
+      "sha256": "473b940769d1b6a2a5f59f70c1ec371ccf7c186ed25a7f0a25205d65e99bf331"
+    },
+    {
+      "path": "l4d-route/reports/agent-33-python3-and-run.txt",
+      "bytes": 810,
+      "sha256": "205dfceebcd7aa83d509579a87c9cfa4afaad2de1de896d27909983373a09516"
+    },
+    {
+      "path": "l4d-route/reports/agent-34-l4d-steam-launch.txt",
+      "bytes": 4478,
+      "sha256": "00916ad2831307c26f35e72942e95d0fc065c865a230ad90262fb2bf483fb913"
+    },
+    {
+      "path": "l4d-route/reports/agent-35-fex-tool.txt",
+      "bytes": 9308,
+      "sha256": "7fff5804e4837124a3ac1b040aaf823a0018b707733c1dd5eb7d73d2434da9ff"
+    },
+    {
+      "path": "l4d-route/reports/agent-36-fex-logs.txt",
+      "bytes": 3694,
+      "sha256": "a4ed92f253152136217b79d67250e18e5a535a1c0ad3ce8aee7855e0dbd8fd52"
+    },
+    {
+      "path": "l4d-route/reports/agent-37-printenv-fix.txt",
+      "bytes": 1544,
+      "sha256": "f6f0c6294ca511737c7b015aedf68e943d2dd601d6397da961c0753e54925dbe"
+    },
+    {
+      "path": "l4d-route/reports/agent-38-l4d-chain-detached.txt",
+      "bytes": 1697,
+      "sha256": "605bfad790cb4577992398ad279620fea4edb1686d5287b7a516c5111d4621cc"
+    },
+    {
+      "path": "l4d-route/reports/agent-39-l4d-steam-again.txt",
+      "bytes": 3970,
+      "sha256": "6bf5679c660d74c0f96444c1f868a077f05cba454b5294826640b2882f4edf62"
+    },
+    {
+      "path": "l4d-route/reports/agent-40-l4d-progress.txt",
+      "bytes": 4547,
+      "sha256": "5798b4320fc2637ff105c3431d7a7793de807054237233bfecb83a869b258eac"
+    },
+    {
+      "path": "l4d-route/reports/agent-41-fex-stuck.txt",
+      "bytes": 1863,
+      "sha256": "102fcc169251107c82b3077b71d13fbc8b2d2609ff7245d8f3043cc2d810356c"
+    },
+    {
+      "path": "l4d-route/reports/agent-42-arm64-proton.txt",
+      "bytes": 1799,
+      "sha256": "3e244ebc4c9028e083f7e9e0b9998e81059bc0b11fc6903830d7516376045622"
+    },
+    {
+      "path": "l4d-route/reports/agent-43-tool-names.txt",
+      "bytes": 6573,
+      "sha256": "213d4698128944f0da37c671ce9c8885821e00afd84b9564e3b865a66114bb81"
+    },
+    {
+      "path": "l4d-route/reports/agent-44-set-arm64-mapping.txt",
+      "bytes": 2403,
+      "sha256": "080efe730c6c8059bd52681a578b9d24c8108c089db823179abd8a173f5db0e3"
+    },
+    {
+      "path": "l4d-route/reports/agent-45-map-arm64.txt",
+      "bytes": 714,
+      "sha256": "eb27a7d18d678ad2df4fd9dca2fab72c5d3b6d7b9ce3c2aff951d9e4c62b708e"
+    },
+    {
+      "path": "l4d-route/reports/agent-46-l4d-arm64-launch.txt",
+      "bytes": 4385,
+      "sha256": "8bd7379d48dd349d782cc18d206d5b3a2dcc6e76a5b175a95d555ad65a54c918"
+    },
+    {
+      "path": "l4d-route/reports/agent-47-steam-state.txt",
+      "bytes": 4692,
+      "sha256": "576b2b4d588ea8168e66284f6e9c65e1e187a5a32d0e1bbff48b52d789e0e7eb"
+    },
+    {
+      "path": "l4d-route/reports/agent-48-steam-restart-l4d.txt",
+      "bytes": 2537,
+      "sha256": "db494cb7cc7ac4768e3d8c78047a41b932cc20c39f5a7d832910b7a2d1c063d4"
+    },
+    {
+      "path": "l4d-route/reports/agent-49-client-pipeline.txt",
+      "bytes": 2018,
+      "sha256": "737e32a97d501f1ec941258b854ebea4f84d438abd13e3eb38a25e2018424440"
+    },
+    {
+      "path": "l4d-route/reports/agent-50-loader-check.txt",
+      "bytes": 3620,
+      "sha256": "88ed3e333eb97cb095c31cbaf625398a95a3e290a213ab863785235429616148"
+    },
+    {
+      "path": "l4d-route/reports/agent-51-vgui-attempt.txt",
+      "bytes": 2126,
+      "sha256": "dbfef4772e49658e519c37a266ca97820a3afbc2ea8e5bc5649526fd75455771"
+    },
+    {
+      "path": "l4d-route/scripts/kb4453-steam-launchopts",
+      "bytes": 5249,
+      "sha256": "62f893567fbcade945b5832114a80075f59d98cafc9bdb0485d147abab41f23f"
+    },
+    {
+      "path": "l4d-route/scripts/kb4453-steam-mapping",
+      "bytes": 4309,
+      "sha256": "fc11521ef847b28a2f37c1232d5f1aab75f65dc49f2d447d38b496dd65bd9601"
+    },
+    {
+      "path": "l4d-route/scripts/linpad-hk-fex",
+      "bytes": 2294,
+      "sha256": "e618e196ceced144bf547042ef0ecfd15a448f63285a1252a1e3526a4f164caa"
     },
     {
       "path": "lrcpc2-native/README.md",

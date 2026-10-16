@@ -1,0 +1,42 @@
+AGENT_BEGIN id=37-printenv-fix pid=1143 Fri Oct 16 18:52:00 UTC 2026
+AGENT_HOST=iPad
+=== install coreutils (provides /usr/bin/printenv) ===
+(6/8) Installing skalibs-libs (2.14.3.0-r0)
+(7/8) Installing utmps-libs (0.1.2.3-r2)
+(8/8) Installing coreutils (9.5-r2)
+Executing busybox-1.37.0-r8.trigger
+OK: 1282 MiB in 313 packages
+/bin/printenv
+ls: cannot access '/usr/bin/printenv': No such file or directory
+
+=== run the chain by hand with Steam's env var ===
+chain exit=1
+--- output, first 40 lines ---
+timeout: warning: timer_create: Bad address
+--- last 25 ---
+timeout: warning: timer_create: Bad address
+
+=== the tool's own log ===
+/tmp/fex-compat-tool-16052.log
+Traceback (most recent call last):
+  File "/root/.local/share/Steam/steamapps/common/FEX-Emu/fex-compat-tool", line 155, in <module>
+    subprocess.call(['/usr/bin/printenv'])
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/bin/printenv'
+
+=== config written now? ===
+/root/.local/share/Steam/steamapps/compatdata/500
+
+=== processes ===
+footprint_mb 3320
+allowance_mb 8192
+headroom_mb 4871
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:52:05 UTC 2026

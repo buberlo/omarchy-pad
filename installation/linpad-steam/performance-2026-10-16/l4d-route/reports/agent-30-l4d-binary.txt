@@ -1,0 +1,60 @@
+AGENT_BEGIN id=30-l4d-binary pid=1143 Fri Oct 16 18:43:44 UTC 2026
+AGENT_HOST=iPad
+=== game directory ===
+total 100
+drwxr-xr-x    8 root     root          2240 Oct 16 17:22 bin
+drwxr-xr-x    3 root     root            96 Oct 16 17:21 hl2
+-rwxr-xr-x    1 root     root           840 Oct 16 17:05 installscript.vdf
+drwxr-xr-x   18 root     root          3040 Oct 16 17:22 left4dead
+-rwxr-xr-x    1 root     root         98304 Oct 16 17:05 left4dead.exe
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_danish
+drwxr-xr-x   11 root     root           768 Oct 16 17:22 left4dead_dlc3
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_dutch
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_finnish
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_italian
+drwxr-xr-x    3 root     root           192 Oct 16 17:22 left4dead_japanese
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_korean
+drwxr-xr-x    2 root     root           160 Oct 16 17:22 left4dead_lv
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_norwegian
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_polish
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_schinese
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_swedish
+drwxr-xr-x    3 root     root           160 Oct 16 17:22 left4dead_tchinese
+drwxr-xr-x   11 root     root           384 Oct 16 17:21 platform
+
+=== executables and their architecture ===
+left4dead.exe                               98304  4d5a9000  
+adminserver.dll                            826520  4d5a9000  
+binkw32.dll                                167936  4d5a9000  
+bsppack.dll                                486552  4d5a9000  
+bugreporter.dll                            138392  4d5a9000  
+bugreporter_public.dll                     117912  4d5a9000  
+crashhandler.dll                           292648  4d5a9000  
+datacache.dll                              265368  4d5a9000  
+engine.dll                                4279448  4d5a9000  
+filesystem_stdio.dll                       355480  4d5a9000  
+filesystem_steam.dll                       304376  4d5a9000  
+filesystemopendialog.dll                   433304  4d5a9000  
+gameui.dll                                1993880  4d5a9000  
+haptics.dll                                212120  4d5a9000  
+icudt42.dll                              10899456  4d5a9000  
+inputsystem.dll                            126104  4d5a9000  
+launcher.dll                               179352  4d5a9000  
+libcef.dll                               11213288  4d5a9000  
+libmysql.dll                               233472  4d5a9000  
+materialsystem.dll                        1031320  4d5a9000  
+
+=== proton prefix for appid 500 ===
+total 0
+drwxr-xr-x    2 root     root            64 Oct 16 17:21 1493710
+drwxr-xr-x    3 root     root            96 Oct 16 08:08 367520
+drwxr-xr-x    2 root     root            64 Oct 16 08:34 4628740
+drwxr-xr-x    2 root     root            64 Oct 16 17:22 500
+total 0
+
+=== has L4D been launched? (console log) ===
+29553:[2026-10-16 17:22:51] Running install script evaluator for AppID 500, 1 step(s)  /root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 Install=1 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton run '/root/.local/share/Steam/legacycompat/iscriptevaluator.exe' 'legacycompat\evaluatorscript_500.vdf'
+
+=== compat mapping for 500 ===
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:43:45 UTC 2026

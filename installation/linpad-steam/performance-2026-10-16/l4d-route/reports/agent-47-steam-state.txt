@@ -1,0 +1,64 @@
+AGENT_BEGIN id=47-steam-state pid=1143 Fri Oct 16 19:16:11 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== steam processes now ===
+19814 steam-local
+19820 steam-local
+19821 steam
+
+=== applaunch log ===
+CProcessEnvironmentManager is ready, 5 preallocated environment variables.
+WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.
+Steam is already running, exiting (command line was forwarded).
+
+=== console log since 19:09 ===
+[2026-10-16 19:11:59] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:12:09] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:12:19] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:12:30] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:12:40] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:12:50] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:00] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:10] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:21] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:31] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:41] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:13:51] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:01] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:12] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:22] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:32] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:42] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:14:52] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:02] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:13] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:23] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:33] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:43] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:15:53] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+[2026-10-16 19:16:03] Created mapping SteamChrome_MasterStream_uid0_spid19821_mem when set to fail if created
+
+=== compat log since 19:09 ===
+[2026-10-16 19:09:57] Client version: 1792110651
+[2026-10-16 19:09:57] Mapping AppID 0 to tool "proton_experimental" with priority 75
+[2026-10-16 19:09:58] Processing local tool list at /root/.local/share/Steam/steamrtarm64/../compatibilitytools.d/linpad-fex-native/compatibilitytool.vdf...
+[2026-10-16 19:09:58] Registering tool linpad-fex-native, AppID 0
+[2026-10-16 19:09:58] Mapping AppID 367520 to tool "linpad-fex-native" with priority 250
+[2026-10-16 19:09:58] Mapping AppID 500 to tool "proton_11-arm64" with priority 250
+[2026-10-16 19:09:58] Loaded manifest for tool linpad-fex-native.
+
+=== is the client alive? (its own log) ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+setting LIBGL_KOPPER_DISABLE=true for steamwebhelper to get store working properly
+
+=== memory ===
+footprint_mb 1694
+allowance_mb 8192
+headroom_mb 6497
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:16:12 UTC 2026
