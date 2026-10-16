@@ -202,6 +202,7 @@ struct jit_mm {
     struct ss_entry **ss_hash;        // gadget single-step blocks
     struct ss_entry **ss_page_hash;   // page -> single-step blocks; page_hash_size buckets
     size_t ss_size, ss_count;
+    size_t ss_grow_at;               // next live-entry count to attempt PC-hash growth
     uint64_t ss_bloom;                // bit (page & 63) set for pages with single-step blocks
     void *ss_jetsam;                  // invalidated single-step blocks: see reclaim
     void *ss_pending;                 // with dead_pending

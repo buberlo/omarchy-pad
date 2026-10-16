@@ -9,6 +9,11 @@ It extracts the production single-step cache functions into a small fixture,
 runs ASan/UBSan checks for page collisions, high/range boundaries, PC-chain
 unlinking, one-shot retirement, allocation failure and generation changes
 during translation, then compares randomized survivors with a range oracle.
+It also checks lookup identity through eight PC-table resizes, concurrent
+lookups during growth, repaired invalidation backlinks, overflow prevention,
+and allocation-failure backoff/recovery. A second benchmark compares the
+original 256-bucket lookup with the growing table for 65,536 live instructions
+at high addresses and several code strides, reporting exact node visits.
 Its benchmark compares the original full-cache walk with the page index for
 nonmatching writes that collide in both the bloom filter and page hash.
 That synthetic host timing does not measure game startup or frame rate.

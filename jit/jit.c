@@ -333,7 +333,7 @@ struct ss_entry {
     addr_t pc;
     struct fiber_block *block;
     struct ss_entry *next;
-    struct ss_entry **hash_prev;      // link pointing here in the fixed-size PC hash
+    struct ss_entry **hash_prev;      // link pointing here in the PC hash; repaired on resize
     struct ss_entry *page_next;
 };
 
@@ -367,6 +367,7 @@ struct jit_mm *jit_mm_new(struct mmu *mmu) {
     if (posix_memalign((void **) &mm->itab, 64, sizeof(struct jit_itab_entry) << JIT_ITAB_BITS) != 0)
         mm->itab = NULL;
     mm->ss_size = 256;
+    mm->ss_grow_at = mm->ss_size;
     mm->ss_hash = calloc(mm->ss_size, sizeof(*mm->ss_hash));
     mm->ss_page_hash = calloc(mm->page_hash_size, sizeof(*mm->ss_page_hash));
     if (mm->hash == NULL || mm->counters == MAP_FAILED || mm->htpub == NULL || mm->page_hash == NULL ||
@@ -1036,7 +1037,45 @@ void jit_invalidate_block_locked(struct jit_mm *mm, struct jit_block *b) {
     invalidate_block_locked(mm, b);
 }
 
+static void ss_grow_locked(struct jit_mm *mm) {
+    if (mm->ss_count < mm->ss_grow_at)
+        return;
+    // Back off after failure until the live entry count doubles, rather than
+    // attempting an allocation for every subsequently cached instruction.
+    mm->ss_grow_at = mm->ss_count <= SIZE_MAX / 2 ? mm->ss_count * 2 : SIZE_MAX;
+    size_t size = mm->ss_size;
+    do {
+        if (size > SIZE_MAX / 2 / sizeof(*mm->ss_hash))
+            return;
+        size *= 2;
+    } while (size <= mm->ss_count);
+    struct ss_entry **hash = mem_host_alloc_fails() ? NULL : calloc(size, sizeof(*hash));
+    if (hash == NULL)
+        return;                     // allocation failure only makes lookup slower
+    for (size_t i = 0; i < mm->ss_size; i++) {
+        struct ss_entry *e = mm->ss_hash[i];
+        while (e) {
+            struct ss_entry *next = e->next;
+            size_t h = pc_hash(e->pc, size);
+            e->next = hash[h];
+            e->hash_prev = &hash[h];
+            if (e->next)
+                e->next->hash_prev = &e->next;
+            hash[h] = e;
+            e = next;
+        }
+    }
+    // Every PC-hash reader holds mm->lock; the page index and entry/block
+    // addresses are unchanged, so no epoch retirement or generation bump is
+    // needed for the old bucket array.
+    free(mm->ss_hash);
+    mm->ss_hash = hash;
+    mm->ss_size = size;
+    mm->ss_grow_at = size;
+}
+
 static void ss_insert_locked(struct jit_mm *mm, struct ss_entry *e) {
+    ss_grow_locked(mm);
     size_t h = pc_hash(e->pc, mm->ss_size);
     e->next = mm->ss_hash[h];
     e->hash_prev = &mm->ss_hash[h];
@@ -1560,8 +1599,8 @@ int jit_fetch_code(struct jit_ctx *ctx, addr_t pc, const uint32_t **code, int ma
 // pc run while the arena was full.
 #define SS_NOMEM_CACHED 8192
 static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb, bool keep) {
-    size_t h = pc_hash(pc, mm->ss_size);
     pthread_mutex_lock(&mm->lock);
+    size_t h = pc_hash(pc, mm->ss_size);
     for (struct ss_entry *e = mm->ss_hash[h]; e; e = e->next) {
         if (e->pc == pc) {
             struct fiber_block *b = e->block;

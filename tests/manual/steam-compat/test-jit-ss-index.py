@@ -4,7 +4,8 @@
 Extraction avoids a public test API or linking the complete Darwin runtime.
 Only translation and compiled-block machinery are stubbed; cache operations,
 range filtering, generation changes, and ss_get publication are production C.
-The benchmark retains the prior full-scan implementation as its control.
+Benchmarks retain the prior full-scan and fixed-table lookup implementations
+as their controls; timings are synthetic host results, not device performance.
 """
 import argparse
 import hashlib
@@ -30,6 +31,7 @@ PREAMBLE = r'''
 #include <assert.h>
 #include <inttypes.h>
 #include <pthread.h>
+#include <sched.h>
 #include <stdatomic.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -49,7 +51,7 @@ struct ss_entry;
 struct jit_block { addr_t pc; struct jit_block *page_next; };
 struct jit_mm {
     struct ss_entry **ss_hash, **ss_page_hash;
-    size_t ss_size, ss_count, page_hash_size;
+    size_t ss_size, ss_count, ss_grow_at, page_hash_size;
     uint64_t ss_bloom, *bucket_page;
     struct ss_entry *ss_jetsam;
     struct jit_block **page_hash;
@@ -58,6 +60,7 @@ struct jit_mm {
     uint64_t stats_inval, stats_inval_ns, stats_fallback;
 };
 static bool jit_stats, allocation_fails;
+static unsigned allocation_checks, translations;
 static bool mm_dying(struct jit_mm *mm) { (void) mm; return false; }
 static void jit_write_begin(void) {}
 static void jit_write_finish(void) {}
@@ -72,14 +75,14 @@ static uint64_t clock_gettime_nsec_np(clockid_t clock) {
     struct timespec t; assert(clock_gettime(clock, &t) == 0);
     return (uint64_t)t.tv_sec * 1000000000 + (uint64_t)t.tv_nsec;
 }
-static bool mem_host_alloc_fails(void) { return allocation_fails; }
+static bool mem_host_alloc_fails(void) { allocation_checks++; return allocation_fails; }
 struct gen_state { struct fiber_block *block; };
 static struct fiber_block dummy_block;
 static struct jit_mm *invalidate_during_translation;
 static page_t invalidation_page;
 void jit_invalidate_range(struct jit_mm *, page_t, page_t);
 static void gen_start(addr_t pc, struct gen_state *s) {
-    (void) pc; s->block = &dummy_block;
+    (void) pc; translations++; s->block = &dummy_block;
 }
 static void gen_step(struct gen_state *s, struct tlb *tlb) {
     (void) s; (void) tlb;
@@ -98,7 +101,7 @@ static unsigned checks;
 #define CHECK(x) do { if (!(x)) { fprintf(stderr, "FAIL line %d: %s\n", __LINE__, #x); abort(); } checks++; } while(0)
 static void init(struct jit_mm *mm) {
     memset(mm, 0, sizeof(*mm));
-    mm->ss_size = 256; mm->page_hash_size = 65536;
+    mm->ss_size = 256; mm->ss_grow_at = 256; mm->page_hash_size = 65536;
     mm->ss_hash = calloc(mm->ss_size, sizeof(*mm->ss_hash));
     mm->ss_page_hash = calloc(mm->page_hash_size, sizeof(*mm->ss_page_hash));
     mm->page_hash = calloc(mm->page_hash_size, sizeof(*mm->page_hash));
@@ -117,13 +120,14 @@ static void destroy(struct jit_mm *mm) {
     free(mm->page_hash); free(mm->bucket_page);
     pthread_mutex_destroy(&mm->lock);
 }
-static void add(struct jit_mm *mm, page_t page, unsigned offset) {
+static struct ss_entry *add(struct jit_mm *mm, page_t page, unsigned offset) {
     struct ss_entry *e = calloc(1, sizeof(*e)); assert(e);
     e->pc = (page << 12) + offset;
     e->block = &dummy_block;
     pthread_mutex_lock(&mm->lock);
     ss_insert_locked(mm, e);
     pthread_mutex_unlock(&mm->lock);
+    return e;
 }
 static bool contains(struct jit_mm *mm, addr_t pc) {
     for (struct ss_entry *e = mm->ss_hash[pc_hash(pc, mm->ss_size)]; e; e = e->next)
@@ -219,6 +223,99 @@ static uint32_t random32(void) {
     random_state = random_state * UINT64_C(6364136223846793005) + 1;
     return random_state >> 32;
 }
+static void growth_tests(void) {
+    enum { N = 32769 };
+    const addr_t base = UINT64_C(0x800000000000);
+    struct fiber_block *blocks = calloc(N, sizeof(*blocks)); assert(blocks);
+    struct jit_mm m; init(&m);
+    for (unsigned i = 0; i < N; i++) {
+        // High FEX-like code addresses, 64-byte aligned; every PC gets its
+        // own result so a stale bucket or a wrong hit cannot pass unnoticed.
+        addr_t pc = base + i * 64;
+        add(&m, PAGE(pc), pc & 4095)->block = &blocks[i];
+        if (i && (i & (i - 1)) == 0) validate(&m);
+    }
+    CHECK(m.ss_size == 65536 && m.ss_grow_at == 65536);
+    CHECK(atomic_load(&m.gen) == 0); // structural resize is not code invalidation
+    unsigned before = translations;
+    for (unsigned i = 0; i < N; i++)
+        CHECK(ss_get(&m, base + i * 64, NULL, true) == &blocks[i]);
+    CHECK(translations == before);
+    // Deletion through the page index uses repaired PC-chain backlinks after
+    // eight growths; remaining hits and replacement blocks must stay exact.
+    jit_invalidate_range(&m, PAGE(base) + 17, PAGE(base) + 131);
+    validate(&m);
+    for (unsigned i = 0; i < N; i++) {
+        addr_t pc = base + i * 64;
+        bool removed = PAGE(pc) >= PAGE(base) + 17 && PAGE(pc) < PAGE(base) + 131;
+        CHECK(contains(&m, pc) == !removed);
+        if (removed) add(&m, PAGE(pc), pc & 4095)->block = &blocks[i];
+        CHECK(ss_get(&m, pc, NULL, true) == &blocks[i]);
+    }
+    validate(&m);
+    CHECK(atomic_load(&m.gen) == 1 && m.ss_count == N);
+    destroy(&m); free(blocks);
+
+    init(&m);
+    allocation_checks = 0; allocation_fails = true;
+    for (unsigned i = 0; i < 1024; i++) add(&m, 0x80000 + i, 0);
+    CHECK(m.ss_size == 256 && m.ss_count == 1024 && m.ss_grow_at == 1024);
+    CHECK(allocation_checks == 2); // attempts at 256 and 512, not each insert
+    validate(&m);
+    allocation_fails = false;
+    add(&m, 0x90000, 0);
+    CHECK(m.ss_size == 2048 && m.ss_grow_at == 2048 && allocation_checks == 3);
+    validate(&m);
+    jit_invalidate_range(&m, 0x80000, 0x80000 + 1024);
+    validate(&m);
+    CHECK(m.ss_count == 1 && contains(&m, UINT64_C(0x90000) << 12));
+    destroy(&m);
+
+    // Overflow guard must return before allocating or indexing a fictitious
+    // enormous table; no production allocation of that size is required.
+    init(&m);
+    size_t original_size = m.ss_size;
+    m.ss_count = m.ss_size = SIZE_MAX / sizeof(*m.ss_hash);
+    m.ss_grow_at = m.ss_count;
+    before = allocation_checks;
+    ss_grow_locked(&m);
+    CHECK(allocation_checks == before && m.ss_size == SIZE_MAX / sizeof(*m.ss_hash));
+    m.ss_count = 0; m.ss_size = original_size;
+    destroy(&m);
+}
+struct reader_args {
+    struct jit_mm *mm;
+    struct fiber_block *blocks;
+    _Atomic bool *start;
+};
+static void *lookup_reader(void *opaque) {
+    struct reader_args *a = opaque;
+    while (!atomic_load(a->start)) sched_yield();
+    for (unsigned i = 0; i < 100000; i++) {
+        unsigned key = (i * 73) % 256;
+        assert(ss_get(a->mm, UINT64_C(0x800100000000) + key * 64, NULL, true) == &a->blocks[key]);
+    }
+    return NULL;
+}
+static void concurrent_growth_test(void) {
+    struct jit_mm m; init(&m);
+    struct fiber_block blocks[256];
+    for (unsigned i = 0; i < 256; i++) {
+        addr_t pc = UINT64_C(0x800100000000) + i * 64;
+        add(&m, PAGE(pc), pc & 4095)->block = &blocks[i];
+    }
+    _Atomic bool start = false;
+    struct reader_args args = {&m, blocks, &start};
+    pthread_t thread; assert(pthread_create(&thread, NULL, lookup_reader, &args) == 0);
+    atomic_store(&start, true);
+    for (unsigned i = 256; i < 32769; i++) {
+        addr_t pc = UINT64_C(0x800100000000) + i * 64;
+        add(&m, PAGE(pc), pc & 4095);
+    }
+    assert(pthread_join(thread, NULL) == 0);
+    CHECK(m.ss_size == 65536 && m.ss_count == 32769);
+    validate(&m); destroy(&m);
+}
 static void randomized_tests(void) {
     enum { N = 2000 };
     addr_t pc[N]; bool alive[N]; struct jit_mm m; init(&m);
@@ -266,6 +363,7 @@ static void old_ss_invalidate_locked(struct jit_mm *mm, page_t start, page_t end
 static void benchmark(void) {
     const unsigned entries = 65536, rounds = 1000;
     struct jit_mm m; init(&m);
+    m.ss_grow_at = SIZE_MAX; // preserve the original invalidation control layout
     for (unsigned i = 0; i < entries; i++) add(&m, UINT64_C(0x80000000) + i, 0);
     // Same page-hash and bloom buckets, but a distinct high guest page:
     // neither implementation may remove any node.
@@ -288,9 +386,73 @@ static void benchmark(void) {
            entries, rounds, old_ns, new_ns, (uint64_t)entries * rounds, rounds, m.ss_count);
     destroy(&m);
 }
+// Pre-growth ss_get hit path, with the old fixed 256-bucket table. Miss
+// generation is excluded: all timed requests must hit an existing instruction.
+static struct fiber_block *old_ss_get_hit(struct jit_mm *mm, addr_t pc) {
+    size_t h = pc_hash(pc, mm->ss_size);
+    pthread_mutex_lock(&mm->lock);
+    for (struct ss_entry *e = mm->ss_hash[h]; e; e = e->next) {
+        if (e->pc == pc) {
+            struct fiber_block *b = e->block;
+            pthread_mutex_unlock(&mm->lock);
+            return b;
+        }
+    }
+    abort();
+}
+static uint64_t hit_visits(struct jit_mm *mm, addr_t pc) {
+    uint64_t visits = 0;
+    for (struct ss_entry *e = mm->ss_hash[pc_hash(pc, mm->ss_size)]; e; e = e->next) {
+        visits++;
+        if (e->pc == pc) return visits;
+    }
+    abort();
+}
+static void lookup_benchmark(void) {
+    enum { N = 65536, ROUNDS = 65536 };
+    const unsigned strides[] = {4, 64, 4096, 65536};
+    for (unsigned pattern = 0; pattern < sizeof(strides) / sizeof(*strides); pattern++) {
+        struct jit_mm old, grown; init(&old); init(&grown);
+        old.ss_grow_at = SIZE_MAX; // reproduce the original fixed PC index
+        unsigned stride = strides[pattern];
+        const addr_t base = UINT64_C(0x800000000000);
+        for (unsigned i = 0; i < N; i++) {
+            addr_t pc = base + (uint64_t)i * stride;
+            add(&old, PAGE(pc), pc & 4095); add(&grown, PAGE(pc), pc & 4095);
+        }
+        uint64_t old_visits = 0, grown_visits = 0;
+        for (unsigned i = 0; i < ROUNDS; i++) {
+            addr_t pc = base + (uint64_t)((i * 40503u) % N) * stride;
+            old_visits += hit_visits(&old, pc); grown_visits += hit_visits(&grown, pc);
+        }
+        unsigned before = translations;
+        uint64_t begin = clock_gettime_nsec_np(CLOCK_MONOTONIC);
+        for (unsigned i = 0; i < ROUNDS; i++) {
+            addr_t pc = base + (uint64_t)((i * 40503u) % N) * stride;
+            assert(old_ss_get_hit(&old, pc) == &dummy_block);
+        }
+        uint64_t old_ns = clock_gettime_nsec_np(CLOCK_MONOTONIC) - begin;
+        begin = clock_gettime_nsec_np(CLOCK_MONOTONIC);
+        for (unsigned i = 0; i < ROUNDS; i++) {
+            addr_t pc = base + (uint64_t)((i * 40503u) % N) * stride;
+            assert(ss_get(&grown, pc, NULL, true) == &dummy_block);
+        }
+        uint64_t grown_ns = clock_gettime_nsec_np(CLOCK_MONOTONIC) - begin;
+        assert(translations == before && old.ss_size == 256 && grown.ss_size == N);
+        // The existing shared hash has some clustering for consecutive 4-byte
+        // PCs (up to ten nodes here), but growth still bounds this workload's
+        // average well below the original ~128-node successful lookup.
+        assert(grown_visits < ROUNDS * 8 && old_visits > ROUNDS * 100);
+        printf("LOOKUP_BENCH entries=%u hits=%u stride=%u old_buckets=%zu grown_buckets=%zu "
+               "old_visits=%" PRIu64 " grown_visits=%" PRIu64 " old_ns=%" PRIu64 " grown_ns=%" PRIu64 "\n",
+               N, ROUNDS, stride, old.ss_size, grown.ss_size, old_visits, grown_visits, old_ns, grown_ns);
+        validate(&old); validate(&grown); destroy(&old); destroy(&grown);
+    }
+}
 int main(int argc, char **argv) {
     if (argc == 2 && strcmp(argv[1], "--benchmark") == 0) { benchmark(); return 0; }
-    focused_tests(); randomized_tests();
+    if (argc == 2 && strcmp(argv[1], "--lookup-benchmark") == 0) { lookup_benchmark(); return 0; }
+    focused_tests(); growth_tests(); concurrent_growth_test(); randomized_tests();
     printf("PASS actual production cache functions: %u assertions; index integrity after every range; ASan/UBSan enabled\n", checks);
     return 0;
 }
@@ -306,7 +468,7 @@ def main():
     source_path = root / "jit/jit.c"
     source = source_path.read_text()
     needles = ["struct ss_entry {", "static inline size_t pc_hash(",
-               "static void ss_insert_locked(", "static bool ss_invalidate_locked(",
+               "static void ss_grow_locked(", "static void ss_insert_locked(", "static bool ss_invalidate_locked(",
                "void jit_invalidate_range(", "static struct fiber_block *ss_get("]
     snippets = [declaration(source, needle) for needle in needles]
     args.out.mkdir(parents=True, exist_ok=True)
@@ -316,6 +478,7 @@ def main():
     for name, flags, runtime_args in [
         ("regression", ["-fsanitize=address,undefined", "-fno-omit-frame-pointer"], []),
         ("benchmark", [], ["--benchmark"]),
+        ("lookup-benchmark", [], ["--lookup-benchmark"]),
     ]:
         binary = args.out / name
         command = [args.cc, "-O2", "-g", "-std=c11", "-Wall", "-Wextra", "-Werror",
@@ -331,7 +494,8 @@ def main():
         "extracted_declarations": needles, "commands": commands,
         "scope": "Local host fixture runs actual production private functions; no device/gameplay performance claim.",
         "stubs": "Translation, compiled-block removal, lifetime teardown and allocator-failure injection. No compiled blocks inserted.",
-        "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index."
+        "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index.",
+        "lookup_benchmark": "65536 live PCs and permuted hits for 4/64/4096/65536-byte strides at high FEX-like addresses; exact old fixed-table hit path versus production ss_get with grown table. Node visits and local elapsed time only."
     }, indent=2) + "\n")
 
 

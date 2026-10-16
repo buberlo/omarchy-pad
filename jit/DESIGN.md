@@ -271,6 +271,16 @@ invalidation generation moved meanwhile. Code writes use the RW view
 (dual-mapping) or `pthread_jit_write_protect_np` (MAP_JIT, per thread), plus
 `sys_icache_invalidate`.
 
+The single-step PC hash starts at 256 buckets and doubles when its live entry
+count reaches its capacity. Lookup computes the bucket while holding the mm
+mutex. Rehashing under that same mutex repairs each entry's incoming PC-chain
+link, leaving the page index and entry/block addresses unchanged. The old
+bucket array can then be freed immediately; code generations and deferred
+block reclamation are unchanged. Failed allocation retains the existing table
+and defers the next attempt until the live count doubles. Capacity arithmetic
+is checked before allocation. This avoids long fallback lookup chains in large
+FEX workloads without adding another executable-block cache or lock-free path.
+
 ## 10. Executable memory on iOS (TXM) and macOS
 
 * **macOS CLI**: by default the iOS scheme, an RX view plus an RW alias made
