@@ -51,6 +51,11 @@ convenient for running them under both the CLI emulator and iPad app.
   pointing into backed or reservation-only PROT_NONE memory reaches its
   guest signal handler. The old diagnostic
   frame walk dereferenced that host-inaccessible pointer and crashed LinPad.
+  Also run the bundled Alpine dynamic loader, for example
+  `/bin/busybox sh -c '/bin/busybox true && /bin/busybox date +%s'`, in all four
+  execution modes above. Static probes do not exercise musl's startup read of
+  the vDSO ELF headers. The vDSO requires explicit read/execute permissions and
+  the vvar pages require read permission when PROT_NONE reads are enforced.
 
 The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
 With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static
