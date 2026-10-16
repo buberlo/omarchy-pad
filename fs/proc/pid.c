@@ -348,7 +348,9 @@ static void proc_maps_dump_mem(struct mem *mem, struct proc_data *buf) {
             // region continues if data is the same or both are anonymous
             if (!(pt->data == data || (pt->flags & P_ANONYMOUS && start_pt->flags & P_ANONYMOUS)))
                 break;
-            mem_next_page(mem, &page);
+            // A region ends at the first hole. The sparse iterator can skip
+            // that hole, merging separate mappings or extending the final one.
+            page++;
         }
         page_t end = page;
 

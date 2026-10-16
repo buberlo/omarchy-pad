@@ -26,6 +26,12 @@ convenient for running them under both the CLI emulator and iPad app.
   the child procfs stat/status parent fields, use process IDs rather than TIDs.
 - `proc-thread-list-probe.c`: lists only process leaders at /proc, while
   preserving direct thread-ID status lookup and /proc/self/task entries.
+- `proc-maps-boundary-probe.c`: high anonymous mappings separated by sparse
+  page-table holes must retain exact endpoints in `/proc/self/maps`. It checks
+  the final 8 MiB stack-like mapping, unmapped gaps, adjacent mapping coalescing,
+  permission boundaries and the new final endpoint after unmap. The old sparse
+  region walk extends the last mapping to the address-space limit, causing
+  glibc to infer an enormous main stack and Mono to guard live FEX metadata.
 - `proc-inet-probe.c`: IPv4/IPv6 TCP and UDP loopback endpoints, listening
   and connected TCP state, socket inode matching, and dup lifetime.
 - `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor
