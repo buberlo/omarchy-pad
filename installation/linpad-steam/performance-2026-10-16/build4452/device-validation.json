@@ -1,0 +1,13 @@
+{
+  "build": 4452,
+  "source_commit": "bdc6ce6e935f3bcf28d78e33b86496c8a65edf0b",
+  "installed": true,
+  "host_pid": 21791,
+  "jit_mebibytes": 512,
+  "smc_pass": true,
+  "lrcpc2_checks": 19151,
+  "lrcpc2_failures": 0,
+  "lrcpc2_exit": 0,
+  "gameplay_verified": false,
+  "game_performance_verified": false
+}

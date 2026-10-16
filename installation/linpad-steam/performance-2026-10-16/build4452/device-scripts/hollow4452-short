@@ -1,0 +1,22 @@
+#!/bin/sh
+OUT=/tmp/hollow4452-short.txt
+{
+ date -u
+ echo UNITY_TAIL
+ tail -40 /tmp/hollow4452-egl-unity.txt
+ echo GAME_STAT
+ for gamepid in $(ps -o pid,comm | awk '/FEX-apple-m1-mu/ {print $1}'); do
+  echo GAME_PID=$gamepid
+  cat /proc/$gamepid/stat
+ done
+ echo GAME_OUTPUT
+ tail -8 /tmp/hollow4452-egl-fex.txt
+ echo FRAME_LINES
+ wc -l /tmp/hollow4452-frames.txt
+ echo COMPOSITOR_MAPS
+ grep -E 'map toplevel|unmap|Hollow' /tmp/ishwl.log | tail -15
+ echo MEMORY
+ head -8 /proc/ish/memory
+} > "$OUT" 2>&1
+wget -T8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"

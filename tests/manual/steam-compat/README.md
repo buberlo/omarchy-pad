@@ -127,3 +127,16 @@ remain SCHED_OTHER; it never requests realtime scheduling. Build for native
 ARM64 and x86-64, then run the latter under FEX. The matched before/after and
 exact guarded Unity helper controls are preserved in the private installation
 archive under `performance-2026-10-16/fmod-sched-repair`.
+
+## Native LRCPC2 regression
+
+`test-jit-lrcpc2.py --out <local-directory>` includes the actual translator
+under ASan/UBSan and checks all scalar size/opc, base/data-register combinations,
+signed offsets and tiers. Build `jit-lrcpc2-probe.c` as an ARM64 Linux executable
+and run it through LinPad for real value, split-page, protection/fault-PC,
+reserved-instruction, self-modifying-code and two-thread message tests. Run
+both JIT tiers and compact mode locally. The unchanged gadget baseline reports
+block-start PCs for nine memory faults and therefore fails those strict PC
+assertions; retain that known baseline result rather than masking it.
+Physical build4452 passes19151 checks with no failures. Performance acceptance
+requires a separately observed real-game run.

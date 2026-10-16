@@ -1,0 +1,48 @@
+#!/bin/sh
+# Passive exact-view compositor capture: 5 seconds to foreground, 30 seconds measured.
+# No game signal, input, configuration or bridge FIFO operations.
+set -u
+view=${1:-auto}
+case "$view" in auto) ;; ''|*[!0-9]*) echo 'usage: hollow4452-menu-cadence [auto|observed-view-id]' >&2; exit 64;; esac
+helper=${LINPAD_FRAME_HELPER:-/tmp/hollow4452-frame-capture}
+test -f "$helper" || { echo 'FRAME_CAPTURE_HELPER_MISSING: download hollow4452-frame-capture first' >&2; exit 66; }
+capture_dir=$(mktemp -d "/tmp/hollow4452-cadence-$(date -u +%Y%m%dT%H%M%SZ)-XXXXXX") || exit 73
+report="$capture_dir/report.txt"
+export LINPAD_FRAME_CAPTURE="$capture_dir/window"
+printf 'FRAME_CAPTURE_ARMED view=%s pre_delay_seconds=5 capture_seconds=30 directory=%s\n' "$view" "$capture_dir"
+printf 'Foreground the Hollow Knight window now; this script sends no game input.\n'
+{
+ echo FRAME_CAPTURE_REPORT_BEGIN
+ echo BUILD=4452
+ echo METRIC=composited_game_view_delivery_cadence
+ echo GAMEPLAY_FPS_CLAIM=0
+ echo GAME_MUTATIONS=0
+ printf 'REQUESTED_VIEW=%s\nCAPTURE_DIRECTORY=%s\n' "$view" "$capture_dir"
+ echo PRE_DELAY_BEGIN
+ date -u
+ sleep 5
+ echo MEASUREMENT_BEGIN
+ date -u
+ sh "$helper" capture "$view" 30
+ capture_exit=$?
+ printf 'CAPTURE_EXIT=%s\n' "$capture_exit"
+ echo MEASUREMENT_END
+ date -u
+ for part in meta status.txt txt; do
+  printf 'BEGIN_CAPTURE_%s\n' "$part"
+  if test -f "$LINPAD_FRAME_CAPTURE.$part"; then
+   cat "$LINPAD_FRAME_CAPTURE.$part"
+  else
+   echo FILE_NOT_CREATED=1
+  fi
+  printf 'END_CAPTURE_%s\n' "$part"
+ done
+ echo FRAME_CAPTURE_REPORT_END
+} > "$report" 2>&1
+# One bounded local collection request; failure preserves all regular files.
+wget -T 8 -t 1 -q --post-file="$report" http://192.168.0.104:8766/report -O /dev/null
+post_exit=$?
+cat "$report"
+printf 'REPORT_POST_EXIT=%s\nREPORT_FILE=%s\n' "$post_exit" "$report"
+test "$capture_exit" -eq 0 || exit "$capture_exit"
+exit "$post_exit"

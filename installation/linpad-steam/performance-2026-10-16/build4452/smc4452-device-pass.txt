@@ -1,0 +1,8 @@
+Fri Oct 16 14:17:37 UTC 2026
+/tmp/smc-arm64: OK
+smc ok
+SMC_DEVICE_EXIT=0
+/tmp/jit-ss-smc-probe: OK
+jit-ss-smc PASS checks=200 failures=0
+SS_SMC_DEVICE_EXIT=0
+Fri Oct 16 14:17:38 UTC 2026

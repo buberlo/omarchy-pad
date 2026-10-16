@@ -1,0 +1,126 @@
+#!/bin/sh
+# Passive bounded snapshots; no game signals, input, configuration or environment reads.
+set -u
+pid=${1:-}
+case "$pid" in ''|*[!0-9]*) echo 'usage: ss4452-probe GAME_PID' >&2; exit 64;; esac
+test -r /proc/ish/jit-ss || { echo SS_DIAGNOSTIC_UNAVAILABLE; exit 69; }
+out=$(mktemp -d /tmp/ss4452-XXXXXX) || exit 73
+report="$out/report.txt"
+all_valid=1
+identity() {
+ tag=$1
+ identity_ok=1
+ head -c 4097 "/proc/$pid/stat" > "$out/stat-$tag.txt" || identity_ok=0
+ test "$(wc -c < "$out/stat-$tag.txt")" -le 4096 || identity_ok=0
+ head -c 513 "/proc/$pid/cmdline" > "$out/cmd-$tag.bin" || identity_ok=0
+ test "$(wc -c < "$out/cmd-$tag.bin")" -le 512 || identity_ok=0
+ tr '\000' '\n' < "$out/cmd-$tag.bin" | awk -F/ '$NF=="hollow_knight.x86_64"{found=1} END{exit !found}' || identity_ok=0
+ tick=$(awk -v game="$pid" '$1==game{s=$0;sub(/^.*\) /,"",s);n=split(s,a," ");if(n>=20 && a[20]~/^[0-9]+$/)print a[20]}' "$out/stat-$tag.txt")
+ case "$tick" in ''|*[!0-9]*) identity_ok=0;; esac
+ printf 'IDENTITY tag=%s game=%s start_tick=%s basename=hollow_knight.x86_64 valid=%s\n' "$tag" "$pid" "$tick" "$identity_ok"
+ printf '%s\n' "$tick" > "$out/start-$tag.txt"
+ test "$identity_ok" -eq 1
+}
+{
+ echo SS_DIAGNOSTIC_REPORT_BEGIN
+ echo BUILD=4452
+ echo GAME_PID="$pid"
+ echo MUTATIONS=0
+ echo 'COUNTERS=approximate fallback attempts; recent opcode samples are not FPS'
+ echo 'WORKER_DELTAS=not_computed; tid/mmu/reset cannot rule out worker-context incarnation reuse'
+ for index in 1 2; do
+  echo SNAPSHOT_BEGIN="$index"
+  date -u
+  identity "$index" || all_valid=0
+  head -c 2097153 /proc/ish/jit-ss > "$out/raw-$index.txt"
+  read_exit=$?
+  raw_bytes=$(wc -c < "$out/raw-$index.txt")
+  printf 'READ_EXIT=%s\nRAW_BYTES=%s\n' "$read_exit" "$raw_bytes"
+  if test "$read_exit" -ne 0 || test "$raw_bytes" -gt 2097152; then
+   echo SNAPSHOT_READ_INELIGIBLE=1
+   all_valid=0
+  fi
+  awk -v game="$pid" -v mainfile="$out/main-$index.txt" '
+   BEGIN {keep=0;bad=0;main=0;selected=0}
+   /^context / {
+    keep=0;tid="";mmu="";tgid="";reset=""
+    for(i=2;i<=NF;i++){split($i,a,"=");if(a[1]=="tid")tid=a[2];if(a[1]=="tgid")tgid=a[2];if(a[1]=="mmu")mmu=a[2];if(a[1]=="reset")reset=a[2]}
+    if(tgid==game){
+     if(tid!~/^[0-9]+$/ || mmu!~/^[0-9]+$/ || reset!~/^[0-9]+$/ || reset%2){bad++;next}
+     keep=1;selected++;print
+     if(tid==game){main++;print > mainfile}
+    }
+    next
+   }
+   /^sample / {
+    if(!keep)next
+    stid="";smmu="";serial=""
+    for(i=2;i<=NF;i++){split($i,a,"=");if(a[1]=="tid")stid=a[2];if(a[1]=="mmu")smmu=a[2];if(a[1]=="serial")serial=a[2]}
+    if(stid!=tid || smmu!=mmu || serial!~/^[0-9]+$/ || serial==0){bad++;next}
+    print;next
+   }
+   /^supported / {supported=$2;print;next}
+   /^enabled / {enabled=$2;print;next}
+   /^version / {version=$2;print;next}
+   /^truncated / {truncated=$2;seen_trunc=1;print;next}
+   /^context_busy / {keep=0;bad++;print;next}
+   /^(snapshot_allocation_failed|context_allocation_failed) / {if($2!=0)bad++;print;next}
+   {print}
+   END {
+    eligible=supported==1 && enabled==1 && version==1 && seen_trunc && truncated==0 && bad==0 && main==1
+    printf "FILTER_SELECTED_CONTEXTS=%d\nFILTER_INVALID_ROWS=%d\nSNAPSHOT_ELIGIBLE=%d\n",selected,bad,eligible
+    close(mainfile);exit !eligible
+   }
+  ' "$out/raw-$index.txt"
+  filter_exit=$?
+  test "$filter_exit" -eq 0 || all_valid=0
+  echo SNAPSHOT_END="$index"
+  test "$index" -eq 2 || sleep 10
+ done
+ identity final || all_valid=0
+ # The recomputed boot clock can shift starttime by one tick; avoid strict equality.
+ awk 'NF!=1 || $1!~/^[0-9]+$/{bad=1} NR==1{lo=$1;hi=$1} {if($1<lo)lo=$1;if($1>hi)hi=$1} END{ok=NR==3 && !bad && hi-lo<=2;printf "PROCESS_CONTINUITY_ELIGIBLE=%d start_tick_spread=%d tolerance_ticks=2\n",ok,hi-lo;exit !ok}' "$out/start-1.txt" "$out/start-2.txt" "$out/start-final.txt" || all_valid=0
+ if test "$all_valid" -eq 1; then
+  awk -v game="$pid" '
+   BEGIN {n=split("hit miss_cold miss_collision miss_generation miss_generation_same_pc shared_hit persistent_fill oneshot_generation oneshot_pressure untracked_oom path_negative path_exit path_nomem",keys," ");ok=1}
+   {rows++;for(i=2;i<=NF;i++){split($i,a,"=");v[rows,a[1]]=a[2]}}
+   END {
+    if(rows!=2)ok=0
+    m=split("tid tgid mmu reset",ids," ")
+    for(i=1;i<=m;i++)if(v[1,ids[i]]=="" || v[1,ids[i]]!=v[2,ids[i]])ok=0
+    if(v[1,"tid"]!=game || v[1,"tgid"]!=game)ok=0
+    for(i=1;i<=n;i++)if(v[1,keys[i]]!~/^[0-9]+$/ || v[2,keys[i]]!~/^[0-9]+$/ || v[2,keys[i]]+0<v[1,keys[i]]+0 || v[2,keys[i]]+0>9007199254740991)ok=0
+    printf "MAIN_DELTA_ELIGIBLE=%d\n",ok
+    if(ok){printf "MAIN_DELTA tid=%s mmu=%s reset=%s",game,v[1,"mmu"],v[1,"reset"];for(i=1;i<=n;i++)printf " %s=%.0f",keys[i],v[2,keys[i]]-v[1,keys[i]];printf "\n"}
+    exit !ok
+   }
+  ' "$out/main-1.txt" "$out/main-2.txt" || all_valid=0
+ else
+  echo MAIN_DELTA_ELIGIBLE=0
+ fi
+ echo MAPS_BEGIN
+ head -c 200001 "/proc/$pid/maps" > "$out/maps-prefix.txt"
+ maps_exit=$?
+ maps_bytes=$(wc -c < "$out/maps-prefix.txt")
+ if test "$maps_bytes" -gt 200000; then
+  echo MAPS_TRUNCATED=1
+  head -c 200000 "$out/maps-prefix.txt"
+  echo
+ else
+  echo MAPS_TRUNCATED=0
+  cat "$out/maps-prefix.txt"
+ fi
+ printf 'MAPS_READ_EXIT=%s\nMAPS_END\n' "$maps_exit"
+ echo ALL_DELTA_GATES_VALID="$all_valid"
+ echo SS_DIAGNOSTIC_REPORT_END
+} > "$report" 2>&1
+size=$(wc -c < "$report")
+if test "$size" -gt 950000; then
+ echo "REPORT_TOO_LARGE bytes=$size local=$report" >&2
+ exit 75
+fi
+wget -T 8 -t 1 -q --post-file="$report" http://192.168.0.104:8766/report -O /dev/null
+post_exit=$?
+printf 'REPORT_POST_EXIT=%s\nREPORT_BYTES=%s\nREPORT_FILE=%s\n' "$post_exit" "$size" "$report"
+test "$post_exit" -eq 0 || exit "$post_exit"
+test "$all_valid" -eq 1 || exit 70

@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+for file in smc4452-probe hollow4452-egl hollow4452-short hollow4452-frame-capture hollow4452-menu-cadence ss4452-probe; do
+ wget -T8 -qO /tmp/$file http://192.168.0.104:8766/$file
+done
+sh /tmp/smc4452-probe
+wget -T15 -qO /tmp/jit-lrcpc2-probe http://192.168.0.104:8766/jit-lrcpc2-probe
+echo '7346e36e1aed025de1b233c02f8e828ca633f2af41821e4be5f6f8d6634ad7ab  /tmp/jit-lrcpc2-probe' | sha256sum -c -
+chmod +x /tmp/jit-lrcpc2-probe
+OUT=/tmp/lrcpc2-device4452.txt
+{ date -u; /tmp/jit-lrcpc2-probe; echo LRCPC2_DEVICE_EXIT=$?; date -u; } > "$OUT" 2>&1
+wget -T8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"
+echo READY_TO_RUN_HOLLOW4452=1

@@ -1,6 +1,8 @@
 # Verified handoff: LinPad, Steam and FEX
 
-Current runtime checkpoint: **LinPad 1.4.0 build 4451**, signed, installed and booted on the physical M2 iPad with both approved memory entitlements and 512 MiB native JIT. Both physical self-modifying-code probes pass 200 rewrites, and the opt-in fallback diagnostic self-test passes. Hollow Knight's German main menu renders. A continuously foregrounded 30-second capture delivered 212 game-view frames (7.0667/s, 659×540); this measures compositor delivery, not gameplay or display FPS. The user confirmed audible but severely stuttering menu music on build 4450. Smooth audio and normal gameplay remain unqualified. [Build 4451 verification](performance-2026-10-16/build4451/VERIFICATION.md)
+Current runtime checkpoint: **LinPad1.4.0 build4452**, signed, installed and booted on the physical M2 iPad with both approved memory entitlements and512MiB native JIT. Native LRCPC2 translation now handles the previously hot LDAPUR/STLUR family. The physical guest probe passes19151 checks with zero failures, including8190 memory/register/address cases, exact fault attribution,200 code rewrites and10000 thread exchanges. Both existing physical SMC probes pass. [Build4452 verification](performance-2026-10-16/build4452/VERIFICATION.md)
+
+Hollow Knight has not yet been performance-tested on4452. The previous4451 foreground menu capture delivered212 game-view frames in30seconds (7.0667/s,659×540). User-confirmed music on4450 was severely stuttering. Smooth audio, playable normal gameplay and the final Steam-to-game production route remain open.
 
 The actual game startup diagnostic identifies LDAPUR/STLUR in all 1,223 retained sample records. A separate launch using only `FEX_HOSTFEATURES=disablelrcpc2` exits 139 before Unity initialization; it is not a recommended setting. The baseline was deliberately stopped for this test. [Controlled launch experiment](performance-2026-10-16/build4451-lrcpc2-control/README.md)
 

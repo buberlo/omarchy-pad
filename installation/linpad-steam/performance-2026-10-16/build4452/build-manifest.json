@@ -1,0 +1,50 @@
+{
+  "build": "4452",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "bdc6ce6e935f3bcf28d78e33b86496c8a65edf0b",
+  "source_base": "44ff375ebdd5ef9f1800e7f60f056b86cfc6dac7",
+  "source_files": [
+    {
+      "path": "jit/translate.c",
+      "sha256": "df1cc025290b4a81848c9b729b8a88f43509af0e29ebb5b3f71765751ff2807e"
+    },
+    {
+      "path": "tests/manual/steam-compat/jit-lrcpc2-probe.c",
+      "sha256": "4987f5f41a21bd72cf838f443afd4d7fe7a1cb6e9ea4e2050bd543e998389db1"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-lrcpc2.py",
+      "sha256": "8e7fd7bb155466e36076d39ed7959cfdcdb50e3c242f827862cda7f947482760"
+    }
+  ],
+  "source_patch_sha256": "b342a2115d1047fad2c4bb2cb5163ebcbe1f97b9ea9a1d712b021ad0449ca39c",
+  "build_verified": true,
+  "build_log_sha256": "0f37e0869330a52456aab0de6b73358124310dc8166d2d33cbfc3a62dece3c2c",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "93670892-2077-3AFE-808F-04959F7E409B",
+  "executable_sha256": "eda0523827f98014976c3aca40ed4c9aec1b90434943a81284096b648c343373",
+  "dwarf_sha256": "3194efd7e3e99ebe95154bbdb734b18699a3d11b6b6c66d1643e57d9ab8cd723",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4450": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4452-Konrad.ipa",
+      "bytes": 637225433,
+      "sha256": "3747136d0a56c519ac73ca47c7bd4ba2a702b58a77d9f76ebcb64457606a0e79",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4452-dSYM.zip",
+      "bytes": 13532246,
+      "sha256": "b418313101306551cabbb2a0ff33e3d0afe50675c0caee974eff2f4fb54beacf",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "Pending; update only from physical build4452 evidence.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA."
+}

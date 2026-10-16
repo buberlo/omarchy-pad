@@ -1,0 +1,3 @@
+2026-10-16 22:16:38.356 iSH ARM64[21791:4392126] [boot] case_sensitive_container=yes
+2026-10-16 22:16:38.603 iSH ARM64[21791:4392126] [fast mode] opening stikdebug://enable-jit?bundle-id=com.konradkern.linpad&pid=21791&script-name=universal.js
+ish: native JIT on: txm (StikDebug universal.js), 512 MB code arena at 0x11aec4000

@@ -1,0 +1,14 @@
+{
+  "work/performance/build4452/build.log": {
+    "bytes": 71665,
+    "sha256": "0f37e0869330a52456aab0de6b73358124310dc8166d2d33cbfc3a62dece3c2c"
+  },
+  "work/performance/build4452/device-console.log": {
+    "bytes": 24224,
+    "sha256": "33e8158bbc8e54604dd809856311218ba9516f35db475b5a641cb101251ec806"
+  },
+  "work/performance/build4452/artifact-verification-sandbox-trust.log": {
+    "bytes": 1045,
+    "sha256": "7f99af4b452d6b42b691963d9c3b4faec062070fab3b3fb08212879837a4cbf6"
+  }
+}

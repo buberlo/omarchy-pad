@@ -442,3 +442,17 @@ budget:
   across forward conditional branches; a return-address stack for RET;
   translation-cache sharing for shared libraries across fork/exec; a direct
   16 KB-page memory window (section 1).
+
+### LRCPC2 scalar acquire/release
+
+`LDAPUR`/`STLUR` forms use the ordinary scalar `emit_mem` path, with the
+gadget engine's DMB ISH ordering before stores and after successful loads.
+The decoder preserves signed imm9, scalar sign extension, SP/XZR, page-table
+coherence and original fault maps, and rejects reserved size/opc forms.
+Release stores bypass compact stubs so cross-page bounce writes commit
+immediately in the inline cold path before subsequent guest instructions.
+This avoids relying on alignment-sensitive host ordered-access instructions.
+`tests/manual/steam-compat/test-jit-lrcpc2.py` inspects the actual translator;
+`jit-lrcpc2-probe.c` runs values, faults, code rewrites and thread exchanges
+inside the ARM64 guest. Physical build4452 passed the probe; game-performance
+qualification is separate.

@@ -2,9 +2,9 @@
 
 Private archive of the LinPad work verified on 16 October 2026.
 
-**Current device checkpoint:** development-signed LinPad 1.4.0 build 4451 runs on the M2 iPad. The installed Linux Hollow Knight reaches its German main menu through FEX and Venus Vulkan on Apple M2. A foreground 30-second menu capture measured 212 compositor deliveries (7.07/s at 659×540). The user reported audible but severely stuttering music on the preceding build. Normal gameplay and smooth audio remain unqualified.
+**Current device checkpoint:** development-signed LinPad1.4.0 build4452 is installed and running on the M2 iPad. It adds native translation for the LDAPUR/STLUR memory instructions identified as the dominant slow fallback. The physical ARM64 regression passes19151 checks, including8190 memory cases,200 code rewrites and10000 thread exchanges; both prior SMC probes also pass. [Build4452 verification](installation/linpad-steam/performance-2026-10-16/build4452/VERIFICATION.md).
 
-Build 4451 identifies the dominant slow fallback instructions as LDAPUR/STLUR. A separate FEX feature-override experiment exits before Unity initialization and is not a working configuration. [Current evidence and limitations](installation/linpad-steam/performance-2026-10-16/build4451/VERIFICATION.md).
+Hollow Knight performance on4452 is still unmeasured. The previous4451 baseline reached the German main menu at7.07 compositor deliveries/s at659×540. Normal gameplay, smooth audio and the final Steam-to-game launch remain unqualified. The failed feature-override experiment and all earlier evidence remain archived.
 
 Build 4441 originally established Steam ARM64 sign-in, static FEX probes and the Vulkan cube smoke test; those historical records remain below.
 

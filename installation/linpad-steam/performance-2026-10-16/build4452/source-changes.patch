@@ -1,0 +1,331 @@
+diff --git a/jit/translate.c b/jit/translate.c
+index ea755bba..113097a1 100644
+--- a/jit/translate.c
++++ b/jit/translate.c
+@@ -337,6 +337,7 @@ struct memop {
+     uint64_t lit;             // AK_LIT address
+     int size;
+     bool write, atomic, sync;
++    bool immediate_commit;    // release stores must not leave a deferred bounce write
+     uint32_t insn_base;       // Rn field = HR_T1, data fields still guest numbers
+     bool regoff_ok;
+     uint32_t insn_regoff;     // Rn = HR_T1, Rm = 0 (filled with A)
+@@ -447,7 +448,7 @@ static int emit_mem(struct tr *t, struct memop *m) {
+         case 1: szi = 0; break; case 2: szi = 1; break; case 4: szi = 2; break;
+         case 8: szi = 3; break; case 16: szi = 4; break; case 32: szi = 5; break;
+     }
+-    if (t->tier == 1 && jit_tier1_compact && nborrow == 0 && szi >= 0) {
++    if (t->tier == 1 && jit_tier1_compact && nborrow == 0 && szi >= 0 && !m->immediate_commit) {
+         if (A != HR_T0 && A != HR_SP) {
+             put(t, HOT, e_mov(HR_T0, A));
+             A = HR_T0;
+@@ -584,6 +585,28 @@ static int tr_ldst(struct tr *t, uint32_t insn) {
+     m.base = rn;
+     m.ak = AK_IMM;
+ 
++    // LRCPC2 unscaled acquire/release. Match the gadget engine's lowering
++    // to ordinary scalar memory operations plus DMB ISH. In particular, do
++    // not substitute host LDAR/STLR: FEX uses valid unaligned guest accesses.
++    if ((insn & 0x3f200c00) == 0x19000000) {
++        int size = insn >> 30, opc = (insn >> 22) & 3;
++        if ((size == 3 && opc >= 2) || (size == 2 && opc == 3))
++            return -1;  // reserved; unlike ordinary LDUR, no PRFUM alias
++        m.size = 1 << size;
++        m.write = opc == 0;
++        m.sync = true;
++        m.immediate_commit = m.write;
++        m.imm = sext((insn >> 12) & 0x1ff, 9);
++        m.insn_base = (size << 30) | 0x38000000u | (opc << 22) | (HR_T1 << 5) | rt;
++        m.data[m.ndata++] = OP(0, m.write ? R : W, false);
++        if (m.write)
++            put(t, HOT, 0xd5033bbfu);  // dmb ish: before the actual store/commit
++        int result = emit_mem(t, &m);
++        if (result > 0 && !m.write)
++            put(t, HOT, 0xd5033bbfu);  // all successful load paths rejoin here
++        return result;
++    }
++
+     // Load/store exclusive, ordered, CAS
+     if ((insn & 0x3f000000) == 0x08000000) {
+         int size = insn >> 30;
+diff --git a/tests/manual/steam-compat/jit-lrcpc2-probe.c b/tests/manual/steam-compat/jit-lrcpc2-probe.c
+new file mode 100644
+index 00000000..07881aed
+--- /dev/null
++++ b/tests/manual/steam-compat/jit-lrcpc2-probe.c
+@@ -0,0 +1,190 @@
++#define _GNU_SOURCE
++#include <inttypes.h>
++#include <pthread.h>
++#include <sched.h>
++#include <setjmp.h>
++#include <signal.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/mman.h>
++#include <ucontext.h>
++#include <unistd.h>
++
++// Run actual LRCPC2 guest instructions, including spilled registers, SP,
++// misalignment and split pages. These tests target LinPad's existing gadget
++// semantics as well as its native JIT; they are not host-hardware atomics tests.
++static unsigned checks, failures;
++#define CHECK(v) do { checks++; if (!(v)) { if (failures++ < 12) fprintf(stderr,"FAIL line=%d: %s\n",__LINE__,#v); } } while (0)
++typedef uint64_t (*op_fn)(void *, uint64_t);
++static uint32_t *code;
++static size_t used;
++static uintptr_t last_op_pc;
++static uint32_t mov(int rd, int rn) { return 0xaa0003e0u | (rn << 16) | rd; }
++static void emit(uint32_t word) { code[used++] = word; }
++static op_fn make_op(int size, int opc, int base, int data, int offset) {
++    size_t start = used;
++    for (int r=19;r<31;r+=2) emit(0xa9bf0000u | ((r+1)<<10) | (31<<5) | r);
++    int save_sp = data == 9 ? 10 : 9;
++    if (base == 31) {
++        emit(0x910003e0u | save_sp); // mov save_sp, sp
++        emit(0x9100001fu);          // mov sp, x0
++    } else {
++        if (base == 1 && data != 1 && data != 31) emit(mov(2,1));
++        if (base != 0) emit(mov(base,0));
++    }
++    if (data != 31 && data != base)
++        emit(mov(data, base == 1 ? 2 : 1));
++    last_op_pc=(uintptr_t)&code[used];
++    emit(((uint32_t)size<<30) | 0x19000000u | (opc<<22) |
++         (((uint32_t)offset&511)<<12) | (base<<5) | data);
++    emit(mov(0,data));
++    if (base == 31) emit(0x9100001fu | (save_sp<<5)); // restore sp
++    for (int r=29;r>=19;r-=2) emit(0xa8c10000u | ((r+1)<<10) | (31<<5) | r);
++    emit(0xd65f03c0u);
++    __builtin___clear_cache((char *)&code[start],(char *)&code[used]);
++    return (op_fn)&code[start];
++}
++static uint64_t mask_size(int size) { return size == 3 ? UINT64_MAX : (UINT64_C(1) << (8<<size))-1; }
++static uint64_t loaded(uint64_t raw,int size,int opc) {
++    raw &= mask_size(size);
++    if (opc >= 2) {
++        int bits=8<<size;
++        raw=(uint64_t)((int64_t)(raw << (64-bits)) >> (64-bits));
++        if (opc == 3) raw=(uint32_t)raw;
++    }
++    return raw;
++}
++static void values(unsigned char *mem) {
++    const int bases[]={0,1,11,13,18,29,31};
++    const int regs[]={0,1,9,11,14,18,19,29,30,31};
++    const int offsets[]={-256,0,255};
++    const int locations[]={1024,1025,4095};
++    const uint64_t pattern=UINT64_C(0xf1e2d3c4b5a69788);
++    unsigned local=0;
++    for(int size=0;size<4;size++) for(int opc=0;opc<4;opc++) {
++        if ((size==3 && opc>=2)||(size==2 && opc==3)) continue;
++        for(unsigned b=0;b<sizeof(bases)/sizeof(*bases);b++)
++        for(unsigned r=0;r<sizeof(regs)/sizeof(*regs);r++)
++        for(unsigned o=0;o<sizeof(offsets)/sizeof(*offsets);o++) {
++            int base=bases[b],data=regs[r],off=offsets[o];
++            op_fn fn=make_op(size,opc,base,data,off);
++            for(unsigned a=0;a<sizeof(locations)/sizeof(*locations);a++) {
++                unsigned char *at=mem+locations[a];
++                void *address=at-off;
++                memset(at-8,0x5a,32);
++                memcpy(at,&pattern,8);
++                uint64_t actual=fn(address,pattern),raw=0;
++                memcpy(&raw,at,1u<<size);
++                if (opc==0) {
++                    uint64_t expected=data==31?0:data==base?(uintptr_t)address:pattern;
++                    CHECK(raw == (expected & mask_size(size)));
++                    CHECK(at[-1]==0x5a && at[8]==0x5a);
++                    // A following ordinary load must already see a crossing release store.
++                    CHECK(actual == (data==31?0:expected));
++                } else {
++                    CHECK(actual == (data==31?0:loaded(pattern,size,opc)));
++                    CHECK(raw == (pattern & mask_size(size)));
++                }
++                local++;
++            }
++        }
++    }
++    printf("LRCPC2_VALUES cases=%u\n",local);fflush(stdout);
++}
++static sigjmp_buf jump;
++static volatile sig_atomic_t signal_seen;
++static uintptr_t fault_addr,fault_pc,fault_x0;
++static void handler(int sig,siginfo_t *info,void *v) {
++    ucontext_t *u=v;signal_seen=sig;fault_addr=(uintptr_t)info->si_addr;
++    fault_pc=u->uc_mcontext.pc;fault_x0=u->uc_mcontext.regs[0];
++    siglongjmp(jump,1);
++}
++static void faults(unsigned char *mem) {
++    struct sigaction sa={.sa_sigaction=handler,.sa_flags=SA_SIGINFO};sigemptyset(&sa.sa_mask);
++    sigaction(SIGSEGV,&sa,NULL);sigaction(SIGBUS,&sa,NULL);sigaction(SIGILL,&sa,NULL);
++    CHECK(mprotect(mem+4096,4096,PROT_NONE)==0);
++    for(int store=0;store<2;store++) {
++        op_fn fn=make_op(3,store?0:1,1,0,0);
++        uintptr_t op_pc=last_op_pc;
++        uintptr_t addrs[]={0,1,(uintptr_t)(mem+4096),(uintptr_t)(mem+4095)};
++        for(unsigned a=0;a<4;a++) {
++            signal_seen=0;fault_pc=0;
++            if(sigsetjmp(jump,1)==0) { fn((void *)addrs[a],0x1122334455667788ull);CHECK(0); }
++            else {
++                printf("LRCPC2_FAULT store=%d case=%u signal=%d address=%#" PRIxPTR " expected_address=%#" PRIxPTR " pc=%#" PRIxPTR " expected_pc=%#" PRIxPTR "\n",
++                       store,a,signal_seen,fault_addr,a==3?(uintptr_t)(mem+4096):addrs[a],fault_pc,op_pc);
++                CHECK(signal_seen==SIGSEGV);
++                CHECK(fault_addr==(a==3?(uintptr_t)(mem+4096):addrs[a]));
++                CHECK(fault_pc==op_pc);
++                CHECK(fault_x0==0x1122334455667788ull);
++            }
++        }
++    }
++    CHECK(mprotect(mem+4096,4096,PROT_READ)==0);
++    op_fn store=make_op(3,0,1,0,0);uintptr_t op_pc=last_op_pc;
++    signal_seen=0;
++    if(sigsetjmp(jump,1)==0) { store(mem+4096,123);CHECK(0); }
++    else {CHECK(signal_seen==SIGSEGV);CHECK(fault_addr==(uintptr_t)(mem+4096));CHECK(fault_pc==op_pc);CHECK(fault_x0==123);}
++    CHECK(mprotect(mem+4096,4096,PROT_READ|PROT_WRITE)==0);
++    // Reserved size/opc combinations must fault, not become PRFUM no-ops.
++    for(int i=0;i<3;i++) {
++        int size=i<2?3:2,opc=i<2?i+2:3;
++        op_fn fn=make_op(size,opc,1,0,0);uintptr_t pc=last_op_pc;signal_seen=0;
++        if(sigsetjmp(jump,1)==0) { fn(mem,7);CHECK(0); }
++        else {CHECK(signal_seen==SIGILL);CHECK(fault_pc==pc);}
++    }
++    puts("LRCPC2_FAULTS completed");fflush(stdout);
++}
++static void smc(void) {
++    uint32_t *target=mmap(NULL,4096,PROT_READ|PROT_WRITE|PROT_EXEC,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
++    CHECK(target!=MAP_FAILED);
++    target[1]=0xd65f03c0u;
++    op_fn store=make_op(2,0,1,0,0);
++    for(unsigned i=0;i<200;i++) {
++        store(target,0x52800000u|((i&1)<<5)); // stlur w0 updates MOV W0,#0/#1
++        __builtin___clear_cache((char *)target,(char *)(target+2));
++        CHECK(((uint64_t (*)(void))target)()==(i&1));
++    }
++    CHECK(munmap(target,4096)==0);
++    puts("LRCPC2_SMC rewrites=200");fflush(stdout);
++}
++static uint64_t flag,payload;
++static unsigned message_bad;
++__attribute__((noinline)) static void release(uint64_t *p,uint64_t v) {
++    register uint64_t *a __asm__("x0")=p;register uint64_t b __asm__("x1")=v;
++    __asm__ volatile(".inst 0xd9000001"::"r"(a),"r"(b):"memory");
++}
++__attribute__((noinline)) static uint64_t acquire(uint64_t *p) {
++    register uint64_t a __asm__("x0")=(uintptr_t)p;
++    __asm__ volatile(".inst 0xd9400000":"+r"(a)::"memory");return a;
++}
++static void *writer(void *unused) {
++    (void)unused;
++    for(unsigned i=1;i<=10000;i++) {
++        while(acquire(&flag)!=0) sched_yield();
++        __atomic_store_n(&payload,(uint64_t)i,__ATOMIC_RELAXED);release(&flag,1);
++    }
++    return NULL;
++}
++static void messages(void) {
++    pthread_t t;CHECK(pthread_create(&t,NULL,writer,NULL)==0);
++    for(unsigned i=1;i<=10000;i++) {
++        while(acquire(&flag)!=1) sched_yield();
++        if(__atomic_load_n(&payload,__ATOMIC_RELAXED)!=i) message_bad++;
++        release(&flag,0);
++    }
++    CHECK(pthread_join(t,NULL)==0);CHECK(message_bad==0);
++    puts("LRCPC2_MESSAGES iterations=10000");fflush(stdout);
++}
++int main(void) {
++    const size_t code_size=4*1024*1024;
++    code=mmap(NULL,code_size,PROT_READ|PROT_WRITE|PROT_EXEC,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
++    unsigned char *mem=mmap(NULL,8192,PROT_READ|PROT_WRITE,MAP_PRIVATE|MAP_ANONYMOUS,-1,0);
++    if(code==MAP_FAILED||mem==MAP_FAILED)return 2;
++    values(mem);faults(mem);smc();messages();
++    CHECK(used*4<code_size);
++    printf("LRCPC2_PROBE %s checks=%u failures=%u code_bytes=%zu\n",failures?"FAIL":"PASS",checks,failures,used*4);
++    return failures!=0;
++}
+diff --git a/tests/manual/steam-compat/test-jit-lrcpc2.py b/tests/manual/steam-compat/test-jit-lrcpc2.py
+new file mode 100644
+index 00000000..2e2ddd23
+--- /dev/null
++++ b/tests/manual/steam-compat/test-jit-lrcpc2.py
+@@ -0,0 +1,79 @@
++#!/usr/bin/env python3
++"""Inspect the actual private translator; execution lives in jit-lrcpc2-probe.c.
++
++This harness includes production translate.c with allocation-only stubs. No
++replacement decoder/emitter is used. Linker dead stripping removes installation
++and dispatcher functions that are outside the decoder test's scope.
++"""
++import argparse
++import hashlib
++import json
++from pathlib import Path
++import subprocess
++
++HARNESS = r'''
++#include <assert.h>
++#include <stdio.h>
++#include "jit/translate.c"
++bool mem_host_alloc_fails(void) { return false; }
++int jit_tier1_compact;
++static unsigned checks, cases;
++#define CHECK(v) do { if(!(v)) {fprintf(stderr,"FAIL line %d: %s\n",__LINE__,#v);abort();}checks++; } while(0)
++static void test(uint32_t word,int tier,int compact) {
++ struct tr t={.pc=0x12345000,.start=0x12345000,.gi=7,.tier=tier};
++ jit_tier1_compact=compact;
++ int size=word>>30,opc=(word>>22)&3;
++ bool valid=!((size==3&&opc>=2)||(size==2&&opc==3));
++ int r=tr_ldst(&t,word);CHECK(r==(valid?1:-1));
++ if(valid) {
++  CHECK(!t.oom && t.nmap>0 && t.nfx>0);
++  unsigned barriers=0,stores=0,loads=0,commits=0,stubs=0;
++  for(unsigned b=0;b<2;b++) for(unsigned i=0;i<t.b[b].n;i++) {
++   uint32_t w=t.b[b].w[i];barriers+=w==0xd5033bbfu;
++   if((w&0x3f200c00)==0x38000000 && ((w>>5)&31)==HR_T1) {
++    CHECK((int)(w>>30)==size);CHECK((int)((w>>22)&3)==opc);
++    CHECK(((w>>12)&511)==0);
++    if(opc)loads++;else stores++;
++   }
++  }
++  for(unsigned i=0;i<t.nfx;i++) {
++   struct fixup *f=&t.fx[i];
++   if(f->tgt>=TGT_STUB)stubs++;
++   if(f->tgt==TGT_HELPER) {
++    uint32_t lit=t.b[f->buf].w[f->idx+1];
++    unsigned kind=lit&3,desc=(lit>>2)&0x3fffff;
++    if(kind==JH_COMMIT)commits++;
++    if(kind==JH_MEM) {CHECK((desc&255)==(1u<<size));CHECK(!(desc&(1<<9)));}
++   }
++  }
++  CHECK(barriers==1);
++  for(unsigned i=0;i<t.nmap;i++)CHECK(t.map[i].gi==7);
++  if(!opc) {CHECK(t.b[HOT].w[0]==0xd5033bbfu);CHECK(stores==2);CHECK(commits==1);CHECK(stubs==0);}
++  else {CHECK(t.b[HOT].w[t.b[HOT].n-1]==0xd5033bbfu);CHECK(loads==1);CHECK(commits==0);}
++ }
++ free(t.b[0].w);free(t.b[1].w);free(t.fx);free(t.map);cases++;
++}
++int main(void) {
++ int offsets[]={-256,-96,0,16,112,255};
++ for(int tier=1;tier<=2;tier++)for(int compact=0;compact<2;compact++)
++ for(int size=0;size<4;size++)for(int opc=0;opc<4;opc++)
++ for(int base=0;base<32;base++)for(int data=0;data<32;data++)
++ for(unsigned o=0;o<sizeof(offsets)/sizeof(*offsets);o++)
++  test(((uint32_t)size<<30)|0x19000000u|(opc<<22)|((offsets[o]&511)<<12)|(base<<5)|data,tier,compact);
++ uint32_t sampled[]={0x99400174,0x994703b4,0xd9400294,0x991c0134,0x99000087,0xd95a0125,0xd9410124,0x19400294};
++ for(unsigned i=0;i<sizeof(sampled)/sizeof(*sampled);i++)test(sampled[i],1,0);
++ printf("LRCPC2_TRANSLATOR PASS cases=%u checks=%u\n",cases,checks);return 0;
++}
++'''
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--sanitize',default='address,undefined');a=p.parse_args()
++    repo=Path(__file__).resolve().parents[3];a.out.mkdir(parents=True,exist_ok=True)
++    c=a.out/'translator-harness.c';c.write_text(HARNESS);binary=a.out/'translator-harness'
++    cmd=['xcrun','clang','-std=gnu11','-DGUEST_ARM64=1','-DISH_JIT=1','-O1','-g','-I'+str(repo),'-ffunction-sections','-fdata-sections','-Wl,-dead_strip']
++    if a.sanitize:cmd+=['-fsanitize='+a.sanitize]
++    cmd += [str(c),'-o',str(binary)]
++    subprocess.run(cmd,check=True)
++    r=subprocess.run([str(binary)],capture_output=True,text=True,check=True)
++    (a.out/'translator-results.json').write_text(json.dumps({'compile_command':cmd,'stdout':r.stdout,'stderr':r.stderr,'exit':r.returncode,'source_sha256':hashlib.sha256((repo/'jit/translate.c').read_bytes()).hexdigest()},indent=2)+'\n');print(r.stdout,end='')
++if __name__=='__main__':main()
