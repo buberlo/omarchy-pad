@@ -1888,3 +1888,34 @@ in both directions), plus a simulator build. The end-to-end proof stays the devi
 
 With this, the only remaining items are this guard and **the iPad run**, which needs `libcef.so` — present
 only on the device.
+
+## Round 70: the deliverable — LinPad Steam build 4512 with the Arch root inside
+
+Built from the final tree (`8ef6db8a`, every Phase 3 fix in it) with the Arch image as the embedded root:
+
+```
+LinPad-Steam-1.4.0-build4512.ipa   910,967,195 bytes
+sha256 e2292dc739f04ec1b2631c98cb8e13297ec42002dc2954cdb939e1fcc55b4a7f
+bundle id com.konradkern.linpad.steam   variant steam   1,047 members
+```
+
+The size tells the story: 910 MB against the Alpine-rooted build's 637 MB, the difference being the Arch
+image (899 MB gzipped) in place of Alpine's (622 MB). `cut-ipa.py` verified every member against the staged
+app, and the signature carries the shared app group, so installing it puts the Arch system in the same
+container LinPad uses, under `roots/arch`, with the desktop's `roots/default` untouched.
+
+**What this IPA does when installed**: the game app boots `roots/arch` (Phase 3 parts 1-2), locks it per root
+so LinPad may run alongside (the per-root lock), never triggers the Alpine repair kit or apk state writes
+against it (parts 3 and 4), and starts `steam-bigpicture` on the Arch root.
+
+**What it will still hit**: the Steam UI needs `libcef.so`, which is absent from the staged client and exists
+only in the device's existing Steam tree — so on first run expect the client to reach its startup and die, or
+to fetch CEF itself if the bootstrap is allowed (do **not** set `BootStrapperInhibitAll=enable` on the device;
+that flag existed only for the networkless Mac harness).
+
+**Known gap**: `root.version` was not embedded (the Arch image has no sibling `.version` file), so the app
+offers no OTA update for this root. Boot and import are unaffected — Phase 3 keys the import on
+`hasRootNamed:`, not on versions.
+
+Copied to the session workspace: `steamos/deliverables/LinPad-Steam-1.4.0-build4512.ipa` with its
+`SHA256SUMS`, `ipa.json` and `build-facts.txt`.
