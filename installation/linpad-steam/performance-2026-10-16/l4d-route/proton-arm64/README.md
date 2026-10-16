@@ -117,3 +117,54 @@ and in archived snapshots, never in `kernel/mmap.c`, whose `do_mmap` only ever t
 - `probes/ishrepro.c` — fork and thread heap integrity, native musl build.
 - `probes/mapfixed.c` — the `MAP_FIXED` / `MAP_FIXED_NOREPLACE` semantics probe.
 - `reports/` — the ten agent reports behind every number and message above.
+
+## Where wine actually dies (17 October, after the MAP_FIXED_NOREPLACE build)
+
+With the patched emulator installed, wine gets much further than before: `wineboot.exe`,
+`services.exe`, `svchost.exe`, `plugplay.exe` and `winedevice.exe` all start and around thirty
+builtin modules load (`ntdll`, `kernel32`, `kernelbase`, `advapi32`, `crypt32`, `msi`, `bcrypt`,
+`imagehlp`, `mspatcha`, …). Then a wine process aborts with glibc heap corruption
+(`corrupted size vs. prev_size`, `free(): invalid pointer`) at the point where it resolves a
+timezone resource (`ExpandEnvironmentStringsW(L"@tzres.dll,-47168")`).
+
+The emulator's own mapping trace (`ISH_EXEC_TRACE=1` in the app's environment, captured with
+`devicectl device process launch --console -e …`, 574 traced mappings) shows what wine asks of the
+address space:
+
+- **44 `MAP_FIXED_NOREPLACE` calls** (`flags=0x100022`) — the flag this session implemented. Before
+  the fix every one of them was answered with a different address and no error.
+- **30 `MAP_NORESERVE|MAP_FIXED` reservations above 256 MB** (`flags=0x4032`), i.e. the emulator's
+  lazy-mapping path, plus a reservation of about 1.66 GB starting at `0x110000` with DLLs placed
+  inside it.
+
+The failure itself is in the **WoW64 machinery**, not in the allocator:
+
+```
+0024:err:seh:call_seh_handlers invalid frame 1000fcf40 (0000000000022000-0000000000120000)
+0024:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+```
+
+`0x1000fcf40` is `4 GB + 0xfcf40` — a **guest-window address** (base `B = 0x100000000`), while the
+limits it is compared against are guest numbers. That is precisely the contract Madeira documents in
+`madeira-upstream/docs/WOW64.md`: each 32-bit pseudo-process owns a 4 GB-aligned host window
+`[B, B + 4 GB)`, FEX forms every host address as `B + zext32(EA)`, and Wine's WoW64 layer adds or
+removes `B` through typed helpers, with the host answering a Wine-private
+`NtQueryInformationProcess` class for `B`. Madeira implements that host side in its iOS app and
+patches Wine accordingly; Valve's ARM64 Proton gets it from the runtime integration that this guest
+cannot run (the Steam Linux Runtime stage we have to skip).
+
+Five hypotheses were tested and disproved, each with a probe that passes on real Linux first:
+
+| Hypothesis | Probe | Result on the device |
+| --- | --- | --- |
+| the emulator does not know the brk heap is mapped | `probes/heapaccount.c` | `EEXIST` for both the heap and a live `malloc` block — correct |
+| glibc's allocator (`brk`, `mremap`, `malloc_trim`) is broken | `probes/glibcheap.c` | `summary: glibc heap ok` |
+| large lazy `PROT_NONE` reservations are placed inside or damaged | `probes/lazyres.c` | `ok` |
+| a lazy reservation is invisible to `MAP_FIXED_NOREPLACE` | `probes/lazyhole.c` | `EEXIST` — the reservation is respected |
+| the per-app FEX config file is missing | device inspection | Proton writes `compatdata/500/proton-fex-config.json` itself and sets `FEX_APP_CONFIG` |
+
+So the next work is not in the emulator's generic memory handling; it is the WoW64 guest-window
+contract. Concretely: find how the window base is established for Valve's Linux ARM64 Proton (who
+sets it, whether an environment variable or the runtime passes it), then either provide that from
+the guest side or implement the equivalent host behaviour in the emulator. The alternative that
+needs none of this is Madeira, whose stack exists for exactly this case.

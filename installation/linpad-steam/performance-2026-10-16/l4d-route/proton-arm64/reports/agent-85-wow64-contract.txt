@@ -1,0 +1,109 @@
+AGENT_BEGIN id=85-wow64-contract pid=92 Fri Oct 16 20:55:01 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== what the SLR entry point sets (we skip it) ===
+#!/bin/sh
+# Copyright 2020-2022 Collabora Ltd.
+# SPDX-License-Identifier: MIT
+
+set -eu
+me="$(readlink -f "$0")"
+here="${me%/*}"
+me="${me##*/}"
+
+# This is a prototype and will probably not survive in its current form.
+# Don't rely on it.
+
+is_main=yes
+suite=
+verbose=
+log_to_file=
+log_dir=${STEAM_LINUX_RUNTIME_LOG_DIR-"${PRESSURE_VESSEL_VARIABLE_DIR-"${here}/var"}"}
+keep_logs=
+use_timestamp=
+
+ld_preload="${LD_PRELOAD-}"
+unset LD_PRELOAD
+
+
+if [ "${STEAM_LINUX_RUNTIME_VERBOSE-}" = 1 ]; then
+    verbose=yes
+    # Propagate it to pressure-vessel too
+    export PRESSURE_VESSEL_VERBOSE=1
+fi
+
+if [ "${STEAM_LINUX_RUNTIME_LOG-}" = 1 ]; then
+    log_to_file=yes
+    use_timestamp=yes
+fi
+
+if [ "${SRT_LOG_ROTATION-}" = 0 ] || [ "${STEAM_LINUX_RUNTIME_KEEP_LOGS-}" = 1 ]; then
+    keep_logs=yes
+fi
+
+log () {
+    if [ -n "$use_timestamp" ]; then
+        timestamp=$(date +'%H:%M:%S.%6N')
+        printf '%s\n' "${timestamp}: ${me}[$$]: $*" >&2 || :
+    else
+        printf '%s\n' "${me}[$$]: $*" >&2 || :
+    fi
+}
+
+info () {
+    if [ -n "${log_to_file}${verbose}" ]; then
+
+=== env/wow/fex mentions in the entry point and in proton ===
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:28:    export PRESSURE_VESSEL_VERBOSE=1
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:130:                    export PRESSURE_VESSEL_BATCH=1
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:148:            export PRESSURE_VESSEL_VERBOSE=1
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:204:    export PRESSURE_VESSEL_LOG_INFO=1
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:205:    export PRESSURE_VESSEL_LOG_WITH_TIMESTAMP=1
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:256:        export PRESSURE_VESSEL_APP_LD_LIBRARY_PATH="${paths#:}"
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:260:        export PRESSURE_VESSEL_APP_LD_LIBRARY_PATH="${LD_LIBRARY_PATH-}"
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:311:    # If we're already under emulation, for example FEX running this script
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point:318:        export PRESSURE_VESSEL_PREFIX="$pv"
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:572:        self.wow64_pe_arch = "i386-windows"
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:586:    def arch_pe_dir(self, d, wow64):
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:587:        return self.lib_dir + d + "/" + (self.wow64_pe_arch if wow64 else self.host_pe_arch) + "/"
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:639:        self.fex_config_file = self.path("proton-fex-config.json")
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:710:                if not file_exists(self.prefix_dir + "/drive_c/windows/syswow64/kernel32.dll", follow_symlinks=True):
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:825:                              self.prefix_dir + "/drive_c/windows/syswow64/amd_ags_x64.dll",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:827:                              self.prefix_dir + "/drive_c/windows/syswow64/ir50_32.dll" ]
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:834:                           self.prefix_dir + "/drive_c/windows/syswow64/libvkd3d-1.dll",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:836:                           self.prefix_dir + "/drive_c/windows/syswow64/libvkd3d-shader-1.dll" ]
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1154:                try_copy(g_proton.arch_pe_dir("wine/dxvk", True) + "openvr_api_dxvk.dll", "drive_c/windows/syswow64",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1192:                    try_copy(g_proton.default_pfx_dir + "drive_c/windows/syswow64/" + f + ".dll", "drive_c/windows/syswow64",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1198:                    try_copy(g_proton.arch_pe_dir("wine/dxvk", True) + f + ".dll", "drive_c/windows/syswow64",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1208:                    try_copy(g_proton.arch_pe_dir("wine/vkd3d-proton", True) + f + ".dll", "drive_c/windows/syswow64",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1218:                    dst = "drive_c/windows/syswow64/" + f + ".dll"
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1230:                    try_copy(g_proton.arch_pe_dir("wine/nvapi", True) + "nvapi.dll", "drive_c/windows/syswow64",
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton:1238:                    nvapi32_dll = self.prefix_dir + "drive_c/windows/syswow64/nvapi.dll"
+
+=== does wine know about a guest window base? ===
+
+=== and in the FEX module wine loads for wow64 ===
+
+=== the proton script's environment handling for wine ===
+48:ld_path_var = "LD_LIBRARY_PATH"
+62:        env[variable] = prepend_str
+64:        env[variable] = prepend_str + separator + env[variable]
+68:        env[variable] = append_str
+70:        env[variable] = env[variable] + separator + append_str
+317:    library_paths = g_session.env["STEAM_COMPAT_LIBRARY_PATHS"].split(":")
+319:        if path in g_session.env["STEAM_COMPAT_INSTALL_PATH"]:
+328:    return g_session.env["STEAM_COMPAT_CLIENT_INSTALL_PATH"]
+359:        openvr_paths = g_session.env['VR_PATHREG_OVERRIDE']
+360:        del g_session.env['VR_PATHREG_OVERRIDE']
+362:        openvr_paths = os.path.join(g_session.env['XDG_CONFIG_HOME'], 'openvr/openvrpaths.vrpath')
+364:        openvr_paths = os.path.join(g_session.env['HOME'], '.config/openvr/openvrpaths.vrpath')
+382:        g_session.env['PROTON_VR_RUNTIME'] = g_session.env['VR_OVERRIDE']
+383:        del g_session.env['VR_OVERRIDE']
+385:        g_session.env['PROTON_VR_RUNTIME'] = contents['runtime'][0]
+627:                local_env["WINEPREFIX"] = self.default_pfx_dir
+628:                local_env["WINEDEBUG"] = "-all"
+1026:                    not ("WINEDLLOVERRIDES" in g_session.env and "dxgi=b" in g_session.env["WINEDLLOVERRIDES"])
+1553:            self.env["WINE_CPU_TOPOLOGY"] = self.env["PROTON_CPU_TOPOLOGY"]
+1555:            self.env["WINE_CPU_TOPOLOGY"] = default_cpu_limit[appid]
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:55:01 UTC 2026

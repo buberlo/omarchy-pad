@@ -1,0 +1,14 @@
+AGENT_BEGIN id=83-wine-under-trace pid=92 Fri Oct 16 20:53:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 64-bit PE under the emulator's mmap trace ===
+t= 30s 
+--- wine output ---
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+free(): invalid pointer
+malloc_consolidate(): invalid chunk size
+Fatal glibc error: malloc.c:2601 (sysmalloc): assertion failed: (old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE && prev_inuse (old_top) && ((unsigned long) old_end & (pagesize - 1)) == 0)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:53:46 UTC 2026

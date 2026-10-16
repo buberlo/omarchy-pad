@@ -1,0 +1,24 @@
+AGENT_BEGIN id=80-after-user-wakeup pid=92 Fri Oct 16 20:50:35 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== session and hook ===
+boot log: kb4453 agent started pid=92
+agent pid: 92
+hook state: ls: cannot access '/etc/ishwl/session.d/99-kb4453-agent.sh': No such file or directory
+ 20:50:35 up 6 days, 16:34,  0 users,  load average: 2.87, 2.07, 2.13
+Fri Oct 16 20:50:35 UTC 2026
+
+=== re-arm the one-shot hook (the trace needs one more app relaunch) ===
+hook armed
+
+=== device state ===
+footprint_mb 699
+allowance_mb 8192
+headroom_mb 7492
+   16 ishwl
+hello-x86-linux-gnu
+hello-x86-windows-gnu
+hello-x86_64-linux-gnu
+hello-x86_64-windows-gnu
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:50:35 UTC 2026

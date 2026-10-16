@@ -1,0 +1,95 @@
+AGENT_BEGIN id=86-fex-config-contract pid=92 Fri Oct 16 20:55:11 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does proton-fex-config.json exist? ===
+ls: cannot access '/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/proton-fex-config.json': No such file or directory
+LICENSE
+LICENSE.OFL
+PATENTS.AV1
+dist.lock
+filelock.py
+files
+proton
+proton_3.7_tracked_files
+steampipe_fixups.json
+steampipe_fixups.py
+toolmanifest.vdf
+user_settings.sample.py
+version
+
+=== how does proton use it? ===
+636-        self.creation_sync_guard = self.path("pfx/creation_sync_guard")
+637-        self.version_file = self.path("version")
+638-        self.config_info_file = self.path("config_info")
+639:        self.fex_config_file = self.path("proton-fex-config.json")
+640-        self.tracked_files_file = self.path("tracked_files")
+641-        self.prefix_lock = FileLock(self.path("pfx.lock"), timeout=-1)
+642-        self.old_machine_guid = None
+643-        self.steam_in_pfx_dir = "drive_c/Program Files (x86)/Steam/"
+644-
+645-    def path(self, d):
+646-        return self.base_dir + d
+647-
+648-    def remove_tracked_files(self):
+649-        if not file_exists(self.tracked_files_file, follow_symlinks=True):
+650-            log("Prefix has no tracked_files??")
+651-            return
+--
+2080-            if not 'FEX_APP_CONFIG' in self.env:
+2081-                # custom per-app config driven by Steam env vars
+2082-                app_config = self.generate_fex_app_config()
+2083:                with open(g_compatdata.fex_config_file, 'w') as f:
+2084-                    f.write(json.dumps(app_config, indent=2))
+2085:                self.env['FEX_APP_CONFIG'] = g_compatdata.fex_config_file
+2086-
+2087-            self.env["FEX_APP_CONFIG_LOCATION"] = os.path.join(g_proton.dist_dir, "share/fex-emu/")
+2088-
+2089-    def run_proc(self, args, local_env=None):
+2090-        if local_env is None:
+2091-            local_env = self.env
+2092-        return subprocess.call(args, env=local_env, stderr=self.log_file, stdout=self.log_file)
+2093-
+2094-    def run(self):
+2095-        if shutil.which('steam-runtime-launcher-interface-0') is not None:
+2096-            adverb = ['steam-runtime-launcher-interface-0', 'proton']
+2097-        else:
+
+=== what does the FEX tool write into the prefix? ===
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+--- Config.json ---
+{
+    "Config": {
+        "X87ReducedPrecision": "1",
+        "RootFS": "/usr/share/guestos/fex-mesa/",
+        "ThunkHostLibs": "/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/lib/aarch64-linux-gnu/fex-emu/HostThunks",
+        "ThunkGuestLibs": "/root/.local/share/Steam/steamapps/common/FEX-Emu/usr/share/fex-emu/GuestThunks",
+        "ProfileStats": "1"
+    }
+}
+--- AppConfig ---
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+
+=== any sample of that file anywhere on the device? ===
+/root/.local/share/Steam/steamapps/compatdata/500/proton-fex-config.json
+
+=== what env vars does proton pass to FEX/wine (search for FEX) ===
+639:        self.fex_config_file = self.path("proton-fex-config.json")
+1502:fex_application_profiles = {
+1684:    def generate_fex_app_config(self):
+1686:        Translate some environment variables into FEX config which is in files.
+1695:            app_config["Config"]["TSOEnabled"] = self.env['STEAM_FEX_TSOENABLED']
+1699:            app_config["Config"]["Multiblock"] = self.env['STEAM_FEX_MULTIBLOCK']
+1705:            config_env = self.env['STEAM_COMPAT_FEX_CONFIG']
+1713:            app_config["Config"]["SilentLog"] = "0" if self.log_enabled_for("fex", True) else "1"
+1715:        if "SteamGameId" in os.environ and os.environ["SteamGameId"] in fex_application_profiles:
+1717:                app_config["AppOverrides"] = fex_application_profiles[os.environ["SteamGameId"]]
+2080:            if not 'FEX_APP_CONFIG' in self.env:
+2082:                app_config = self.generate_fex_app_config()
+2083:                with open(g_compatdata.fex_config_file, 'w') as f:
+2085:                self.env['FEX_APP_CONFIG'] = g_compatdata.fex_config_file
+2087:            self.env["FEX_APP_CONFIG_LOCATION"] = os.path.join(g_proton.dist_dir, "share/fex-emu/")
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:55:40 UTC 2026

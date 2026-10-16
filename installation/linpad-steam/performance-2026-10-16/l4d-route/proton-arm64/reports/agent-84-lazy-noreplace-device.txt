@@ -1,0 +1,13 @@
+AGENT_BEGIN id=84-lazy-noreplace-device pid=92 Fri Oct 16 20:54:42 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the decisive probe on the iPad ===
+reservation: 0x8000000000 .. 0x8020000000 (PROT_NONE, NORESERVE, 512 MB)
+NOREPLACE inside the reservation: got=0xffffffffffffffff errno=17 (correct: EEXIST)
+ok
+probe exit=0
+
+=== and the same with a reservation large enough to hit the lazy path twice over ===
+(512 MB was used; the emulator's lazy thresholds are 128 MB PROT_NONE and 256 MB NORESERVE)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:54:42 UTC 2026

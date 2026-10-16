@@ -1,0 +1,59 @@
+AGENT_BEGIN id=81-wine-where pid=92 Fri Oct 16 20:50:51 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is wine's Unix side still healthy? ===
+wine-11.0
+
+=== 64-bit PE with wine's own process/loaddll trace and stronger malloc checks ===
+t= 32s log_lines=415 procs=[]
+
+=== what wine was doing (last 30 lines) ===
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\imagehlp.dll" at 00006FFFFCD80000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\mspatcha.dll" at 00006FFFFB880000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\odbccp32.dll" at 00006FFFFB7E0000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\bcrypt.dll" at 00006FFFFB4A0000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\crypt32.dll" at 00006FFFFB550000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\wintrust.dll" at 00006FFFFB710000: builtin
+0024:trace:loaddll:build_module Loaded L"C:\\windows\\system32\\msi.dll" at 00006FFFFC0C0000: builtin
+0024:trace:process:NtQueryInformationProcess (0xffffffffffffffff,0x0000001a,0x11ec98,0x00000008,(nil))
+0024:trace:process:GetEnvironmentVariableW (L"WINEUNIXCP" 000000000011E9D8 85)
+0024:trace:process:ExpandEnvironmentStringsW (L"@tzres.dll,-47168" 0000000000000000 0)
+0024:trace:process:ExpandEnvironmentStringsW (L"@tzres.dll,-47168" 000000000015D4C0 18)
+0024:trace:process:ExpandEnvironmentStringsW (L"@tzres.dll,-47169" 0000000000000000 0)
+0024:trace:process:ExpandEnvironmentStringsW (L"@tzres.dll,-47169" 000000000015D4F0 18)
+corrupted size vs. prev_size
+0024:err:seh:call_seh_handlers invalid frame 1000fcf40 (0000000000022000-0000000000120000)
+0024:err:seh:NtRaiseException Exception frame is not in stack limits => unable to dispatch exception.
+0024:trace:process:NtTerminateProcess handle 0xffffffffffffffff, exit_code -2147483391, process_exiting 0.
+0024:trace:process:NtTerminateProcess handle 0xffffffffffffffff, self 1, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0xc8, exit_code 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0xc8, self 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x100, exit_code 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x100, self 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x120, exit_code 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x120, self 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x140, exit_code 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0x140, self 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle (nil), exit_code 0, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle (nil), self 1, process_exiting 0.
+0034:trace:process:NtTerminateProcess handle 0xffffffffffffffff, exit_code 0, process_exiting 1.
+0034:trace:process:NtTerminateProcess handle 0xffffffffffffffff, self 1, process_exiting 1.
+
+=== which Windows modules were reached? ===
+     32 tzres.dll
+     27 winedevice.exe
+     23 svchost.exe
+     11 plugplay.exe
+      8 ucrtbase.dll
+      8 sechost.dll
+      8 rpcrt4.dll
+      8 ntdll.dll
+      8 msvcrt.dll
+      8 kernelbase.dll
+      8 kernel32.dll
+      8 cryptbase.dll
+      8 advapi32.dll
+      6 services.exe
+      5 wineboot.exe
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 20:51:23 UTC 2026
