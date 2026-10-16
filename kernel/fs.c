@@ -749,9 +749,7 @@ static int set_nonblock(struct fd *fd, addr_t nb_addr) {
     return fd_setflags(fd, flags);
 }
 
-dword_t sys_ioctl(fd_t f, dword_t cmd, addr_t arg) {    // LinPad diagnostic (temporary): name the ioctl that makes foot's slave fail.
-    if (strstr(current->comm, "foot")) printk("FOOTIOCTL fd=%d cmd=%x\n", (int) f, (int) cmd);
-
+dword_t sys_ioctl(fd_t f, dword_t cmd, addr_t arg) {
     STRACE("ioctl(%d, 0x%x, 0x%llx)", f, cmd, (unsigned long long)arg);
     struct fd *fd = f_get(f);
     if (fd == NULL)
