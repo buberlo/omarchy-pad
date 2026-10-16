@@ -464,6 +464,13 @@ static void RequestFastMode(BOOL afterBoot, void (^done)(BOOL on)) {
 
 @implementation AppDelegate
 
+/// Which root this build boots, from the variant the build baked into Info.plist (app/AppARM64.xcconfig,
+/// LINPAD_VARIANT via app/Info.plist LinPadVariant). One container, one root per app variant.
+static NSString *VariantRootName(void) {
+    NSString *variant = [NSBundle.mainBundle objectForInfoDictionaryKey:@"LinPadVariant"];
+    return [variant isEqualToString:@"steam"] ? @"arch" : @"default";
+}
+
 - (int)boot {
     // LinPad and LinPad Steam share one Linux system (the app group's roots/), and two
     // kernels must never mount it at once. Taken here, before anything writes to it, and
@@ -475,14 +482,22 @@ static void RequestFastMode(BOOL afterBoot, void (^done)(BOOL on)) {
         SetBootState(ISHBootPhaseFailed, 1, nil, busy);
         return -EBUSY;
     }
-    if (Roots.instance.needsDefaultRoot) {
+    // Which root this build boots. The desktop app keeps its Alpine "default"; the game app
+    // ("LinPadVariant" = steam, baked into Info.plist by the build) needs its own Arch root, and it
+    // must not rely on `needsDefaultRoot`: that is container-wide, so once the other app has created
+    // its root it is false and this app would happily mount the wrong Linux system.
+    NSString *rootName = VariantRootName();
+    if (![Roots.instance hasRootNamed:rootName]) {
         // Classic UI (or no desktop): import synchronously; the launch screen stays up.
         NSError *error;
-        if (![Roots.instance importBundledRootWithProgress:nil error:&error]) {
-            NSLog(@"failed to import default root: %@", error);
+        if (![Roots.instance importBundledRootNamed:rootName progress:nil error:&error]) {
+            NSLog(@"failed to import bundled %@ root: %@", rootName, error);
             return _EIO;
         }
     }
+    // defaultRootUrl (used by mount_root below) reads this, so it must be set before the mount.
+    if (![Roots.instance.defaultRoot isEqualToString:rootName])
+        Roots.instance.defaultRoot = rootName;
 #if !ISH_LINUX
     NSURL *root = Roots.instance.defaultRootUrl;
 
