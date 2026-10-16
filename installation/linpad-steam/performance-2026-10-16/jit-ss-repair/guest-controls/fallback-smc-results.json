@@ -1,0 +1,33 @@
+[
+  {
+    "mode": "jit",
+    "exit_code": 0,
+    "elapsed_seconds": 0.019,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/jit-ss-smc-probe"
+    ],
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_STATS": "1"
+    }
+  },
+  {
+    "mode": "tier2",
+    "exit_code": 0,
+    "elapsed_seconds": 0.014,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/jit-ss-smc-probe"
+    ],
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_STATS": "1",
+      "ISH_JIT_TIER": "2"
+    }
+  }
+]

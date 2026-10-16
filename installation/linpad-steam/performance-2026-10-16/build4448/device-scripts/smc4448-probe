@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+OUT=/tmp/smc4448-probe.txt
+{
+ date
+ wget -T 15 -qO /tmp/smc-arm64 http://192.168.0.104:8766/smc-arm64
+ echo '2142c33c8463ad1d85f90615f1d38c0a0bb9a80a61a1215b26d33b5df2e88ae2  /tmp/smc-arm64' | sha256sum -c -
+ chmod +x /tmp/smc-arm64
+ /tmp/smc-arm64
+ echo SMC_DEVICE_EXIT=$?
+ wget -T 15 -qO /tmp/jit-ss-smc-probe http://192.168.0.104:8766/jit-ss-smc-probe
+ echo '1877fa1b6da5795ca30d0af409bfd47ce5b4913adab1fc08d093fa21ac9a9bba  /tmp/jit-ss-smc-probe' | sha256sum -c -
+ chmod +x /tmp/jit-ss-smc-probe
+ /tmp/jit-ss-smc-probe
+ echo SS_SMC_DEVICE_EXIT=$?
+ if test -f /tmp/hollow4448-frames.txt; then
+  echo FRAME_LOG_STARTED=1
+  rm /etc/ishwl/session.d/99-hollow-frame-capture.sh
+ fi
+ date
+} > "$OUT" 2>&1
+wget -T 8 -q --post-file="$OUT" http://192.168.0.104:8766/report -O /dev/null
+cat "$OUT"

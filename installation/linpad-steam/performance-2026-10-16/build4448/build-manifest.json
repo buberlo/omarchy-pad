@@ -1,0 +1,80 @@
+{
+  "build": "4448",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+  "source_files": [
+    {
+      "path": "jit/jit.c",
+      "sha256": "91e58c8bf2c3c4150a1b5093d5f91b3319e6387050d0bdb79b684c2b6e719d47"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "c40b50fd8826759d70d6c7a51c58220b35d7717c59531ec0271969c9ca4ea5ea"
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "388c3c2897ebeeeb7bd0014392ef195059bd1fe77f1c8bc37ca12c293ee05499"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "070ee92f00a7f4f06cb3ac76673fc13d9b766e79ded84bfe10bfe8176d8036a2"
+    }
+  ],
+  "source_patch_sha256": "bab000508121895f9806fc2253d345a06f433d8fce43fe0000425d5c640e14c7",
+  "build_verified": true,
+  "build_log_sha256": "3010faeb48166f2bc9ed286ba48b767607e9148644fbbefef2f1b5cba435bf09",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "A5CFFE3B-C626-3F4A-A0CB-50CEC07154EB",
+  "executable_sha256": "342059fd49968b8f74c3424eee4ea8c6150e2a59dc82d5b9e0506e7114eb894b",
+  "dwarf_sha256": "ac1a9b605066a5f11de2c26cf9fbfc7bc1b9a5926b10c24a3a5f27b9e8eb439d",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4447": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4448-Konrad.ipa",
+      "bytes": 637223845,
+      "sha256": "fd69e0641ea2f9f755866543ca836a82bdd4bddb81762cb59cf7586d53f0b365",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4448-dSYM.zip",
+      "bytes": 13521196,
+      "sha256": "3e002ef304e137d61a5214050f9d7a905152fea9ee02c761f9b79078d629b886",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "See physical gates and uniquely named report excerpts. Game rendering/playability/performance remain pending.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA.",
+  "curated_at_utc": "2026-10-16T12:28:56.906913+00:00",
+  "physical": {
+    "installed": true,
+    "launched": true,
+    "native_jit_512MiB": true,
+    "boot_completed": true,
+    "ordinary_smc": {
+      "status": "passed",
+      "rewrites": 200,
+      "exit": 0,
+      "source_sha256": "91ec4ed829c1bf0ea0587f7df772ad5936342b53cc78469fa978cb911a10540a",
+      "evidence": "smc4448-device-pass.txt"
+    },
+    "fallback_smc": {
+      "status": "passed",
+      "checks": 200,
+      "failures": 0,
+      "exit": 0,
+      "source_sha256": "91ec4ed829c1bf0ea0587f7df772ad5936342b53cc78469fa978cb911a10540a",
+      "evidence": "smc4448-device-pass.txt"
+    },
+    "game_rendered_frame": "pending",
+    "gameplay": "pending",
+    "performance": "pending"
+  },
+  "initial_build_manifest_sha256": "6848fdb700cb9993147d2b46e6d1cf608e88678e6b97a5d9ec5cf9cf9ec7f6b6",
+  "scope": "Signed archives verified separately; curated repo excludes IPA/dSYM bytes, raw process/console logs, device identifiers, provisioning-profile bytes and proprietary game inputs."
+}

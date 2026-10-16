@@ -1,0 +1,7 @@
+1 call 96  getpid() = 0x1
+1 call 222 mmap64(0x0, 0x1000, 0x7, 0x22, -1, 0x0) = 0xefff6000
+1 call 29  ioctl(1, 0x5413, 0xffffbad8) = 0xffffffe7
+1 call 66  writev(1, 0xffffba60, 2) {"", 0} {"smc ok
+smc ok
+", 7} = 0x7
+1 call 94  exit_group(0)

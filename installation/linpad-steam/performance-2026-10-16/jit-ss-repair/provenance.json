@@ -1,0 +1,204 @@
+{
+  "production_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+  "guest_fallback_test_commit": "e334e1b1028583dee081de8934a33a1b0f22dda4",
+  "target_app_build": "4448",
+  "before_physical_profile": {
+    "app_build": "4447",
+    "app_dsym_uuid": "DEDA2762-5AAF-3685-9513-27727BEF64C6",
+    "requested_capture_seconds": 5,
+    "samples": 5592,
+    "sample_weight_seconds": 5.592,
+    "self_ss_invalidate_weight_seconds": 5.346,
+    "self_ss_invalidate_percent": 95.60085836909872,
+    "raw_export_sha256": "1001d97bf3971a6bb46e75cf11c8f3ef74f8cbd8d940f2fc3326293e3d9349c4",
+    "raw_trace_archived": false,
+    "scope": "Own-app native CPU sampling during actual Hollow Knight startup; no frame/FPS conclusion."
+  },
+  "host_regression": {
+    "assertions": 240144,
+    "asan_ubsan": "passed",
+    "production_functions_extracted": true,
+    "constructor_failure_cleanup": "source-reviewed, not fault-injected"
+  },
+  "real_guest_smc": {
+    "ordinary": "200 rewrites pass in JIT and tier2",
+    "fallback": "200 rewrites pass in JIT and tier2; 201 fallbacks and 200 invalidations/retired SS entries"
+  },
+  "guest_binary_fingerprints": [
+    {
+      "name": "smc-arm64",
+      "bytes": 1558472,
+      "sha256": "2142c33c8463ad1d85f90615f1d38c0a0bb9a80a61a1215b26d33b5df2e88ae2",
+      "binary_archived": false
+    },
+    {
+      "name": "jit-ss-smc-probe",
+      "bytes": 1558920,
+      "sha256": "1877fa1b6da5795ca30d0af409bfd47ce5b4913adab1fc08d093fa21ac9a9bba",
+      "binary_archived": false
+    }
+  ],
+  "physical_4448": "Recorded separately in ../build4448; not inferred from these local controls.",
+  "gameplay_and_performance": "pending physical qualification",
+  "files": [
+    {
+      "source": "work/performance/jit-ss-index/analysis.md",
+      "destination": "host/analysis.md",
+      "sha256": "9f5e010b5c92e4690f8d62db5140acd32dc611dbe7a6cd781665978fc8ff4a05",
+      "bytes": 4277,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/summarize-time-profile.py",
+      "destination": "host/summarize-time-profile.py",
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca",
+      "bytes": 2596,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/profile-summary.json",
+      "destination": "host/profile-summary.json",
+      "sha256": "3358776ff245a19bcc97387e9004060d11aa09a9c2d68066757dfc45a857e974",
+      "bytes": 11735,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/baseline-provenance.json",
+      "destination": "host/baseline-provenance.json",
+      "sha256": "c13df49f3f34667e306eb51ac81844d5fe4280d8cacb19103a0b8ccf541358dd",
+      "bytes": 226,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/provenance.json",
+      "destination": "host/provenance.json",
+      "sha256": "ff45ed20fa07722c439a0e4ef4c251eed39c4b9e1ee11951ea98aef00c415988",
+      "bytes": 1338,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/regression.txt",
+      "destination": "host/regression.txt",
+      "sha256": "c4df67e5167aa6623f1b1f268bc693c8ead340415cfd8c710899a78c12e66f55",
+      "bytes": 113,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/benchmark.txt",
+      "destination": "host/benchmark.txt",
+      "sha256": "f291310f25ff8867f6cff0b07d28ab6b11ac94e440139c732236cf62a5d6ff33",
+      "bytes": 139,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/jit-ss-index-harness.c",
+      "destination": "host/jit-ss-index-harness.c",
+      "sha256": "a97f91c5941f897db35b6018ebad5cec64e7e0fbdccbeae5ff4fef77fa838acf",
+      "bytes": 16817,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/archive-repair.py",
+      "destination": "archive-repair.py",
+      "sha256": "73862535db43b5ccca77ea83a9ff66f9fc6d78f34bedcc89666025880bf82d23",
+      "bytes": 7554,
+      "mode": "byte-identical"
+    },
+    {
+      "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+      "source_path": "jit/jit.c",
+      "destination": "source/jit/jit.c",
+      "sha256": "91e58c8bf2c3c4150a1b5093d5f91b3319e6387050d0bdb79b684c2b6e719d47",
+      "bytes": 82502,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+      "source_path": "jit/jit_internal.h",
+      "destination": "source/jit/jit_internal.h",
+      "sha256": "c40b50fd8826759d70d6c7a51c58220b35d7717c59531ec0271969c9ca4ea5ea",
+      "bytes": 15060,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+      "source_path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "destination": "source/tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "070ee92f00a7f4f06cb3ac76673fc13d9b766e79ded84bfe10bfe8176d8036a2",
+      "bytes": 14294,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "e334e1b1028583dee081de8934a33a1b0f22dda4",
+      "source_path": "tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "destination": "source/tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "sha256": "e0905888b0342816bb409c4d5a4e1620c5acdc40544844da75693cc032ea815c",
+      "bytes": 1396,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+      "source_path": "tests/arm64-insn/smc.c",
+      "destination": "source/tests/arm64-insn/smc.c",
+      "sha256": "eba5f0ee3f28ba79f286314d0661bcbbaa51d1e8a785d6b363602dcaeb79ae10",
+      "bytes": 1101,
+      "mode": "exact committed blob"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/README.md",
+      "destination": "guest-controls/README.md",
+      "sha256": "de1063347fe9d2880885d8753849c8a939b24806b724247bfb94d3622363647b",
+      "bytes": 2422,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/reviewed-source.json",
+      "destination": "guest-controls/reviewed-source.json",
+      "sha256": "25d6f2c516b6d22a9a1eeb12d704496d8f94fc9aa3a628dff8443a33fc24bb56",
+      "bytes": 515,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/smc-results.json",
+      "destination": "guest-controls/smc-results.json",
+      "sha256": "ee36a7a87468c1263300e33202b469b1e8795cc93bba59db820518585c5bc19a",
+      "bytes": 536,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/smc-jit.txt",
+      "destination": "guest-controls/smc-jit.txt",
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212",
+      "bytes": 240,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/smc-tier2.txt",
+      "destination": "guest-controls/smc-tier2.txt",
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212",
+      "bytes": 240,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/fallback-smc-results.json",
+      "destination": "guest-controls/fallback-smc-results.json",
+      "sha256": "b847e4e18122b31d1e93a01cda8044742f90d9ae24337990eadb8b76e23b7a9e",
+      "bytes": 618,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/fallback-smc-jit.txt",
+      "destination": "guest-controls/fallback-smc-jit.txt",
+      "sha256": "64b386278e31f85dfc7c20ee940af8fc15ff3dd72c6bdcb64819db3a4c4b7571",
+      "bytes": 1060,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/ss-invalidation-review/fallback-smc-tier2.txt",
+      "destination": "guest-controls/fallback-smc-tier2.txt",
+      "sha256": "8447799806c877d4121fefe6473a636c5acf738b804b71d09895f953e7cfa1e3",
+      "bytes": 1060,
+      "mode": "byte-identical"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "files": [
+    {
+      "source": "work/performance/build4448/source-snapshot/jit/jit.c",
+      "destination": "source-snapshot/jit/jit.c",
+      "source_sha256": "91e58c8bf2c3c4150a1b5093d5f91b3319e6387050d0bdb79b684c2b6e719d47",
+      "source_bytes": 82502,
+      "mode": "byte-identical",
+      "archived_sha256": "91e58c8bf2c3c4150a1b5093d5f91b3319e6387050d0bdb79b684c2b6e719d47"
+    },
+    {
+      "source": "work/performance/build4448/source-snapshot/jit/jit_internal.h",
+      "destination": "source-snapshot/jit/jit_internal.h",
+      "source_sha256": "c40b50fd8826759d70d6c7a51c58220b35d7717c59531ec0271969c9ca4ea5ea",
+      "source_bytes": 15060,
+      "mode": "byte-identical",
+      "archived_sha256": "c40b50fd8826759d70d6c7a51c58220b35d7717c59531ec0271969c9ca4ea5ea"
+    },
+    {
+      "source": "work/performance/build4448/source-snapshot/tests/manual/steam-compat/README.md",
+      "destination": "source-snapshot/tests/manual/steam-compat/README.md",
+      "source_sha256": "388c3c2897ebeeeb7bd0014392ef195059bd1fe77f1c8bc37ca12c293ee05499",
+      "source_bytes": 6670,
+      "mode": "byte-identical",
+      "archived_sha256": "388c3c2897ebeeeb7bd0014392ef195059bd1fe77f1c8bc37ca12c293ee05499"
+    },
+    {
+      "source": "work/performance/build4448/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "destination": "source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "source_sha256": "070ee92f00a7f4f06cb3ac76673fc13d9b766e79ded84bfe10bfe8176d8036a2",
+      "source_bytes": 14294,
+      "mode": "byte-identical",
+      "archived_sha256": "070ee92f00a7f4f06cb3ac76673fc13d9b766e79ded84bfe10bfe8176d8036a2"
+    },
+    {
+      "source": "work/performance/build4448/source-commit.txt",
+      "destination": "source-commit.txt",
+      "source_sha256": "16c7cf2b35077bae6a31a63860def1a52541f1230030a968248bf99828a09009",
+      "source_bytes": 41,
+      "mode": "byte-identical",
+      "archived_sha256": "16c7cf2b35077bae6a31a63860def1a52541f1230030a968248bf99828a09009"
+    },
+    {
+      "source": "work/performance/build4448/source-changes.patch",
+      "destination": "source-changes.patch",
+      "source_sha256": "bab000508121895f9806fc2253d345a06f433d8fce43fe0000425d5c640e14c7",
+      "source_bytes": 21580,
+      "mode": "byte-identical",
+      "archived_sha256": "bab000508121895f9806fc2253d345a06f433d8fce43fe0000425d5c640e14c7"
+    },
+    {
+      "source": "work/performance/build4448/build-local.sh",
+      "destination": "build-local.sh",
+      "source_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae",
+      "source_bytes": 399,
+      "mode": "byte-identical",
+      "archived_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "source": "work/performance/build4448/record-artifact.py",
+      "destination": "record-artifact.py",
+      "source_sha256": "8fa172e5579f02dd8ee3bf845ab3337462d751ec9efd9367762bf59d4e43e2e7",
+      "source_bytes": 4124,
+      "mode": "byte-identical",
+      "archived_sha256": "8fa172e5579f02dd8ee3bf845ab3337462d751ec9efd9367762bf59d4e43e2e7"
+    },
+    {
+      "source": "work/performance/build4448/artifact-verification.log",
+      "destination": "artifact-verification.log",
+      "source_sha256": "18df90540f57b0d8b193a74937d79d63746322624bdbb62b4eb6bdd4fee857c3",
+      "source_bytes": 805,
+      "mode": "byte-identical",
+      "archived_sha256": "18df90540f57b0d8b193a74937d79d63746322624bdbb62b4eb6bdd4fee857c3"
+    },
+    {
+      "source": "work/performance/build4448/signed-entitlements.plist",
+      "destination": "signed-entitlements.plist",
+      "source_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3",
+      "source_bytes": 847,
+      "mode": "byte-identical",
+      "archived_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "source": "work/performance/build4448/build-manifest.json",
+      "destination": "initial-build-manifest.json",
+      "source_sha256": "6848fdb700cb9993147d2b46e6d1cf608e88678e6b97a5d9ec5cf9cf9ec7f6b6",
+      "source_bytes": 2140,
+      "mode": "byte-identical",
+      "archived_sha256": "6848fdb700cb9993147d2b46e6d1cf608e88678e6b97a5d9ec5cf9cf9ec7f6b6"
+    },
+    {
+      "source": "work/performance/build4448/curate-build4448.py",
+      "destination": "curate-build4448.py",
+      "source_sha256": "863f1245cba3c77d8177a766cfa0cfca26ed7faf881414268604415392909a43",
+      "source_bytes": 9863,
+      "mode": "byte-identical",
+      "archived_sha256": "863f1245cba3c77d8177a766cfa0cfca26ed7faf881414268604415392909a43"
+    },
+    {
+      "source": "work/performance/build4448/build.log",
+      "destination": "build-summary.log",
+      "source_sha256": "3010faeb48166f2bc9ed286ba48b767607e9148644fbbefef2f1b5cba435bf09",
+      "source_bytes": 66707,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "0c0f547533ee4f6c924d1cf4618702f181eb8800e74612217ee05cedcfa8777c"
+    },
+    {
+      "source": "work/performance/build4448/sign.log",
+      "destination": "signing-excerpt.txt",
+      "source_sha256": "dde9c6785c71eb3dad7f5cf4e6cead30f76073fa74d18523921ca6753d42eb0c",
+      "source_bytes": 184,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "d6d34d0da869eed53c6dd6eff4cd378bd597268ade7373e547fd09a3642f3c06"
+    },
+    {
+      "source": "work/performance/build4448/device-console.log",
+      "destination": "device-boot-excerpt.txt",
+      "source_sha256": "87dba4c5975b6b57643b6431ac77b50ff595f34e682c13969230e88f1a7755f8",
+      "source_bytes": 37865,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "5ddf5172e00f0313ca6d1669cb27da68d5dba49488a2b80d3319041aaf203a60"
+    },
+    {
+      "source": "work/performance/serve/smc4448-probe",
+      "destination": "device-scripts/smc4448-probe",
+      "source_sha256": "c4b01be14e20dbddb3eef2c72fd4934087af1dd7a632f02efb256f7c9b1646af",
+      "source_bytes": 809,
+      "mode": "byte-identical",
+      "archived_sha256": "c4b01be14e20dbddb3eef2c72fd4934087af1dd7a632f02efb256f7c9b1646af"
+    },
+    {
+      "source": "work/performance/reports/smc4448-device-pass.txt",
+      "destination": "smc4448-device-pass.txt",
+      "source_sha256": "91ec4ed829c1bf0ea0587f7df772ad5936342b53cc78469fa978cb911a10540a",
+      "source_bytes": 207,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "4cf6b177c473546965f9342ad071ea3b57d2bbf54df2a3aef2ea9118bdee8e19"
+    }
+  ]
+}

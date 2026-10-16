@@ -1,0 +1,1 @@
+BENCH entries=65536 invalidations=1000 old_ns=1892430000 indexed_ns=4000 old_node_visits=65536000 indexed_node_visits=1000 survivors=65536

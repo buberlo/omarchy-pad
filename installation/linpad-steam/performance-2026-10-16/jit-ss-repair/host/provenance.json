@@ -1,0 +1,45 @@
+{
+  "source": "jit/jit.c",
+  "source_sha256": "91e58c8bf2c3c4150a1b5093d5f91b3319e6387050d0bdb79b684c2b6e719d47",
+  "extracted_declarations": [
+    "struct ss_entry {",
+    "static inline size_t pc_hash(",
+    "static void ss_insert_locked(",
+    "static bool ss_invalidate_locked(",
+    "void jit_invalidate_range(",
+    "static struct fiber_block *ss_get("
+  ],
+  "commands": [
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "work/performance/jit-ss-index/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-index/regression"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-index/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-index/benchmark"
+    ]
+  ],
+  "scope": "Local host fixture runs actual production private functions; no device/gameplay performance claim.",
+  "stubs": "Translation, compiled-block removal, lifetime teardown and allocator-failure injection. No compiled blocks inserted.",
+  "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index."
+}
