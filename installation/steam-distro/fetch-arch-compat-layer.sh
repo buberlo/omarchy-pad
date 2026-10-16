@@ -39,9 +39,22 @@ OUT=${1:-$(cd "$(dirname "$0")/../.." && pwd)/work/steam-distro/compat/usr/lib/a
 PACKAGES="libavcodec62 libavformat62 libavutil60 libswresample6 libswscale9 libavfilter11 \
 libx265-216 libjxl0.11 librav1e0.8 libsvtav1enc4 libzvbi0t64 libcodec2-1.2 libshine3 libtwolame0 \
 libgme0 libchromaprint1 librabbitmq4 librist4 libsrt1.5-gnutls liblilv-0-0 libmysofa1 libflite1 \
-libgtk2.0-0t64 \
-libnuma1 libnettle8 libhogweed6 libcjson1 libserd-0-0 libsord-0-0 libsratom-0-0"
+libgtk2.0-0t64"
 
+#
+# The list below is not the whole closure and cannot be: fetching a library reveals needs of its own
+# (Round 75 -- the resolved layer still left 6 missing: libaribb24, libvo-amrwbenc, libsmbclient,
+# libtesseract, libzix). The procedure is therefore an iteration, and it is cheap:
+#
+#   1. run this script
+#   2. run it in a guest with the Arch packages present and ask the client:
+#        LD_LIBRARY_PATH=$B/steamrtarm64:$B/steamrtarm64/libs:<layer> ldd $B/steamrtarm64/steamui.so | grep 'not found'
+#   3. add every name it prints to SONAMES below; the Contents index resolves each to its package, so no
+#      package name has to be guessed
+#   4. repeat until step 2 prints nothing
+#
+# Two or three passes converge. What must never happen is shipping a layer whose completeness rests on
+# this file's list rather than on the client's own view of it.
 # The sonames the client asks for. libgtk-x11-2.0 and libgdk-x11-2.0 are the pair `steamui.so` needs;
 # `ldd` reports only the first missing one, so the check is deliberately exhaustive.
 SONAMES="libavcodec.so.62 libavformat.so.62 libavutil.so.60 libswresample.so.6 libswscale.so.9 \
@@ -50,7 +63,8 @@ libSvtAv1Enc.so.4 libzvbi.so.0 libcodec2.so.1.2 libshine.so.3 libtwolame.so.0 li
 libchromaprint.so.1 librabbitmq.so.4 librist.so.4 libsrt-gnutls.so.1.5 liblilv-0.so.0 libmysofa.so.1 \
 libflite.so.1 libgtk-x11-2.0.so.0 libgdk-x11-2.0.so.0 \
 libnuma.so.1 libnettle.so.8 libhogweed.so.6 libcjson.so.1 libserd-0.so.0 libsord-0.so.0 \
-libsratom-0.so.0"
+libsratom-0.so.0 \
+libaribb24.so.0 libvo-amrwbenc.so.0 libsmbclient.so.0 libtesseract.so.5 libzix-0.so.0"
 
 die() { echo "fetch-arch-compat-layer: $*" >&2; exit 1; }
 need() { command -v "$1" >/dev/null 2>&1 || die "needs $1 (macOS: brew install xz; ar and tar ship with the OS)"; }
@@ -59,6 +73,24 @@ need curl; need xz; need ar; need tar; need shasum
 work=$(mktemp -d)
 # shellcheck disable=SC2064
 trap "rm -rf '$work'" EXIT INT TERM
+
+# Every required soname is resolved to the package that ships it through Debian's Contents index
+# ("<path>  <section>/<package>"), rather than by guessing names. Guessing has cost this effort twice:
+# the time_t transition renamed GTK2 to libgtk2.0-0t64 and zvbi to libzvbi0t64 (Round 52), and a
+# plausible-looking `libnettle8` does not exist in sid at all (Round 75) -- which is how a "verified"
+# layer turned out to be eight libraries short.
+contents=$work/Contents.gz
+echo "fetching the $SUITE/$ARCH contents index (this is the large one)"
+curl -fsSL --max-time 900 "$MIRROR/dists/$SUITE/main/Contents-$ARCH.gz" -o "$contents" \
+    || die "could not fetch the contents index"
+for s in $SONAMES; do
+    pkg=$(gzip -dc "$contents" | awk -v want="/$s" '$1 ~ want"$" {print $NF; exit}' | cut -d, -f1 | sed 's|.*/||')
+    if [ -z "$pkg" ]; then
+        echo "warning: no package in $SUITE/$ARCH ships $s" >&2
+    else
+        case " $PACKAGES " in *" $pkg "*) ;; *) PACKAGES="$PACKAGES $pkg" ;; esac
+    fi
+done
 
 echo "fetching the $SUITE/$ARCH package index from $MIRROR"
 index=$work/Packages.xz
