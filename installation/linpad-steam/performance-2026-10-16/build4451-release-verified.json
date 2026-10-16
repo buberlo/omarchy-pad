@@ -1,0 +1,43 @@
+{
+  "id": 415030085,
+  "tag_name": "ipad-steam-build-4451",
+  "target_commitish": "8493e35fc35388e792d28308f68232720e3d0dfd",
+  "html_url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4451",
+  "draft": false,
+  "prerelease": true,
+  "published_at": "2026-10-16T14:07:21Z",
+  "verified_at": "2026-10-16T14:07:22.755942+00:00",
+  "assets": [
+    {
+      "name": "build-manifest.json",
+      "size": 6746,
+      "digest": "sha256:a70e823f1a480c95e7ddd3ba52c16c37b4d29ed0c3c51cedea5445138753b2bd",
+      "state": "uploaded"
+    },
+    {
+      "name": "LinPad-1.4.0-build4451-dSYM.zip",
+      "size": 13531416,
+      "digest": "sha256:97caa8188d329e64f0b680eaff9123e121dfe63640d901c33e4049648fe3f1b5",
+      "state": "uploaded"
+    },
+    {
+      "name": "LinPad-1.4.0-build4451-Konrad.ipa",
+      "size": 637224953,
+      "digest": "sha256:f00f7fa3521c691534d3205cbc594989c0b9dea0dd8a0807e2ffa565974ffaf8",
+      "state": "uploaded"
+    },
+    {
+      "name": "SHA256SUMS",
+      "size": 198,
+      "digest": "sha256:3e3e9d13b7e6e0b8d697b3394b0cc215fa3b1652eff3a5e05f61f4fe5bc898a1",
+      "state": "uploaded"
+    },
+    {
+      "name": "VERIFICATION.md",
+      "size": 5216,
+      "digest": "sha256:5ae91c78c4526a00f719de9eb061ff4e6df37757070f1ebc656811a2563cb65e",
+      "state": "uploaded"
+    }
+  ],
+  "verification": "All five GitHub server sizes and SHA-256 digests exactly matched local archives and frozen checkpoint files before publication."
+}

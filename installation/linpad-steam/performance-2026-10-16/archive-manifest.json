@@ -1898,6 +1898,11 @@
       "sha256": "d44513c157404b4957ab0250c745f0ddf4e23119cc17a7f2c471d9e6ddd0e7a4"
     },
     {
+      "path": "build4451-release-verified.json",
+      "bytes": 1482,
+      "sha256": "7de7f838a45e3e045dedf034922941519928f906faa5e2cf9bd115b77c3b0320"
+    },
+    {
       "path": "build4451-ss-analysis/LRCPC2-DESIGN.md",
       "bytes": 6149,
       "sha256": "2f6995f4544a5d5b9b723d56cf963d40ad99cf74563fefc39a69afd1036985d5"
