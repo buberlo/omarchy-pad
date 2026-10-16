@@ -1,0 +1,8 @@
+Launched application with com.konradkern.linpad bundle identifier.
+Waiting for the application to terminate…
+2026-10-16 14:48:35.968 iSH ARM64[20271:3601323] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x10c9c2970 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 14:48:35.968 iSH ARM64[20271:3601312] [boot] case_sensitive_container=yes
+2026-10-16 14:48:35.969 iSH ARM64[20271:3601323] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x10c9c1f80 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 14:48:36.195 iSH ARM64[20271:3601312] [fast mode] opening stikdebug://enable-jit?bundle-id=com.konradkern.linpad&pid=20271&script-name=universal.js
+sandbox_extension_issue_file failed for : 2 (No such file or directory)
+App terminated due to signal 9.

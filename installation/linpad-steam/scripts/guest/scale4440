@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+for p in 509 582; do
+    if [ -r "/proc/$p/cmdline" ] && tr '\000' ' ' < "/proc/$p/cmdline" | grep -q '/root/.local/share/Steam/steamrtarm64/steam'; then kill "$p" 2>/dev/null || true; fi
+done
+sleep 3
+for p in 509 582; do
+    if [ -r "/proc/$p/cmdline" ] && tr '\000' ' ' < "/proc/$p/cmdline" | grep -q '/root/.local/share/Steam/steamrtarm64/steam'; then kill -9 "$p" 2>/dev/null || true; fi
+done
+sleep 2
+STEAM_FORCE_DESKTOPUI_SCALING=1 STEAM_PIPE_DIAGNOSTIC=1 STEAM_PIPE_PACKET_FALLBACK=1 steam-local -forcedesktopscaling 1 >/tmp/steam-local.log 2>&1 &
+echo "SCALE_STEAM_PID=$!"

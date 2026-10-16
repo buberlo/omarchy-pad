@@ -1,0 +1,1027 @@
+Launched application with com.konradkern.linpad bundle identifier.
+Waiting for the application to terminate…
+2026-10-16 14:28:41.400 iSH ARM64[20206:3516744] [boot] case_sensitive_container=yes
+2026-10-16 14:28:41.400 iSH ARM64[20206:3516753] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x108da9f80 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 14:28:41.401 iSH ARM64[20206:3516753] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x108da9fe0 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 14:28:41.672 iSH ARM64[20206:3516744] [fast mode] opening stikdebug://enable-jit?bundle-id=com.konradkern.linpad&pid=20206&script-name=universal.js
+sandbox_extension_issue_file failed for : 2 (No such file or directory)
+ish: native JIT on: txm (StikDebug universal.js), 256 MB code arena at 0x117954000
+2026-10-16 14:29:01.639 iSH ARM64[20206:3516744] [boot] fast_mode=on
+2026-10-16 14:29:02.181 iSH ARM64[20206:3516744] [RootfsPatch] bundle not found in app, skipping overlay
+ish: copy-on-write faults so far: 0 reused, 0 copied
+2026-10-16 14:29:02.183 iSH ARM64[20206:3516744] [boot] boot_seconds=0.54
+2026-10-16 14:29:02.190 iSH ARM64[20206:3517191] EXEC[pid=2 ppid=1]: /sbin/openrc [/sbin/openrc sysinit]
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517189] REAP[reaper=1]: pid=2 exit=0xffffff00 comm=init
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517192] EXEC[pid=3 ppid=1]: /sbin/openrc [/sbin/openrc boot]
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517189] REAP[reaper=1]: pid=3 exit=0xffffff00 comm=init
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517193] EXEC[pid=4 ppid=1]: /sbin/openrc [/sbin/openrc default]
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517189] REAP[reaper=1]: pid=4 exit=0xffffff00 comm=init
+2026-10-16 14:29:02.191 iSH ARM64[20206:3517194] EXEC[pid=5 ppid=1]: /sbin/getty [/sbin/getty 38400 tty1]
+ish: copy-on-write faults so far: 0 reused, 0 copied
+2026-10-16 14:29:02.198 iSH ARM64[20206:3517199] EXEC[pid=8 ppid=7]: /bin/hostname [hostname]
+ish: copy-on-write faults so far: 3 reused, 8 copied
+ish: copy-on-write faults so far: 3 reused, 8 copied
+2026-10-16 14:29:02.200 iSH ARM64[20206:3517196] REAP[reaper=7]: pid=8 exit=0x0 comm=hostname
+ish: copy-on-write faults so far: 9 reused, 8 copied
+ish: copy-on-write faults so far: 9 reused, 8 copied
+ish: copy-on-write faults so far: 9 reused, 8 copied
+ish: copy-on-write faults so far: 9 reused, 8 copied
+2026-10-16 14:29:02.225 iSH ARM64[20206:3517210] EXEC[pid=12 ppid=9]: /bin/hostname [hostname]
+ish: copy-on-write faults so far: 12 reused, 16 copied
+2026-10-16 14:29:02.227 iSH ARM64[20206:3517212] EXEC[pid=13 ppid=10]: /bin/rm [rm -rf /tmp/ishwl]
+ish: copy-on-write faults so far: 15 reused, 24 copied
+ish: copy-on-write faults so far: 15 reused, 24 copied
+2026-10-16 14:29:02.229 iSH ARM64[20206:3517204] REAP[reaper=9]: pid=12 exit=0x0 comm=hostname
+ish: copy-on-write faults so far: 21 reused, 24 copied
+2026-10-16 14:29:02.234 iSH ARM64[20206:3517216] EXEC[pid=14 ppid=11]: /bin/sh [-sh]
+ish: copy-on-write faults so far: 21 reused, 24 copied
+2026-10-16 14:29:02.235 iSH ARM64[20206:3517205] REAP[reaper=10]: pid=13 exit=0x0 comm=rm
+2026-10-16 14:29:02.237 iSH ARM64[20206:3517221] EXEC[pid=15 ppid=10]: /bin/mkdir [mkdir -p /tmp/ishwl]
+ish: copy-on-write faults so far: 29 reused, 32 copied
+ish: copy-on-write faults so far: 29 reused, 32 copied
+2026-10-16 14:29:02.239 iSH ARM64[20206:3517205] REAP[reaper=10]: pid=15 exit=0x0 comm=mkdir
+ish: copy-on-write faults so far: 40 reused, 42 copied
+2026-10-16 14:29:02.241 iSH ARM64[20206:3517222] EXEC[pid=16 ppid=1]: /usr/bin/setsid [setsid ishwl-session --runtime-dir /tmp/ishwl -v]
+ish: copy-on-write faults so far: 42 reused, 42 copied
+2026-10-16 14:29:02.243 iSH ARM64[20206:3517222] EXEC[pid=16 ppid=1]: /usr/local/sbin/ishwl-session [ishwl-session --runtime-dir /tmp/ishwl -v]
+2026-10-16 14:29:02.243 iSH ARM64[20206:3517222] EXEC[pid=16 ppid=1]: /usr/local/bin/ishwl-session [ishwl-session --runtime-dir /tmp/ishwl -v]
+ish: copy-on-write faults so far: 42 reused, 42 copied
+2026-10-16 14:29:02.246 iSH ARM64[20206:3517225] EXEC[pid=17 ppid=16]: /bin/mkdir [mkdir -p /tmp/xdg-runtime /dev/shm]
+ish: copy-on-write faults so far: 45 reused, 49 copied
+ish: copy-on-write faults so far: 45 reused, 49 copied
+2026-10-16 14:29:02.248 iSH ARM64[20206:3517222] REAP[reaper=16]: pid=17 exit=0x0 comm=mkdir
+2026-10-16 14:29:02.248 iSH ARM64[20206:3517226] EXEC[pid=18 ppid=16]: /bin/chmod [chmod 700 /tmp/xdg-runtime]
+ish: copy-on-write faults so far: 53 reused, 55 copied
+ish: copy-on-write faults so far: 53 reused, 55 copied
+2026-10-16 14:29:02.250 iSH ARM64[20206:3517222] REAP[reaper=16]: pid=18 exit=0x0 comm=chmod
+2026-10-16 14:29:02.252 iSH ARM64[20206:3517228] EXEC[pid=20 ppid=19]: /usr/bin/dbus-daemon [dbus-daemon --session --fork --print-address=1]
+2026-10-16 14:29:02.252 iSH ARM64[20206:3517229] EXEC[pid=21 ppid=19]: /usr/bin/head [head -n1]
+ish: copy-on-write faults so far: 76 reused, 84 copied
+ish: copy-on-write faults so far: 76 reused, 84 copied
+ish: copy-on-write faults so far: 77 reused, 84 copied
+ish: copy-on-write faults so far: 77 reused, 86 copied
+2026-10-16 14:29:02.267 iSH ARM64[20206:3517227] REAP[reaper=19]: pid=21 exit=0x0 comm=head
+2026-10-16 14:29:02.268 iSH ARM64[20206:3517227] REAP[reaper=19]: pid=20 exit=0x0 comm=dbus-daemon
+ish: copy-on-write faults so far: 87 reused, 88 copied
+2026-10-16 14:29:02.268 iSH ARM64[20206:3517222] REAP[reaper=16]: pid=19 exit=0x0 comm=ishwl-session
+2026-10-16 14:29:02.274 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/local/bin/ishaudio-session [ishaudio-session]
+ish: copy-on-write faults so far: 103 reused, 98 copied
+2026-10-16 14:29:02.277 iSH ARM64[20206:3517233] EXEC[pid=24 ppid=23]: /bin/mkdir [mkdir -p /tmp/ishaudio /dev/shm]
+ish: copy-on-write faults so far: 105 reused, 104 copied
+ish: copy-on-write faults so far: 105 reused, 104 copied
+2026-10-16 14:29:02.279 iSH ARM64[20206:3517232] REAP[reaper=23]: pid=24 exit=0x0 comm=mkdir
+2026-10-16 14:29:02.280 iSH ARM64[20206:3517234] EXEC[pid=25 ppid=23]: /usr/bin/pactl [pactl --server=unix:/tmp/ishaudio/native info]
+ish: copy-on-write faults so far: 117 reused, 110 copied
+ish: copy-on-write faults so far: 117 reused, 110 copied
+2026-10-16 14:29:02.290 iSH ARM64[20206:3517240] EXEC[pid=27 ppid=26]: /bin/sh [-sh]
+MMAP: pid=25 addr=0x0 len=0x4000000 prot=0x3 flags=0x22 fd=-1
+2026-10-16 14:29:02.298 iSH ARM64[20206:3517234] NETDIAG connect(pid=25 comm=pactl fd=7) errno=61
+ish exit: pid 25 tgid 25 (pactl) signal 0 code 1 addr 0 pc 0xeff2a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xeff1d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffd810
+ish exit:   last syscalls (oldest first): 203(0x7)=-111 57(0x7)=0 66(0x2)=39 64(0x4)=1 66(0x2)=48 215(0xef94d000)=0 215(0xeb948000)=0 215(0xeb94d000)=0 134(0xf)=0 134(0x2)=0 64(0x4)=1 57(0x5)=0 57(0x6)=0 57(0x3)=0 57(0x4)=0 215(0xef94e000)=0
+ish exit:   frames: /lib/ld-musl-aarch64.so.1+0x1fdfc ?
+ish: copy-on-write faults so far: 117 reused, 110 copied
+2026-10-16 14:29:02.301 iSH ARM64[20206:3517232] REAP[reaper=23]: pid=25 exit=0x100 comm=pactl
+2026-10-16 14:29:02.302 iSH ARM64[20206:3517244] EXEC[pid=28 ppid=23]: /bin/rm [rm -f /tmp/ishaudio/native /tmp/ishaudio/pcm /tmp/ishaudio/mic]
+ish: copy-on-write faults so far: 126 reused, 117 copied
+ish: copy-on-write faults so far: 126 reused, 117 copied
+2026-10-16 14:29:02.304 iSH ARM64[20206:3517232] REAP[reaper=23]: pid=28 exit=0x0 comm=rm
+2026-10-16 14:29:02.305 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/local/sbin/pulseaudio [pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes]
+2026-10-16 14:29:02.305 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/local/bin/pulseaudio [pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes]
+2026-10-16 14:29:02.305 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/sbin/pulseaudio [pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes]
+2026-10-16 14:29:02.305 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/bin/pulseaudio [pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes]
+ish: copy-on-write faults so far: 135 reused, 117 copied
+ish: copy-on-write faults so far: 135 reused, 117 copied
+2026-10-16 14:29:02.330 iSH ARM64[20206:3517232] EXEC[pid=23 ppid=16]: /usr/bin/pulseaudio [pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes]
+ish: copy-on-write faults so far: 135 reused, 117 copied
+2026-10-16 14:29:02.333 iSH ARM64[20206:3517249] EXEC[pid=30 ppid=29]: /bin/sh [-sh]
+MMAP: pid=32 addr=0x0 len=0x4000000 prot=0x3 flags=0x22 fd=-1
+ish: copy-on-write faults so far: 139 reused, 162 copied
+ish: copy-on-write faults so far: 139 reused, 162 copied
+ish: copy-on-write faults so far: 139 reused, 162 copied
+ish: copy-on-write faults so far: 139 reused, 162 copied
+ish: copy-on-write faults so far: 139 reused, 162 copied
+ish: copy-on-write faults so far: 141 reused, 162 copied
+2026-10-16 14:29:02.390 iSH ARM64[20206:3516744] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 14:29:02.390 iSH ARM64[20206:3516744] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 14:29:02.390 iSH ARM64[20206:3516744] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 14:29:02.392 iSH ARM64[20206:3517195] EXEC[pid=6 ppid=1]: /sbin/getty [/sbin/getty 38400 tty2]
+2026-10-16 14:29:02.396 iSH ARM64[20206:3517286] EXEC[pid=41 ppid=36]: /usr/bin/head [head -1 /proc/stat]
+ish: copy-on-write faults so far: 144 reused, 170 copied
+ish: copy-on-write faults so far: 144 reused, 170 copied
+2026-10-16 14:29:02.406 iSH ARM64[20206:3517258] REAP[reaper=36]: pid=41 exit=0x0 comm=head
+ish: copy-on-write faults so far: 162 reused, 200 copied
+2026-10-16 14:29:02.408 iSH ARM64[20206:3517290] EXEC[pid=43 ppid=37]: /usr/local/bin/linpad-lifecycle [linpad-lifecycle suspend]
+2026-10-16 14:29:02.408 iSH ARM64[20206:3517291] EXEC[pid=44 ppid=38]: /bin/mkdir [mkdir -p -- /root/Desktop]
+2026-10-16 14:29:02.408 iSH ARM64[20206:3517292] EXEC[pid=45 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/firefox-esr.desktop]
+ish: copy-on-write faults so far: 166 reused, 206 copied
+2026-10-16 14:29:02.409 iSH ARM64[20206:3517294] EXEC[pid=47 ppid=40]: /usr/local/bin/linpad-lifecycle [linpad-lifecycle resume]
+2026-10-16 14:29:02.410 iSH ARM64[20206:3517295] EXEC[pid=48 ppid=35]: /bin/stat [stat -c %A|%s|%Y|%n -- .[!.]* ..?* *]
+2026-10-16 14:29:02.411 iSH ARM64[20206:3517293] EXEC[pid=46 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 172 reused, 222 copied
+ish: copy-on-write faults so far: 172 reused, 222 copied
+ish: copy-on-write faults so far: 172 reused, 222 copied
+ish: copy-on-write faults so far: 172 reused, 222 copied
+2026-10-16 14:29:02.416 iSH ARM64[20206:3516744] CoreText note: Client requested name ".SFCompact", it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or +[UIFont systemFontOfSize:].
+2026-10-16 14:29:02.416 iSH ARM64[20206:3516744] CoreText note: Set a breakpoint on CTFontLogSystemFontNameRequest to debug.
+ish: copy-on-write faults so far: 172 reused, 222 copied
+ish: copy-on-write faults so far: 172 reused, 229 copied
+2026-10-16 14:29:02.419 iSH ARM64[20206:3517260] REAP[reaper=38]: pid=44 exit=0x0 comm=mkdir
+2026-10-16 14:29:02.421 iSH ARM64[20206:3517297] EXEC[pid=49 ppid=43]: /bin/grep [grep -v ^[[:space:]]*\(#\|$\) /etc/linpad/lifecycle.conf]
+ish exit: pid 48 tgid 48 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=48 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 185 reused, 240 copied
+ish: copy-on-write faults so far: 185 reused, 240 copied
+ish: copy-on-write faults so far: 185 reused, 240 copied
+2026-10-16 14:29:02.421 iSH ARM64[20206:3517257] REAP[reaper=35]: pid=48 exit=0x100 comm=stat
+2026-10-16 14:29:02.424 iSH ARM64[20206:3517300] EXEC[pid=52 ppid=35]: /bin/stat [stat -L -c %F|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 199 reused, 254 copied
+2026-10-16 14:29:02.424 iSH ARM64[20206:3517299] EXEC[pid=51 ppid=47]: /bin/rm [rm -f /run/linpad-suspended]
+ish: copy-on-write faults so far: 199 reused, 254 copied
+ish: copy-on-write faults so far: 199 reused, 254 copied
+ish exit: pid 49 tgid 49 (grep) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbd0
+ish exit:   last syscalls (oldest first): 96(0xeff0ce88)=49 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeba)=0 56(0xffffffffffffff9c)=3 222(0)=4026499072 63(0x3)=603 222(0)=4026494976 222(0)=4026478592 215(0xefff3000)=0 63(0x3)=0 57(0x3)=0 215(0xefff8000)=0
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 199 reused, 254 copied
+2026-10-16 14:29:02.427 iSH ARM64[20206:3517290] REAP[reaper=43]: pid=49 exit=0x100 comm=grep
+2026-10-16 14:29:02.427 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=45 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 201 reused, 259 copied
+ish: copy-on-write faults so far: 201 reused, 259 copied
+ish: copy-on-write faults so far: 201 reused, 259 copied
+2026-10-16 14:29:02.427 iSH ARM64[20206:3517290] REAP[reaper=43]: pid=50 exit=0x0 comm=linpad-lifecycle
+ish exit: pid 52 tgid 52 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=52 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 208 reused, 259 copied
+2026-10-16 14:29:02.428 iSH ARM64[20206:3517294] REAP[reaper=47]: pid=51 exit=0x0 comm=rm
+2026-10-16 14:29:02.428 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=46 exit=0x0 comm=grep
+2026-10-16 14:29:02.428 iSH ARM64[20206:3517257] REAP[reaper=35]: pid=52 exit=0x100 comm=stat
+ish: copy-on-write faults so far: 228 reused, 259 copied
+2026-10-16 14:29:02.430 iSH ARM64[20206:3517301] EXEC[pid=53 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/foot-server.desktop]
+ish: copy-on-write faults so far: 241 reused, 285 copied
+2026-10-16 14:29:02.430 iSH ARM64[20206:3517302] EXEC[pid=54 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.430 iSH ARM64[20206:3517303] EXEC[pid=55 ppid=43]: /bin/sync [sync]
+2026-10-16 14:29:02.430 iSH ARM64[20206:3517264] REAP[reaper=40]: pid=47 exit=0x0 comm=linpad-lifecycle
+ish: copy-on-write faults so far: 243 reused, 286 copied
+ish: copy-on-write faults so far: 248 reused, 286 copied
+ish: copy-on-write faults so far: 248 reused, 286 copied
+ish: copy-on-write faults so far: 248 reused, 286 copied
+ish: copy-on-write faults so far: 248 reused, 286 copied
+2026-10-16 14:29:02.432 iSH ARM64[20206:3517290] REAP[reaper=43]: pid=55 exit=0x0 comm=sync
+ish: copy-on-write faults so far: 284 reused, 329 copied
+2026-10-16 14:29:02.434 iSH ARM64[20206:3516744] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+ish: copy-on-write faults so far: 290 reused, 333 copied
+2026-10-16 14:29:02.434 iSH ARM64[20206:3517304] EXEC[pid=56 ppid=43]: /bin/date [date +%s]
+2026-10-16 14:29:02.434 iSH ARM64[20206:3516744] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 14:29:02.434 iSH ARM64[20206:3516744] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+ish: copy-on-write faults so far: 291 reused, 334 copied
+ish: copy-on-write faults so far: 291 reused, 334 copied
+2026-10-16 14:29:02.435 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=53 exit=0x0 comm=sed
+2026-10-16 14:29:02.435 iSH ARM64[20206:3517222] REAP[reaper=16]: pid=23 exit=0x0 comm=pulseaudio
+ish: copy-on-write faults so far: 303 reused, 334 copied
+2026-10-16 14:29:02.436 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=54 exit=0x0 comm=grep
+ish: copy-on-write faults so far: 307 reused, 334 copied
+2026-10-16 14:29:02.436 iSH ARM64[20206:3517290] REAP[reaper=43]: pid=56 exit=0x0 comm=date
+ish: copy-on-write faults so far: 316 reused, 337 copied
+2026-10-16 14:29:02.437 iSH ARM64[20206:3517259] REAP[reaper=37]: pid=43 exit=0x0 comm=linpad-lifecycle
+2026-10-16 14:29:02.438 iSH ARM64[20206:3517306] EXEC[pid=58 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 328 reused, 354 copied
+2026-10-16 14:29:02.438 iSH ARM64[20206:3517305] EXEC[pid=57 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/foot.desktop]
+ish: copy-on-write faults so far: 329 reused, 354 copied
+ish: copy-on-write faults so far: 329 reused, 354 copied
+2026-10-16 14:29:02.439 iSH ARM64[20206:3517222] EXEC[pid=16 ppid=1]: /usr/local/sbin/ishwl [ishwl --runtime-dir /tmp/ishwl -v]
+2026-10-16 14:29:02.439 iSH ARM64[20206:3517222] EXEC[pid=16 ppid=1]: /usr/local/bin/ishwl [ishwl --runtime-dir /tmp/ishwl -v]
+ish: copy-on-write faults so far: 329 reused, 354 copied
+ish: copy-on-write faults so far: 329 reused, 354 copied
+2026-10-16 14:29:02.445 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=57 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 331 reused, 354 copied
+2026-10-16 14:29:02.446 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=58 exit=0x0 comm=grep
+2026-10-16 14:29:02.448 iSH ARM64[20206:3517308] EXEC[pid=60 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.448 iSH ARM64[20206:3517307] EXEC[pid=59 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/footclient.desktop]
+ish: copy-on-write faults so far: 345 reused, 374 copied
+ish: copy-on-write faults so far: 345 reused, 374 copied
+ish: copy-on-write faults so far: 345 reused, 374 copied
+sandbox_extension_issue_file failed for /var/containers/Bundle/Application/CF758867-88E2-4307-BB8B-35EF4ADACEF1/iSH ARM64.app: 1 (Operation not permitted)
+2026-10-16 14:29:02.462 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=59 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 347 reused, 374 copied
+2026-10-16 14:29:02.465 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=60 exit=0x0 comm=grep
+2026-10-16 14:29:02.468 iSH ARM64[20206:3517287] EXEC[pid=42 ppid=1]: /sbin/getty [/sbin/getty 38400 tty3]
+2026-10-16 14:29:02.470 iSH ARM64[20206:3517313] EXEC[pid=62 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.470 iSH ARM64[20206:3517312] EXEC[pid=61 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/gtk3-demo.desktop]
+ish: copy-on-write faults so far: 358 reused, 394 copied
+ish: copy-on-write faults so far: 358 reused, 394 copied
+ish: copy-on-write faults so far: 358 reused, 394 copied
+2026-10-16 14:29:02.480 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=61 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 360 reused, 394 copied
+2026-10-16 14:29:02.480 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=62 exit=0x0 comm=grep
+2026-10-16 14:29:02.481 iSH ARM64[20206:3517321] EXEC[pid=64 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/gtk3-icon-browser.desktop]
+ish: copy-on-write faults so far: 374 reused, 414 copied
+2026-10-16 14:29:02.482 iSH ARM64[20206:3517322] EXEC[pid=65 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 374 reused, 414 copied
+ish: copy-on-write faults so far: 374 reused, 414 copied
+2026-10-16 14:29:02.486 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=64 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 376 reused, 414 copied
+2026-10-16 14:29:02.487 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=65 exit=0x0 comm=grep
+2026-10-16 14:29:02.488 iSH ARM64[20206:3517323] EXEC[pid=66 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/gtk3-widget-factory.desktop]
+ish: copy-on-write faults so far: 389 reused, 434 copied
+2026-10-16 14:29:02.488 iSH ARM64[20206:3517324] EXEC[pid=67 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 389 reused, 434 copied
+ish: copy-on-write faults so far: 389 reused, 434 copied
+2026-10-16 14:29:02.492 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=66 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 391 reused, 434 copied
+2026-10-16 14:29:02.493 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=67 exit=0x0 comm=grep
+2026-10-16 14:29:02.494 iSH ARM64[20206:3517326] EXEC[pid=69 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.494 iSH ARM64[20206:3517325] EXEC[pid=68 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/ish-install-vscode.desktop]
+ish: copy-on-write faults so far: 404 reused, 454 copied
+ish: copy-on-write faults so far: 404 reused, 454 copied
+2026-10-16 14:29:02.496 iSH ARM64[20206:3517316] EXEC[pid=63 ppid=1]: /sbin/getty [/sbin/getty 38400 tty4]
+ish: copy-on-write faults so far: 404 reused, 454 copied
+ish: copy-on-write faults so far: 404 reused, 454 copied
+2026-10-16 14:29:02.509 iSH ARM64[20206:3517330] EXEC[pid=72 ppid=1]: /sbin/getty [/sbin/getty 38400 tty5]
+2026-10-16 14:29:02.516 iSH ARM64[20206:3517341] EXEC[pid=73 ppid=70]: /bin/cat [cat /proc/meminfo]
+ish: copy-on-write faults so far: 407 reused, 462 copied
+2026-10-16 14:29:02.518 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=68 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 409 reused, 462 copied
+ish: copy-on-write faults so far: 409 reused, 462 copied
+2026-10-16 14:29:02.521 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=69 exit=0x0 comm=grep
+2026-10-16 14:29:02.522 iSH ARM64[20206:3517347] EXEC[pid=74 ppid=71]: /bin/stat [stat -c %A|%s|%Y|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 417 reused, 478 copied
+2026-10-16 14:29:02.525 iSH ARM64[20206:3517348] EXEC[pid=75 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/kvantummanager.desktop]
+ish: copy-on-write faults so far: 422 reused, 484 copied
+ish: copy-on-write faults so far: 422 reused, 484 copied
+2026-10-16 14:29:02.527 iSH ARM64[20206:3517329] REAP[reaper=70]: pid=73 exit=0x0 comm=cat
+2026-10-16 14:29:02.528 iSH ARM64[20206:3517350] EXEC[pid=77 ppid=1]: /sbin/getty [/sbin/getty 38400 tty6]
+ish: copy-on-write faults so far: 431 reused, 490 copied
+2026-10-16 14:29:02.529 iSH ARM64[20206:3517349] EXEC[pid=76 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish exit: pid 74 tgid 74 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=74 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 431 reused, 490 copied
+2026-10-16 14:29:02.559 iSH ARM64[20206:3517332] REAP[reaper=71]: pid=74 exit=0x100 comm=stat
+ish: copy-on-write faults so far: 438 reused, 490 copied
+ish: copy-on-write faults so far: 442 reused, 498 copied
+2026-10-16 14:29:02.570 iSH ARM64[20206:3517380] EXEC[pid=78 ppid=71]: /bin/stat [stat -L -c %F|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 442 reused, 498 copied
+2026-10-16 14:29:02.573 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=75 exit=0x0 comm=sed
+ish exit: pid 78 tgid 78 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=78 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 444 reused, 498 copied
+ish: copy-on-write faults so far: 444 reused, 498 copied
+2026-10-16 14:29:02.582 iSH ARM64[20206:3517332] REAP[reaper=71]: pid=78 exit=0x100 comm=stat
+ish: copy-on-write faults so far: 450 reused, 498 copied
+2026-10-16 14:29:02.582 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=76 exit=0x0 comm=grep
+2026-10-16 14:29:02.583 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/local/bin/ishwl-launch [ishwl-launch thunar --daemon]
+ish: copy-on-write faults so far: 465 reused, 525 copied
+2026-10-16 14:29:02.584 iSH ARM64[20206:3517388] EXEC[pid=81 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.585 iSH ARM64[20206:3517387] EXEC[pid=80 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/org.xfce.mousepad-settings.desktop]
+ish: copy-on-write faults so far: 465 reused, 525 copied
+ish: copy-on-write faults so far: 465 reused, 525 copied
+ish: copy-on-write faults so far: 477 reused, 551 copied
+2026-10-16 14:29:02.601 iSH ARM64[20206:3517391] EXEC[pid=84 ppid=82]: /usr/bin/awk [awk {
+2026-10-16 14:29:02.601 iSH ARM64[20206:3517391]     for (i = 1; i <= NF; i++) if ($i != "env" && $i !~ /=/) { print $i; exit }
+2026-10-16 14:29:02.601 iSH ARM64[20206:3517391] }]
+2026-10-16 14:29:02.601 iSH ARM64[20206:3517389] REAP[reaper=82]: pid=83 exit=0x0 comm=ishwl-launch
+ish: copy-on-write faults so far: 477 reused, 552 copied
+ish: copy-on-write faults so far: 477 reused, 552 copied
+2026-10-16 14:29:02.603 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=80 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 479 reused, 552 copied
+ish: copy-on-write faults so far: 479 reused, 552 copied
+2026-10-16 14:29:02.612 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=81 exit=0x0 comm=grep
+2026-10-16 14:29:02.616 iSH ARM64[20206:3517398] EXEC[pid=86 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/org.xfce.mousepad.desktop]
+ish: copy-on-write faults so far: 494 reused, 566 copied
+2026-10-16 14:29:02.638 iSH ARM64[20206:3517400] EXEC[pid=87 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 505 reused, 572 copied
+ish: copy-on-write faults so far: 521 reused, 579 copied
+2026-10-16 14:29:02.642 iSH ARM64[20206:3517420] EXEC[pid=88 ppid=85]: /bin/cat [cat /usr/share/applications/firefox-esr.desktop]
+2026-10-16 14:29:02.643 iSH ARM64[20206:3517389] REAP[reaper=82]: pid=84 exit=0x0 comm=awk
+ish: copy-on-write faults so far: 524 reused, 580 copied
+ish: copy-on-write faults so far: 527 reused, 581 copied
+2026-10-16 14:29:02.646 iSH ARM64[20206:3517386] REAP[reaper=79]: pid=82 exit=0x0 comm=ishwl-launch
+ish: copy-on-write faults so far: 539 reused, 590 copied
+2026-10-16 14:29:02.655 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=86 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 541 reused, 591 copied
+2026-10-16 14:29:02.655 iSH ARM64[20206:3517430] EXEC[pid=89 ppid=79]: /usr/bin/awk [awk -v p=thunar $1 == p { $1 = ""; print; exit } /etc/ishwl/apps]
+ish: copy-on-write faults so far: 541 reused, 591 copied
+2026-10-16 14:29:02.656 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=88 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 549 reused, 594 copied
+2026-10-16 14:29:02.672 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=87 exit=0x0 comm=grep
+2026-10-16 14:29:02.675 iSH ARM64[20206:3517432] EXEC[pid=90 ppid=85]: /bin/cat [cat /usr/share/applications/foot-server.desktop]
+2026-10-16 14:29:02.684 iSH ARM64[20206:3517435] EXEC[pid=92 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.696 iSH ARM64[20206:3517434] EXEC[pid=91 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/thunar-bulk-rename.desktop]
+ish: copy-on-write faults so far: 565 reused, 619 copied
+ish: copy-on-write faults so far: 567 reused, 619 copied
+ish: copy-on-write faults so far: 567 reused, 619 copied
+ish: copy-on-write faults so far: 567 reused, 619 copied
+2026-10-16 14:29:02.712 iSH ARM64[20206:3517386] REAP[reaper=79]: pid=89 exit=0x0 comm=awk
+2026-10-16 14:29:02.713 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/local/sbin/env [env LD_PRELOAD=/usr/local/lib/libishwl-scm.so:/usr/local/lib/libishaudio-compat.so /bin/sh -c thunar --daemon]
+2026-10-16 14:29:02.714 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/local/bin/env [env LD_PRELOAD=/usr/local/lib/libishwl-scm.so:/usr/local/lib/libishaudio-compat.so /bin/sh -c thunar --daemon]
+2026-10-16 14:29:02.714 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/sbin/env [env LD_PRELOAD=/usr/local/lib/libishwl-scm.so:/usr/local/lib/libishaudio-compat.so /bin/sh -c thunar --daemon]
+ish: copy-on-write faults so far: 575 reused, 619 copied
+2026-10-16 14:29:02.714 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/bin/env [env LD_PRELOAD=/usr/local/lib/libishwl-scm.so:/usr/local/lib/libishaudio-compat.so /bin/sh -c thunar --daemon]
+ish: copy-on-write faults so far: 575 reused, 619 copied
+2026-10-16 14:29:02.714 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=90 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 582 reused, 619 copied
+2026-10-16 14:29:02.716 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=91 exit=0x0 comm=sed
+2026-10-16 14:29:02.718 iSH ARM64[20206:3517436] EXEC[pid=93 ppid=85]: /bin/cat [cat /usr/share/applications/foot.desktop]
+ish: copy-on-write faults so far: 588 reused, 627 copied
+ish: copy-on-write faults so far: 588 reused, 627 copied
+2026-10-16 14:29:02.725 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /bin/sh [/bin/sh -c thunar --daemon]
+2026-10-16 14:29:02.725 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=92 exit=0x0 comm=grep
+ish: copy-on-write faults so far: 593 reused, 627 copied
+2026-10-16 14:29:02.725 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=93 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 601 reused, 627 copied
+2026-10-16 14:29:02.727 iSH ARM64[20206:3517440] EXEC[pid=96 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+ish: copy-on-write faults so far: 612 reused, 651 copied
+2026-10-16 14:29:02.727 iSH ARM64[20206:3517438] EXEC[pid=94 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/thunar-settings.desktop]
+2026-10-16 14:29:02.728 iSH ARM64[20206:3517439] EXEC[pid=95 ppid=85]: /bin/cat [cat /usr/share/applications/footclient.desktop]
+ish: copy-on-write faults so far: 617 reused, 655 copied
+ish: copy-on-write faults so far: 617 reused, 655 copied
+ish: copy-on-write faults so far: 622 reused, 655 copied
+2026-10-16 14:29:02.731 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=95 exit=0x0 comm=cat
+2026-10-16 14:29:02.733 iSH ARM64[20206:3517441] EXEC[pid=97 ppid=85]: /bin/cat [cat /usr/share/applications/gtk3-demo.desktop]
+ish: copy-on-write faults so far: 633 reused, 663 copied
+2026-10-16 14:29:02.733 iSH ARM64[20206:3517386] EXEC[pid=79 ppid=16]: /usr/bin/thunar [thunar --daemon]
+ish: copy-on-write faults so far: 633 reused, 663 copied
+ish: copy-on-write faults so far: 633 reused, 663 copied
+ish: copy-on-write faults so far: 640 reused, 663 copied
+2026-10-16 14:29:02.737 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=94 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 642 reused, 663 copied
+ish: copy-on-write faults so far: 642 reused, 663 copied
+2026-10-16 14:29:02.739 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=96 exit=0x0 comm=grep
+2026-10-16 14:29:02.747 iSH ARM64[20206:3517445] EXEC[pid=99 ppid=98]: /bin/cat [cat /usr/share/ish/repair-kit-version]
+2026-10-16 14:29:02.751 iSH ARM64[20206:3517447] EXEC[pid=101 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.751 iSH ARM64[20206:3517446] EXEC[pid=100 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/thunar.desktop]
+ish: copy-on-write faults so far: 656 reused, 691 copied
+ish: copy-on-write faults so far: 656 reused, 691 copied
+2026-10-16 14:29:02.753 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=97 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 663 reused, 691 copied
+2026-10-16 14:29:02.755 iSH ARM64[20206:3517456] EXEC[pid=102 ppid=85]: /bin/cat [cat /usr/share/applications/gtk3-icon-browser.desktop]
+ish: copy-on-write faults so far: 667 reused, 699 copied
+ish: copy-on-write faults so far: 667 reused, 699 copied
+2026-10-16 14:29:02.758 iSH ARM64[20206:3517442] REAP[reaper=98]: pid=99 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 673 reused, 699 copied
+ish: copy-on-write faults so far: 686 reused, 699 copied
+2026-10-16 14:29:02.763 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=102 exit=0x0 comm=cat
+2026-10-16 14:29:02.764 iSH ARM64[20206:3517468] EXEC[pid=103 ppid=85]: /bin/cat [cat /usr/share/applications/gtk3-widget-factory.desktop]
+ish: copy-on-write faults so far: 700 reused, 707 copied
+ish: copy-on-write faults so far: 700 reused, 707 copied
+ish: copy-on-write faults so far: 700 reused, 707 copied
+2026-10-16 14:29:02.766 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=101 exit=0x0 comm=grep
+2026-10-16 14:29:02.766 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=100 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 714 reused, 723 copied
+2026-10-16 14:29:02.767 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=103 exit=0x0 comm=cat
+2026-10-16 14:29:02.767 iSH ARM64[20206:3517469] EXEC[pid=104 ppid=39]: /bin/sed [sed -n /^\[Desktop Entry\]/,/^\[/p /usr/share/applications/xfce4-about.desktop]
+2026-10-16 14:29:02.767 iSH ARM64[20206:3517470] EXEC[pid=105 ppid=39]: /bin/grep [grep -E ^(Name|Exec|MimeType|NoDisplay|Hidden|Type|Terminal)=]
+2026-10-16 14:29:02.768 iSH ARM64[20206:3517471] EXEC[pid=106 ppid=85]: /bin/cat [cat /usr/share/applications/ish-install-vscode.desktop]
+ish: copy-on-write faults so far: 727 reused, 735 copied
+ish: copy-on-write faults so far: 731 reused, 735 copied
+MMAP: pid=79 addr=0x0 len=0x7d8000 prot=0x5 flags=0x2 fd=3
+ish: copy-on-write faults so far: 731 reused, 735 copied
+ish: copy-on-write faults so far: 731 reused, 735 copied
+2026-10-16 14:29:02.771 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=106 exit=0x0 comm=cat
+2026-10-16 14:29:02.772 iSH ARM64[20206:3517472] EXEC[pid=107 ppid=85]: /bin/cat [cat /usr/share/applications/kvantummanager.desktop]
+ish: copy-on-write faults so far: 742 reused, 743 copied
+ish: copy-on-write faults so far: 742 reused, 743 copied
+2026-10-16 14:29:02.773 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=104 exit=0x0 comm=sed
+ish: copy-on-write faults so far: 744 reused, 743 copied
+2026-10-16 14:29:02.776 iSH ARM64[20206:3517261] REAP[reaper=39]: pid=105 exit=0x0 comm=grep
+ish: copy-on-write faults so far: 748 reused, 743 copied
+ish: copy-on-write faults so far: 748 reused, 743 copied
+2026-10-16 14:29:02.777 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=107 exit=0x0 comm=cat
+2026-10-16 14:29:02.778 iSH ARM64[20206:3517483] EXEC[pid=108 ppid=85]: /bin/cat [cat /usr/share/applications/org.xfce.mousepad-settings.desktop]
+ish: copy-on-write faults so far: 759 reused, 751 copied
+MMAP: pid=79 addr=0x0 len=0x203000 prot=0x5 flags=0x2 fd=3
+ish: copy-on-write faults so far: 759 reused, 751 copied
+2026-10-16 14:29:02.780 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=108 exit=0x0 comm=cat
+2026-10-16 14:29:02.780 iSH ARM64[20206:3517484] EXEC[pid=109 ppid=85]: /bin/cat [cat /usr/share/applications/org.xfce.mousepad.desktop]
+ish: copy-on-write faults so far: 770 reused, 759 copied
+ish: copy-on-write faults so far: 770 reused, 759 copied
+2026-10-16 14:29:02.783 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=109 exit=0x0 comm=cat
+2026-10-16 14:29:02.784 iSH ARM64[20206:3517485] EXEC[pid=110 ppid=85]: /bin/cat [cat /usr/share/applications/thunar-bulk-rename.desktop]
+ish: copy-on-write faults so far: 781 reused, 767 copied
+ish: copy-on-write faults so far: 781 reused, 767 copied
+ish: copy-on-write faults so far: 781 reused, 767 copied
+2026-10-16 14:29:02.786 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=110 exit=0x0 comm=cat
+2026-10-16 14:29:02.787 iSH ARM64[20206:3517487] EXEC[pid=112 ppid=85]: /bin/cat [cat /usr/share/applications/thunar-settings.desktop]
+ish: copy-on-write faults so far: 795 reused, 783 copied
+2026-10-16 14:29:02.788 iSH ARM64[20206:3517488] EXEC[pid=113 ppid=111]: /bin/cat [cat /usr/share/mime/globs2]
+ish: copy-on-write faults so far: 795 reused, 783 copied
+ish: copy-on-write faults so far: 795 reused, 783 copied
+2026-10-16 14:29:02.789 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=112 exit=0x0 comm=cat
+2026-10-16 14:29:02.789 iSH ARM64[20206:3517489] EXEC[pid=114 ppid=85]: /bin/cat [cat /usr/share/applications/thunar.desktop]
+ish: copy-on-write faults so far: 806 reused, 791 copied
+ish: copy-on-write faults so far: 806 reused, 791 copied
+2026-10-16 14:29:02.791 iSH ARM64[20206:3517486] REAP[reaper=111]: pid=113 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 811 reused, 791 copied
+2026-10-16 14:29:02.792 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=114 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 814 reused, 791 copied
+2026-10-16 14:29:02.793 iSH ARM64[20206:3517490] EXEC[pid=115 ppid=85]: /bin/cat [cat /usr/share/applications/xfce4-about.desktop]
+ish: copy-on-write faults so far: 823 reused, 799 copied
+ish: copy-on-write faults so far: 823 reused, 799 copied
+2026-10-16 14:29:02.794 iSH ARM64[20206:3517393] REAP[reaper=85]: pid=115 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 830 reused, 799 copied
+MMAP: pid=79 addr=0x0 len=0x206000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=79 addr=0x0 len=0x206000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=79 addr=0x0 len=0x206000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:02.843 iSH ARM64[20206:3517500] EXEC[pid=120 ppid=119]: /usr/lib/xfce4/xfconf/xfconfd [/usr/lib/xfce4/xfconf/xfconfd]
+ish: copy-on-write faults so far: 835 reused, 819 copied
+MMAP: pid=120 addr=0x0 len=0x203000 prot=0x5 flags=0x2 fd=3
+ish: copy-on-write faults so far: 835 reused, 825 copied
+2026-10-16 14:29:02.871 iSH ARM64[20206:3517230] REAP[reaper=22]: pid=119 exit=0x9 comm=dbus-daemon
+MMAP: pid=116 addr=0x0 len=0x206000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=116 addr=0x0 len=0x206000 prot=0x0 flags=0x22 fd=-1
+ish: copy-on-write faults so far: 835 reused, 825 copied
+2026-10-16 14:29:05.730 iSH ARM64[20206:3517540] EXEC[pid=128 ppid=127]: /usr/bin/head [head -1 /proc/stat]
+ish: copy-on-write faults so far: 838 reused, 833 copied
+ish: copy-on-write faults so far: 838 reused, 833 copied
+2026-10-16 14:29:05.731 iSH ARM64[20206:3517539] REAP[reaper=127]: pid=128 exit=0x0 comm=head
+ish: copy-on-write faults so far: 844 reused, 833 copied
+ish: copy-on-write faults so far: 844 reused, 833 copied
+2026-10-16 14:29:05.742 iSH ARM64[20206:3517542] EXEC[pid=130 ppid=129]: /bin/cat [cat /proc/meminfo]
+ish: copy-on-write faults so far: 847 reused, 841 copied
+ish: copy-on-write faults so far: 847 reused, 841 copied
+2026-10-16 14:29:05.744 iSH ARM64[20206:3517541] REAP[reaper=129]: pid=130 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 853 reused, 841 copied
+ish: copy-on-write faults so far: 853 reused, 841 copied
+2026-10-16 14:29:08.769 iSH ARM64[20206:3517572] EXEC[pid=132 ppid=131]: /usr/bin/head [head -1 /proc/stat]
+ish: copy-on-write faults so far: 856 reused, 849 copied
+ish: copy-on-write faults so far: 856 reused, 849 copied
+2026-10-16 14:29:08.770 iSH ARM64[20206:3517571] REAP[reaper=131]: pid=132 exit=0x0 comm=head
+ish: copy-on-write faults so far: 862 reused, 849 copied
+ish: copy-on-write faults so far: 862 reused, 849 copied
+2026-10-16 14:29:08.781 iSH ARM64[20206:3517574] EXEC[pid=134 ppid=133]: /bin/cat [cat /proc/meminfo]
+ish: copy-on-write faults so far: 865 reused, 857 copied
+ish: copy-on-write faults so far: 865 reused, 857 copied
+2026-10-16 14:29:08.782 iSH ARM64[20206:3517573] REAP[reaper=133]: pid=134 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 871 reused, 857 copied
+ish: copy-on-write faults so far: 871 reused, 857 copied
+2026-10-16 14:29:11.864 iSH ARM64[20206:3517657] EXEC[pid=136 ppid=135]: /usr/bin/head [head -1 /proc/stat]
+ish: copy-on-write faults so far: 874 reused, 865 copied
+ish: copy-on-write faults so far: 874 reused, 865 copied
+2026-10-16 14:29:11.866 iSH ARM64[20206:3517656] REAP[reaper=135]: pid=136 exit=0x0 comm=head
+ish: copy-on-write faults so far: 880 reused, 865 copied
+ish: copy-on-write faults so far: 880 reused, 865 copied
+2026-10-16 14:29:11.876 iSH ARM64[20206:3517659] EXEC[pid=138 ppid=137]: /bin/cat [cat /proc/meminfo]
+ish: copy-on-write faults so far: 883 reused, 873 copied
+ish: copy-on-write faults so far: 883 reused, 873 copied
+2026-10-16 14:29:11.878 iSH ARM64[20206:3517658] REAP[reaper=137]: pid=138 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 889 reused, 873 copied
+ish: copy-on-write faults so far: 889 reused, 873 copied
+2026-10-16 14:29:12.781 iSH ARM64[20206:3517669] EXEC[pid=140 ppid=139]: /bin/stat [stat -c %A|%s|%Y|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 892 reused, 881 copied
+ish exit: pid 140 tgid 140 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=140 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 892 reused, 881 copied
+2026-10-16 14:29:12.783 iSH ARM64[20206:3517668] REAP[reaper=139]: pid=140 exit=0x100 comm=stat
+2026-10-16 14:29:12.784 iSH ARM64[20206:3517670] EXEC[pid=141 ppid=139]: /bin/stat [stat -L -c %F|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 903 reused, 889 copied
+ish exit: pid 141 tgid 141 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=141 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 903 reused, 889 copied
+2026-10-16 14:29:12.785 iSH ARM64[20206:3517668] REAP[reaper=139]: pid=141 exit=0x100 comm=stat
+ish: copy-on-write faults so far: 909 reused, 889 copied
+2026-10-16 14:29:13.201 iSH ARM64[20206:3517671] EXEC[pid=142 ppid=30]: /usr/local/bin/steam-local [steam-local]
+ish: copy-on-write faults so far: 915 reused, 898 copied
+2026-10-16 14:29:13.206 iSH ARM64[20206:3517672] EXEC[pid=143 ppid=142]: /usr/bin/env [env LD_LIBRARY_PATH=/opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe MESA_LOADER_DRIVER_OVERRIDE=swrast LIBGL_DRIVERS_PATH=/opt/steam-host/usr/lib/aarch64-linux-gnu/dri /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 --library-path]
+ish: copy-on-write faults so far: 928 reused, 919 copied
+2026-10-16 14:29:13.206 iSH ARM64[20206:3517673] EXEC[pid=144 ppid=142]: /bin/sleep [sleep 0.1]
+ish: copy-on-write faults so far: 928 reused, 919 copied
+2026-10-16 14:29:13.207 iSH ARM64[20206:3517672] EXEC[pid=143 ppid=142]: /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 [/opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 --library-path /opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /opt/steam-host/usr/bin/Xtigervnc :55 -geometry 1024x700 -depth]
+ish: copy-on-write faults so far: 928 reused, 919 copied
+MMAP: pid=143 addr=0x0 len=0x328c28 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=143 addr=0xefc90000 len=0x318c28 prot=0x5 flags=0x812 fd=3
+MMAP: pid=143 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=143 addr=0xef7d0000 len=0x255300 prot=0x5 flags=0x812 fd=3
+MMAP: pid=143 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=143 addr=0xef070000 len=0x266c88 prot=0x5 flags=0x812 fd=3
+MMAP: pid=143 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=143 addr=0x0 len=0x2bd000 prot=0x3 flags=0x22 fd=-1
+2026-10-16 14:29:13.255 iSH ARM64[20206:3517674] EXEC[pid=145 ppid=143]: /bin/sh [sh -c "/usr/bin/xkbcomp" -w 1 "-R/usr/share/X11/xkb" -xkm "-" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "/tmp/server-55.xkm"]
+ish: copy-on-write faults so far: 932 reused, 939 copied
+2026-10-16 14:29:13.258 iSH ARM64[20206:3517674] EXEC[pid=145 ppid=143]: /usr/bin/xkbcomp [/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 932 reused, 939 copied
+2026-10-16 14:29:13.264 iSH ARM64[20206:3517674] EXEC[pid=145 ppid=143]: /opt/steam-x11/usr/bin/xkbcomp [/opt/steam-x11/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 932 reused, 939 copied
+ish: copy-on-write faults so far: 932 reused, 939 copied
+2026-10-16 14:29:13.298 iSH ARM64[20206:3517672] REAP[reaper=143]: pid=145 exit=0x0 comm=xkbcomp
+ish: copy-on-write faults so far: 1026 reused, 939 copied
+2026-10-16 14:29:13.313 iSH ARM64[20206:3517671] REAP[reaper=142]: pid=144 exit=0x0 comm=sleep
+2026-10-16 14:29:13.315 iSH ARM64[20206:3517679] EXEC[pid=147 ppid=142]: /usr/local/bin/steam-local [/usr/local/bin/steam-local --client :55]
+2026-10-16 14:29:13.315 iSH ARM64[20206:3517678] EXEC[pid=146 ppid=142]: /usr/local/bin/ishwl-x11-wm [ishwl-x11-wm]
+2026-10-16 14:29:13.315 iSH ARM64[20206:3517681] EXEC[pid=149 ppid=142]: /bin/sleep [sleep 1]
+ish: copy-on-write faults so far: 1063 reused, 982 copied
+ish: copy-on-write faults so far: 1063 reused, 982 copied
+ish: copy-on-write faults so far: 1063 reused, 982 copied
+2026-10-16 14:29:13.316 iSH ARM64[20206:3517680] EXEC[pid=148 ppid=142]: /usr/local/bin/ishwl-x11 [ishwl-x11 -g 1024x700 /usr/local/bin/steam-local --viewer]
+2026-10-16 14:29:13.318 iSH ARM64[20206:3517679] EXEC[pid=147 ppid=142]: /root/.local/share/Steam/steamrtarm64/steam [/root/.local/share/Steam/steamrtarm64/steam -no-cef-sandbox -cef-disable-gpu]
+ish: copy-on-write faults so far: 1064 reused, 982 copied
+ish: copy-on-write faults so far: 1064 reused, 982 copied
+2026-10-16 14:29:13.324 iSH ARM64[20206:3517682] EXEC[pid=150 ppid=148]: /bin/mkdir [mkdir -p /tmp/ishwl-x11]
+ish: copy-on-write faults so far: 1069 reused, 989 copied
+ish: copy-on-write faults so far: 1070 reused, 989 copied
+2026-10-16 14:29:13.326 iSH ARM64[20206:3517680] REAP[reaper=148]: pid=150 exit=0x0 comm=mkdir
+2026-10-16 14:29:13.327 iSH ARM64[20206:3517686] EXEC[pid=151 ppid=148]: /bin/sh [sh -c echo "$1" > "/tmp/ishwl-x11/$$"; shift; exec Xwayland "$@" sh Steam :3 -geometry 1024x700]
+2026-10-16 14:29:13.327 iSH ARM64[20206:3517688] EXEC[pid=152 ppid=148]: /bin/sleep [sleep 0.1]
+ish: copy-on-write faults so far: 1088 reused, 1009 copied
+ish: copy-on-write faults so far: 1088 reused, 1009 copied
+2026-10-16 14:29:13.330 iSH ARM64[20206:3517686] EXEC[pid=151 ppid=148]: /opt/steam-x11/bin/Xwayland [Xwayland :3 -geometry 1024x700 -nolisten tcp -noreset]
+ish: copy-on-write faults so far: 1088 reused, 1009 copied
+2026-10-16 14:29:13.336 iSH ARM64[20206:3517686] EXEC[pid=151 ppid=148]: /opt/steam-x11/usr/bin/Xwayland [/opt/steam-x11/usr/bin/Xwayland :3 -geometry 1024x700 -nolisten tcp -noreset]
+ish: copy-on-write faults so far: 1088 reused, 1009 copied
+MMAP: pid=151 addr=0x0 len=0x262a000 prot=0x5 flags=0x2 fd=3
+MMAP: pid=151 addr=0xef4d9000 len=0x330000 prot=0x3 flags=0x12 fd=3
+MMAP: pid=151 addr=0x0 len=0xaa23000 prot=0x5 flags=0x2 fd=3
+MMAP: pid=151 addr=0xeccbc000 len=0x213000 prot=0x3 flags=0x12 fd=3
+2026-10-16 14:29:13.355 iSH ARM64[20206:3517692] EXEC[pid=153 ppid=147]: /root/.local/share/Steam/steamrtarm64/steam [/root/.local/share/Steam/steamrtarm64/steam -child-update-ui -child-update-ui-socket 8 -no-cef-sandbox -cef-disable-gpu]
+ish: copy-on-write faults so far: 1091 reused, 1028 copied
+MMAP: pid=151 addr=0x0 len=0x2a5000 prot=0x5 flags=0x2 fd=3
+2026-10-16 14:29:13.375 iSH ARM64[20206:3517692] 153(steam) stub syscall 435
+MMAP: pid=154 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=153 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=153 addr=0xec870000 len=0x23353e0 prot=0x5 flags=0x812 fd=10
+MMAP: pid=153 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=153 addr=0xe5000000 len=0x7636a9a prot=0x5 flags=0x812 fd=9
+MMAP: pid=153 addr=0xebfe5000 len=0x5b3000 prot=0x3 flags=0x812 fd=9
+MMAP: pid=153 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=153 addr=0xe4b50000 len=0x266c88 prot=0x5 flags=0x812 fd=10
+2026-10-16 14:29:13.390 iSH ARM64[20206:3517679] 147(steam) stub syscall 435
+MMAP: pid=153 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=153 addr=0xe30c0000 len=0x19b1768 prot=0x5 flags=0x812 fd=10
+MMAP: pid=155 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+ish: copy-on-write faults so far: 1192 reused, 1028 copied
+2026-10-16 14:29:13.434 iSH ARM64[20206:3517680] REAP[reaper=148]: pid=152 exit=0x0 comm=sleep
+2026-10-16 14:29:13.435 iSH ARM64[20206:3517696] EXEC[pid=156 ppid=148]: /bin/sleep [sleep 0.1]
+ish: copy-on-write faults so far: 1203 reused, 1038 copied
+MMAP: pid=151 addr=0x0 len=0x2bc000 prot=0x3 flags=0x1 fd=7
+MMAP: pid=16 addr=0x0 len=0x2bc000 prot=0x1 flags=0x1 fd=21
+2026-10-16 14:29:13.474 iSH ARM64[20206:3517716] EXEC[pid=157 ppid=151]: /bin/sh [sh -c "/usr/bin/xkbcomp" -w 1 "-R/usr/share/X11/xkb" -xkm "-" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "/tmp/xdg-runtime/ser]
+ish: copy-on-write faults so far: 1207 reused, 1049 copied
+2026-10-16 14:29:13.477 iSH ARM64[20206:3517716] EXEC[pid=157 ppid=151]: /usr/bin/xkbcomp [/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 1207 reused, 1049 copied
+2026-10-16 14:29:13.480 iSH ARM64[20206:3517716] EXEC[pid=157 ppid=151]: /opt/steam-x11/usr/bin/xkbcomp [/opt/steam-x11/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 1207 reused, 1049 copied
+MMAP: pid=153 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=153 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=153 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=158 addr=0x8004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=159 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=153 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=160 addr=0x10004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=161 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=153 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=162 addr=0x18004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+ish: copy-on-write faults so far: 1207 reused, 1049 copied
+2026-10-16 14:29:13.516 iSH ARM64[20206:3517686] REAP[reaper=151]: pid=157 exit=0x0 comm=xkbcomp
+MMAP: pid=151 addr=0x0 len=0x2bc000 prot=0x3 flags=0x1 fd=7
+MMAP: pid=16 addr=0x0 len=0x2bc000 prot=0x1 flags=0x1 fd=22
+MMAP: pid=16 addr=0x0 len=0x2bc000 prot=0x3 flags=0x1 fd=23
+2026-10-16 14:29:13.526 iSH ARM64[20206:3517726] EXEC[pid=163 ppid=151]: /bin/sh [sh -c "/usr/bin/xkbcomp" -w 1 "-R/usr/share/X11/xkb" -xkm "-" -em1 "The XKEYBOARD keymap compiler (xkbcomp) reports:" -emp "> " -eml "Errors from xkbcomp are not fatal to the X server" "/tmp/xdg-runtime/ser]
+ish: copy-on-write faults so far: 1279 reused, 1060 copied
+2026-10-16 14:29:13.529 iSH ARM64[20206:3517726] EXEC[pid=163 ppid=151]: /usr/bin/xkbcomp [/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 1279 reused, 1060 copied
+2026-10-16 14:29:13.531 iSH ARM64[20206:3517726] EXEC[pid=163 ppid=151]: /opt/steam-x11/usr/bin/xkbcomp [/opt/steam-x11/usr/bin/xkbcomp -w 1 -R/usr/share/X11/xkb -xkm - -em1 The XKEYBOARD keymap compiler (xkbcomp) reports:]
+ish: copy-on-write faults so far: 1279 reused, 1060 copied
+ish: copy-on-write faults so far: 1279 reused, 1060 copied
+2026-10-16 14:29:13.543 iSH ARM64[20206:3517680] REAP[reaper=148]: pid=156 exit=0x0 comm=sleep
+2026-10-16 14:29:13.544 iSH ARM64[20206:3517728] EXEC[pid=165 ppid=148]: /usr/local/bin/steam-local [/usr/local/bin/steam-local --viewer]
+ish: copy-on-write faults so far: 1295 reused, 1078 copied
+2026-10-16 14:29:13.547 iSH ARM64[20206:3517727] EXEC[pid=164 ppid=148]: /usr/local/bin/ishwl-x11-wm [ishwl-x11-wm]
+ish: copy-on-write faults so far: 1295 reused, 1078 copied
+2026-10-16 14:29:13.549 iSH ARM64[20206:3517728] EXEC[pid=165 ppid=148]: /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 [/opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 --library-path /opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /opt/steam-host/usr/bin/xtigervncviewer -SecurityTypes None -PreferredEncoding Raw]
+ish: copy-on-write faults so far: 1295 reused, 1078 copied
+ish: copy-on-write faults so far: 1297 reused, 1078 copied
+2026-10-16 14:29:13.555 iSH ARM64[20206:3517686] REAP[reaper=151]: pid=163 exit=0x0 comm=xkbcomp
+MMAP: pid=165 addr=0x0 len=0x1335a20 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xee6d0000 len=0x1325a20 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0xef4a2000 len=0x553a20 prot=0x3 flags=0x32 fd=-1
+MMAP: pid=165 addr=0x0 len=0x111f4e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xed5b0000 len=0x110f4e0 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0xed6b1000 len=0x100e4e0 prot=0x3 flags=0x32 fd=-1
+MMAP: pid=165 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xed160000 len=0x255300 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xece80000 len=0x266c88 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x2e7278 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xec6c0000 len=0x2d7278 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x5704b0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xebfd0000 len=0x5604b0 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x4e04b8 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xeb6a0000 len=0x4d04b8 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x103dcc0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xea670000 len=0x102dcc0 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0xea7ae000 len=0xef0000 prot=0x3 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x2f28c0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xea350000 len=0x2e28c0 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x370258 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe9e90000 len=0x360258 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x230190 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe9c60000 len=0x220190 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x57c270 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe9680000 len=0x56c270 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x269570 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe91c0000 len=0x259570 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x8d0ab8 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe88f0000 len=0x8c0ab8 prot=0x5 flags=0x812 fd=3
+MMAP: pid=165 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0x0 len=0x232520 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=165 addr=0xe7df0000 len=0x222520 prot=0x5 flags=0x812 fd=3
+ish: copy-on-write faults so far: 1372 reused, 1078 copied
+2026-10-16 14:29:13.631 iSH ARM64[20206:3517769] EXEC[pid=167 ppid=166]: /bin/stat [stat -c %A|%s|%Y|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 1376 reused, 1086 copied
+ish exit: pid 167 tgid 167 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=167 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 1376 reused, 1086 copied
+2026-10-16 14:29:13.633 iSH ARM64[20206:3517764] REAP[reaper=166]: pid=167 exit=0x100 comm=stat
+2026-10-16 14:29:13.634 iSH ARM64[20206:3517770] EXEC[pid=168 ppid=166]: /bin/stat [stat -L -c %F|%n -- .[!.]* ..?* *]
+ish: copy-on-write faults so far: 1387 reused, 1094 copied
+ish exit: pid 168 tgid 168 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=168 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish: copy-on-write faults so far: 1387 reused, 1094 copied
+2026-10-16 14:29:13.636 iSH ARM64[20206:3517764] REAP[reaper=166]: pid=168 exit=0x100 comm=stat
+ish: copy-on-write faults so far: 1393 reused, 1094 copied
+MMAP: pid=165 addr=0x0 len=0x8010000 prot=0x0 flags=0x20022 fd=-1
+2026-10-16 14:29:13.680 iSH ARM64[20206:3517728] 165(ld-linux-aarch64) stub syscall 435
+MMAP: pid=165 addr=0x0 len=0x8010000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=169 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=165 addr=0x0 len=0x8010000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=170 addr=0x18004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=165 addr=0x0 len=0x8010000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=171 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=172 addr=0x30004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:13.685 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8192 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.687 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8192 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.687 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8180 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.687 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8180 gflags=0 hflags=0x2 sflags=0)
+MMAP: pid=143 addr=0x0 len=0x2bd000 prot=0x3 flags=0x22 fd=-1
+2026-10-16 14:29:13.689 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8178 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.689 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8179 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.690 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8174 gflags=0 hflags=0x2 sflags=0)
+MMAP: pid=151 addr=0x0 len=0x2bc07c prot=0x3 flags=0x22 fd=-1
+MMAP: pid=165 addr=0x0 len=0x2bc000 prot=0x3 flags=0x1 fd=-1
+MMAP: pid=151 addr=0x0 len=0x2bc000 prot=0x1 flags=0x1 fd=-1
+2026-10-16 14:29:13.702 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8178 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.710 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8141 gflags=0 hflags=0x2 sflags=0)
+MMAP: pid=151 addr=0x0 len=0x2bc07c prot=0x3 flags=0x22 fd=-1
+2026-10-16 14:29:13.710 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8060 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.715 iSH ARM64[20206:3517728] NETDIAG recvfrom-block(pid=165 comm=ld-linux-aarch64 fd=4 real=695 len=8025 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.716 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8024 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.718 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=8004 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:13.726 iSH ARM64[20206:3517672] NETDIAG recvfrom-block(pid=143 comm=ld-linux-aarch64 fd=10 real=545 len=7994 gflags=0 hflags=0x2 sflags=0)
+ish: copy-on-write faults so far: 1421 reused, 1094 copied
+2026-10-16 14:29:14.322 iSH ARM64[20206:3517671] REAP[reaper=142]: pid=149 exit=0x0 comm=sleep
+2026-10-16 14:29:14.323 iSH ARM64[20206:3517993] EXEC[pid=173 ppid=142]: /bin/sleep [sleep 1]
+ish: copy-on-write faults so far: 1432 reused, 1103 copied
+MMAP: pid=147 addr=0x0 len=0x257fac8 prot=0x5 flags=0x802 fd=8
+MMAP: pid=147 addr=0x0 len=0x322330 prot=0x5 flags=0x802 fd=8
+MMAP: pid=147 addr=0x0 len=0x95fcb0 prot=0x5 flags=0x802 fd=8
+MMAP: pid=147 addr=0x0 len=0x232520 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xeb4c0000 len=0x222520 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x4b63a8 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xeb010000 len=0x4a63a8 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x455e20 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xea9a0000 len=0x445e20 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x215930 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xea650000 len=0x205930 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x229fc8 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xe97f0000 len=0x219fc8 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x370258 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xe8990000 len=0x360258 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xe6410000 len=0x23353e0 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xdecd0000 len=0x7636a9a prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0xe5cb5000 len=0x5b3000 prot=0x3 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xde860000 len=0x266c88 prot=0x5 flags=0x812 fd=8
+MMAP: pid=147 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xdce00000 len=0x19b1768 prot=0x5 flags=0x812 fd=8
+ish: copy-on-write faults so far: 1439 reused, 1103 copied
+2026-10-16 14:29:14.916 iSH ARM64[20206:3518074] EXEC[pid=175 ppid=174]: /usr/bin/head [head -1 /proc/stat]
+ish: copy-on-write faults so far: 1442 reused, 1111 copied
+ish: copy-on-write faults so far: 1442 reused, 1111 copied
+2026-10-16 14:29:14.918 iSH ARM64[20206:3518073] REAP[reaper=174]: pid=175 exit=0x0 comm=head
+ish: copy-on-write faults so far: 1448 reused, 1111 copied
+ish: copy-on-write faults so far: 1448 reused, 1111 copied
+ish: copy-on-write faults so far: 1448 reused, 1111 copied
+2026-10-16 14:29:14.929 iSH ARM64[20206:3518076] EXEC[pid=177 ppid=176]: /bin/cat [cat /proc/meminfo]
+ish: copy-on-write faults so far: 1451 reused, 1119 copied
+ish: copy-on-write faults so far: 1451 reused, 1119 copied
+2026-10-16 14:29:14.930 iSH ARM64[20206:3518075] REAP[reaper=176]: pid=177 exit=0x0 comm=cat
+ish: copy-on-write faults so far: 1457 reused, 1119 copied
+2026-10-16 14:29:14.935 iSH ARM64[20206:3517679] REAP[reaper=147]: pid=153 exit=0x0 comm=steam
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=178 addr=0x8004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=147 addr=0x0 len=0x200000 prot=0x3 flags=0x1 fd=17
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /usr/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /opt/steam-x11/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /opt/steam-x11/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /usr/local/sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /usr/local/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /usr/sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /usr/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:14.976 iSH ARM64[20206:3518086] EXEC[pid=179 ppid=147]: /bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+ish exit: pid 179 tgid 179 (steam) signal 0 code 1 addr 0 pc 0xef39fca0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0xbfca0 lr 0xe9b30f8c /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x40f8c sp 0xffff6d30
+ish exit:   last syscalls (oldest first): 57(0x13)=0 57(0xe)=0 57(0x10)=0 24(0xf)=1 24(0x12)=2 436(0x3)=0 135(0x2)=0 221(0xe9b37460)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2 221(0xffff6c30)=-2
+ish exit:   frames: /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x329c0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x32804 /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x185dc /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x13728 /root/.local/share/Steam/steamrtarm64/libSDL3.so.0+0x5609c /root/.local/share/Steam/steamrtarm64/libSDL3.so.0+0x1784d4 /root/.local/share/Steam/steamrtarm64/steamui.so+0xe6bf8c /root/.local/share/Steam/steamrtarm64/steam+0xa9af0 /root/.local/share/Steam/steamrtarm64/steam+0xaaa18 /root/.local/share/Steam/steamrtarm64/steam+0x8dcf0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2225c /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2233c /root/.local/share/Steam/steamrtarm64/steam+0x937b0
+ish: copy-on-write faults so far: 1466 reused, 1143 copied
+2026-10-16 14:29:14.977 iSH ARM64[20206:3517679] REAP[reaper=147]: pid=179 exit=0x100 comm=steam
+MMAP: pid=147 addr=0x0 len=0x3558e0 prot=0x5 flags=0x802 fd=16
+MMAP: pid=147 addr=0x0 len=0x2cd020 prot=0x5 flags=0x802 fd=16
+2026-10-16 14:29:15.087 iSH ARM64[20206:3517679] 147(steam) stub syscall 435
+2026-10-16 14:29:15.087 iSH ARM64[20206:3518290] EXEC[pid=180 ppid=147]: /bin/sh [sh -c -- LD_LIBRARY_PATH="${SYSTEM_LD_LIBRARY_PATH-${LD_LIBRARY_PATH}}" PATH="${SYSTEM_PATH-${PATH}}" lspci -mm -n]
+ish exit: pid 180 tgid 180 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd320
+ish exit:   last syscalls (oldest first): 134(0x2)=0 134(0x3)=0 134(0xf)=0 222(0)=4024487936 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=16 66(0x2)=1 215(0xefe0d000)=0
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish: copy-on-write faults so far: 1788 reused, 1143 copied
+2026-10-16 14:29:15.090 iSH ARM64[20206:3517679] REAP[reaper=147]: pid=180 exit=0x7f00 comm=sh
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=181 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=182 addr=0x10004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=183 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=184 addr=0x18004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=185 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.196 iSH ARM64[20206:3518379] EXEC[pid=188 ppid=186]: /bin/sh [sh -c exec '/root/.local/share/Steam/steamrtarm64/steamsysinfo' '-steamid' '0' '-buildid' '1792110651' '-logdir' '/root/.local/share/Steam/logs' '-nocrashdialog' '-query' '1' '-out-file' '/tmp/steamjDkHpd']
+ish: copy-on-write faults so far: 1900 reused, 1211 copied
+2026-10-16 14:29:15.200 iSH ARM64[20206:3518379] EXEC[pid=188 ppid=186]: /root/.local/share/Steam/steamrtarm64/steamsysinfo [/root/.local/share/Steam/steamrtarm64/steamsysinfo -steamid 0 -buildid 1792110651 -logdir /root/.local/share/Steam/logs -nocrashdialog]
+ish: copy-on-write faults so far: 1900 reused, 1211 copied
+2026-10-16 14:29:15.221 iSH ARM64[20206:3518379] 188(steamsysinfo) stub syscall 435
+MMAP: pid=189 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+ish: copy-on-write faults so far: 1900 reused, 1211 copied
+2026-10-16 14:29:15.256 iSH ARM64[20206:3518374] REAP[reaper=186]: pid=188 exit=0xfffffe00 comm=steamsysinfo
+2026-10-16 14:29:15.259 iSH ARM64[20206:3517679] 147(steam) stub syscall 435
+2026-10-16 14:29:15.260 iSH ARM64[20206:3518381] EXEC[pid=190 ppid=147]: /bin/sh [sh -c -- LD_LIBRARY_PATH="${SYSTEM_LD_LIBRARY_PATH-${LD_LIBRARY_PATH}}" PATH="${SYSTEM_PATH-${PATH}}" lspci -mm -n]
+ish exit: pid 190 tgid 190 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd320
+ish exit:   last syscalls (oldest first): 134(0x2)=0 134(0x3)=0 134(0xf)=0 222(0)=4024487936 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=16 66(0x2)=1 215(0xefe0d000)=0
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish: copy-on-write faults so far: 1932 reused, 1211 copied
+2026-10-16 14:29:15.263 iSH ARM64[20206:3517679] REAP[reaper=147]: pid=190 exit=0x7f00 comm=sh
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=195 addr=0x20004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.324 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /bin/sh [sh -c exec '/root/.local/share/Steam/steamrtarm64/steamwebhelper.sh' '-nocrashdialog' '-lang=en_US' '-cachedir=/root/.local/share/Steam/config/htmlcache' '-steampid=147' '-buildid=1792110651' '-steamid=0' ']
+ish: copy-on-write faults so far: 4316 reused, 1348 copied
+ish: copy-on-write faults so far: 4328 reused, 1354 copied
+2026-10-16 14:29:15.328 iSH ARM64[20206:3517671] REAP[reaper=142]: pid=173 exit=0x0 comm=sleep
+2026-10-16 14:29:15.328 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /root/.local/share/Steam/steamrtarm64/steamwebhelper.sh [/root/.local/share/Steam/steamrtarm64/steamwebhelper.sh -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache -steampid=147 -buildid=1792110651 -steamid=0 -logdir=/root/.local/share/Steam/logs]
+2026-10-16 14:29:15.329 iSH ARM64[20206:3518420] EXEC[pid=197 ppid=142]: /bin/sleep [sleep 1]
+ish: copy-on-write faults so far: 4355 reused, 1363 copied
+ish: copy-on-write faults so far: 4355 reused, 1363 copied
+2026-10-16 14:29:15.343 iSH ARM64[20206:3518422] EXEC[pid=199 ppid=196]: /usr/bin/dirname [dirname -- /root/.local/share/Steam/steamrtarm64/steamwebhelper.sh]
+ish: copy-on-write faults so far: 4499 reused, 1393 copied
+ish: copy-on-write faults so far: 4501 reused, 1393 copied
+2026-10-16 14:29:15.346 iSH ARM64[20206:3518418] REAP[reaper=196]: pid=199 exit=0x0 comm=dirname
+ish: copy-on-write faults so far: 4543 reused, 1420 copied
+2026-10-16 14:29:15.350 iSH ARM64[20206:3518418] REAP[reaper=196]: pid=200 exit=0x0 comm=steamwebhelper.s
+2026-10-16 14:29:15.351 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /usr/local/bin/taskset [taskset 0x7c /root/.local/share/Steam/steamrtarm64/steamwebhelper -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache -steampid=147 -buildid=1792110651]
+ish: copy-on-write faults so far: 4583 reused, 1420 copied
+2026-10-16 14:29:15.354 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /opt/steam-utils/usr/bin/taskset [/opt/steam-utils/usr/bin/taskset 0x7c /usr/bin/env LD_LIBRARY_PATH=/opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /root/.local/share/Steam/steamrtarm64/steamwebhelper -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache]
+ish: copy-on-write faults so far: 4590 reused, 1420 copied
+2026-10-16 14:29:15.356 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /usr/bin/env [/usr/bin/env LD_LIBRARY_PATH=/opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /root/.local/share/Steam/steamrtarm64/steamwebhelper -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache -steampid=147 -buildid=1792110651]
+ish: copy-on-write faults so far: 4590 reused, 1420 copied
+2026-10-16 14:29:15.358 iSH ARM64[20206:3518418] EXEC[pid=196 ppid=147]: /root/.local/share/Steam/steamrtarm64/steamwebhelper [/root/.local/share/Steam/steamrtarm64/steamwebhelper -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache -steampid=147 -buildid=1792110651 -steamid=0 -logdir=/root/.local/share/Steam/logs]
+ish: copy-on-write faults so far: 4593 reused, 1420 copied
+MMAP: pid=196 addr=0x0 len=0xd257798 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0x8000000000 len=0xd247798 prot=0x1 flags=0x812 fd=3
+MMAP: pid=196 addr=0x80023af000 len=0xa2a4000 prot=0x5 flags=0x812 fd=3
+MMAP: pid=196 addr=0x800c662000 len=0x8ea000 prot=0x3 flags=0x812 fd=3
+MMAP: pid=196 addr=0x800d027000 len=0x220798 prot=0x3 flags=0x32 fd=-1
+MMAP: pid=196 addr=0x0 len=0x322330 prot=0x5 flags=0x802 fd=3
+MMAP: pid=196 addr=0x0 len=0x232520 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xeec40000 len=0x222520 prot=0x5 flags=0x812 fd=3
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=196 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xed1c0000 len=0x255300 prot=0x5 flags=0x812 fd=3
+MMAP: pid=205 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=196 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xe9f50000 len=0x23353e0 prot=0x5 flags=0x812 fd=3
+MMAP: pid=196 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xe27e0000 len=0x7636a9a prot=0x5 flags=0x812 fd=3
+MMAP: pid=196 addr=0xe97c5000 len=0x5b3000 prot=0x3 flags=0x812 fd=3
+MMAP: pid=196 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xe2370000 len=0x266c88 prot=0x5 flags=0x812 fd=3
+MMAP: pid=196 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=196 addr=0xe0950000 len=0x19b1768 prot=0x5 flags=0x812 fd=3
+MMAP: pid=206 addr=0x28004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=147 addr=0x0 len=0x2dd3b68 prot=0x5 flags=0x802 fd=25
+MMAP: pid=147 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=147 addr=0xd5800000 len=0x255300 prot=0x5 flags=0x812 fd=25
+MMAP: pid=147 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+2026-10-16 14:29:15.611 iSH ARM64[20206:3518418] 196(steamwebhelper) stub syscall 435
+MMAP: pid=207 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=196 addr=0x0 len=0x200000 prot=0x3 flags=0x1 fd=7
+MMAP: pid=208 addr=0x10004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=196 addr=0x0 len=0x9fbb70 prot=0x1 flags=0x1 fd=8
+MMAP: pid=206 addr=0x0 len=0x8eabe0 prot=0x5 flags=0x802 fd=30
+MMAP: pid=209 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.693 iSH ARM64[20206:3517679] NETDIAG recvmsg-block(pid=147 comm=steam fd=37 real=955 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:15.693 iSH ARM64[20206:3517679] NETDIAG recvmsg-block(pid=147 comm=steam fd=37 real=955 gflags=0 hflags=0x2 sflags=0)
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=211 addr=0x30004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=212 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=213 addr=0x38004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=212 addr=0x0 len=0x1001000 prot=0x3 flags=0x22 fd=-1
+MMAP: pid=212 addr=0x0 len=0x1001000 prot=0x3 flags=0x22 fd=-1
+MMAP: pid=215 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=211 addr=0x0 len=0x200000 prot=0x3 flags=0x1 fd=46
+MMAP: pid=216 addr=0x40004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=217 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=218 addr=0x48004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=219 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=220 addr=0x50004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.759 iSH ARM64[20206:3518481] 220(SteamUdevConte) stub syscall 264
+MMAP: pid=211 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=211 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=196 addr=0x0 len=0x400000 prot=0x3 flags=0x1 fd=10
+2026-10-16 14:29:15.765 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+MMAP: pid=222 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=196 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=223 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.768 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.769 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.773 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.773 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.777 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.778 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.780 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.781 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+2026-10-16 14:29:15.782 iSH ARM64[20206:3518485] EXEC[pid=224 ppid=196]: /root/.local/share/Steam/steamrtarm64/steamwebhelper [/root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-zygote-sandbox --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache]
+ish: copy-on-write faults so far: 7185 reused, 1483 copied
+2026-10-16 14:29:15.785 iSH ARM64[20206:3518490] EXEC[pid=225 ppid=196]: /root/.local/share/Steam/steamrtarm64/steamwebhelper [/root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client]
+ish: copy-on-write faults so far: 7198 reused, 1523 copied
+MMAP: pid=224 addr=0x0 len=0xd257798 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0x8000000000 len=0xd247798 prot=0x1 flags=0x812 fd=5
+MMAP: pid=224 addr=0x80023af000 len=0xa2a4000 prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0x800c662000 len=0x8ea000 prot=0x3 flags=0x812 fd=5
+MMAP: pid=224 addr=0x800d027000 len=0x220798 prot=0x3 flags=0x32 fd=-1
+MMAP: pid=224 addr=0x0 len=0x322330 prot=0x5 flags=0x802 fd=5
+MMAP: pid=224 addr=0x0 len=0x232520 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xeec40000 len=0x222520 prot=0x5 flags=0x812 fd=5
+MMAP: pid=225 addr=0x0 len=0xd257798 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0x8000000000 len=0xd247798 prot=0x1 flags=0x812 fd=5
+MMAP: pid=225 addr=0x80023af000 len=0xa2a4000 prot=0x5 flags=0x812 fd=5
+MMAP: pid=225 addr=0x800c662000 len=0x8ea000 prot=0x3 flags=0x812 fd=5
+MMAP: pid=225 addr=0x800d027000 len=0x220798 prot=0x3 flags=0x32 fd=-1
+MMAP: pid=225 addr=0x0 len=0x322330 prot=0x5 flags=0x802 fd=5
+MMAP: pid=225 addr=0x0 len=0x232520 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xeec40000 len=0x222520 prot=0x5 flags=0x812 fd=5
+MMAP: pid=211 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=224 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xed1c0000 len=0x255300 prot=0x5 flags=0x812 fd=5
+MMAP: pid=211 addr=0x0 len=0x4000000 prot=0x3 flags=0x22 fd=-1
+MMAP: pid=225 addr=0x0 len=0x265300 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xed1c0000 len=0x255300 prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+2026-10-16 14:29:15.816 iSH ARM64[20206:3518477] NETDIAG recvmsg-block(pid=216 comm=CJobMgr::m_Wor fd=71 real=1179 gflags=0 hflags=0x2 sflags=0)
+MMAP: pid=225 addr=0x0 len=0x2008b0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=227 addr=0x58004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.832 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=72) errno=49
+2026-10-16 14:29:15.832 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=72) errno=49
+2026-10-16 14:29:15.832 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=72) errno=49
+2026-10-16 14:29:15.832 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=72) errno=49
+2026-10-16 14:29:15.832 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=72) errno=49
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518477] NETDIAG recvmsg-block(pid=216 comm=CJobMgr::m_Wor fd=71 real=1197 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.842 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /bin/sh [sh -c exec steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.843 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.843 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.843 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+2026-10-16 14:29:15.843 iSH ARM64[20206:3518477] NETDIAG connect(pid=216 comm=CJobMgr::m_Wor fd=71) errno=49
+ish: copy-on-write faults so far: 7240 reused, 1670 copied
+MMAP: pid=224 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xe9f50000 len=0x23353e0 prot=0x5 flags=0x812 fd=5
+2026-10-16 14:29:15.849 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /opt/steam-x11/bin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.850 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /opt/steam-x11/bin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.850 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /usr/local/sbin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.851 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /usr/local/bin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.851 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /usr/sbin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.851 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /usr/bin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.851 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /sbin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+2026-10-16 14:29:15.851 iSH ARM64[20206:3518549] EXEC[pid=228 ppid=211]: /bin/steam-runtime-launcher-service [steam-runtime-launcher-service --alongside-steam]
+ish exit: pid 228 tgid 228 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd350
+ish exit:   last syscalls (oldest first): 134(0x3)=0 134(0xf)=0 134(0x3)=0 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 221(0xefe42468)=-2 66(0x2)=4 66(0x2)=6 66(0x2)=8 66(0x2)=41 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish: copy-on-write faults so far: 7339 reused, 1703 copied
+MMAP: pid=225 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xe9f50000 len=0x23353e0 prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xe27e0000 len=0x7636a9a prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0xe97c5000 len=0x5b3000 prot=0x3 flags=0x812 fd=5
+MMAP: pid=225 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xe27e0000 len=0x7636a9a prot=0x5 flags=0x812 fd=5
+MMAP: pid=225 addr=0xe97c5000 len=0x5b3000 prot=0x3 flags=0x812 fd=5
+MMAP: pid=224 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xe2370000 len=0x266c88 prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=224 addr=0xe0950000 len=0x19b1768 prot=0x5 flags=0x812 fd=5
+MMAP: pid=225 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xe2370000 len=0x266c88 prot=0x5 flags=0x812 fd=5
+MMAP: pid=225 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=225 addr=0xe0950000 len=0x19b1768 prot=0x5 flags=0x812 fd=5
+2026-10-16 14:29:15.897 iSH ARM64[20206:3518566] EXEC[pid=229 ppid=216]: /bin/sh [/bin/sh -c /root/.local/share/Steam/steamrtarm64/../steamrtarm64/gldriverquery]
+ish: copy-on-write faults so far: 7501 reused, 1820 copied
+MMAP: pid=230 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+2026-10-16 14:29:15.904 iSH ARM64[20206:3518566] EXEC[pid=229 ppid=216]: /root/.local/share/Steam/steamrtarm64/../steamrtarm64/gldriverquery [/root/.local/share/Steam/steamrtarm64/../steamrtarm64/gldriverquery]
+ish: copy-on-write faults so far: 7561 reused, 1847 copied
+MMAP: pid=229 addr=0x0 len=0x276c88 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=229 addr=0xefae0000 len=0x266c88 prot=0x5 flags=0x812 fd=5
+MMAP: pid=229 addr=0x0 len=0x370258 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=229 addr=0xee6d0000 len=0x360258 prot=0x5 flags=0x812 fd=5
+MMAP: pid=224 addr=0x0 len=0x9fbb70 prot=0x1 flags=0x1 fd=5
+MMAP: pid=225 addr=0x0 len=0x9fbb70 prot=0x1 flags=0x1 fd=5
+2026-10-16 14:29:15.976 iSH ARM64[20206:3518570] EXEC[pid=231 ppid=216]: /bin/sh [/bin/sh -c /root/.local/share/Steam/steamrtarm64/../steamrtarm32/gldriverquery]
+ish: copy-on-write faults so far: 8143 reused, 2007 copied
+2026-10-16 14:29:15.979 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /usr/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.979 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /opt/steam-x11/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.979 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /opt/steam-x11/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /usr/local/sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /usr/local/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /usr/sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /usr/bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /sbin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+2026-10-16 14:29:15.980 iSH ARM64[20206:3518571] EXEC[pid=233 ppid=229]: /bin/dbus-launch [dbus-launch --autolaunch e33c93ee30f2bdd9ba3a459e6ac116f6 --binary-syntax --close-stderr]
+ish exit: pid 233 tgid 233 (gldriverquery) signal 0 code 1 addr 0 pc 0xef8efca0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0xbfca0 lr 0xeefb0f8c /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x40f8c sp 0xffffca90
+ish exit:   last syscalls (oldest first): 57(0xd)=0 57(0x5)=0 57(0x7)=0 24(0x6)=1 24(0x9)=2 436(0x3)=0 135(0x2)=0 221(0xeefb7460)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2 221(0xffffc990)=-2
+ish exit:   frames: /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x329c0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x32804 /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x185dc /opt/steam-host/usr/lib/aarch64-linux-gnu/libdbus-1.so.3.38.3+0x13728 /opt/steam-host/usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0.3200.4+0x1292dc /opt/steam-host/usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0.3200.4+0x129838 /opt/steam-host/usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0.3200.4+0x36fe8 /root/.local/share/Steam/steamrtarm64/gldriverquery+0x1224c /root/.local/share/Steam/steamrtarm64/gldriverquery+0x1240c /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2225c /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2233c /root/.local/share/Steam/steamrtarm64/gldriverquery+0xb8b0
+ish: copy-on-write faults so far: 8145 reused, 2017 copied
+2026-10-16 14:29:15.981 iSH ARM64[20206:3518566] REAP[reaper=229]: pid=233 exit=0x100 comm=gldriverquery
+2026-10-16 14:29:15.983 iSH ARM64[20206:3518572] EXEC[pid=232 ppid=216]: /bin/sh [/bin/sh -c /root/.local/share/Steam/steamrtarm64/../steamrtarm64/vulkandriverquery]
+2026-10-16 14:29:15.983 iSH ARM64[20206:3518570] EXEC[pid=231 ppid=216]: /root/.local/share/Steam/steamrtarm64/../steamrtarm32/gldriverquery [/root/.local/share/Steam/steamrtarm64/../steamrtarm32/gldriverquery]
+ish exit: pid 231 tgid 231 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffcd90
+ish exit:   last syscalls (oldest first): 172(0xffffcf40)=231 222(0)=4024492032 135(0x1)=0 134(0x11)=0 173(0xefe11280)=216 222(0)=4024487936 160(0xffffcd60)=0 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 221(0xefe42118)=-2 66(0x2)=9 66(0x2)=78 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish: copy-on-write faults so far: 8204 reused, 2121 copied
+ish: copy-on-write faults so far: 8204 reused, 2121 copied
+2026-10-16 14:29:15.988 iSH ARM64[20206:3518577] EXEC[pid=234 ppid=216]: /bin/sh [/bin/sh -c /root/.local/share/Steam/steamrtarm64/../steamrtarm32/vulkandriverquery]
+2026-10-16 14:29:15.989 iSH ARM64[20206:3518567] REAP[reaper=230]: pid=231 exit=0x7f00 comm=sh
+ish: copy-on-write faults so far: 8247 reused, 2276 copied
+2026-10-16 14:29:15.991 iSH ARM64[20206:3518572] EXEC[pid=232 ppid=216]: /root/.local/share/Steam/steamrtarm64/../steamrtarm64/vulkandriverquery [/root/.local/share/Steam/steamrtarm64/../steamrtarm64/vulkandriverquery]
+ish: copy-on-write faults so far: 8256 reused, 2303 copied
+2026-10-16 14:29:15.997 iSH ARM64[20206:3518577] EXEC[pid=234 ppid=216]: /root/.local/share/Steam/steamrtarm64/../steamrtarm32/vulkandriverquery [/root/.local/share/Steam/steamrtarm64/../steamrtarm32/vulkandriverquery]
+ish exit: pid 234 tgid 234 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffcd90
+ish exit:   last syscalls (oldest first): 222(0)=4024492032 135(0x1)=0 134(0x11)=0 173(0xefe11280)=216 222(0)=4024487936 160(0xffffcd60)=0 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 221(0xefe42118)=-2 66(0x2)=9 66(0x2)=82 66(0x2)=0 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish: copy-on-write faults so far: 8269 reused, 2303 copied
+2026-10-16 14:29:15.999 iSH ARM64[20206:3518567] REAP[reaper=230]: pid=234 exit=0x7f00 comm=sh
+MMAP: pid=147 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=235 addr=0x60004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=147 addr=0x0 len=0x4000000 prot=0x3 flags=0x22 fd=-1
+MMAP: pid=221 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=236 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=229 addr=0x0 len=0x23453e0 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=229 addr=0xebea0000 len=0x23353e0 prot=0x5 flags=0x812 fd=7
+MMAP: pid=229 addr=0x0 len=0x7646a9a prot=0x0 flags=0x822 fd=-1
+MMAP: pid=229 addr=0xe4730000 len=0x7636a9a prot=0x5 flags=0x812 fd=7
+MMAP: pid=229 addr=0xeb715000 len=0x5b3000 prot=0x3 flags=0x812 fd=7
+MMAP: pid=229 addr=0x0 len=0x19c1768 prot=0x0 flags=0x822 fd=-1
+MMAP: pid=229 addr=0xe2ad0000 len=0x19b1768 prot=0x5 flags=0x812 fd=7
+ish exit: pid 232 tgid 232 (vulkandriverquer) signal 0 code 1 addr 0 pc 0xefdefca0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0xbfca0 lr 0xefd693bc /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x393bc sp 0xffffcf60
+ish exit:   last syscalls (oldest first): 215(0xef580000)=0 215(0xef550000)=0 215(0xef520000)=0 215(0xef4f0000)=0 215(0xef4c0000)=0 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 78(0xffffffffffffff9c)=55 80(0x1)=0 64(0x1)=53 64(0x1)=58 64(0x1)=37
+ish exit:   frames: /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x394e0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x22260 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2233c /root/.local/share/Steam/steamrtarm64/vulkandriverquery+0x3560
+ish: copy-on-write faults so far: 8545 reused, 2303 copied
+2026-10-16 14:29:16.046 iSH ARM64[20206:3518567] REAP[reaper=230]: pid=232 exit=0x100 comm=vulkandriverquer
+MMAP: pid=229 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+2026-10-16 14:29:16.129 iSH ARM64[20206:3518566] 229(gldriverquery) stub syscall 435
+MMAP: pid=229 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=237 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=238 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=229 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=229 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=239 addr=0x8008000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=240 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=229 addr=0x0 len=0x810000 prot=0x0 flags=0x20022 fd=-1
+MMAP: pid=241 addr=0x10004000000 len=0x4000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=241 addr=0x0 len=0x8000000 prot=0x0 flags=0x22 fd=-1
+MMAP: pid=224 addr=0x0 len=0x851505 prot=0x1 flags=0x1 fd=11
+MMAP: pid=225 addr=0x0 len=0x851505 prot=0x1 flags=0x1 fd=11
+2026-10-16 14:29:16.187 iSH ARM64[20206:3518485] NETDIAG recvmsg-block(pid=224 comm=steamwebhelper fd=3 real=999 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:16.188 iSH ARM64[20206:3518490] NETDIAG recvmsg-block(pid=225 comm=steamwebhelper fd=3 real=1007 gflags=0 hflags=0x2 sflags=0)
+2026-10-16 14:29:16.189 iSH ARM64[20206:3518418] 196(steamwebhelper) stub syscall 444
+2026-10-16 14:29:16.195 iSH ARM64[20206:3518418] NETDIAG connect(pid=196 comm=steamwebhelper fd=20) errno=61
+MMAP: pid=196 addr=0x354168bb4000 len=0x1001000 prot=0x0 flags=0x22 fd=-1
+SIGNAL_TRACE: sig=5 pc=0x80077562f8 pid=196 sp=0xffffc050 lr=0x80077561c8 fault=0x0
+ish crash: pid 196 tgid 196 (steamwebhelper) signal 5 code 128 addr 0 pc 0x80077562f8 /root/.local/share/Steam/steamrtarm64/libcef.so+0x77492f8 lr 0x80077561c8 /root/.local/share/Steam/steamrtarm64/libcef.so+0x77491c8 sp 0xffffc050
+ish crash:   last syscalls (oldest first): 113(0x1)=0 48(0xffffffffffffff9c)=-2 113(0x1)=0 48(0xffffffffffffff9c)=-2 113(0x1)=0 48(0xffffffffffffff9c)=-2 113(0x1)=0 48(0xffffffffffffff9c)=0 113(0x1)=0 56(0xffffffffffffff9c)=23 113(0x1)=0 80(0x17)=0 222(0)=-12 113(0x1)=0 57(0x17)=0 113(0x1)=0
+V8_SIGTRAP: pc=0x80077562f8 x0=0x0 sp=ffffc050 fp=ffffc1b0 lr=80077561c8
+2026-10-16 14:29:16.281 iSH ARM64[20206:3518479] 218(CSteamControll) stub syscall 264
+App terminated due to signal 11.

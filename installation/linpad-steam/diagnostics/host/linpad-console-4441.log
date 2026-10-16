@@ -1,0 +1,392 @@
+Launched application with com.konradkern.linpad bundle identifier.
+Waiting for the application to terminate…
+2026-10-16 15:58:26.701 iSH ARM64[20389:3765921] [boot] case_sensitive_container=yes
+2026-10-16 15:58:26.701 iSH ARM64[20389:3765963] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x10a5a6550 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 15:58:26.701 iSH ARM64[20389:3765963] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x10a5a5b00 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-16 15:58:26.943 iSH ARM64[20389:3765921] [fast mode] opening stikdebug://enable-jit?bundle-id=com.konradkern.linpad&pid=20389&script-name=universal.js
+sandbox_extension_issue_file failed for : 2 (No such file or directory)
+ish: native JIT on: txm (StikDebug universal.js), 256 MB code arena at 0x119154000
+2026-10-16 15:58:50.364 iSH ARM64[20389:3765921] [boot] fast_mode=on
+2026-10-16 15:58:50.937 iSH ARM64[20389:3765921] [RootfsPatch] bundle not found in app, skipping overlay
+2026-10-16 15:58:50.938 iSH ARM64[20389:3765921] [boot] boot_seconds=0.57
+ish exit: pid 25 tgid 25 (pactl) signal 0 code 1 addr 0 pc 0xeff2a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xeff1d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffd810
+ish exit:   last syscalls (oldest first): 203(0x7)=-111 57(0x7)=0 66(0x2)=39 64(0x4)=1 66(0x2)=48 215(0xef94d000)=0 215(0xeb948000)=0 215(0xeb94d000)=0 134(0xf)=0 134(0x2)=0 64(0x4)=1 57(0x5)=0 57(0x6)=0 57(0x3)=0 57(0x4)=0 215(0xef94e000)=0
+ish exit:   frames: /lib/ld-musl-aarch64.so.1+0x1fdfc ?
+2026-10-16 15:58:51.176 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 15:58:51.176 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 15:58:51.176 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+ish exit: pid 48 tgid 48 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=48 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+2026-10-16 15:58:51.196 iSH ARM64[20389:3765921] CoreText note: Client requested name ".SFCompact", it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or +[UIFont systemFontOfSize:].
+2026-10-16 15:58:51.196 iSH ARM64[20389:3765921] CoreText note: Set a breakpoint on CTFontLogSystemFontNameRequest to debug.
+ish exit: pid 50 tgid 50 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=50 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 51 tgid 51 (grep) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbd0
+ish exit:   last syscalls (oldest first): 96(0xeff0ce88)=51 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeba)=0 56(0xffffffffffffff9c)=3 222(0)=4026499072 63(0x3)=603 222(0)=4026494976 222(0)=4026478592 215(0xefff3000)=0 63(0x3)=0 57(0x3)=0 215(0xefff8000)=0
+ish exit:   frames: /bin/busybox+0x8574 ?
+2026-10-16 15:58:51.213 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 15:58:51.214 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 15:58:51.214 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+sandbox_extension_issue_file failed for /var/containers/Bundle/Application/02B5C140-5DB8-4ED0-AA51-D74B56376DD9/iSH ARM64.app: 1 (Operation not permitted)
+ish exit: pid 92 tgid 92 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=92 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 94 tgid 94 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=94 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 127 tgid 127 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd460
+ish exit:   last syscalls (oldest first): 222(0)=4024422400 160(0xffffd430)=0 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=9 66(0x2)=16 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 145 tgid 145 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=145 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 146 tgid 146 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=146 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 160 tgid 160 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=160 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 161 tgid 161 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=161 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 516 tgid 516 (ishwl-x11-wm) signal 0 code 1 addr 0 pc 0xeff3a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xeff2d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffda60
+ish exit:   last syscalls (oldest first): 198(0xa)=3 203(0x3)=0 204(0x3)=0 57(0x3)=0 198(0xa)=3 208(0x3)=0 208(0x3)=0 203(0x3)=-111 57(0x3)=0 198(0x2)=3 208(0x3)=0 208(0x3)=0 203(0x3)=-111 57(0x3)=0 215(0xefd15000)=0 66(0x2)=34
+ish exit:   frames: /lib/ld-musl-aarch64.so.1+0x1fdfc ?
+ish exit: pid 539 tgid 539 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=539 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 540 tgid 540 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=540 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 547 tgid 547 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=547 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 548 tgid 548 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=548 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 566 tgid 566 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd2e0
+ish exit:   last syscalls (oldest first): 134(0x2)=0 134(0x3)=0 134(0xf)=0 222(0)=4024487936 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=16 66(0x2)=1 215(0xefe0d000)=0
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 577 tgid 577 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd2e0
+ish exit:   last syscalls (oldest first): 134(0x2)=0 134(0x3)=0 134(0xf)=0 222(0)=4024487936 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=16 66(0x2)=1 215(0xefe0d000)=0
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 621 tgid 621 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffcd50
+ish exit:   last syscalls (oldest first): 172(0xffffcf00)=621 222(0)=4024492032 135(0x1)=0 134(0x11)=0 173(0xefe11280)=514 222(0)=4024487936 160(0xffffcd20)=0 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 221(0xefe42118)=-2 66(0x2)=9 66(0x2)=78 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 622 tgid 622 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd310
+ish exit:   last syscalls (oldest first): 134(0x3)=0 134(0xf)=0 134(0x3)=0 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 221(0xefe42470)=-2 66(0x2)=4 66(0x2)=6 66(0x2)=8 66(0x2)=41 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 627 tgid 627 (vulkandriverquer) signal 0 code 1 addr 0 pc 0xefdefca0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0xbfca0 lr 0xefd693bc /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x393bc sp 0xffffcf10
+ish exit:   last syscalls (oldest first): 215(0xef580000)=0 215(0xef550000)=0 215(0xef520000)=0 215(0xef4f0000)=0 215(0xef4c0000)=0 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 56(0xffffffffffffff9c)=-2 78(0xffffffffffffff9c)=55 80(0x1)=0 64(0x1)=53 64(0x1)=58 64(0x1)=37
+ish exit:   frames: /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x394e0 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x22260 /opt/steam-host/usr/lib/aarch64-linux-gnu/libc.so.6+0x2233c /root/.local/share/Steam/steamrtarm64/vulkandriverquery+0x3560
+ish exit: pid 650 tgid 650 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffcd50
+ish exit:   last syscalls (oldest first): 222(0)=4024492032 135(0x1)=0 134(0x11)=0 173(0xefe11280)=514 222(0)=4024487936 160(0xffffcd20)=0 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 221(0xefe42118)=-2 66(0x2)=9 66(0x2)=82 66(0x2)=0 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 696 tgid 696 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=696 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 697 tgid 697 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=697 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 763 tgid 763 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=763 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 764 tgid 764 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=764 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 775 tgid 775 (false) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffd930
+ish exit:   last syscalls (oldest first): 135(0x2)=0 56(0xffffffffffffff9c)=13 25(0xd)=0 63(0xd)=1 57(0xd)=0 134(0xd)=0 57(0x10)=0 261(0)=0 221(0xefe56950)=0 96(0xeff0ce88)=775 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdc9b)=0
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 821 tgid 821 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=821 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 822 tgid 822 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=822 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 847 tgid 847 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=847 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 848 tgid 848 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=848 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 897 tgid 897 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=897 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 898 tgid 898 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=898 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 944 tgid 944 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=944 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 945 tgid 945 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=945 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 970 tgid 970 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=970 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 971 tgid 971 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=971 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1019 tgid 1019 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1019 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1020 tgid 1020 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1020 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1067 tgid 1067 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1067 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1068 tgid 1068 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1068 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1093 tgid 1093 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1093 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1094 tgid 1094 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1094 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1118 tgid 1118 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1118 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1119 tgid 1119 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1119 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+2026-10-16 16:01:14.202 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.202 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.203 iSH ARM64[20389:3765921] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.205 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.206 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.206 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.353 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.354 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-16 16:01:14.354 iSH ARM64[20389:3765921] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+ish exit: pid 1149 tgid 1149 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1149 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1150 tgid 1150 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1150 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1184 tgid 1184 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1184 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1185 tgid 1185 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1185 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1209 tgid 1209 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1209 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1210 tgid 1210 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1210 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1235 tgid 1235 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1235 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1236 tgid 1236 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1236 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1264 tgid 1264 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1264 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1265 tgid 1265 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1265 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1289 tgid 1289 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1289 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1290 tgid 1290 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1290 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1315 tgid 1315 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1315 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1316 tgid 1316 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1316 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1340 tgid 1340 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1340 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1341 tgid 1341 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1341 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1370 tgid 1370 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1370 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1371 tgid 1371 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1371 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1396 tgid 1396 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1396 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1397 tgid 1397 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1397 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1421 tgid 1421 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1421 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1422 tgid 1422 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1422 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1450 tgid 1450 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1450 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1451 tgid 1451 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1451 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1476 tgid 1476 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1476 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1477 tgid 1477 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1477 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1501 tgid 1501 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1501 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1502 tgid 1502 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1502 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1526 tgid 1526 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1526 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1527 tgid 1527 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1527 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1557 tgid 1557 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1557 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1558 tgid 1558 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1558 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1582 tgid 1582 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1582 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1583 tgid 1583 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1583 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1607 tgid 1607 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1607 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1608 tgid 1608 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1608 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1635 tgid 1635 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1635 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1636 tgid 1636 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1636 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1662 tgid 1662 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1662 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1663 tgid 1663 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1663 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1688 tgid 1688 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1688 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1689 tgid 1689 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1689 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1714 tgid 1714 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1714 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1715 tgid 1715 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1715 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1743 tgid 1743 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1743 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1744 tgid 1744 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1744 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1768 tgid 1768 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1768 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1769 tgid 1769 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1769 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1794 tgid 1794 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1794 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1795 tgid 1795 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1795 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1823 tgid 1823 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1823 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1824 tgid 1824 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1824 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1849 tgid 1849 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1849 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1850 tgid 1850 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1850 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1875 tgid 1875 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1875 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1876 tgid 1876 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1876 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1902 tgid 1902 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1902 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1903 tgid 1903 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1903 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1908 tgid 1908 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd320
+ish exit:   last syscalls (oldest first): 79(0xffffffffffffff9c)=0 79(0xffffffffffffff9c)=0 134(0x2)=0 134(0x3)=0 134(0xf)=0 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=23 66(0x2)=1
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 1917 tgid 1917 (sh) signal 0 code 127 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefeb2b80 /lib/ld-musl-aarch64.so.1+0x68b80 sp 0xffffd2d0
+ish exit:   last syscalls (oldest first): 134(0x2)=0 134(0x3)=0 134(0xf)=0 222(0)=4024487936 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 79(0xffffffffffffff9c)=-2 66(0x2)=4 66(0x2)=16 66(0x2)=1 215(0xefe0d000)=0
+ish exit:   frames: /bin/busybox+0x4f69c ?
+ish exit: pid 1942 tgid 1942 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1942 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1943 tgid 1943 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1943 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1968 tgid 1968 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=1968 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 1969 tgid 1969 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=1969 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2014 tgid 2014 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2014 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2016 tgid 2016 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2016 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2049 tgid 2049 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2049 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2050 tgid 2050 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2050 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2104 tgid 2104 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2104 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2105 tgid 2105 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2105 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2129 tgid 2129 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2129 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2130 tgid 2130 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2130 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2170 tgid 2170 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2170 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2171 tgid 2171 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2171 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2207 tgid 2207 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdbb0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff8778)=0 96(0xeff0ce88)=2207 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdeb9)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?
+ish exit: pid 2208 tgid 2208 (stat) signal 0 code 1 addr 0 pc 0xefe6a464 /lib/ld-musl-aarch64.so.1+0x20464 lr 0xefe5d68c /lib/ld-musl-aarch64.so.1+0x1368c sp 0xffffdba0
+ish exit:   last syscalls (oldest first): 135(0x2)=0 134(0x3)=0 221(0xefff85b8)=0 96(0xeff0ce88)=2208 214(0)=4026523648 214(0xf0000000)=4026531840 222(0xefffe000)=4026523648 226(0xeff09000)=0 226(0xefff9000)=0 174(0xffffdebc)=0 79(0xffffffffffffff9c)=-2 64(0x2)=53 79(0xffffffffffffff9c)=-2 64(0x2)=51 79(0xffffffffffffff9c)=-2 64(0x2)=48
+ish exit:   frames: /bin/busybox+0x8574 ?

@@ -1,0 +1,67 @@
+ninja: Entering directory `/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli'
+[1/5] Compiling C object libish.a.p/fs_proc_root.c.o
+[2/5] Compiling C object libish.a.p/fs_proc.c.o
+[3/5] Compiling C object libish.a.p/fs_sock.c.o
+../LinPad/fs/sock.c:1787:86: warning: unused parameter 'timeout_addr' [-Wunused-parameter]
+ 1787 | int_t sys_recvmmsg(fd_t sock_fd, addr_t msg_vec, uint_t vec_len, int_t flags, addr_t timeout_addr) {
+      |                                                                                      ^
+../LinPad/fs/sock.c:2078:6: warning: cast from 'int_t (*)(dword_t, dword_t, dword_t)' (aka 'int (*)(unsigned int, unsigned int, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2078 |     {(syscall_t) sys_socket, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2079:6: warning: cast from 'int_t (*)(fd_t, addr_t, uint_t)' (aka 'int (*)(int, unsigned long long, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2079 |     {(syscall_t) sys_bind, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2080:6: warning: cast from 'int_t (*)(fd_t, addr_t, uint_t)' (aka 'int (*)(int, unsigned long long, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2080 |     {(syscall_t) sys_connect, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2081:6: warning: cast from 'int_t (*)(fd_t, int_t)' (aka 'int (*)(int, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2081 |     {(syscall_t) sys_listen, 2},
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2082:6: warning: cast from 'int_t (*)(fd_t, addr_t, addr_t)' (aka 'int (*)(int, unsigned long long, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2082 |     {(syscall_t) sys_accept, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2083:6: warning: cast from 'int_t (*)(fd_t, addr_t, addr_t)' (aka 'int (*)(int, unsigned long long, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2083 |     {(syscall_t) sys_getsockname, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2084:6: warning: cast from 'int_t (*)(fd_t, addr_t, addr_t)' (aka 'int (*)(int, unsigned long long, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2084 |     {(syscall_t) sys_getpeername, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2085:6: warning: cast from 'int_t (*)(dword_t, dword_t, dword_t, addr_t)' (aka 'int (*)(unsigned int, unsigned int, unsigned int, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2085 |     {(syscall_t) sys_socketpair, 4},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2086:6: warning: cast from 'int_t (*)(fd_t, addr_t, dword_t, int_t)' (aka 'int (*)(int, unsigned long long, unsigned int, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2086 |     {(syscall_t) sys_send, 4}, // send
+      |      ^~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2087:6: warning: cast from 'int_t (*)(fd_t, addr_t, dword_t, int_t)' (aka 'int (*)(int, unsigned long long, unsigned int, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2087 |     {(syscall_t) sys_recv, 4}, // recv
+      |      ^~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2088:6: warning: cast from 'int_t (*)(fd_t, addr_t, dword_t, dword_t, addr_t, dword_t)' (aka 'int (*)(int, unsigned long long, unsigned int, unsigned int, unsigned long long, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2088 |     {(syscall_t) sys_sendto, 6},
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2089:6: warning: cast from 'int_t (*)(fd_t, addr_t, dword_t, dword_t, addr_t, addr_t)' (aka 'int (*)(int, unsigned long long, unsigned int, unsigned int, unsigned long long, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2089 |     {(syscall_t) sys_recvfrom, 6},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2090:6: warning: cast from 'int_t (*)(fd_t, dword_t)' (aka 'int (*)(int, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2090 |     {(syscall_t) sys_shutdown, 2},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2091:6: warning: cast from 'int_t (*)(fd_t, dword_t, dword_t, addr_t, dword_t)' (aka 'int (*)(int, unsigned int, unsigned int, unsigned long long, unsigned int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2091 |     {(syscall_t) sys_setsockopt, 5},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2092:6: warning: cast from 'int_t (*)(fd_t, dword_t, dword_t, addr_t, addr_t)' (aka 'int (*)(int, unsigned int, unsigned int, unsigned long long, unsigned long long)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2092 |     {(syscall_t) sys_getsockopt, 5},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2093:6: warning: cast from 'int_t (*)(fd_t, addr_t, int_t)' (aka 'int (*)(int, unsigned long long, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2093 |     {(syscall_t) sys_sendmsg, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2094:6: warning: cast from 'int_t (*)(fd_t, addr_t, int_t)' (aka 'int (*)(int, unsigned long long, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2094 |     {(syscall_t) sys_recvmsg, 3},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+../LinPad/fs/sock.c:2097:6: warning: cast from 'int_t (*)(fd_t, addr_t, uint_t, int_t)' (aka 'int (*)(int, unsigned long long, unsigned int, int)') to 'syscall_t' (aka 'long long (*)(unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long)') converts to incompatible function type [-Wcast-function-type-mismatch]
+ 2097 |     {(syscall_t) sys_sendmmsg, 4},
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~
+19 warnings generated.
+[4/5] Linking static target libish.a
+[5/5] Linking target ish
+ld: warning: ignoring duplicate libraries: '-lsqlite3'
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli

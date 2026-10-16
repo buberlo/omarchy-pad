@@ -1,0 +1,45 @@
+ninja: Entering directory `work/linpad-cli'
+[0/1] Regenerating build files
+Cleaning... 0 files.
+The Meson build system
+Version: 1.12.1
+Source dir: /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad
+Build dir: /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli
+Build type: native build
+Project name: ish
+Project version: undefined
+C compiler for the host machine: /usr/bin/clang (clang 21.0.0 "Apple clang version 21.0.0 (clang-2100.3.34.2)")
+C linker for the host machine: /usr/bin/clang ld64 27037.1
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Dependency threads for host machine found: YES unknown (cached)
+Library rt found: NO
+Library m found: YES
+Library dl found: YES
+Library sqlite3 found: YES
+Dependency virglrenderer for host machine skipped: feature virtgpu disabled
+Program clang found: YES (/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/compiler-bin/clang)
+Program ./check-cc-arm64.sh found: YES (/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/vdso/arm64/./check-cc-arm64.sh)
+Program tools/staticdefine.sh found: YES (/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/tools/staticdefine.sh)
+Library unicorn found: NO
+Found pkg-config: YES (/opt/homebrew/bin/pkg-config) 3.0.7
+Found CMake: /opt/homebrew/bin/cmake (4.4.4)
+Run-time dependency libarchive found: NO  (tried pkg-config and framework)
+Library archive found: NO
+Library archive found: NO
+Program tests/e2e/e2e.bash found: YES (/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/tests/e2e/e2e.bash)
+Build targets in project: 8
+
+ish undefined
+
+  User defined options
+    buildtype : debugoptimized
+    guest_arch: arm64
+    jit       : enabled
+    log       : strace
+
+Found ninja-1.13.2 at /opt/homebrew/bin/ninja
+[1/4] Compiling C object libish_emu.a.p/jit_jit.c.o
+[2/4] Linking static target libish_emu.a
+[3/4] Linking target ish
+ld: warning: ignoring duplicate libraries: '-lsqlite3'

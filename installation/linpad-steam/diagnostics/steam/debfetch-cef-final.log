@@ -1,0 +1,13 @@
+resolved 78 packages
+file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/devtools/debfetch.mjs:54
+            if (attempt >= 4) throw new Error(`${url}: ${err.message}`);
+                                    ^
+
+Error: https://deb.debian.org/debian/pool/main/libx/libxtst/libxtst6_1.2.5-1_arm64.deb: fetch failed
+    at fetchBuffer (file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/devtools/debfetch.mjs:54:37)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async worker (file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/devtools/debfetch.mjs:157:19)
+    at async Promise.all (index 1)
+    at async file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/LinPad/devtools/debfetch.mjs:165:1
+
+Node.js v24.21.0

@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+export PATH="/opt/steam-x11/bin:$PATH"
+BASE="$HOME/.local/share/Steam"
+LIBS=/opt/steam-host/usr/lib/aarch64-linux-gnu
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+unset LD_PRELOAD MESA_LOADER_DRIVER_OVERRIDE
+export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe
+if [ "${1:-}" = --inner ]; then
+ shift
+ export LD_LIBRARY_PATH="$LIBS:$LIBS/pulseaudio:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+ export STEAM_RUNTIME=0
+ export MESA_LOADER_DRIVER_OVERRIDE=swrast
+ export LIBGL_DRIVERS_PATH="$LIBS/dri"
+ export __GLX_VENDOR_LIBRARY_NAME=mesa
+ export __EGL_VENDOR_LIBRARY_FILENAMES=/opt/steam-host/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ cd "$BASE"
+ exec "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+fi
+export ISHWL_APP=Steam
+exec ishwl-x11 -g 1024x700 "$0" --inner "$@"

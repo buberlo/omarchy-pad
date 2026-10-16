@@ -1,0 +1,7 @@
+ninja: Entering directory `/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli'
+[1/3] Compiling C object libish.a.p/fs_proc.c.o
+[2/3] Linking static target libish.a
+[3/3] Linking target ish
+ld: warning: ignoring duplicate libraries: '-lsqlite3'
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /opt/homebrew/bin/ninja -C /Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli

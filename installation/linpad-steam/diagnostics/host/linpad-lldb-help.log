@@ -1,0 +1,43 @@
+(lldb) help device process attach
+Attach to a process on a device.
+
+Syntax: device process attach <cmd-options>
+
+Command Options Usage:
+  device process attach [-c] [-p <pid>] [-P <plugin>]
+  device process attach [-ciw] [-n <process-name>] [-P <plugin>]
+
+       -P <plugin> ( --plugin <plugin> )
+            Name of the process plugin you want to use.
+
+       -c ( --continue )
+            Immediately continue the process once attached.
+
+       -i ( --include-existing )
+            Include existing processes when doing attach -w.
+
+       -n <process-name> ( --name <process-name> )
+            The name of the process to attach to.
+
+       -p <pid> ( --pid <pid> )
+            The process ID of an existing process to attach to.
+
+       -w ( --waitfor )
+            Wait for the process with <process-name> to launch.
+(lldb) help device process launch
+'device process launch' is not a known command.
+Try 'help' to see a current list of commands.
+Try 'apropos launch' for a list of related commands.
+Try 'type lookup launch' for information on types, methods, functions, modules, etc.
+The closest match is 'device process'. Help on it follows.
+
+Commands to query and attach to processes on a device.
+
+Syntax: device process [attach|list] ...
+
+The following subcommands are supported:
+
+      attach -- Attach to a process on a device.
+      list   -- List processes on the given device.
+
+For more help on any particular subcommand, type 'help <command> <subcommand>'.

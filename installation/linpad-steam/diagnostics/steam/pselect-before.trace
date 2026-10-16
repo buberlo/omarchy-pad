@@ -1,0 +1,27 @@
+ish: copy-on-write faults so far: 0 reused, 0 copied
+1 call 96  getpid() = 0x1
+1 call 59  pipe2(0xffffdca8, 0) [3 4] = 0x0
+1 call 72   = 0xfffffff2
+1 call 29  ioctl(1, 0x5413, 0xffffb9e8) = 0xffffffe7
+1 call 66  writev(1, 0xffffb970, 2) {"pselect6 empty mask=null result=-1 errno=14", 43} {"
+pselect6 empty mask=null result=-1 errno=14
+", 1} = 0x2c
+1 call 64  (fast) = 0x1
+1 call 72   = 0xfffffff2
+1 call 63  (fast) = 0x1
+1 call 72  pselect(4, 0xffffdc10, 0x0, 0x0, 0x6f682360 {0s 0ns}) 3{r} ...
+1 end pselect  = 0x0
+1 call 64  (fast) = 0x1
+1 call 72  pselect(4, 0xffffdc10, 0x0, 0x0, 0x6f682360 {0s 0ns}) 3{r} ...
+1 end pselect 3{r}  = 0x1
+1 call 63  (fast) = 0x1
+1 call 57  close(3) = 0x0
+1 call 57  close(4) = 0x0
+1 call 66  writev(1, 0xffffdc30, 2) {"pselect6 ready mask=null result=-1 errno=14
+pselect6 empty mask=packed-null result=0 errno=0
+pselect6 ready mask=null result=-1 errno=14
+pselect6 empty mask=packed-null result=0 errno=0
+pselect6 ready mask=packed-null result=1 errno=0
+pselect", 142} {"", 0} = 0x8e
+1 call 94  exit_group(2)
+ish: copy-on-write faults so far: 0 reused, 0 copied

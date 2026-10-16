@@ -1,0 +1,11 @@
+eventfd semaphore create: fd=3 errno=0
+EVENTFD_SEMAPHORE_AND_COUNTER_OK
+EVENTFD_EXIT=0
+MIDR_EL1 read succeeded: 0xf0000
+pipe-relative: result=-1 errno=20 expected=20 PASS
+file-relative: result=-1 errno=20 expected=20 PASS
+directory-relative: result=0 errno=0 expected=0 PASS
+absolute-ignores-pipe: result=0 errno=0 expected=0 PASS
+empty-path: result=-1 errno=2 expected=2 PASS
+FEX_X86_64_OK
+FEX_HELLO_EXIT=0

@@ -1,0 +1,2076 @@
+ish: copy-on-write faults so far: 0 reused, 0 copied
+1 call 214 brk(0x0) = 0xefffe000
+1 call 56  openat(-100, "/opt/glibc/pthread-glibc-probe", 0x80000, 0x0) = 0x3
+1 call 63  (fast) = 0x340
+1 call 222 mmap64(0x1000000, 0x1000, 0x1, 0x812, 3, 0x0) = 0x1000000
+1 call 222 mmap64(0x1010000, 0x1000, 0x5, 0x812, 3, 0x0) = 0x1010000
+1 call 222 mmap64(0x1020000, 0x1000, 0x3, 0x812, 3, 0x0) = 0x1020000
+1 call 57  close(3) = 0x0
+1 call 222 mmap64(0x0, 0x2000, 0x3, 0x22, -1, 0x0) = 0xeffb3000
+1 call 48  faccessat(-100, "/etc/ld.so.preload", 0x4, 256152) = 0xfffffffe
+1 call 56  openat(-100, "/opt/glibc/libc.so.6", 0x80000, 0x0) = 0x3
+1 call 63  (fast) = 0x340
+1 call 80  (fast) = 0x0
+1 call 222 mmap64(0x0, 0x1ce010, 0x0, 0x822, -1, 0x0) = 0xefde4000
+1 call 222 mmap64(0xefdf0000, 0x1be010, 0x5, 0x812, 3, 0x0) = 0xefdf0000
+1 call 215 munmap(0xefde4000, 0xc000) = 0x0
+1 call 215 munmap(0xeffaf000, 0x3010) = 0x0
+1 call 226 mprotect(0xeff8c000, 0x11000, 0x0) = 0x0
+1 call 222 mmap64(0xeff9d000, 0x5000, 0x3, 0x812, 3, 0x19d000) = 0xeff9d000
+1 call 222 mmap64(0xeffa2000, 0xc010, 0x3, 0x32, -1, 0x0) = 0xeffa2000
+1 call 57  close(3) = 0x0
+1 call 56  openat(-100, "/opt/glibc/libpthread.so.0", 0x80000, 0x0) = 0x3
+1 call 63  (fast) = 0x340
+1 call 80  (fast) = 0x0
+1 call 222 mmap64(0x0, 0x30010, 0x0, 0x822, -1, 0x0) = 0xefdbf000
+1 call 222 mmap64(0xefdc0000, 0x20010, 0x5, 0x812, 3, 0x0) = 0xefdc0000
+1 call 215 munmap(0xefdbf000, 0x1000) = 0x0
+1 call 215 munmap(0xefde1000, 0xe010) = 0x0
+1 call 226 mprotect(0xefdc1000, 0x1e000, 0x0) = 0x0
+1 call 222 mmap64(0xefddf000, 0x2000, 0x3, 0x812, 3, 0xf000) = 0xefddf000
+1 call 57  close(3) = 0x0
+1 call 222 mmap64(0x0, 0x2000, 0x3, 0x22, -1, 0x0) = 0xefdee000
+1 call 96  getpid() = 0x1
+1 call 99  set_robust_list(0xefdee100, 24) = 0x0
+1 call 293  = 0xffffffda
+1 call 226 mprotect(0xeff9d000, 0x3000, 0x1) = 0x0
+1 call 226 mprotect(0xefddf000, 0x1000, 0x1) = 0x0
+1 call 226 mprotect(0x1020000, 0x1000, 0x1) = 0x0
+1 call 226 mprotect(0xefffa000, 0x2000, 0x1) = 0x0
+1 call 261 prlimit64(0, 3) old={cur=0x8000000, max=0xffffffff} = 0x0
+create round=0 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 134 rt_sigaction(33, 0xffffd788 {handler=0xefe73680, flags=0x18000004, restorer=0, mask=0}, 0x0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x180000000, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x8000000000
+1 call 226 mprotect(0x8000010000, 0x8000000, 0x3) = 0x0
+1 call 278  = 0x8
+1 call 214 brk(0x0) = 0xefffe000
+1 call 214 brk(0xf001f000) = 0xf001f000
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1(ld-linux-aarch64) stub syscall 435
+1 call 435  = 0xffffffda
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+2 call 99  set_robust_list(0x800f260, 24) = 0x0
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x10000000000
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x10000010000, 0x8000000, 0x3) = 0x0
+2 call 233 madvise(0x8000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+2 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x3
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+3 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+3 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+3 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+3 call 233 madvise(0x10000000000, 0x7fee000, 4) = 0x0
+3 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x4
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=3 stack=8388608
+1 call 64  (fast) = 0x26
+4 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+4 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+4 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+4 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+4 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x5
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+5 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x18000000000
+5 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0x18000010000, 0x8000000, 0x3) = 0x0
+5 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+5 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+5 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x6
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+6 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x20000000000
+6 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0x20000010000, 0x8000000, 0x3) = 0x0
+6 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+6 call 233 madvise(0x18000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+6 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x7
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+7 call 99  set_robust_list(0x800f260, 24) = 0x0
+7 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+7 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+7 call 233 madvise(0x20000000000, 0x7fee000, 4) = 0x0
+7 call 93  exit(0)
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x8
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+8 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+8 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+8 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x9
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+9 call 99  set_robust_list(0xef38f260, 24) = 0x0
+8 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+8 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x28000000000
+1 call 226 mprotect(0x28000010000, 0x8000000, 0x3) = 0x0
+9 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+9 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+9 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+9 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0xa
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+10 call 99  set_robust_list(0x800f260, 24) = 0x0
+10 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+10 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x30000000000
+10 call 233 madvise(0x28000000000, 0x7fee000, 4) = 0x0
+10 call 93  exit(0)
+1 call 226 mprotect(0x30000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0xb
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+11 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+11 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+11 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+11 call 233 madvise(0x30000000000, 0x7fee000, 4) = 0x0
+11 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0xc
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+12 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+12 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+12 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+12 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+12 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0xd
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+13 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+13 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+13 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x38000000000
+13 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+13 call 93  exit(0)
+1 call 226 mprotect(0x38000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0xe
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+14 call 99  set_robust_list(0x800f260, 24) = 0x0
+14 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+14 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x40000000000
+14 call 233 madvise(0x38000000000, 0x7fee000, 4) = 0x0
+14 call 93  exit(0)
+1 call 226 mprotect(0x40000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0xf
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+15 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xee150000
+1 call 226 mprotect(0xee160000, 0x100000, 0x3) = 0x0
+15 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+15 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+15 call 233 madvise(0x40000000000, 0x7fee000, 4) = 0x0
+15 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x10
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=0 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+16 call 99  set_robust_list(0xee25f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xed940000
+1 call 226 mprotect(0xed950000, 0x800000, 0x3) = 0x0
+16 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+16 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+16 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+16 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x11
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+17 call 99  set_robust_list(0xee14f260, 24) = 0x0
+17 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+17 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 215 munmap(0x8000000000, 0x8010000) = 0x0
+17 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+17 call 93  exit(0)
+1 call 215 munmap(0x10000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x18000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x20000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x28000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x30000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xeea70000, 0x110000) = 0x0
+1 call 215 munmap(0xee260000, 0x810000) = 0x0
+1 call 215 munmap(0x38000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x40000000000, 0x8010000) = 0x0
+create round=1 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x48000000000
+1 call 226 mprotect(0x48000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x12
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+18 call 99  set_robust_list(0x800f260, 24) = 0x0
+18 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x50000000000
+18 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x50000010000, 0x8000000, 0x3) = 0x0
+18 call 233 madvise(0x48000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+18 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x13
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+19 call 99  set_robust_list(0x800f260, 24) = 0x0
+19 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x14
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+19 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+create round=1 thread=3 stack=8388608
+1 call 64  (fast) = 0x26
+20 call 99  set_robust_list(0xee25f260, 24) = 0x0
+19 call 233 madvise(0x50000000000, 0x7fee000, 4) = 0x0
+20 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+19 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+20 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x15
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+20 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+create round=1 thread=4 stack=134217728
+20 call 93  exit(0)
+1 call 64  (fast) = 0x28
+21 call 99  set_robust_list(0xee14f260, 24) = 0x0
+21 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x58000000000
+21 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x58000010000, 0x8000000, 0x3) = 0x0
+21 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+21 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x16
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+22 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x60000000000
+22 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0x60000010000, 0x8000000, 0x3) = 0x0
+22 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+22 call 233 madvise(0x58000000000, 0x7fee000, 4) = 0x0
+22 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x17
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+23 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+23 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+23 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x18
+23 call 233 madvise(0x60000000000, 0x7fee000, 4) = 0x0
+23 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+24 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+24 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+24 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+24 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+24 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x19
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+25 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x68000000000
+1 call 226 mprotect(0x68000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+25 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+25 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x1a
+26 call 99  set_robust_list(0x800f260, 24) = 0x0
+26 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+26 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+26 call 233 madvise(0x68000000000, 0x7fee000, 4) = 0x0
+25 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+25 call 93  exit(0)
+26 call 93  exit(0)
+create round=1 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x70000000000
+1 call 226 mprotect(0x70000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x1b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+27 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+27 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+27 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+27 call 233 madvise(0x70000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+27 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x1c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+28 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+28 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+28 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+28 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+28 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x1d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+29 call 99  set_robust_list(0xef38f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x78000000000
+1 call 226 mprotect(0x78000010000, 0x8000000, 0x3) = 0x0
+29 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+29 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+29 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+29 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x1e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+30 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x80000000000
+1 call 226 mprotect(0x80000010000, 0x8000000, 0x3) = 0x0
+30 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+30 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+30 call 233 madvise(0x78000000000, 0x7fee000, 4) = 0x0
+30 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x1f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x20
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=1 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+31 call 99  set_robust_list(0x800f260, 24) = 0x0
+32 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+31 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+32 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+32 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+32 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+31 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+32 call 93  exit(0)
+31 call 233 madvise(0x80000000000, 0x7fee000, 4) = 0x0
+31 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x21
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+33 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 215 munmap(0x48000000000, 0x8010000) = 0x0
+33 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+33 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+33 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x50000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xee150000, 0x110000) = 0x0
+1 call 215 munmap(0xed940000, 0x810000) = 0x0
+33 call 93  exit(0)
+1 call 215 munmap(0x58000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x60000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x68000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x70000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x78000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x80000000000, 0x8010000) = 0x0
+create round=2 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x88000000000
+1 call 226 mprotect(0x88000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x22
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=1 stack=134217728
+34 call 99  set_robust_list(0x800f260, 24) = 0x0
+34 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x90000000000
+1 call 226 mprotect(0x90000010000, 0x8000000, 0x3) = 0x0
+34 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+34 call 233 madvise(0x88000000000, 0x7fee000, 4) = 0x0
+34 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x23
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x24
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=3 stack=8388608
+35 call 99  set_robust_list(0x800f260, 24) = 0x0
+35 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+35 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+36 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+35 call 233 madvise(0x90000000000, 0x7fee000, 4) = 0x0
+36 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+36 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+35 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+36 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+36 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x25
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+37 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+create round=2 thread=4 stack=134217728
+37 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 64  (fast) = 0x28
+37 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+37 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+37 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x98000000000
+1 call 226 mprotect(0x98000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x26
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+38 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xa0000000000
+38 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xa0000010000, 0x8000000, 0x3) = 0x0
+38 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+38 call 233 madvise(0x98000000000, 0x7fee000, 4) = 0x0
+38 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x27
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+39 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+39 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+39 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+39 call 233 madvise(0xa0000000000, 0x7fee000, 4) = 0x0
+39 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x28
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+40 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+40 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+40 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+40 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+40 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x29
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+41 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+41 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+41 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xa8000000000
+41 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+41 call 93  exit(0)
+1 call 226 mprotect(0xa8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x2a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+42 call 99  set_robust_list(0x800f260, 24) = 0x0
+42 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+42 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xb0000000000
+42 call 233 madvise(0xa8000000000, 0x7fee000, 4) = 0x0
+42 call 93  exit(0)
+1 call 226 mprotect(0xb0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x2b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+43 call 99  set_robust_list(0x800f260, 24) = 0x0
+43 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+43 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+43 call 233 madvise(0xb0000000000, 0x7fee000, 4) = 0x0
+43 call 93  exit(0)
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x2c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+44 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+44 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+44 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x2d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+44 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+create round=2 thread=12 stack=134217728
+44 call 93  exit(0)
+1 call 64  (fast) = 0x29
+45 call 99  set_robust_list(0xef38f260, 24) = 0x0
+45 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+45 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xb8000000000
+45 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+45 call 93  exit(0)
+1 call 226 mprotect(0xb8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x2e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+46 call 99  set_robust_list(0x800f260, 24) = 0x0
+46 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+46 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xc0000000000
+46 call 233 madvise(0xb8000000000, 0x7fee000, 4) = 0x0
+46 call 93  exit(0)
+1 call 226 mprotect(0xc0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x2f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+47 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xee150000
+1 call 226 mprotect(0xee160000, 0x100000, 0x3) = 0x0
+47 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+47 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+47 call 233 madvise(0xc0000000000, 0x7fee000, 4) = 0x0
+47 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x30
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=2 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+48 call 99  set_robust_list(0xee25f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xed940000
+1 call 226 mprotect(0xed950000, 0x800000, 0x3) = 0x0
+48 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+48 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+48 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+48 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x31
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+49 call 99  set_robust_list(0xee14f260, 24) = 0x0
+1 call 215 munmap(0x88000000000, 0x8010000) = 0x0
+49 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+49 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+49 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x90000000000, 0x8010000) = 0x0
+49 call 93  exit(0)
+1 call 215 munmap(0xeea70000, 0x110000) = 0x0
+1 call 215 munmap(0xee260000, 0x810000) = 0x0
+1 call 215 munmap(0x98000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xa0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0xa8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xb0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0xb8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xc0000000000, 0x8010000) = 0x0
+create round=3 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xc8000000000
+1 call 226 mprotect(0xc8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x32
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+50 call 99  set_robust_list(0x800f260, 24) = 0x0
+50 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+50 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xd0000000000
+50 call 233 madvise(0xc8000000000, 0x7fee000, 4) = 0x0
+50 call 93  exit(0)
+1 call 226 mprotect(0xd0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x33
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x34
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=3 stack=8388608
+51 call 99  set_robust_list(0x800f260, 24) = 0x0
+51 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+51 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+52 call 99  set_robust_list(0xee25f260, 24) = 0x0
+51 call 233 madvise(0xd0000000000, 0x7fee000, 4) = 0x0
+51 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+52 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+52 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x35
+53 call 99  set_robust_list(0xee14f260, 24) = 0x0
+52 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+52 call 93  exit(0)
+53 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+53 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+53 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+53 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xd8000000000
+1 call 226 mprotect(0xd8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x36
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+54 call 99  set_robust_list(0x800f260, 24) = 0x0
+54 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+54 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xe0000000000
+54 call 233 madvise(0xd8000000000, 0x7fee000, 4) = 0x0
+54 call 93  exit(0)
+1 call 226 mprotect(0xe0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x37
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+55 call 99  set_robust_list(0x800f260, 24) = 0x0
+55 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+55 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+55 call 233 madvise(0xe0000000000, 0x7fee000, 4) = 0x0
+55 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x38
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+56 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+56 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+56 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+56 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+56 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x39
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+57 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+57 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+57 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xe8000000000
+57 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+57 call 93  exit(0)
+1 call 226 mprotect(0xe8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x3a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+58 call 99  set_robust_list(0x800f260, 24) = 0x0
+58 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+58 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xf0000000000
+58 call 233 madvise(0xe8000000000, 0x7fee000, 4) = 0x0
+58 call 93  exit(0)
+1 call 226 mprotect(0xf0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x3b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+59 call 99  set_robust_list(0x800f260, 24) = 0x0
+59 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+59 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+59 call 233 madvise(0xf0000000000, 0x7fee000, 4) = 0x0
+59 call 93  exit(0)
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x3c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+60 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+60 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+60 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+60 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+60 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x3d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+61 call 99  set_robust_list(0xef38f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0xf8000000000
+1 call 226 mprotect(0xf8000010000, 0x8000000, 0x3) = 0x0
+61 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+61 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+61 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+61 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x3e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+62 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x100000000000
+1 call 226 mprotect(0x100000010000, 0x8000000, 0x3) = 0x0
+62 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+62 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+62 call 233 madvise(0xf8000000000, 0x7fee000, 4) = 0x0
+62 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x3f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+63 call 99  set_robust_list(0x800f260, 24) = 0x0
+63 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+63 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+63 call 233 madvise(0x100000000000, 0x7fee000, 4) = 0x0
+63 call 93  exit(0)
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x40
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=3 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+64 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+64 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+64 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+64 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+64 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x41
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+65 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 215 munmap(0xc8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xd0000000000, 0x8010000) = 0x0
+65 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+65 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+65 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0xee150000, 0x110000) = 0x0
+65 call 93  exit(0)
+1 call 215 munmap(0xed940000, 0x810000) = 0x0
+1 call 215 munmap(0xd8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xe0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0xe8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xf0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0xf8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x100000000000, 0x8010000) = 0x0
+create round=4 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x108000000000
+1 call 226 mprotect(0x108000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x42
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+66 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x110000000000
+66 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0x110000010000, 0x8000000, 0x3) = 0x0
+66 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+66 call 233 madvise(0x108000000000, 0x7fee000, 4) = 0x0
+66 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x43
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x44
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=3 stack=8388608
+67 call 99  set_robust_list(0x800f260, 24) = 0x0
+67 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+68 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+68 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x45
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=4 stack=134217728
+67 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x28
+69 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+67 call 233 madvise(0x110000000000, 0x7fee000, 4) = 0x0
+67 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x118000000000
+68 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x118000010000, 0x8000000, 0x3) = 0x0
+69 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+69 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+68 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+69 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+68 call 93  exit(0)
+69 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x46
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+70 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x120000000000
+1 call 226 mprotect(0x120000010000, 0x8000000, 0x3) = 0x0
+70 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+70 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+70 call 233 madvise(0x118000000000, 0x7fee000, 4) = 0x0
+70 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x47
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+71 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+71 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+71 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+71 call 233 madvise(0x120000000000, 0x7fee000, 4) = 0x0
+71 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x48
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+72 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+72 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+72 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+72 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+72 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x49
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+73 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x128000000000
+1 call 226 mprotect(0x128000010000, 0x8000000, 0x3) = 0x0
+73 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+73 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+73 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+73 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x4a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+74 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x130000000000
+1 call 226 mprotect(0x130000010000, 0x8000000, 0x3) = 0x0
+74 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+74 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x4b
+74 call 233 madvise(0x128000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+74 call 93  exit(0)
+75 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+75 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+75 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+75 call 233 madvise(0x130000000000, 0x7fee000, 4) = 0x0
+75 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x4c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+76 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+76 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+76 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+76 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+76 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x4d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+77 call 99  set_robust_list(0xef38f260, 24) = 0x0
+77 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+77 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x138000000000
+77 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+77 call 93  exit(0)
+1 call 226 mprotect(0x138000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x4e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+78 call 99  set_robust_list(0x800f260, 24) = 0x0
+78 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+78 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x140000000000
+1 call 226 mprotect(0x140000010000, 0x8000000, 0x3) = 0x0
+78 call 233 madvise(0x138000000000, 0x7fee000, 4) = 0x0
+78 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x4f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+79 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xee150000
+79 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xee160000, 0x100000, 0x3) = 0x0
+79 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+79 call 233 madvise(0x140000000000, 0x7fee000, 4) = 0x0
+79 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x50
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=4 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+80 call 99  set_robust_list(0xee25f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xed940000
+1 call 226 mprotect(0xed950000, 0x800000, 0x3) = 0x0
+80 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+80 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+80 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+80 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x51
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+81 call 99  set_robust_list(0xee14f260, 24) = 0x0
+1 call 215 munmap(0x108000000000, 0x8010000) = 0x0
+81 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+81 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+81 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x110000000000, 0x8010000) = 0x0
+81 call 93  exit(0)
+1 call 215 munmap(0xeea70000, 0x110000) = 0x0
+1 call 215 munmap(0xee260000, 0x810000) = 0x0
+1 call 215 munmap(0x118000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x120000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x128000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x130000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x138000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x140000000000, 0x8010000) = 0x0
+create round=5 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x148000000000
+1 call 226 mprotect(0x148000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x52
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+82 call 99  set_robust_list(0x800f260, 24) = 0x0
+82 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+82 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x150000000000
+82 call 233 madvise(0x148000000000, 0x7fee000, 4) = 0x0
+82 call 93  exit(0)
+1 call 226 mprotect(0x150000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x53
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x54
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+83 call 99  set_robust_list(0x800f260, 24) = 0x0
+83 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+83 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+create round=5 thread=3 stack=8388608
+1 call 64  (fast) = 0x26
+84 call 99  set_robust_list(0xee25f260, 24) = 0x0
+83 call 233 madvise(0x150000000000, 0x7fee000, 4) = 0x0
+83 call 93  exit(0)
+84 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+84 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+84 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+84 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x55
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+85 call 99  set_robust_list(0xee14f260, 24) = 0x0
+85 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+85 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x158000000000
+1 call 226 mprotect(0x158000010000, 0x8000000, 0x3) = 0x0
+85 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+85 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x56
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+86 call 99  set_robust_list(0x800f260, 24) = 0x0
+86 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+86 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x160000000000
+86 call 233 madvise(0x158000000000, 0x7fee000, 4) = 0x0
+86 call 93  exit(0)
+1 call 226 mprotect(0x160000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x57
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+87 call 99  set_robust_list(0x800f260, 24) = 0x0
+87 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+87 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+87 call 233 madvise(0x160000000000, 0x7fee000, 4) = 0x0
+87 call 93  exit(0)
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x58
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+88 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+88 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+88 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+88 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+88 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x59
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x168000000000
+89 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+1 call 226 mprotect(0x168000010000, 0x8000000, 0x3) = 0x0
+89 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+89 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+89 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+89 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x5a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+90 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x170000000000
+1 call 226 mprotect(0x170000010000, 0x8000000, 0x3) = 0x0
+90 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+90 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+90 call 233 madvise(0x168000000000, 0x7fee000, 4) = 0x0
+90 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x5b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+91 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+91 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+91 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+91 call 233 madvise(0x170000000000, 0x7fee000, 4) = 0x0
+91 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x5c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+92 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+92 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x5d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+93 call 99  set_robust_list(0xef38f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x178000000000
+92 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x178000010000, 0x8000000, 0x3) = 0x0
+93 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+93 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x5e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+94 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x180000000000
+92 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+93 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+1 call 226 mprotect(0x180000010000, 0x8000000, 0x3) = 0x0
+93 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+92 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x5f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=14 stack=1048576
+94 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+94 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+95 call 99  set_robust_list(0x800f260, 24) = 0x0
+94 call 233 madvise(0x178000000000, 0x7fee000, 4) = 0x0
+94 call 93  exit(0)
+95 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+95 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+95 call 233 madvise(0x180000000000, 0x7fee000, 4) = 0x0
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+95 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x60
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=5 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+96 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+96 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+96 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+96 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+96 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x61
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+97 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 215 munmap(0x148000000000, 0x8010000) = 0x0
+97 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+97 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+97 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x150000000000, 0x8010000) = 0x0
+97 call 93  exit(0)
+1 call 215 munmap(0xee150000, 0x110000) = 0x0
+1 call 215 munmap(0xed940000, 0x810000) = 0x0
+1 call 215 munmap(0x158000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x160000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x168000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x170000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x178000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x180000000000, 0x8010000) = 0x0
+create round=6 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x188000000000
+1 call 226 mprotect(0x188000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x62
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+98 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x190000000000
+1 call 226 mprotect(0x190000010000, 0x8000000, 0x3) = 0x0
+98 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+98 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+98 call 233 madvise(0x188000000000, 0x7fee000, 4) = 0x0
+98 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x63
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x64
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=3 stack=8388608
+99 call 99  set_robust_list(0x800f260, 24) = 0x0
+99 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+99 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+100 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+99 call 233 madvise(0x190000000000, 0x7fee000, 4) = 0x0
+99 call 93  exit(0)
+100 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+100 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+100 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+100 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x65
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x198000000000
+101 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 226 mprotect(0x198000010000, 0x8000000, 0x3) = 0x0
+101 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+101 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+101 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+101 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x66
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+102 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1a0000000000
+1 call 226 mprotect(0x1a0000010000, 0x8000000, 0x3) = 0x0
+102 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+102 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+102 call 233 madvise(0x198000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+102 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x67
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+103 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+103 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+103 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+103 call 233 madvise(0x1a0000000000, 0x7fee000, 4) = 0x0
+103 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x68
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+104 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+104 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+104 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x69
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=8 stack=134217728
+104 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+104 call 93  exit(0)
+1 call 64  (fast) = 0x28
+105 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+105 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1a8000000000
+105 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+105 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+1 call 226 mprotect(0x1a8000010000, 0x8000000, 0x3) = 0x0
+105 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x6a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+106 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1b0000000000
+1 call 226 mprotect(0x1b0000010000, 0x8000000, 0x3) = 0x0
+106 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+106 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+106 call 233 madvise(0x1a8000000000, 0x7fee000, 4) = 0x0
+106 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x6b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+107 call 99  set_robust_list(0x800f260, 24) = 0x0
+107 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+107 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+107 call 233 madvise(0x1b0000000000, 0x7fee000, 4) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+107 call 93  exit(0)
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x6c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+108 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+108 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+108 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+108 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+108 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x6d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+109 call 99  set_robust_list(0xef38f260, 24) = 0x0
+109 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+109 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1b8000000000
+109 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+109 call 93  exit(0)
+1 call 226 mprotect(0x1b8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x6e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=13 stack=134217728
+110 call 99  set_robust_list(0x800f260, 24) = 0x0
+110 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+110 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x29
+110 call 233 madvise(0x1b8000000000, 0x7fee000, 4) = 0x0
+110 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1c0000000000
+1 call 226 mprotect(0x1c0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x6f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+111 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xee150000
+1 call 226 mprotect(0xee160000, 0x100000, 0x3) = 0x0
+111 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+111 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+111 call 233 madvise(0x1c0000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+111 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x70
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=6 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+112 call 99  set_robust_list(0xee25f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xed940000
+112 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+112 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+112 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+1 call 226 mprotect(0xed950000, 0x800000, 0x3) = 0x0
+112 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x71
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+113 call 99  set_robust_list(0xee14f260, 24) = 0x0
+1 call 215 munmap(0x188000000000, 0x8010000) = 0x0
+113 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+113 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+113 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x190000000000, 0x8010000) = 0x0
+113 call 93  exit(0)
+1 call 215 munmap(0xeea70000, 0x110000) = 0x0
+1 call 215 munmap(0xee260000, 0x810000) = 0x0
+1 call 215 munmap(0x198000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x1a0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x1a8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x1b0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x1b8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x1c0000000000, 0x8010000) = 0x0
+create round=7 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1c8000000000
+1 call 226 mprotect(0x1c8000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x72
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+114 call 99  set_robust_list(0x800f260, 24) = 0x0
+114 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1d0000000000
+114 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0x1d0000010000, 0x8000000, 0x3) = 0x0
+114 call 233 madvise(0x1c8000000000, 0x7fee000, 4) = 0x0
+114 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x73
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x74
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=3 stack=8388608
+115 call 99  set_robust_list(0x800f260, 24) = 0x0
+115 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+115 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+116 call 99  set_robust_list(0xee25f260, 24) = 0x0
+115 call 233 madvise(0x1d0000000000, 0x7fee000, 4) = 0x0
+116 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+116 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+115 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+116 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+116 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x75
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+117 call 99  set_robust_list(0xee14f260, 24) = 0x0
+117 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1d8000000000
+1 call 226 mprotect(0x1d8000010000, 0x8000000, 0x3) = 0x0
+117 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+117 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+117 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x76
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+118 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1e0000000000
+1 call 226 mprotect(0x1e0000010000, 0x8000000, 0x3) = 0x0
+118 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+118 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x77
+118 call 233 madvise(0x1d8000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=6 stack=1048576
+118 call 93  exit(0)
+119 call 99  set_robust_list(0x800f260, 24) = 0x0
+119 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+119 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+119 call 233 madvise(0x1e0000000000, 0x7fee000, 4) = 0x0
+119 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x78
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+120 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+120 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+120 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+120 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+120 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x79
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+121 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1e8000000000
+1 call 226 mprotect(0x1e8000010000, 0x8000000, 0x3) = 0x0
+121 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+121 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+121 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+121 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x7a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=9 stack=134217728
+122 call 99  set_robust_list(0x800f260, 24) = 0x0
+122 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+122 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x28
+122 call 233 madvise(0x1e8000000000, 0x7fee000, 4) = 0x0
+122 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1f0000000000
+1 call 226 mprotect(0x1f0000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x7b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+123 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+123 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+123 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+123 call 233 madvise(0x1f0000000000, 0x7fee000, 4) = 0x0
+123 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x7c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+124 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+124 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+124 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+124 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+124 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x7d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+125 call 99  set_robust_list(0xef38f260, 24) = 0x0
+125 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x1f8000000000
+1 call 226 mprotect(0x1f8000010000, 0x8000000, 0x3) = 0x0
+125 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+125 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+125 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x7e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+126 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x200000000000
+1 call 226 mprotect(0x200000010000, 0x8000000, 0x3) = 0x0
+126 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+126 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x7f
+127 call 99  set_robust_list(0x800f260, 24) = 0x0
+126 call 233 madvise(0x1f8000000000, 0x7fee000, 4) = 0x0
+126 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=14 stack=1048576
+127 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+127 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+127 call 233 madvise(0x200000000000, 0x7fee000, 4) = 0x0
+127 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x80
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=7 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+128 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+128 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+128 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+128 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+128 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x81
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+129 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 215 munmap(0x1c8000000000, 0x8010000) = 0x0
+129 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+129 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+129 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x1d0000000000, 0x8010000) = 0x0
+129 call 93  exit(0)
+1 call 215 munmap(0xee150000, 0x110000) = 0x0
+1 call 215 munmap(0xed940000, 0x810000) = 0x0
+1 call 215 munmap(0x1d8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x1e0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x1e8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x1f0000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x1f8000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x200000000000, 0x8010000) = 0x0
+create round=8 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x208000000000
+1 call 226 mprotect(0x208000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x82
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+130 call 99  set_robust_list(0x800f260, 24) = 0x0
+130 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+130 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x210000000000
+130 call 233 madvise(0x208000000000, 0x7fee000, 4) = 0x0
+130 call 93  exit(0)
+1 call 226 mprotect(0x210000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x83
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0x84
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=3 stack=8388608
+131 call 99  set_robust_list(0x800f260, 24) = 0x0
+131 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+131 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x26
+132 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+131 call 233 madvise(0x210000000000, 0x7fee000, 4) = 0x0
+131 call 93  exit(0)
+132 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+132 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+132 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+132 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0x85
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+133 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x218000000000
+1 call 226 mprotect(0x218000010000, 0x8000000, 0x3) = 0x0
+133 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+133 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+133 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+133 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x86
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+134 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x220000000000
+1 call 226 mprotect(0x220000010000, 0x8000000, 0x3) = 0x0
+134 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+134 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x87
+134 call 233 madvise(0x218000000000, 0x7fee000, 4) = 0x0
+134 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+135 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+135 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+135 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+135 call 233 madvise(0x220000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+135 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x88
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+136 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+136 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+136 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x89
+137 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+136 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x228000000000
+136 call 93  exit(0)
+137 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 226 mprotect(0x228000010000, 0x8000000, 0x3) = 0x0
+137 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+137 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+137 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x8a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+138 call 99  set_robust_list(0x800f260, 24) = 0x0
+138 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x230000000000
+1 call 226 mprotect(0x230000010000, 0x8000000, 0x3) = 0x0
+138 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+138 call 233 madvise(0x228000000000, 0x7fee000, 4) = 0x0
+138 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x8b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=10 stack=1048576
+1 call 64  (fast) = 0x27
+139 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+139 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+139 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+139 call 233 madvise(0x230000000000, 0x7fee000, 4) = 0x0
+139 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x8c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+140 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+140 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+140 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+140 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+140 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x8d
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=12 stack=134217728
+1 call 64  (fast) = 0x29
+141 call 99  set_robust_list(0xef38f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x238000000000
+1 call 226 mprotect(0x238000010000, 0x8000000, 0x3) = 0x0
+141 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+141 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+141 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+141 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x8e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+142 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x240000000000
+1 call 226 mprotect(0x240000010000, 0x8000000, 0x3) = 0x0
+142 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+142 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+142 call 233 madvise(0x238000000000, 0x7fee000, 4) = 0x0
+142 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x8f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+143 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xee150000
+1 call 226 mprotect(0xee160000, 0x100000, 0x3) = 0x0
+143 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+143 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+143 call 233 madvise(0x240000000000, 0x7fee000, 4) = 0x0
+143 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x90
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=8 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+144 call 99  set_robust_list(0xee25f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xed940000
+1 call 226 mprotect(0xed950000, 0x800000, 0x3) = 0x0
+144 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+144 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x91
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+144 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+144 call 93  exit(0)
+145 call 99  set_robust_list(0xee14f260, 24) = 0x0
+1 call 215 munmap(0x208000000000, 0x8010000) = 0x0
+145 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+145 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+145 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x210000000000, 0x8010000) = 0x0
+145 call 93  exit(0)
+1 call 215 munmap(0xeea70000, 0x110000) = 0x0
+1 call 215 munmap(0xee260000, 0x810000) = 0x0
+1 call 215 munmap(0x218000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x220000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x228000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x230000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x238000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x240000000000, 0x8010000) = 0x0
+create round=9 thread=0 stack=134217728
+1 call 64  (fast) = 0x28
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x248000000000
+1 call 226 mprotect(0x248000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x92
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=1 stack=134217728
+1 call 64  (fast) = 0x28
+146 call 99  set_robust_list(0x800f260, 24) = 0x0
+146 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+146 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x250000000000
+146 call 233 madvise(0x248000000000, 0x7fee000, 4) = 0x0
+146 call 93  exit(0)
+1 call 226 mprotect(0x250000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x93
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=2 stack=1048576
+1 call 64  (fast) = 0x26
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee25ea60, 0xee25f250, 0xee25f8a0, 0xee25f250) = 0x94
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=3 stack=8388608
+1 call 64  (fast) = 0x26
+147 call 99  set_robust_list(0x800f260, 24) = 0x0
+147 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+148 call 99  set_robust_list(0xee25f260, 24) = 0x0
+148 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xee14ea60, 0xee14f250, 0xee14f8a0, 0xee14f250) = 0x95
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+147 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+create round=9 thread=4 stack=134217728
+1 call 64  (fast) = 0x28
+147 call 233 madvise(0x250000000000, 0x7fee000, 4) = 0x0
+147 call 93  exit(0)
+148 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+149 call 99  set_robust_list(0xee14f260, 24) = 0x0
+148 call 233 madvise(0xee150000, 0xee000, 4) = 0x0
+148 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x258000000000
+1 call 226 mprotect(0x258000010000, 0x8000000, 0x3) = 0x0
+149 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+149 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x96
+149 call 233 madvise(0xed940000, 0x7ee000, 4) = 0x0
+149 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=5 stack=134217728
+1 call 64  (fast) = 0x28
+150 call 99  set_robust_list(0x800f260, 24) = 0x0
+150 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+150 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x260000000000
+150 call 233 madvise(0x258000000000, 0x7fee000, 4) = 0x0
+150 call 93  exit(0)
+1 call 226 mprotect(0x260000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x97
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=6 stack=1048576
+1 call 64  (fast) = 0x26
+151 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xefcb0000
+1 call 226 mprotect(0xefcc0000, 0x100000, 0x3) = 0x0
+151 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+151 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+151 call 233 madvise(0x260000000000, 0x7fee000, 4) = 0x0
+151 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefdbea60, 0xefdbf250, 0xefdbf8a0, 0xefdbf250) = 0x98
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=7 stack=8388608
+1 call 64  (fast) = 0x26
+152 call 99  set_robust_list(0xefdbf260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xef4a0000
+1 call 226 mprotect(0xef4b0000, 0x800000, 0x3) = 0x0
+152 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+152 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+152 call 233 madvise(0xefcb0000, 0xee000, 4) = 0x0
+152 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xefcaea60, 0xefcaf250, 0xefcaf8a0, 0xefcaf250) = 0x99
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=8 stack=134217728
+1 call 64  (fast) = 0x28
+153 call 99  set_robust_list(0xefcaf260, 24) = 0x0
+153 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+153 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x268000000000
+1 call 226 mprotect(0x268000010000, 0x8000000, 0x3) = 0x0
+153 call 233 madvise(0xef4a0000, 0x7ee000, 4) = 0x0
+153 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x9a
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=9 stack=134217728
+1 call 64  (fast) = 0x28
+154 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x270000000000
+1 call 226 mprotect(0x270000010000, 0x8000000, 0x3) = 0x0
+154 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+154 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+154 call 233 madvise(0x268000000000, 0x7fee000, 4) = 0x0
+154 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x9b
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=10 stack=1048576
+155 call 99  set_robust_list(0x800f260, 24) = 0x0
+155 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xef390000
+155 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 226 mprotect(0xef3a0000, 0x100000, 0x3) = 0x0
+155 call 233 madvise(0x270000000000, 0x7fee000, 4) = 0x0
+155 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef49ea60, 0xef49f250, 0xef49f8a0, 0xef49f250) = 0x9c
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=11 stack=8388608
+1 call 64  (fast) = 0x27
+156 call 99  set_robust_list(0xef49f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xeeb80000
+1 call 226 mprotect(0xeeb90000, 0x800000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+156 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+156 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xef38ea60, 0xef38f250, 0xef38f8a0, 0xef38f250) = 0x9d
+156 call 233 madvise(0xef390000, 0xee000, 4) = 0x0
+156 call 93  exit(0)
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+157 call 99  set_robust_list(0xef38f260, 24) = 0x0
+157 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=12 stack=134217728
+157 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 64  (fast) = 0x29
+157 call 233 madvise(0xeeb80000, 0x7ee000, 4) = 0x0
+157 call 93  exit(0)
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x278000000000
+1 call 226 mprotect(0x278000010000, 0x8000000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x9e
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=13 stack=134217728
+1 call 64  (fast) = 0x29
+158 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x8010000, 0x0, 0x20022, -1, 0x0) = 0x280000000000
+1 call 226 mprotect(0x280000010000, 0x8000000, 0x3) = 0x0
+158 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+158 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+158 call 233 madvise(0x278000000000, 0x7fee000, 4) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+158 call 93  exit(0)
+1 call 220 clone(0x3d0f00, 0x800ea60, 0x800f250, 0x800f8a0, 0x800f250) = 0x9f
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=14 stack=1048576
+1 call 64  (fast) = 0x27
+1 call 222 mmap64(0x0, 0x110000, 0x0, 0x20022, -1, 0x0) = 0xeea70000
+1 call 226 mprotect(0xeea80000, 0x100000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeeb7ea60, 0xeeb7f250, 0xeeb7f8a0, 0xeeb7f250) = 0xa0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+create round=9 thread=15 stack=8388608
+1 call 64  (fast) = 0x27
+159 call 99  set_robust_list(0x800f260, 24) = 0x0
+1 call 222 mmap64(0x0, 0x810000, 0x0, 0x20022, -1, 0x0) = 0xee260000
+160 call 99  set_robust_list(0xeeb7f260, 24) = 0x0
+1 call 226 mprotect(0xee270000, 0x800000, 0x3) = 0x0
+160 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+160 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffd928, 8) = 0x0
+1 call 220 clone(0x3d0f00, 0xeea6ea60, 0xeea6f250, 0xeea6f8a0, 0xeea6f250) = 0xa1
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+160 call 233 madvise(0xeea70000, 0xee000, 4) = 0x0
+160 call 93  exit(0)
+159 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+159 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+161 call 99  set_robust_list(0xeea6f260, 24) = 0x0
+159 call 233 madvise(0x280000000000, 0x7fee000, 4) = 0x0
+1 call 215 munmap(0x248000000000, 0x8010000) = 0x0
+161 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+161 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffeffffffff, 0, 8) = 0x0
+159 call 93  exit(0)
+161 call 233 madvise(0xee260000, 0x7ee000, 4) = 0x0
+1 call 215 munmap(0x250000000000, 0x8010000) = 0x0
+161 call 93  exit(0)
+1 call 215 munmap(0xee150000, 0x110000) = 0x0
+1 call 215 munmap(0xed940000, 0x810000) = 0x0
+1 call 215 munmap(0x258000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x260000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xefcb0000, 0x110000) = 0x0
+1 call 215 munmap(0xef4a0000, 0x810000) = 0x0
+1 call 215 munmap(0x268000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x270000000000, 0x8010000) = 0x0
+1 call 215 munmap(0xef390000, 0x110000) = 0x0
+1 call 215 munmap(0xeeb80000, 0x810000) = 0x0
+1 call 215 munmap(0x278000000000, 0x8010000) = 0x0
+1 call 215 munmap(0x280000000000, 0x8010000) = 0x0
+GLIBC_THREAD_STACKS_OK1 call 64  (fast) = 0x16
+
+1 call 64  (fast) = 0x1
+1 call 94  exit_group(0)
+ish: copy-on-write faults so far: 0 reused, 0 copied

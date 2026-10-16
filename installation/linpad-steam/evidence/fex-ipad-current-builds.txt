@@ -1,0 +1,30 @@
+=== FEX static x86-64 ===
+FEX_X86_64_OK
+HELLO_EXIT=0
+=== FEX threads SIMD executable-memory signals ===
+FEX threads/mutex: PASS
+FEX SSE2 arithmetic: PASS
+FEX generated x86 code: PASS
+FEX signal delivery: PASS
+FEX_X86_RUNTIME_OK
+RUNTIME_EXIT=0
+=== FEX-apple-m1 static x86-64 ===
+FEX_X86_64_OK
+HELLO_EXIT=0
+=== FEX-apple-m1 threads SIMD executable-memory signals ===
+FEX threads/mutex: PASS
+FEX SSE2 arithmetic: PASS
+FEX generated x86 code: PASS
+FEX signal delivery: PASS
+FEX_X86_RUNTIME_OK
+RUNTIME_EXIT=0
+=== FEX-cortex-a76 static x86-64 ===
+FEX_X86_64_OK
+HELLO_EXIT=0
+=== FEX-cortex-a76 threads SIMD executable-memory signals ===
+FEX threads/mutex: PASS
+FEX SSE2 arithmetic: PASS
+FEX generated x86 code: PASS
+FEX signal delivery: PASS
+FEX_X86_RUNTIME_OK
+RUNTIME_EXIT=0

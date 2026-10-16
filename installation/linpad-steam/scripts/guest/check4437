@@ -1,0 +1,13 @@
+#!/bin/sh
+ulimit -s 8192
+LOG=/tmp/check4437.log
+: > "$LOG"
+for p in epoll-nested-probe epoll-oneshot-probe eventfd-probe pselect-probe; do
+    wget -q "http://192.168.0.104:8765/$p" -O "/tmp/$p" || exit 90
+    chmod +x "/tmp/$p"
+    echo "TEST=$p" >> "$LOG"
+    timeout 15 "/tmp/$p" >> "$LOG" 2>&1
+    echo "EXIT=$?" >> "$LOG"
+done
+cat "$LOG"
+wget -q --post-file="$LOG" http://192.168.0.104:8765/reports/console-linux.txt -O /dev/null

@@ -1,0 +1,14 @@
+LinPad 1.5.0 (4428)
+Official IPA SHA256: 9e79e12a109a52131177c20caa69180d5b23c989690b80b0670d33125402e3b2
+Signed with Apple Development: Konrad Kern, team K5TW9AU245.
+Bundle identifier: com.konradkern.linpad
+Shared app group: group.com.konradkern.linpad
+Development profile expires: 2027-10-16 03:55:19 UTC.
+Signature verified; iPad UDID included in profile.
+Installed and launched on iPad Air 13-inch (M2), iPadOS 27.0.1.
+Linux extraction completed successfully after the user freed storage (28.5 GB reported free).
+Desktop and Linux terminals boot successfully.
+Verified on the physical iPad: uname -m returned aarch64; cat /etc/alpine-release returned 3.21.0.
+Automatic StikDebug handoff returned to LinPad; JIT mode itself has not been independently verified.
+Successful terminal screenshot: linpad-running.jpg.
+The earlier Write error, line 196 was resolved by freeing storage and relaunching.

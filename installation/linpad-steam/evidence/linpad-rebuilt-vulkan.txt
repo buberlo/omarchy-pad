@@ -1,0 +1,1 @@
+Selected GPU 0: Virtio-GPU Venus (Apple M2 GPU), type: IntegratedGpu, apiVersion: 4198757 (1.1.357), driverVersion: 109060100 (26.2.4) 

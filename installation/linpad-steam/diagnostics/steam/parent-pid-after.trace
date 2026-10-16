@@ -1,0 +1,57 @@
+1 call 96  getpid() = 0x1
+1 call 172 getpid() = 0x1
+1 call 173 getppid() = 0x0
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x803000, 0x0, 0x22, -1, 0x0) = 0xef7f4000
+1 call 226 mprotect(0xef7f6000, 0x801000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdbb0, 8) = 0x0
+1 call 220 clone(0x7d0f00, 0xefff6ed0, 0xefff6f28, 0xefff6fd0, 0x103fc90) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 98  futex(FUTEX_WAIT, 0xefff6f30, 2, 0x0 {0s 0ns}) = ...
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 173 getppid() = 0x0
+2 call 66  writev(1, 0xefff6b50, 2) {"worker parent=0 expected=0
+worker parent=0 expected=0
+", 27} {"", 0} = 0x1b
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6db0, 8) = 0x0
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xefff6d10, 8) = 0x0
+2 call 220 clone(0x11, 0x0, 0xefff6d10, 0x8, 0x2000) = 0x3
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0xfffffffc7ffbfeff, 0, 8) = 0x0
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+3 call 96  getpid() = 0x3
+3 call 135 rt_sigprocmask(SIG_SETMASK, 0xfffffffc7ffbfeff, 0, 8) = 0x0
+3 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+3 call 173 getppid() = 0x1
+3 call 56  openat(-100, "/proc/self/status", 0x20000, 0x1b6) = 0x3
+3 call 123 sched_getaffinity(0, 128, 0xefff6910) = 0x2
+3 call 222 mmap64(0x0, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xef7d5000
+3 call 215 munmap(0xef7d5000, 0xb000) = 0x0
+3 call 215 munmap(0xef7f0000, 0x4000) = 0x0
+3 call 63  read(3, 0xef7e0100, 1024) "Name:	parent-pid-probe
+State:	S
+Tgid:	3
+Pid:	3
+PPid:	1
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+VmPeak:	    8420 kB" = 0x112
+3 call 62  lseek64(3, -219, 1) -> 55 = 0x37
+3 call 57  close(3) = 0x0
+3 call 56  openat(-100, "/proc/self/stat", 0x20000, 0x1b6) = 0x3
+3 call 63  read(3, 0xef7e0100, 1024) "3 (parent-pid-probe) R 1 1 1 0 0 0 0 0 0 0 0 0 0 0 20 0 1 0 179213736679 8622080 2105 0 0 0 42949583" = 0x7e
+3 call 57  close(3) = 0x0
+3 call 66  writev(1, 0xefff6b70, 2) {"child parent api=1 status=1 stat=1 expected=1
+child parent api=1 status=1 stat=1 expected=1
+", 46} {"", 0} = 0x2e
+3 call 94  exit_group(0)
+2 call 260 wait4(3, 0xefff6e8c, 0, 0) = 0x3
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6e10, 8) = 0x0
+2 call 98  futex(FUTEX_WAKE, 0xefff6f30, 1) = 0x1
+2 call 93  exit(0)
+1 end futex(FUTEX_WAIT) = 0x0
+1 call 215 munmap(0xef7f4000, 0x803000) = 0x0
+PARENT_PID_OK1 call 66  writev(1, 0xffffdbe0, 2) {"", 0} {"PARENT_PID_OK", 13} = 0xd
+1 call 66  writev(1, 0xffffdc20, 2) {"", 0} {"
+
+", 1} = 0x1
+1 call 94  exit_group(0)

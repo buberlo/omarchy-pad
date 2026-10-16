@@ -1,0 +1,9 @@
+#!/bin/sh
+BASE="$HOME/.local/share/Steam/logs"
+OUT=/tmp/collect4437.log
+{ date; echo PROBES; cat /tmp/try4441.log; ps -o pid,ppid,comm,args; echo MAIN; tail -90 /tmp/steam-main.log; echo WM; cat /tmp/steam-wm.log; echo NET; cat /proc/net/tcp; echo VIEWER; tail -20 /tmp/steam-viewer.log; echo XVNC; tail -20 /tmp/steam-xvnc.log; echo LSOF; timeout 5 /usr/bin/lsof -nP -F upnR -iTCP@127.0.0.1; echo CONSOLE; tail -100 "$BASE/console_log.txt"; echo STEAMUI; tail -45 "$BASE/steamui_html.txt"; tail -45 "$BASE/steamui_system.txt"; } > "$OUT" 2>&1
+wget -q --post-file="$OUT" http://192.168.0.104:8765/reports/console-linux.txt -O /dev/null
+for p in steamwebhelper.log cef_log.txt; do
+    tail -c 100000 "$BASE/$p" > /tmp/last-steam-log
+    wget -q --post-file=/tmp/last-steam-log "http://192.168.0.104:8765/reports/$p" -O /dev/null
+done

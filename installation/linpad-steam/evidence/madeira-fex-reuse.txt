@@ -1,0 +1,63 @@
+Madeira and FEX compatibility assessment — 2026-10-16
+
+Live upstream checks
+- FEX latest tagged release: FEX-2610, published 2026-10-07.
+- FEX development HEAD: 5285020de0b30dbdae7b44d0d83541af2d13d002.
+- FEX-static latest release: 5285020de, published 2026-10-14. This is the
+  same upstream revision already installed, not an older FEX engine.
+- Apple M1 and Cortex-A76 variants were downloaded and verified against the
+  release's SHA-256 digests. The original Cortex-A72 build is retained.
+- Madeira HEAD: 279fd0f83170425db002fe25d6bd62f6355f497d.
+- Madeira's pinned iOS FEX: f59cab95659e8add0c88f0c76ec1cf483c536dbf,
+  branch ios-port-2607. Latest Madeira release remains v0.1.3.
+
+Physical iPad result
+With the updated signed LinPad runtime, the approved Increased Memory Limit
+and Extended Virtual Addressing capabilities, and an 8 MiB shell stack limit,
+all three FEX-static variants pass hello, threads/mutexes, SSE2 arithmetic,
+generated executable x86 code and signal delivery. See fex-ipad-current-builds.txt.
+This is a bounded runtime test, not a Steam game or full application qualification.
+
+Reusable Madeira findings
+- Its iOS host handles executable memory through a dedicated shared RX/RW
+  allocation pool, with 16 KiB host pages and explicit cache coherency checks.
+  LinPad's Linux FEX currently executes through LinPad's ARM64 emulator; its
+  JIT allocation path is different. Copying Madeira's native pool hooks into
+  the Linux FEX executable would not produce the same integration.
+- Madeira publishes actual Apple CPU feature availability to its Windows
+  FEX modules using FEX_MADEIRA_HOSTPROBE. That parser is in its Windows
+  CPUFeatures.cpp; the variable is not a generic Linux FEX fix. No speculative
+  CPU feature override was added to the Linux runtime.
+- Madeira Dock authenticates and launches through Valve's Windows client
+  libraries while deliberately avoiding Chromium. It depends on Wine and
+  pinned Windows client interfaces; it is not a drop-in Linux Steam UI.
+- Madeira's standalone native FEXBridge Linux syscall handler supports only
+  stdout/stderr writes and exit for small probes. It does not replace the
+  Linux syscall environment Steam needs.
+
+Applied here
+- Both Apple memory capabilities were explicitly approved by the user,
+  provisioned, signed, installed and tested on the iPad.
+- LinPad now supports MIDR_EL1 reads and eventfd semaphore mode, handles
+  relative access through non-directory descriptors, accepts a null signal
+  mask in pselect6, and preserves EPOLLONESHOT registrations for MOD rearming.
+- A proc-file allocation failure now returns ENOMEM instead of dereferencing
+  a null pointer, matching the native crash report observed during testing.
+- Vulkan cube rendering still works in the rebuilt app.
+
+Final Steam result
+Build 4441 reaches Steam's account sign-in screen on the physical iPad.
+The final transport fix reports process parent IDs consistently in getppid
+and procfs instead of worker thread IDs. This follows safe proc fd directory
+scans, correct process-only enumeration with direct TID lookup, and TCP/UDP
+endpoint metadata for lsof. All targeted regressions pass on the iPad.
+No credentials were entered; signed-in operation or games remain untested.
+Evidence: steam-ipad-login-4441.jpg and linpad-4441-runtime-checks.txt.
+
+Sources inspected
+https://github.com/FEX-Emu/FEX/releases/tag/FEX-2610
+https://github.com/PeronGH/FEX-static/releases/tag/5285020de
+https://github.com/willfaust/Madeira/commit/279fd0f83170425db002fe25d6bd62f6355f497d
+https://github.com/willfaust/Madeira/blob/279fd0f83170425db002fe25d6bd62f6355f497d/docs/MADEIRA_DOCK.md
+https://github.com/willfaust/Madeira/blob/279fd0f83170425db002fe25d6bd62f6355f497d/app/Madeira/FEXBridge.mm
+https://github.com/willfaust/FEX/blob/f59cab95659e8add0c88f0c76ec1cf483c536dbf/Source/Windows/Common/CPUFeatures.cpp

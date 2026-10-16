@@ -1,0 +1,13 @@
+MIDR_EL1 read succeeded: 0xf0000
+pipe-relative: result=-1 errno=20 expected=20 PASS
+file-relative: result=-1 errno=20 expected=20 PASS
+directory-relative: result=0 errno=0 expected=0 PASS
+absolute-ignores-pipe: result=0 errno=0 expected=0 PASS
+empty-path: result=-1 errno=2 expected=2 PASS
+VFS_EXIT=0
+E FEX requires kernel 5.15 minimum. Expect problems.
+E Failed to remap /proc/pid/cmdline data (GetCurrentMap failed)
+FEX_X86_64_OK
+FEX_HELLO_EXIT=0
+Segmentation fault
+FEX_RUNTIME_EXIT=139

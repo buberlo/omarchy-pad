@@ -1,0 +1,15 @@
+resolved 78 packages
+curl: (28) Operation timed out after 60004 milliseconds with 1523504 out of 2766020 bytes received
+curl: (28) Operation timed out after 60005 milliseconds with 0 bytes received
+curl: (28) Operation timed out after 60003 milliseconds with 0 bytes received
+file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/steam/debfetch-curl.mjs:42
+        child.on('close', (code) => code === 0 ? resolve(Buffer.concat(out)) : reject(new Error(`${cmd} exited ${code}`)));
+                                                                                      ^
+
+Error: curl exited 28
+    at ChildProcess.<anonymous> (file:///Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/steam/debfetch-curl.mjs:42:87)
+    at ChildProcess.emit (node:events:514:28)
+    at maybeClose (node:internal/child_process:1141:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:306:5)
+
+Node.js v24.21.0

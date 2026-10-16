@@ -1,0 +1,43 @@
+1 call 96  getpid() = 0x1
+1 call 59  pipe2(0xffffdcb8, 0) [3 4] = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdb60, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xffffffffffffffff, 0xffffdac0, 8) = 0x0
+1 call 220 clone(0x11, 0x0, 0xffffdac0, 0x8, 0x10131b0) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0xfffffffc7ffbfeff, 0, 8) = 0x0
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 96  getpid() = 0x2
+1 call 57  close(3) = 0x0
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0xfffffffc7ffbfeff, 0, 8) = 0x0
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 57  close(4) = 0x0
+1 call 56  openat(-100, "/proc/2/fd", 0xa4000, 0x0) = 0x3
+1 call 25  fcntl(3, F_SETFD, 0x1) = 0x0
+1 call 123 sched_getaffinity(0, 128, 0xffffdb30) = 0x2
+1 call 222 mmap64(0x0, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffd8000
+1 call 215 munmap(0xeffd8000, 0x8000) = 0x0
+1 call 215 munmap(0xefff0000, 0x7000) = 0x0
+1 call 64  (fast) = 0x1
+2 call 63  (fast) = 0x1
+2 call 94  exit_group(0)
+1 call 57  close(4) = 0x0
+
+=== HOST CRASH: signal 11 ===
+fault addr: 0x18
+pc:  0x1982244ec
+lr:  0x102e1db5c
+sp:  0x16d0121e0
+x0:  0x18
+x1:  0x10000000100
+x2:  0x0
+x7:  0xeffe0018
+x28: 0x16d0122b8
+0   ish                                 0x0000000102de9e88 crash_handler + 492
+1   libsystem_platform.dylib            0x0000000198234144 _sigtramp + 56
+2   ish                                 0x0000000102e1db5c proc_pid_fd_readdir + 108
+3   ish                                 0x0000000102e1db5c proc_pid_fd_readdir + 108
+4   ish                                 0x0000000102e1b5d4 proc_readdir + 52
+5   ish                                 0x0000000102e13ac4 sys_getdents_common + 216
+6   ish                                 0x0000000102deb1d0 handle_interrupt + 2580
+7   ish                                 0x0000000102df0be0 task_run_current + 140
+8   ish                                 0x0000000102de9930 main + 2504
+9   dyld                                0x0000000197e53e80 start + 6688

@@ -1,0 +1,118 @@
+1 call 96  getpid() = 0x1
+1 call 198 socket(2, 1, 0) = 0x3
+1 call 200 bind(3, 0xffffdc30, 16) = 0x0
+1 call 204 getsockname(3, 0xffffdc30, 0xffffdc2c) = 0x0
+1 call 201 listen(3, 1) = 0x0
+1 call 80  fstat64(3, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp", 0x20000, 0x1b6) = 0x4
+1 call 123 sched_getaffinity(0, 128, 0xffffd760) = 0x2
+1 call 222 mmap64(0x0, 0x1f000, 0x3, 0x22, -1, 0x0) = 0xeffd8000
+1 call 215 munmap(0xeffd8000, 0x8000) = 0x0
+1 call 215 munmap(0xefff0000, 0x7000) = 0x0
+1 call 63  read(4, 0xeffe0100, 1024) "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   " = 0xb3
+1 call 63  read(4, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(4) = 0x0
+1 call 198 socket(2, 1, 0) = 0x4
+1 call 203 connect(4, 0xffffdc30, 16) = 0x0
+1 call 202 accept(3, 0x0, 0x0) = 0x5
+1 call 80  fstat64(5, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp", 0x20000, 0x1b6) = 0x6
+1 call 63  read(6, 0xeffe0100, 1024) "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   " = 0x157
+1 call 63  read(6, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(6) = 0x0
+1 call 23  dup(3) = 0x6
+1 call 57  close(3) = 0x0
+1 call 80  fstat64(6, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp", 0x20000, 0x1b6) = 0x3
+1 call 63  read(3, 0xeffe0100, 1024) "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   " = 0x157
+1 call 63  read(3, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(3) = 0x0
+1 call 57  close(6) = 0x0
+1 call 57  close(5) = 0x0
+1 call 57  close(4) = 0x0
+1 call 66  writev(1, 0xffffd8f0, 2) {"PASS /proc/net/tcp loopback port=63844 inode-match dup-lifetime
+PASS /proc/net/tcp loopback port=63844 inode-match dup-lifetime
+", 64} {"", 0} = 0x40
+1 call 198 socket(2, 2, 0) = 0x3
+1 call 200 bind(3, 0xffffdc30, 16) = 0x0
+1 call 204 getsockname(3, 0xffffdc30, 0xffffdc2c) = 0x0
+1 call 80  fstat64(3, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/udp", 0x20000, 0x1b6) = 0x4
+1 call 63  read(4, 0xeffe0100, 1024) "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   " = 0xb3
+1 call 63  read(4, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(4) = 0x0
+1 call 23  dup(3) = 0x4
+1 call 57  close(3) = 0x0
+1 call 80  fstat64(4, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/udp", 0x20000, 0x1b6) = 0x3
+1 call 63  read(3, 0xeffe0100, 1024) "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   " = 0xb3
+1 call 63  read(3, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(3) = 0x0
+1 call 57  close(4) = 0x0
+1 call 66  writev(1, 0xffffd910, 2) {"PASS /proc/net/udp loopback port=65455 inode-match dup-lifetime
+PASS /proc/net/udp loopback port=65455 inode-match dup-lifetime
+", 64} {"", 0} = 0x40
+1 call 198 socket(10, 1, 0) = 0x3
+1 call 200 bind(3, 0xffffdc30, 28) = 0x0
+1 call 204 getsockname(3, 0xffffdc30, 0xffffdc2c) = 0x0
+1 call 201 listen(3, 1) = 0x0
+1 call 80  fstat64(3, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp6", 0x20000, 0x1b6) = 0x4
+1 call 63  read(4, 0xeffe0100, 1024) "  sl  local_address remote_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+" = 0xe6
+1 call 63  read(4, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(4) = 0x0
+1 call 198 socket(10, 1, 0) = 0x4
+1 call 203 connect(4, 0xffffdc30, 28) = 0x0
+1 call 202 accept(3, 0x0, 0x0) = 0x5
+1 call 80  fstat64(5, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp6", 0x20000, 0x1b6) = 0x6
+1 call 63  read(6, 0xeffe0100, 1024) "  sl  local_address remote_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+" = 0x1eb
+1 call 63  read(6, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(6) = 0x0
+1 call 23  dup(3) = 0x6
+1 call 57  close(3) = 0x0
+1 call 80  fstat64(6, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/tcp6", 0x20000, 0x1b6) = 0x3
+1 call 63  read(3, 0xeffe0100, 1024) "  sl  local_address remote_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+" = 0x1eb
+1 call 63  read(3, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(3) = 0x0
+1 call 57  close(6) = 0x0
+1 call 57  close(5) = 0x0
+1 call 57  close(4) = 0x0
+1 call 66  writev(1, 0xffffd910, 2) {"PASS /proc/net/tcp6 loopback port=63846 inode-match dup-lifetime
+PASS /proc/net/tcp6 loopback port=63846 inode-match dup-lifetime
+", 65} {"", 0} = 0x41
+1 call 198 socket(10, 2, 0) = 0x3
+1 call 200 bind(3, 0xffffdc30, 28) = 0x0
+1 call 204 getsockname(3, 0xffffdc30, 0xffffdc2c) = 0x0
+1 call 80  fstat64(3, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/udp6", 0x20000, 0x1b6) = 0x4
+1 call 63  read(4, 0xeffe0100, 1024) "  sl  local_address remote_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+" = 0xe7
+1 call 63  read(4, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(4) = 0x0
+1 call 23  dup(3) = 0x4
+1 call 57  close(3) = 0x0
+1 call 80  fstat64(4, 0xffffd800) = 0x0
+1 call 56  openat(-100, "/proc/net/udp6", 0x20000, 0x1b6) = 0x3
+1 call 63  read(3, 0xeffe0100, 1024) "  sl  local_address remote_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+" = 0xe7
+1 call 63  read(3, 0xeffe0100, 1024) "" = 0x0
+1 call 57  close(3) = 0x0
+1 call 57  close(4) = 0x0
+1 call 66  writev(1, 0xffffd910, 2) {"PASS /proc/net/udp6 loopback port=53522 inode-match dup-lifetime
+PASS /proc/net/udp6 loopback port=53522 inode-match dup-lifetime
+", 65} {"", 0} = 0x41
+PROC_INET_OK1 call 66  writev(1, 0xffffdb20, 2) {"", 0} {"PROC_INET_OK", 12} = 0xc
+1 call 66  writev(1, 0xffffdb60, 2) {"", 0} {"
+
+", 1} = 0x1
+1 call 94  exit_group(0)

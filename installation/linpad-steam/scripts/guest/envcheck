@@ -1,0 +1,3 @@
+#!/bin/sh
+{ echo TASKSET; command -v taskset; cat /usr/local/bin/taskset; echo OTHER; grep -n -e single-process -e taskset -e no-zygote /root/.local/share/Steam/steamrtarm64/steamwebhelper.sh; echo WMENV; env; echo X11; ls -l /tmp/.X11-unix; tail -10 /tmp/steam-wm.log; } >/tmp/envcheck.log 2>&1
+wget -q --post-file=/tmp/envcheck.log http://192.168.0.104:8765/reports/console-linux.txt -O /dev/null

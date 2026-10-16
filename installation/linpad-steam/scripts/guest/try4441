@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+ulimit -s 8192
+for p in parent-pid-probe proc-thread-list-probe proc-inet-probe proc-fd-exit-probe; do
+    wget -q "http://192.168.0.104:8765/$p" -O "/tmp/$p"
+    chmod +x "/tmp/$p"
+    "/tmp/$p"
+done
+wget -q http://192.168.0.104:8765/steam-lsof.tar.gz -O /tmp/steam-lsof.tar.gz
+tar -xzf /tmp/steam-lsof.tar.gz -C /opt/steam-host
+if [ ! -e /usr/bin/lsof.linpad-original ] && [ ! -L /usr/bin/lsof.linpad-original ] && [ -e /usr/bin/lsof ]; then mv /usr/bin/lsof /usr/bin/lsof.linpad-original; fi
+rm -f /usr/bin/lsof
+wget -q http://192.168.0.104:8765/lsof-wrapper -O /usr/bin/lsof
+wget -q http://192.168.0.104:8765/taskset-wrapper -O /usr/local/bin/taskset
+wget -q http://192.168.0.104:8765/steam-local -O /usr/local/bin/steam-local
+wget -q http://192.168.0.104:8765/collect4437 -O /tmp/collect-steam
+chmod +x /usr/bin/lsof /usr/local/bin/taskset /usr/local/bin/steam-local
+/usr/bin/lsof -v
+cat /usr/local/bin/taskset
+STEAM_PIPE_DIAGNOSTIC=1 STEAM_PIPE_PACKET_FALLBACK=1 steam-local >/tmp/steam-local.log 2>&1 &
+echo "STEAM_TEST_PID=$!"
+for round in 1 2 3 4 5 6; do
+    sleep 15
+    sh /tmp/collect-steam
+done

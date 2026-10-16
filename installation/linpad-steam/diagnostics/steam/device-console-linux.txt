@@ -1,0 +1,440 @@
+Fri Oct 16 08:00:52 UTC 2026
+PROBES
+worker parent=171 expected=171
+child parent api=174 status=174 stat=174 expected=174
+PARENT_PID_OK
+PROC_THREAD_LIST_OK leader=1 hidden_workers=8 direct_lookup=8 task_lookup=8
+PASS /proc/net/tcp loopback port=49628 inode-match dup-lifetime
+PASS /proc/net/udp loopback port=53379 inode-match dup-lifetime
+PASS /proc/net/tcp6 loopback port=49630 inode-match dup-lifetime
+PASS /proc/net/udp6 loopback port=64015 inode-match dup-lifetime
+PROC_INET_OK
+PROC_FD_EXIT_SCAN_OK rounds=300 scans=2937
+lsof version information:
+    revision: 4.99.4
+    copyright notice: Copyright 1998 Purdue Research Foundation. All rights reserved.
+    latest revision: https://github.com/lsof-org/lsof
+    latest FAQ: https://github.com/lsof-org/lsof/blob/master/00FAQ
+    latest (non-formatted) man page: https://github.com/lsof-org/lsof/blob/master/Lsof.8
+    constructed on: aarch64-unknown-linux-gnu
+    compiler: gcc
+    compiler flags: -g -O2 -Werror=implicit-function-declaration -ffile-prefix-map=/build/reproducible-path/lsof-4.99.4+dfsg=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard -D_FILE_OFFSET_BITS=64 -I/usr/include/tirpc 
+    loader flags: -Wl,-z,relro -Wl,-z,now -ltirpc  -lselinux
+    features enabled: ipv6 ptyept rpc selinux soopt sostate tasks uxsockept
+    Anyone can list all files.
+    /dev warnings are disabled.
+    Kernel ID check is disabled.
+#!/bin/sh
+if [ "${1:-}" = -p ]; then
+    LD_LIBRARY_PATH=/opt/steam-utils/usr/lib:/opt/steam-utils/lib exec /opt/steam-utils/usr/bin/taskset "$@"
+fi
+mask="$1"; shift
+saved_libs="${LD_LIBRARY_PATH:-}"
+case "${1:-}" in
+    */steamwebhelper) set -- "$@" --disable-gpu-watchdog --disable-dev-shm-usage --in-process-gpu ;;
+esac
+LD_LIBRARY_PATH=/opt/steam-utils/usr/lib:/opt/steam-utils/lib exec /opt/steam-utils/usr/bin/taskset "$mask" /usr/bin/env LD_LIBRARY_PATH="$saved_libs" "$@"
+STEAM_TEST_PID=509
+PID   PPID  COMMAND          COMMAND
+    1     0 init             /sbin/init
+    5     1 getty            /sbin/getty 38400 tty1
+    6     1 getty            /sbin/getty 38400 tty2
+   11     1 login            /bin/login -f root
+   14    11 sh               -sh
+   16     1 ishwl            ishwl --runtime-dir /tmp/ishwl -v
+   22     1 dbus-daemon      dbus-daemon --session --fork --print-address=1
+   27     1 login            /bin/login -f root
+   28    27 sh               -sh
+   30     1 pulseaudio       pulseaudio -n --file=/etc/ishaudio/ishaudio.pa --exit-idle-time=-1 --disallow-exit --use-pid-file=no --log-target=file:/tmp/ishaudio/pulse.log --daemonize=yes
+   33     1 login            /bin/login -f root
+   34    33 sh               -sh
+   46     1 getty            /sbin/getty 38400 tty3
+   61    16 thunar           thunar --daemon
+   72     1 getty            /sbin/getty 38400 tty4
+   86     1 getty            /sbin/getty 38400 tty5
+   87     1 getty            /sbin/getty 38400 tty6
+  120     1 xfconfd          /usr/lib/xfce4/xfconf/xfconfd
+  171    34 sh               sh /tmp/try
+  509   171 steam-local      {steam-local} /bin/sh /usr/local/bin/steam-local
+  511   509 dbus-daemon      dbus-daemon --session --nofork --address=unix:path=/tmp/steam-session-bus
+  512   509 ld-linux-aarch6  /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 --library-path /opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /opt/steam-host/usr/bin/Xtigervnc :55 -geometry 1024x700 -depth 24 -SecurityTypes None -localhost yes -rfbport 5955 -nolisten tcp -ac
+  513   509 steam-local      {steam-local} /bin/sh /usr/local/bin/steam-local
+  514   509 steam            /root/.local/share/Steam/steamrtarm64/steam -no-cef-sandbox -cef-disable-gpu
+  515   509 ishwl-x11        {ishwl-x11} /bin/sh /usr/local/bin/ishwl-x11 -g 1024x700 /usr/local/bin/steam-local --viewer
+  520   515 Xwayland         /opt/steam-x11/usr/bin/Xwayland :11 -geometry 1024x700 -nolisten tcp -noreset
+  535   515 ishwl-x11-wm     ishwl-x11-wm
+  536   515 ld-linux-aarch6  /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 --library-path /opt/steam-host/usr/lib/aarch64-linux-gnu:/opt/steam-host/usr/lib/aarch64-linux-gnu/pulseaudio:/root/.local/share/Steam/steamrtarm64:/root/.local/share/Steam/steamrtarm64/libs /opt/steam-host/usr/bin/xtigervncviewer -SecurityTypes None -PreferredEncoding Raw -AutoSelect=0 -Shared -RemoteResize=0 127.0.0.1::5955
+  550   513 ishwl-x11-wm     ishwl-x11-wm
+  583   514 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper -nocrashdialog -lang=en_US -cachedir=/root/.local/share/Steam/config/htmlcache -steampid=514 -buildid=1792110651 -steamid=0 -logdir=/root/.local/share/Steam/logs -uimode=7 -startcount=0 -steamuniverse=Public -realm=Global -clientui=/root/.local/share/Steam/clientui -steampath=/root/.local/share/Steam/steamrtarm64/steam -launcher=0 --valve-initial-threadpool-size=4 --valve-enable-site-isolation --enable-smooth-scrolling --disable-gpu-compositing --disable-gpu --ignore-gpu-blocklist --no-sandbox --password-store=basic --log-file=/root/.local/share/Steam/logs/cef_log.txt --disable-quick-menu --disable-component-update --gaia-url=http://disabled.invalid --enable-features=V4L2VideoDecode --disable-features=WinRetrieveSuggestionsOnlyOnDemand,SpareRendererForSitePerProcess,BlockPromptsIfIgnoredOften,WebUsbDeviceDetection,ValveFFmpegAllowLowDelayHEVC --disable-gpu-watchdog --disable-dev-shm-usage --in-process-gpu
+  606   583 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-zygote-sandbox --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client --buildid=1792110651 --steamid=0 --valve-initial-threadpool-size=4
+  607   583 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client --buildid=1792110651 --steamid=0 --valve-initial-threadpool-size=4
+  655   583 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --no-sandbox --disable-dev-shm-usage --use-angle=swiftshader-webgl --use-gl=angle --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client --buildid=1792110651 --steamid=0 --valve-initial-threadpool-size=4 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=3,i,2330970864627928393,9182315837344841778,262144 --enable-features=V4L2VideoDecode --disable-features=BlockPromptsIfIgnoredOften,SpareRendererForSitePerProcess,ValveFFmpegAllowLowDelayHEVC,WebUsbDeviceDetection,WinRetrieveSuggestionsOnlyOnDemand --variations-seed-version --log-file=/root/.local/share/Steam/logs/cef_log.txt
+  667   607 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client --buildid=1792110651 --steamid=0 --valve-initial-threadpool-size=4
+  698   607 steamwebhelper   /root/.local/share/Steam/steamrtarm64/steamwebhelper --type=zygote --no-sandbox --enable-crash-reporter=, --change-stack-guard-on-fork=enable --enable-chrome-runtime --user-data-dir=/root/.local/share/Steam/config/htmlcache --user-agent-product=Valve Steam Client --buildid=1792110651 --steamid=0 --valve-initial-threadpool-size=4
+ 1040   509 sleep            sleep 1
+ 1041   171 sh               sh /tmp/collect-steam
+ 1044  1041 ps               ps -o pid,ppid,comm,args
+MAIN
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xe66eea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xe66eea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xe66eea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff70d8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd8877c78 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xd4a61ce0
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec7a3d80
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff6e68 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41c58 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3b15438 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41ae8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41c48 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d31918 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_PIPE2 flags=90000 result=0 errno=17
+LINPAD_THREAD attr=0xd3d41a08 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41b08 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41b28 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41aa8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41648 stack=(nil) size=800000 guard=1000 entry=0xeb4b3800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41528 stack=(nil) size=800000 guard=1000 entry=0xeb4b3800
+LINPAD_THREAD result=0
+LINPAD_PIPE2 flags=80000 result=0 errno=11
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xe9901a60
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d31798 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41aa8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd34d5bd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+/bin/sh: /root/.local/share/Steam/steamrtarm64/../steamrtarm32/gldriverquery: not found
+Steam Runtime Launch Service: starting steam-runtime-launcher-service
+Steam Runtime Launch Service: steam-runtime-launcher-service is running pid 622
+LINPAD_THREAD attr=0xd3d41438 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_PIPE2 flags=80000 result=0 errno=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xe9901a60
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd3d41608 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+sh: exec: line 0: steam-runtime-launcher-service: not found
+LINPAD_THREAD attr=0xd2b9cef8 stack=(nil) size=800000 guard=1000 entry=0xeb4b3800
+LINPAD_THREAD result=0
+Vulkan missing requested extension 'VK_KHR_surface'.
+Vulkan missing requested extension 'VK_KHR_xlib_surface'.
+BInit - Unable to initialize Vulkan!
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec44ea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec44ea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec44ea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec44ea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xec44ea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd34d5bd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+/bin/sh: /root/.local/share/Steam/steamrtarm64/../steamrtarm32/vulkandriverquery: not found
+LINPAD_THREAD attr=0xd3d41868 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff7058 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+Steam Runtime Launch Service: steam-runtime-launcher-service pid 622 exited
+Steam Runtime Launch Service: steam-runtime-launcher-service possible problem, disabling
+LINPAD_THREAD attr=0xfffe6c18 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff6de8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff6da8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xec7a6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffff6ba8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+WM
+ishwl-x11-wm: cannot open display
+NET
+  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode
+   0: 6600A8C0:C201 14FA859B:698E 01 00000000:00000000 00:00000000 00000000 0 0 3482
+   1: 0100007F:C1EA 0100007F:C1F5 01 00000000:00000000 00:00000000 00000000 0 0 3162
+   2: 0100007F:C1F5 0100007F:C1EA 01 00000000:00000000 00:00000000 00000000 0 0 3161
+   3: 0100007F:C1EB 0100007F:C1F3 01 00000000:00000000 00:00000000 00000000 0 0 3159
+   4: 0100007F:C1F3 0100007F:C1EB 01 00000000:00000000 00:00000000 00000000 0 0 3158
+   5: 0100007F:DFFF 0100007F:C1EE 01 00000000:00000000 00:00000000 00000000 0 0 2989
+   6: 0100007F:C1EE 0100007F:DFFF 01 00000000:00000000 00:00000000 00000000 0 0 2988
+   7: 0100007F:C1EB 00000000:0000 0A 00000000:00000000 00:00000000 00000000 0 0 2775
+   8: 0100007F:C1EA 00000000:0000 0A 00000000:00000000 00:00000000 00000000 0 0 2725
+   9: 0100007F:DFFF 00000000:0000 0A 00000000:00000000 00:00000000 00000000 0 0 2712
+  10: 0100007F:1743 0100007F:C1E9 01 00000000:00000000 00:00000000 00000000 0 0 2644
+  11: 0100007F:C1E9 0100007F:1743 01 00000000:00000000 00:00000000 00000000 0 0 2643
+  12: 0100007F:1743 00000000:0000 0A 00000000:00000000 00:00000000 00000000 0 0 2610
+VIEWER
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+
+TigerVNC viewer v1.15.0
+Built on: 2026-07-03 16:13
+Copyright (C) 1999-2025 TigerVNC team and many others (see README.rst)
+See https://www.tigervnc.org for information on TigerVNC.
+
+Fri Oct 16 07:59:21 2026
+ DecodeManager: Detected 8 CPU core(s)
+ DecodeManager: Creating 4 decoder thread(s)
+ CConn:       Connected to host 127.0.0.1 port 5955
+ CConnection: Server supports RFB protocol version 3.8
+ CConnection: Using RFB protocol version 3.8
+ CConnection: Choosing security type None(1)
+ DesktopWindow: Adjusting window size to avoid accidental full-screen request
+ CConn:       Using pixel format depth 24 (32bpp) little-endian rgb888
+ CConnection: Enabling continuous updates
+XVNC
+MESA-LOADER: failed to open dri: /usr/lib/aarch64-linux-gnu/gbm/dri_gbm.so: cannot open shared object file: No such file or directory (search paths /usr/lib/aarch64-linux-gnu/gbm, suffix _gbm)
+Could create GPU render device
+Failed to initialize DRI3 extension
+
+Fri Oct 16 07:59:21 2026
+ vncext:      VNC extension running!
+ vncext:      Listening for VNC connections on local interface(s), port 5955
+ vncext:      Created VNC server for screen 0
+[mi] mieq: warning: overriding existing handler (nil) with 0xefe7aa08 for event 2
+[mi] mieq: warning: overriding existing handler (nil) with 0xefe7aa08 for event 3
+ Connections: Accepted: 127.0.0.1::49641
+ SConnection: Client needs protocol version 3.8
+ SConnection: Client requests security type None(1)
+ VNCSConnST:  Server default pixel format depth 24 (32bpp) little-endian rgb888
+LSOF
+p512
+R509
+u0
+n127.0.0.1:5955
+n127.0.0.1:5955->127.0.0.1:49641
+p514
+R509
+u0
+n127.0.0.1:57343
+n127.0.0.1:49642
+n127.0.0.1:49643->127.0.0.1:49651
+n127.0.0.1:49643
+n127.0.0.1:57343->127.0.0.1:49646
+n127.0.0.1:49642->127.0.0.1:49653
+p536
+R515
+u0
+n127.0.0.1:49641->127.0.0.1:5955
+p583
+R514
+u0
+n127.0.0.1:49646->127.0.0.1:57343
+p655
+R583
+u0
+n127.0.0.1:49651->127.0.0.1:49643
+n127.0.0.1:49653->127.0.0.1:49642
+CONSOLE
+[2026-10-16 08:00:28] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:28] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:28] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:28] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:29] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:29] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:29] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:29] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:30] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:30] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:30] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:30] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:31] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:31] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:31] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:31] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:32] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:32] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:32] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:32] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:33] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:33] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:33] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:33] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:34] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:34] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:34] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:34] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:35] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:35] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:35] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:35] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:36] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:36] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:36] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:36] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:37] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:37] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:37] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:37] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:38] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:38] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:38] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:38] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:39] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:39] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:39] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:39] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:40] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:40] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:40] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:40] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:41] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:41] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:41] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:41] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:42] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:42] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:42] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:42] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:43] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:43] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:43] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:43] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:44] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:44] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:44] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:44] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:45] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:45] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:45] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:45] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:46] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:46] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:46] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:46] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:47] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:47] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:47] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:47] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:48] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:48] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:48] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:48] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:49] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:49] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:49] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:49] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:50] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:50] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:50] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:50] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:51] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:51] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:51] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:51] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:52] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:52] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:52] Using udev for HIDAPI joystick device discovery
+[2026-10-16 08:00:52] Using udev for HIDAPI joystick device discovery
+STEAMUI
+[2026-10-16 07:34:23] Client version: 1792110651
+[2026-10-16 07:34:23] Started webhelper process 587
+[2026-10-16 07:34:23] STARTUP SteamUI browser requested at +1995ms
+[2026-10-16 07:34:23] CreateBrowser id:4153299888 type:12 flags:1000000 (-2147483648, -2147483648) 0x0
+[2026-10-16 07:34:26] CreateResponse: id:4153299888 handle:65536
+[2026-10-16 07:34:26] BrowserReady: handle:65536
+
+
+[2026-10-16 07:44:01] Client version: 1792110651
+[2026-10-16 07:44:01] Started webhelper process 571
+[2026-10-16 07:44:01] STARTUP SteamUI browser requested at +1994ms
+[2026-10-16 07:44:01] CreateBrowser id:318653390 type:12 flags:1000000 (-2147483648, -2147483648) 0x0
+[2026-10-16 07:44:04] CreateResponse: id:318653390 handle:65536
+[2026-10-16 07:44:04] BrowserReady: handle:65536
+
+
+[2026-10-16 07:50:59] Client version: 1792110651
+[2026-10-16 07:50:59] Started webhelper process 582
+[2026-10-16 07:50:59] STARTUP SteamUI browser requested at +2033ms
+[2026-10-16 07:50:59] CreateBrowser id:876198537 type:12 flags:1000000 (-2147483648, -2147483648) 0x0
+[2026-10-16 07:51:02] RetryCreateBrowser id:876198537 type:12 flags:16777216: (-2147483648, -2147483648) 0x0
+[2026-10-16 07:51:02] CreateResponse: id:876198537 handle:65536
+[2026-10-16 07:51:02] BrowserReady: handle:65536
+
+
+[2026-10-16 07:54:31] Client version: 1792110651
+[2026-10-16 07:54:31] Started webhelper process 1483
+[2026-10-16 07:54:31] STARTUP SteamUI browser requested at +2454ms
+[2026-10-16 07:54:31] CreateBrowser id:1877773354 type:12 flags:1000000 (-2147483648, -2147483648) 0x0
+[2026-10-16 07:54:34] RetryCreateBrowser id:1877773354 type:12 flags:16777216: (-2147483648, -2147483648) 0x0
+[2026-10-16 07:54:34] CreateResponse: id:1877773354 handle:65536
+[2026-10-16 07:54:34] BrowserReady: handle:65536
+
+
+[2026-10-16 07:59:28] Client version: 1792110651
+[2026-10-16 07:59:28] Started webhelper process 583
+[2026-10-16 07:59:28] STARTUP SteamUI browser requested at +2027ms
+[2026-10-16 07:59:28] CreateBrowser id:3659102546 type:12 flags:1000000 (-2147483648, -2147483648) 0x0
+[2026-10-16 07:59:31] RetryCreateBrowser id:3659102546 type:12 flags:16777216: (-2147483648, -2147483648) 0x0
+[2026-10-16 07:59:31] CreateResponse: id:3659102546 handle:65536
+[2026-10-16 07:59:31] BrowserReady: handle:65536
+[2026-10-16 07:59:41] GetDesiredSteamUIWindows: starting processing of 1 windows
+[2026-10-16 07:59:41] GetDesiredSteamUIWindows: finish
+[2026-10-16 07:59:43] PopupHTMLWindow: idx:131073 handle:65536
+[2026-10-16 07:59:43] BrowserReady: handle:131073
+[2026-10-16 07:44:01] Initialized CSystemPerfController: 0
+[2026-10-16 07:44:01] Initialized CSteamUINetworkController: 0
+[2026-10-16 07:44:01] Initialized CSystemReportController
+
+
+[2026-10-16 07:50:59] Client version: 1792110651
+[2026-10-16 07:50:59] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VIEWPORT_SUPPORTED
+[2026-10-16 07:50:59] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VROVERLAY_FORWARDING
+[2026-10-16 07:50:59] CGamescopeController: set HDR Enabled: 1
+[2026-10-16 07:50:59] CGamescopeController: initalized implementation: linux
+[2026-10-16 07:50:59] Initialized CSystemDockManagerController: 1
+[2026-10-16 07:50:59] Initialized CSystemAudioDeviceController: 0
+[2026-10-16 07:50:59] Initialized CSystemDisplayController: 0
+[2026-10-16 07:50:59] Initializing bluetooth manager: stub
+[2026-10-16 07:50:59] Initialized CSystemPerfController: 0
+[2026-10-16 07:50:59] Initialized CSteamUINetworkController: 0
+[2026-10-16 07:50:59] Initialized CSystemReportController
+
+
+[2026-10-16 07:54:31] Client version: 1792110651
+[2026-10-16 07:54:31] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VIEWPORT_SUPPORTED
+[2026-10-16 07:54:31] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VROVERLAY_FORWARDING
+[2026-10-16 07:54:31] CGamescopeController: set HDR Enabled: 1
+[2026-10-16 07:54:31] CGamescopeController: initalized implementation: linux
+[2026-10-16 07:54:31] Initialized CSystemDockManagerController: 1
+[2026-10-16 07:54:31] Initialized CSystemAudioDeviceController: 0
+[2026-10-16 07:54:31] Initialized CSystemDisplayController: 0
+[2026-10-16 07:54:31] Initializing bluetooth manager: stub
+[2026-10-16 07:54:31] Initialized CSystemPerfController: 0
+[2026-10-16 07:54:31] Initialized CSteamUINetworkController: 0
+[2026-10-16 07:54:31] Initialized CSystemReportController
+
+
+[2026-10-16 07:59:28] Client version: 1792110651
+[2026-10-16 07:59:28] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VIEWPORT_SUPPORTED
+[2026-10-16 07:59:28] Error: CX11WindowProperty: failed to read window property: GAMESCOPE_VROVERLAY_FORWARDING
+[2026-10-16 07:59:28] CGamescopeController: set HDR Enabled: 1
+[2026-10-16 07:59:28] CGamescopeController: initalized implementation: linux
+[2026-10-16 07:59:28] Initialized CSystemDockManagerController: 1
+[2026-10-16 07:59:28] Initialized CSystemAudioDeviceController: 0
+[2026-10-16 07:59:28] Initialized CSystemDisplayController: 0
+[2026-10-16 07:59:28] Initializing bluetooth manager: stub
+[2026-10-16 07:59:28] Initialized CSystemPerfController: 0
+[2026-10-16 07:59:28] Initialized CSteamUINetworkController: 0
+[2026-10-16 07:59:28] Initialized CSystemReportController

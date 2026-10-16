@@ -1,0 +1,191 @@
+LINPAD_THREAD attr=0xffffc708 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/16 07:59:28 /tmp/dumps: insufficient permissions - delete and recreate
+LINPAD_THREAD attr=0xffffcb48 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/16 07:59:28 minidumps folder is set to /tmp/dumps
+[1016/075928.785008:WARNING:crash_reporting.cc(271)] Failed to set crash key: UserID with value: 0
+[1016/075928.785363:WARNING:crash_reporting.cc(271)] Failed to set crash key: BuildID with value: 1792110651
+[1016/075928.785397:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1016/075928.785434:WARNING:crash_reporting.cc(271)] Failed to set crash key: Vendor with value: Valve
+[1016/075928.785465:WARNING:crash_reporting.cc(271)] Failed to set crash key: Platform with value: Linux
+LINPAD_THREAD attr=0xffffc0a0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+[1016/075929.097948:WARNING:crash_reporting.cc(271)] Failed to set crash key: UserID with value: 0
+[1016/075929.098628:WARNING:crash_reporting.cc(271)] Failed to set crash key: BuildID with value: 1792110651
+[1016/075929.098672:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1016/075929.098714:WARNING:crash_reporting.cc(271)] Failed to set crash key: Vendor with value: Valve
+[1016/075929.098096:WARNING:crash_reporting.cc(271)] Failed to set crash key: UserID with value: 0
+[1016/075929.098859:WARNING:crash_reporting.cc(271)] Failed to set crash key: Platform with value: Linux
+[1016/075929.098962:WARNING:crash_reporting.cc(271)] Failed to set crash key: BuildID with value: 1792110651
+[1016/075929.099021:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1016/075929.099076:WARNING:crash_reporting.cc(271)] Failed to set crash key: Vendor with value: Valve
+[1016/075929.099114:WARNING:crash_reporting.cc(271)] Failed to set crash key: Platform with value: Linux
+LINPAD_PIPE2 flags=80000 result=0 errno=38
+LINPAD_THREAD attr=0xffffc380 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc1c0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc080 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdd035270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc190 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc1a0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+[583:638:1016/075929.403283:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc190 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbef0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+[583:641:1016/075929.613320:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:641:1016/075929.613613:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+LINPAD_THREAD attr=0xffffbe80 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdc825270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdc825270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdc824a10 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbf10 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbb40 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd699a3f0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbd20 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+[583:637:1016/075929.690990:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+LINPAD_THREAD attr=0xffffb050 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a6b33c
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd1a512e0
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xd4c81d24
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xd699a210 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_PIPE2 flags=80000 result=0 errno=22
+LINPAD_THREAD attr=0xffffcab0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc430 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc2f0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xddfc6270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc5a0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+[1016/075929.957069:WARNING:crash_reporting.cc(271)] Failed to set crash key: UserID with value: 0
+[1016/075929.957820:WARNING:crash_reporting.cc(271)] Failed to set crash key: BuildID with value: 1792110651
+[1016/075929.957865:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1016/075929.957922:WARNING:crash_reporting.cc(271)] Failed to set crash key: Vendor with value: Valve
+[1016/075929.958004:WARNING:crash_reporting.cc(271)] Failed to set crash key: Platform with value: Linux
+LINPAD_THREAD attr=0xffffb3d0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+src/webhelper/html_chrome.cpp (622) : CefCrashReportingEnabled()
+10/16 07:59:30 Init: Installing breakpad exception handler for appid(cefwebhelper)/version(1792110651)/tid(583)
+LINPAD_THREAD attr=0xffffc990 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+10/16 07:59:30 Failed writing minidump, nothing to upload.
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc310 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc1d0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xddfbe270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD attr=0xffffc480 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xddfbda10 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdd7ae270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdbede270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffce08 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffce08 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbbc0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+[583:685:1016/075930.320025:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.320439:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.320845:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.321264:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.322012:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+LINPAD_THREAD attr=0xffffb430 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffb5f8 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffcab0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc750 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc610 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xddfc6270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc880 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc5e0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc680 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffc6c0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdd7b6270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdd7b6270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdaba9270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdaba9270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffaad8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/16 07:59:37 /tmp/dumps: insufficient permissions - delete and recreate
+10/16 07:59:37 minidumps folder is set to /tmp/dumps
+LINPAD_THREAD attr=0xd8b688c8 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbed0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD attr=0xd9379270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xea4fea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xea4fea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xea4fea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xea4fea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=(nil) stack=(nil) size=800000 guard=0 entry=0xea4fea20
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffb218 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffb0f8 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffb2c8 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+[583:583:1016/075943.068618:ERROR:atom_cache.cc(229)] Add STEAM_GAME to kAtomsToCache
+LINPAD_THREAD attr=0xc0a914f8 stack=(nil) size=800000 guard=1000 entry=0xeef03800
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffbae0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0

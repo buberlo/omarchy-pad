@@ -1,0 +1,22 @@
+[main 7b7bf74] Fix Linux runtime contracts needed for Steam and FEX on iPad
+ Committer: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 19 files changed, 268 insertions(+), 16 deletions(-)
+ create mode 100644 tests/manual/steam-compat/README.md
+ create mode 100644 tests/manual/steam-compat/epoll-oneshot-probe.c
+ create mode 100644 tests/manual/steam-compat/eventfd-probe.c
+ create mode 100644 tests/manual/steam-compat/pselect-probe.c
+ create mode 100644 tests/manual/steam-compat/pthread-glibc-probe.c
+ create mode 100644 tests/manual/steam-compat/runtime-probe.c
+ create mode 100644 tests/manual/steam-compat/x86-runtime-smoke.c

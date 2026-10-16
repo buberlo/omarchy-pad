@@ -1,0 +1,8 @@
+PROBES
+PROC_THREAD_LIST_OK leader=1 hidden_workers=8 direct_lookup=8 task_lookup=8
+PASS /proc/net/tcp loopback port=65421 inode-match dup-lifetime
+PASS /proc/net/udp loopback port=58100 inode-match dup-lifetime
+PASS /proc/net/tcp6 loopback port=65423 inode-match dup-lifetime
+PASS /proc/net/udp6 loopback port=53395 inode-match dup-lifetime
+PROC_INET_OK
+PROC_FD_EXIT_SCAN_OK rounds=300 scans=3009

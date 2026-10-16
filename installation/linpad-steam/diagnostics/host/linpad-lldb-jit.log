@@ -1,0 +1,4 @@
+(lldb) device select 87335B57-0430-5B18-ABF9-20A3B37871C2
+(lldb) device process attach -p 20271
+(lldb) process detach
+error: Process must be launched.

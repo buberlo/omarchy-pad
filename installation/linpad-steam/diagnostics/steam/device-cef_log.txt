@@ -1,0 +1,382 @@
+[1319:1319:1016/062647.254368:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1319:1319:1016/062647.267184:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1319:1319:1016/062647.272202:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1319:1364:1016/062647.797647:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1319:1367:1016/062647.821269:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1319:1367:1016/062647.821586:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1319:1319:1016/062647.824645:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1319:1319:1016/062647.824823:ERROR:shutdown_signal_handlers_posix.cc(194)] Failed to create shutdown detector task.
+[1319:1362:1016/062647.858291:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1319:1362:1016/062647.859135:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1319:1364:1016/062647.859154:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1319:1364:1016/062647.859777:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1319:1364:1016/062647.860546:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1319:1364:1016/062647.860686:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1319:1362:1016/062647.862330:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1319:1319:1016/062647.873733:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1399:1399:1016/062657.027344:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1399:1399:1016/062657.032553:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1399:1399:1016/062657.036295:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1399:1412:1016/062657.350225:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1399:1416:1016/062657.604293:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1399:1416:1016/062657.604594:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1399:1412:1016/062657.642398:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1399:1412:1016/062657.643498:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1399:1412:1016/062657.644705:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1399:1412:1016/062657.644943:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1399:1411:1016/062657.650392:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1399:1399:1016/062657.663152:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1445:1445:1016/062707.310682:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1445:1445:1016/062707.315993:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1445:1445:1016/062707.319721:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1445:1462:1016/062707.619455:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1445:1466:1016/062707.797442:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1445:1466:1016/062707.797759:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1445:1462:1016/062707.827373:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1445:1462:1016/062707.828216:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1445:1462:1016/062707.829109:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1445:1462:1016/062707.829388:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1445:1461:1016/062707.831162:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1445:1445:1016/062707.849607:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1497:1497:1016/062717.432647:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1497:1497:1016/062717.438251:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1497:1497:1016/062717.442066:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1497:1511:1016/062717.739131:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1497:1514:1016/062717.920126:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1497:1514:1016/062717.920410:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1497:1511:1016/062717.952022:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1497:1511:1016/062717.952808:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1497:1511:1016/062717.953503:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1497:1511:1016/062717.954167:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1497:1510:1016/062717.954149:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1497:1497:1016/062717.971113:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1543:1543:1016/062727.593399:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1543:1543:1016/062727.598639:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1543:1543:1016/062727.602371:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1543:1555:1016/062727.897210:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1543:1558:1016/062728.076518:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1543:1558:1016/062728.076843:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1543:1553:1016/062728.106100:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1543:1555:1016/062728.107099:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1543:1555:1016/062728.107655:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1543:1555:1016/062728.108646:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1543:1555:1016/062728.108712:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1543:1553:1016/062728.109688:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1543:1543:1016/062728.125429:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1592:1592:1016/062737.790286:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1592:1592:1016/062737.795791:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1592:1592:1016/062737.799616:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1592:1604:1016/062738.095566:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1592:1608:1016/062738.278372:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1592:1608:1016/062738.278694:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1592:1604:1016/062738.308977:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1592:1603:1016/062738.309249:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1592:1604:1016/062738.310034:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1592:1604:1016/062738.311002:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1592:1604:1016/062738.311076:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1592:1603:1016/062738.313234:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1592:1592:1016/062738.328429:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1636:1636:1016/062748.069082:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1636:1636:1016/062748.074593:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1636:1636:1016/062748.078327:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1636:1654:1016/062748.389363:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1636:1657:1016/062748.568255:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1636:1657:1016/062748.568580:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1636:1654:1016/062748.598526:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1636:1654:1016/062748.599737:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1636:1652:1016/062748.599130:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1636:1654:1016/062748.600338:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1636:1654:1016/062748.600405:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1636:1652:1016/062748.602327:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1636:1636:1016/062748.618775:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1684:1684:1016/062758.157849:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1684:1684:1016/062758.163235:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1684:1684:1016/062758.166967:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1684:1697:1016/062758.457212:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1684:1700:1016/062758.638045:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1684:1700:1016/062758.638374:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1684:1697:1016/062758.668307:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1684:1696:1016/062758.668687:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1684:1697:1016/062758.669176:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1684:1697:1016/062758.669909:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1684:1697:1016/062758.670060:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1684:1696:1016/062758.672548:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1684:1684:1016/062758.688764:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1727:1727:1016/062808.340390:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1727:1727:1016/062808.345738:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1727:1727:1016/062808.349474:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1727:1740:1016/062808.641333:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1727:1743:1016/062808.821021:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1727:1743:1016/062808.821350:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1727:1740:1016/062808.851354:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1727:1740:1016/062808.851833:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1727:1739:1016/062808.851237:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1727:1740:1016/062808.852787:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1727:1740:1016/062808.853305:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1727:1745:1016/062808.853881:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1727:1727:1016/062808.870779:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1777:1777:1016/062818.535827:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1777:1777:1016/062818.541461:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1777:1777:1016/062818.545401:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1777:1790:1016/062818.848342:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1777:1793:1016/062819.028092:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1777:1793:1016/062819.028441:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1777:1790:1016/062819.057965:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1777:1789:1016/062819.058184:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1777:1790:1016/062819.058839:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1777:1790:1016/062819.059534:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1777:1790:1016/062819.059731:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1777:1789:1016/062819.062432:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1777:1777:1016/062819.079346:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1824:1824:1016/062828.696174:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1824:1824:1016/062828.701579:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1824:1824:1016/062828.705380:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1824:1837:1016/062828.997359:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1824:1840:1016/062829.177658:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1824:1840:1016/062829.177975:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1824:1837:1016/062829.208991:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1824:1835:1016/062829.208418:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1824:1837:1016/062829.209681:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1824:1837:1016/062829.210724:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1824:1837:1016/062829.210931:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[1824:1835:1016/062829.212357:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[1824:1824:1016/062829.229059:ERROR:platform_thread_posix.cc(155)] pthread_create: Resource temporarily unavailable (11)
+[196:196:1016/062915.762476:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[196:196:1016/062915.777530:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[196:196:1016/062915.782457:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[240:240:1016/063513.690386:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[240:240:1016/063513.696708:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[240:240:1016/063513.700224:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[240:293:1016/063514.217682:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:296:1016/063514.431202:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:296:1016/063514.431485:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:293:1016/063514.463169:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:293:1016/063514.464155:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:293:1016/063514.465734:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:293:1016/063514.465850:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:292:1016/063514.503128:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[240:240:1016/063514.626470:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[240:293:1016/063514.654606:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:293:1016/063514.655418:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[240:240:1016/063514.863982:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[240:240:1016/063514.931876:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[240:338:1016/063515.056173:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:338:1016/063515.056551:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:338:1016/063515.057160:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:338:1016/063515.057219:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[240:338:1016/063515.057368:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:338:1016/063515.057474:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[240:240:1016/063516.964234:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[240:240:1016/063529.709182:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[240:240:1016/063529.709271:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 1 time(s)
+[240:240:1016/063544.885481:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[240:240:1016/063544.885549:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 2 time(s)
+[240:240:1016/063600.062595:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[240:240:1016/063600.062667:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 3 time(s)
+[240:240:1016/063600.339801:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[503:503:1016/063600.905179:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[503:503:1016/063600.910160:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[503:503:1016/063600.913561:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[503:516:1016/063601.271704:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:519:1016/063601.422471:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:519:1016/063601.422813:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:516:1016/063601.449244:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:516:1016/063601.449980:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:516:1016/063601.451908:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:516:1016/063601.452472:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:515:1016/063601.488008:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[503:503:1016/063601.574383:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[503:516:1016/063601.604642:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:516:1016/063601.605791:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[503:503:1016/063601.791672:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[503:503:1016/063601.860621:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[503:559:1016/063601.970745:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:559:1016/063601.970870:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:559:1016/063601.971618:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:559:1016/063601.971659:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[503:559:1016/063601.971762:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:559:1016/063601.971838:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[503:503:1016/063602.984622:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[503:503:1016/063616.685289:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[503:503:1016/063616.685363:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 1 time(s)
+[503:503:1016/063631.861711:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[503:503:1016/063631.861783:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 2 time(s)
+[503:503:1016/063647.036596:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[503:503:1016/063647.036650:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 3 time(s)
+[503:503:1016/063702.132978:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[503:503:1016/063702.133038:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 4 time(s)
+[503:503:1016/063717.232968:ERROR:gpu_process_host.cc(1002)] GPU process exited unexpectedly: exit_code=512
+[503:503:1016/063717.233030:WARNING:gpu_process_host.cc(1436)] The GPU process has crashed 5 time(s)
+[503:503:1016/063721.394950:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[919:919:1016/063727.472962:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[919:919:1016/063727.481883:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[919:919:1016/063727.486366:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[919:974:1016/063727.952704:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:978:1016/063728.137598:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:978:1016/063728.137797:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:974:1016/063728.181074:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:974:1016/063728.181993:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:974:1016/063728.184610:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:974:1016/063728.184860:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:972:1016/063728.226709:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[919:919:1016/063728.353285:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[919:974:1016/063728.390453:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:974:1016/063728.392166:ERROR:bus.cc(407)] Failed to connect to the bus: Could not parse server address: Unknown address type (examples of valid types are "tcp" and on UNIX "unix")
+[919:919:1016/063728.568621:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[919:919:1016/063728.636377:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[919:1020:1016/063728.740333:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:1020:1016/063728.740469:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:1020:1016/063728.741821:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:1020:1016/063728.741897:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[919:1020:1016/063728.742093:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:1020:1016/063728.742367:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[919:919:1016/063730.662199:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[919:919:1016/064000.888422:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
+[1596:1596:1016/064039.122328:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1596:1596:1016/064039.132151:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1596:1596:1016/064039.137989:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1596:1648:1016/064039.883485:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1654:1016/064040.172875:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1654:1016/064040.173262:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1647:1016/064040.294614:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[1596:1660:1016/064040.561109:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[1596:1596:1016/064040.576913:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[1596:1596:1016/064040.917515:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1596:1596:1016/064041.054041:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[1596:1700:1016/064041.228733:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1700:1016/064041.229048:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1700:1016/064041.229532:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1700:1016/064041.229679:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[1596:1700:1016/064041.229985:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1700:1016/064041.230281:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1596:1596:1016/064042.254548:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[243:243:1016/064450.982600:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[243:271:1016/064451.042227:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:292:1016/064451.269265:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:292:1016/064451.269592:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:266:1016/064451.391182:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[243:243:1016/064451.397621:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[243:243:1016/064451.512422:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[243:243:1016/064451.566300:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[243:297:1016/064451.603767:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[243:243:1016/064451.699332:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[243:243:1016/064451.728913:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[243:243:1016/064451.837153:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[243:326:1016/064451.936417:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:326:1016/064451.937173:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:326:1016/064451.937357:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:326:1016/064451.937400:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[243:326:1016/064451.937514:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:326:1016/064451.937619:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[243:243:1016/064454.022503:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[2679:2679:1016/072919.701004:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[2679:2698:1016/072919.760846:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2704:1016/072920.577442:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2704:1016/072920.577842:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2697:1016/072920.766204:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[2679:2679:1016/072920.804316:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[2679:2716:1016/072920.981786:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[2679:2679:1016/072921.033211:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[2679:2679:1016/072921.095531:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[2679:2679:1016/072921.270085:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[2679:2679:1016/072921.335516:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[2679:2679:1016/072921.489325:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[2679:2770:1016/072921.641603:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2770:1016/072921.641877:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2770:1016/072921.642448:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2770:1016/072921.642608:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[2679:2770:1016/072921.643002:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2770:1016/072921.643299:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2679:2679:1016/072923.607387:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[587:587:1016/073424.352825:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[587:614:1016/073424.414848:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:638:1016/073424.645464:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:638:1016/073424.645746:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:612:1016/073424.767277:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[587:587:1016/073424.774971:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[587:587:1016/073424.892532:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[587:643:1016/073424.950676:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[587:587:1016/073424.951934:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[587:587:1016/073425.068230:ERROR:system_network_context_manager.cc(885)] Cannot use V8 Proxy resolver in single process mode.
+[587:587:1016/073425.097413:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[587:587:1016/073425.187917:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[587:673:1016/073425.327724:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:673:1016/073425.328630:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:673:1016/073425.328999:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:673:1016/073425.329613:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[587:673:1016/073425.329969:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:673:1016/073425.330187:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[587:587:1016/073427.409530:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[571:571:1016/074402.521463:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[571:571:1016/074402.527226:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[571:571:1016/074402.530881:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[571:620:1016/074402.974213:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:624:1016/074403.209390:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:624:1016/074403.209673:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:619:1016/074403.300553:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[571:637:1016/074403.458971:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[571:571:1016/074403.487646:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[571:571:1016/074403.703941:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[571:571:1016/074403.775403:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[571:674:1016/074403.892966:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:674:1016/074403.893284:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:674:1016/074403.893832:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:674:1016/074403.893993:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[571:674:1016/074403.894215:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:674:1016/074403.894756:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[571:571:1016/074405.800465:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[582:582:1016/075100.301078:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[582:582:1016/075100.307040:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[582:582:1016/075100.310753:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[582:635:1016/075100.789898:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:638:1016/075101.012793:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:638:1016/075101.013113:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:634:1016/075101.093613:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[582:644:1016/075101.250279:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[582:582:1016/075101.267660:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[582:582:1016/075101.477252:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[582:582:1016/075101.546282:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[582:681:1016/075101.640533:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:681:1016/075101.641584:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:681:1016/075101.641876:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:681:1016/075101.642327:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[582:681:1016/075101.642898:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:681:1016/075101.643370:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[582:582:1016/075103.570734:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[1483:1483:1016/075432.289799:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[1483:1483:1016/075432.297429:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1483:1483:1016/075432.302838:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[1483:1536:1016/075433.093886:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1544:1016/075433.432643:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1544:1016/075433.433366:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1534:1016/075433.539286:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[1483:1551:1016/075433.777000:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[1483:1483:1016/075433.796773:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[1483:1483:1016/075434.120992:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[1483:1483:1016/075434.234879:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[1483:1586:1016/075434.393876:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1586:1016/075434.394211:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1586:1016/075434.394650:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1586:1016/075434.394766:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[1483:1586:1016/075434.395066:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1586:1016/075434.395362:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[1483:1483:1016/075435.422473:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[583:583:1016/075928.896535:WARNING:chrome_main_delegate.cc(748)] This is Chrome version 126.0.6478.183 (not a warning)
+[583:583:1016/075928.902335:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[583:583:1016/075928.906709:WARNING:task_impl.cc(31)] No task runner for threadId 0
+[583:638:1016/075929.403283:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:641:1016/075929.613320:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:641:1016/075929.613613:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:637:1016/075929.690990:ERROR:udev_watcher.cc(51)] Failed to initialize a udev monitor.
+[583:647:1016/075929.873687:WARNING:gpu_memory_buffer_support_x11.cc(49)] dri3 extension not supported.
+[583:583:1016/075929.896818:WARNING:account_consistency_mode_manager.cc(77)] Desktop Identity Consistency cannot be enabled as no OAuth client ID and client secret have been configured.
+[583:583:1016/075930.122536:WARNING:crash_reporting.cc(271)] Failed to set crash key: SteamUniverse with value: Public
+[583:583:1016/075930.198698:WARNING:bluez_dbus_manager.cc(248)] Floss manager not present, cannot set Floss enable/disable.
+[583:685:1016/075930.320025:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.320439:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.320845:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.320985:WARNING:property.cc(144)] DaemonVersion: GetAndBlock: failed.
+[583:685:1016/075930.321264:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:685:1016/075930.322012:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[583:583:1016/075932.222480:WARNING:browser_management_service.cc(128)] EnterpriseLogoUrl fetch failed with error code -1 and MIME type 
+[583:583:1016/075943.068618:ERROR:atom_cache.cc(229)] Add STEAM_GAME to kAtomsToCache

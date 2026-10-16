@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+export PATH="/opt/steam-x11/bin:$PATH"
+BASE="$HOME/.local/share/Steam"
+LIBS=/opt/steam-host/usr/lib/aarch64-linux-gnu
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+unset LD_PRELOAD
+if [ "${1:-}" = --inner ]; then
+ shift
+ export LD_LIBRARY_PATH="$LIBS:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+ export STEAM_RUNTIME=0
+ export LD_PRELOAD=/opt/steam-host/steam-compat.so
+ cd "$BASE"
+ exec "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+fi
+export ISHWL_APP=Steam
+exec ishwl-x11 -g 1024x700 "$0" --inner "$@"

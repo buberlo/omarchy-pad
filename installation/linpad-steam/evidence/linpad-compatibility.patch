@@ -1,0 +1,1364 @@
+From 7b7bf74989306a990c24cc2344d1c20c173b12bc Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 14:45:07 +0800
+Subject: [PATCH 1/6] Fix Linux runtime contracts needed for Steam and FEX on
+ iPad
+
+---
+ app/iSH.entitlements                          |  4 ++
+ asbestos/guest-arm64/gen.c                    |  6 +++
+ fs/fd.h                                       |  1 +
+ fs/path.c                                     |  6 +++
+ fs/poll.c                                     | 21 ++++++---
+ fs/poll.h                                     |  1 +
+ fs/proc.c                                     |  4 ++
+ iSH.xcodeproj/project.pbxproj                 |  6 +--
+ kernel/eventfd.c                              | 12 +++--
+ kernel/poll.c                                 |  4 +-
+ meson_options.txt                             |  2 +
+ tests/manual/steam-compat/README.md           | 25 +++++++++++
+ .../manual/steam-compat/epoll-oneshot-probe.c | 29 ++++++++++++
+ tests/manual/steam-compat/eventfd-probe.c     | 30 +++++++++++++
+ tests/manual/steam-compat/pselect-probe.c     | 25 +++++++++++
+ .../manual/steam-compat/pthread-glibc-probe.c | 23 ++++++++++
+ tests/manual/steam-compat/runtime-probe.c     | 34 ++++++++++++++
+ tests/manual/steam-compat/x86-runtime-smoke.c | 45 +++++++++++++++++++
+ vdso/arm64/meson.build                        |  6 ++-
+ 19 files changed, 268 insertions(+), 16 deletions(-)
+ create mode 100644 tests/manual/steam-compat/README.md
+ create mode 100644 tests/manual/steam-compat/epoll-oneshot-probe.c
+ create mode 100644 tests/manual/steam-compat/eventfd-probe.c
+ create mode 100644 tests/manual/steam-compat/pselect-probe.c
+ create mode 100644 tests/manual/steam-compat/pthread-glibc-probe.c
+ create mode 100644 tests/manual/steam-compat/runtime-probe.c
+ create mode 100644 tests/manual/steam-compat/x86-runtime-smoke.c
+
+diff --git a/app/iSH.entitlements b/app/iSH.entitlements
+index 1cdbf19..26b2476 100644
+--- a/app/iSH.entitlements
++++ b/app/iSH.entitlements
+@@ -2,6 +2,10 @@
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
++    <key>com.apple.developer.kernel.increased-memory-limit</key>
++    <true/>
++    <key>com.apple.developer.kernel.extended-virtual-addressing</key>
++    <true/>
+ 	<key>com.apple.developer.user-fonts</key>
+ 	<array>
+ 		<string>app-usage</string>
+diff --git a/asbestos/guest-arm64/gen.c b/asbestos/guest-arm64/gen.c
+index d8e0f85..827bdd3 100644
+--- a/asbestos/guest-arm64/gen.c
++++ b/asbestos/guest-arm64/gen.c
+@@ -1154,6 +1154,12 @@ static bool guest_id_reg(uint32_t mrs, uint64_t *value) {
+     uint32_t f = guest_features();
+     uint64_t v = 0;
+     switch (mrs) {
++        case 0xd5380000:  // MIDR_EL1: unknown implementation, AArch64 ID-register format
++            // Match the generic implementer/part reported by /proc/cpuinfo.
++            // HWCAP_CPUID permits this Linux-emulated EL0 read; applications
++            // such as FEX use it to select optional CPU-specific tuning.
++            v = 0x000f0000;
++            break;
+         case 0xd5380400:  // ID_AA64PFR0_EL1: EL0/EL1 AArch64; FP and AdvSIMD (+FP16)
+             v = 0x11 | (f & INSN_FEAT_FP16 ? 0x110000 : 0);
+             break;
+diff --git a/fs/fd.h b/fs/fd.h
+index 4c4c09b..17fcdb0 100644
+--- a/fs/fd.h
++++ b/fs/fd.h
+@@ -34,6 +34,7 @@ struct fd {
+         } epollfd;
+         struct {
+             uint64_t val;
++            bool semaphore;
+         } eventfd;
+         struct {
+             struct timer *timer;
+diff --git a/fs/path.c b/fs/path.c
+index 4c34f08..ef859d3 100644
+--- a/fs/path.c
++++ b/fs/path.c
+@@ -228,6 +228,12 @@ int path_normalize(struct fd *at, const char *path, char *out, int flags) {
+         at = current->fs->pwd;
+     unlock(&current->fs->lock);
+ 
++    // A relative *at lookup requires a directory. Anonymous descriptors have
++    // display names such as "pipe:[123]", not normalized filesystem paths.
++    // Reject those descriptors before passing their names to the resolver.
++    if (path[0] != '/' && at != NULL && !S_ISDIR(at->type))
++        return _ENOTDIR;
++
+     char at_path[MAX_PATH];
+     if (at != NULL) {
+         int err = generic_getpath(at, at_path);
+diff --git a/fs/poll.c b/fs/poll.c
+index ec7d732..a7c5ac8 100644
+--- a/fs/poll.c
++++ b/fs/poll.c
+@@ -138,6 +138,7 @@ int poll_add_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info
+     poll_fd->types = types;
+     poll_fd->info = info;
+     poll_fd->triggered_types = 0;
++    poll_fd->disabled = false;
+ 
+     if (poll_fd_is_real(poll_fd)) {
+         err = real_poll_update(&poll->real, fd->real_fd, poll_fd_real_types(poll_fd, types), poll_fd);
+@@ -207,7 +208,10 @@ int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info
+ 
+     poll_fd->types = types;
+     poll_fd->info = info;
+-    poll_fd->triggered_types &= types;
++    poll_fd->triggered_types = 0;
++    poll_fd->disabled = false;
++    if (poll->notify_pipe[1] != -1)
++        write(poll->notify_pipe[1], "", 1);
+ 
+     err = 0;
+ out:
+@@ -297,6 +301,8 @@ int epoll_fd_poll(struct fd *fd) {
+     }
+     struct poll_fd *poll_fd;
+     list_for_each_entry(&poll->poll_fds, poll_fd, fds) {
++        if (poll_fd->disabled)
++            continue;
+         struct fd *member = poll_fd->fd;
+         if (member == fd || member->ops->poll == NULL)
+             continue;
+@@ -334,6 +340,8 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
+         // check if any fds are ready
+         struct poll_fd *poll_fd, *tmp;
+         list_for_each_entry_safe(&poll_->poll_fds, poll_fd, tmp, fds) {
++            if (poll_fd->disabled)
++                continue;
+             struct fd *fd = poll_fd->fd;
+             int poll_types = 0;
+             if (fd->ops->poll)
+@@ -343,8 +351,9 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
+                 poll_types &= ~poll_fd->triggered_types;
+             }
+             if (poll_types) {
+-                if (callback(context, poll_types, poll_fd->info) == 1)
+-                    res++;
++                if (callback(context, poll_types, poll_fd->info) != 1)
++                    continue;
++                res++;
+ 
+                 // The real poll does not actually get the FDs set as oneshot.
+                 // But this loop is done while holding the lock, so only one
+@@ -352,12 +361,10 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
+                 // thundering herd problem at all, but at least the semantics
+                 // are right. I'll just leave that as a TODO.
+                 if (poll_fd->types & POLL_ONESHOT) {
+-                    list_remove(&poll_fd->polls);
+-                    list_remove(&poll_fd->fds);
++                    poll_fd->disabled = true;
+                     if (poll_fd_is_real(poll_fd)) {
+-                        real_poll_update(&poll_->real, fd->real_fd, 0, NULL);
++                        real_poll_update(&poll_->real, fd->real_fd, 0, poll_fd);
+                     }
+-                    free(poll_fd);
+                 }
+ 
+                 if (poll_fd->types & POLL_EDGETRIGGERED) {
+diff --git a/fs/poll.h b/fs/poll.h
+index 8b4afc6..3c7ce72 100644
+--- a/fs/poll.h
++++ b/fs/poll.h
+@@ -49,6 +49,7 @@ struct poll_fd {
+     // returned its bits are set here, and those bits are ignored on the next
+     // call to poll_wait. The bits are cleared by poll_wakeup.
+     int triggered_types;
++    bool disabled; // EPOLLONESHOT remains registered until MOD rearms it.
+ 
+     // locked by containing struct fd
+     struct poll *poll;
+diff --git a/fs/proc.c b/fs/proc.c
+index 4297fae..619d3fd 100644
+--- a/fs/proc.c
++++ b/fs/proc.c
+@@ -53,6 +53,10 @@ static struct fd *proc_open(struct mount *UNUSED(mount), const char *path, int U
+     if (err < 0)
+         return ERR_PTR(err);
+     struct fd *fd = fd_create(&procfs_fdops);
++    if (fd == NULL) {
++        proc_entry_cleanup(&entry);
++        return ERR_PTR(_ENOMEM);
++    }
+     fd->proc.entry = entry;
+     fd->proc.data.data = NULL;
+     fd->proc.data_valid = false;
+diff --git a/iSH.xcodeproj/project.pbxproj b/iSH.xcodeproj/project.pbxproj
+index e986595..2a2d659 100644
+--- a/iSH.xcodeproj/project.pbxproj
++++ b/iSH.xcodeproj/project.pbxproj
+@@ -2083,7 +2083,7 @@
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 			shellPath = /bin/sh;
+-			shellScript = "curl -L \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\n";
++			shellScript = "if [ -n \"${ROOTFS_ARCHIVE:-}\" ]; then\n  cp \"$ROOTFS_ARCHIVE\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nelse\n  curl -fL \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nfi\n";
+ 			showEnvVarsInLog = 0;
+ 		};
+ 		AA000012AF96D90D00FFB7A4 /* Generate APK Repositories File */ = {
+@@ -2259,7 +2259,7 @@
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 			shellPath = /bin/sh;
+-			shellScript = "curl -L \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\n";
++			shellScript = "if [ -n \"${ROOTFS_ARCHIVE:-}\" ]; then\n  cp \"$ROOTFS_ARCHIVE\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nelse\n  curl -fL \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nfi\n";
+ 			showEnvVarsInLog = 0;
+ 		};
+ 		BBEF197A268066D1001225BD /* Generate APK Repositories File */ = {
+@@ -2314,7 +2314,7 @@
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 			shellPath = /bin/sh;
+-			shellScript = "curl -L \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\n";
++			shellScript = "if [ -n \"${ROOTFS_ARCHIVE:-}\" ]; then\n  cp \"$ROOTFS_ARCHIVE\" \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nelse\n  curl -fL \"https://$ROOTFS_URL\" -o \"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/root.tar.gz\"\nfi\n";
+ 			showEnvVarsInLog = 0;
+ 		};
+ 		BBFB2C572590257E00545EAB /* ShellScript */ = {
+diff --git a/kernel/eventfd.c b/kernel/eventfd.c
+index 8d204b8..c167afa 100644
+--- a/kernel/eventfd.c
++++ b/kernel/eventfd.c
+@@ -3,10 +3,11 @@
+ #include "fs/poll.h"
+ 
+ static struct fd_ops eventfd_ops;
++#define EFD_SEMAPHORE_ 1
+ 
+ int_t sys_eventfd2(uint_t initval, int_t flags) {
+     STRACE("eventfd(%d, %#x)", initval, flags);
+-    if (flags & ~(O_CLOEXEC_|O_NONBLOCK_))
++    if (flags & ~(O_CLOEXEC_|O_NONBLOCK_|EFD_SEMAPHORE_))
+         return _EINVAL;
+ 
+     struct fd *fd = adhoc_fd_create(&eventfd_ops);
+@@ -15,7 +16,9 @@ int_t sys_eventfd2(uint_t initval, int_t flags) {
+     if (fd == NULL)
+         return _ENOMEM;
+     fd->eventfd.val = initval;
+-    return f_install(fd, flags);
++    fd->eventfd.semaphore = flags & EFD_SEMAPHORE_;
++    // EFD_SEMAPHORE overlaps O_WRONLY: it is not a file access-mode flag.
++    return f_install(fd, flags & ~EFD_SEMAPHORE_);
+ }
+ int_t sys_eventfd(uint_t initval) {
+     return sys_eventfd2(initval, 0);
+@@ -37,8 +40,9 @@ static ssize_t eventfd_read(struct fd *fd, void *buf, size_t bufsize) {
+         }
+     }
+ 
+-    *(uint64_t *) buf = fd->eventfd.val;
+-    fd->eventfd.val = 0;
++    uint64_t value = fd->eventfd.semaphore ? 1 : fd->eventfd.val;
++    *(uint64_t *) buf = value;
++    fd->eventfd.val -= value;
+     notify(&fd->cond);
+     unlock(&fd->lock);
+     poll_wakeup(fd, POLL_WRITE);
+diff --git a/kernel/poll.c b/kernel/poll.c
+index 000d840..22aaf6f 100644
+--- a/kernel/poll.c
++++ b/kernel/poll.c
+@@ -228,7 +228,8 @@ dword_t sys_pselect(fd_t nfds, addr_t readfds_addr, addr_t writefds_addr, addr_t
+     struct {
+         addr_t mask_addr;
+         dword_t mask_size;
+-    } sigmask;
++    } sigmask = {0};
++    if (sigmask_addr != 0) {
+ #ifdef GUEST_ARM64
+     struct {
+         uint64_t mask_addr;
+@@ -242,6 +243,7 @@ dword_t sys_pselect(fd_t nfds, addr_t readfds_addr, addr_t writefds_addr, addr_t
+     if (user_get(sigmask_addr, sigmask))
+         return _EFAULT;
+ #endif
++    }
+     sigset_t_ mask;
+ 
+     if (sigmask.mask_addr != 0) {
+diff --git a/meson_options.txt b/meson_options.txt
+index 72ac8c3..ee062e4 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -10,6 +10,8 @@ option('guest_arch', type: 'combo', choices: ['x86', 'arm64'], value: 'x86',
+        description: 'Guest architecture to emulate')
+ 
+ option('vdso_c_args', type: 'string', value: '')
++option('vdso_cc', type: 'string', value: '',
++       description: 'Optional AArch64 ELF cross compiler for the guest VDSO')
+ 
+ option('no_crlf', type: 'boolean', value: false)
+ 
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+new file mode 100644
+index 0000000..1994843
+--- /dev/null
++++ b/tests/manual/steam-compat/README.md
+@@ -0,0 +1,25 @@
++# Steam/FEX compatibility probes
++
++These standalone guest programs exercise runtime contracts used during Steam
++startup. Compile the native probes for AArch64 Linux. A static musl build is
++convenient for running them under both the CLI emulator and iPad app.
++
++- `runtime-probe.c`: MIDR_EL1 and relative faccessat through pipe, file and
++  directory descriptors. Requires `/opt/fex/hello-x86_64` to exist.
++- `eventfd-probe.c`: semaphore reads, ordinary counter reads, nonblocking
++  exhaustion and epoll readiness.
++- `pselect-probe.c`: null and packed-null signal masks, empty and ready pipes.
++- `epoll-oneshot-probe.c`: registrations persist after delivery, MOD rearms
++  an already-ready edge and updates data, DEL accepts disabled registrations,
++  and hangup stays disabled until rearmed.
++- `pthread-glibc-probe.c`: dynamic glibc thread creation with different stack
++  sizes and repeated joins. Link against glibc and run with the isolated
++  matching loader/libraries; it does not alter the musl system runtime.
++- `x86-runtime-smoke.c`: compile for x86-64 Linux with pthread support and run
++  through FEX. Checks threads/mutexes, SSE2 arithmetic, generated executable
++  code and signal delivery. This does not qualify a full application or game.
++
++The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
++With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static
++variants at upstream revision 5285020de passed the x86 runtime smoke test on
++the iPad. These results do not establish that Steam's Chromium UI works.
+diff --git a/tests/manual/steam-compat/epoll-oneshot-probe.c b/tests/manual/steam-compat/epoll-oneshot-probe.c
+new file mode 100644
+index 0000000..200ebee
+--- /dev/null
++++ b/tests/manual/steam-compat/epoll-oneshot-probe.c
+@@ -0,0 +1,29 @@
++#define _GNU_SOURCE
++#include <sys/epoll.h>
++#include <sys/eventfd.h>
++#include <stdio.h>
++#include <stdint.h>
++#include <unistd.h>
++#include <errno.h>
++static int failures;
++static void check(const char *name,int ok) { printf("%s %s errno=%d\n",name,ok?"PASS":"FAIL",errno);failures+=!ok; }
++int main(void) {
++    int ep=epoll_create1(0), e=eventfd(1,EFD_NONBLOCK),p[2];
++    if(ep<0||e<0||pipe(p))return 90;
++    struct epoll_event ev={.events=EPOLLIN|EPOLLONESHOT|EPOLLET,.data.u64=123},out;
++    check("eventfd add",epoll_ctl(ep,EPOLL_CTL_ADD,e,&ev)==0);
++    check("initial event",epoll_wait(ep,&out,1,0)==1&&out.data.u64==123);
++    check("oneshot remains registered",epoll_ctl(ep,EPOLL_CTL_ADD,e,&ev)==-1&&errno==EEXIST);
++    check("disabled no delivery",epoll_wait(ep,&out,1,0)==0);
++    ev.data.u64=456;
++    check("MOD rearm",epoll_ctl(ep,EPOLL_CTL_MOD,e,&ev)==0);
++    check("rearm ready edge and data",epoll_wait(ep,&out,1,0)==1&&out.data.u64==456);
++    check("DEL disabled",epoll_ctl(ep,EPOLL_CTL_DEL,e,0)==0);
++    ev=(struct epoll_event){.events=EPOLLIN|EPOLLONESHOT,.data.u64=789};
++    check("pipe add",epoll_ctl(ep,EPOLL_CTL_ADD,p[0],&ev)==0);close(p[1]);
++    check("HUP initial",epoll_wait(ep,&out,1,0)==1&&(out.events&EPOLLHUP));
++    check("HUP disabled",epoll_wait(ep,&out,1,0)==0);
++    check("HUP rearm MOD",epoll_ctl(ep,EPOLL_CTL_MOD,p[0],&ev)==0);
++    check("HUP after MOD",epoll_wait(ep,&out,1,0)==1&&(out.events&EPOLLHUP));
++    close(p[0]);close(e);close(ep);return failures;
++}
+diff --git a/tests/manual/steam-compat/eventfd-probe.c b/tests/manual/steam-compat/eventfd-probe.c
+new file mode 100644
+index 0000000..8d9655a
+--- /dev/null
++++ b/tests/manual/steam-compat/eventfd-probe.c
+@@ -0,0 +1,30 @@
++#define _GNU_SOURCE
++#include <sys/eventfd.h>
++#include <sys/epoll.h>
++#include <errno.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <unistd.h>
++
++int main(void) {
++    int fd = eventfd(2, EFD_SEMAPHORE | EFD_NONBLOCK | EFD_CLOEXEC);
++    printf("eventfd semaphore create: fd=%d errno=%d\n", fd, errno);
++    if (fd < 0) return 1;
++    int pollfd = epoll_create1(EPOLL_CLOEXEC);
++    struct epoll_event event = {.events = EPOLLIN, .data.fd = fd};
++    if (epoll_ctl(pollfd, EPOLL_CTL_ADD, fd, &event)) return 2;
++    if (epoll_wait(pollfd, &event, 1, 0) != 1) return 3;
++    for (int i = 0; i < 2; i++) {
++        uint64_t value = 0;
++        if (read(fd, &value, sizeof(value)) != sizeof(value) || value != 1) return 4;
++    }
++    uint64_t value = 0;
++    if (read(fd, &value, sizeof(value)) != -1 || errno != EAGAIN) return 5;
++    if (epoll_wait(pollfd, &event, 1, 0) != 0) return 6;
++    close(pollfd); close(fd);
++    fd = eventfd(2, EFD_NONBLOCK);
++    if (fd < 0 || read(fd, &value, sizeof(value)) != sizeof(value) || value != 2) return 7;
++    close(fd);
++    puts("EVENTFD_SEMAPHORE_AND_COUNTER_OK");
++    return 0;
++}
+diff --git a/tests/manual/steam-compat/pselect-probe.c b/tests/manual/steam-compat/pselect-probe.c
+new file mode 100644
+index 0000000..cc69bf2
+--- /dev/null
++++ b/tests/manual/steam-compat/pselect-probe.c
+@@ -0,0 +1,25 @@
++#define _GNU_SOURCE
++#include <sys/select.h>
++#include <sys/syscall.h>
++#include <errno.h>
++#include <stdio.h>
++#include <unistd.h>
++#include <stdint.h>
++int main(void) {
++    int p[2], failures=0;
++    if (pipe(p)) return 90;
++    for(int packed=0;packed<2;packed++) {
++        struct { uint64_t ptr,size; } mask={0,8};
++        fd_set fds; FD_ZERO(&fds); FD_SET(p[0],&fds);
++        struct timespec ts={0,0}; errno=0;
++        long r=syscall(SYS_pselect6,p[0]+1,&fds,0,0,&ts,packed?&mask:0);
++        printf("pselect6 empty mask=%s result=%ld errno=%d\n",packed?"packed-null":"null",r,errno);
++        failures+=r!=0;
++        write(p[1],"x",1); FD_ZERO(&fds); FD_SET(p[0],&fds); ts=(struct timespec){0,0};errno=0;
++        r=syscall(SYS_pselect6,p[0]+1,&fds,0,0,&ts,packed?&mask:0);
++        printf("pselect6 ready mask=%s result=%ld errno=%d\n",packed?"packed-null":"null",r,errno);
++        failures+=r!=1 || !FD_ISSET(p[0],&fds);
++        char c;read(p[0],&c,1);
++    }
++    close(p[0]);close(p[1]);return failures;
++}
+diff --git a/tests/manual/steam-compat/pthread-glibc-probe.c b/tests/manual/steam-compat/pthread-glibc-probe.c
+new file mode 100644
+index 0000000..b50dffb
+--- /dev/null
++++ b/tests/manual/steam-compat/pthread-glibc-probe.c
+@@ -0,0 +1,23 @@
++#define _GNU_SOURCE
++#include <pthread.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <stdint.h>
++static void *worker(void *arg) {return arg;}
++int main(void) {
++    setbuf(stdout,NULL);
++    for(int round=0;round<10;round++) {
++        pthread_t threads[16];
++        for(int i=0;i<16;i++) {
++            pthread_attr_t attr;pthread_attr_init(&attr);
++            size_t sizes[]={0,65536,1024*1024,8*1024*1024};
++            if(sizes[i%4])pthread_attr_setstacksize(&attr,sizes[i%4]);
++            size_t size;pthread_attr_getstacksize(&attr,&size);
++            printf("create round=%d thread=%d stack=%zu\n",round,i,size);
++            int e=pthread_create(&threads[i],&attr,worker,(void*)(uintptr_t)(i+1));
++            pthread_attr_destroy(&attr);if(e){printf("ERROR %d\n",e);return 1;}
++        }
++        for(int i=0;i<16;i++){void *p;if(pthread_join(threads[i],&p)||p!=(void*)(uintptr_t)(i+1))return 2;}
++    }
++    puts("GLIBC_THREAD_STACKS_OK");return 0;
++}
+diff --git a/tests/manual/steam-compat/runtime-probe.c b/tests/manual/steam-compat/runtime-probe.c
+new file mode 100644
+index 0000000..2317d16
+--- /dev/null
++++ b/tests/manual/steam-compat/runtime-probe.c
+@@ -0,0 +1,34 @@
++#define _GNU_SOURCE
++#include <errno.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <sys/syscall.h>
++#include <unistd.h>
++
++static int failures;
++static void check_access(const char *label, int fd, const char *path, int expected) {
++    errno = 0;
++    long result = syscall(SYS_faccessat, fd, path, F_OK, 0);
++    int actual = result == 0 ? 0 : errno;
++    printf("%s: result=%ld errno=%d expected=%d %s\n", label, result, actual,
++           expected, actual == expected ? "PASS" : "FAIL");
++    failures += actual != expected;
++}
++
++int main(void) {
++    unsigned long midr;
++    __asm__ volatile("mrs %0, MIDR_EL1" : "=r"(midr));
++    printf("MIDR_EL1 read succeeded: %#lx\n", midr);
++    int pipes[2];
++    if (pipe(pipes)) return 90;
++    int file = open("/opt/fex/hello-x86_64", O_RDONLY);
++    int dir = open("/opt/fex", O_RDONLY | O_DIRECTORY);
++    if (file < 0 || dir < 0) return 91;
++    check_access("pipe-relative", pipes[0], "child", ENOTDIR);
++    check_access("file-relative", file, "child", ENOTDIR);
++    check_access("directory-relative", dir, "hello-x86_64", 0);
++    check_access("absolute-ignores-pipe", pipes[0], "/opt/fex/hello-x86_64", 0);
++    check_access("empty-path", pipes[0], "", ENOENT);
++    close(dir); close(file); close(pipes[0]); close(pipes[1]);
++    return failures;
++}
+diff --git a/tests/manual/steam-compat/x86-runtime-smoke.c b/tests/manual/steam-compat/x86-runtime-smoke.c
+new file mode 100644
+index 0000000..22cf5b0
+--- /dev/null
++++ b/tests/manual/steam-compat/x86-runtime-smoke.c
+@@ -0,0 +1,45 @@
++#define _GNU_SOURCE
++#include <pthread.h>
++#include <signal.h>
++#include <stdio.h>
++#include <string.h>
++#include <sys/mman.h>
++#include <unistd.h>
++#include <emmintrin.h>
++
++static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
++static int count;
++static volatile sig_atomic_t delivered;
++static volatile double vector_input[4] = {1.5, 4.0, 2.5, 2.0};
++static void on_signal(int n) { delivered = n; }
++static void *worker(void *unused) {
++    for (int i = 0; i < 1000; i++) {
++        pthread_mutex_lock(&mutex); count++; pthread_mutex_unlock(&mutex);
++    }
++    return unused;
++}
++
++int main(void) {
++    pthread_t threads[2];
++    for (int i = 0; i < 2; i++) if (pthread_create(&threads[i], 0, worker, 0)) return 10;
++    for (int i = 0; i < 2; i++) if (pthread_join(threads[i], 0)) return 11;
++    if (count != 2000) return 12;
++    puts("FEX threads/mutex: PASS");
++    double values[2];
++    _mm_storeu_pd(values, _mm_add_pd(_mm_set_pd(vector_input[1], vector_input[0]),
++                                  _mm_set_pd(vector_input[3], vector_input[2])));
++    if (values[0] != 4.0 || values[1] != 6.0) return 20;
++    puts("FEX SSE2 arithmetic: PASS");
++    unsigned char *code = mmap(0, 4096, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (code == MAP_FAILED) return 30;
++    memcpy(code, "\xb8\x2a\x00\x00\x00\xc3", 6);
++    if (mprotect(code, 4096, PROT_READ | PROT_EXEC)) return 31;
++    if (((int (*)(void))code)() != 42) return 32;
++    munmap(code, 4096);
++    puts("FEX generated x86 code: PASS");
++    signal(SIGUSR1, on_signal);
++    if (raise(SIGUSR1) || delivered != SIGUSR1) return 40;
++    puts("FEX signal delivery: PASS");
++    puts("FEX_X86_RUNTIME_OK");
++    return 0;
++}
+diff --git a/vdso/arm64/meson.build b/vdso/arm64/meson.build
+index eeefee3..8dfd3db 100644
+--- a/vdso/arm64/meson.build
++++ b/vdso/arm64/meson.build
+@@ -8,7 +8,11 @@
+ # On Linux, you can use the native compiler if running on arm64, or a cross compiler.
+ 
+ # Try to find an aarch64 compiler
+-clang = find_program('/usr/local/opt/llvm/bin/clang', '/opt/homebrew/opt/llvm/bin/clang', '/opt/local/bin/clang', 'clang', required: false)
++if get_option('vdso_cc') != ''
++    clang = find_program(get_option('vdso_cc'))
++else
++    clang = find_program('/usr/local/opt/llvm/bin/clang', '/opt/homebrew/opt/llvm/bin/clang', '/opt/local/bin/clang', 'clang', required: false)
++endif
+ 
+ if clang.found()
+     # Check if the compiler supports aarch64 target
+-- 
+2.54.0 (Apple Git-157)
+
+
+From feea659afc358744bb557ea2750d4893c7ce2b84 Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 14:53:10 +0800
+Subject: [PATCH 2/6] Wake outer epoll sets when MOD rearms a ready member
+
+---
+ fs/poll.c                                     | 11 +++++++
+ tests/manual/steam-compat/README.md           |  2 ++
+ .../manual/steam-compat/epoll-nested-probe.c  | 30 +++++++++++++++++++
+ 3 files changed, 43 insertions(+)
+ create mode 100644 tests/manual/steam-compat/epoll-nested-probe.c
+
+diff --git a/fs/poll.c b/fs/poll.c
+index a7c5ac8..cf92d55 100644
+--- a/fs/poll.c
++++ b/fs/poll.c
+@@ -39,6 +39,7 @@ static void *rpe_data(struct real_poll_event *rpe);
+ static int rpe_events(struct real_poll_event *rpe);
+ static int real_poll_wait(struct real_poll *real, struct real_poll_event *events, int max, struct timespec *timeout);
+ static int real_poll_update(struct real_poll *real, int fd, int types, void *data);
++static bool fd_try_retain(struct fd *fd);
+ 
+ /// Safe close that skips fds 0-2 (stdin/stdout/stderr).
+ /// iOS guards these descriptors — closing them triggers EXC_GUARD and kills the app.
+@@ -190,6 +191,7 @@ out:
+ 
+ int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info info) {
+     int err;
++    struct fd *owner = NULL;
+     lock(&fd->poll_lock);
+     lock(&poll->lock);
+     struct poll_fd *poll_fd = poll_find_fd(poll, fd);
+@@ -212,11 +214,20 @@ int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info
+     poll_fd->disabled = false;
+     if (poll->notify_pipe[1] != -1)
+         write(poll->notify_pipe[1], "", 1);
++    if (poll->owner != NULL && fd_try_retain(poll->owner))
++        owner = poll->owner;
+ 
+     err = 0;
+ out:
+     unlock(&poll->lock);
+     unlock(&fd->poll_lock);
++    if (owner != NULL) {
++        // Rearming an already-ready virtual member changes this set's
++        // readiness even when no thread is directly waiting on the set.
++        // Wake outer sets after dropping locks to preserve lock ordering.
++        poll_wakeup(owner, POLL_READ);
++        fd_close(owner);
++    }
+     return err;
+ }
+ 
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 1994843..7dc7d70 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -12,6 +12,8 @@ convenient for running them under both the CLI emulator and iPad app.
+ - `epoll-oneshot-probe.c`: registrations persist after delivery, MOD rearms
+   an already-ready edge and updates data, DEL accepts disabled registrations,
+   and hangup stays disabled until rearmed.
++- `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
++  wakes a thread blocked on an outer edge-triggered epoll set.
+ - `pthread-glibc-probe.c`: dynamic glibc thread creation with different stack
+   sizes and repeated joins. Link against glibc and run with the isolated
+   matching loader/libraries; it does not alter the musl system runtime.
+diff --git a/tests/manual/steam-compat/epoll-nested-probe.c b/tests/manual/steam-compat/epoll-nested-probe.c
+new file mode 100644
+index 0000000..01d5546
+--- /dev/null
++++ b/tests/manual/steam-compat/epoll-nested-probe.c
+@@ -0,0 +1,30 @@
++#define _GNU_SOURCE
++#include <sys/epoll.h>
++#include <sys/eventfd.h>
++#include <pthread.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <unistd.h>
++static int inner, counter, mod_result;
++static void *rearm(void *unused) {
++    (void)unused;usleep(30000);
++    struct epoll_event ev={.events=EPOLLIN|EPOLLONESHOT,.data.u64=42};
++    mod_result=epoll_ctl(inner,EPOLL_CTL_MOD,counter,&ev);return 0;
++}
++int main(void) {
++    setbuf(stdout,NULL);
++    inner=epoll_create1(0);int outer=epoll_create1(0);
++    counter=eventfd(2,EFD_SEMAPHORE|EFD_NONBLOCK);
++    struct epoll_event ev={.events=EPOLLIN|EPOLLONESHOT,.data.u64=42},out;
++    if(inner<0||outer<0||counter<0||epoll_ctl(inner,EPOLL_CTL_ADD,counter,&ev))return 90;
++    ev=(struct epoll_event){.events=EPOLLIN|EPOLLET,.data.u64=99};
++    if(epoll_ctl(outer,EPOLL_CTL_ADD,inner,&ev)||epoll_wait(outer,&out,1,0)!=1||epoll_wait(inner,&out,1,0)!=1)return 91;
++    uint64_t n;if(read(counter,&n,8)!=8||n!=1)return 92;
++    if(epoll_wait(outer,&out,1,0)!=0)return 93;
++    pthread_t worker;if(pthread_create(&worker,0,rearm,0))return 94;
++    int result=epoll_wait(outer,&out,1,500);
++    pthread_join(worker,0);
++    printf("nested outer wake after inner MOD: result=%d mod=%d %s\n",result,mod_result,result==1&&mod_result==0?"PASS":"FAIL");
++    int failed=result!=1||mod_result!=0;
++    close(counter);close(outer);close(inner);return failed;
++}
+-- 
+2.54.0 (Apple Git-157)
+
+
+From ecc8dd97170313e4c63c326b9e82396948367913 Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 15:33:13 +0800
+Subject: [PATCH 3/6] Protect proc fd directory scans against process exit
+
+---
+ fs/proc/pid.c                                 | 11 ++++-
+ tests/manual/steam-compat/README.md           |  3 ++
+ .../manual/steam-compat/proc-fd-exit-probe.c  | 48 +++++++++++++++++++
+ 3 files changed, 61 insertions(+), 1 deletion(-)
+ create mode 100644 tests/manual/steam-compat/proc-fd-exit-probe.c
+
+diff --git a/fs/proc/pid.c b/fs/proc/pid.c
+index 9b38de6..299b8d0 100644
+--- a/fs/proc/pid.c
++++ b/fs/proc/pid.c
+@@ -480,13 +480,22 @@ static struct proc_dir_entry proc_pid_fd;
+ static bool proc_pid_fd_readdir(struct proc_entry *entry, unsigned long *index, struct proc_entry *next_entry) {
+     struct task *task = proc_get_task(entry);
+     if (task == NULL)
+-        return _ESRCH;
++        return false;
++    // Exit detaches the table under general_lock before releasing it.
++    // Hold that same lock until the directory entry has been copied.
++    lock(&task->general_lock);
++    if (task->files == NULL) {
++        unlock(&task->general_lock);
++        proc_put_task(task);
++        return false;
++    }
+     lock(&task->files->lock);
+     while (*index < task->files->size && task->files->files[*index] == NULL)
+         (*index)++;
+     fd_t f = (*index)++;
+     bool any_left = (unsigned) f < task->files->size;
+     unlock(&task->files->lock);
++    unlock(&task->general_lock);
+     proc_put_task(task);
+     *next_entry = (struct proc_entry) {&proc_pid_fd, .pid = entry->pid, .fd = f};
+     return any_left;
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 7dc7d70..7b632e9 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,9 @@ convenient for running them under both the CLI emulator and iPad app.
+   and hangup stays disabled until rearmed.
+ - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+   wakes a thread blocked on an outer edge-triggered epoll set.
++- `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor
++  directory while it exits. The old runtime crashes in `proc_pid_fd_readdir`;
++  the repaired CLI completes 300 rounds.
+ - `pthread-glibc-probe.c`: dynamic glibc thread creation with different stack
+   sizes and repeated joins. Link against glibc and run with the isolated
+   matching loader/libraries; it does not alter the musl system runtime.
+diff --git a/tests/manual/steam-compat/proc-fd-exit-probe.c b/tests/manual/steam-compat/proc-fd-exit-probe.c
+new file mode 100644
+index 0000000..5bb753c
+--- /dev/null
++++ b/tests/manual/steam-compat/proc-fd-exit-probe.c
+@@ -0,0 +1,48 @@
++#define _GNU_SOURCE
++#include <dirent.h>
++#include <fcntl.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <sys/wait.h>
++#include <unistd.h>
++#include <errno.h>
++int main(void) {
++    setbuf(stdout, NULL);
++    unsigned scans = 0;
++    for (unsigned round = 0; round < 300; round++) {
++        int gate[2];
++        if (pipe(gate)) return 90;
++        pid_t pid = fork();
++        if (pid < 0) return 91;
++        if (!pid) {
++            close(gate[1]);
++            char byte;
++            if (read(gate[0], &byte, 1) != 1) _exit(92);
++            _exit(0);
++        }
++        close(gate[0]);
++        char path[96];
++        snprintf(path, sizeof(path), "/proc/%d/fd", pid);
++        DIR *dir = opendir(path);
++        if (write(gate[1], "x", 1) != 1) return 93;
++        close(gate[1]);
++        for (unsigned n = 0; n < 12; n++) {
++            if (dir) {
++                unsigned entries = 0;
++                while (readdir(dir)) {
++                    if (++entries > 128) {
++                        fprintf(stderr, "FAIL: directory did not terminate\n");
++                        return 1;
++                    }
++                }
++                closedir(dir);
++                scans++;
++            }
++            dir = n < 11 ? opendir(path) : NULL;
++        }
++        int status;
++        if (waitpid(pid, &status, 0) != pid || !WIFEXITED(status) || WEXITSTATUS(status)) return 94;
++    }
++    printf("PROC_FD_EXIT_SCAN_OK rounds=300 scans=%u\n", scans);
++    return 0;
++}
+-- 
+2.54.0 (Apple Git-157)
+
+
+From 7a0d17da8b7ac6cbc104d55a55c8b34fc12a8b45 Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 15:43:21 +0800
+Subject: [PATCH 4/6] Expose guest TCP and UDP endpoints through procfs
+
+---
+ fs/fd.h                                     |  1 +
+ fs/proc/net.c                               | 26 +++++++
+ fs/sock.c                                   | 77 +++++++++++++++++++++
+ fs/sock.h                                   |  3 +
+ tests/manual/steam-compat/README.md         |  2 +
+ tests/manual/steam-compat/proc-inet-probe.c | 71 +++++++++++++++++++
+ 6 files changed, 180 insertions(+)
+ create mode 100644 tests/manual/steam-compat/proc-inet-probe.c
+
+diff --git a/fs/fd.h b/fs/fd.h
+index 17fcdb0..76cfb7a 100644
+--- a/fs/fd.h
++++ b/fs/fd.h
+@@ -49,6 +49,7 @@ struct fd {
+             int domain;
+             int type;
+             int protocol;
++            struct list inet_proc_link; // protected by sock.c's inet_proc_lock
+ 
+             // These are only used as strong references, to keep the inode
+             // alive while there is a listener.
+diff --git a/fs/proc/net.c b/fs/proc/net.c
+index d23bca5..edd09ba 100644
+--- a/fs/proc/net.c
++++ b/fs/proc/net.c
+@@ -2,6 +2,24 @@
+ #include <stdbool.h>
+ #include "fs/proc.h"
+ #include "fs/netlink.h"
++#include "fs/sock.h"
++
++static int proc_show_net_tcp(struct proc_entry *UNUSED(entry), struct proc_data *buf) {
++    sock_proc_show_inet(buf, false, false);
++    return 0;
++}
++static int proc_show_net_tcp6(struct proc_entry *UNUSED(entry), struct proc_data *buf) {
++    sock_proc_show_inet(buf, true, false);
++    return 0;
++}
++static int proc_show_net_udp(struct proc_entry *UNUSED(entry), struct proc_data *buf) {
++    sock_proc_show_inet(buf, false, true);
++    return 0;
++}
++static int proc_show_net_udp6(struct proc_entry *UNUSED(entry), struct proc_data *buf) {
++    sock_proc_show_inet(buf, true, true);
++    return 0;
++}
+ 
+ // /proc/net/dev - network device statistics
+ // Format: Interface|Receive|Transmit
+@@ -13,6 +31,10 @@ static int proc_show_net_dev(struct proc_entry *UNUSED(entry), struct proc_data
+ // /proc/net directory entries
+ struct proc_dir_entry proc_net_entries[] = {
+     {"dev", .show = proc_show_net_dev},
++    {"tcp", .show = proc_show_net_tcp},
++    {"tcp6", .show = proc_show_net_tcp6},
++    {"udp", .show = proc_show_net_udp},
++    {"udp6", .show = proc_show_net_udp6},
+ };
+ #define PROC_NET_LEN (sizeof(proc_net_entries)/sizeof(proc_net_entries[0]))
+ 
+@@ -28,4 +50,8 @@ static bool proc_net_readdir(struct proc_entry *UNUSED(entry), unsigned long *in
+ // Exported /proc/net directory entry
+ struct proc_children proc_net_children = PROC_CHILDREN({
+     {"dev", .show = proc_show_net_dev},
++    {"tcp", .show = proc_show_net_tcp},
++    {"tcp6", .show = proc_show_net_tcp6},
++    {"udp", .show = proc_show_net_udp},
++    {"udp6", .show = proc_show_net_udp6},
+ });
+diff --git a/fs/sock.c b/fs/sock.c
+index 9ee799d..1245e44 100644
+--- a/fs/sock.c
++++ b/fs/sock.c
+@@ -12,6 +12,7 @@
+ #include "fs/real.h"
+ #include "fs/netlink.h"
+ #include "fs/sock.h"
++#include "fs/proc.h"
+ #include "debug.h"
+ 
+ #define SOCKET_TYPE_MASK 0xf
+@@ -23,6 +24,11 @@ static lock_t peer_lock = LOCK_INITIALIZER;
+ static struct list unix_connecting_list = {&unix_connecting_list, &unix_connecting_list};
+ static uint64_t unix_next_connect_id;
+ 
++// Only guest sockets are visible in procfs. Keep their anonymous inode numbers
++// consistent with fstat and /proc/<pid>/fd, including dup/fork references.
++static lock_t inet_proc_lock = LOCK_INITIALIZER;
++static struct list inet_proc_sockets = {&inet_proc_sockets, &inet_proc_sockets};
++
+ static fd_t sock_fd_create(int sock_fd, int domain, int type, int protocol) {
+     struct fd *fd = adhoc_fd_create(&socket_fdops);
+     if (fd == NULL)
+@@ -32,6 +38,12 @@ static fd_t sock_fd_create(int sock_fd, int domain, int type, int protocol) {
+     fd->socket.domain = domain;
+     fd->socket.type = type & SOCKET_TYPE_MASK;
+     fd->socket.protocol = protocol;
++    if (domain == AF_INET_ || domain == AF_INET6_) {
++        fd->stat.uid = current->euid;
++        lock(&inet_proc_lock);
++        list_add(&inet_proc_sockets, &fd->socket.inet_proc_link);
++        unlock(&inet_proc_lock);
++    }
+     if (domain == AF_LOCAL_) {
+         cond_init(&fd->socket.unix_got_peer);
+         list_init(&fd->socket.unix_scm);
+@@ -1920,6 +1932,9 @@ static ssize_t sock_write(struct fd *fd, const void *buf, size_t size) {
+ }
+ 
+ static int sock_close(struct fd *fd) {
++    lock(&inet_proc_lock);
++    list_remove_safe(&fd->socket.inet_proc_link);
++    unlock(&inet_proc_lock);
+     sockrestart_end_listen(fd);
+     // FIXME next 3 lines should go in a function like release_unix_names
+     inode_release_if_exist(fd->socket.unix_name_inode);
+@@ -1962,6 +1977,68 @@ static int sock_close(struct fd *fd) {
+     return realfs_close(fd);
+ }
+ 
++static void proc_inet_address(const struct sockaddr_storage *addr, bool ipv6,
++        char *text, unsigned *port) {
++    if (!ipv6) {
++        const struct sockaddr_in *v4 = (const void *) addr;
++        sprintf(text, "%08X", v4->sin_addr.s_addr);
++        *port = ntohs(v4->sin_port);
++    } else {
++        const struct sockaddr_in6 *v6 = (const void *) addr;
++        uint32_t words[4];
++        memcpy(words, &v6->sin6_addr, sizeof(words));
++        sprintf(text, "%08X%08X%08X%08X", words[0], words[1], words[2], words[3]);
++        *port = ntohs(v6->sin6_port);
++    }
++}
++
++void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp) {
++    proc_printf(buf, "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n");
++    unsigned slot = 0;
++    // Close removes the socket under this lock before closing its host fd.
++    // getsockname/getpeername and TCP_CONNECTION_INFO do not wait for traffic.
++    lock(&inet_proc_lock);
++    struct fd *fd;
++    list_for_each_entry(&inet_proc_sockets, fd, socket.inet_proc_link) {
++        if (fd->socket.domain != (ipv6 ? AF_INET6_ : AF_INET_) ||
++                fd->socket.type != (udp ? SOCK_DGRAM_ : SOCK_STREAM_))
++            continue;
++        struct sockaddr_storage local = {}, remote = {};
++        socklen_t len = sizeof(local);
++        if (getsockname(fd->real_fd, (void *) &local, &len) < 0)
++            continue;
++        len = sizeof(remote);
++        bool connected = getpeername(fd->real_fd, (void *) &remote, &len) == 0;
++        unsigned state = connected ? 1 : 7;
++#ifdef __APPLE__
++        if (!udp) {
++            struct tcp_connection_info info = {};
++            len = sizeof(info);
++            if (getsockopt(fd->real_fd, IPPROTO_TCP, TCP_CONNECTION_INFO, &info, &len) == 0) {
++                static const unsigned states[] = {7, 10, 2, 3, 1, 8, 4, 11, 9, 5, 6};
++                if (info.tcpi_state < sizeof(states) / sizeof(states[0]))
++                    state = states[info.tcpi_state];
++            }
++        }
++#else
++        if (!udp && !connected) {
++            int listening = 0;
++            len = sizeof(listening);
++            if (getsockopt(fd->real_fd, SOL_SOCKET, SO_ACCEPTCONN, &listening, &len) == 0 && listening)
++                state = 10;
++        }
++#endif
++        char local_text[33], remote_text[33];
++        unsigned local_port, remote_port;
++        proc_inet_address(&local, ipv6, local_text, &local_port);
++        proc_inet_address(&remote, ipv6, remote_text, &remote_port);
++        proc_printf(buf, "%4u: %s:%04X %s:%04X %02X 00000000:00000000 00:00000000 00000000 %u 0 %llu\n",
++                slot++, local_text, local_port, remote_text, remote_port, state,
++                fd->stat.uid, (unsigned long long) fd->stat.inode);
++    }
++    unlock(&inet_proc_lock);
++}
++
+ static ssize_t sock_ioctl_size(int cmd) {
+     ssize_t size = netlink_ifioctl_size(cmd);
+     if (size >= 0)
+diff --git a/fs/sock.h b/fs/sock.h
+index 230c3c4..d1b9773 100644
+--- a/fs/sock.h
++++ b/fs/sock.h
+@@ -10,6 +10,9 @@
+ #include "misc.h"
+ #include "debug.h"
+ 
++struct proc_data;
++void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp);
++
+ int_t sys_socketcall(dword_t call_num, addr_t args_addr);
+ 
+ int_t sys_socket(dword_t domain, dword_t type, dword_t protocol);
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 7b632e9..246c247 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,8 @@ convenient for running them under both the CLI emulator and iPad app.
+   and hangup stays disabled until rearmed.
+ - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+   wakes a thread blocked on an outer edge-triggered epoll set.
++- `proc-inet-probe.c`: IPv4/IPv6 TCP and UDP loopback endpoints, listening
++  and connected TCP state, socket inode matching, and dup lifetime.
+ - `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor
+   directory while it exits. The old runtime crashes in `proc_pid_fd_readdir`;
+   the repaired CLI completes 300 rounds.
+diff --git a/tests/manual/steam-compat/proc-inet-probe.c b/tests/manual/steam-compat/proc-inet-probe.c
+new file mode 100644
+index 0000000..58077cb
+--- /dev/null
++++ b/tests/manual/steam-compat/proc-inet-probe.c
+@@ -0,0 +1,71 @@
++#define _GNU_SOURCE
++#include <sys/socket.h>
++#include <sys/stat.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++#include <stdio.h>
++#include <string.h>
++#include <unistd.h>
++#include <stdlib.h>
++static int lookup(const char *file, int fd, unsigned wanted_state, unsigned port) {
++    struct stat st;
++    if (fstat(fd, &st)) return 1;
++    FILE *f = fopen(file, "r");
++    if (!f) return 2;
++    char line[512], local[80], remote[80];
++    unsigned state, uid; unsigned long long inode;
++    unsigned matches = 0;
++    while (fgets(line, sizeof(line), f)) {
++        if (sscanf(line, "%*u: %79s %79s %x %*s %*s %*s %u %*u %llu", local, remote, &state, &uid, &inode) != 5) continue;
++        if (inode != (unsigned long long) st.st_ino) continue;
++        const char *sep = strrchr(local, ':');
++        if (!sep || strtoul(sep+1, NULL, 16) != port || state != wanted_state) {
++            fprintf(stderr, "bad entry: %s", line); fclose(f); return 3;
++        }
++        matches++;
++    }
++    fclose(f);
++    return matches != 1;
++}
++static int check(int family, int type) {
++    int server = socket(family, type, 0), client = -1, accepted = -1;
++    if (server < 0) return 10;
++    struct sockaddr_storage addr = {};
++    socklen_t len;
++    if (family == AF_INET) {
++        struct sockaddr_in *a = (void *)&addr;
++        a->sin_family = family; a->sin_addr.s_addr = htonl(INADDR_LOOPBACK); len = sizeof(*a);
++    } else {
++        struct sockaddr_in6 *a = (void *)&addr;
++        a->sin6_family = family; a->sin6_addr = in6addr_loopback; len = sizeof(*a);
++    }
++    if (bind(server, (void *)&addr, len) || getsockname(server, (void *)&addr, &len)) return 11;
++    unsigned port = family == AF_INET ? ntohs(((struct sockaddr_in *)&addr)->sin_port) : ntohs(((struct sockaddr_in6 *)&addr)->sin6_port);
++    const char *file = family == AF_INET ? (type == SOCK_STREAM ? "/proc/net/tcp" : "/proc/net/udp") : (type == SOCK_STREAM ? "/proc/net/tcp6" : "/proc/net/udp6");
++    if (type == SOCK_STREAM) {
++        if (listen(server, 1) || lookup(file, server, 10, port)) return 12;
++        client = socket(family, type, 0);
++        if (client < 0 || connect(client, (void *)&addr, len)) return 13;
++        accepted = accept(server, NULL, NULL);
++        if (accepted < 0 || lookup(file, accepted, 1, port)) return 14;
++    } else if (lookup(file, server, 7, port)) return 15;
++    int duplicate = dup(server);
++    if (duplicate < 0) return 16;
++    close(server);
++    if (lookup(file, duplicate, type == SOCK_STREAM ? 10 : 7, port)) return 17;
++    close(duplicate);
++    if (accepted >= 0) close(accepted);
++    if (client >= 0) close(client);
++    printf("PASS %s loopback port=%u inode-match dup-lifetime\n", file, port);
++    return 0;
++}
++int main(void) {
++    setbuf(stdout, NULL);
++    int families[] = {AF_INET, AF_INET6};
++    int types[] = {SOCK_STREAM, SOCK_DGRAM};
++    for (unsigned f = 0; f < 2; f++) for (unsigned t = 0; t < 2; t++) {
++        int result = check(families[f], types[t]);
++        if (result) { printf("FAIL family=%d type=%d result=%d\n",families[f],types[t],result); return result; }
++    }
++    puts("PROC_INET_OK"); return 0;
++}
+-- 
+2.54.0 (Apple Git-157)
+
+
+From 140e14903f2b14bfef57341f926dd04da78454a9 Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 15:49:22 +0800
+Subject: [PATCH 5/6] Separate process enumeration from direct thread lookup in
+ procfs
+
+---
+ fs/proc.c                                     | 16 +++++++
+ fs/proc/root.c                                |  7 ++-
+ fs/sock.c                                     |  3 +-
+ tests/manual/steam-compat/README.md           |  2 +
+ .../steam-compat/proc-thread-list-probe.c     | 43 +++++++++++++++++++
+ 5 files changed, 69 insertions(+), 2 deletions(-)
+ create mode 100644 tests/manual/steam-compat/proc-thread-list-probe.c
+
+diff --git a/fs/proc.c b/fs/proc.c
+index 619d3fd..9840060 100644
+--- a/fs/proc.c
++++ b/fs/proc.c
+@@ -19,7 +19,23 @@ static int proc_lookup(const char *path, struct proc_entry *entry) {
+         unsigned long index = 0;
+         struct proc_entry next_entry = {0};
+         char entry_name[MAX_NAME];
++        // Thread IDs are addressable directly even though /proc readdir lists
++        // only process leaders. Avoid a full process-directory scan per lookup.
++        if (entry->meta == &proc_root && component[0] >= '0' && component[0] <= '9') {
++            char *end;
++            unsigned long pid = strtoul(component, &end, 10);
++            lock(&pids_lock);
++            bool exists = *end == '\0' && pid > 0 && pid <= MAX_PID && pid_get_task(pid) != NULL;
++            unlock(&pids_lock);
++            if (!exists) {
++                err = _ENOENT;
++                break;
++            }
++            next_entry = (struct proc_entry) {&proc_pid, .pid = pid};
++            goto resolve_child;
++        }
+         while (proc_dir_read(entry, &index, &next_entry)) {
++resolve_child:
+             // tack on some dynamically generated attributes
+             if (next_entry.meta->parent == NULL)
+                 next_entry.meta->parent = entry->meta;
+diff --git a/fs/proc/root.c b/fs/proc/root.c
+index c50b6f8..00109db 100644
+--- a/fs/proc/root.c
++++ b/fs/proc/root.c
+@@ -222,7 +222,12 @@ static bool proc_root_readdir(struct proc_entry *UNUSED(entry), unsigned long *i
+         lock(&pids_lock);
+         do {
+             pid++;
+-        } while (pid <= MAX_PID && pid_get_task(pid) == NULL);
++            struct task *task = pid <= MAX_PID ? pid_get_task(pid) : NULL;
++            // Linux exposes thread IDs through direct lookup and /pid/task,
++            // but lists only process leaders in the /proc root directory.
++            if (task != NULL && task->pid == task->tgid)
++                break;
++        } while (pid <= MAX_PID);
+         unlock(&pids_lock);
+         if (pid > MAX_PID)
+             return false;
+diff --git a/fs/sock.c b/fs/sock.c
+index 1245e44..561386c 100644
+--- a/fs/sock.c
++++ b/fs/sock.c
+@@ -1993,7 +1993,8 @@ static void proc_inet_address(const struct sockaddr_storage *addr, bool ipv6,
+ }
+ 
+ void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp) {
+-    proc_printf(buf, "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n");
++    proc_printf(buf, "  sl  local_address %s   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n",
++            ipv6 ? "remote_address" : "rem_address");
+     unsigned slot = 0;
+     // Close removes the socket under this lock before closing its host fd.
+     // getsockname/getpeername and TCP_CONNECTION_INFO do not wait for traffic.
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index 246c247..cab3bf5 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,8 @@ convenient for running them under both the CLI emulator and iPad app.
+   and hangup stays disabled until rearmed.
+ - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+   wakes a thread blocked on an outer edge-triggered epoll set.
++- `proc-thread-list-probe.c`: lists only process leaders at /proc, while
++  preserving direct thread-ID status lookup and /proc/self/task entries.
+ - `proc-inet-probe.c`: IPv4/IPv6 TCP and UDP loopback endpoints, listening
+   and connected TCP state, socket inode matching, and dup lifetime.
+ - `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor
+diff --git a/tests/manual/steam-compat/proc-thread-list-probe.c b/tests/manual/steam-compat/proc-thread-list-probe.c
+new file mode 100644
+index 0000000..d381410
+--- /dev/null
++++ b/tests/manual/steam-compat/proc-thread-list-probe.c
+@@ -0,0 +1,43 @@
++#define _GNU_SOURCE
++#include <pthread.h>
++#include <stdatomic.h>
++#include <sys/syscall.h>
++#include <sys/stat.h>
++#include <dirent.h>
++#include <unistd.h>
++#include <stdio.h>
++#include <stdlib.h>
++static atomic_int ready, release_workers;
++static int tids[8];
++static void *worker(void *arg) {
++    unsigned n = (unsigned)(size_t)arg;
++    tids[n] = syscall(SYS_gettid);
++    atomic_fetch_add(&ready, 1);
++    while (!atomic_load(&release_workers)) usleep(1000);
++    return NULL;
++}
++int main(void) {
++    pthread_t threads[8];
++    for (unsigned n=0;n<8;n++) if(pthread_create(&threads[n],NULL,worker,(void *)(size_t)n)) return 90;
++    while (atomic_load(&ready)!=8) usleep(1000);
++    int failed=0, leader_seen=0;
++    DIR *dir=opendir("/proc"); if(!dir)return 91;
++    struct dirent *de;
++    while ((de=readdir(dir))) {
++        int pid=atoi(de->d_name);
++        if(pid==getpid())leader_seen=1;
++        for(unsigned n=0;n<8;n++) if(pid==tids[n])failed=1;
++    }
++    closedir(dir);
++    for(unsigned n=0;n<8;n++) {
++        char path[96]; struct stat st;
++        snprintf(path,sizeof(path),"/proc/%d/status",tids[n]);
++        if(stat(path,&st))failed=1;
++        snprintf(path,sizeof(path),"/proc/self/task/%d",tids[n]);
++        if(stat(path,&st))failed=1;
++    }
++    atomic_store(&release_workers,1);
++    for(unsigned n=0;n<8;n++)pthread_join(threads[n],NULL);
++    printf("PROC_THREAD_LIST_%s leader=%d hidden_workers=8 direct_lookup=8 task_lookup=8\n",!failed&&leader_seen?"OK":"FAIL",leader_seen);
++    return failed||!leader_seen;
++}
+-- 
+2.54.0 (Apple Git-157)
+
+
+From b54295bf287d82b37e0eaafd27e694a88fb7303e Mon Sep 17 00:00:00 2001
+From: Konrad <konrad@MacBook-Pro-von-Konrad.local>
+Date: Fri, 16 Oct 2026 15:57:07 +0800
+Subject: [PATCH 6/6] Report parent process IDs consistently for threaded
+ callers
+
+---
+ fs/proc/pid.c                                |  4 +-
+ kernel/getset.c                              |  5 +--
+ kernel/task.h                                |  7 ++++
+ tests/manual/steam-compat/README.md          |  2 +
+ tests/manual/steam-compat/parent-pid-probe.c | 40 ++++++++++++++++++++
+ 5 files changed, 52 insertions(+), 6 deletions(-)
+ create mode 100644 tests/manual/steam-compat/parent-pid-probe.c
+
+diff --git a/fs/proc/pid.c b/fs/proc/pid.c
+index 299b8d0..caa4a18 100644
+--- a/fs/proc/pid.c
++++ b/fs/proc/pid.c
+@@ -152,7 +152,7 @@ static int proc_pid_status_show(struct proc_entry *entry, struct proc_data *buf)
+     proc_printf(buf, "State:\t%c\n", state);
+     proc_printf(buf, "Tgid:\t%d\n", task->tgid);
+     proc_printf(buf, "Pid:\t%d\n", task->pid);
+-    proc_printf(buf, "PPid:\t%d\n", task->parent ? task->parent->pid : 0);
++    proc_printf(buf, "PPid:\t%d\n", task_parent_pid(task));
+     proc_printf(buf, "Uid:\t%d\t%d\t%d\t%d\n", task->uid, task->euid, task->suid, task->euid);
+     proc_printf(buf, "Gid:\t%d\t%d\t%d\t%d\n", task->gid, task->egid, task->sgid, task->egid);
+     proc_printf(buf, "VmPeak:\t%8llu kB\n", (unsigned long long) (vm.size * kb));
+@@ -189,7 +189,7 @@ static int proc_pid_stat_show(struct proc_entry *entry, struct proc_data *buf) {
+             task->zombie ? 'Z' :
+             task->group->stopped ? 'T' :
+             'R'); // I have no visibility into sleep state at the moment
+-    proc_printf(buf, "%d ", task->parent ? task->parent->pid : 0);
++    proc_printf(buf, "%d ", task_parent_pid(task));
+     proc_printf(buf, "%d ", task->group->pgid);
+     proc_printf(buf, "%d ", task->group->sid);
+     struct tty *tty = task->group->tty;
+diff --git a/kernel/getset.c b/kernel/getset.c
+index 8edf84f..a39ea2b 100644
+--- a/kernel/getset.c
++++ b/kernel/getset.c
+@@ -14,10 +14,7 @@ pid_t_ sys_getppid() {
+     STRACE("getppid()");
+     pid_t_ ppid;
+     lock(&pids_lock);
+-    if (current->parent != NULL)
+-        ppid = current->parent->pid;
+-    else
+-        ppid = 0;
++    ppid = task_parent_pid(current);
+     unlock(&pids_lock);
+     return ppid;
+ }
+diff --git a/kernel/task.h b/kernel/task.h
+index 9119bd9..a474ddd 100644
+--- a/kernel/task.h
++++ b/kernel/task.h
+@@ -209,6 +209,13 @@ static inline bool task_is_leader(struct task *task) {
+     return task->group->leader == task;
+ }
+ 
++// Call with pids_lock held. All threads report the process's parent, and a
++// process forked from a worker reports that worker's process ID, not its TID.
++static inline pid_t_ task_parent_pid(struct task *task) {
++    struct task *parent = task->group->leader->parent;
++    return parent != NULL ? parent->tgid : 0;
++}
++
+ struct pid {
+     dword_t id;
+     struct task *task;
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index cab3bf5..7f55850 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,8 @@ convenient for running them under both the CLI emulator and iPad app.
+   and hangup stays disabled until rearmed.
+ - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
+   wakes a thread blocked on an outer edge-triggered epoll set.
++- `parent-pid-probe.c`: getppid from a worker and a forked child, plus
++  the child procfs stat/status parent fields, use process IDs rather than TIDs.
+ - `proc-thread-list-probe.c`: lists only process leaders at /proc, while
+   preserving direct thread-ID status lookup and /proc/self/task entries.
+ - `proc-inet-probe.c`: IPv4/IPv6 TCP and UDP loopback endpoints, listening
+diff --git a/tests/manual/steam-compat/parent-pid-probe.c b/tests/manual/steam-compat/parent-pid-probe.c
+new file mode 100644
+index 0000000..6d16c64
+--- /dev/null
++++ b/tests/manual/steam-compat/parent-pid-probe.c
+@@ -0,0 +1,40 @@
++#define _GNU_SOURCE
++#include <pthread.h>
++#include <sys/wait.h>
++#include <unistd.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++static pid_t process, parent;
++static int proc_parent(const char *file) {
++    FILE *f=fopen(file,"r");if(!f)return -1;
++    char line[1024];int result=-1;
++    if(strstr(file,"status")) {
++        while(fgets(line,sizeof(line),f)) if(sscanf(line,"PPid: %d",&result)==1)break;
++    } else if(fgets(line,sizeof(line),f)) {
++        char *end=strrchr(line,')');char state;
++        if(!end||sscanf(end+1," %c %d",&state,&result)!=2)result=-1;
++    }
++    fclose(f);return result;
++}
++static void *worker(void *unused) {
++    (void)unused;int failed=0;
++    int actual=getppid();
++    printf("worker parent=%d expected=%d\n",actual,parent);
++    if(actual!=parent)failed=1;
++    pid_t child=fork();if(child<0)return (void *)90;
++    if(!child) {
++        int api=getppid(),status=proc_parent("/proc/self/status"),stat=proc_parent("/proc/self/stat");
++        printf("child parent api=%d status=%d stat=%d expected=%d\n",api,status,stat,process);
++        _exit(api!=process||status!=process||stat!=process);
++    }
++    int status;
++    if(waitpid(child,&status,0)!=child||!WIFEXITED(status)||WEXITSTATUS(status))failed=1;
++    return (void *)(size_t)failed;
++}
++int main(void) {
++    setbuf(stdout,NULL);process=getpid();parent=getppid();
++    pthread_t thread;if(pthread_create(&thread,NULL,worker,NULL))return 91;
++    void *result;pthread_join(thread,&result);
++    puts(result?"PARENT_PID_FAIL":"PARENT_PID_OK");return (int)(size_t)result;
++}
+-- 
+2.54.0 (Apple Git-157)
+

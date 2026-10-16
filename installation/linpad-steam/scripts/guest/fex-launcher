@@ -1,0 +1,4 @@
+#!/bin/sh
+ulimit -s 8192
+export FEX_DISABLETELEMETRY=1
+exec /opt/fex/FEX-apple-m1 "$@"

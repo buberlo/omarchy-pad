@@ -1,0 +1,37 @@
+ish: copy-on-write faults so far: 0 reused, 0 copied
+1 call 96  getpid() = 0x1
+1 call 20  epoll_create(0) = 0x3
+1 call 20  epoll_create(0) = 0x4
+1 call 19  eventfd(2, 0x801) = 0x5
+1 call 21  epoll_ctl(3, 1, 5, 0xffffdcb0) {events: 0x40000001, data: 0x2a} = 0x0
+1 call 21  epoll_ctl(4, 1, 3, 0xffffdcb0) {events: 0x80000001, data: 0x63} = 0x0
+1 call 22  epoll_wait(4, 0xffffdca0, 1, 0)...
+1 end epoll_wait {events: 0x1, data: 0x63} = 0x1
+1 call 22  epoll_wait(3, 0xffffdca0, 1, 0)...
+1 end epoll_wait {events: 0x1, data: 0x2a} = 0x1
+1 call 63  read(5, 0xffffdcd8, 8) "" = 0x8
+1 call 22  epoll_wait(4, 0xffffdca0, 1, 0)...
+1 end epoll_wait = 0x0
+1 call 135 rt_sigprocmask(SIG_UNBLOCK, 0x300000000, 0, 8) = 0x0
+1 call 222 mmap64(0x0, 0x803000, 0x0, 0x22, -1, 0x0) = 0xef7f4000
+1 call 226 mprotect(0xef7f6000, 0x801000, 0x3) = 0x0
+1 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xffffdb60, 8) = 0x0
+1 call 220 clone(0x7d0f00, 0xefff6ef0, 0xefff6f40, 0xefff6fe8, 0x1038b70) = 0x2
+1 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+1 call 22  epoll_wait(4, 0xffffdca0, 1, 500)...
+2 call 135 rt_sigprocmask(SIG_SETMASK, 0, 0, 8) = 0x0
+2 call 101 nanosleep({0, 30000000}, 0xefff6ea0 = 0x0
+2 call 21  epoll_ctl(3, 3, 5, 0xefff6ec0) {events: 0x40000001, data: 0x2a} = 0x0
+2 call 135 rt_sigprocmask(SIG_BLOCK, 0xfffffffc7fffffff, 0xefff6e30, 8) = 0x0
+2 call 98  futex(FUTEX_WAKE, 0xefff6f48, 1) = 0x0
+2 call 93  exit(0)
+1 end epoll_wait = 0x0
+1 call 215 munmap(0xef7f4000, 0x803000) = 0x0
+1 call 66  writev(1, 0xffffd960, 2) {"nested outer wake after inner MOD: result=0 mod=0 FAIL
+nested outer wake after inner MOD: result=0 mod=0 FAIL
+", 55} {"", 0} = 0x37
+1 call 57  close(5) = 0x0
+1 call 57  close(4) = 0x0
+1 call 57  close(3) = 0x0
+1 call 94  exit_group(1)
+ish: copy-on-write faults so far: 0 reused, 0 copied

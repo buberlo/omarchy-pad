@@ -1,0 +1,121 @@
+ish: copy-on-write faults so far: 0 reused, 0 copied
+1 call 214 brk(0x0) = 0xefffe000
+1 call 214 brk(0xeffff5b0) = 0xeffff5b0
+1 call 96  getpid() = 0x1
+1 call 99  set_robust_list(0xefffe0e0, 24) = 0x0
+1 call 293  = 0xffffffda
+1 call 261 prlimit64(0, 3) old={cur=0x8000000, max=0xffffffff} = 0x0
+1 call 78  readlinkat(-100, "/proc/self/exe", 0xffffcbe0, 0x1000) "/opt/fex/FEX" = 0xc
+1 call 222 mmap64(0x0, 0x1000, 0x3, 0x22, -1, 0x0) = 0xef766000
+1 call 233 madvise(0xef766000, 0x1000, 4) = 0x0
+1 call 215 munmap(0xef766000, 0x1000) = 0x0
+1 call 56  openat(-100, "/proc/sys/vm/overcommit_memory", 0x80000, 0x10) = 0x3
+1 call 63  read(3, 0xffffafd0, 1) "0" = 0x1
+1 call 57  close(3) = 0x0
+1 call 56  openat(-100, "/sys/kernel/mm/transparent_hugepage/enabled", 0x0, 0x11) = 0xfffffffffffffffe
+1 call 222 mmap64(0x0, 0x1000, 0x3, 0x4022, -1, 0x0) = 0xef766000
+1 call 233 madvise(0xef766000, 0x1000, 8) = 0x0
+1 call 215 munmap(0xef766000, 0x1000) = 0x0
+1 call 222 mmap64(0x0, 0x200000, 0x3, 0x4022, -1, 0x0) = 0xef567000
+1 call 215 munmap(0xef567000, 0x200000) = 0x0
+1 call 222 mmap64(0x0, 0x3ff000, 0x3, 0x4022, -1, 0x0) = 0xef368000
+1 call 215 munmap(0xef368000, 0x98000) = 0x0
+1 call 215 munmap(0xef600000, 0x167000) = 0x0
+1 call 113 clock_gettime(6, 0xffffaf80) {99094s 376216000ns} = 0x0
+1 call 113 clock_gettime(6, 0xffffaf80) {99094s 376300000ns} = 0x0
+1 call 222 mmap64(0x0, 0x200000, 0x3, 0x4022, -1, 0x0) = 0xef200000
+1 call 222 mmap64(0x0, 0x400000, 0x3, 0x4022, -1, 0x0) = 0xeee00000
+1 call 123 sched_getaffinity(0, 128, 0xffffb0e0) = 0x2
+1 call 226 mprotect(0xefc80000, 0x15a000, 0x1) = 0x0
+1 call 214 brk(0x0) = 0xeffff5b0
+1 call 222 mmap64(0xf0000000, 0x1000, 0x0, 0x104022, -1, 0x0) = 0xf0000000
+1 call 214 brk(0xeffff9b0) = 0xeffff9b0
+1 call 214 brk(0xeffffdb0) = 0xeffffdb0
+1 call 214 brk(0xf00001b0) = 0xeffffdb0
+1 call 214 brk(0xefffffb0) = 0xefffffb0
+1 call 214 brk(0xf00001b0) = 0xefffffb0
+1 call 214 brk(0xf00000b0) = 0xefffffb0
+1 call 214 brk(0xf0000030) = 0xefffffb0
+1 call 214 brk(0xeffffff0) = 0xeffffff0
+1 call 214 brk(0xf0000030) = 0xeffffff0
+1 call 214 brk(0xf0000010) = 0xeffffff0
+1 call 214 brk(0xf0000000) = 0xf0000000
+1 call 214 brk(0xf0000010) = 0xf0000000
+1 call 214 brk(0xf0000008) = 0xf0000000
+1 call 214 brk(0xf0000004) = 0xf0000000
+1 call 214 brk(0xf0000002) = 0xf0000000
+1 call 214 brk(0xf0000001) = 0xf0000000
+1 call 48  faccessat(-100, "/proc/sys/fs/binfmt_misc/FEX-x86", 0x0, 1162625601) = 0xfffffffe
+1 call 222 mmap64(0x0, 0x1000, 0x3, 0x22, -1, 0x0) = 0xeedff000
+1 call 167 prctl(0x53564d41) = 0xffffffea
+1 call 222 mmap64(0x0, 0x20000000, 0x3, 0x22, -1, 0x0) = 0xcedff000
+1 call 167 prctl(0x53564d41) = 0xffffffea
+1 call 167 prctl(0x4a) = 0xffffffea
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root/.fex-emu/", 0x0, 1297041503) = 0xfffffffe
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root/.fex-emu/", 0x0, 1214203721) = 0xfffffffe
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root/.fex-emu/", 0x0, 1214203721) = 0xfffffffe
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/root", 0x0, 69) = 0x0
+1 call 48  faccessat(-100, "/run/host/container-manager", 0x0, 2019981157) = 0xfffffffe
+1 call 78  readlinkat(-100, "/proc/self/exe", 0xffffca50, 0x1000) "/opt/fex/FEX" = 0xc
+1 call 29  ioctl(2, 0x5401, 0xffffc4b0) = 0xffffffe7
+1 call 56  openat(-100, "/opt/fex/hello-x86_64", 0x80000, 0x0) = 0x3
+1 call 67  pread(3, 0xffffca50, 257, 0) "ELF" = 0xa7
+1 call 57  close(3) = 0x0
+1 call 160  = 0x0
+1 call 79  stat(at=-100, path="/opt/fex/hello-x86_64", statbuf=0xffffc470, follow_links=0) = 0x0
+1 call 56  openat(-100, "/opt/fex/hello-x86_64", 0x0, 0x0) = 0x3
+1 call 62  lseek64(3, 0, 2) -> 167 = 0xa7
+1 call 62  lseek64(3, 0, 0) -> 0 = 0x0
+1 call 67  pread(3, 0xffffc508, 5, 0) "ELF" = 0x5
+1 call 67  pread(3, 0xffffc680, 64, 0) "ELF" = 0x40
+1 call 67  pread(3, 0xd0020140, 56, 64) "" = 0x38
+1 call 160  = 0x0
+1 call 78  readlinkat(-100, "/opt", 0xffffc0e0, 0x3ff) = 0xffffffffffffffea
+1 call 78  readlinkat(-100, "/opt/fex", 0xffffc0e0, 0x3ff) = 0xffffffffffffffea
+1 call 78  readlinkat(-100, "/opt/fex/hello-x86_64", 0xffffc0e0, 0x3ff) = 0xffffffffffffffea
+1 call 222 mmap64(0x1fffffffffff000, 0x1000, 0x0, 0x100022, -1, 0x0) = 0xcedfe000
+1 call 215 munmap(0xcedfe000, 0x1000) = 0x0
+1 call 56  openat(-100, "/proc/self/maps", 0x0, 0x0) = 0x4
+1 call 63  read(4, 0xffffbc40, 2048) "0000cedff000-0000ef600000 rw-p 00000000 00:00 0          
+0000ef767000-0000ef76b000 ---p 00000000 00" = 0x2fb
+1 call 57  close(4) = 0x0
+1 call 222 mmap64(0x800000000000, 0x800000000000, 0x0, 0x104022, -1, 0x0) = 0x8000000000
+1 call 233 madvise(0x800000000000, 0x0, 16) = 0x0
+1 call 222 mmap64(0x800000000000, 0x1000, 0x3, 0x32, -1, 0x0) = 0x800000000000
+1 call 167 prctl(0x53564d41) = 0xffffffea
+1 call 226 mprotect(0x800000001000, 0x4000000, 0x3) = 0x0
+1 call 233 madvise(0x800000001000, 0x4000000, 14) = 0x0
+1 illegal instruction at 0xefb739bc: insn=0xd5380009
+
+stack at ffffc210, base at d0090080, ip at efb739bc
+0000ffffc210: 6f6f722f 632e0074 69666e6f 002f0067 ffffc210 00000000 ffffc258 00000000 
+0000ffffc230: 00000001 00000000 00000000 00000000 ffffca50 00000000 3f800000 00000000 
+0000ffffc250: 00000000 00000000 00000000 00000000 ffffc250 00000000 ffffc278 00000000 
+0000ffffc270: 00000000 00000000 ffffc200 00000000 00000000 00000000 00000000 00000000 
+0000ffffc290: 69666e6f 00000067 00000012 00000000 10212120 00011001 00110011 00000000 
+0000ffffc2b0: ffffc2c0 00000000 00000000 00000000 f0000000 00000000 ffffda50 00000000 
+0000ffffc2d0: 00000010 00000000 efb75384 00000000 00000000 000000a2 0000002d 0000002b 
+0000ffffc2f0: 00000002 00000001 00000000 00000000 000000a3 0000002d 0000002b 00000003 
+0000ffffc310: 00000001 00000000 00000000 000000a4 0000002d 0000002b 00000004 00000001 
+0000ffffc330: ffffc390 00000000 efc0cc50 00000000 ef4000c0 00000000 efffe7c8 00000000 
+0000ffffc350: ffffc3b0 00000000 efbf722c 00000000 ffffc3c0 00000000 efbf722c 00000000 
+0000ffffc370: efffe740 00000000 efbf7234 00000000 ffffc3c0 00000000 efbf7234 00000000 
+0000ffffc390: 00000000 00000000 efb6fd58 00000000 756e694c 00000078 00000000 00000000 
+0000ffffc3b0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 
+0000ffffc3d0: 00000000 00000000 00000000 00000000 ffffc440 00000000 efbf722c 00000000 
+0000ffffc3f0: efffe740 00000000 61636f6c 0000006c ffffc440 00000000 efbf7234 00000000 
+1 receiving signal 4
+ish crash: pid 1 tgid 1 (FEX) signal 4 code 128 addr 0xefb739bc pc 0xefb739bc /opt/fex/FEX+0x3f89bc lr 0xefb73604 /opt/fex/FEX+0x3f8604 sp 0xffffc210
+ish crash:   last syscalls (oldest first): 67(0x3)=56 160(0xffffc3a0)=0 78(0xffffffffffffff9c)=-22 78(0xffffffffffffff9c)=-22 78(0xffffffffffffff9c)=-22 222(0x1fffffffffff000)=3470778368 215(0xcedfe000)=0 56(0xffffffffffffff9c)=4 63(0x4)=763 57(0x4)=0 222(0x800000000000)=549755813888 233(0x800000000000)=0 222(0x800000000000)=140737488355328 167(0x53564d41)=-22 226(0x800000001000)=0 233(0x800000001000)=0
+ish: copy-on-write faults so far: 0 reused, 0 copied

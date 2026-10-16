@@ -1,0 +1,23 @@
+LinPad 1.5.0 Vulkan 3D smoke test — physical iPad Air 13-inch (M2)
+Date: 2026-10-16
+
+PASS: visible textured vkcube rendering at requested 640x480, 600 frames, exit code 0.
+Elapsed command time: 10.30 seconds (approximately 58.3 frames/second including startup).
+This is a simple cube smoke test, not a sustained or demanding game benchmark.
+
+Selected GPU: Virtio-GPU Venus (Apple M2 GPU)
+Driver: Mesa Venus 26.2.4
+vulkaninfo reported integrated GPU, apiVersion 1.4.343.
+The cube itself reported API version 1.1.357 for its selected device.
+
+Commands inside LinPad:
+vulkaninfo --summary
+export XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0-gpu
+time timeout 90 vkcube --wsi wayland --width 640 --height 480 --c 600
+
+The native terminal initially lacked XDG_RUNTIME_DIR; setting the existing compositor socket for this shell resolved the display-connection failure. No system packages or persistent configuration were changed.
+
+Evidence:
+linpad-vulkan-gpu.jpg — device/driver detection
+linpad-3d-frame-1.jpg — visible textured 3D cube
+linpad-3d-result.jpg — selected GPU, exit code and timing

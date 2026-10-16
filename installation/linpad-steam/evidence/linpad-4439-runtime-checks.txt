@@ -1,0 +1,7 @@
+PROBES
+PASS /proc/net/tcp loopback port=64978 inode-match dup-lifetime
+PASS /proc/net/udp loopback port=50667 inode-match dup-lifetime
+PASS /proc/net/tcp6 loopback port=64980 inode-match dup-lifetime
+PASS /proc/net/udp6 loopback port=63560 inode-match dup-lifetime
+PROC_INET_OK
+PROC_FD_EXIT_SCAN_OK rounds=300 scans=1942

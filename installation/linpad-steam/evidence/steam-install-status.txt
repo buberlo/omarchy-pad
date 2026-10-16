@@ -1,0 +1,52 @@
+Steam / FEX on LinPad — verified iPad status, 2026-10-16
+
+Steam reaches its account sign-in screen on the physical M2 iPad in signed
+LinPad 1.5.0 build 4441. Evidence: steam-ipad-login-4441.jpg.
+No account credentials were entered by the assistant. Sign-in, downloads,
+game launch and playability remain untested.
+
+The decisive final repair makes getppid and procfs stat/status report the
+parent process ID rather than a worker thread ID. The focused regression
+failed before the repair and passes locally and on iPad. This followed
+repairs for safe proc fd scans during exit, process-only /proc enumeration
+with direct thread lookup, and real TCP/UDP socket metadata for lsof.
+Steam now identifies both endpoints of its browser connection correctly.
+
+Other preserved runtime fixes: MIDR_EL1 support; relative descriptor access
+checks; eventfd semaphore mode; null pselect6 signal masks; EPOLLONESHOT
+rearming and nested-epoll wake propagation; proc allocation failure guard.
+Latest device regression results: linpad-4441-runtime-checks.txt.
+All changes and regression sources: linpad-compatibility.patch.
+
+Signing uses the developer account with the explicitly approved Increased
+Memory Limit and Extended Virtual Addressing capabilities. The final app
+and IPA contain build 4441. The app signature was verified on the host.
+
+Steam is the official ARM64 public-beta client 1792110651, with an isolated
+Debian glibc runtime, full lsof, and an on-device private Xvnc server providing
+software GLX through llvmpipe. The local viewer displays this inside LinPad.
+The verified environment is now installed behind the steam command and a
+Steam entry in the application menu. The previous launcher is preserved as
+/usr/local/bin/steam.linpad-original. The active sign-in window is left open.
+The packet-pipe shim uses SOCK_SEQPACKET for Steam's small controller messages;
+it is diagnostic and is not a complete Linux O_DIRECT pipe implementation.
+A standard Openbox experiment was prepared on the Mac but was not needed
+or installed on the iPad.
+
+FEX static build 5285020de passed hello, pthread/mutex, SSE2, generated x86
+executable-code and signal probes on iPad in Cortex-A72, Apple M1 and A76
+variants, with an 8 MiB stack limit and the approved memory capabilities.
+Evidence: fex-ipad-current-builds.txt. No full x86 application or game has
+been qualified. The ARM64 Steam UI itself runs without FEX translation.
+Madeira/latest-FEX source assessment: madeira-fex-reuse.txt.
+
+Sources:
+https://github.com/FEX-Emu/FEX/releases/tag/FEX-2610
+https://github.com/PeronGH/FEX-static/releases/tag/5285020de
+https://github.com/willfaust/Madeira/commit/279fd0f83170425db002fe25d6bd62f6355f497d
+https://github.com/ValveSoftware/steam-for-linux/issues/11822
+
+The final device build passes parent IDs, thread enumeration/direct lookup,
+IPv4/IPv6 socket metadata and 300 process-exit rounds (2,937 scans).
+The temporary transfer server and diagnostic collection were stopped after
+verification; the shared device reservation was released for user sign-in.

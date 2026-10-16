@@ -1,0 +1,80 @@
+#!/bin/sh
+set -eu
+BASE="$HOME/.local/share/Steam"
+L=/opt/steam-host/usr/lib/aarch64-linux-gnu
+LOADER="$L/ld-linux-aarch64.so.1"
+LIBS="$L:$L/pulseaudio:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+export PATH="/opt/steam-x11/bin:$PATH"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-0}"
+ulimit -s 8192
+export LP_NUM_THREADS=2
+unset LD_PRELOAD
+if [ "${1:-}" = --viewer ]; then
+    export LD_LIBRARY_PATH="$LIBS"
+    export FLTK_BACKEND=x11
+    exec "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/xtigervncviewer \
+        -SecurityTypes None -PreferredEncoding Raw -AutoSelect=0 -Shared \
+        -RemoteResize=0 127.0.0.1::5955
+fi
+if [ "${1:-}" = --client ]; then
+    shift
+    export DISPLAY="$1"; shift
+    export LD_LIBRARY_PATH="$LIBS" STEAM_RUNTIME=0
+    export GLIBC_TUNABLES=glibc.pthread.stack_cache_size=0
+    if [ -n "${STEAM_PIPE_DIAGNOSTIC:-}" ]; then export LD_PRELOAD=/opt/steam-host/pipe-diagnostic.so; fi
+    export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe MESA_LOADER_DRIVER_OVERRIDE=swrast
+    export LIBGL_DRIVERS_PATH="$L/dri" __GLX_VENDOR_LIBRARY_NAME=mesa
+    export __EGL_VENDOR_LIBRARY_FILENAMES=/opt/steam-host/usr/share/glvnd/egl_vendor.d/50_mesa.json
+    cd "$BASE"
+    exec "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+fi
+unset LD_LIBRARY_PATH MESA_LOADER_DRIVER_OVERRIDE LIBGL_DRIVERS_PATH __GLX_VENDOR_LIBRARY_NAME
+export XKB_CONFIG_ROOT=/opt/steam-x11/usr/share/X11/xkb
+server= client= viewer= wm= bus=
+cleanup() {
+    for pid in "$client" "$viewer" "$wm" "$server" "$bus"; do
+        [ -z "$pid" ] || kill "$pid" 2>/dev/null || true
+    done
+}
+trap cleanup EXIT INT TERM
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/steam-session-bus
+dbus-daemon --session --nofork --address="$DBUS_SESSION_BUS_ADDRESS" >/tmp/steam-dbus.log 2>&1 &
+bus=$!
+env LD_LIBRARY_PATH="$LIBS" LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe \
+    MESA_LOADER_DRIVER_OVERRIDE=swrast LIBGL_DRIVERS_PATH="$L/dri" \
+    "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/Xtigervnc :55 \
+    -geometry 1024x700 -depth 24 -SecurityTypes None -localhost yes \
+    -rfbport 5955 -nolisten tcp -ac >/tmp/steam-xvnc.log 2>&1 &
+server=$!
+tries=0
+while [ ! -S /tmp/.X11-unix/X55 ]; do
+    kill -0 "$server" || exit 1
+    tries=$((tries+1)); [ "$tries" -lt 100 ] || exit 1
+    sleep 0.1
+done
+# The socket pathname can appear before X is accepting clients.
+# Retry the private WM until it stays alive; it must not race Xvnc startup.
+(
+    export DISPLAY=:55
+    for attempt in 1 2 3 4 5; do
+        ishwl-x11-wm &
+        child=$!
+        sleep 1
+        if kill -0 "$child" 2>/dev/null; then
+            trap 'kill "$child" 2>/dev/null || true' EXIT INT TERM
+            wait "$child"
+            exit $?
+        fi
+    done
+    exit 1
+) >/tmp/steam-wm.log 2>&1 &
+wm=$!
+"$0" --client :55 "$@" >/tmp/steam-main.log 2>&1 &
+client=$!
+if [ -n "${STEAM_NO_VIEWER:-}" ]; then wait "$client"; exit $?; fi
+ISHWL_APP=Steam ishwl-x11 -g 1024x700 "$0" --viewer >/tmp/steam-viewer.log 2>&1 &
+viewer=$!
+while kill -0 "$client" 2>/dev/null && kill -0 "$viewer" 2>/dev/null; do sleep 1; done
+if ! kill -0 "$viewer" 2>/dev/null; then kill "$client" 2>/dev/null || true; fi
+wait "$client"

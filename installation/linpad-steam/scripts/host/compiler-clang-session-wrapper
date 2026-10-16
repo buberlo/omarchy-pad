@@ -1,0 +1,5 @@
+#!/bin/sh
+case " $* " in
+ *aarch64-linux-gnu*) exec "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/build-tools/bin/python" -m ziglang cc "$@";;
+ *) exec /usr/bin/clang "$@";;
+esac

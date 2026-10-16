@@ -1,0 +1,47 @@
+ish: copy-on-write faults so far: 0 reused, 0 copied
+1 call 96  getpid() = 0x1
+1 call 20  epoll_create(0) = 0x3
+1 call 19  eventfd(1, 0x800) = 0x4
+1 call 59  pipe2(0xffffdcb8, 0) [5 6] = 0x0
+1 call 21  epoll_ctl(3, 1, 4, 0xffffdc90) {events: 0xc0000001, data: 0x7b} = 0x0
+1 call 29  ioctl(1, 0x5413, 0xffffba78) = 0xffffffe7
+1 call 66  writev(1, 0xffffba00, 2) {"eventfd add PASS errno=0", 24} {"
+eventfd add PASS errno=0
+", 1} = 0x19
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait {events: 0x1, data: 0x7b} = 0x1
+1 call 21  epoll_ctl(3, 1, 4, 0xffffdc90) {events: 0xc0000001, data: 0x7b} = 0xffffffef
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait = 0x0
+1 call 21  epoll_ctl(3, 3, 4, 0xffffdc90) {events: 0xc0000001, data: 0x1c8} = 0x0
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait {events: 0x1, data: 0x1c8} = 0x1
+1 call 21  epoll_ctl(3, 2, 4, 0) = 0x0
+1 call 21  epoll_ctl(3, 1, 5, 0xffffdc90) {events: 0x40000001, data: 0x315} = 0x0
+1 call 57  close(6) = 0x0
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait {events: 0x11, data: 0x315} = 0x1
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait = 0x0
+1 call 21  epoll_ctl(3, 3, 5, 0xffffdc90) {events: 0x40000001, data: 0x315} = 0x0
+1 call 22  epoll_wait(3, 0xffffdc80, 1, 0)...
+1 end epoll_wait {events: 0x11, data: 0x315} = 0x1
+1 call 57  close(5) = 0x0
+1 call 57  close(4) = 0x0
+1 call 57  close(3) = 0x0
+1 call 66  writev(1, 0xffffdc30, 2) {"initial event PASS errno=0
+oneshot remains registered PASS errno=17
+initial event PASS errno=0
+oneshot remains registered PASS errno=17
+disabled no delivery PASS errno=17
+MOD rearm PASS errno=17
+rearm ready edge and data PASS errno=17
+DEL disabled PASS errno=17
+pipe add PASS errno=17
+HUP initial PASS errno=17
+HUP disabled PASS errno=17
+HUP rearm MOD PASS errno=17
+HUP after MOD PASS errno=17
+disabled no delivery PASS errno=", 326} {"", 0} = 0x146
+1 call 94  exit_group(0)
+ish: copy-on-write faults so far: 0 reused, 0 copied

@@ -1,0 +1,27 @@
+TEST=epoll-nested-probe
+nested outer wake after inner MOD: result=1 mod=0 PASS
+EXIT=0
+TEST=epoll-oneshot-probe
+eventfd add PASS errno=0
+initial event PASS errno=0
+oneshot remains registered PASS errno=17
+disabled no delivery PASS errno=17
+MOD rearm PASS errno=17
+rearm ready edge and data PASS errno=17
+DEL disabled PASS errno=17
+pipe add PASS errno=17
+HUP initial PASS errno=17
+HUP disabled PASS errno=17
+HUP rearm MOD PASS errno=17
+HUP after MOD PASS errno=17
+EXIT=0
+TEST=eventfd-probe
+eventfd semaphore create: fd=3 errno=0
+EVENTFD_SEMAPHORE_AND_COUNTER_OK
+EXIT=0
+TEST=pselect-probe
+pselect6 empty mask=null result=0 errno=0
+pselect6 ready mask=null result=1 errno=0
+pselect6 empty mask=packed-null result=0 errno=0
+pselect6 ready mask=packed-null result=1 errno=0
+EXIT=0

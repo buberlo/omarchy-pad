@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ "${1:-}" = -p ]; then
+    LD_LIBRARY_PATH=/opt/steam-utils/usr/lib:/opt/steam-utils/lib exec /opt/steam-utils/usr/bin/taskset "$@"
+fi
+mask="$1"; shift
+saved_libs="${LD_LIBRARY_PATH:-}"
+case "${1:-}" in
+    */steamwebhelper) set -- "$@" --disable-gpu-watchdog --disable-dev-shm-usage --in-process-gpu ;;
+esac
+LD_LIBRARY_PATH=/opt/steam-utils/usr/lib:/opt/steam-utils/lib exec /opt/steam-utils/usr/bin/taskset "$mask" /usr/bin/env LD_LIBRARY_PATH="$saved_libs" "$@"

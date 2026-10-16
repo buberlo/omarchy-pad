@@ -1,0 +1,4 @@
+#!/bin/sh
+unset LD_PRELOAD
+L=/opt/steam-host/usr/lib/aarch64-linux-gnu
+exec "$L/ld-linux-aarch64.so.1" --library-path "$L" /opt/steam-host/usr/bin/lsof "$@"
