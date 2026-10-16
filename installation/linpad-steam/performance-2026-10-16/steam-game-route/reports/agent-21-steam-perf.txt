@@ -1,0 +1,59 @@
+AGENT_BEGIN id=21-steam-perf pid=1143 Fri Oct 16 18:17:19 UTC 2026
+AGENT_HOST=iPad
+=== game view and input state ===
+ishwl 68002.782: map toplevel 1 '' Steam
+ishwl 68293.058: map toplevel 2 '' Steam
+ishwl 68565.402: map toplevel 3 '' Steam
+ishwl 68791.344: map toplevel 4 'Hollow Knight' hollow_knight.x86_64
+ishwl 68791.435: text input active in view 4
+frame rows: 19841
+
+=== 30 s frame capture for the game view ===
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan device type 1
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T18:15:31.770Z|0xcc427f00|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T18:15:31.824Z|0xcc427f00|Vulkan PSO: Cache data successfully loaded [size=374173,path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T18:15:39.180Z|0xcc427f00|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T18:15:39.181Z|0xcc427f00|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+2026-10-16T18:15:46.691Z|0xcc427f00|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T18:15:46.692Z|0xcc427f00|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T18:15:51.408Z|0xcc427f00|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+CAPTURE_END
+Fri Oct 16 18:17:49 UTC 2026
+SELECTED_VIEW_ID=4
+8683889 -rw-r--r--    1 0        0          1423440 Oct 16 18:15 /tmp/ishwl/v4-2.buf
+COMPOSITOR_WINDOW_EVENTS
+CAPTURE_META
+start_second=1792174639 end_second=1792174669 start_line=19845 end_line=21646 view_id=4 requested_seconds=30
+SELECTED_VIEW_ROWS
+1801
+CAPTURE_FILES=/tmp/kb4453-steam-window.meta /tmp/kb4453-steam-window.txt /tmp/kb4453-steam-window.status.txt
+
+=== key lines (nobody pressed keys; 0 is expected) ===
+0
+
+=== memory ===
+footprint_mb 4403
+allowance_mb 8192
+headroom_mb 3788
+soft_mb 1638
+hard_mb 819
+
+=== processes ===
+   16 ishwl
+ 1693 ishwl-x11
+ 1706 ishwl-x11-wm
+ 3014 ishwl-x11
+ 3032 ishwl-x11-wm
+ 4146 steam-local
+ 4152 steam-local
+ 4153 steam
+ 4154 ishwl-x11
+ 4156 ishwl-x11-wm
+ 4164 ishwl-x11-wm
+ 4203 steamwebhelper
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:17:49 UTC 2026

@@ -26,21 +26,16 @@ game's pid, app footprint 2 986 MB of the 8 192 MB allowance with `kills 0`, and
    still waits 258 ms. Container measurement of the same code, not the device.
 3. **The 250 ms figure** is arithmetic from `ORDER_TIMEOUT_MS`; the same headless test
    measures 258 ms (in the container, not on the device).
-4. **Steam**: the game was started with `sh /tmp/hollow4452-egl` by the command agent, exactly
-   as by hand. The wrapper (`linpad-hk-fex`) and the launch-options editor
-   (`kb4453-steam-launchopts`, 12 local tests green) are prepared but not installed, and the
-   Steam route is not qualified. Note that a Steam toplevel appeared in the log before this
-   session and a launch attempt from it failed with `hollow_knight.x86_64: not found`, so the
-   Steam entry currently starts nothing.
-
-   The parallel LinPad Steam work (`dd7f06f0`, builds 4478 desktop and 4480 steam, both
-   installed) leaves exactly this out of scope: *"Still open ... Steam → game launching (the
-   `linpad-fex-native` compat tool ...)"*. The prepared step is therefore: bring the command
-   agent back, run `kb4453-steam-probe` (read-only), then `kb4453-steam-setup` (installs
-   `/usr/local/bin/linpad-hk-fex` and sets the app's launch options to
-   `linpad-hk-fex %command%`; refuses while Steam runs), start Steam, and verify with
-   `steam -applaunch 367520` — the same code path the Play button uses — by watching
-   `/tmp/ishwl.log` for the Hollow Knight toplevel and the frame log for deliveries.
+4. ~~**Steam**~~ — **done on 16 October 2026**: Steam's Play path starts the game. Two causes
+   were found and fixed on the device: Steam's own `reaper` dies with `prctl() failed!` before the
+   compatibility tool is reached (replaced by a stub; `-noreaper` does not help), and the tool's
+   defaults pointed at `/opt/fex/FEX-apple-m1` and `x11` instead of the proven
+   `/usr/local/bin/linpad-egl-hook` and `wayland`. Verified by launching through the client
+   (`steam -applaunch 367520`) and observing `FEX-apple-m1-mu` running,
+   `map toplevel 4 'Hollow Knight' hollow_knight.x86_64`, a fresh Unity log, and 1 801 game-view
+   frame deliveries in 30 s on the Venus renderer. Full record, device changes and rollback:
+   [steam-game-route/README.md](steam-game-route/README.md). Nobody has *played* it from Steam —
+   no key was pressed in that run — so gameplay and audio through this route stay open.
 5. **A numerical FPS result** in the usual sense. Frame *deliveries* are not frames per second
    and are not presented as such.
 

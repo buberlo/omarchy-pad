@@ -16,14 +16,14 @@ esac
 [ -f "$1" ] || die "game executable does not exist relative to the current directory: $1"
 
 runtime=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
-translator=${LINPAD_FEX_BINARY:-/opt/fex/FEX-apple-m1}
+translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}
 case "$runtime" in /*) ;; *) die 'LINPAD_FEX_RUNTIME must be an absolute path' ;; esac
 case "$translator" in /*) ;; *) die 'LINPAD_FEX_BINARY must be an absolute path' ;; esac
 [ -x "$translator" ] || die "FEX executable unavailable: $translator"
 [ -f "$runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" ] || die "x86 glibc loader unavailable in $runtime"
 
 tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-display_mode=${LINPAD_FEX_DISPLAY_MODE:-x11}
+display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}
 
 # ARM64 Steam uses a private GLX/llvmpipe runtime. Do not pass that runtime,
 # its overlay, or its browser settings into Xwayland or the x86 game.

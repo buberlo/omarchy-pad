@@ -1,0 +1,27 @@
+AGENT_BEGIN id=15-launchopts pid=1143 Fri Oct 16 18:07:32 UTC 2026
+AGENT_HOST=iPad
+config: /root/.local/share/Steam/userdata/38877668/config/localconfig.vdf
+VERIFY=-timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt
+BACKUP=/root/.local/share/Steam/userdata/38877668/config/localconfig.vdf.kb4453-backup
+editor exit=0
+--- readback ---
+
+=== start Steam again ===
+ 3006 steam-local
+ 3012 steam-local
+ 3013 steam
+ 3063 steamwebhelper
+ 3084 steamwebhelper
+ 3085 steamwebhelper
+
+=== toplevels ===
+ishwl 68002.782: map toplevel 1 '' Steam
+ishwl 68293.058: map toplevel 2 '' Steam
+
+=== memory ===
+footprint_mb 3373
+allowance_mb 8192
+headroom_mb 4818
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:08:52 UTC 2026

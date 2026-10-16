@@ -1,0 +1,83 @@
+AGENT_BEGIN id=10-compat-mapping pid=1143 Fri Oct 16 18:02:02 UTC 2026
+AGENT_HOST=iPad
+=== config.vdf around CompatToolMapping ===
+				"RecentDownloadRate"		"2502291"
+				"Tools"
+				{
+					"367520"
+					{
+						"SizeOnDisk"		"51"
+					}
+				}
+				"CompatToolMapping"
+				{
+					"367520"
+					{
+						"name"		"linpad-fex-native"
+						"config"		""
+						"priority"		"250"
+					}
+				}
+			}
+		}
+	}
+	"SDL_GamepadBind"		"03000000de280000ff11000001000000,Steam Virtual Gamepad,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,
+03000000de280000fc11000001000000,Steam Controller,a:b0,b:b1,back:b6,dpdown:b14,dpleft:b15,dpright:b13,dpup:b12,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,platform:Linux,"
+	"streaming"
+	{
+		"ClientID"		"-3055381687134811315"
+	}
+
+=== any linpad-fex mention in config.vdf ===
+737:						"name"		"linpad-fex-native"
+
+=== localconfig.vdf: 367520 block, LaunchOptions? ===
+file: /root/.local/share/Steam/userdata/38877668/config/localconfig.vdf
+865:					"367520"
+866-					{
+867-						"LastPlayed"		"1792142534"
+868-						"Playtime"		"111"
+869-						"cloud"
+870-						{
+871-							"last_sync_state"		"synchronized"
+872-						}
+873-						"autocloud"
+874-						{
+875-							"lastlaunch"		"1792142530"
+876-							"lastexit"		"1792142533"
+877-						}
+878-						"BadgeData"		"020000000811"
+879-						"Playtime2wks"		"1"
+880-						"LaunchOptions"		"-force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0"
+881-					}
+882-					"367670"
+883-					{
+884-						"LastPlayed"		"1662466024"
+885-						"Playtime"		"1"
+--
+1295:		"367520"		"00696e7465726e616c00016c616e677561676500656e676c697368000808"
+1296-		"500"		"00696e7465726e616c00016c616e677561676500656e676c697368000808"
+1297-	}
+1298-	"RecentLocalPlayedGameIDs"		"f4010000000000002558d26a0000000080b92f00000000002558d26a00000000ceca1600000000002558d26a0000000046d43f00000000002558d26a00000000a09b050000000000c5ecd16a0000000004a14600000000005ddbd16a0000000038dd3f00000000005ddbd16a00000000"
+1299-	"apptickets"
+1300-	{
+1301:		"367520"		"3200000004000000e439510201001001a09b05008d4a9b556600a8c0000000005cdbd16adc8aed6a01003504010000000000028a45ce022adda93848a68b8bb7630312c11aaff179f1110f1b54821c56d2ae5e15fb52311b24ffcab5289caa958a45abdc8666e8987133f7fbca1e9ec14be7e92a616ab16533b190f9147143db1737a32548bbe46e9d84c8d8d24e5a6028da9ff034ace550be9b146889605607deba8d41a0d530e0ab52b07f61bb0cb86216"
+1302-		"4628740"		"3200000004000000e43951020100100104a146008d4a9b556600a8c0000000005edbd16ade8aed6a010000000000000000005dd099373f67299184f632dc153ecbc92ba5d3161995bd2d9366029d75cf7d1c16624c811153381e4d3d96d84b6f3ebd6de6d31b2e77f967a328cde672df791d572957c8ad19802cc21052ea55b50505a3005bdad752f6029c0a1578491701c22f94c7089d4b60506b77d2843f674bf75da6ca3d848677ff1d5cd52b373c65e7"
+LaunchOptions lines: 1
+880:						"LaunchOptions"		"-force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0"
+
+=== steam userdata dirs ===
+total 0
+drwxr-xr-x   10 root     root           320 Oct 16 08:08 38877668
+
+=== is the game executable real? ===
+/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.10.0, BuildID[sha1]=d0a9ca67a7b311d869b2090f76a6a0d5b0de6a0d, not stripped
+total 38476
+-rwxr-xr-x    1 root     root      39255232 Oct 16 09:20 UnityPlayer.so
+-rwxr-xr-x    1 root     root         15072 Oct 16 09:19 hollow_knight.x86_64
+drwxr-xr-x    7 root     root         52032 Oct 16 09:21 hollow_knight_Data
+-rwxr-xr-x    1 root     root         45536 Oct 16 09:20 libdecor-0.so.0
+-rwxr-xr-x    1 root     root         69664 Oct 16 09:20 libdecor-cairo.so
+-rw-r--r--    1 root     root             5 Oct 16 17:47 unity.lock
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:02:02 UTC 2026

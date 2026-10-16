@@ -1,0 +1,55 @@
+AGENT_BEGIN id=20-reaper-stub pid=1143 Fri Oct 16 18:15:22 UTC 2026
+AGENT_HOST=iPad
+=== before ===
+-rwxr-xr-x    1 root     root         19336 Sep 28  2022 /root/.local/share/Steam/steamrtarm64/reaper
+6105162a0b337c4f082f382b4bbd0211c03808df36b698a9dbfadd2d768a7161  /root/.local/share/Steam/steamrtarm64/reaper
+stub syntax ok
+
+=== stub test through the wrapper ===
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+STUB_EXEC_OK
+
+=== applaunch ===
+=== processes ===
+ 1693 ishwl-x11
+ 1706 ishwl-x11-wm
+ 3014 ishwl-x11
+ 3032 ishwl-x11-wm
+ 4154 ishwl-x11
+ 4156 ishwl-x11-wm
+ 4164 ishwl-x11-wm
+ 5036 FEX-apple-m1-mu
+
+=== toplevels ===
+ishwl 68002.782: map toplevel 1 '' Steam
+ishwl 68293.058: map toplevel 2 '' Steam
+ishwl 68565.402: map toplevel 3 '' Steam
+ishwl 68791.344: map toplevel 4 'Hollow Knight' hollow_knight.x86_64
+
+=== frames ===
+18860
+
+=== unity log ===
+-rw-r--r--    1 root     root         26506 Oct 16 18:16 /tmp/hollow4452-egl-unity.txt
+2026-10-16T18:16:08.321Z|0xcc427f00|Restored language code 'DE'
+2026-10-16T18:16:11.468Z|0xcc427f00|Attempting to get `timeSamples` on an audio source that has a resource assigned that is not a clip is ignored!
+2026-10-16T18:16:11.771Z|0xcc427f00|pd.maxHealth: 5 pd.maxHealthBase: 5
+2026-10-16T18:16:13.474Z|0xcc427f00|Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 46698.
+2026-10-16T18:16:13.483Z|0xcc427f00|Total: 224.592000 ms (FindLiveObjects: 7.933000 ms CreateObjectMapping: 2.355000 ms MarkObjects: 206.268000 ms  DeleteObjects: 7.992000 ms)
+
+
+=== tool output (client stdio) ===
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Loading in SingleInstance mode
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:17:03 UTC 2026

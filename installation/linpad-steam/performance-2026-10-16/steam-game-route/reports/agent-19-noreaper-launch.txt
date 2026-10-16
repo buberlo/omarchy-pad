@@ -1,0 +1,41 @@
+AGENT_BEGIN id=19-noreaper-launch pid=1143 Fri Oct 16 18:13:34 UTC 2026
+AGENT_HOST=iPad
+=== applaunch with the client running under -noreaper ===
+
+=== the command Steam built this time ===
+[2026-10-16 18:12:37] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-noreaper'"
+[2026-10-16 18:13:39] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt\0
+[2026-10-16 18:13:39] Game process added : AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt", ProcID 4671, IP 0.0.0.0:0
+[2026-10-16 18:13:39] Game process removed: AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt", ProcID 4671 
+
+=== processes ===
+
+=== toplevels ===
+ishwl 68002.782: map toplevel 1 '' Steam
+ishwl 68293.058: map toplevel 2 '' Steam
+ishwl 68565.402: map toplevel 3 '' Steam
+
+=== frames ===
+15160
+
+=== client stdio tail (tool output would be here) ===
+Removing process 4671 for gameID 367520
+LINPAD_THREAD attr=0xd4011b48 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+[2026-10-16 18:14:07] Background update loop checking for update. . .
+[2026-10-16 18:14:07] Checking for available updates...
+[2026-10-16 18:14:07] Downloading manifest: https://client-update.fastly.steamstatic.com/steam_client_publicbeta_linuxarm64
+[2026-10-16 18:14:07] Manifest download: send request
+LINPAD_THREAD attr=0xffff5cd8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+[2026-10-16 18:14:08] Manifest download: waiting for download to finish
+LINPAD_THREAD attr=0xffff5ab8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+[2026-10-16 18:14:08] Manifest download: finished
+[2026-10-16 18:14:08] Download skipped: /steam_client_publicbeta_linuxarm64 version 1792110651, installed version 1792110651, existing pending version 0
+[2026-10-16 18:14:08] Nothing to do
+
+=== unity log ===
+-rw-r--r--    1 root     root         31853 Oct 16 17:50 /tmp/hollow4452-egl-unity.txt
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:15:04 UTC 2026

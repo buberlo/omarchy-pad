@@ -1,0 +1,98 @@
+#!/bin/sh
+# Direct Linux ELF launcher. Steam registration and game qualification are pending.
+set -eu
+
+die() { printf 'LinPad FEX: %s\n' "$*" >&2; exit 64; }
+
+inside_x11=0
+if [ "${1:-}" = --linpad-display-ready ]; then
+    inside_x11=1
+    shift
+fi
+[ "$#" -gt 0 ] || die 'missing Linux game executable'
+case "$1" in
+    *.exe|*.EXE) die 'Windows executable selected; select the native Linux compatibility tool first' ;;
+esac
+[ -f "$1" ] || die "game executable does not exist relative to the current directory: $1"
+
+runtime=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}
+case "$runtime" in /*) ;; *) die 'LINPAD_FEX_RUNTIME must be an absolute path' ;; esac
+case "$translator" in /*) ;; *) die 'LINPAD_FEX_BINARY must be an absolute path' ;; esac
+[ -x "$translator" ] || die "FEX executable unavailable: $translator"
+[ -f "$runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" ] || die "x86 glibc loader unavailable in $runtime"
+
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}
+
+# ARM64 Steam uses a private GLX/llvmpipe runtime. Do not pass that runtime,
+# its overlay, or its browser settings into Xwayland or the x86 game.
+unset LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT
+unset LIBGL_ALWAYS_SOFTWARE LIBGL_ALWAYS_INDIRECT GALLIUM_DRIVER LP_NUM_THREADS
+unset MESA_LOADER_DRIVER_OVERRIDE LIBGL_DRIVERS_PATH __GLX_VENDOR_LIBRARY_NAME
+unset MESA_GL_VERSION_OVERRIDE MESA_GLES_VERSION_OVERRIDE MESA_GLSL_VERSION_OVERRIDE
+unset __EGL_VENDOR_LIBRARY_FILENAMES EGL_PLATFORM GDK_BACKEND QT_QPA_PLATFORM
+unset VK_ICD_FILENAMES VK_DRIVER_FILES VK_ADD_DRIVER_FILES
+unset VK_LAYER_PATH VK_ADD_LAYER_PATH VK_INSTANCE_LAYERS VK_LOADER_LAYERS_ENABLE
+unset VK_LOADER_LAYERS_DISABLE VK_LOADER_DRIVERS_SELECT VK_LOADER_DRIVERS_DISABLE
+unset SDL_VIDEODRIVER SDL_DYNAMIC_API SDL3_DYNAMIC_API
+unset STEAM_COMPAT_EMULATOR STEAM_COMPAT_GRAPHICS_PROVIDER STEAM_RUNTIME
+unset STEAM_RUNTIME_LIBRARY_PATH STEAM_RUNTIME_HEAVY
+
+export PATH="/opt/steam-x11/bin:/usr/local/bin:/usr/bin:/bin:${PATH:-}"
+export XDG_RUNTIME_DIR="${LINPAD_FEX_XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${LINPAD_FEX_WAYLAND_DISPLAY:-wayland-0-gpu}"
+# Isolate the x86 driver from inherited Steam layers of mixed architectures.
+export VK_LOADER_LAYERS_DISABLE='*'
+
+case "$display_mode" in
+    x11)
+        if [ "$inside_x11" -eq 0 ]; then
+            unset DISPLAY XAUTHORITY
+            runner=${LINPAD_FEX_X11_RUNNER:-ishwl-x11}
+            command -v "$runner" >/dev/null 2>&1 || die "X11 launcher unavailable: $runner"
+            export ISHWL_APP="${LINPAD_FEX_APP_NAME:-Hollow Knight}"
+            exec "$runner" -g "${LINPAD_FEX_GEOMETRY:-960x540}" \
+                "$tool_dir/launch-game" --linpad-display-ready "$@"
+        fi
+        [ -n "${DISPLAY:-}" ] || die 'X11 launcher did not provide DISPLAY'
+        ;;
+    wayland)
+        # Experimental for Unity games. The caller must supply engine-specific flags.
+        unset DISPLAY XAUTHORITY
+        ;;
+    existing)
+        # Diagnostic opt-in; this may use Steam's slow Xvnc display.
+        [ -n "${DISPLAY:-}" ] || die 'existing mode requires DISPLAY'
+        ;;
+    none)
+        # For loader tests and non-presenting command-line probes.
+        unset DISPLAY XAUTHORITY WAYLAND_DISPLAY
+        ;;
+    *) die 'LINPAD_FEX_DISPLAY_MODE must be x11, wayland, existing, or none' ;;
+esac
+
+ulimit -s 8192
+export FEX_DISABLETELEMETRY=1
+export FEX_ROOTFS="${LINPAD_FEX_ROOTFS-$runtime}"
+# Full host paths work around LinPad's missing openat2/RESOLVE_IN_ROOT support.
+library_path="$runtime/usr/lib/x86_64-linux-gnu:$runtime/usr/lib/x86_64-linux-gnu/pulseaudio"
+library_overlay=${LINPAD_FEX_LIBRARY_OVERLAY-/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu}
+if [ -n "$library_overlay" ]; then
+    library_path="$library_overlay:$library_path"
+fi
+if [ -n "${LINPAD_FEX_EXTRA_LIBRARY_PATH:-}" ]; then
+    library_path="$library_path:$LINPAD_FEX_EXTRA_LIBRARY_PATH"
+fi
+export LD_LIBRARY_PATH="$library_path"
+export VK_ICD_FILENAMES="${LINPAD_FEX_ICD:-/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json}"
+[ -f "$VK_ICD_FILENAMES" ] || die "Venus ICD manifest unavailable: $VK_ICD_FILENAMES"
+export MESA_VK_WSI_DEBUG=sw
+export STEAM_RUNTIME=0
+
+# Unity's Vulkan forcing flag is an explicit per-game option, so other ELF
+# probes receive their original argv.
+if [ "${LINPAD_FEX_FORCE_VULKAN:-0}" = 1 ]; then
+    set -- "$@" -force-vulkan
+fi
+exec "$translator" "$@"

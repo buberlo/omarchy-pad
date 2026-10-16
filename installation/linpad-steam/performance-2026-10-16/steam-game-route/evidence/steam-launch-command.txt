@@ -1,0 +1,7 @@
+[2026-10-16 18:09:12] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt\0
+[2026-10-16 18:09:12] Game process added : AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt", ProcID 3550, IP 0.0.0.0:0
+ishwl 68791.344: map toplevel 4 'Hollow Knight' hollow_knight.x86_64
+ishwl 68791.435: text input active in view 4
+CAPTURE_META
+start_second=1792174639 end_second=1792174669 start_line=19845 end_line=21646 view_id=4 requested_seconds=30
+SELECTED_VIEW_ROWS

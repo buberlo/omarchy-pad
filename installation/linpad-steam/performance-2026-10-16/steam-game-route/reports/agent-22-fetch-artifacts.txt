@@ -1,0 +1,16 @@
+AGENT_BEGIN id=22-fetch-artifacts pid=1143 Fri Oct 16 18:18:06 UTC 2026
+AGENT_HOST=iPad
+posted steam-launch-game-patched from /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game (4520 bytes, 3b2114fdca3eed0a)
+posted steam-reaper-stub from /root/.local/share/Steam/steamrtarm64/reaper (776 bytes, 25a0ae879ba43c06)
+posted steam-egl-hook from /usr/local/bin/linpad-egl-hook (3197 bytes, 0638ad926ae9450d)
+
+=== digests of everything changed on the device ===
+3b2114fdca3eed0a0a2279d74703e350b187ec928345ad0ab8b5bc288e35d7d0  /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game
+db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3  /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game.before-kb4453
+25a0ae879ba43c06f0959dab30e4a048e5a2dd53ca1cfbd32aab349b86667939  /root/.local/share/Steam/steamrtarm64/reaper
+6105162a0b337c4f082f382b4bbd0211c03808df36b698a9dbfadd2d768a7161  /root/.local/share/Steam/steamrtarm64/reaper.before-kb4453
+0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397  /usr/local/bin/linpad-egl-hook
+79ff9d34b0e00eeaa60590ce1642eb331858f9a2a65165858f3fd15552134511  /root/.local/share/Steam/userdata/38877668/config/localconfig.vdf
+ca099454163b736feb7e5976b4b3acc1959f66aa275631d7456ade7c59f2f236  /root/.local/share/Steam/userdata/38877668/config/localconfig.vdf.kb4453-backup
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:18:06 UTC 2026

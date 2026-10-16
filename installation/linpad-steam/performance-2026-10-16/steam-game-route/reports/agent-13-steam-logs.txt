@@ -1,0 +1,89 @@
+AGENT_BEGIN id=13-steam-logs pid=1143 Fri Oct 16 18:06:00 UTC 2026
+AGENT_HOST=iPad
+=== steam logs ===
+total 14772
+-rwxr-xr-x    1 root     root         75012 Oct 16 18:04 bootstrap_log.txt
+-rwxr-xr-x    1 root     root         34832 Oct 16 18:04 systemmanager.txt
+-rw-r--r--    1 root     root         14545 Oct 16 18:04 steamwebhelper.log
+-rwxr-xr-x    1 root     root         62409 Oct 16 18:04 cloud_log.txt
+-rwxr-xr-x    1 root     root         37146 Oct 16 18:04 configstore_log.txt
+-rwxr-xr-x    1 root     root       1084636 Oct 16 18:04 compat_log.txt
+-rwxr-xr-x    1 root     root       2623252 Oct 16 18:04 console_log.txt
+
+=== console_log.txt: launch and compat lines ===
+29510:[2026-10-16 16:58:15] Waiting for compat in post-logon took: 0.169318s
+29553:[2026-10-16 17:22:51] Running install script evaluator for AppID 500, 1 step(s)  /root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 Install=1 -- '/root/.local/share/Steam/steamapps/common/FEX-Emu'/fex-compat-tool run -- '/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4'/_v2-entry-point --verb=run -- '/root/.local/share/Steam/steamapps/common/Proton - Experimental'/proton run '/root/.local/share/Steam/legacycompat/iscriptevaluator.exe' 'legacycompat\evaluatorscript_500.vdf'
+29612:[2026-10-16 17:51:53] Waiting for compat in post-logon took: 2.628060s
+29673:[2026-10-16 18:03:04] Waiting for compat in post-logon took: 2.476504s
+29678:[2026-10-16 18:04:13] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '367520'"
+29679:[2026-10-16 18:04:13] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to UnlockingH264 with ""
+29680:[2026-10-16 18:04:13] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to CheckShaderDepotManifest with ""
+29681:[2026-10-16 18:04:14] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to RunningInstallScript with ""
+29682:[2026-10-16 18:04:14] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SynchronizingCloud with ""
+29683:[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SynchronizingStats with ""
+29684:[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to ShowInterstitials with ""
+29685:[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to ShowInterstitials ""
+29686:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp continues with user response "ShowInterstitials"
+29687:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to ProcessingShaderCache with ""
+29688:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to ProcessingShaderCache ""
+29689:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SiteLicenseSeatCheckout with ""
+29690:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to DelayLaunch with ""
+29691:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to CreatingProcess with ""
+29692:[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to CreatingProcess ""
+29693:[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp continues with user response "CreatingProcess"
+29694:[2026-10-16 18:04:21] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0\0
+29695:[2026-10-16 18:04:21] Game process added : AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0", ProcID 2239, IP 0.0.0.0:0
+29696:[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to WaitingGameWindow with ""
+29697:[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to Completed with ""
+29699:[2026-10-16 18:04:21] Game process removed: AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0", ProcID 2239 
+
+=== console_log tail ===
+[2026-10-16 18:03:04] IPC function call IClientApps::GetAllAppsKVRaw took too long: 75 msec
+[2026-10-16 18:03:05] System startup time: 21.85 seconds
+[2026-10-16 18:03:20] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu'"
+[2026-10-16 18:04:13] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '367520'"
+[2026-10-16 18:04:13] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to UnlockingH264 with ""
+[2026-10-16 18:04:13] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to CheckShaderDepotManifest with ""
+[2026-10-16 18:04:14] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to RunningInstallScript with ""
+[2026-10-16 18:04:14] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SynchronizingCloud with ""
+[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SynchronizingStats with ""
+[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to ShowInterstitials with ""
+[2026-10-16 18:04:15] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to ShowInterstitials ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp continues with user response "ShowInterstitials"
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to ProcessingShaderCache with ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to ProcessingShaderCache ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to SiteLicenseSeatCheckout with ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to DelayLaunch with ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to CreatingProcess with ""
+[2026-10-16 18:04:19] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to CreatingProcess ""
+[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp continues with user response "CreatingProcess"
+[2026-10-16 18:04:21] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0\0
+[2026-10-16 18:04:21] Game process added : AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0", ProcID 2239, IP 0.0.0.0:0
+[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 18:04:21] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to Completed with ""
+[2026-10-16 18:04:21] Controller slots reset
+[2026-10-16 18:04:21] Game process removed: AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0", ProcID 2239 
+
+=== unity Player.log: head and crash ===
+-rw-r--r--    1 root     root         16208 Oct 16 10:03 /root/.config/unity3d/Team Cherry/Hollow Knight/Player.log
+The selected window backend is (null) 
+Mono path[0] = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed'
+Mono config path = '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/MonoBleedingEdge/etc'
+Input System module state changed to: Initialized.
+Error getting num native displays: Video subsystem has not been initialized
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Error getting num native displays: Video subsystem has not been initialized
+Desktop is 0 x 0 @ 0 Hz
+Error creating MainPlayerWindow: Failed loading libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+[Vulkan init] extensions: count=24
+[Vulkan init] extensions: name=VK_EXT_acquire_drm_display [enabled=0, external=0]
+...
+5:Error getting num native displays: Video subsystem has not been initialized
+8:Error getting num native displays: Video subsystem has not been initialized
+10:Error creating MainPlayerWindow: Failed loading libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory
+
+=== timestamps ===
+Fri Oct 16 18:06:00 UTC 2026
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:06:00 UTC 2026

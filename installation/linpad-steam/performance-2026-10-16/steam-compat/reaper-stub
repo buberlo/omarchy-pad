@@ -1,0 +1,17 @@
+#!/bin/sh
+# Steam's reaper cannot run under iSH: it calls a prctl() the emulator does not implement and
+# dies with "prctl() failed!" before the compatibility tool is reached, which is why every
+# Steam launch of Hollow Knight ended in the same second. Its supervision is not needed for a
+# single game process, so this stub drops the "SteamLaunch AppId=... --" prefix and execs what
+# remains, keeping the rest of Steam's launch chain (steam-launch-wrapper, the compatibility
+# tool) intact. The original ELF is kept as reaper.before-kb4453.
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        SteamLaunch) shift
+            while [ "$#" -gt 0 ] && [ "$1" != "--" ]; do shift; done
+            [ "$#" -gt 0 ] && shift
+            ;;
+        *) break ;;
+    esac
+done
+exec "$@"

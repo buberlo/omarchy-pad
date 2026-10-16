@@ -1,0 +1,24 @@
+AGENT_BEGIN id=18-reaper pid=1143 Fri Oct 16 18:11:49 UTC 2026
+AGENT_HOST=iPad
+=== 1. reaper alone ===
+/root/.local/share/Steam/steamrtarm64/reaper: error while loading shared libraries: libpthread.so.0: cannot open shared object file: No such file or directory
+reaper exit=0
+
+=== 2. steam-launch-wrapper alone ===
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+WRAPPER_EXEC_OK
+wrapper exit=0
+
+=== 3. wrapper + reaper ===
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+reaper: prctl() failed!
+both exit=0
+
+=== 4. restart Steam with -noreaper ===
+0
+ 4146 steam-local
+ 4152 steam-local
+ 4153 steam
+ 4203 steamwebhelper
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:13:19 UTC 2026

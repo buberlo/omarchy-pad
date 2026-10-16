@@ -1,0 +1,40 @@
+AGENT_BEGIN id=14-tool-patch pid=1143 Fri Oct 16 18:06:59 UTC 2026
+AGENT_HOST=iPad
+=== hook to a stable path ===
+-rwxr-xr-x    1 root     root          3197 Oct 16 10:46 /tmp/fex-hollow-egl
+0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397  /tmp/fex-hollow-egl
+0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397  /usr/local/bin/linpad-egl-hook
+
+=== patch launch-game defaults ===
+-rwxr-xr-x    1 root     root          4507 Oct 16 09:16 /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game
+db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3  /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game
+--- resulting lines ---
+18:runtime=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+19:translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}
+26:display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}
+--- diff ---
+--- /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game.before-kb4453
++++ /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/launch-game
+@@ -16,14 +16,14 @@
+ [ -f "$1" ] || die "game executable does not exist relative to the current directory: $1"
+ 
+ runtime=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+-translator=${LINPAD_FEX_BINARY:-/opt/fex/FEX-apple-m1}
++translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}
+ case "$runtime" in /*) ;; *) die 'LINPAD_FEX_RUNTIME must be an absolute path' ;; esac
+ case "$translator" in /*) ;; *) die 'LINPAD_FEX_BINARY must be an absolute path' ;; esac
+ [ -x "$translator" ] || die "FEX executable unavailable: $translator"
+ [ -f "$runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" ] || die "x86 glibc loader unavailable in $runtime"
+ 
+ tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+-display_mode=${LINPAD_FEX_DISPLAY_MODE:-x11}
++display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}
+ 
+ # ARM64 Steam uses a private GLX/llvmpipe runtime. Do not pass that runtime,
+ # its overlay, or its browser settings into Xwayland or the x86 game.
+syntax ok
+
+=== quit Steam so its config can be edited ===
+(empty above means Steam is gone)
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:07:19 UTC 2026

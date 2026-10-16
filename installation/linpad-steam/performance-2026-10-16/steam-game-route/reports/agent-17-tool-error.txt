@@ -1,0 +1,50 @@
+AGENT_BEGIN id=17-tool-error pid=1143 Fri Oct 16 18:11:02 UTC 2026
+AGENT_HOST=iPad
+=== steam-main.log tail (client stdio) ===
+LINPAD_THREAD attr=0xd4011818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+Game Recording - game stopped [gameid=367520]
+Removing process 3550 for gameID 367520
+LINPAD_THREAD attr=0xd4011b48 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+[2026-10-16 18:09:35] Background update loop checking for update. . .
+[2026-10-16 18:09:35] Checking for available updates...
+[2026-10-16 18:09:35] Downloading manifest: https://client-update.akamai.steamstatic.com/steam_client_publicbeta_linuxarm64
+[2026-10-16 18:09:35] Manifest download: send request
+LINPAD_THREAD attr=0xffff5b98 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+[2026-10-16 18:09:35] Manifest download: waiting for download to finish
+LINPAD_THREAD attr=0xffff5ad8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+[2026-10-16 18:09:36] Manifest download: finished
+[2026-10-16 18:09:36] Download skipped: /steam_client_publicbeta_linuxarm64 version 1792110651, installed version 1792110651, existing pending version 0
+[2026-10-16 18:09:36] Nothing to do
+LINPAD_THREAD attr=0xffff5af8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef710228
+LINPAD_THREAD result=0
+
+=== compat_log.txt: LinPad / die lines ===
+10855:[2026-10-16 18:02:45] Loaded manifest for tool linpad-fex-native.
+10937:[2026-10-16 18:03:03] Registering tool steamlinuxruntime_soldier, AppID 1391110
+10949:[2026-10-16 18:03:04] Skip mapping AppID 367520 to tool "proton-stable" with priority 100: mapping to tool "linpad-fex-native" with priority 250 already exists.
+11977:[2026-10-16 18:03:04] Skip mapping AppID 367520 to tool "native" with priority 75: mapping to tool "linpad-fex-native" with priority 250 already exists.
+12630:[2026-10-16 18:03:04] Posting queued tool registration callback 0 linpad-fex-native
+12646:[2026-10-16 18:04:21] Command prefix for tool 0 "LinPad FEX (Linux Vulkan)" set to: "'/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun -- ".
+12653:[2026-10-16 18:07:35] Processing local tool list at /root/.local/share/Steam/steamrtarm64/../compatibilitytools.d/linpad-fex-native/compatibilitytool.vdf...
+12654:[2026-10-16 18:07:35] Registering tool linpad-fex-native, AppID 0
+12655:[2026-10-16 18:07:35] Mapping AppID 367520 to tool "linpad-fex-native" with priority 250
+12656:[2026-10-16 18:07:35] Loaded manifest for tool linpad-fex-native.
+12738:[2026-10-16 18:07:54] Registering tool steamlinuxruntime_soldier, AppID 1391110
+12750:[2026-10-16 18:07:54] Skip mapping AppID 367520 to tool "proton-stable" with priority 100: mapping to tool "linpad-fex-native" with priority 250 already exists.
+13778:[2026-10-16 18:07:55] Skip mapping AppID 367520 to tool "native" with priority 75: mapping to tool "linpad-fex-native" with priority 250 already exists.
+14431:[2026-10-16 18:07:55] Posting queued tool registration callback 0 linpad-fex-native
+14447:[2026-10-16 18:09:12] Command prefix for tool 0 "LinPad FEX (Linux Vulkan)" set to: "'/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun -- ".
+
+=== run the tool exactly as Steam does, with the wrapper, and capture stderr ===
+--- repro log ---
+steam-launch-wrapper.real: $XDG_RUNTIME_DIR not set.
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+reaper: prctl() failed!
+
+--- processes ---
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:11:27 UTC 2026

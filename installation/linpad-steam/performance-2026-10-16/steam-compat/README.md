@@ -1,10 +1,19 @@
 # LinPad native Linux Steam tool — installed and selected
 
+**Update, 16 October 2026: Steam → game launch works.** The statements below describe the state
+before that: the tool was installed and selected, but every launch died in the same second. Two
+causes were found on the device — Steam's `reaper` calls a `prctl()` iSH does not implement
+(`reaper: prctl() failed!`) and the tool's defaults pointed at the wrong translator and the wrong
+display mode for this iPad. Both are fixed; `linpad-fex-native/launch-game` in this directory now
+carries the patched defaults, and `reaper-stub` plus `linpad-egl-hook` are the two files that go
+with them. The launch, the numbers and what remains unverified are recorded in
+[../steam-game-route/README.md](../steam-game-route/README.md).
+
 This directory contains the custom Linux-to-Linux compatibility tool installed
 on the physical iPad. Steam recognizes **LinPad FEX (Linux Vulkan)** and Hollow
 Knight's Compatibility dropdown visibly shows it selected. The native Linux depot 367523 and x86-64 ELF are verified. The first direct
 Unity/Mono start aborts with `mono_pe_file_unmap` / `EINVAL`; successful game
-startup and gameplay remain **unverified**. Build 4443's direct
+startup and gameplay remain **unverified** at the time of writing. Build 4443's direct
 x86 Wayland Vulkan cube completed bounded 120-frame and 1200-frame runs, and two
 captures show visible rotation. Game qualification remains a separate gate.
 

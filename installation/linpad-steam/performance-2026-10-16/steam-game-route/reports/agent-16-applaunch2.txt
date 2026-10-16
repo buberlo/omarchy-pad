@@ -1,0 +1,51 @@
+AGENT_BEGIN id=16-applaunch2 pid=1143 Fri Oct 16 18:09:05 UTC 2026
+AGENT_HOST=iPad
+=== before: toplevels=2 frames=13171 ===
+
+=== processes ===
+ 3006 steam-local
+ 3012 steam-local
+ 3013 steam
+ 3063 steamwebhelper
+ 3084 steamwebhelper
+ 3085 steamwebhelper
+ 3131 steamwebhelper
+ 3144 steamwebhelper
+ 3177 steamwebhelper
+ 3322 steamwebhelper
+
+=== ishwl: new toplevels ===
+ishwl 68002.782: map toplevel 1 '' Steam
+ishwl 68293.058: map toplevel 2 '' Steam
+
+=== frames ===
+13684 /tmp/hollow4452-frames.txt
+
+=== the launcher's own output (tool stderr/stdout) ===
+
+=== steam console: this launch ===
+[2026-10-16 18:09:10] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to CreatingProcess with ""
+[2026-10-16 18:09:10] GameAction [AppID 367520, ActionID 1] : LaunchApp waiting for user response to CreatingProcess ""
+[2026-10-16 18:09:12] GameAction [AppID 367520, ActionID 1] : LaunchApp continues with user response "CreatingProcess"
+[2026-10-16 18:09:12] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt\0
+[2026-10-16 18:09:12] Game process added : AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt", ProcID 3550, IP 0.0.0.0:0
+[2026-10-16 18:09:12] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-16 18:09:12] GameAction [AppID 367520, ActionID 1] : LaunchApp changed task to Completed with ""
+[2026-10-16 18:09:12] Game process removed: AppID 367520 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=367520 -- '/root/.local/share/Steam/compatibilitytools.d/linpad-fex-native'/run waitforexitandrun --  '/root/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight.x86_64' -timestamps -force-wayland -force-vulkan -screen-width 960 -screen-height 540 -screen-fullscreen 0 -logFile /tmp/hollow4452-egl-unity.txt", ProcID 3550 
+
+=== unity log ===
+-rw-r--r--    1 root     root         31853 Oct 16 17:50 /tmp/hollow4452-egl-unity.txt
+2026-10-16T17:50:58.918Z|0xcc410540|Vulkan PSO: data extracted [new size=374173, old size=0, incomplete=0]
+2026-10-16T17:50:58.921Z|0xcc410540|Vulkan PSO: Saved size[374173] path[/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin] success=1 headerChanged=1 sizeChanged=1
+warning: queue 0x4f9970 destroyed while proxies still attached:
+  wl_callback#21 still attached
+  wl_surface#19 still attached
+
+=== memory ===
+footprint_mb 3380
+allowance_mb 8192
+headroom_mb 4811
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 18:10:45 UTC 2026

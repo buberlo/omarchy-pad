@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix, and the deployed compositor follow-up with its device key log; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, the build 4453 keyboard routing fix, the deployed compositor follow-up with its device key log, and the Steam-to-game launch route with its reaper finding; no authentication or proprietary game binaries.",
   "files": [
     {
       "path": "HANDOFF-4451.md",
@@ -14,8 +14,8 @@
     },
     {
       "path": "HANDOFF-4453.md",
-      "bytes": 4193,
-      "sha256": "ffac7bbb8ee8a0f0ed42361e764906d068242c23aa3a1aaeee32ea4274bff508"
+      "bytes": 3920,
+      "sha256": "7b777d4e9e2784ce75ab19007d168fcf49d4900367f9707c311f738d49a415f3"
     },
     {
       "path": "audio-path-audit/README.md",
@@ -5444,13 +5444,13 @@
     },
     {
       "path": "steam-compat/README.md",
-      "bytes": 8967,
-      "sha256": "f4f2cdb8215d2a9d96fe1089f39292ee93a66a1ec8da26fd3914883abe4f73ba"
+      "bytes": 9715,
+      "sha256": "d4adfdb2ea468cf70fe88f012952178ede4b7dbee5c24ad4d135b43f5ada4702"
     },
     {
       "path": "steam-compat/SHA256SUMS",
-      "bytes": 1067,
-      "sha256": "48859ff19eea7375760fbd0cf07f3c67684635c4b74111137f13defd8605c44a"
+      "bytes": 1227,
+      "sha256": "4713b14c9c1e14607be1da247df37a5bcfd8db50ccfe44c124ada07b485d28db"
     },
     {
       "path": "steam-compat/VALIDATION.txt",
@@ -5463,14 +5463,19 @@
       "sha256": "40f73d9e6be4bdd2a1992168c8051beb92066387f703ca4960f7833204d7bd25"
     },
     {
+      "path": "steam-compat/linpad-egl-hook",
+      "bytes": 3197,
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397"
+    },
+    {
       "path": "steam-compat/linpad-fex-native/compatibilitytool.vdf",
       "bytes": 214,
       "sha256": "33e641a84ff5bcc3618054e2d264dd3da30b0c7f6f5dc30f66dc3c567fddb1d4"
     },
     {
       "path": "steam-compat/linpad-fex-native/launch-game",
-      "bytes": 4507,
-      "sha256": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3"
+      "bytes": 4520,
+      "sha256": "3b2114fdca3eed0a0a2279d74703e350b187ec928345ad0ab8b5bc288e35d7d0"
     },
     {
       "path": "steam-compat/linpad-fex-native/run",
@@ -5481,6 +5486,11 @@
       "path": "steam-compat/linpad-fex-native/toolmanifest.vdf",
       "bytes": 106,
       "sha256": "72c315005680393243541168b194df4c8b216938651b3736b95a5dd1ef6ec0dd"
+    },
+    {
+      "path": "steam-compat/reaper-stub",
+      "bytes": 776,
+      "sha256": "25a0ae879ba43c06f0959dab30e4a048e5a2dd53ca1cfbd32aab349b86667939"
     },
     {
       "path": "steam-compat/steam-native-tool-selected.png",
@@ -5501,6 +5511,91 @@
       "path": "steam-compat/verify-native.sh",
       "bytes": 1853,
       "sha256": "a68e6594e6b7131b25c6b912bf473b90abaef8abedbe9be39a2f7ff460edb05a"
+    },
+    {
+      "path": "steam-game-route/README.md",
+      "bytes": 5584,
+      "sha256": "61cb753b346e94d2ed76313d78eaa77a57b7dad26ac1da033b47ed237fbc6bab"
+    },
+    {
+      "path": "steam-game-route/SHA256SUMS",
+      "bytes": 1533,
+      "sha256": "692a1c5bd0e28e8d233d6177bf6f2e482a2856446b47987ce08f24adfef2cbab"
+    },
+    {
+      "path": "steam-game-route/artifacts/launch-game",
+      "bytes": 4520,
+      "sha256": "3b2114fdca3eed0a0a2279d74703e350b187ec928345ad0ab8b5bc288e35d7d0"
+    },
+    {
+      "path": "steam-game-route/artifacts/linpad-egl-hook",
+      "bytes": 3197,
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397"
+    },
+    {
+      "path": "steam-game-route/artifacts/reaper-stub",
+      "bytes": 776,
+      "sha256": "25a0ae879ba43c06f0959dab30e4a048e5a2dd53ca1cfbd32aab349b86667939"
+    },
+    {
+      "path": "steam-game-route/evidence/steam-launch-command.txt",
+      "bytes": 1235,
+      "sha256": "036df4a8df02def2076cd4fc71577fcc99a81b99b441ef66a15eef109889f128"
+    },
+    {
+      "path": "steam-game-route/reports/agent-10-compat-mapping.txt",
+      "bytes": 4101,
+      "sha256": "8246f814126dd476b2710835c4851923a3d5c5a23ba3a7c516ca566209cbb76a"
+    },
+    {
+      "path": "steam-game-route/reports/agent-13-steam-logs.txt",
+      "bytes": 10166,
+      "sha256": "18fb7b95ec5f46e04ba5107166c89b8689670d2a0d032eb4cd63ac1cb70aea14"
+    },
+    {
+      "path": "steam-game-route/reports/agent-14-tool-patch.txt",
+      "bytes": 2166,
+      "sha256": "3843cd3cf032549e2fcbffe2981250d71075807288af94d126c61f50605c0aa4"
+    },
+    {
+      "path": "steam-game-route/reports/agent-15-launchopts.txt",
+      "bytes": 793,
+      "sha256": "aa58259740f0dbcae881a3d75f81b4a958c575d05a5012e6445c316e97a18bbc"
+    },
+    {
+      "path": "steam-game-route/reports/agent-16-applaunch2.txt",
+      "bytes": 3300,
+      "sha256": "d0d5abdc991fe3407dbedc3c1a126de76d24eb8bb142c04cdc382c29ded86c04"
+    },
+    {
+      "path": "steam-game-route/reports/agent-17-tool-error.txt",
+      "bytes": 3661,
+      "sha256": "f492a44442c2dd37c0e630256ecce0c5b0eb26d520342518eb5c8fe48899646b"
+    },
+    {
+      "path": "steam-game-route/reports/agent-18-reaper.txt",
+      "bytes": 753,
+      "sha256": "ec9f00ccf834f0964eb041e628135364e69c7ffbdf7643f643dab0178759fdd5"
+    },
+    {
+      "path": "steam-game-route/reports/agent-19-noreaper-launch.txt",
+      "bytes": 3213,
+      "sha256": "0eb5fc0f2967ffb0d5ae22845ffb4ff84ce036801debd39948abd99b44fa0912"
+    },
+    {
+      "path": "steam-game-route/reports/agent-20-reaper-stub.txt",
+      "bytes": 2352,
+      "sha256": "d976b5c1ef1fc383b7b899574f758676f4d0650fd8b2a4eb4f09542c9a17f838"
+    },
+    {
+      "path": "steam-game-route/reports/agent-21-steam-perf.txt",
+      "bytes": 2325,
+      "sha256": "b788b4081e0ef55756286b086e9c8497b2406cc3989768524a0410fd66017cfd"
+    },
+    {
+      "path": "steam-game-route/reports/agent-22-fetch-artifacts.txt",
+      "bytes": 1441,
+      "sha256": "f9183b8bb6d3e36ff4f82b16b7e2d32f788c72c34609764096ee47d52911de1e"
     },
     {
       "path": "steam-helper-repair/PROVENANCE.json",
