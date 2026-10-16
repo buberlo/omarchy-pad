@@ -1,3 +1,9 @@
+# Latest handoff: user takes over
+
+The user requested stopping after documentation and commit/push. Hollow Knight was subsequently launched and its main menu observed; the user reported smooth operation. Enter works on the connected Magic Keyboard; the final user report says the other keys do not. No keyboard fix, normal gameplay acceptance or numerical performance result is claimed. Recording is now the user's responsibility; our attempted recording produced no video and was stopped. Start the existing installed game using `sh /tmp/hollow4452-egl` in LinPad's Terminal. See build4452-menu-followup/README.md for exact current evidence and instructions. Do not resume implementation or device tests until asked.
+
+The remainder records the earlier build checkpoint and future investigation possibilities, not authorization to continue now.
+
 # Build 4452 handoff
 
 Installed and signed LinPad 1.4.0 build 4452 passed its physical ARM64 memory regression: 19,151 checks, zero failures, both existing SMC probes passed. Source commit bdc6ce6e935f3bcf28d78e33b86496c8a65edf0b contains the native LRCPC2 fix. Code, tests and installation documentation were pushed at 283796b011f199f6ed850a242736bd61282de4a7. The private build 4452 release contains the signed IPA, matching dSYM, manifest, SHA256SUMS and verification document; all server digests match.

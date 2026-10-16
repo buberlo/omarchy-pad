@@ -2,7 +2,9 @@
 
 Current runtime checkpoint: **LinPad1.4.0 build4452**, signed, installed and booted on the physical M2 iPad with both approved memory entitlements and512MiB native JIT. Native LRCPC2 translation now handles the previously hot LDAPUR/STLUR family. The physical guest probe passes19151 checks with zero failures, including8190 memory/register/address cases, exact fault attribution,200 code rewrites and10000 thread exchanges. Both existing physical SMC probes pass. [Build4452 verification](performance-2026-10-16/build4452/VERIFICATION.md)
 
-Hollow Knight has not yet been performance-tested on4452. The previous4451 foreground menu capture delivered212 game-view frames in30seconds (7.0667/s,659×540). User-confirmed music on4450 was severely stuttering. Smooth audio, playable normal gameplay and the final Steam-to-game production route remain open.
+Hollow Knight's German main menu is now visibly confirmed on 4452, and the user reports smooth operation. No new numerical frame-rate result or gameplay/audio qualification was measured. The previous 4451 foreground menu capture remains 212 deliveries in 30 seconds (7.0667/s at 659×540). The final keyboard report is that Enter works on the connected Magic Keyboard, while other keys fail; no fix or cause is established. The user takes over recording and play and requested stopping after this backup. [Current status and self-start instructions](performance-2026-10-16/build4452-menu-followup/README.md).
+
+Start on the current iPad: open Linux for iPad, approve StikDebug's Enable and Run Script if shown, then run `sh /tmp/hollow4452-egl` in Terminal. This is the actual working saved launcher; the desktop shortcut and final production Steam-to-game path are not yet qualified.
 
 The actual game startup diagnostic identifies LDAPUR/STLUR in all 1,223 retained sample records. A separate launch using only `FEX_HOSTFEATURES=disablelrcpc2` exits 139 before Unity initialization; it is not a recommended setting. The baseline was deliberately stopped for this test. [Controlled launch experiment](performance-2026-10-16/build4451-lrcpc2-control/README.md)
 

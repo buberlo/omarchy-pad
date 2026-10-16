@@ -9,8 +9,8 @@
     },
     {
       "path": "HANDOFF-4452.md",
-      "bytes": 2659,
-      "sha256": "77399f7f1bdb6d85870897915a9efc558056f766346bd6f0fe42df39dd32f60b"
+      "bytes": 3505,
+      "sha256": "e47b92f1e4d4718fb69fff264dd8967e0d8608bfe3f8d431e14cdb52d75cfcba"
     },
     {
       "path": "audio-path-audit/README.md",
@@ -2236,6 +2236,46 @@
       "path": "build4451/symbols.json",
       "bytes": 266,
       "sha256": "eb6438fb0fe0331c841c1e158014364ba93a39e91836d3b72504a7a57a1f096a"
+    },
+    {
+      "path": "build4452-menu-followup/README.md",
+      "bytes": 2601,
+      "sha256": "a31d7e38ec99f6f4532ff5a8d83a76f1440494ef08eeeadce8db78ca614534bc"
+    },
+    {
+      "path": "build4452-menu-followup/SHA256SUMS",
+      "bytes": 578,
+      "sha256": "ff3ad71847211979ae76745606080fb1244785e3b4794b3cf04fbb67ba306220"
+    },
+    {
+      "path": "build4452-menu-followup/capture-region.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build4452-menu-followup/capture.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "build4452-menu-followup/ffmpeg-record.log",
+      "bytes": 354,
+      "sha256": "81e8e2eb4a8e1f32eff207ed27911e03892f9c8179c120a9396606d891a6b6c3"
+    },
+    {
+      "path": "build4452-menu-followup/hollow-knight-start-4452.png",
+      "bytes": 303605,
+      "sha256": "43a0d366d7bd8f6cc72f1d4b85fad7a83f198e619062c6f062e4f624d798988e"
+    },
+    {
+      "path": "build4452-menu-followup/status.json",
+      "bytes": 375,
+      "sha256": "fca6123b0b0cf2441e288dd7bc72cedd8d3b2bc393e3ec90f6205135d8853a7c"
+    },
+    {
+      "path": "build4452-menu-followup/window-id.swift",
+      "bytes": 317,
+      "sha256": "f3fdbfee09aff56ec24bfb96bbc82e832a321f507f5e0a1acc65d12ff5b4d4b7"
     },
     {
       "path": "build4452-release-verified.json",
