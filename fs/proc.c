@@ -53,6 +53,10 @@ static struct fd *proc_open(struct mount *UNUSED(mount), const char *path, int U
     if (err < 0)
         return ERR_PTR(err);
     struct fd *fd = fd_create(&procfs_fdops);
+    if (fd == NULL) {
+        proc_entry_cleanup(&entry);
+        return ERR_PTR(_ENOMEM);
+    }
     fd->proc.entry = entry;
     fd->proc.data.data = NULL;
     fd->proc.data_valid = false;

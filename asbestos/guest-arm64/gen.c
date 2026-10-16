@@ -1154,6 +1154,12 @@ static bool guest_id_reg(uint32_t mrs, uint64_t *value) {
     uint32_t f = guest_features();
     uint64_t v = 0;
     switch (mrs) {
+        case 0xd5380000:  // MIDR_EL1: unknown implementation, AArch64 ID-register format
+            // Match the generic implementer/part reported by /proc/cpuinfo.
+            // HWCAP_CPUID permits this Linux-emulated EL0 read; applications
+            // such as FEX use it to select optional CPU-specific tuning.
+            v = 0x000f0000;
+            break;
         case 0xd5380400:  // ID_AA64PFR0_EL1: EL0/EL1 AArch64; FP and AdvSIMD (+FP16)
             v = 0x11 | (f & INSN_FEAT_FP16 ? 0x110000 : 0);
             break;

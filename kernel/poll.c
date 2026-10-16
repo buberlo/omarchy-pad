@@ -228,7 +228,8 @@ dword_t sys_pselect(fd_t nfds, addr_t readfds_addr, addr_t writefds_addr, addr_t
     struct {
         addr_t mask_addr;
         dword_t mask_size;
-    } sigmask;
+    } sigmask = {0};
+    if (sigmask_addr != 0) {
 #ifdef GUEST_ARM64
     struct {
         uint64_t mask_addr;
@@ -242,6 +243,7 @@ dword_t sys_pselect(fd_t nfds, addr_t readfds_addr, addr_t writefds_addr, addr_t
     if (user_get(sigmask_addr, sigmask))
         return _EFAULT;
 #endif
+    }
     sigset_t_ mask;
 
     if (sigmask.mask_addr != 0) {

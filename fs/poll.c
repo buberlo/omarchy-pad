@@ -138,6 +138,7 @@ int poll_add_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info 
     poll_fd->types = types;
     poll_fd->info = info;
     poll_fd->triggered_types = 0;
+    poll_fd->disabled = false;
 
     if (poll_fd_is_real(poll_fd)) {
         err = real_poll_update(&poll->real, fd->real_fd, poll_fd_real_types(poll_fd, types), poll_fd);
@@ -207,7 +208,10 @@ int poll_mod_fd(struct poll *poll, struct fd *fd, int types, union poll_fd_info 
 
     poll_fd->types = types;
     poll_fd->info = info;
-    poll_fd->triggered_types &= types;
+    poll_fd->triggered_types = 0;
+    poll_fd->disabled = false;
+    if (poll->notify_pipe[1] != -1)
+        write(poll->notify_pipe[1], "", 1);
 
     err = 0;
 out:
@@ -297,6 +301,8 @@ int epoll_fd_poll(struct fd *fd) {
     }
     struct poll_fd *poll_fd;
     list_for_each_entry(&poll->poll_fds, poll_fd, fds) {
+        if (poll_fd->disabled)
+            continue;
         struct fd *member = poll_fd->fd;
         if (member == fd || member->ops->poll == NULL)
             continue;
@@ -334,6 +340,8 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
         // check if any fds are ready
         struct poll_fd *poll_fd, *tmp;
         list_for_each_entry_safe(&poll_->poll_fds, poll_fd, tmp, fds) {
+            if (poll_fd->disabled)
+                continue;
             struct fd *fd = poll_fd->fd;
             int poll_types = 0;
             if (fd->ops->poll)
@@ -343,8 +351,9 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
                 poll_types &= ~poll_fd->triggered_types;
             }
             if (poll_types) {
-                if (callback(context, poll_types, poll_fd->info) == 1)
-                    res++;
+                if (callback(context, poll_types, poll_fd->info) != 1)
+                    continue;
+                res++;
 
                 // The real poll does not actually get the FDs set as oneshot.
                 // But this loop is done while holding the lock, so only one
@@ -352,12 +361,10 @@ int poll_wait(struct poll *poll_, poll_callback_t callback, void *context, struc
                 // thundering herd problem at all, but at least the semantics
                 // are right. I'll just leave that as a TODO.
                 if (poll_fd->types & POLL_ONESHOT) {
-                    list_remove(&poll_fd->polls);
-                    list_remove(&poll_fd->fds);
+                    poll_fd->disabled = true;
                     if (poll_fd_is_real(poll_fd)) {
-                        real_poll_update(&poll_->real, fd->real_fd, 0, NULL);
+                        real_poll_update(&poll_->real, fd->real_fd, 0, poll_fd);
                     }
-                    free(poll_fd);
                 }
 
                 if (poll_fd->types & POLL_EDGETRIGGERED) {

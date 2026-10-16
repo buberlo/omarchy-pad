@@ -228,6 +228,12 @@ int path_normalize(struct fd *at, const char *path, char *out, int flags) {
         at = current->fs->pwd;
     unlock(&current->fs->lock);
 
+    // A relative *at lookup requires a directory. Anonymous descriptors have
+    // display names such as "pipe:[123]", not normalized filesystem paths.
+    // Reject those descriptors before passing their names to the resolver.
+    if (path[0] != '/' && at != NULL && !S_ISDIR(at->type))
+        return _ENOTDIR;
+
     char at_path[MAX_PATH];
     if (at != NULL) {
         int err = generic_getpath(at, at_path);

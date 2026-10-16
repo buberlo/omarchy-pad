@@ -3,10 +3,11 @@
 #include "fs/poll.h"
 
 static struct fd_ops eventfd_ops;
+#define EFD_SEMAPHORE_ 1
 
 int_t sys_eventfd2(uint_t initval, int_t flags) {
     STRACE("eventfd(%d, %#x)", initval, flags);
-    if (flags & ~(O_CLOEXEC_|O_NONBLOCK_))
+    if (flags & ~(O_CLOEXEC_|O_NONBLOCK_|EFD_SEMAPHORE_))
         return _EINVAL;
 
     struct fd *fd = adhoc_fd_create(&eventfd_ops);
@@ -15,7 +16,9 @@ int_t sys_eventfd2(uint_t initval, int_t flags) {
     if (fd == NULL)
         return _ENOMEM;
     fd->eventfd.val = initval;
-    return f_install(fd, flags);
+    fd->eventfd.semaphore = flags & EFD_SEMAPHORE_;
+    // EFD_SEMAPHORE overlaps O_WRONLY: it is not a file access-mode flag.
+    return f_install(fd, flags & ~EFD_SEMAPHORE_);
 }
 int_t sys_eventfd(uint_t initval) {
     return sys_eventfd2(initval, 0);
@@ -37,8 +40,9 @@ static ssize_t eventfd_read(struct fd *fd, void *buf, size_t bufsize) {
         }
     }
 
-    *(uint64_t *) buf = fd->eventfd.val;
-    fd->eventfd.val = 0;
+    uint64_t value = fd->eventfd.semaphore ? 1 : fd->eventfd.val;
+    *(uint64_t *) buf = value;
+    fd->eventfd.val -= value;
     notify(&fd->cond);
     unlock(&fd->lock);
     poll_wakeup(fd, POLL_WRITE);
