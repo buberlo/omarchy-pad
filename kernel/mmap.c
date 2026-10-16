@@ -119,6 +119,25 @@ static addr_t do_mmap(addr_t addr, uint64_t len, dword_t prot, dword_t flags, fd
                 prot, flags, fd_no);
     }
     page_t page;
+    if (flags & MMAP_FIXED_NOREPLACE) {
+        // Linux semantics: this is an exact placement (not a hint) that must never replace an
+        // existing mapping -- if any page of the range is taken, fail with EEXIST and change
+        // nothing. Wine reserves the Windows address space with these probes; treating the flag as
+        // a hint made an earlier version of do_mmap return a *different* address with no error, so
+        // wine believed it owned ranges it did not and later wrote over the host heap. That
+        // surfaced as glibc "corrupted size vs. prev_size" in wine and wineserver and stopped the
+        // ARM64 Proton route dead. Reproducer:
+        // tests/manual/steam-compat/map-fixed-noreplace-probe.c
+        //
+        // Measured on Linux (aarch64, Alpine): a collision reports EEXIST even when MAP_FIXED is
+        // set as well, so the check comes first and MAP_FIXED does not turn it into EINVAL.
+        if (addr == 0 || PGOFFSET(addr) != 0)
+            return _EINVAL;
+        if (!pt_is_hole(current->mem, PAGE(addr), pages))
+            return _EEXIST;
+        // From here on this is an exact placement, so the code below treats it like MAP_FIXED.
+        flags |= MMAP_FIXED;
+    }
     if (addr != 0) {
         if (PGOFFSET(addr) != 0)
             return _EINVAL;
