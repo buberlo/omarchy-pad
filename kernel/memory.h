@@ -131,7 +131,7 @@ struct pt_entry {
     unsigned flags;
 };
 // page flags
-// P_READ and P_EXEC are ignored for now
+// Read and execute are not separately enforced; PROT_NONE reads are rejected.
 #define P_READ (1 << 0)
 #define P_WRITE (1 << 1)
 #undef P_EXEC // defined in sys/proc.h on darwin

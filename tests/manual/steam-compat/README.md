@@ -44,6 +44,13 @@ convenient for running them under both the CLI emulator and iPad app.
   `ISH_JIT=1 ISH_JIT_TIER=1 ISH_JIT_COMPACT=1`, and `ISH_JIT=0`.
   The former invalid-TLB-tag arithmetic sent FEX's deliberate null load into
   a 257-fault loop instead of delivering its guest SIGSEGV.
+- `prot-none-read-probe.c`: a syscall reading a PROT_NONE guest buffer must
+  return EFAULT, including adjacent guest pages that share a readable host
+  page. Readable pages and protection transitions must keep working. Run
+  again with `fault` and `fault-lazy` to check that a null fault with x29
+  pointing into backed or reservation-only PROT_NONE memory reaches its
+  guest signal handler. The old diagnostic
+  frame walk dereferenced that host-inaccessible pointer and crashed LinPad.
 
 The pselect and epoll probes passed in the Mac CLI and on the physical M2 iPad.
 With the approved memory entitlements and `ulimit -s 8192`, all three FEX-static

@@ -929,6 +929,11 @@ static void *mem_ptr_nofault(struct mem *mem, addr_t addr, int type) {
     struct pt_entry *entry = mem_pt(mem, PAGE(addr));
     if (entry == NULL || (entry->flags & P_PAST_EOF))
         return NULL;
+    // PROT_NONE backing can also be inaccessible on the host. Never expose
+    // it to kernel copies or diagnostic frame walks. A neighbouring guest
+    // page may have made the shared host page readable; guest flags still win.
+    if (type == MEM_READ && !(entry->flags & P_RWX))
+        return NULL;
     if (type == MEM_WRITE && !P_WRITABLE(entry->flags))
         return NULL;
     return entry->data->data + entry->offset + PGOFFSET(addr);
@@ -1065,6 +1070,8 @@ void *mem_ptr(struct mem *mem, addr_t addr, int type) {
 check_reservation: ;
         struct mem_reservation *res = mem_find_reservation(mem, page);
         if (res == NULL)
+            return NULL;
+        if (type == MEM_READ && !(res->flags & P_RWX))
             return NULL;
         read_wrunlock(&mem->lock);
         // BLOCKING: avoid NULL → INT_GPF retry (which re-runs the JIT
