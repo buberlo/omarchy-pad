@@ -153,3 +153,26 @@ These validate wrapper behavior only, not Steam integration or game compatibilit
 Run `python3 validate-launcher.py` on the local host to repeat those checks.
 `INSTALL-VALIDATION.txt` records synthetic installation and native-depot checks;
 repeat them locally with `python3 validate-install.py`.
+
+## Installer scope after the Steam launch fix (16 October 2026)
+
+`install.sh` now installs three things instead of one, because the tool alone cannot start a game
+on this device:
+
+1. **The tool** (`linpad-fex-native/`, four files) into `compatibilitytools.d/`, with the patched
+   defaults: `translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}` and
+   `display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}`.
+2. **The EGL hook** (`linpad-egl-hook`) to `${LINPAD_PREFIX:-/usr/local}/bin/`, because the tool's
+   default names that exact path; the hook is the proven translator chain
+   (`/tmp/fex-hollow-egl` → `/opt/fex/FEX-apple-m1-munmap`) at a path that survives `/tmp`.
+3. **Steam's reaper replacement** (`reaper-stub`) over `$steam_root/steamrtarm64/reaper`, with the
+   original kept in `linpad-tool-backups/reaper-<timestamp>-<pid>`. Skip it with
+   `LINPAD_REAPER_STUB=0`. The reaper cannot run under iSH (`prctl() failed!`) and would kill every
+   launch before the tool is reached.
+
+Every step is idempotent and prints what it did; a second run reports "Already installed" and
+"Already stubbed". The installer still does not start Steam or edit its settings — the
+`CompatToolMapping` for appid 367520 and the launch options are separate, and
+`../steam-game-route/README.md` records both. Local exercise against a fake Steam tree:
+fresh install, repeat run, `LINPAD_REAPER_STUB=0`, a missing `steamapps` and a relative
+`LINPAD_STEAM_ROOT` (the last two exit 1 with a message). None of that is a device test.

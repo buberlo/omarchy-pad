@@ -5444,13 +5444,13 @@
     },
     {
       "path": "steam-compat/README.md",
-      "bytes": 9715,
-      "sha256": "d4adfdb2ea468cf70fe88f012952178ede4b7dbee5c24ad4d135b43f5ada4702"
+      "bytes": 11244,
+      "sha256": "051ba2cb7ee60a60b2fdf3a158ba8e33b46aa26aedb0e9788c677cd7b9ed7562"
     },
     {
       "path": "steam-compat/SHA256SUMS",
       "bytes": 1227,
-      "sha256": "4713b14c9c1e14607be1da247df37a5bcfd8db50ccfe44c124ada07b485d28db"
+      "sha256": "6bd7941fbf6932909762362c5e5146f7ab922778c656936dad2e406633b4d27c"
     },
     {
       "path": "steam-compat/VALIDATION.txt",
@@ -5459,8 +5459,8 @@
     },
     {
       "path": "steam-compat/install.sh",
-      "bytes": 2587,
-      "sha256": "40f73d9e6be4bdd2a1992168c8051beb92066387f703ca4960f7833204d7bd25"
+      "bytes": 5701,
+      "sha256": "76100aba33e4f1169dff921d195c5a59a544064c02a52072a191e59f470bfbdb"
     },
     {
       "path": "steam-compat/linpad-egl-hook",
