@@ -1,0 +1,14 @@
+#!/bin/sh
+# Diagnostic-only entrypoint. Files must already be staged by the operator.
+# Creates no streams and changes no daemon configuration. May connect/disconnect.
+set -eu
+p=/tmp/linpad-pulse-probe
+[ -d "$p" ] && [ ! -L "$p" ] || exit 65
+printf '%s  %s\n' \
+ b8b7186c32a8a8eea02807880703a6f965b7ee12f3f6f268c57bfdb3a6099f2e "$p/pulse-connect-probe" \
+ f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52 "$p/client.conf" \
+ 5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1 "$p/zero-token" | sha256sum -c -
+unset LD_PRELOAD LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT FEX_MULTIBLOCK
+export FEX_ROOTFS=/opt/hollow-runtime FEX_DISABLETELEMETRY=1
+export LD_LIBRARY_PATH=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+exec timeout -k 3 60 /opt/fex/FEX-apple-m1-munmap "$p/pulse-connect-probe" "$@"

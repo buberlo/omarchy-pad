@@ -1,0 +1,95 @@
+{
+  "scope": "fixed runtime snapshot after physical SMC pass, game frame still pending",
+  "build": "4448",
+  "release_artifacts_unchanged": true,
+  "files": [
+    {
+      "source": "work/performance/archive-build4448-runtime-followup.py",
+      "destination": "archive-build4448-runtime-followup.py",
+      "sha256": "8e5f08bc61d2fa98007c21ec0acab5d7a677822cba46c82582377572b2b4fd73",
+      "bytes": 9839,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/summarize-time-profile.py",
+      "destination": "profile/summarize-time-profile.py",
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca",
+      "bytes": 2596,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-status-1.txt",
+      "destination": "progress/status-1-milestones.txt",
+      "raw_sha256": "7102468d1d8b5f833f70cccd8fa127e01d5f53454b4d09f2d7f971ac09ed9826",
+      "raw_bytes": 30166,
+      "archived_sha256": "612c411ffda9cd208f93bff0e954326c094988a89e64f049e7c08aabcda198aa",
+      "mode": "numbered selected milestone lines; raw remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-status-2.txt",
+      "destination": "progress/status-2-milestones.txt",
+      "raw_sha256": "d25f402e824692d28da89a33624b69a232a432810cd5aaba0e5f5e7270a01054",
+      "raw_bytes": 30782,
+      "archived_sha256": "51c3a2708227c9ee4e5e655554bc8560bfee73d5c87d0674fa294415f9212d08",
+      "mode": "numbered selected milestone lines; raw remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-status-3.txt",
+      "destination": "progress/status-3-milestones.txt",
+      "raw_sha256": "95258ccc03023a1ad94dc783d69074328cc0342578832875052f6bacf18b4107",
+      "raw_bytes": 30784,
+      "archived_sha256": "788212eec2417df2dbda15e467d7fe3d42ec1d7aac43b9dbc647df227ff7a9fb",
+      "mode": "numbered selected milestone lines; raw remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4447-manual-stop-game-output.txt",
+      "destination": "progress/build4447-comparison-milestones.txt",
+      "raw_sha256": "7140a7fec09eeee711522c190346c47cee1f250995307c42e9845e42fd34c20b",
+      "raw_bytes": 25404,
+      "archived_sha256": "2d6584e4d13175ba511ccaee30f6221317eac01d1254ba4e1c6551036c021db5",
+      "mode": "numbered selected milestone lines; raw remains local"
+    },
+    {
+      "source": "work/performance/serve/hollow4448-frame-capture",
+      "destination": "diagnostics/serve/hollow4448-frame-capture",
+      "sha256": "5129521715635968bb2b6cc39237fe40196604a1c85ae8d2dd9936000eeef98c",
+      "bytes": 4266,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/test-hollow4448-frame-capture.py",
+      "destination": "diagnostics/test-hollow4448-frame-capture.py",
+      "sha256": "b0ba6785d5a7c15965e9f2f2e8434c8f23a813e44d1f62ceaf51ad63275c7d4c",
+      "bytes": 3082,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/hollow4448-frame-capture-tests.json",
+      "destination": "diagnostics/capture-tests.json",
+      "sha256": "e263cdf809f0d572b328c3413f93528ff964752502f519a576f2c59e73053285",
+      "bytes": 465,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/parse-hollow-frame-window.py",
+      "destination": "diagnostics/parse-hollow-frame-window.py",
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "bytes": 4345,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/test-hollow-frame-parser.py",
+      "destination": "diagnostics/test-hollow-frame-parser.py",
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba",
+      "bytes": 1821,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/frame-parser-test-results.json",
+      "destination": "diagnostics/parser-tests.json",
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432",
+      "bytes": 411,
+      "mode": "byte-identical"
+    }
+  ]
+}

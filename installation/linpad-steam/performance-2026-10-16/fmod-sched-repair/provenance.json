@@ -1,0 +1,190 @@
+{
+  "status": "frozen: source fix d8fa5c1e and probe060b3823; matched local and physical4448\u21924449 scheduler/FMOD helper tests PASS after fix; actual game audio/presentation pending",
+  "source_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "source_files": [
+    {
+      "path": "kernel/resource.c",
+      "sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f"
+    },
+    {
+      "path": "kernel/resource.h",
+      "sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb"
+    },
+    {
+      "path": "kernel/arch/arm64/calls.c",
+      "sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b"
+    },
+    {
+      "path": "kernel/arch/x86/calls.c",
+      "sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc"
+    },
+    {
+      "path": "tests/manual/steam-compat/sched-priority-probe.c",
+      "sha256": "6eb8f0379f477af4719e56cca14c607c964038239f671168454bbb24152e6a5b"
+    }
+  ],
+  "linux_abi_reference": "https://raw.githubusercontent.com/torvalds/linux/v6.12/kernel/sched/syscalls.c",
+  "reference_functions": [
+    "sched_get_priority_min",
+    "sched_get_priority_max"
+  ],
+  "abi_policy_map": {
+    "0": [
+      0,
+      0
+    ],
+    "1": [
+      1,
+      99
+    ],
+    "2": [
+      1,
+      99
+    ],
+    "3": [
+      0,
+      0
+    ],
+    "5": [
+      0,
+      0
+    ],
+    "6": [
+      0,
+      0
+    ],
+    "7": [
+      0,
+      0
+    ]
+  },
+  "invalid_policies": [
+    -1,
+    4,
+    8,
+    2147483647,
+    1073741824
+  ],
+  "proprietary_input": {
+    "path": "work/performance/game-fault-report/UnityPlayer.so",
+    "bytes": 39255232,
+    "sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+    "binary_archived": false,
+    "helper_vaddr": "0x84ecb0",
+    "guard_bytes": 16,
+    "player_main_called": false
+  },
+  "guest_libc": {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libc.so.6",
+    "sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92",
+    "attribute_function_vaddr": "0x90d80",
+    "binary_archived": false
+  },
+  "raw_local_logs_not_archived": [
+    {
+      "path": "work/performance/fmod-init-audit/before-native.txt",
+      "sha256": "e101f6e858d4ceb212f9fdd323e62b38d13bf6ce28f87b0775f46b4c85a7d8e5",
+      "bytes": 13367
+    },
+    {
+      "path": "work/performance/fmod-init-audit/before-fex.txt",
+      "sha256": "4108a5cade2edd4aefd9490d4e2069753b3843a308f80090d15f247256f3eb10",
+      "bytes": 350896
+    },
+    {
+      "path": "work/performance/fmod-init-audit/after-native.txt",
+      "sha256": "97f658b514abed7728bf1df589bd8f00aa93c427971afaf0e5afeee7a63d7058",
+      "bytes": 13239
+    },
+    {
+      "path": "work/performance/fmod-init-audit/after-fex.txt",
+      "sha256": "dbec235e13943b77466115405006a7bd66eb203054dd5192b9aad4b27b5497e8",
+      "bytes": 414057
+    },
+    {
+      "path": "work/performance/fmod-init-audit/unity-helper-before.txt",
+      "sha256": "66945a8dbcd171eb0fe8273e9204a007cdd7b0e42690cf7a7ff1ad846912f024",
+      "bytes": 831095
+    },
+    {
+      "path": "work/performance/fmod-init-audit/unity-helper-after.txt",
+      "sha256": "0a7555953a37af02c77a2ca12bf1d7ac1031ebc0d423e868aec141b2ef2bcfa9",
+      "bytes": 849612
+    }
+  ],
+  "physical_reports": [
+    {
+      "source": "work/performance/reports/sched4448-device-before-final.txt",
+      "sha256": "8de9bd23978c9423e8627d2e35946d5434ba338543251fe930503acd53fa96e4"
+    },
+    {
+      "source": "work/performance/reports/fmod-thread4448-device-before.txt",
+      "sha256": "865a33ece65b9348abce2a2eaa3206a85cce95f45303453140b45c0cabb44ecb"
+    },
+    {
+      "source": "work/performance/reports/sched4449-device-pass.txt",
+      "sha256": "95ada1ac9a9fc7bdff5a713e0bf4325348e543b664040d14ea3ad8d6e0f9c5d8"
+    },
+    {
+      "source": "work/performance/reports/fmod-thread4449-device-pass.txt",
+      "sha256": "bb4bb4460a6ddea8707e99361f08eee1a9b1274cb3f41fa4f501742f0e68edbb"
+    }
+  ],
+  "served_files": [
+    {
+      "name": "sched-priority-x86",
+      "sha256": "1120d5bb9ee108f64a344efd518d7f35493f5bf05d94718b37de1f26bfb8d080",
+      "bytes": 20096
+    },
+    {
+      "name": "sched-priority-arm64",
+      "sha256": "7424179ec001219fabf49b041e9bcd2691983ee6378ffa36375ccaf0b16a83b9",
+      "bytes": 1672480
+    },
+    {
+      "name": "sched4448-probe",
+      "sha256": "3f3e5cdbab07ca4cf8dac752038d116e52efe9c73be3242c7255027aaacad538",
+      "bytes": 1900
+    },
+    {
+      "name": "unity-fmod-thread-probe",
+      "sha256": "e444463cf59c4be4b70b96a28f884a84568e4633dc682e8900bae1827486535d",
+      "bytes": 16400
+    },
+    {
+      "name": "fmod-thread4448-probe",
+      "sha256": "febae62707bfe4075de014bcae027f1c223b1781da31a1c82eb5db964d7baf7f",
+      "bytes": 1835
+    }
+  ],
+  "actual_game_fmod_retested": false,
+  "audio_playback_verified": false,
+  "game_frame_verified": false,
+  "realtime_scheduling_enabled": false,
+  "i386_dispatch_runtime_tested": false,
+  "superseded_probe_v1": {
+    "reason": "musl sched_getscheduler wrapper always returns ENOSYS; three native worker-policy checks invalid; final probe uses direct syscall",
+    "report_source": "work/performance/reports/sched4448-device-before-v1.txt",
+    "report_sha256": "feb06b89058d42729f72fdd52c50083536b367afd6512d5c7a0cee42fd12d886",
+    "script_sha256": "8c37aabee8e0d35c47c5cf8bd6bf9d0e0b04f1d0dbe5190cd43586e4dc95f5a2",
+    "x86_binary_sha256": "082cd79f26017ada0fd14f7961cc5713e33020d48f93ec5b722ab57be82ed7a8",
+    "arm64_binary_sha256": "24fe241b625c3f0fff14c02028c1dd70aa9f3537808c95ed76db3c0e2308ce84",
+    "used_for_final_matched_comparison": false
+  },
+  "frozen": true,
+  "probe_source_commit": "060b382324740adb355a0ab0ec06c2246e0812c7",
+  "fex_runtime": {
+    "guest_path": "/opt/fex/FEX-apple-m1-munmap",
+    "sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "binary_archived_here": false
+  },
+  "physical_after": {
+    "build": 4449,
+    "native_scheduler": "45/45 PASS",
+    "fex_scheduler": "45/45 PASS",
+    "exact_unity_helper": "4/4 PASS; all return0, workers complete with policy0",
+    "same_final_probe_binaries_as_before": true,
+    "game_audio_routing_changed": false,
+    "actual_game_result_included": false
+  }
+}

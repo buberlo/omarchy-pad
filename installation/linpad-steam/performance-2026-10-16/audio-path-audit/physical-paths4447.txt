@@ -1,0 +1,59 @@
+AUDIO_PATH_PROBE_VERSION=1
+CAPTURE_UTC=2026-10-16T12:22:01Z
+SHELL_SETTING PULSE_SERVER=unset_or_empty
+SHELL_SETTING PULSE_RUNTIME_PATH=unset_or_empty
+SHELL_SETTING PULSE_CLIENTCONFIG=unset_or_empty
+SHELL_SETTING XDG_RUNTIME_DIR=unset_or_empty
+SHELL_SETTING FMOD_ALSA_DEVICE=unset_or_empty
+SHELL_SETTING ALSA_CONFIG_PATH=unset_or_empty
+SHELL_SETTING ALSA_PLUGIN_DIR=unset_or_empty
+SHELL_SETTING SDL_AUDIODRIVER=unset_or_empty
+PATH /tmp/ishaudio kind=directory readable=yes executable=yes
+PATH /tmp/ishaudio/native kind=socket readable=yes executable=yes
+PATH /tmp/ishaudio/pcm kind=fifo readable=yes executable=no
+PATH /tmp/ishaudio/mic kind=fifo readable=yes executable=no
+PATH /tmp/xdg-runtime/pulse/native kind=missing readable=no executable=no
+PATH /run/user/0/pulse/native kind=missing readable=no executable=no
+PATH /dev/snd kind=missing readable=no executable=no
+PATH /dev/snd/controlC0 kind=missing readable=no executable=no
+PATH /dev/snd/pcmC0D0p kind=missing readable=no executable=no
+PATH /usr/bin/pulseaudio kind=file readable=yes executable=yes
+PATH /usr/bin/pactl kind=file readable=yes executable=yes
+PATH /usr/local/bin/ishaudio-session kind=file readable=yes executable=yes
+PATH /usr/local/lib/libishaudio-compat.so kind=file readable=yes executable=yes
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libpulse.so.0 kind=file readable=yes executable=no
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libpulse-simple.so.0 kind=file readable=yes executable=no
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so kind=file readable=yes executable=no
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libasound.so.2 kind=file readable=yes executable=no
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so kind=missing readable=no executable=no
+PATH /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_ctl_pulse.so kind=missing readable=no executable=no
+PATH /opt/hollow-runtime/usr/share/alsa/alsa.conf kind=missing readable=no executable=no
+PATH /etc/pulse/client.conf kind=file readable=yes executable=no
+PATH /etc/pulse/client.conf.d/50-ishaudio.conf kind=file readable=yes executable=no
+CONFIG /etc/pulse/client.conf.d/50-ishaudio.conf default-server=unix:/tmp/ishaudio/native
+CONFIG /etc/pulse/client.conf.d/50-ishaudio.conf autospawn=no
+CONFIG /etc/pulse/client.conf.d/50-ishaudio.conf enable-shm=no
+CONFIG /etc/pulse/client.conf.d/50-ishaudio.conf enable-memfd=no
+PATH /etc/pulse/daemon.conf kind=file readable=yes executable=no
+PATH /etc/pulse/daemon.conf.d/50-ishaudio.conf kind=file readable=yes executable=no
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf enable-memfd=no
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf enable-shm=no
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf realtime-scheduling=no
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf high-priority=no
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf default-sample-format=s16le
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf default-sample-rate=48000
+CONFIG /etc/pulse/daemon.conf.d/50-ishaudio.conf default-sample-channels=2
+PATH /opt/hollow-runtime/etc/pulse/client.conf kind=file readable=yes executable=no
+PATH /opt/hollow-runtime/etc/pulse/client.conf.d/50-ishaudio.conf kind=missing readable=no executable=no
+PATH /etc/ishaudio/ishaudio.pa kind=file readable=yes executable=no
+PULSE_MODULE module-native-protocol-unix socket=/tmp/ishaudio/native
+PULSE_MODULE module-pipe-sink file=/tmp/ishaudio/pcm sink_name=ishaudio format=s16le rate=48000 channels=2 use_system_clock_for_timing=yes
+PULSE_DEFAULT set-default-sink ishaudio
+PULSE_MODULE module-suspend-on-idle timeout=3
+PULSE_MODULE module-pipe-source file=/tmp/ishaudio/mic source_name=ipad_mic format=s16le rate=48000 channels=1
+PULSE_DEFAULT set-default-source ipad_mic
+PATH /etc/asound.conf kind=file readable=yes executable=no
+ALSA_ROUTE /etc/asound.conf pcm.!default=pulse
+ALSA_ROUTE /etc/asound.conf ctl.!default=pulse
+PATH /opt/hollow-runtime/etc/asound.conf kind=missing readable=no executable=no
+AUDIO_PATH_PROBE_DONE=1

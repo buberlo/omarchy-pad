@@ -1,0 +1,8 @@
+ninja: Entering directory `work/linpad-cli'
+[1/69] Compiling C object libish.a.p/kernel_errno.c.o
+[2/69] Compiling C object libish.a.p/kernel_arch_arm64_calls.c.o
+[66/69] Compiling C object libish.a.p/fs_dev_video.c.o
+[67/69] Compiling C object ish.p/main.c.o
+[68/69] Linking static target libish.a
+[69/69] Linking target ish
+ld: warning: ignoring duplicate libraries: '-lsqlite3'

@@ -1,0 +1,14 @@
+1: Fri Oct 16 12:29:54 UTC 2026
+3: Fri Oct 16 12:28:50 UTC 2026
+43: 2026-10-16T12:28:51.010Z|0xcc410540|The selected window backend is wayland 
+47: 2026-10-16T12:28:53.341Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+50: 2026-10-16T12:28:53.624Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+233: 2026-10-16T12:29:03.958Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+235: 2026-10-16T12:29:03.959Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+237: 2026-10-16T12:29:03.959Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+238: 2026-10-16T12:29:03.959Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+239: 2026-10-16T12:29:04.039Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+245: 2026-10-16T12:29:05.683Z|0xcc410540|Begin MonoManager ReloadAssembly
+246: 2026-10-16T12:29:35.456Z|0xcc410540|- Loaded All Assemblies, in 29.773 seconds
+249: 2026-10-16T12:29:36.790Z|0xcc410540|[Physics::Module] Name: PhysX
+253: 2026-10-16T12:29:36.794Z|0xcc410540|[Physics::Module] Threading Mode: Multi-Threaded

@@ -1,0 +1,12 @@
+{
+  "app_build": "4448",
+  "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+  "matching_app_dsym_uuid": "A5CFFE3B-C626-3F4A-A0CB-50CEC07154EB",
+  "start": "2026-10-16T20:29:20.590+08:00",
+  "end": "2026-10-16T20:29:26.384+08:00",
+  "duration": "5.793711",
+  "raw_toc_sha256": "d3644cbdb238d711c94a741eb1cb3770bdc5de63537a0cc662773dff3f54dc7f",
+  "raw_export_sha256": "eb2146b8e14a8717e3ade8dd163cbe8176f3fae4ba2252a1c1977815ff6595e8",
+  "raw_trace_and_identifiers_archived": false,
+  "metric": "statistical native CPU sample weight, not GPU utilization or game FPS"
+}

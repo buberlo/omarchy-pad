@@ -1,0 +1,66 @@
+[
+  {
+    "case": "smc-jit",
+    "exit_code": 0,
+    "elapsed_seconds": 0.017,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/smc"
+    ],
+    "environment": {
+      "ISH_JIT": "1"
+    },
+    "expected_result_observed": true
+  },
+  {
+    "case": "smc-tier2",
+    "exit_code": 0,
+    "elapsed_seconds": 0.017,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/smc"
+    ],
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_TIER": "2"
+    },
+    "expected_result_observed": true
+  },
+  {
+    "case": "fallback-smc-jit",
+    "exit_code": 0,
+    "elapsed_seconds": 0.017,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/jit-ss-smc-probe"
+    ],
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_STATS": "1"
+    },
+    "expected_result_observed": true
+  },
+  {
+    "case": "fallback-smc-tier2",
+    "exit_code": 0,
+    "elapsed_seconds": 0.018,
+    "command": [
+      "work/linpad-cli/ish",
+      "-r",
+      "work/performance/vulkan-repro-root",
+      "/opt/jit-ss-smc-probe"
+    ],
+    "environment": {
+      "ISH_JIT": "1",
+      "ISH_JIT_STATS": "1",
+      "ISH_JIT_TIER": "2"
+    },
+    "expected_result_observed": true
+  }
+]

@@ -1,0 +1,13 @@
+1: CAPTURE_BEGIN_UTC=2026-10-16T12:43:09Z
+2: BASELINE_GAME_CHANGED=0
+3: AUDIO_STREAMS_CREATED=0
+4: REALTIME_SCHEDULING_REQUESTED=0
+7: UNITY_FMOD_THREAD_GUARD_PASS offset=0x84ecb0 expected_sha256=12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33
+8: UNITY_FMOD_THREAD priority_enum=0 result=0 worker_done=1 actual_policy=0
+9: UNITY_FMOD_THREAD priority_enum=1 result=33 worker_done=0 actual_policy=-99
+10: UNITY_FMOD_THREAD priority_enum=2 result=33 worker_done=0 actual_policy=-99
+11: UNITY_FMOD_THREAD priority_enum=3 result=33 worker_done=0 actual_policy=-99
+12: UNITY_FMOD_THREAD_RESULT checks=4 failures=3
+13: FMOD_THREAD_PROBE_EXIT=1
+14: CAPTURE_END_UTC=2026-10-16T12:43:09Z
+15: SCRIPT_EXIT=1

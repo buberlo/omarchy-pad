@@ -1,0 +1,15 @@
+CAPTURE_BEGIN_UTC=2026-10-16T12:43:09Z
+BASELINE_GAME_CHANGED=0
+AUDIO_STREAMS_CREATED=0
+REALTIME_SCHEDULING_REQUESTED=0
+/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so: OK
+/tmp/linpad-fmod-thread-probe/probe.download: OK
+UNITY_FMOD_THREAD_GUARD_PASS offset=0x84ecb0 expected_sha256=12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33
+UNITY_FMOD_THREAD priority_enum=0 result=0 worker_done=1 actual_policy=0
+UNITY_FMOD_THREAD priority_enum=1 result=33 worker_done=0 actual_policy=-99
+UNITY_FMOD_THREAD priority_enum=2 result=33 worker_done=0 actual_policy=-99
+UNITY_FMOD_THREAD priority_enum=3 result=33 worker_done=0 actual_policy=-99
+UNITY_FMOD_THREAD_RESULT checks=4 failures=3
+FMOD_THREAD_PROBE_EXIT=1
+CAPTURE_END_UTC=2026-10-16T12:43:09Z
+SCRIPT_EXIT=1

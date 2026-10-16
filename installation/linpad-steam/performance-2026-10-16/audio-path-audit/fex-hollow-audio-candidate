@@ -1,0 +1,16 @@
+#!/bin/sh
+# UNQUALIFIED opt-in process-only route candidate. Not the baseline launcher.
+# Install/use only after the explicit-route Pulse probe passes on the device.
+set -eu
+[ "$#" -gt 0 ] || exit 64
+config=/tmp/linpad-pulse-probe/client.conf
+token=/tmp/linpad-pulse-probe/zero-token
+printf '%s  %s\n' \
+ f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52 "$config" \
+ 5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1 "$token" | sha256sum -c - >&2
+export PULSE_SERVER=unix:/tmp/ishaudio/native
+export PULSE_CLIENTCONFIG="$config" PULSE_COOKIE="$token"
+unset FMOD_ALSA_DEVICE ALSA_CONFIG_PATH ALSA_PLUGIN_DIR SDL_AUDIODRIVER
+printf 'LINPAD_AUDIO_ROUTE_CANDIDATE server=%s transport=socket_only synthetic_token=1\n' "$PULSE_SERVER" >&2
+# Reuse existing graphics/FEX setup; it preserves these audio-only settings.
+exec /tmp/fex-hollow-egl "$@"

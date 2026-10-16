@@ -1,0 +1,99 @@
+#!/bin/sh
+# Read-only metadata/configuration probe. Does not launch/connect to audio clients,
+# read cookies, inspect process environments, read FIFOs, or modify guest files.
+# Write stdout to a report only in the operator's caller, if desired.
+set -u
+export LC_ALL=C
+printf 'AUDIO_PATH_PROBE_VERSION=1\n'
+date -u '+CAPTURE_UTC=%Y-%m-%dT%H:%M:%SZ'
+
+path_info() {
+    p=$1
+    if [ -S "$p" ]; then kind=socket
+    elif [ -p "$p" ]; then kind=fifo
+    elif [ -c "$p" ]; then kind=character
+    elif [ -d "$p" ]; then kind=directory
+    elif [ -f "$p" ]; then kind=file
+    elif [ -L "$p" ]; then kind=broken_symlink
+    else kind=missing; fi
+    readable=no; executable=no
+    [ ! -r "$p" ] || readable=yes
+    [ ! -x "$p" ] || executable=yes
+    printf 'PATH %s kind=%s readable=%s executable=%s\n' "$p" "$kind" "$readable" "$executable"
+}
+# Only audio-related public paths in the invoking shell. No broad env dump and
+# no target /proc/PID/environ access. This is not proof of the game's environment.
+show_setting() {
+    key=$1; value=$2
+    case "$value" in
+        '') printf 'SHELL_SETTING %s=unset_or_empty\n' "$key" ;;
+        *[!A-Za-z0-9_./:+-]*) printf 'SHELL_SETTING %s=non_path_value_suppressed\n' "$key" ;;
+        *) printf 'SHELL_SETTING %s=%s\n' "$key" "$value" ;;
+    esac
+}
+show_setting PULSE_SERVER "${PULSE_SERVER-}"
+show_setting PULSE_RUNTIME_PATH "${PULSE_RUNTIME_PATH-}"
+show_setting PULSE_CLIENTCONFIG "${PULSE_CLIENTCONFIG-}"
+show_setting XDG_RUNTIME_DIR "${XDG_RUNTIME_DIR-}"
+show_setting FMOD_ALSA_DEVICE "${FMOD_ALSA_DEVICE-}"
+show_setting ALSA_CONFIG_PATH "${ALSA_CONFIG_PATH-}"
+show_setting ALSA_PLUGIN_DIR "${ALSA_PLUGIN_DIR-}"
+show_setting SDL_AUDIODRIVER "${SDL_AUDIODRIVER-}"
+
+for p in /tmp/ishaudio /tmp/ishaudio/native /tmp/ishaudio/pcm /tmp/ishaudio/mic \
+    /tmp/xdg-runtime/pulse/native /run/user/0/pulse/native \
+    /dev/snd /dev/snd/controlC0 /dev/snd/pcmC0D0p \
+    /usr/bin/pulseaudio /usr/bin/pactl /usr/local/bin/ishaudio-session \
+    /usr/local/lib/libishaudio-compat.so \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libpulse.so.0 \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libpulse-simple.so.0 \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-17.0.so \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libasound.so.2 \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so \
+    /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_ctl_pulse.so \
+    /opt/hollow-runtime/usr/share/alsa/alsa.conf; do
+    path_info "$p"
+done
+
+# Read fixed system configuration files only; output a whitelist of non-secret
+# routing/transport keys. Never follow includes or user-supplied config paths.
+for p in /etc/pulse/client.conf /etc/pulse/client.conf.d/50-ishaudio.conf \
+    /etc/pulse/daemon.conf /etc/pulse/daemon.conf.d/50-ishaudio.conf \
+    /opt/hollow-runtime/etc/pulse/client.conf \
+    /opt/hollow-runtime/etc/pulse/client.conf.d/50-ishaudio.conf; do
+    path_info "$p"
+    [ -f "$p" ] && [ -r "$p" ] || continue
+    awk -v file="$p" '
+      /^[[:space:]]*[#;]/ { next }
+      {
+        n=split($0,kv,"="); if(n!=2) next
+        key=kv[1]; value=kv[2]
+        gsub(/^[[:space:]]+|[[:space:]]+$/,"",key)
+        gsub(/^[[:space:]]+|[[:space:]]+$/,"",value)
+        if (key !~ /^(default-server|default-sink|default-source|autospawn|enable-shm|enable-memfd|realtime-scheduling|high-priority|default-sample-format|default-sample-rate|default-sample-channels)$/) next
+        if(value ~ /^[A-Za-z0-9_.\/:+-]+$/) printf "CONFIG %s %s=%s\n",file,key,value
+        else printf "CONFIG %s %s=value_suppressed\n",file,key
+      }' "$p"
+done
+p=/etc/ishaudio/ishaudio.pa
+path_info "$p"
+if [ -f "$p" ] && [ -r "$p" ]; then
+    awk '
+      $1=="load-module" && $2 ~ /^module-(native-protocol-unix|pipe-sink|pipe-source|suspend-on-idle)$/ {
+        printf "PULSE_MODULE %s",$2
+        for(i=3;i<=NF;i++) if($i ~ /^(socket|file|sink_name|source_name|format|rate|channels|use_system_clock_for_timing|timeout)=[A-Za-z0-9_.\/:+-]+$/) printf " %s",$i
+        print ""
+      }
+      $1 ~ /^set-default-(sink|source)$/ && $2 ~ /^[A-Za-z0-9_.-]+$/ { printf "PULSE_DEFAULT %s %s\n",$1,$2 }
+    ' "$p"
+fi
+for p in /etc/asound.conf /opt/hollow-runtime/etc/asound.conf; do
+    path_info "$p"
+    [ -f "$p" ] && [ -r "$p" ] || continue
+    # Presence of these two exact built-in routes only; no arbitrary ALSA text.
+    awk -v file="$p" '
+      /^[[:space:]]*pcm\.!default[[:space:]]*\{[[:space:]]*type[[:space:]]+pulse[[:space:]]*\}[[:space:]]*$/ {printf "ALSA_ROUTE %s pcm.!default=pulse\n",file}
+      /^[[:space:]]*ctl\.!default[[:space:]]*\{[[:space:]]*type[[:space:]]+pulse[[:space:]]*\}[[:space:]]*$/ {printf "ALSA_ROUTE %s ctl.!default=pulse\n",file}
+    ' "$p"
+done
+printf 'AUDIO_PATH_PROBE_DONE=1\n'

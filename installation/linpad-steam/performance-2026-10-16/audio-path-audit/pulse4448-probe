@@ -1,0 +1,50 @@
+#!/bin/sh
+# Operator-run diagnostic only; no game/daemon configuration changes or signals.
+# Downloads only the scoped diagnostic payload, verifies hashes, runs bounded
+# negative/positive connection controls, and posts this small text report.
+set -eu
+SERVER=http://192.168.0.104:8766
+P=/tmp/linpad-pulse-probe
+OUT=/tmp/pulse4448-probe.txt
+upload() {
+    rc=$?
+    trap - EXIT
+    printf 'SCRIPT_EXIT=%s\n' "$rc" >> "$OUT"
+    if wget -T 10 -t 1 -q --post-file="$OUT" "$SERVER/report" -O /dev/null; then
+        printf 'PULSE_PROBE_REPORT_POSTED=1\n'
+    else
+        printf 'PULSE_PROBE_REPORT_POSTED=0 path=%s\n' "$OUT"
+    fi
+    tail -70 "$OUT"
+    exit "$rc"
+}
+: > "$OUT"
+trap upload EXIT
+{
+    date -u '+CAPTURE_BEGIN_UTC=%Y-%m-%dT%H:%M:%SZ'
+    printf 'BASELINE_GAME_CHANGED=0\nAUDIO_STREAMS_CREATED=0\n'
+    [ ! -L "$P" ] || { echo DIAGNOSTIC_DIR_IS_SYMLINK; exit 65; }
+    [ ! -e "$P" ] || [ -d "$P" ] || { echo DIAGNOSTIC_DIR_INVALID; exit 65; }
+    mkdir -p "$P"
+    chmod 700 "$P"
+    fetch() {
+        name=$1; target=$2; digest=$3; mode=$4
+        # Do not follow a pre-existing temporary symlink.
+        [ ! -L "$P/$target.download" ] || exit 65
+        wget -T 20 -t 1 -qO "$P/$target.download" "$SERVER/$name"
+        printf '%s  %s\n' "$digest" "$P/$target.download" | sha256sum -c -
+        chmod "$mode" "$P/$target.download"
+        mv "$P/$target.download" "$P/$target"
+    }
+    fetch pulse-connect-probe pulse-connect-probe b8b7186c32a8a8eea02807880703a6f965b7ee12f3f6f268c57bfdb3a6099f2e 755
+    fetch pulse-probe-client.conf client.conf f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52 600
+    fetch pulse-probe-zero-token zero-token 5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1 600
+    fetch run-pulse-connect-probe run-probe 1ba48f84d71488687689e16d14c49ac169dec45d35737d2f409c5bc86d3b14db 755
+    printf 'DIAGNOSTIC_PAYLOAD_VERIFIED=1\nCONTROL=negative_missing_socket\n'
+    if "$P/run-probe" --negative-missing-socket; then neg=0; else neg=$?; fi
+    printf 'NEGATIVE_CONTROL_EXIT=%s\nCONTROL=explicit_ishaudio_socket\n' "$neg"
+    if "$P/run-probe"; then pos=0; else pos=$?; fi
+    printf 'EXPLICIT_ROUTE_EXIT=%s\n' "$pos"
+    date -u '+CAPTURE_END_UTC=%Y-%m-%dT%H:%M:%SZ'
+    [ "$neg" -eq 0 ] && [ "$pos" -eq 0 ]
+} >> "$OUT" 2>&1

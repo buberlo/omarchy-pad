@@ -1,0 +1,143 @@
+{
+  "build": "4449",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "source_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "source_base": "2fe6a03b50d0febc383ca199013f38fb622159c6",
+  "source_files": [
+    {
+      "path": "jit/DESIGN.md",
+      "sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108"
+    },
+    {
+      "path": "jit/jit.c",
+      "sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1"
+    },
+    {
+      "path": "kernel/arch/arm64/calls.c",
+      "sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b"
+    },
+    {
+      "path": "kernel/arch/x86/calls.c",
+      "sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc"
+    },
+    {
+      "path": "kernel/resource.c",
+      "sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f"
+    },
+    {
+      "path": "kernel/resource.h",
+      "sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb"
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2"
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614"
+    }
+  ],
+  "source_patch_sha256": "6473438a80c722373a033b2cc05beb87025ea85377c105e8d832e78325ab14cb",
+  "build_verified": true,
+  "build_log_sha256": "5f1a713ac6e4a124f85722274a4f6a760c8fa1a1ed3ab366899ff9a5a1dbfb04",
+  "signature_verified": true,
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "app_and_dsym_uuid": "AB1037BA-59E4-36E9-B2EB-A55908E809CB",
+  "executable_sha256": "e40b8f43c812479395796efde0f7ba3a6fc6c076f94d5856f33e1da28fb15cd7",
+  "dwarf_sha256": "178d43b1c708f75bce370c1544bc2f6f634e02720981f4abd9197d076b308fc5",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from4448": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4449-Konrad.ipa",
+      "bytes": 637224488,
+      "sha256": "cc44b2f37b2283cebc617f6864f796763fd14b6a7bc2c268dcb18bc171f74bdd",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4449-dSYM.zip",
+      "bytes": 13519246,
+      "sha256": "527425fcf3eaf7dd53a0ca49869f140c26d2f5625157f991157a67349e39905f",
+      "crc_and_bundle_contents_verified": true
+    }
+  ],
+  "device_validation": "See physical gates and uniquely named report excerpts. Game rendering/playability/performance remain pending.",
+  "guest_runtime_note": "Installed FEX, Mesa, EGL, Steam and game data are separate from the IPA.",
+  "curated_at_utc": "2026-10-16T12:51:21.527945+00:00",
+  "physical": {
+    "installed": true,
+    "launched": true,
+    "native_jit_512MiB": true,
+    "boot_completed": true,
+    "ordinary_smc": {
+      "status": "passed",
+      "rewrites": 200,
+      "exit": 0,
+      "source_sha256": "1dfb98574772ac8084e71a2a4a2baadae64c9afa01e173747042bad58c24bb9c",
+      "evidence": "smc4449-device-pass.txt"
+    },
+    "fallback_smc": {
+      "status": "passed",
+      "checks": 200,
+      "failures": 0,
+      "exit": 0,
+      "source_sha256": "1dfb98574772ac8084e71a2a4a2baadae64c9afa01e173747042bad58c24bb9c",
+      "evidence": "smc4449-device-pass.txt"
+    },
+    "scheduler_probe": {
+      "status": "passed",
+      "controls": {
+        "native_arm64": {
+          "checks": 45,
+          "failures": 0,
+          "exit": 0,
+          "ordinary_inherited_workers": 3
+        },
+        "fex_x86_glibc": {
+          "checks": 45,
+          "failures": 0,
+          "exit": 0,
+          "ordinary_inherited_workers": 3
+        }
+      },
+      "source_sha256": "95ada1ac9a9fc7bdff5a713e0bf4325348e543b664040d14ea3ad8d6e0f9c5d8",
+      "probe_source_commit": "060b382324740adb355a0ab0ec06c2246e0812c7",
+      "probe_not_compiled_into_app": true,
+      "evidence": "sched4449-device-pass.txt",
+      "matched_script": "device-scripts/sched4448-probe",
+      "realtime_scheduling_requested": false
+    },
+    "unity_fmod_thread_helper": {
+      "status": "passed",
+      "checks": 4,
+      "failures": 0,
+      "exit": 0,
+      "worker_policy": "SCHED_OTHER",
+      "audio_streams_created": 0,
+      "realtime_scheduling_requested": false,
+      "prior_build4448_failures": 3,
+      "source_sha256": "bb4bb4460a6ddea8707e99361f08eee1a9b1274cb3f41fa4f501742f0e68edbb",
+      "before_source_sha256": "865a33ece65b9348abce2a2eaa3206a85cce95f45303453140b45c0cabb44ecb",
+      "evidence": "fmod-thread4449-device-pass.txt",
+      "before_evidence": "fmod-thread4448-device-before.txt",
+      "probe_source_sha256": "a9ab291834eb8f50dffa4b912091afd3feb9fcfc183abcdc92c44410bbf99af2",
+      "probe_source": "../fmod-sched-repair/unity-fmod-thread-probe.c",
+      "probe_not_compiled_into_app": true,
+      "matched_script": "device-scripts/fmod-thread4448-probe",
+      "scope": "Exact guarded Unity thread-creation helper only; no audio playback or game startup."
+    },
+    "game_rendered_frame": "pending",
+    "gameplay": "pending",
+    "performance": "pending"
+  },
+  "initial_build_manifest_sha256": "58fc011372a746b9305db93b1b4d00af80ad44e32f7dbb1619912a302cb82331",
+  "scope": "Signed archives verified separately; curated repo excludes IPA/dSYM bytes, raw process/console logs, device identifiers, provisioning-profile bytes and proprietary game inputs."
+}

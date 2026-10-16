@@ -1,0 +1,16 @@
+1: Fri Oct 16 12:34:58 UTC 2026
+17: 2026-10-16T12:29:03.958Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+19: 2026-10-16T12:29:03.959Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+24: 2026-10-16T12:29:05.341Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+26: 2026-10-16T12:29:05.500Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+27: 2026-10-16T12:29:05.517Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+28: 2026-10-16T12:29:05.517Z|0xcc410540|Unable to initalize any audio device (even FMOD nosound device), please check your audio drivers and/or hardware for malfunction
+30: 2026-10-16T12:29:35.456Z|0xcc410540|- Loaded All Assemblies, in 29.773 seconds
+33: 2026-10-16T12:29:36.790Z|0xcc410540|[Physics::Module] Name: PhysX
+38: 2026-10-16T12:31:19.783Z|0xcc410540|requesting resize 960 x 540
+39: 2026-10-16T12:31:19.792Z|0xcc410540|resizing window to 960 x 540
+41: 2026-10-16T12:31:19.818Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+42: 2026-10-16T12:34:43.558Z|0xcc410540|UnloadTime: 181.372000 ms
+54: FRAME_LINES
+55: 0 /tmp/hollow4448-frames.txt
+56: COMPOSITOR_MAPS

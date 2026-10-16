@@ -1,0 +1,129 @@
+1: CAPTURE_BEGIN_UTC=2026-10-16T12:41:58Z
+2: BASELINE_GAME_CHANGED=0
+3: REALTIME_SCHEDULING_REQUESTED=0
+6: CONTROL=native_arm64
+7: SCHED_CHECK PASS policy0_min actual=0 expected=0
+8: SCHED_QUERY policy=0 min_errno=0
+9: SCHED_CHECK PASS policy0_max actual=0 expected=0
+10: SCHED_QUERY policy=0 max_errno=0
+11: SCHED_CHECK FAIL policy1_min actual=-1 expected=1
+12: SCHED_QUERY policy=1 min_errno=22
+13: SCHED_CHECK FAIL policy1_max actual=-1 expected=99
+14: SCHED_QUERY policy=1 max_errno=22
+15: SCHED_CHECK FAIL policy2_min actual=-1 expected=1
+16: SCHED_QUERY policy=2 min_errno=22
+17: SCHED_CHECK FAIL policy2_max actual=-1 expected=99
+18: SCHED_QUERY policy=2 max_errno=22
+19: SCHED_CHECK FAIL policy3_min actual=-1 expected=0
+20: SCHED_QUERY policy=3 min_errno=22
+21: SCHED_CHECK FAIL policy3_max actual=-1 expected=0
+22: SCHED_QUERY policy=3 max_errno=22
+23: SCHED_CHECK FAIL policy5_min actual=-1 expected=0
+24: SCHED_QUERY policy=5 min_errno=22
+25: SCHED_CHECK FAIL policy5_max actual=-1 expected=0
+26: SCHED_QUERY policy=5 max_errno=22
+27: SCHED_CHECK FAIL policy6_min actual=-1 expected=0
+28: SCHED_QUERY policy=6 min_errno=22
+29: SCHED_CHECK FAIL policy6_max actual=-1 expected=0
+30: SCHED_QUERY policy=6 max_errno=22
+31: SCHED_CHECK FAIL policy7_min actual=-1 expected=0
+32: SCHED_QUERY policy=7 min_errno=22
+33: SCHED_CHECK FAIL policy7_max actual=-1 expected=0
+34: SCHED_QUERY policy=7 max_errno=22
+35: SCHED_CHECK PASS invalid-1_min actual=22 expected=22
+36: SCHED_CHECK PASS invalid-1_max actual=22 expected=22
+37: SCHED_CHECK PASS invalid4_min actual=22 expected=22
+38: SCHED_CHECK PASS invalid4_max actual=22 expected=22
+39: SCHED_CHECK PASS invalid8_min actual=22 expected=22
+40: SCHED_CHECK PASS invalid8_max actual=22 expected=22
+41: SCHED_CHECK PASS invalid2147483647_min actual=22 expected=22
+42: SCHED_CHECK PASS invalid2147483647_max actual=22 expected=22
+43: SCHED_CHECK PASS invalid1073741824_min actual=22 expected=22
+44: SCHED_CHECK PASS invalid1073741824_max actual=22 expected=22
+45: SCHED_CHECK PASS attr_init actual=0 expected=0
+46: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+47: SCHED_CHECK PASS stack128k actual=0 expected=0
+48: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+49: FMOD_ATTR priority=90 result=0 text=No error information
+50: SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+51: SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+52: SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+53: SCHED_CHECK PASS attr_init actual=0 expected=0
+54: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+55: SCHED_CHECK PASS stack128k actual=0 expected=0
+56: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+57: FMOD_ATTR priority=94 result=0 text=No error information
+58: SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+59: SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+60: SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+61: SCHED_CHECK PASS attr_init actual=0 expected=0
+62: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+63: SCHED_CHECK PASS stack128k actual=0 expected=0
+64: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+65: FMOD_ATTR priority=99 result=0 text=No error information
+66: SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+67: SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+68: SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+69: SCHED_RESULT checks=45 failures=12
+70: NATIVE_EXIT=1
+71: CONTROL=fex_x86_glibc
+72: SCHED_CHECK PASS policy0_min actual=0 expected=0
+73: SCHED_QUERY policy=0 min_errno=0
+74: SCHED_CHECK PASS policy0_max actual=0 expected=0
+75: SCHED_QUERY policy=0 max_errno=0
+76: SCHED_CHECK FAIL policy1_min actual=-1 expected=1
+77: SCHED_QUERY policy=1 min_errno=22
+78: SCHED_CHECK FAIL policy1_max actual=-1 expected=99
+79: SCHED_QUERY policy=1 max_errno=22
+80: SCHED_CHECK FAIL policy2_min actual=-1 expected=1
+81: SCHED_QUERY policy=2 min_errno=22
+82: SCHED_CHECK FAIL policy2_max actual=-1 expected=99
+83: SCHED_QUERY policy=2 max_errno=22
+84: SCHED_CHECK FAIL policy3_min actual=-1 expected=0
+85: SCHED_QUERY policy=3 min_errno=22
+86: SCHED_CHECK FAIL policy3_max actual=-1 expected=0
+87: SCHED_QUERY policy=3 max_errno=22
+88: SCHED_CHECK FAIL policy5_min actual=-1 expected=0
+89: SCHED_QUERY policy=5 min_errno=22
+90: SCHED_CHECK FAIL policy5_max actual=-1 expected=0
+91: SCHED_QUERY policy=5 max_errno=22
+92: SCHED_CHECK FAIL policy6_min actual=-1 expected=0
+93: SCHED_QUERY policy=6 min_errno=22
+94: SCHED_CHECK FAIL policy6_max actual=-1 expected=0
+95: SCHED_QUERY policy=6 max_errno=22
+96: SCHED_CHECK FAIL policy7_min actual=-1 expected=0
+97: SCHED_QUERY policy=7 min_errno=22
+98: SCHED_CHECK FAIL policy7_max actual=-1 expected=0
+99: SCHED_QUERY policy=7 max_errno=22
+100: SCHED_CHECK PASS invalid-1_min actual=22 expected=22
+101: SCHED_CHECK PASS invalid-1_max actual=22 expected=22
+102: SCHED_CHECK PASS invalid4_min actual=22 expected=22
+103: SCHED_CHECK PASS invalid4_max actual=22 expected=22
+104: SCHED_CHECK PASS invalid8_min actual=22 expected=22
+105: SCHED_CHECK PASS invalid8_max actual=22 expected=22
+106: SCHED_CHECK PASS invalid2147483647_min actual=22 expected=22
+107: SCHED_CHECK PASS invalid2147483647_max actual=22 expected=22
+108: SCHED_CHECK PASS invalid1073741824_min actual=22 expected=22
+109: SCHED_CHECK PASS invalid1073741824_max actual=22 expected=22
+110: SCHED_CHECK PASS attr_init actual=0 expected=0
+111: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+112: SCHED_CHECK PASS stack128k actual=0 expected=0
+113: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+114: FMOD_ATTR priority=90 result=22 text=Invalid argument
+115: SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+116: SCHED_CHECK PASS attr_init actual=0 expected=0
+117: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+118: SCHED_CHECK PASS stack128k actual=0 expected=0
+119: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+120: FMOD_ATTR priority=94 result=22 text=Invalid argument
+121: SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+122: SCHED_CHECK PASS attr_init actual=0 expected=0
+123: SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+124: SCHED_CHECK PASS stack128k actual=0 expected=0
+125: SCHED_CHECK PASS attr_fifo actual=0 expected=0
+126: FMOD_ATTR priority=99 result=22 text=Invalid argument
+127: SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+128: SCHED_RESULT checks=39 failures=15
+129: FEX_EXIT=1
+130: CAPTURE_END_UTC=2026-10-16T12:41:58Z
+131: SCRIPT_EXIT=1

@@ -1,0 +1,42 @@
+#!/bin/sh
+# Exact, guarded Unity thread-helper diagnostic. No game/audio/graphics startup.
+set -eu
+SERVER=http://192.168.0.104:8766
+P=/tmp/linpad-fmod-thread-probe
+OUT=/tmp/fmod-thread4448-probe.txt
+upload() {
+    rc=$?
+    trap - EXIT
+    printf 'SCRIPT_EXIT=%s\n' "$rc" >> "$OUT"
+    if wget -T 10 -t 1 -q --post-file="$OUT" "$SERVER/report" -O /dev/null; then
+        echo FMOD_THREAD_REPORT_POSTED=1
+    else
+        printf 'FMOD_THREAD_REPORT_POSTED=0 path=%s\n' "$OUT"
+    fi
+    tail -35 "$OUT"
+    exit "$rc"
+}
+: > "$OUT"
+trap upload EXIT
+{
+    date -u '+CAPTURE_BEGIN_UTC=%Y-%m-%dT%H:%M:%SZ'
+    printf 'BASELINE_GAME_CHANGED=0\nAUDIO_STREAMS_CREATED=0\nREALTIME_SCHEDULING_REQUESTED=0\n'
+    export UNITY_PLAYER_PATH='/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so'
+    printf '%s  %s\n' 12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33 "$UNITY_PLAYER_PATH" | sha256sum -c -
+    [ ! -L "$P" ] || exit 65
+    [ ! -e "$P" ] || [ -d "$P" ] || exit 65
+    mkdir -p "$P"
+    chmod 700 "$P"
+    [ ! -L "$P/probe.download" ] || exit 65
+    wget -T 20 -t 1 -qO "$P/probe.download" "$SERVER/unity-fmod-thread-probe"
+    printf '%s  %s\n' e444463cf59c4be4b70b96a28f884a84568e4633dc682e8900bae1827486535d "$P/probe.download" | sha256sum -c -
+    chmod 755 "$P/probe.download"
+    mv "$P/probe.download" "$P/probe"
+    unset LD_PRELOAD LD_AUDIT LD_DEBUG FEX_MULTIBLOCK
+    export FEX_ROOTFS=/opt/hollow-runtime FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+    if timeout -k 3 40 /opt/fex/FEX-apple-m1-munmap "$P/probe"; then result=0; else result=$?; fi
+    printf 'FMOD_THREAD_PROBE_EXIT=%s\n' "$result"
+    date -u '+CAPTURE_END_UTC=%Y-%m-%dT%H:%M:%SZ'
+    exit "$result"
+} >> "$OUT" 2>&1

@@ -1,0 +1,6 @@
+1: Command line invocation:
+2:     /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project work/LinPad/iSH.xcodeproj -target iSH-ARM64 -configuration Release -sdk iphoneos SYMROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-build OBJROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-obj IPHONEOS_DEPLOYMENT_TARGET=17.0 ISH_JIT_BUILD=enabled CODE_SIGNING_ALLOWED=NO "ROOTFS_ARCHIVE=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/signed/Payload/iSH ARM64.app/root.tar.gz" build
+3: 
+7:     ISH_JIT_BUILD = enabled
+743:     jit            : enabled
+1926: ** BUILD SUCCEEDED **

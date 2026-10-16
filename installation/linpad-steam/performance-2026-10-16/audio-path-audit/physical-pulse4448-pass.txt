@@ -1,0 +1,49 @@
+CAPTURE_BEGIN_UTC=2026-10-16T12:31:25Z
+BASELINE_GAME_CHANGED=0
+AUDIO_STREAMS_CREATED=0
+/tmp/linpad-pulse-probe/pulse-connect-probe.download: OK
+/tmp/linpad-pulse-probe/client.conf.download: OK
+/tmp/linpad-pulse-probe/zero-token.download: OK
+/tmp/linpad-pulse-probe/run-probe.download: OK
+DIAGNOSTIC_PAYLOAD_VERIFIED=1
+CONTROL=negative_missing_socket
+/tmp/linpad-pulse-probe/pulse-connect-probe: OK
+/tmp/linpad-pulse-probe/client.conf: OK
+/tmp/linpad-pulse-probe/zero-token: OK
+PULSE_PROBE_VERSION=1
+SERVER=unix:/tmp/linpad-pulse-probe/no-such-server
+NOAUTOSPAWN=1
+AUDIO_STREAM_CREATED=0
+LIBPULSE_LOAD_PASS=1
+CONTEXT_CREATED=1
+PULSE_CONNECT_FAILED=1
+PULSE_ERRNO=6
+PULSE_ERROR=Connection refused
+NEGATIVE_MISSING_SOCKET_PASS=1
+PULSE_PROBE_ELAPSED=0.173
+PULSE_PROBE_EXIT=0
+NEGATIVE_CONTROL_EXIT=0
+CONTROL=explicit_ishaudio_socket
+/tmp/linpad-pulse-probe/pulse-connect-probe: OK
+/tmp/linpad-pulse-probe/client.conf: OK
+/tmp/linpad-pulse-probe/zero-token: OK
+PULSE_PROBE_VERSION=1
+SERVER=unix:/tmp/ishaudio/native
+NOAUTOSPAWN=1
+AUDIO_STREAM_CREATED=0
+LIBPULSE_LOAD_PASS=1
+CONTEXT_CREATED=1
+CONTEXT_STATE=1
+CONTEXT_STATE=2
+CONTEXT_STATE=3
+CONTEXT_STATE=4
+PULSE_CONNECT_PASS=1
+ISHAUDIO_SINK_COUNT=1
+SINK_QUERY_DONE=1
+SINK_QUERY_FAILED=0
+PULSE_ROUTE_PASS=1
+PULSE_PROBE_ELAPSED=0.376
+PULSE_PROBE_EXIT=0
+EXPLICIT_ROUTE_EXIT=0
+CAPTURE_END_UTC=2026-10-16T12:31:26Z
+SCRIPT_EXIT=0

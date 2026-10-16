@@ -1,0 +1,60 @@
+{
+  "source": "jit/jit.c",
+  "source_sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+  "extracted_declarations": [
+    "struct ss_entry {",
+    "static inline size_t pc_hash(",
+    "static void ss_grow_locked(",
+    "static void ss_insert_locked(",
+    "static bool ss_invalidate_locked(",
+    "void jit_invalidate_range(",
+    "static struct fiber_block *ss_get("
+  ],
+  "commands": [
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "work/performance/jit-ss-growth/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-growth/regression"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-growth/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-growth/benchmark"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-growth/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-growth/lookup-benchmark"
+    ]
+  ],
+  "scope": "Local host fixture runs actual production private functions; no device/gameplay performance claim.",
+  "stubs": "Translation, compiled-block removal, lifetime teardown and allocator-failure injection. No compiled blocks inserted.",
+  "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index.",
+  "lookup_benchmark": "65536 live PCs and permuted hits for 4/64/4096/65536-byte strides at high FEX-like addresses; exact old fixed-table hit path versus production ss_get with grown table. Node visits and local elapsed time only."
+}

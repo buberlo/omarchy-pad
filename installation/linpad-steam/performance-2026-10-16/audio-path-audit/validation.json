@@ -1,0 +1,14 @@
+{
+  "shell_syntax": "PASS",
+  "actual_awk_whitelist_tests": 3,
+  "sensitive_fixture_output": "absent",
+  "device_execution": true,
+  "x86_glibc_compile": "PASS",
+  "compiled_flags": "-O2 -Wall -Wextra",
+  "self_contained_script_syntax": "PASS",
+  "self_contained_script_device_execution": true,
+  "physical_negative_control": "PASS",
+  "physical_explicit_route": "PASS",
+  "audio_streams_created": false,
+  "production_audio_changed": false
+}

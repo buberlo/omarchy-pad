@@ -1,0 +1,15 @@
+{
+  "scope": "Local macOS-hosted LinPad CLI, SS growth plus scheduler query fix. No device performance claim.",
+  "source_head": "df8a7720618130c05d213a0002fc46968fb99a0a",
+  "files": {
+    "work/linpad-cli/ish": "2f8a87fc674799138ee99226292528a8bb498fb22e768e0ab111f17e0073d007",
+    "work/performance/vulkan-repro-root/opt/smc": "2142c33c8463ad1d85f90615f1d38c0a0bb9a80a61a1215b26d33b5df2e88ae2",
+    "work/performance/vulkan-repro-root/opt/jit-ss-smc-probe": "1877fa1b6da5795ca30d0af409bfd47ce5b4913adab1fc08d093fa21ac9a9bba",
+    "work/LinPad/jit/jit.c": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+    "work/LinPad/jit/jit_internal.h": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1",
+    "work/LinPad/kernel/resource.c": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f",
+    "work/LinPad/kernel/resource.h": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb",
+    "work/LinPad/kernel/arch/arm64/calls.c": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b",
+    "work/LinPad/kernel/arch/x86/calls.c": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc"
+  }
+}

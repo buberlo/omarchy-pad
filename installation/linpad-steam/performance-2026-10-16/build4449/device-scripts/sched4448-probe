@@ -1,0 +1,49 @@
+#!/bin/sh
+# Diagnostic only: query scheduler ABI and create inherited ordinary worker threads.
+set -eu
+SERVER=http://192.168.0.104:8766
+P=/tmp/linpad-sched-probe
+OUT=/tmp/sched4448-probe.txt
+upload() {
+    rc=$?
+    trap - EXIT
+    printf 'SCRIPT_EXIT=%s\n' "$rc" >> "$OUT"
+    if wget -T 10 -t 1 -q --post-file="$OUT" "$SERVER/report" -O /dev/null; then
+        printf 'SCHED_PROBE_REPORT_POSTED=1\n'
+    else
+        printf 'SCHED_PROBE_REPORT_POSTED=0 path=%s\n' "$OUT"
+    fi
+    tail -110 "$OUT"
+    exit "$rc"
+}
+: > "$OUT"
+trap upload EXIT
+{
+    date -u '+CAPTURE_BEGIN_UTC=%Y-%m-%dT%H:%M:%SZ'
+    printf 'BASELINE_GAME_CHANGED=0\nREALTIME_SCHEDULING_REQUESTED=0\n'
+    [ ! -L "$P" ] || exit 65
+    [ ! -e "$P" ] || [ -d "$P" ] || exit 65
+    mkdir -p "$P"
+    chmod 700 "$P"
+    fetch() {
+        name=$1; digest=$2
+        [ ! -L "$P/$name.download" ] || exit 65
+        wget -T 20 -t 1 -qO "$P/$name.download" "$SERVER/$name"
+        printf '%s  %s\n' "$digest" "$P/$name.download" | sha256sum -c -
+        chmod 755 "$P/$name.download"
+        mv "$P/$name.download" "$P/$name"
+    }
+    fetch sched-priority-arm64 7424179ec001219fabf49b041e9bcd2691983ee6378ffa36375ccaf0b16a83b9
+    fetch sched-priority-x86 1120d5bb9ee108f64a344efd518d7f35493f5bf05d94718b37de1f26bfb8d080
+    unset LD_PRELOAD FEX_MULTIBLOCK
+    echo CONTROL=native_arm64
+    if timeout -k 3 40 "$P/sched-priority-arm64"; then native=0; else native=$?; fi
+    printf 'NATIVE_EXIT=%s\n' "$native"
+    echo CONTROL=fex_x86_glibc
+    export FEX_ROOTFS=/opt/hollow-runtime FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu
+    if timeout -k 3 40 /opt/fex/FEX-apple-m1-munmap "$P/sched-priority-x86"; then guest=0; else guest=$?; fi
+    printf 'FEX_EXIT=%s\n' "$guest"
+    date -u '+CAPTURE_END_UTC=%Y-%m-%dT%H:%M:%SZ'
+    [ "$native" -eq 0 ] && [ "$guest" -eq 0 ]
+} >> "$OUT" 2>&1

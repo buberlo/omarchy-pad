@@ -1,0 +1,12 @@
+{
+  "scope": "Synthetic host-file checks only; no physical cadence result",
+  "passed": [
+    "status identifies titled view with current buffer",
+    "bounded capture excludes old rows and retains metadata for exact view filtering",
+    "existing capture cannot be overwritten",
+    "capture duration bounded at sixty seconds",
+    "unproven view rejected",
+    "ambiguous active game views rejected",
+    "historical maps without a current buffer rejected"
+  ]
+}

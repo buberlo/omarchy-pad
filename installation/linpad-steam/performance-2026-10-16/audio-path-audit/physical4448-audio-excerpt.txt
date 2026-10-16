@@ -1,0 +1,7 @@
+1: Fri Oct 16 12:29:05 UTC 2026
+240: 2026-10-16T12:29:05.341Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+241: 2026-10-16T12:29:05.417Z|0xcc410540|Forced to initialize FMOD to to the device driver's system output rate 48000, this may impact performance and/or give inconsistent experiences compared to selected sample rate 48000
+242: 2026-10-16T12:29:05.500Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+243: 2026-10-16T12:29:05.517Z|0xcc410540|FMOD failed to initialize the output device.: "An error occured that wasn't supposed to.  Contact support. " (33)
+244: 2026-10-16T12:29:05.517Z|0xcc410540|Unable to initalize any audio device (even FMOD nosound device), please check your audio drivers and/or hardware for malfunction
+245: 2026-10-16T12:29:05.683Z|0xcc410540|Begin MonoManager ReloadAssembly

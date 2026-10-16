@@ -1,0 +1,14 @@
+{
+  "source_head": "2fe6a03b50d0febc383ca199013f38fb622159c6",
+  "built_app": false,
+  "device_tested": false,
+  "files": {
+    "jit/jit.c": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+    "jit/jit_internal.h": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1",
+    "jit/DESIGN.md": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108",
+    "tests/manual/steam-compat/test-jit-ss-index.py": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614",
+    "tests/manual/steam-compat/README.md": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2"
+  },
+  "review": "Independent graphics_path source review: no production blocking issue. Preserved historical invalidation benchmark bucket layout after review.",
+  "profile_scope": "Own-app physical build4448, lookup and lock contention; no claim for changed source on device."
+}

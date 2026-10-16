@@ -1,0 +1,83 @@
+
+work/performance/game-fault-report/UnityPlayer.so:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+00000000006fa040 <.text>:
+  84ecb0: 55                           	push	rbp
+  84ecb1: 41 57                        	push	r15
+  84ecb3: 41 56                        	push	r14
+  84ecb5: 41 55                        	push	r13
+  84ecb7: 41 54                        	push	r12
+  84ecb9: 53                           	push	rbx
+  84ecba: 48 83 ec 48                  	sub	rsp, 0x48
+  84ecbe: 44 89 cd                     	mov	ebp, r9d
+  84ecc1: 49 89 d6                     	mov	r14, rdx
+  84ecc4: 49 89 f7                     	mov	r15, rsi
+  84ecc7: 4c 8b ac 24 80 00 00 00      	mov	r13, qword ptr [rsp + 0x80]
+  84eccf: 4d 85 ed                     	test	r13, r13
+  84ecd2: 0f 84 c6 00 00 00            	je	0x84ed9e <.text+0x154d5e>
+  84ecd8: 83 c1 02                     	add	ecx, 0x2
+  84ecdb: 45 31 e4                     	xor	r12d, r12d
+  84ecde: 83 f9 05                     	cmp	ecx, 0x5
+  84ece1: 77 1b                        	ja	0x84ecfe <.text+0x154cbe>
+  84ece3: 48 63 c1                     	movsxd	rax, ecx
+  84ece6: 48 8d 0d b3 25 ae ff         	lea	rcx, [rip - 0x51da4d]   # 0x3312a0
+  84eced: 44 8b 24 81                  	mov	r12d, dword ptr [rcx + 4*rax]
+  84ecf1: 48 8d 0d c8 25 ae ff         	lea	rcx, [rip - 0x51da38]   # 0x3312c0
+  84ecf8: 8b 04 81                     	mov	eax, dword ptr [rcx + 4*rax]
+  84ecfb: 89 04 24                     	mov	dword ptr [rsp], eax
+  84ecfe: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed03: e8 b8 6a c7 01               	call	0x24c57c0 <pthread_attr_init@plt>
+  84ed08: bb 21 00 00 00               	mov	ebx, 0x21
+  84ed0d: 85 c0                        	test	eax, eax
+  84ed0f: 0f 85 8e 00 00 00            	jne	0x84eda3 <.text+0x154d63>
+  84ed15: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed1a: be 01 00 00 00               	mov	esi, 0x1
+  84ed1f: e8 ac 6a c7 01               	call	0x24c57d0 <pthread_attr_setdetachstate@plt>
+  84ed24: 85 c0                        	test	eax, eax
+  84ed26: 75 7b                        	jne	0x84eda3 <.text+0x154d63>
+  84ed28: 85 ed                        	test	ebp, ebp
+  84ed2a: 74 1c                        	je	0x84ed48 <.text+0x154d08>
+  84ed2c: 81 fd ff 3f 00 00            	cmp	ebp, 0x3fff
+  84ed32: be 00 40 00 00               	mov	esi, 0x4000
+  84ed37: 0f 4f f5                     	cmovg	esi, ebp
+  84ed3a: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed3f: e8 9c 6a c7 01               	call	0x24c57e0 <pthread_attr_setstacksize@plt>
+  84ed44: 85 c0                        	test	eax, eax
+  84ed46: 75 5b                        	jne	0x84eda3 <.text+0x154d63>
+  84ed48: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed4d: 44 89 e6                     	mov	esi, r12d
+  84ed50: e8 9b 6a c7 01               	call	0x24c57f0 <pthread_attr_setschedpolicy@plt>
+  84ed55: 85 c0                        	test	eax, eax
+  84ed57: 75 4a                        	jne	0x84eda3 <.text+0x154d63>
+  84ed59: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed5e: 48 89 e6                     	mov	rsi, rsp
+  84ed61: e8 9a 6a c7 01               	call	0x24c5800 <pthread_attr_setschedparam@plt>
+  84ed66: 85 c0                        	test	eax, eax
+  84ed68: 75 39                        	jne	0x84eda3 <.text+0x154d63>
+  84ed6a: 48 8d 7c 24 08               	lea	rdi, [rsp + 0x8]
+  84ed6f: 48 8d 74 24 10               	lea	rsi, [rsp + 0x10]
+  84ed74: 4c 89 fa                     	mov	rdx, r15
+  84ed77: 4c 89 f1                     	mov	rcx, r14
+  84ed7a: e8 d1 67 c7 01               	call	0x24c5550 <pthread_create@plt>
+  84ed7f: 85 c0                        	test	eax, eax
+  84ed81: 75 20                        	jne	0x84eda3 <.text+0x154d63>
+  84ed83: 48 8d 7c 24 10               	lea	rdi, [rsp + 0x10]
+  84ed88: e8 83 6a c7 01               	call	0x24c5810 <pthread_attr_destroy@plt>
+  84ed8d: 85 c0                        	test	eax, eax
+  84ed8f: 75 12                        	jne	0x84eda3 <.text+0x154d63>
+  84ed91: 48 8b 44 24 08               	mov	rax, qword ptr [rsp + 0x8]
+  84ed96: 49 89 45 00                  	mov	qword ptr [r13], rax
+  84ed9a: 31 db                        	xor	ebx, ebx
+  84ed9c: eb 05                        	jmp	0x84eda3 <.text+0x154d63>
+  84ed9e: bb 25 00 00 00               	mov	ebx, 0x25
+  84eda3: 89 d8                        	mov	eax, ebx
+  84eda5: 48 83 c4 48                  	add	rsp, 0x48
+  84eda9: 5b                           	pop	rbx
+  84edaa: 41 5c                        	pop	r12
+  84edac: 41 5d                        	pop	r13
+  84edae: 41 5e                        	pop	r14
+  84edb0: 41 5f                        	pop	r15
+  84edb2: 5d                           	pop	rbp
+  84edb3: c3                           	ret

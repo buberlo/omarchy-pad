@@ -1,0 +1,28 @@
+Fri Oct 16 12:35:48 UTC 2026
+COMPOSITOR_PID_FILE
+SESSION_PID=16
+SESSION_CMDLINE=ishwl --runtime-dir /tmp/ishwl -v  
+SELECTED_SESSION_ENVIRONMENT
+SESSION_STDOUT_STDERR_TARGETS
+/tmp/ishwl.log
+/tmp/ishwl.log
+ISHWL_PROCESS_NAMES
+PID   COMMAND
+   16 ishwl
+FIXED_RUNTIME_PATHS
+drwxr-xr-x    2 root     root           224 Oct 16 12:28 /tmp/ishwl
+-rw-r--r--    1 root     root           275 Oct 16 12:24 /tmp/ishwl.log
+srwxr-xr-x    1 root     root             0 Oct 16 12:24 /tmp/xdg-runtime/wayland-0
+srwxr-xr-x    1 root     root             0 Oct 16 12:24 /tmp/xdg-runtime/wayland-0-gpu
+-rw-r--r--    1 root     root             0 Oct 16 12:24 /tmp/hollow4448-frames.txt
+LIVE_VIEW_BUFFER_FILES
+FRAME_LOG_CURRENT
+0
+ISHWL_OPTIONS
+CAPTURE_HOOK_STATUS
+CAPTURE_HOOK_ABSENT
+LIFECYCLE_LOG=/tmp/ishwl.log
+ishwl 47719.752: GPU clients: WAYLAND_DISPLAY=wayland-0-gpu
+ishwl 47719.753: listening on /tmp/xdg-runtime/wayland-0, runtime /tmp/ishwl
+ishwl 47719.753: scm-compat: off (native fd passing works)
+Fri Oct 16 12:35:48 UTC 2026

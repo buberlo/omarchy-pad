@@ -1,0 +1,67 @@
+#!/bin/sh
+# Passive compositor identity/path diagnostic. No FIFO reads, signals or configuration writes.
+set -u
+date -u
+echo COMPOSITOR_PID_FILE
+pidfile=/tmp/ishwl-session.pid
+if test -f "$pidfile"; then
+    pid=$(cat "$pidfile")
+    case "$pid" in
+    ''|*[!0-9]*) echo INVALID_SESSION_PID_FILE ;;
+    *)
+        printf 'SESSION_PID=%s\n' "$pid"
+        if test -r "/proc/$pid/cmdline"; then
+            cmd=$(tr '\000' ' ' < "/proc/$pid/cmdline")
+            case "$cmd" in
+            *ishwl*)
+                printf 'SESSION_CMDLINE=%s\n' "$cmd"
+                echo SELECTED_SESSION_ENVIRONMENT
+                if test -r "/proc/$pid/environ"; then
+                    tr '\000' '\n' < "/proc/$pid/environ" |
+                        grep -E '^(ISHWL_FRAMELOG|ISHWL_DMABUF|XDG_RUNTIME_DIR|WAYLAND_DISPLAY)=' || true
+                fi
+                echo SESSION_STDOUT_STDERR_TARGETS
+                readlink "/proc/$pid/fd/1" 2>/dev/null || true
+                readlink "/proc/$pid/fd/2" 2>/dev/null || true
+                ;;
+            *) echo SESSION_PID_IDENTITY_MISMATCH ;;
+            esac
+        else
+            echo SESSION_PID_NOT_READABLE
+        fi
+        ;;
+    esac
+else
+    echo SESSION_PID_FILE_MISSING
+fi
+echo ISHWL_PROCESS_NAMES
+ps -o pid,comm | awk 'NR==1 || $2=="ishwl" || $2=="ishwl-session" {print}'
+echo FIXED_RUNTIME_PATHS
+for path in /tmp/ishwl /tmp/ishwl-gpu /tmp/ishwl.log /tmp/ishwl-gpu.log \
+    /tmp/xdg-runtime/wayland-0 /tmp/xdg-runtime/wayland-0-gpu /tmp/hollow4448-frames.txt; do
+    test ! -e "$path" || ls -ld "$path"
+done
+echo LIVE_VIEW_BUFFER_FILES
+for path in /tmp/ishwl/v*.buf /tmp/ishwl-gpu/v*.buf; do
+    test ! -f "$path" || ls -lin "$path"
+done
+echo FRAME_LOG_CURRENT
+if test -f /tmp/hollow4448-frames.txt; then
+    wc -l < /tmp/hollow4448-frames.txt
+    tail -5 /tmp/hollow4448-frames.txt
+fi
+echo ISHWL_OPTIONS
+test ! -f /etc/ishwl/options || cat /etc/ishwl/options
+echo CAPTURE_HOOK_STATUS
+if test -f /etc/ishwl/session.d/99-hollow-frame-capture.sh; then
+    grep '^export ISHWL_FRAMELOG=' /etc/ishwl/session.d/99-hollow-frame-capture.sh || true
+else
+    echo CAPTURE_HOOK_ABSENT
+fi
+for logfile in /tmp/ishwl.log /tmp/ishwl-gpu.log; do
+    if test -f "$logfile"; then
+        printf 'LIFECYCLE_LOG=%s\n' "$logfile"
+        grep -E 'listening on|GPU clients|runtime |scm-compat|map (toplevel|popup)|no ack|cannot create|fatal|failed' "$logfile" | tail -80 || true
+    fi
+done
+date -u

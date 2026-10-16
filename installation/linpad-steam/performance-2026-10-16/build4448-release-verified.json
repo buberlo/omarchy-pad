@@ -1,0 +1,38 @@
+{
+  "verified_utc": "2026-10-16T12:37:58.591166+00:00",
+  "url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4448",
+  "tag": "ipad-steam-build-4448",
+  "target_commitish": "2fe6a03b50d0febc383ca199013f38fb622159c6",
+  "assets": [
+    {
+      "name": "build-manifest.json",
+      "bytes": 3243,
+      "sha256": "87be432dc0f6e98b9fe8fe83fa3afbc3663fb739e1d18b1967e6e34985fae43b",
+      "server_digest_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4448-dSYM.zip",
+      "bytes": 13521196,
+      "sha256": "3e002ef304e137d61a5214050f9d7a905152fea9ee02c761f9b79078d629b886",
+      "server_digest_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4448-Konrad.ipa",
+      "bytes": 637223845,
+      "sha256": "fd69e0641ea2f9f755866543ca836a82bdd4bddb81762cb59cf7586d53f0b365",
+      "server_digest_verified": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "bytes": 198,
+      "sha256": "bb3c5514965880d550a546c1eeb2225adb53ebe700fd33289adca816b95a7507",
+      "server_digest_verified": true
+    },
+    {
+      "name": "VERIFICATION.md",
+      "bytes": 2457,
+      "sha256": "5ccbe3116b0df98c1a6bff225a00846100a0fdd6d62344d734a8e4fa4522a418",
+      "server_digest_verified": true
+    }
+  ]
+}

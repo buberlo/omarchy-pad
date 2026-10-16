@@ -1,0 +1,131 @@
+CAPTURE_BEGIN_UTC=2026-10-16T12:41:58Z
+BASELINE_GAME_CHANGED=0
+REALTIME_SCHEDULING_REQUESTED=0
+/tmp/linpad-sched-probe/sched-priority-arm64.download: OK
+/tmp/linpad-sched-probe/sched-priority-x86.download: OK
+CONTROL=native_arm64
+SCHED_CHECK PASS policy0_min actual=0 expected=0
+SCHED_QUERY policy=0 min_errno=0
+SCHED_CHECK PASS policy0_max actual=0 expected=0
+SCHED_QUERY policy=0 max_errno=0
+SCHED_CHECK FAIL policy1_min actual=-1 expected=1
+SCHED_QUERY policy=1 min_errno=22
+SCHED_CHECK FAIL policy1_max actual=-1 expected=99
+SCHED_QUERY policy=1 max_errno=22
+SCHED_CHECK FAIL policy2_min actual=-1 expected=1
+SCHED_QUERY policy=2 min_errno=22
+SCHED_CHECK FAIL policy2_max actual=-1 expected=99
+SCHED_QUERY policy=2 max_errno=22
+SCHED_CHECK FAIL policy3_min actual=-1 expected=0
+SCHED_QUERY policy=3 min_errno=22
+SCHED_CHECK FAIL policy3_max actual=-1 expected=0
+SCHED_QUERY policy=3 max_errno=22
+SCHED_CHECK FAIL policy5_min actual=-1 expected=0
+SCHED_QUERY policy=5 min_errno=22
+SCHED_CHECK FAIL policy5_max actual=-1 expected=0
+SCHED_QUERY policy=5 max_errno=22
+SCHED_CHECK FAIL policy6_min actual=-1 expected=0
+SCHED_QUERY policy=6 min_errno=22
+SCHED_CHECK FAIL policy6_max actual=-1 expected=0
+SCHED_QUERY policy=6 max_errno=22
+SCHED_CHECK FAIL policy7_min actual=-1 expected=0
+SCHED_QUERY policy=7 min_errno=22
+SCHED_CHECK FAIL policy7_max actual=-1 expected=0
+SCHED_QUERY policy=7 max_errno=22
+SCHED_CHECK PASS invalid-1_min actual=22 expected=22
+SCHED_CHECK PASS invalid-1_max actual=22 expected=22
+SCHED_CHECK PASS invalid4_min actual=22 expected=22
+SCHED_CHECK PASS invalid4_max actual=22 expected=22
+SCHED_CHECK PASS invalid8_min actual=22 expected=22
+SCHED_CHECK PASS invalid8_max actual=22 expected=22
+SCHED_CHECK PASS invalid2147483647_min actual=22 expected=22
+SCHED_CHECK PASS invalid2147483647_max actual=22 expected=22
+SCHED_CHECK PASS invalid1073741824_min actual=22 expected=22
+SCHED_CHECK PASS invalid1073741824_max actual=22 expected=22
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=90 result=0 text=No error information
+SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=94 result=0 text=No error information
+SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=99 result=0 text=No error information
+SCHED_CHECK PASS fmod_schedparam actual=0 expected=0
+SCHED_CHECK PASS inherited_thread_create actual=0 expected=0
+SCHED_CHECK PASS worker_remains_SCHED_OTHER actual=0 expected=0
+SCHED_RESULT checks=45 failures=12
+NATIVE_EXIT=1
+CONTROL=fex_x86_glibc
+SCHED_CHECK PASS policy0_min actual=0 expected=0
+SCHED_QUERY policy=0 min_errno=0
+SCHED_CHECK PASS policy0_max actual=0 expected=0
+SCHED_QUERY policy=0 max_errno=0
+SCHED_CHECK FAIL policy1_min actual=-1 expected=1
+SCHED_QUERY policy=1 min_errno=22
+SCHED_CHECK FAIL policy1_max actual=-1 expected=99
+SCHED_QUERY policy=1 max_errno=22
+SCHED_CHECK FAIL policy2_min actual=-1 expected=1
+SCHED_QUERY policy=2 min_errno=22
+SCHED_CHECK FAIL policy2_max actual=-1 expected=99
+SCHED_QUERY policy=2 max_errno=22
+SCHED_CHECK FAIL policy3_min actual=-1 expected=0
+SCHED_QUERY policy=3 min_errno=22
+SCHED_CHECK FAIL policy3_max actual=-1 expected=0
+SCHED_QUERY policy=3 max_errno=22
+SCHED_CHECK FAIL policy5_min actual=-1 expected=0
+SCHED_QUERY policy=5 min_errno=22
+SCHED_CHECK FAIL policy5_max actual=-1 expected=0
+SCHED_QUERY policy=5 max_errno=22
+SCHED_CHECK FAIL policy6_min actual=-1 expected=0
+SCHED_QUERY policy=6 min_errno=22
+SCHED_CHECK FAIL policy6_max actual=-1 expected=0
+SCHED_QUERY policy=6 max_errno=22
+SCHED_CHECK FAIL policy7_min actual=-1 expected=0
+SCHED_QUERY policy=7 min_errno=22
+SCHED_CHECK FAIL policy7_max actual=-1 expected=0
+SCHED_QUERY policy=7 max_errno=22
+SCHED_CHECK PASS invalid-1_min actual=22 expected=22
+SCHED_CHECK PASS invalid-1_max actual=22 expected=22
+SCHED_CHECK PASS invalid4_min actual=22 expected=22
+SCHED_CHECK PASS invalid4_max actual=22 expected=22
+SCHED_CHECK PASS invalid8_min actual=22 expected=22
+SCHED_CHECK PASS invalid8_max actual=22 expected=22
+SCHED_CHECK PASS invalid2147483647_min actual=22 expected=22
+SCHED_CHECK PASS invalid2147483647_max actual=22 expected=22
+SCHED_CHECK PASS invalid1073741824_min actual=22 expected=22
+SCHED_CHECK PASS invalid1073741824_max actual=22 expected=22
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=90 result=22 text=Invalid argument
+SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=94 result=22 text=Invalid argument
+SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+SCHED_CHECK PASS attr_init actual=0 expected=0
+SCHED_CHECK PASS inherited_schedule actual=0 expected=0
+SCHED_CHECK PASS stack128k actual=0 expected=0
+SCHED_CHECK PASS attr_fifo actual=0 expected=0
+FMOD_ATTR priority=99 result=22 text=Invalid argument
+SCHED_CHECK FAIL fmod_schedparam actual=22 expected=0
+SCHED_RESULT checks=39 failures=15
+FEX_EXIT=1
+CAPTURE_END_UTC=2026-10-16T12:41:58Z
+SCRIPT_EXIT=1

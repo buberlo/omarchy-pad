@@ -1,0 +1,4 @@
+LOOKUP_BENCH entries=65536 hits=65536 stride=4 old_buckets=256 grown_buckets=65536 old_visits=8421989 grown_visits=302381 old_ns=505075000 grown_ns=14589000
+LOOKUP_BENCH entries=65536 hits=65536 stride=64 old_buckets=256 grown_buckets=65536 old_visits=8421549 grown_visits=88112 old_ns=581609000 grown_ns=3831000
+LOOKUP_BENCH entries=65536 hits=65536 stride=4096 old_buckets=256 grown_buckets=65536 old_visits=8421488 grown_visits=72917 old_ns=664253000 grown_ns=2183000
+LOOKUP_BENCH entries=65536 hits=65536 stride=65536 old_buckets=256 grown_buckets=65536 old_visits=8421479 grown_visits=86908 old_ns=600594000 grown_ns=2003000

@@ -1,0 +1,48 @@
+
+work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libc.so.6:	file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000000090d80 <pthread_attr_setschedparam>:
+   90d80: 41 56                        	push	r14
+   90d82: 41 55                        	push	r13
+   90d84: 44 8b 2e                     	mov	r13d, dword ptr [rsi]
+   90d87: 41 54                        	push	r12
+   90d89: 49 89 f4                     	mov	r12, rsi
+   90d8c: 55                           	push	rbp
+   90d8d: 53                           	push	rbx
+   90d8e: 44 8b 77 04                  	mov	r14d, dword ptr [rdi + 0x4]
+   90d92: 48 89 fb                     	mov	rbx, rdi
+   90d95: 44 89 f7                     	mov	edi, r14d
+   90d98: e8 b3 77 06 00               	call	0xf8550 <sched_get_priority_min>
+   90d9d: 44 89 f7                     	mov	edi, r14d
+   90da0: 89 c5                        	mov	ebp, eax
+   90da2: e8 79 77 06 00               	call	0xf8520 <sched_get_priority_max>
+   90da7: 89 e9                        	mov	ecx, ebp
+   90da9: ba 16 00 00 00               	mov	edx, 0x16
+   90dae: 09 c1                        	or	ecx, eax
+   90db0: 78 16                        	js	0x90dc8 <pthread_attr_setschedparam+0x48>
+   90db2: 41 39 ed                     	cmp	r13d, ebp
+   90db5: 7c 21                        	jl	0x90dd8 <pthread_attr_setschedparam+0x58>
+   90db7: 41 39 c5                     	cmp	r13d, eax
+   90dba: 7f 1c                        	jg	0x90dd8 <pthread_attr_setschedparam+0x58>
+   90dbc: 41 8b 04 24                  	mov	eax, dword ptr [r12]
+   90dc0: 83 4b 08 20                  	or	dword ptr [rbx + 0x8], 0x20
+   90dc4: 31 d2                        	xor	edx, edx
+   90dc6: 89 03                        	mov	dword ptr [rbx], eax
+   90dc8: 5b                           	pop	rbx
+   90dc9: 89 d0                        	mov	eax, edx
+   90dcb: 5d                           	pop	rbp
+   90dcc: 41 5c                        	pop	r12
+   90dce: 41 5d                        	pop	r13
+   90dd0: 41 5e                        	pop	r14
+   90dd2: c3                           	ret
+   90dd3: 0f 1f 44 00 00               	nop	dword ptr [rax + rax]
+   90dd8: ba 16 00 00 00               	mov	edx, 0x16
+   90ddd: 5b                           	pop	rbx
+   90dde: 5d                           	pop	rbp
+   90ddf: 89 d0                        	mov	eax, edx
+   90de1: 41 5c                        	pop	r12
+   90de3: 41 5d                        	pop	r13
+   90de5: 41 5e                        	pop	r14
+   90de7: c3                           	ret

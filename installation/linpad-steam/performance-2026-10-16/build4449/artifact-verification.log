@@ -1,0 +1,20 @@
+Executable=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4449/Payload/iSH ARM64.app/iSH ARM64
+warning: Specifying ':' in the path is deprecated and will not work in a future release
+{
+  "uuid": "AB1037BA-59E4-36E9-B2EB-A55908E809CB",
+  "source": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4449-Konrad.ipa",
+      "bytes": 637224488,
+      "sha256": "cc44b2f37b2283cebc617f6864f796763fd14b6a7bc2c268dcb18bc171f74bdd",
+      "crc_and_bundle_contents_verified": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4449-dSYM.zip",
+      "bytes": 13519246,
+      "sha256": "527425fcf3eaf7dd53a0ca49869f140c26d2f5625157f991157a67349e39905f",
+      "crc_and_bundle_contents_verified": true
+    }
+  ]
+}

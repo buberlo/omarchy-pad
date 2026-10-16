@@ -1,0 +1,201 @@
+{
+  "status": "frozen: passive4447 and active explicit-route4448 physical PASS; no production audio change",
+  "probe_sha256": "15b9809c68f8aba4e376b802391a87a5243d388e402188df2c9313f15b53ae4d",
+  "unity_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+  "source_files": [
+    {
+      "path": "work/LinPad/themes/guest/audio/ishaudio.pa",
+      "sha256": "8c7b4ae78d53b6255d50de6507a150c2ef79b60632a3a44bf7ded8e77488a767"
+    },
+    {
+      "path": "work/LinPad/themes/guest/audio/ishaudio-session",
+      "sha256": "a0e050418704a4d5de4b60d0836bbeb84849ca20d6b676f871795aa07f97439c"
+    },
+    {
+      "path": "work/LinPad/themes/guest/audio/ishaudio-compat.c",
+      "sha256": "ffb275e7eb23ca3331a2d3e88de6ab72681f9006189955151c894bf8f34c4812"
+    },
+    {
+      "path": "work/LinPad/themes/guest/audio/client.conf",
+      "sha256": "9b798e8462b38a07d274584934f8f6fef176855654aa2577a5f5d2971eb9ad7e"
+    },
+    {
+      "path": "work/LinPad/themes/guest/audio/daemon.conf",
+      "sha256": "d92667cf870db500cfc9074975994742d21e99bf75f56ebf4f6834f2849340ae"
+    },
+    {
+      "path": "work/LinPad/themes/guest/audio/asound.conf",
+      "sha256": "6a529cded7ca2f30c08111ecef0927c29e5b46e5972338cc0ca9f7f99a18998f"
+    },
+    {
+      "path": "work/LinPad/themes/guest/session.d/20-audio.sh",
+      "sha256": "4573433e97155144608aa4225eb9637b3243d44eef6d568ba66fc72bc583ce4c"
+    },
+    {
+      "path": "work/performance/serve/fex-hollow-egl",
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397"
+    },
+    {
+      "path": "work/performance/steam-compat/linpad-fex-native/launch-game",
+      "sha256": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3"
+    },
+    {
+      "path": "work/performance/serve/hollow4447-egl",
+      "sha256": "9af5b6c9575a649f66d2fe070eae0a082e61d70f9364e208cacc10670145c228"
+    },
+    {
+      "path": "work/performance/x86-runtime/PROVENANCE.json",
+      "sha256": "9d62decd22dd68459fea9f563cfe267533414afe5a0bf94ffa448f0abab11b28"
+    },
+    {
+      "path": "work/performance/x86-runtime/etc/pulse/client.conf",
+      "sha256": "afed55e1ec261c1d919cef2553f54c2d7f8f0c525fd830ee834e1aed91082536"
+    },
+    {
+      "path": "work/LinPad/kernel/futex.c",
+      "sha256": "cce56c55183d117db770c8fc4c99b4f089b3a0b479164308593191b32b4b5f48"
+    },
+    {
+      "path": "work/LinPad/fs/sock.c",
+      "sha256": "c4409a7bcf31cd66caff607f41a446eb72dab8d0b76cf1efcdff2416ae2b3a6c"
+    },
+    {
+      "path": "work/steam/FEX-static/FEX/Source/Tools/LinuxEmulation/LinuxSyscalls/FileManagement.cpp",
+      "sha256": "eb348fe44b84e772b5b1fc46f98bcddd1032f76b0c872eb3d6803bc8a442dc56"
+    }
+  ],
+  "documentation_access_date": "2026-10-16",
+  "docs": [
+    "https://www.fmod.com/docs/2.04/api/platforms-linux.html",
+    "https://www.fmod.com/docs/2.04/api/core-api-common.html#fmod_result",
+    "https://qa.fmod.com/t/error-51-on-linux/16184/2"
+  ],
+  "audio_packages": [
+    {
+      "package": "libasound2t64",
+      "version": "1.2.14-1+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/a/alsa-lib/libasound2t64_1.2.14-1+deb13u1_amd64.deb",
+      "sha256": "5495496142d57e5ad6d581ac5456ec3c87f872c109a2bfb815d154b673eebc67",
+      "archive_bytes": 380896,
+      "installed_kib": 1265
+    },
+    {
+      "package": "libpulse0",
+      "version": "17.0+dfsg1-2+b1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/p/pulseaudio/libpulse0_17.0+dfsg1-2+b1_amd64.deb",
+      "sha256": "786aca79119cb249562708fd24dcdf817604cfe75bbfcb8cda3464042e17f40e",
+      "archive_bytes": 275632,
+      "installed_kib": 973
+    }
+  ],
+  "physical_report": {
+    "source": "work/performance/reports/audio-path4447.txt",
+    "sha256": "9297375831fc30b003807d2cf8771fece82ecfd6cd10e0f8aab8b47d0c51c069",
+    "capture_utc": "2026-10-16T12:22:01Z",
+    "build": 4447
+  },
+  "active_probe": {
+    "compiled": true,
+    "device_executed": true,
+    "game_baseline_changed": false,
+    "runtime": "/opt/fex/FEX-apple-m1-munmap",
+    "compiler": "work/build-tools/lib/python3.15/site-packages/ziglang/zig cc -target x86_64-linux-gnu -O2 -Wall -Wextra -ldl",
+    "target_sink": "ishaudio",
+    "streams_created": false,
+    "real_authentication_cookies_accessed": false,
+    "synthetic_token_bytes": 256,
+    "connect_timeout_seconds": 15,
+    "query_timeout_seconds": 10,
+    "outer_timeout_seconds": 60,
+    "source_sha256": "7ef0856d46cc58e2d3dde6b88f141a37d2f1a6289354b0fed9b8f4c49dd8b72f",
+    "binary_sha256": "b8b7186c32a8a8eea02807880703a6f965b7ee12f3f6f268c57bfdb3a6099f2e",
+    "device_result": {
+      "source": "work/performance/reports/pulse4448-device-pass.txt",
+      "sha256": "e502317fa69dfd2017ea7bbc7aa3635653be4fca66a2b444bb0c95baf1a4bb59",
+      "archive_file": "physical-pulse4448-pass.txt",
+      "build": 4448,
+      "begin_utc": "2026-10-16T12:31:25Z",
+      "end_utc": "2026-10-16T12:31:26Z",
+      "negative_control_exit": 0,
+      "explicit_route_exit": 0,
+      "explicit_route_seconds": 0.376,
+      "sink_count": 1,
+      "audio_playback_verified": false,
+      "fmod_init_verified": false
+    }
+  },
+  "official_pulseaudio_source": [
+    {
+      "source_url": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/pulse/client-conf.c",
+      "local_file": "pulse17-client-conf.c",
+      "sha256": "341c46e9f1b89ac9a09be430aa3a750f73fb1858664fc78594b615676507d830"
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/pulsecore/authkey.c",
+      "local_file": "pulse17-authkey.c",
+      "sha256": "879d0a064a50ee5141e402f8537d1fee88d79e9c835ab20da0fb661127826bf3"
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/pulse/context.h",
+      "local_file": "pulse17-context.h",
+      "sha256": "9c11f1c982c990e122592ec7e428cc8cf07d7bfbda177a37ab34d8fb682a96e3"
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/pulse/introspect.h",
+      "local_file": "pulse17-introspect.h",
+      "sha256": "fdf38178ac144476d706abde9456ce5a0d1bae6ffc2a58b42ff9a2097ab81f84"
+    },
+    {
+      "source_url": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/pulse/def.h",
+      "local_file": "pulse17-def.h",
+      "sha256": "57241aeafcce72061367ba0b04fd96a254b64591ff191a5fa6cea11544b27481"
+    }
+  ],
+  "served_files": [
+    {
+      "name": "audio-path-probe",
+      "sha256": "15b9809c68f8aba4e376b802391a87a5243d388e402188df2c9313f15b53ae4d",
+      "bytes": 4821
+    },
+    {
+      "name": "pulse-connect-probe",
+      "sha256": "b8b7186c32a8a8eea02807880703a6f965b7ee12f3f6f268c57bfdb3a6099f2e",
+      "bytes": 25960
+    },
+    {
+      "name": "pulse-probe-client.conf",
+      "sha256": "f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52",
+      "bytes": 267
+    },
+    {
+      "name": "pulse-probe-zero-token",
+      "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+      "bytes": 256
+    },
+    {
+      "name": "run-pulse-connect-probe",
+      "sha256": "1ba48f84d71488687689e16d14c49ac169dec45d35737d2f409c5bc86d3b14db",
+      "bytes": 870
+    },
+    {
+      "name": "fex-hollow-audio-candidate",
+      "sha256": "d79245c6d2133a7db89c28de5d9784c29645fbdbc3ce4b0cd3aa36cd34a2dbee",
+      "bytes": 871
+    },
+    {
+      "name": "pulse4448-probe",
+      "sha256": "7df6ef1ec3a5112413dcfb60ec076c16e74c052472f8a5360067300f3a5c749a",
+      "bytes": 2299
+    }
+  ],
+  "audio4448_excerpt": {
+    "source": "work/performance/reports/hollow4448-status-1.txt",
+    "sha256": "7102468d1d8b5f833f70cccd8fa127e01d5f53454b4d09f2d7f971ac09ed9826",
+    "archive_file": "physical4448-audio-excerpt.txt",
+    "archive_sha256": "d156dc13a8ff1cd4519df14946d52a7ce5f520f22fd6bbded2b759cc337cf04f",
+    "qualification": "nosound device also fails; game continues assembly loading; cause unconfirmed"
+  },
+  "frozen": true
+}

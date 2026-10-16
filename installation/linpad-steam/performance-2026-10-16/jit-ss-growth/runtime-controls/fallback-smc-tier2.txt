@@ -1,0 +1,18 @@
+ish: native JIT on: dual mapping, 512 MB code arena at 0x107448000
+1 call 96  getpid() = 0x1
+1 call 222 mmap64(0x0, 0x1000, 0x7, 0x22, -1, 0x0) = 0xefff6000
+1 call 215 munmap(0xefff6000, 0x1000) = 0x0
+1 call 29  ioctl(1, 0x5413, 0xffffbaa8) = 0xffffffe7
+1 call 66  writev(1, 0xffffba30, 2) {"jit-ss-smc PASS checks=200 failures=0", 37} {"
+jit-ss-smc PASS checks=200 failures=0
+", 1} = 0x26
+1 call 94  exit_group(0)
+[jit] mm 0x102a6e620: 447 blocks, 61 KB code, 201 fallbacks, 200 invalidations, 0 flushes, 0 far chains
+[jit]   promoted to tier 2: 0 blocks
+[jit]   at exit: 447 blocks in 1 chunks (200 invalidated), maps 28 KB, 200 dead negative entries and 200 dead single-step blocks not yet freed, 1 live single-step
+[jit]   translate 0.5 ms, invalidate 0.0 ms (200 blocks, 0 slots)
+[jit]   guest insns 1608, host words/insn 9.9 (hot 5.5)
+[jit]   pcache (process-wide so far): 0 hits, 0 misses, 0 stored
+[jit]   tlb misses 10 (page-crossing 0), tlb flushes 1
+[jit]   exits: chain=222 indirect=251 fallback=1 syscall=6 icivau=200
+[jit]   fallback d51b4415 x1

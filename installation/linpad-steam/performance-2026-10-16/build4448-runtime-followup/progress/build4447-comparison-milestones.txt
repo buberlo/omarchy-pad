@@ -1,0 +1,4 @@
+1: Fri Oct 16 11:57:56 UTC 2026
+233: 2026-10-16T12:05:49.625Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+235: 2026-10-16T12:05:49.637Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+241: Fri Oct 16 12:13:22 UTC 2026

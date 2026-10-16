@@ -1,0 +1,81 @@
+{
+  "build": "4448",
+  "source_commit": "d4ea14293dc2526e9a14de55f676adcdf88e4e31",
+  "status": "no compositor game frames observed at this snapshot",
+  "files": [
+    {
+      "source": "work/performance/archive-build4448-presentation-observations.py",
+      "destination": "archive-build4448-presentation-observations.py",
+      "sha256": "0ce6b90ea63edda91e81175b4f270b91faf3e4bb6ad98e2534f2f083282503e0",
+      "bytes": 6862,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4448-compositor-status",
+      "destination": "diagnostics/hollow4448-compositor-status",
+      "sha256": "2a95bcbb0bb16ffcf2ea3a86af79309ed86678a8b722b4462598947e899ce8a1",
+      "bytes": 2440,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/compositor4448-status.txt",
+      "destination": "compositor4448-status.txt",
+      "sha256": "f80b3279854b1d9b3c186d95ff6470406f26cd009cf325eba19f60fda1edf4f3",
+      "bytes": 1018,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4448/swapchain-profile-summary.json",
+      "destination": "profile/swapchain-profile-summary.json",
+      "sha256": "2552ba8be204c9e4f31b1692ac594936c8bf7a3d468aad9330ae2bd5daef7e59",
+      "bytes": 10869,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/swapchain-lock-paths.json",
+      "destination": "profile/swapchain-lock-paths.json",
+      "sha256": "2129defb6bf5bbaa2300dc93bef4626f7cdc6cc99bbf0e9a27805012ec8dfadb",
+      "bytes": 4589,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/summarize-time-profile.py",
+      "destination": "profile/summarize-time-profile.py",
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca",
+      "bytes": 2596,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-view-status-1.txt",
+      "destination": "hollow4448-view-status-1-excerpt.txt",
+      "raw_sha256": "4501e7a37541988635803ef14137547356fdd395733151eca1b69385c626404c",
+      "raw_bytes": 3547,
+      "archived_sha256": "8bff84b5c8eab5888100164515532a8924dec2f5347321abda00e3633627b7c6",
+      "mode": "numbered selected lines; complete raw report remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-short-1.txt",
+      "destination": "hollow4448-short-1-excerpt.txt",
+      "raw_sha256": "162b79ca263bde0e8f0509542d6cae7f594dbfeb4ba7fd9ac2943730bdd7d9ee",
+      "raw_bytes": 5144,
+      "archived_sha256": "68ab59d6cbb0cbc6807d278347d8dceb7cfb36610d1cad4b3b109ca7b3bba526",
+      "mode": "numbered selected lines; complete raw report remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-short-2.txt",
+      "destination": "hollow4448-short-2-excerpt.txt",
+      "raw_sha256": "a4cf948f7244ec46fd4248d8489d0d32cfa5136a6cd54e731804662284ce43d0",
+      "raw_bytes": 5086,
+      "archived_sha256": "2e758fb33c42e2b77d91d43cbff871a0af6adbc992b11581301d30fd393e0f22",
+      "mode": "numbered selected lines; complete raw report remains local"
+    },
+    {
+      "source": "work/performance/reports/hollow4448-short-3.txt",
+      "destination": "hollow4448-short-3-excerpt.txt",
+      "raw_sha256": "e6c868823798935382dcc4f52a647b50506ab518e55749663ea3529866c7847f",
+      "raw_bytes": 4563,
+      "archived_sha256": "2bea22088391fd54ec1368d3ba5acb1fbec31336c8f94f4556c9a1bd1bb19440",
+      "mode": "numbered selected lines; complete raw report remains local"
+    }
+  ]
+}

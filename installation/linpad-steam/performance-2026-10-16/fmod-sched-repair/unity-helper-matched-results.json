@@ -1,0 +1,16 @@
+[
+  {
+    "state": "before",
+    "exit": 1,
+    "timeout": false,
+    "elapsed": 0.717,
+    "cli_sha256": "ef0e4c1a0e8e114c9c0ead0db1e89fe3fccee45c271b07b3439731b7bd2949bd"
+  },
+  {
+    "state": "after",
+    "exit": 0,
+    "timeout": false,
+    "elapsed": 0.665,
+    "cli_sha256": "2f8a87fc674799138ee99226292528a8bb498fb22e768e0ab111f17e0073d007"
+  }
+]

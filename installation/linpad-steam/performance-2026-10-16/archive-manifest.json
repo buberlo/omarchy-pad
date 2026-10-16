@@ -1,7 +1,117 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, vDSO, Vulkan, FEX, Steam, EGL, Unity SDL, Mono stack-guard and JIT cache repairs; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and scheduler/audio-thread repairs; no authentication or proprietary game binaries.",
   "files": [
+    {
+      "path": "audio-path-audit/README.md",
+      "bytes": 10704,
+      "sha256": "75496160fe2c692ad4b37a6cd0867ae541694ca1fb1fd6bc63c99369c37e5cfb"
+    },
+    {
+      "path": "audio-path-audit/SHA256SUMS",
+      "bytes": 1789,
+      "sha256": "e2f0a56660dfbb0ec17a9c2f6f281fc4cdd995be9a5961194c94a4ffdc49fb5e"
+    },
+    {
+      "path": "audio-path-audit/audio-path-probe",
+      "bytes": 4821,
+      "sha256": "15b9809c68f8aba4e376b802391a87a5243d388e402188df2c9313f15b53ae4d"
+    },
+    {
+      "path": "audio-path-audit/build-probe.sh",
+      "bytes": 326,
+      "sha256": "28e288e551667ece2815b03c124d49c638cb29129d7ee172acb25014647227e8"
+    },
+    {
+      "path": "audio-path-audit/client.conf",
+      "bytes": 267,
+      "sha256": "f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52"
+    },
+    {
+      "path": "audio-path-audit/fex-hollow-audio-candidate",
+      "bytes": 871,
+      "sha256": "d79245c6d2133a7db89c28de5d9784c29645fbdbc3ce4b0cd3aa36cd34a2dbee"
+    },
+    {
+      "path": "audio-path-audit/physical-paths4447.txt",
+      "bytes": 4079,
+      "sha256": "9297375831fc30b003807d2cf8771fece82ecfd6cd10e0f8aab8b47d0c51c069"
+    },
+    {
+      "path": "audio-path-audit/physical-pulse4448-pass.txt",
+      "bytes": 1367,
+      "sha256": "e502317fa69dfd2017ea7bbc7aa3635653be4fca66a2b444bb0c95baf1a4bb59"
+    },
+    {
+      "path": "audio-path-audit/physical4448-audio-excerpt.txt",
+      "bytes": 964,
+      "sha256": "d156dc13a8ff1cd4519df14946d52a7ce5f520f22fd6bbded2b759cc337cf04f"
+    },
+    {
+      "path": "audio-path-audit/provenance.json",
+      "bytes": 7984,
+      "sha256": "cdbe515ea5cce6ffd0331ffb3c486067be6683ffa04507777eb7cc3c5d90f443"
+    },
+    {
+      "path": "audio-path-audit/pulse-connect-probe",
+      "bytes": 25960,
+      "sha256": "b8b7186c32a8a8eea02807880703a6f965b7ee12f3f6f268c57bfdb3a6099f2e"
+    },
+    {
+      "path": "audio-path-audit/pulse-connect-probe.c",
+      "bytes": 5888,
+      "sha256": "7ef0856d46cc58e2d3dde6b88f141a37d2f1a6289354b0fed9b8f4c49dd8b72f"
+    },
+    {
+      "path": "audio-path-audit/pulse17-authkey.c",
+      "bytes": 5382,
+      "sha256": "879d0a064a50ee5141e402f8537d1fee88d79e9c835ab20da0fb661127826bf3"
+    },
+    {
+      "path": "audio-path-audit/pulse17-client-conf.c",
+      "bytes": 8036,
+      "sha256": "341c46e9f1b89ac9a09be430aa3a750f73fb1858664fc78594b615676507d830"
+    },
+    {
+      "path": "audio-path-audit/pulse17-context.h",
+      "bytes": 13537,
+      "sha256": "9c11f1c982c990e122592ec7e428cc8cf07d7bfbda177a37ab34d8fb682a96e3"
+    },
+    {
+      "path": "audio-path-audit/pulse17-def.h",
+      "bytes": 46711,
+      "sha256": "57241aeafcce72061367ba0b04fd96a254b64591ff191a5fa6cea11544b27481"
+    },
+    {
+      "path": "audio-path-audit/pulse17-introspect.h",
+      "bytes": 49895,
+      "sha256": "fdf38178ac144476d706abde9456ce5a0d1bae6ffc2a58b42ff9a2097ab81f84"
+    },
+    {
+      "path": "audio-path-audit/pulse4448-probe",
+      "bytes": 2299,
+      "sha256": "7df6ef1ec3a5112413dcfb60ec076c16e74c052472f8a5360067300f3a5c749a"
+    },
+    {
+      "path": "audio-path-audit/run-pulse-connect-probe",
+      "bytes": 870,
+      "sha256": "1ba48f84d71488687689e16d14c49ac169dec45d35737d2f409c5bc86d3b14db"
+    },
+    {
+      "path": "audio-path-audit/test-probe-filters.py",
+      "bytes": 1779,
+      "sha256": "07fc9b2214fa80ffeba51ad9eb844b818744333946701b4ba6befaa14a8a2360"
+    },
+    {
+      "path": "audio-path-audit/validation.json",
+      "bytes": 443,
+      "sha256": "dab46dab0e7da6a85e11edfd5ee80aa676a5869cde7b1ba56817cc635b0e0ba4"
+    },
+    {
+      "path": "audio-path-audit/zero-token",
+      "bytes": 256,
+      "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+    },
     {
       "path": "build4442/SHA256SUMS",
       "bytes": 831,
@@ -598,6 +708,11 @@
       "sha256": "613d954da8653b6e77f765b380d2366fbdd2ec0d56d6314b0a357c8fd6b854df"
     },
     {
+      "path": "build4447-release-verified.json",
+      "bytes": 958,
+      "sha256": "61e1240048da075b579300ca446c567bfa4ba82f5ea7b727e1bac7996b160519"
+    },
+    {
       "path": "build4447/REPOSITORY-SHA256SUMS",
       "bytes": 2273,
       "sha256": "1a0607ddb5939ebe85ac039740a8138cd771af5e4f9c740b919d941eeb1a6757"
@@ -728,9 +843,164 @@
       "sha256": "8935eed645c807d6efc8aa5fee8a393fa1f780ec2edbada983ea4295c1ba4f87"
     },
     {
-      "path": "build4447-release-verified.json",
-      "bytes": 958,
-      "sha256": "61e1240048da075b579300ca446c567bfa4ba82f5ea7b727e1bac7996b160519"
+      "path": "build4448-presentation-observations/README.md",
+      "bytes": 2845,
+      "sha256": "a6772e6ee0fb7816c6a2b9dcb1fcdeb3ba48b2e082b6968c9f70979fabd90cf6"
+    },
+    {
+      "path": "build4448-presentation-observations/SHA256SUMS",
+      "bytes": 1169,
+      "sha256": "7496eea38e75935921b760859767e9ae8aa1827bb2140c9635afcca5f7bd7491"
+    },
+    {
+      "path": "build4448-presentation-observations/archive-build4448-presentation-observations.py",
+      "bytes": 6862,
+      "sha256": "0ce6b90ea63edda91e81175b4f270b91faf3e4bb6ad98e2534f2f083282503e0"
+    },
+    {
+      "path": "build4448-presentation-observations/compositor4448-status.txt",
+      "bytes": 1018,
+      "sha256": "f80b3279854b1d9b3c186d95ff6470406f26cd009cf325eba19f60fda1edf4f3"
+    },
+    {
+      "path": "build4448-presentation-observations/diagnostics/hollow4448-compositor-status",
+      "bytes": 2440,
+      "sha256": "2a95bcbb0bb16ffcf2ea3a86af79309ed86678a8b722b4462598947e899ce8a1"
+    },
+    {
+      "path": "build4448-presentation-observations/hollow4448-short-1-excerpt.txt",
+      "bytes": 1329,
+      "sha256": "68ab59d6cbb0cbc6807d278347d8dceb7cfb36610d1cad4b3b109ca7b3bba526"
+    },
+    {
+      "path": "build4448-presentation-observations/hollow4448-short-2-excerpt.txt",
+      "bytes": 1395,
+      "sha256": "2e758fb33c42e2b77d91d43cbff871a0af6adbc992b11581301d30fd393e0f22"
+    },
+    {
+      "path": "build4448-presentation-observations/hollow4448-short-3-excerpt.txt",
+      "bytes": 1928,
+      "sha256": "2bea22088391fd54ec1368d3ba5acb1fbec31336c8f94f4556c9a1bd1bb19440"
+    },
+    {
+      "path": "build4448-presentation-observations/hollow4448-view-status-1-excerpt.txt",
+      "bytes": 465,
+      "sha256": "8bff84b5c8eab5888100164515532a8924dec2f5347321abda00e3633627b7c6"
+    },
+    {
+      "path": "build4448-presentation-observations/profile/summarize-time-profile.py",
+      "bytes": 2596,
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca"
+    },
+    {
+      "path": "build4448-presentation-observations/profile/swapchain-lock-paths.json",
+      "bytes": 4589,
+      "sha256": "2129defb6bf5bbaa2300dc93bef4626f7cdc6cc99bbf0e9a27805012ec8dfadb"
+    },
+    {
+      "path": "build4448-presentation-observations/profile/swapchain-profile-summary.json",
+      "bytes": 10869,
+      "sha256": "2552ba8be204c9e4f31b1692ac594936c8bf7a3d468aad9330ae2bd5daef7e59"
+    },
+    {
+      "path": "build4448-presentation-observations/provenance.json",
+      "bytes": 3557,
+      "sha256": "2410e8cec4eba85d12eccc520aa737d6b39d28a90b5149ce4a13ac15d72d8421"
+    },
+    {
+      "path": "build4448-release-verified.json",
+      "bytes": 1248,
+      "sha256": "a4449d10317effa1bef7cd7f89aea6935feda5301fd92420f4088032ee772052"
+    },
+    {
+      "path": "build4448-runtime-followup/FRAME-CAPTURE.md",
+      "bytes": 2975,
+      "sha256": "6a04a3ca875a4e33b180cedc74d9b381ffd745fe715a9f81cf10ef3110d56e2f"
+    },
+    {
+      "path": "build4448-runtime-followup/README.md",
+      "bytes": 1718,
+      "sha256": "c33a894ec4f650c8d5a1f9d56a4fd444e45251331d31f7400b11397b30e9938a"
+    },
+    {
+      "path": "build4448-runtime-followup/SHA256SUMS",
+      "bytes": 1662,
+      "sha256": "ce81ec13ddb01284437314d46124a9df70e6a7e8a8b8e088f08ec1382a4f5c9d"
+    },
+    {
+      "path": "build4448-runtime-followup/archive-build4448-runtime-followup.py",
+      "bytes": 9839,
+      "sha256": "8e5f08bc61d2fa98007c21ec0acab5d7a677822cba46c82582377572b2b4fd73"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/capture-tests.json",
+      "bytes": 465,
+      "sha256": "e263cdf809f0d572b328c3413f93528ff964752502f519a576f2c59e73053285"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/parser-tests.json",
+      "bytes": 411,
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/serve/hollow4448-frame-capture",
+      "bytes": 4266,
+      "sha256": "5129521715635968bb2b6cc39237fe40196604a1c85ae8d2dd9936000eeef98c"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/test-hollow-frame-parser.py",
+      "bytes": 1821,
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba"
+    },
+    {
+      "path": "build4448-runtime-followup/diagnostics/test-hollow4448-frame-capture.py",
+      "bytes": 3082,
+      "sha256": "b0ba6785d5a7c15965e9f2f2e8434c8f23a813e44d1f62ceaf51ad63275c7d4c"
+    },
+    {
+      "path": "build4448-runtime-followup/profile/capture-metadata.json",
+      "bytes": 580,
+      "sha256": "8857b671d6306884928605a7bb05a522304d2727ec377e0c0cb3d955cbc7a315"
+    },
+    {
+      "path": "build4448-runtime-followup/profile/summarize-time-profile.py",
+      "bytes": 2596,
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca"
+    },
+    {
+      "path": "build4448-runtime-followup/profile/summary.json",
+      "bytes": 9542,
+      "sha256": "d489d7005619ed668dabc511d6705ae8eae223071ed35df4b6f536b14900b52e"
+    },
+    {
+      "path": "build4448-runtime-followup/progress/build4447-comparison-milestones.txt",
+      "bytes": 284,
+      "sha256": "2d6584e4d13175ba511ccaee30f6221317eac01d1254ba4e1c6551036c021db5"
+    },
+    {
+      "path": "build4448-runtime-followup/progress/status-1-milestones.txt",
+      "bytes": 927,
+      "sha256": "612c411ffda9cd208f93bff0e954326c094988a89e64f049e7c08aabcda198aa"
+    },
+    {
+      "path": "build4448-runtime-followup/progress/status-2-milestones.txt",
+      "bytes": 1172,
+      "sha256": "51c3a2708227c9ee4e5e655554bc8560bfee73d5c87d0674fa294415f9212d08"
+    },
+    {
+      "path": "build4448-runtime-followup/progress/status-3-milestones.txt",
+      "bytes": 1172,
+      "sha256": "788212eec2417df2dbda15e467d7fe3d42ec1d7aac43b9dbc647df227ff7a9fb"
+    },
+    {
+      "path": "build4448-runtime-followup/provenance.json",
+      "bytes": 4085,
+      "sha256": "9d8dae2368d4e26e74c10db491d455ffe5612fe9c58c32500310c3f76e39b021"
     },
     {
       "path": "build4448/REPOSITORY-SHA256SUMS",
@@ -856,6 +1126,186 @@
       "path": "build4448/symbols.json",
       "bytes": 266,
       "sha256": "600b79dfde7b4093dd6ec9cf6f66731e072c17a8f4e920ad23ff6a36ea5b2341"
+    },
+    {
+      "path": "build4449/REPOSITORY-SHA256SUMS",
+      "bytes": 3275,
+      "sha256": "5430117c39cdf6c04cfdf9f849fe14d54e7f4ba58af2eb31759108d9c1abf54e"
+    },
+    {
+      "path": "build4449/SHA256SUMS",
+      "bytes": 198,
+      "sha256": "3d021b79840d25f9c63da8ad06d5f409aae1dbd758e2d330194a0147f983ee45"
+    },
+    {
+      "path": "build4449/VERIFICATION.md",
+      "bytes": 3132,
+      "sha256": "3a3dce4fd59fc004c27f6516025eeb0d4d60ae50e5aff6dca14df48dabbcb103"
+    },
+    {
+      "path": "build4449/artifact-verification.log",
+      "bytes": 805,
+      "sha256": "8dcc4acc7998bb6005dd45bf1491e823dd0426935556d7af1078332f6e2f532e"
+    },
+    {
+      "path": "build4449/build-local.sh",
+      "bytes": 399,
+      "sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "path": "build4449/build-manifest.json",
+      "bytes": 5671,
+      "sha256": "cc900aa5b289c052c3a7edda5d17b5b548e947493276d9400d484b8206d00447"
+    },
+    {
+      "path": "build4449/build-summary.log",
+      "bytes": 712,
+      "sha256": "b53df942549080324d246e94aa5338bd9fc9799f29c42fb0bc31b49e7f09b9a4"
+    },
+    {
+      "path": "build4449/curate-build4449.py",
+      "bytes": 14734,
+      "sha256": "1886c422876c5fb76059c930e4fdc73e17b7978df236feb8f050c2bef9373685"
+    },
+    {
+      "path": "build4449/device-boot-excerpt.txt",
+      "bytes": 394,
+      "sha256": "95d61debced642e5459e6081650e7db860454dc9b027e690ae46af848ce10042"
+    },
+    {
+      "path": "build4449/device-install-evidence.json",
+      "bytes": 314,
+      "sha256": "ab184a20d7eec7edf5a58c57654a1ccf1c089b9aab4646f29c76d9695fa6ebe8"
+    },
+    {
+      "path": "build4449/device-scripts/fmod-thread4448-probe",
+      "bytes": 1835,
+      "sha256": "febae62707bfe4075de014bcae027f1c223b1781da31a1c82eb5db964d7baf7f"
+    },
+    {
+      "path": "build4449/device-scripts/sched4448-probe",
+      "bytes": 1900,
+      "sha256": "3f3e5cdbab07ca4cf8dac752038d116e52efe9c73be3242c7255027aaacad538"
+    },
+    {
+      "path": "build4449/device-scripts/smc4449-probe",
+      "bytes": 809,
+      "sha256": "329fc12bf66532c8a55b5cf27c3cc6789e3a22613f1d5dd823f242dc26da770a"
+    },
+    {
+      "path": "build4449/fmod-thread4448-device-before.txt",
+      "bytes": 712,
+      "sha256": "79f7aaac32a5379b1bfa5a155fc49fcd3c1d1f2ce900c647e2188a15c0847fc8"
+    },
+    {
+      "path": "build4449/fmod-thread4449-device-pass.txt",
+      "bytes": 703,
+      "sha256": "f2e0f2795abe7550f9b7eec1b158fd5647b7fab6067666cba79995c8800f2bb6"
+    },
+    {
+      "path": "build4449/initial-build-manifest.json",
+      "bytes": 2866,
+      "sha256": "58fc011372a746b9305db93b1b4d00af80ad44e32f7dbb1619912a302cb82331"
+    },
+    {
+      "path": "build4449/record-artifact.py",
+      "bytes": 4244,
+      "sha256": "672884ab83823f154e43ab31e0abcc5c0923e808b224e500d47a905a03b4eaa7"
+    },
+    {
+      "path": "build4449/release-notes.md",
+      "bytes": 1900,
+      "sha256": "38fc8aa25d16d6bb41225e23cd48948faec1256740b58b0ce72fbd76f12eea2f"
+    },
+    {
+      "path": "build4449/sched4448-device-before-final.txt",
+      "bytes": 6500,
+      "sha256": "0859f4771ae59d85e4509cdf48e085d809822d0539977f0efb190117754b2ed1"
+    },
+    {
+      "path": "build4449/sched4449-device-pass.txt",
+      "bytes": 6826,
+      "sha256": "c0e33edaeb74ea6dcff2dcbf965d83a247e3dba0ee65e6c9a367cca08985eb22"
+    },
+    {
+      "path": "build4449/signed-entitlements.plist",
+      "bytes": 847,
+      "sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "path": "build4449/signing-excerpt.txt",
+      "bytes": 187,
+      "sha256": "5d2786804ec800e05ac99423e9e410260c21973e181ff4548b7cf97accee241d"
+    },
+    {
+      "path": "build4449/smc4449-device-pass.txt",
+      "bytes": 234,
+      "sha256": "d3003a5d6e3472113a31eabfe1fcd5817e7f3215757d1dfae37db260eb2b03f4"
+    },
+    {
+      "path": "build4449/source-changes.patch",
+      "bytes": 23897,
+      "sha256": "6473438a80c722373a033b2cc05beb87025ea85377c105e8d832e78325ab14cb"
+    },
+    {
+      "path": "build4449/source-commit.txt",
+      "bytes": 41,
+      "sha256": "ad41270f190e97010a0779198bc8c73c9157764a40ddc0220793fa1d8630694a"
+    },
+    {
+      "path": "build4449/source-evidence.json",
+      "bytes": 11048,
+      "sha256": "4c1ca7e25960f4aae6ea589fbc63a9bd9557b303a7a291aba41b134cecc114a0"
+    },
+    {
+      "path": "build4449/source-snapshot/jit/DESIGN.md",
+      "bytes": 23473,
+      "sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108"
+    },
+    {
+      "path": "build4449/source-snapshot/jit/jit.c",
+      "bytes": 83970,
+      "sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22"
+    },
+    {
+      "path": "build4449/source-snapshot/jit/jit_internal.h",
+      "bytes": 15148,
+      "sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1"
+    },
+    {
+      "path": "build4449/source-snapshot/kernel/arch/arm64/calls.c",
+      "bytes": 13653,
+      "sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b"
+    },
+    {
+      "path": "build4449/source-snapshot/kernel/arch/x86/calls.c",
+      "bytes": 9209,
+      "sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc"
+    },
+    {
+      "path": "build4449/source-snapshot/kernel/resource.c",
+      "bytes": 10920,
+      "sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f"
+    },
+    {
+      "path": "build4449/source-snapshot/kernel/resource.h",
+      "bytes": 2621,
+      "sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb"
+    },
+    {
+      "path": "build4449/source-snapshot/tests/manual/steam-compat/README.md",
+      "bytes": 7046,
+      "sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2"
+    },
+    {
+      "path": "build4449/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 22122,
+      "sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614"
+    },
+    {
+      "path": "build4449/symbols.json",
+      "bytes": 266,
+      "sha256": "c2d6768f339844b7ef978c48902bdec235753ea0fdf3a4401412ec48fd4d5683"
     },
     {
       "path": "egl-repair/ARCHIVE.md",
@@ -1498,6 +1948,156 @@
       "sha256": "b77bad2c80a73ce8abfbab9a5910e7502a0853bdddeea6727549497ed4143b8a"
     },
     {
+      "path": "fmod-sched-repair/README.md",
+      "bytes": 6323,
+      "sha256": "0bb566e85bbd4998f7d88fc6cb872ea53ce059022f7680de2b8d52384ab78fbd"
+    },
+    {
+      "path": "fmod-sched-repair/SHA256SUMS",
+      "bytes": 2599,
+      "sha256": "2fc116a2002c60a175c51f7e5cd18da1b00a7f2f12e9390856f1e647964f2d15"
+    },
+    {
+      "path": "fmod-sched-repair/after-fex-excerpt.txt",
+      "bytes": 3001,
+      "sha256": "cd8edad1ad7c0bf8c8399385a52af3fa63dbc8736a86e838b6aee613ccf910aa"
+    },
+    {
+      "path": "fmod-sched-repair/after-native-excerpt.txt",
+      "bytes": 3040,
+      "sha256": "8a82b5377462f3e32c971e755f97464bbda77c51826dc2355f8ff2411d19c271"
+    },
+    {
+      "path": "fmod-sched-repair/before-fex-excerpt.txt",
+      "bytes": 2682,
+      "sha256": "0614a3271ecb2be77f6c4407e5d979a2eaa4e41724210e649e94fd43138d471e"
+    },
+    {
+      "path": "fmod-sched-repair/before-native-excerpt.txt",
+      "bytes": 3063,
+      "sha256": "aeae24547d4f0ea686050c85b496850d05d4d4e5146b60cf774ad918dade659e"
+    },
+    {
+      "path": "fmod-sched-repair/build-probes.sh",
+      "bytes": 748,
+      "sha256": "92ceb6c51002b58ec9ea8f5b7e9895e8ff596c5e9170fed6b3474d70b902ee58"
+    },
+    {
+      "path": "fmod-sched-repair/exact-helper-disassembly.txt",
+      "bytes": 4808,
+      "sha256": "6f62ceb2237d56b900f9de1c002968e66eb8f991f017d62daa35c0ff0311eab5"
+    },
+    {
+      "path": "fmod-sched-repair/fmod-thread4448-device-before.txt",
+      "bytes": 791,
+      "sha256": "865a33ece65b9348abce2a2eaa3206a85cce95f45303453140b45c0cabb44ecb"
+    },
+    {
+      "path": "fmod-sched-repair/fmod-thread4448-probe",
+      "bytes": 1835,
+      "sha256": "febae62707bfe4075de014bcae027f1c223b1781da31a1c82eb5db964d7baf7f"
+    },
+    {
+      "path": "fmod-sched-repair/fmod-thread4449-device-pass.txt",
+      "bytes": 782,
+      "sha256": "bb4bb4460a6ddea8707e99361f08eee1a9b1274cb3f41fa4f501742f0e68edbb"
+    },
+    {
+      "path": "fmod-sched-repair/glibc-attr-disassembly.txt",
+      "bytes": 2546,
+      "sha256": "9a92a95fa95a3f5d3829a0e42108c0b43bf33d0484c1a6e0f5672100d847eb15"
+    },
+    {
+      "path": "fmod-sched-repair/launch",
+      "bytes": 1531688,
+      "sha256": "3cbee8699d968c0375bf7bc8c15078454a5fb710dd012bd99af5e84c7bc3c676"
+    },
+    {
+      "path": "fmod-sched-repair/launch.c",
+      "bytes": 509,
+      "sha256": "36e02d5fbd73e194ad7f2dc70bc8cbefd8106674171730ef75adb7b8c615bb64"
+    },
+    {
+      "path": "fmod-sched-repair/matched-results.json",
+      "bytes": 786,
+      "sha256": "cc21e3be33b4e8e50ddcc3f6cc20fa1e5dde3bb75007c7bb11fffc7f7970a7d2"
+    },
+    {
+      "path": "fmod-sched-repair/provenance.json",
+      "bytes": 6247,
+      "sha256": "5c6fb59691d41d1bd189f413dc2a46c76a7ec1bc9eb87c153451de24de8e9835"
+    },
+    {
+      "path": "fmod-sched-repair/run-local.py",
+      "bytes": 1759,
+      "sha256": "a8eb7deafe79a96067bc2016be0ffd5c15ec6dcba3de009ee475ed39d66d2228"
+    },
+    {
+      "path": "fmod-sched-repair/sched-priority-arm64",
+      "bytes": 1672480,
+      "sha256": "7424179ec001219fabf49b041e9bcd2691983ee6378ffa36375ccaf0b16a83b9"
+    },
+    {
+      "path": "fmod-sched-repair/sched-priority-probe.c",
+      "bytes": 3361,
+      "sha256": "6eb8f0379f477af4719e56cca14c607c964038239f671168454bbb24152e6a5b"
+    },
+    {
+      "path": "fmod-sched-repair/sched-priority-x86",
+      "bytes": 20096,
+      "sha256": "1120d5bb9ee108f64a344efd518d7f35493f5bf05d94718b37de1f26bfb8d080"
+    },
+    {
+      "path": "fmod-sched-repair/sched4448-device-before-final.txt",
+      "bytes": 6073,
+      "sha256": "8de9bd23978c9423e8627d2e35946d5434ba338543251fe930503acd53fa96e4"
+    },
+    {
+      "path": "fmod-sched-repair/sched4448-probe",
+      "bytes": 1900,
+      "sha256": "3f3e5cdbab07ca4cf8dac752038d116e52efe9c73be3242c7255027aaacad538"
+    },
+    {
+      "path": "fmod-sched-repair/sched4449-device-pass.txt",
+      "bytes": 6369,
+      "sha256": "95ada1ac9a9fc7bdff5a713e0bf4325348e543b664040d14ea3ad8d6e0f9c5d8"
+    },
+    {
+      "path": "fmod-sched-repair/scheduler-priority.patch",
+      "bytes": 3410,
+      "sha256": "6c7e8df595523a38bbe4284a4d73db54f204e1bbcdac4903d959e8ac1e507620"
+    },
+    {
+      "path": "fmod-sched-repair/superseded-sched4448-device-before-v1.txt",
+      "bytes": 6076,
+      "sha256": "feb06b89058d42729f72fdd52c50083536b367afd6512d5c7a0cee42fd12d886"
+    },
+    {
+      "path": "fmod-sched-repair/unity-fmod-thread-probe",
+      "bytes": 16400,
+      "sha256": "e444463cf59c4be4b70b96a28f884a84568e4633dc682e8900bae1827486535d"
+    },
+    {
+      "path": "fmod-sched-repair/unity-fmod-thread-probe.c",
+      "bytes": 2342,
+      "sha256": "a9ab291834eb8f50dffa4b912091afd3feb9fcfc183abcdc92c44410bbf99af2"
+    },
+    {
+      "path": "fmod-sched-repair/unity-helper-after-excerpt.txt",
+      "bytes": 463,
+      "sha256": "b2b2e75371bf91a52000dd45388fdab0905f7e41bd92fa0a15faba365914e263"
+    },
+    {
+      "path": "fmod-sched-repair/unity-helper-before-excerpt.txt",
+      "bytes": 472,
+      "sha256": "75b07733e6daaf405747b1b1904e57abe9dd32fd0c4ee3d5a4f10d0e98ca7cd8"
+    },
+    {
+      "path": "fmod-sched-repair/unity-helper-matched-results.json",
+      "bytes": 354,
+      "sha256": "761ed64bafc66a0778a0e3cde747e86f228ef2daa48686bba068513201016ac9"
+    },
+    {
       "path": "game-fault-report/PROVENANCE.json",
       "bytes": 1110,
       "sha256": "cf7a4dc21118bea2d93903670931b3bffeeac6b7ee7081ab2a73fbd12cacc4be"
@@ -1613,6 +2213,16 @@
       "sha256": "905c50f708ad5fdc11f9bfaab37c461377704b74304525b3ea78fd281df8d5d0"
     },
     {
+      "path": "glvnd-repair/payload-files.sha256",
+      "bytes": 622,
+      "sha256": "d716ca94b62f5e0345b22f36815c6d60675a321a7ff54d33f96479c7eb22caf6"
+    },
+    {
+      "path": "glvnd-repair/payload-symlinks.txt",
+      "bytes": 171,
+      "sha256": "c3d5faa6baef81d2eeae6231d9d7e5399f8127ecb031af8fc731bdf8514bb894"
+    },
+    {
       "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
       "bytes": 542880,
       "sha256": "b01915dfedf03be4710d3184bc62a3364880fc950043742fd5e07659b409ef1e"
@@ -1641,16 +2251,6 @@
       "path": "glvnd-repair/payload/usr/share/doc/libglx0/copyright",
       "bytes": 4422,
       "sha256": "37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3"
-    },
-    {
-      "path": "glvnd-repair/payload-files.sha256",
-      "bytes": 622,
-      "sha256": "d716ca94b62f5e0345b22f36815c6d60675a321a7ff54d33f96479c7eb22caf6"
-    },
-    {
-      "path": "glvnd-repair/payload-symlinks.txt",
-      "bytes": 171,
-      "sha256": "c3d5faa6baef81d2eeae6231d9d7e5399f8127ecb031af8fc731bdf8514bb894"
     },
     {
       "path": "glvnd-repair/provenance.json",
@@ -1741,6 +2341,171 @@
       "path": "hollow4445-startup/unity-window-and-vulkan-excerpt.txt",
       "bytes": 1201,
       "sha256": "43c7cc81dc84aa422a15c17bb679c7bd2f51a71075c077571e09d5d98d2d91a6"
+    },
+    {
+      "path": "jit-ss-growth/README.md",
+      "bytes": 2432,
+      "sha256": "bb639d92f73acf9a0964ec3210bcc6645a9a4319a5f21ad4ba9a9ab5f0615441"
+    },
+    {
+      "path": "jit-ss-growth/SHA256SUMS",
+      "bytes": 3170,
+      "sha256": "695ae28a190a681839fd778d43a57cfe4fde5b735fa2305ea79efd4ee13c2d32"
+    },
+    {
+      "path": "jit-ss-growth/archive-jit-ss-growth.py",
+      "bytes": 8342,
+      "sha256": "019e638a35148356be245c1d1a4a8d9d3af0b09dd6e3c7347b22dc9238d32503"
+    },
+    {
+      "path": "jit-ss-growth/host/README.md",
+      "bytes": 2617,
+      "sha256": "1ed161eb63932e79b111fc87271283237a858c145b63700c12c29beab0e2540d"
+    },
+    {
+      "path": "jit-ss-growth/host/benchmark.txt",
+      "bytes": 139,
+      "sha256": "c1677a882f11b007e86c0ae28e33f22e36ad0fbfbf47293e32587092c4eabebd"
+    },
+    {
+      "path": "jit-ss-growth/host/independent-graphics-review.md",
+      "bytes": 2842,
+      "sha256": "dcea4d74a8e8c35f65cad8b2e5ba1f7d9ecbf75929a37df8f056163bb55e1f1b"
+    },
+    {
+      "path": "jit-ss-growth/host/jit-ss-index-harness.c",
+      "bytes": 25667,
+      "sha256": "cf2b350715d8e63681a9713a9022f0e4b339e3f346e3378a5c4460a4cee077c2"
+    },
+    {
+      "path": "jit-ss-growth/host/lookup-benchmark.txt",
+      "bytes": 630,
+      "sha256": "3fe23fa279142d4df7fd81ce80732271b7bea9a50dbc389f92c399f5b5644db9"
+    },
+    {
+      "path": "jit-ss-growth/host/precommit-source-provenance.json",
+      "bytes": 905,
+      "sha256": "5f504e1ab634ae83bcf80b96074fdad4e7617216b1290131405ed76342b61f0a"
+    },
+    {
+      "path": "jit-ss-growth/host/provenance.json",
+      "bytes": 1880,
+      "sha256": "2a1cb6b056288b199199a7cf4218dd1a48026256fcf3a43fc5064b103a96e834"
+    },
+    {
+      "path": "jit-ss-growth/host/regression.txt",
+      "bytes": 113,
+      "sha256": "10da066fb03f72544168655c39d341ab2a159f06c9f9efa3f030bfae84572295"
+    },
+    {
+      "path": "jit-ss-growth/host/swapchain-lock-paths.json",
+      "bytes": 4589,
+      "sha256": "2129defb6bf5bbaa2300dc93bef4626f7cdc6cc99bbf0e9a27805012ec8dfadb"
+    },
+    {
+      "path": "jit-ss-growth/provenance.json",
+      "bytes": 11384,
+      "sha256": "a989c1be448837ca22edfccf4d963b6abfdff6008611b9c99410d82294afbbd4"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/README.md",
+      "bytes": 1145,
+      "sha256": "9e56d6748873d707debbe5515e78f2df25aef71f3264611145bae033a0f3eba0"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/after-ss-growth-mono-0-before-excerpt.txt",
+      "bytes": 2211,
+      "sha256": "c97435ef018a4083480f63a65e71b68033686593fb71e5f1dd73624efc0a1aca"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/after-ss-growth-mono-3221-before-excerpt.txt",
+      "bytes": 2443,
+      "sha256": "8eaf6064adcf8b40510fd7b3272714d8fc38679222ab323de598e53526b3cef8"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/after-ss-growth-mono-provenance.json",
+      "bytes": 1033,
+      "sha256": "7bdf0591e7c22989a2033b7b9b053aa5a8cc61f34dcfa127f1a2ab5cfef2eb2c"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/after-ss-growth-mono-results.json",
+      "bytes": 5554,
+      "sha256": "bb29a5415dbcfb46f2196ab49ff2eb22ba9aa48d3b439deb2a65a262a54ceaf8"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/combined-cli-build-excerpt.txt",
+      "bytes": 381,
+      "sha256": "7a394791a28d6b9a33fb4561a7c3f960595eb90f15fcbb1a194d571b7e14eae2"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/fallback-smc-jit.txt",
+      "bytes": 1060,
+      "sha256": "42529e27278fc9074a05682f0faa7925bc0978de37201688dc207136dbeb095b"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/fallback-smc-tier2.txt",
+      "bytes": 1060,
+      "sha256": "319b4fc8d8f5dc0df2aec46084cbe560b831b8d3a7577cfd54588e7eadd10092"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/smc-jit.txt",
+      "bytes": 240,
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/smc-provenance.json",
+      "bytes": 1172,
+      "sha256": "14e62fdf71a746a0b115bea8864adfea892a04151438aad691112285e3fd19ee"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/smc-results.json",
+      "bytes": 1337,
+      "sha256": "9c3ef627ad283c3384e80329199d76f8b5dea7fc08a7a7b207bd959500acd82d"
+    },
+    {
+      "path": "jit-ss-growth/runtime-controls/smc-tier2.txt",
+      "bytes": 240,
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212"
+    },
+    {
+      "path": "jit-ss-growth/source-change.patch",
+      "bytes": 20801,
+      "sha256": "7908eab95e7dc28c7aed7c653eb7f3bc42bf3440bbd6ff756f8cc9670ff9f11a"
+    },
+    {
+      "path": "jit-ss-growth/source/jit/DESIGN.md",
+      "bytes": 23473,
+      "sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108"
+    },
+    {
+      "path": "jit-ss-growth/source/jit/jit.c",
+      "bytes": 83970,
+      "sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22"
+    },
+    {
+      "path": "jit-ss-growth/source/jit/jit_internal.h",
+      "bytes": 15148,
+      "sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1"
+    },
+    {
+      "path": "jit-ss-growth/source/tests/arm64-insn/smc.c",
+      "bytes": 1101,
+      "sha256": "eba5f0ee3f28ba79f286314d0661bcbbaa51d1e8a785d6b363602dcaeb79ae10"
+    },
+    {
+      "path": "jit-ss-growth/source/tests/manual/steam-compat/README.md",
+      "bytes": 7046,
+      "sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2"
+    },
+    {
+      "path": "jit-ss-growth/source/tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "bytes": 1396,
+      "sha256": "e0905888b0342816bb409c4d5a4e1620c5acdc40544844da75693cc032ea815c"
+    },
+    {
+      "path": "jit-ss-growth/source/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 22122,
+      "sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614"
     },
     {
       "path": "jit-ss-repair/README.md",

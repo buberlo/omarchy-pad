@@ -1,0 +1,185 @@
+{
+  "input_sha256": "be2d7465c898bfcd7dbecf3b3a2d4634dc99672a62de752531d2bd06ae32bfd1",
+  "total_weight_seconds": 9.435,
+  "paths": [
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "ss_get",
+        "gadget_step",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weight_seconds": 3.455,
+      "percent": 36.61897191308956
+    },
+    {
+      "frames": [
+        "ss_get",
+        "gadget_step",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread",
+        "_pthread_start",
+        "thread_start"
+      ],
+      "weight_seconds": 3.142,
+      "percent": 33.30153683094859
+    },
+    {
+      "frames": [
+        "__psynch_mutexdrop",
+        "_pthread_mutex_firstfit_wake",
+        "_pthread_mutex_firstfit_unlock_slow",
+        "ss_get",
+        "gadget_step",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weight_seconds": 2.046,
+      "percent": 21.685214626391097
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "__user_write_mem",
+        "user_write_task",
+        "sys_clock_gettime"
+      ],
+      "weight_seconds": 0.073,
+      "percent": 0.7737148913619502
+    },
+    {
+      "frames": [
+        "__psynch_mutexdrop",
+        "_pthread_mutex_firstfit_wake",
+        "_pthread_mutex_firstfit_unlock_slow",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "__user_write_mem",
+        "user_write_task",
+        "sys_clock_gettime",
+        "handle_interrupt"
+      ],
+      "weight_seconds": 0.017,
+      "percent": 0.18018018018018017
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "mmu_translate",
+        "jtlb_fill",
+        "jit_helper"
+      ],
+      "weight_seconds": 0.015,
+      "percent": 0.1589825119236884
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "jit_install_image",
+        "jit_translate",
+        "get_block_slow",
+        "get_block",
+        "jit_run",
+        "cpu_run_to_interrupt"
+      ],
+      "weight_seconds": 0.012,
+      "percent": 0.1271860095389507
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "itab_set",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread",
+        "_pthread_start"
+      ],
+      "weight_seconds": 0.01,
+      "percent": 0.10598834128245893
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "get_block_slow",
+        "get_block",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weight_seconds": 0.008,
+      "percent": 0.08479067302596714
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_wait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weight_seconds": 0.004,
+      "percent": 0.04239533651298357
+    },
+    {
+      "frames": [
+        "__psynch_mutexwait",
+        "_pthread_mutex_firstfit_lock_slow",
+        "ss_get",
+        "gadget_step",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread",
+        "_pthread_start"
+      ],
+      "weight_seconds": 0.003,
+      "percent": 0.03179650238473768
+    },
+    {
+      "frames": [
+        "__psynch_mutexdrop",
+        "_pthread_mutex_firstfit_wake",
+        "_pthread_mutex_firstfit_unlock_slow",
+        "itab_set",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread",
+        "_pthread_start"
+      ],
+      "weight_seconds": 0.001,
+      "percent": 0.010598834128245893
+    }
+  ]
+}

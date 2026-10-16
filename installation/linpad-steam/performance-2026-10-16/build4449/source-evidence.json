@@ -1,0 +1,228 @@
+{
+  "files": [
+    {
+      "source": "work/performance/build4449/source-snapshot/jit/DESIGN.md",
+      "destination": "source-snapshot/jit/DESIGN.md",
+      "source_sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108",
+      "source_bytes": 23473,
+      "mode": "byte-identical",
+      "archived_sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/jit/jit.c",
+      "destination": "source-snapshot/jit/jit.c",
+      "source_sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+      "source_bytes": 83970,
+      "mode": "byte-identical",
+      "archived_sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/jit/jit_internal.h",
+      "destination": "source-snapshot/jit/jit_internal.h",
+      "source_sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1",
+      "source_bytes": 15148,
+      "mode": "byte-identical",
+      "archived_sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/kernel/arch/arm64/calls.c",
+      "destination": "source-snapshot/kernel/arch/arm64/calls.c",
+      "source_sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b",
+      "source_bytes": 13653,
+      "mode": "byte-identical",
+      "archived_sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/kernel/arch/x86/calls.c",
+      "destination": "source-snapshot/kernel/arch/x86/calls.c",
+      "source_sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc",
+      "source_bytes": 9209,
+      "mode": "byte-identical",
+      "archived_sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/kernel/resource.c",
+      "destination": "source-snapshot/kernel/resource.c",
+      "source_sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f",
+      "source_bytes": 10920,
+      "mode": "byte-identical",
+      "archived_sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/kernel/resource.h",
+      "destination": "source-snapshot/kernel/resource.h",
+      "source_sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb",
+      "source_bytes": 2621,
+      "mode": "byte-identical",
+      "archived_sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/tests/manual/steam-compat/README.md",
+      "destination": "source-snapshot/tests/manual/steam-compat/README.md",
+      "source_sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2",
+      "source_bytes": 7046,
+      "mode": "byte-identical",
+      "archived_sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2"
+    },
+    {
+      "source": "work/performance/build4449/source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "destination": "source-snapshot/tests/manual/steam-compat/test-jit-ss-index.py",
+      "source_sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614",
+      "source_bytes": 22122,
+      "mode": "byte-identical",
+      "archived_sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614"
+    },
+    {
+      "source": "work/performance/build4449/source-commit.txt",
+      "destination": "source-commit.txt",
+      "source_sha256": "ad41270f190e97010a0779198bc8c73c9157764a40ddc0220793fa1d8630694a",
+      "source_bytes": 41,
+      "mode": "byte-identical",
+      "archived_sha256": "ad41270f190e97010a0779198bc8c73c9157764a40ddc0220793fa1d8630694a"
+    },
+    {
+      "source": "work/performance/build4449/source-changes.patch",
+      "destination": "source-changes.patch",
+      "source_sha256": "6473438a80c722373a033b2cc05beb87025ea85377c105e8d832e78325ab14cb",
+      "source_bytes": 23897,
+      "mode": "byte-identical",
+      "archived_sha256": "6473438a80c722373a033b2cc05beb87025ea85377c105e8d832e78325ab14cb"
+    },
+    {
+      "source": "work/performance/build4449/build-local.sh",
+      "destination": "build-local.sh",
+      "source_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae",
+      "source_bytes": 399,
+      "mode": "byte-identical",
+      "archived_sha256": "720b3e32ba8121c23e79e972b550b9eac9fd8c2802b6a2862dfbb8d14af079ae"
+    },
+    {
+      "source": "work/performance/build4449/record-artifact.py",
+      "destination": "record-artifact.py",
+      "source_sha256": "672884ab83823f154e43ab31e0abcc5c0923e808b224e500d47a905a03b4eaa7",
+      "source_bytes": 4244,
+      "mode": "byte-identical",
+      "archived_sha256": "672884ab83823f154e43ab31e0abcc5c0923e808b224e500d47a905a03b4eaa7"
+    },
+    {
+      "source": "work/performance/build4449/artifact-verification.log",
+      "destination": "artifact-verification.log",
+      "source_sha256": "8dcc4acc7998bb6005dd45bf1491e823dd0426935556d7af1078332f6e2f532e",
+      "source_bytes": 805,
+      "mode": "byte-identical",
+      "archived_sha256": "8dcc4acc7998bb6005dd45bf1491e823dd0426935556d7af1078332f6e2f532e"
+    },
+    {
+      "source": "work/performance/build4449/signed-entitlements.plist",
+      "destination": "signed-entitlements.plist",
+      "source_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3",
+      "source_bytes": 847,
+      "mode": "byte-identical",
+      "archived_sha256": "e58b7abe30e26ea6142b41c059fe607b31ff02534f9195d21a9e62cf0dfb6dc3"
+    },
+    {
+      "source": "work/performance/build4449/build-manifest.json",
+      "destination": "initial-build-manifest.json",
+      "source_sha256": "58fc011372a746b9305db93b1b4d00af80ad44e32f7dbb1619912a302cb82331",
+      "source_bytes": 2866,
+      "mode": "byte-identical",
+      "archived_sha256": "58fc011372a746b9305db93b1b4d00af80ad44e32f7dbb1619912a302cb82331"
+    },
+    {
+      "source": "work/performance/build4449/curate-build4449.py",
+      "destination": "curate-build4449.py",
+      "source_sha256": "1886c422876c5fb76059c930e4fdc73e17b7978df236feb8f050c2bef9373685",
+      "source_bytes": 14734,
+      "mode": "byte-identical",
+      "archived_sha256": "1886c422876c5fb76059c930e4fdc73e17b7978df236feb8f050c2bef9373685"
+    },
+    {
+      "source": "work/performance/build4449/build.log",
+      "destination": "build-summary.log",
+      "source_sha256": "5f1a713ac6e4a124f85722274a4f6a760c8fa1a1ed3ab366899ff9a5a1dbfb04",
+      "source_bytes": 263463,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "b53df942549080324d246e94aa5338bd9fc9799f29c42fb0bc31b49e7f09b9a4"
+    },
+    {
+      "source": "work/performance/build4449/sign.log",
+      "destination": "signing-excerpt.txt",
+      "source_sha256": "1c69569b280f0a4658f124b02ad1b8ede32223fc7efbdd34cd77f98f03186c7f",
+      "source_bytes": 184,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "5d2786804ec800e05ac99423e9e410260c21973e181ff4548b7cf97accee241d"
+    },
+    {
+      "source": "work/performance/build4449/device-console.log",
+      "destination": "device-boot-excerpt.txt",
+      "source_sha256": "7220ac18ec3c80d72bd40dd822542c790f5c9abda6ca2eb49bb587c5d3a1e9fc",
+      "source_bytes": 6466758,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "95d61debced642e5459e6081650e7db860454dc9b027e690ae46af848ce10042"
+    },
+    {
+      "source": "work/performance/serve/smc4449-probe",
+      "destination": "device-scripts/smc4449-probe",
+      "source_sha256": "329fc12bf66532c8a55b5cf27c3cc6789e3a22613f1d5dd823f242dc26da770a",
+      "source_bytes": 809,
+      "mode": "byte-identical",
+      "archived_sha256": "329fc12bf66532c8a55b5cf27c3cc6789e3a22613f1d5dd823f242dc26da770a"
+    },
+    {
+      "source": "work/performance/serve/sched4448-probe",
+      "destination": "device-scripts/sched4448-probe",
+      "source_sha256": "3f3e5cdbab07ca4cf8dac752038d116e52efe9c73be3242c7255027aaacad538",
+      "source_bytes": 1900,
+      "mode": "byte-identical",
+      "archived_sha256": "3f3e5cdbab07ca4cf8dac752038d116e52efe9c73be3242c7255027aaacad538"
+    },
+    {
+      "source": "work/performance/serve/fmod-thread4448-probe",
+      "destination": "device-scripts/fmod-thread4448-probe",
+      "source_sha256": "febae62707bfe4075de014bcae027f1c223b1781da31a1c82eb5db964d7baf7f",
+      "source_bytes": 1835,
+      "mode": "byte-identical",
+      "archived_sha256": "febae62707bfe4075de014bcae027f1c223b1781da31a1c82eb5db964d7baf7f"
+    },
+    {
+      "source": "work/performance/reports/sched4448-device-before-final.txt",
+      "destination": "sched4448-device-before-final.txt",
+      "source_sha256": "8de9bd23978c9423e8627d2e35946d5434ba338543251fe930503acd53fa96e4",
+      "source_bytes": 6073,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "0859f4771ae59d85e4509cdf48e085d809822d0539977f0efb190117754b2ed1"
+    },
+    {
+      "source": "work/performance/reports/smc4449-device-pass.txt",
+      "destination": "smc4449-device-pass.txt",
+      "source_sha256": "1dfb98574772ac8084e71a2a4a2baadae64c9afa01e173747042bad58c24bb9c",
+      "source_bytes": 207,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "d3003a5d6e3472113a31eabfe1fcd5817e7f3215757d1dfae37db260eb2b03f4"
+    },
+    {
+      "source": "work/performance/reports/sched4449-device-pass.txt",
+      "destination": "sched4449-device-pass.txt",
+      "source_sha256": "95ada1ac9a9fc7bdff5a713e0bf4325348e543b664040d14ea3ad8d6e0f9c5d8",
+      "source_bytes": 6369,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "c0e33edaeb74ea6dcff2dcbf965d83a247e3dba0ee65e6c9a367cca08985eb22"
+    },
+    {
+      "source": "work/performance/reports/fmod-thread4448-device-before.txt",
+      "destination": "fmod-thread4448-device-before.txt",
+      "source_sha256": "865a33ece65b9348abce2a2eaa3206a85cce95f45303453140b45c0cabb44ecb",
+      "source_bytes": 791,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "79f7aaac32a5379b1bfa5a155fc49fcd3c1d1f2ce900c647e2188a15c0847fc8"
+    },
+    {
+      "source": "work/performance/reports/fmod-thread4449-device-pass.txt",
+      "destination": "fmod-thread4449-device-pass.txt",
+      "source_sha256": "bb4bb4460a6ddea8707e99361f08eee1a9b1274cb3f41fa4f501742f0e68edbb",
+      "source_bytes": 782,
+      "mode": "numbered selected lines; full raw source remains local",
+      "archived_sha256": "f2e0f2795abe7550f9b7eec1b158fd5647b7fab6067666cba79995c8800f2bb6"
+    }
+  ]
+}

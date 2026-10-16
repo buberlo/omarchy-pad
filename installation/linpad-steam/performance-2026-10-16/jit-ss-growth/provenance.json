@@ -1,0 +1,269 @@
+{
+  "growth_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+  "combined_scheduler_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "combined_cli_sha256": "2f8a87fc674799138ee99226292528a8bb498fb22e768e0ab111f17e0073d007",
+  "runtime_capture_head_before_scheduler_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+  "combined_sources_match_committed_blobs": [
+    {
+      "path": "jit/jit.c",
+      "sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    },
+    {
+      "path": "kernel/resource.c",
+      "sha256": "59da1b14c1e7ff160ad79a7f5e1075b2dbc284921cba3ea973442bd9ebea442f",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    },
+    {
+      "path": "kernel/resource.h",
+      "sha256": "3d51280aa10115b39397c8b3418b9b95b3921ca342e9cc3c225b2052d9882deb",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    },
+    {
+      "path": "kernel/arch/arm64/calls.c",
+      "sha256": "f1d9601d9806f3869053a8cc1146f147d81912a76b9263513822f6505226c63b",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    },
+    {
+      "path": "kernel/arch/x86/calls.c",
+      "sha256": "22e39e21eb3425d213cbedf6e472d85d6a76b9aa78aa9732fe9dc56288eacebc",
+      "matches_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412"
+    }
+  ],
+  "host_regression": "338461 assertions with ASan/UBSan; invalidation and four-stride lookup benchmarks pass",
+  "combined_local_controls": "ordinary/fallback SMC in JIT and tier2; exact Mono noSDL/fullSDLdummy, all exit0",
+  "app_and_device": "tracked separately under build4449; not inferred from local CLI results",
+  "gameplay_and_fps": "not qualified by this archive",
+  "omitted_raw_logs": [
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-0-before.txt",
+      "bytes": 1877775,
+      "sha256": "5b0287e87f4d609086e934216a31fa021e675fb9c83be145007b8a1fc9ffbbed",
+      "reason": "large raw local syscall trace; narrow excerpt archived"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-3221-before.txt",
+      "bytes": 2535985,
+      "sha256": "c43fb273ffc608a6b34d30dca603aab17be6cce19911019f0738e57476c0fae2",
+      "reason": "large raw local syscall trace; narrow excerpt archived"
+    }
+  ],
+  "files": [
+    {
+      "source": "work/performance/archive-jit-ss-growth.py",
+      "destination": "archive-jit-ss-growth.py",
+      "sha256": "019e638a35148356be245c1d1a4a8d9d3af0b09dd6e3c7347b22dc9238d32503",
+      "bytes": 8342,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/README.md",
+      "destination": "host/README.md",
+      "sha256": "1ed161eb63932e79b111fc87271283237a858c145b63700c12c29beab0e2540d",
+      "bytes": 2617,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/independent-graphics-review.md",
+      "destination": "host/independent-graphics-review.md",
+      "sha256": "dcea4d74a8e8c35f65cad8b2e5ba1f7d9ecbf75929a37df8f056163bb55e1f1b",
+      "bytes": 2842,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/regression.txt",
+      "destination": "host/regression.txt",
+      "sha256": "10da066fb03f72544168655c39d341ab2a159f06c9f9efa3f030bfae84572295",
+      "bytes": 113,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/benchmark.txt",
+      "destination": "host/benchmark.txt",
+      "sha256": "c1677a882f11b007e86c0ae28e33f22e36ad0fbfbf47293e32587092c4eabebd",
+      "bytes": 139,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/lookup-benchmark.txt",
+      "destination": "host/lookup-benchmark.txt",
+      "sha256": "3fe23fa279142d4df7fd81ce80732271b7bea9a50dbc389f92c399f5b5644db9",
+      "bytes": 630,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/provenance.json",
+      "destination": "host/provenance.json",
+      "sha256": "2a1cb6b056288b199199a7cf4218dd1a48026256fcf3a43fc5064b103a96e834",
+      "bytes": 1880,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/jit-ss-index-harness.c",
+      "destination": "host/jit-ss-index-harness.c",
+      "sha256": "cf2b350715d8e63681a9713a9022f0e4b339e3f346e3378a5c4460a4cee077c2",
+      "bytes": 25667,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/swapchain-lock-paths.json",
+      "destination": "host/swapchain-lock-paths.json",
+      "sha256": "2129defb6bf5bbaa2300dc93bef4626f7cdc6cc99bbf0e9a27805012ec8dfadb",
+      "bytes": 4589,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/source-provenance.json",
+      "destination": "host/precommit-source-provenance.json",
+      "sha256": "5f504e1ab634ae83bcf80b96074fdad4e7617216b1290131405ed76342b61f0a",
+      "bytes": 905,
+      "mode": "byte-identical"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "jit/jit.c",
+      "destination": "source/jit/jit.c",
+      "sha256": "9b73ce0458e40694f54f3db1ecdd5ce9fa18ed065982d6996ad44fc2b26d6e22",
+      "bytes": 83970,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "jit/jit_internal.h",
+      "destination": "source/jit/jit_internal.h",
+      "sha256": "453bf3db02773d515aa06481fbe3a9a107d8a1a4dcff3c968ea74f79f9bd41e1",
+      "bytes": 15148,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "jit/DESIGN.md",
+      "destination": "source/jit/DESIGN.md",
+      "sha256": "5ddf1ad556b2c21b8c12eb70791e3df8079925b4f24a60612b6c728969ee5108",
+      "bytes": 23473,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "destination": "source/tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "ee7699cc50868b82f33cab4e9ac3d0880b5c8c4cae44e3696e895c0f387f8614",
+      "bytes": 22122,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "tests/manual/steam-compat/README.md",
+      "destination": "source/tests/manual/steam-compat/README.md",
+      "sha256": "44a98b87c927339252c025baa628fb0530121a9f0a2bf4aca4ac6a64e1b093b2",
+      "bytes": 7046,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "tests/arm64-insn/smc.c",
+      "destination": "source/tests/arm64-insn/smc.c",
+      "sha256": "eba5f0ee3f28ba79f286314d0661bcbbaa51d1e8a785d6b363602dcaeb79ae10",
+      "bytes": 1101,
+      "mode": "exact committed blob"
+    },
+    {
+      "source_commit": "df8a7720618130c05d213a0002fc46968fb99a0a",
+      "source_path": "tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "destination": "source/tests/manual/steam-compat/jit-ss-smc-probe.c",
+      "sha256": "e0905888b0342816bb409c4d5a4e1620c5acdc40544844da75693cc032ea815c",
+      "bytes": 1396,
+      "mode": "exact committed blob"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/README.md",
+      "destination": "runtime-controls/README.md",
+      "sha256": "9e56d6748873d707debbe5515e78f2df25aef71f3264611145bae033a0f3eba0",
+      "bytes": 1145,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/smc-provenance.json",
+      "destination": "runtime-controls/smc-provenance.json",
+      "sha256": "14e62fdf71a746a0b115bea8864adfea892a04151438aad691112285e3fd19ee",
+      "bytes": 1172,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/smc-results.json",
+      "destination": "runtime-controls/smc-results.json",
+      "sha256": "9c3ef627ad283c3384e80329199d76f8b5dea7fc08a7a7b207bd959500acd82d",
+      "bytes": 1337,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/smc-jit.txt",
+      "destination": "runtime-controls/smc-jit.txt",
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212",
+      "bytes": 240,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/smc-tier2.txt",
+      "destination": "runtime-controls/smc-tier2.txt",
+      "sha256": "f22c5a3cf3deecd4af6f360d50549c81f27a81bd47852e57a5953e41b9e4f212",
+      "bytes": 240,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/fallback-smc-jit.txt",
+      "destination": "runtime-controls/fallback-smc-jit.txt",
+      "sha256": "42529e27278fc9074a05682f0faa7925bc0978de37201688dc207136dbeb095b",
+      "bytes": 1060,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/fallback-smc-tier2.txt",
+      "destination": "runtime-controls/fallback-smc-tier2.txt",
+      "sha256": "319b4fc8d8f5dc0df2aec46084cbe560b831b8d3a7577cfd54588e7eadd10092",
+      "bytes": 1060,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-0-before-excerpt.txt",
+      "destination": "runtime-controls/after-ss-growth-mono-0-before-excerpt.txt",
+      "sha256": "c97435ef018a4083480f63a65e71b68033686593fb71e5f1dd73624efc0a1aca",
+      "bytes": 2211,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-3221-before-excerpt.txt",
+      "destination": "runtime-controls/after-ss-growth-mono-3221-before-excerpt.txt",
+      "sha256": "8eaf6064adcf8b40510fd7b3272714d8fc38679222ab323de598e53526b3cef8",
+      "bytes": 2443,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-provenance.json",
+      "destination": "runtime-controls/after-ss-growth-mono-provenance.json",
+      "sha256": "7bdf0591e7c22989a2033b7b9b053aa5a8cc61f34dcfa127f1a2ab5cfef2eb2c",
+      "bytes": 1033,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/runtime-controls/after-ss-growth-mono-results.json",
+      "destination": "runtime-controls/after-ss-growth-mono-results.json",
+      "sha256": "bb29a5415dbcfb46f2196ab49ff2eb22ba9aa48d3b439deb2a65a262a54ceaf8",
+      "bytes": 5554,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-growth/combined-cli-build.log",
+      "destination": "runtime-controls/combined-cli-build-excerpt.txt",
+      "raw_sha256": "6604ff55600239ac7775488e2c1bd20b9c4d9c028e38e64e7bcaf81b615cf036",
+      "raw_bytes": 146229,
+      "archived_sha256": "7a394791a28d6b9a33fb4561a7c3f960595eb90f15fcbb1a194d571b7e14eae2",
+      "mode": "first3/last5 build-log lines"
+    }
+  ]
+}
