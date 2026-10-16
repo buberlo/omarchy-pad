@@ -139,7 +139,7 @@ static NSString *SessionLockHolderDescription(NSString *path) {
     return holder;
 }
 
-BOOL ISHSessionLockAcquire(NSString **reason) {
+BOOL ISHSessionLockAcquire(NSString *rootName, NSString **reason) {
     if (sessionLockFD >= 0)
         return YES; // ours already
     // No container (simulator, or an install without the app group): never block booting.
@@ -147,7 +147,12 @@ BOOL ISHSessionLockAcquire(NSString **reason) {
     if (roots == nil)
         return YES;
     [NSFileManager.defaultManager createDirectoryAtURL:roots withIntermediateDirectories:YES attributes:@{} error:nil];
-    NSString *path = [[roots URLByAppendingPathComponent:@".session.lock"] path];
+    // Per root: the desktop's Alpine system and the game app's Arch one are independent, so they do
+    // not have to exclude each other; two apps on the *same* root still do.
+    if (rootName.length == 0)
+        rootName = @"default";
+    NSString *path = [[roots URLByAppendingPathComponent:rootName]
+                      URLByAppendingPathComponent:@".session.lock"].path;
     int fd = open(path.fileSystemRepresentation, O_RDWR | O_CREAT | O_CLOEXEC, 0644);
     if (fd < 0)
         return YES; // cannot even open the file: fail open, never block a boot

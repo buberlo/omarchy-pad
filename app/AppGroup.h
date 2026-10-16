@@ -20,7 +20,9 @@ NSURL *ContainerURL(void);
 /// locking is not possible at all (no app group, an unopenable file). It only returns NO
 /// when another process demonstrably holds the lock. `reason`, when given, is set to a
 /// sentence naming the holder and what to do about it.
-BOOL ISHSessionLockAcquire(NSString **reason);
+/// `rootName` is the root this app boots ("default" for the desktop, "arch" for the game app); the
+/// lock is per root, so two apps on two different roots may run at once. One root, one app still holds.
+BOOL ISHSessionLockAcquire(NSString *rootName, NSString **reason);
 
 /// Why the last ISHSessionLockAcquire said no, or nil. Set before `boot` returns so the
 /// Swift side can show the busy screen instead of a generic boot failure.

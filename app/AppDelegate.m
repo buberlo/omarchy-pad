@@ -475,18 +475,18 @@ static NSString *VariantRootName(void) {
     // LinPad and LinPad Steam share one Linux system (the app group's roots/), and two
     // kernels must never mount it at once. Taken here, before anything writes to it, and
     // held until this process exits. Fails open: only a demonstrable holder stops a boot.
+    // Which root this build boots: the desktop app keeps its Alpine "default", the game app
+    // ("LinPadVariant" = steam, baked into Info.plist by the build) has its own Arch root. It must not
+    // rely on `needsDefaultRoot`: that is container-wide, so once the other app has created its root it
+    // is false and this app would happily mount the wrong Linux system.
+    NSString *rootName = VariantRootName();
     NSString *busy = nil;
-    if (!ISHSessionLockAcquire(&busy)) {
+    if (!ISHSessionLockAcquire(rootName, &busy)) {
         bootFailure = busy;
         NSLog(@"not booting: %@", busy);
         SetBootState(ISHBootPhaseFailed, 1, nil, busy);
         return -EBUSY;
     }
-    // Which root this build boots. The desktop app keeps its Alpine "default"; the game app
-    // ("LinPadVariant" = steam, baked into Info.plist by the build) needs its own Arch root, and it
-    // must not rely on `needsDefaultRoot`: that is container-wide, so once the other app has created
-    // its root it is false and this app would happily mount the wrong Linux system.
-    NSString *rootName = VariantRootName();
     if (![Roots.instance hasRootNamed:rootName]) {
         // Classic UI (or no desktop): import synchronously; the launch screen stays up.
         NSError *error;
