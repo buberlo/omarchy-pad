@@ -1558,6 +1558,11 @@
       "sha256": "c2d6768f339844b7ef978c48902bdec235753ea0fdf3a4401412ec48fd4d5683"
     },
     {
+      "path": "build4450-release-verified.json",
+      "bytes": 1469,
+      "sha256": "d21969ff8ccf451b0ca83c83d2d90445bf261dd76b2be80743991edfdf4b1a52"
+    },
+    {
       "path": "build4450/REPOSITORY-SHA256SUMS",
       "bytes": 4170,
       "sha256": "c46c9cc1d5e607ba0f812b154ffb0c1725d403609b3570d202a253f315dd4482"
@@ -3011,6 +3016,116 @@
       "path": "jit-ss-context-cache/source/tests/manual/steam-compat/test-jit-ss-index.py",
       "bytes": 31915,
       "sha256": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
+    },
+    {
+      "path": "jit-ss-diagnostics/README.md",
+      "bytes": 4321,
+      "sha256": "d7a4efaa5e73c9553a2d3566936c3cfc3ee0be6521a2f6521be43dc522e3e8ab"
+    },
+    {
+      "path": "jit-ss-diagnostics/SHA256SUMS",
+      "bytes": 1870,
+      "sha256": "bb28623b1b3dc6d93cec400ee16d9092b76bcb86ae7d073e262f5f7e7455a617"
+    },
+    {
+      "path": "jit-ss-diagnostics/archive-provenance.json",
+      "bytes": 1684,
+      "sha256": "fc5574ca764341efb9be00ecb86acd3b0cc790398fcbda86201380c860808fdb"
+    },
+    {
+      "path": "jit-ss-diagnostics/cli-build.log",
+      "bytes": 537,
+      "sha256": "6f7566553f23a4c39c4bed08103a3c1623b25b2364449071f844f6fc1e0d3303"
+    },
+    {
+      "path": "jit-ss-diagnostics/independent-review.md",
+      "bytes": 3773,
+      "sha256": "f7da80751749c023e5a0b20a4a7a27f42fc9b208550cf48cbd7f3e2ea5d0fa52"
+    },
+    {
+      "path": "jit-ss-diagnostics/jit-ss-diag-probe",
+      "bytes": 1691968,
+      "sha256": "dce66d840d8c9863b81030a11fb1c1c43a025530547dca683fc9f5dae0c5b9d9"
+    },
+    {
+      "path": "jit-ss-diagnostics/jit-ss-index-harness.c",
+      "bytes": 51750,
+      "sha256": "f411c2f006da6a786897a3d26a22ae1abc1b80f311e8d97e57ad81fd614eb320"
+    },
+    {
+      "path": "jit-ss-diagnostics/proc-disabled-excerpt.txt",
+      "bytes": 50,
+      "sha256": "28c7c000dd43294335e72507228da8fddb4a643a3c9a6a068a5d10b6c86912b8"
+    },
+    {
+      "path": "jit-ss-diagnostics/proc-enabled-excerpt.txt",
+      "bytes": 6037,
+      "sha256": "c51ff98f73296b2b26d1c62c4d9a4eaa433c34eefd410729c3287cf399d1384a"
+    },
+    {
+      "path": "jit-ss-diagnostics/proc-shim-syntax.json",
+      "bytes": 1933,
+      "sha256": "8e174549eb9cc72cb5461552b1fc27b80ab0d594277c791138f4f65790ea9e90"
+    },
+    {
+      "path": "jit-ss-diagnostics/provenance.json",
+      "bytes": 2792,
+      "sha256": "9159e4fe90898605f99d953fadccfe612db461a0ca91cadc118d9fcb005e0174"
+    },
+    {
+      "path": "jit-ss-diagnostics/regression-tsan.txt",
+      "bytes": 320,
+      "sha256": "670b906e8466145d8b5ee034393a647dcc03586121cfb05204c9a1207a58ebb7"
+    },
+    {
+      "path": "jit-ss-diagnostics/regression.txt",
+      "bytes": 318,
+      "sha256": "94f96d9a4259bd9f1834a131e0fc5256f35a653dbdd0c9c0c557e60d595d7a04"
+    },
+    {
+      "path": "jit-ss-diagnostics/reviewed-source.json",
+      "bytes": 1501,
+      "sha256": "800196043cb9f646a7dce6186d149c689bea1970df44f598baca00eaf1a2b172"
+    },
+    {
+      "path": "jit-ss-diagnostics/source.patch",
+      "bytes": 42136,
+      "sha256": "64cfaf0553c7d7a8e5e007f4bacce1ad1e9f2645da310b535e0a2c48bcd5bef7"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/fs/proc/ish.c",
+      "bytes": 6970,
+      "sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/jit/jit.c",
+      "bytes": 94962,
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/jit/jit.h",
+      "bytes": 2147,
+      "sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/jit/jit_internal.h",
+      "bytes": 15499,
+      "sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "bytes": 2499,
+      "sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a"
+    },
+    {
+      "path": "jit-ss-diagnostics/source/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 39239,
+      "sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466"
+    },
+    {
+      "path": "jit-ss-diagnostics/validation-provenance.json",
+      "bytes": 3515,
+      "sha256": "ce0a8b201c5e89f4b939060b13adf9af43ea9a02c7fc608dd2e83f5168dbe4ae"
     },
     {
       "path": "jit-ss-growth/README.md",

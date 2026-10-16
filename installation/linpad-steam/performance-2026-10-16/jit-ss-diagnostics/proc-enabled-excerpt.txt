@@ -1,0 +1,83 @@
+enabled 1
+version 1
+approximate_counters 1
+counters_count_attempts 1
+sample_window recen" {"supported 1
+sample_window recen", 1048574} {"", 1024} = 0x16cd
+sample_window recen", 1042737} {"", 1024} = 0x0
+supported 1
+sample_window recent
+sample_probability_denominator 1024
+path_legend 0=negative 1=exit 2=nomem
+miss_legend 0=hit 1=cold 2=collision 3=generation
+sample_ring_size 64
+contexts_visited 1
+truncated 0
+context_allocation_failed 0
+context tid=1 tgid=1 mmu=2 reset=2 sampled=192 busy_samples=0 hit=199998 miss_cold=2 miss_collision=0 miss_generation=0 miss_generation_same_pc=0 shared_hit=0 persistent_fill=2 oneshot_generation=0 oneshot_pressure=0 untracked_oom=0 path_negative=100000 path_exit=100000 path_nomem=0
+sample tid=1 mmu=2 serial=129 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=130 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=131 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=132 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=133 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=134 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=135 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=136 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=137 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=138 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=139 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=140 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=141 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=142 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=143 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=144 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=145 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=146 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=147 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=148 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=149 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=150 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=151 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=152 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=153 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=154 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=155 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=156 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=157 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=158 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=159 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=160 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=161 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=162 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=163 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=164 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=165 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=166 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=167 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=168 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=169 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=170 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=171 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=172 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=173 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=174 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=175 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=176 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=177 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=178 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=179 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=180 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=181 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=182 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=183 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=184 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=185 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=186 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=187 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=188 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=189 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=190 pc=0x1013370 insn=d51b4414 readable=1 path=1 miss=0
+sample tid=1 mmu=2 serial=191 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample tid=1 mmu=2 serial=192 pc=0x10136b8 insn=d51b4400 readable=1 path=0 miss=0
+sample_window recen", 11674} = 0x2d9a
+SS_DIAG_PROC PASS enabled=1

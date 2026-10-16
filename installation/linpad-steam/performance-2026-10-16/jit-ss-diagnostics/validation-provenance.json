@@ -1,0 +1,82 @@
+{
+  "scope": "Local Mac-hosted LinPad CLI plus extracted production-function tests. No physical iPad diagnostic result yet.",
+  "files": [
+    {
+      "path": "work/LinPad/fs/proc/ish.c",
+      "bytes": 6970,
+      "sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+    },
+    {
+      "path": "work/LinPad/jit/jit.c",
+      "bytes": 94962,
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6"
+    },
+    {
+      "path": "work/LinPad/jit/jit.h",
+      "bytes": 2147,
+      "sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc"
+    },
+    {
+      "path": "work/LinPad/jit/jit_internal.h",
+      "bytes": 15499,
+      "sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90"
+    },
+    {
+      "path": "work/LinPad/tests/manual/steam-compat/test-jit-ss-index.py",
+      "bytes": 39239,
+      "sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466"
+    },
+    {
+      "path": "work/LinPad/tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "bytes": 2499,
+      "sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a"
+    },
+    {
+      "path": "work/linpad-cli/ish",
+      "bytes": 1479520,
+      "sha256": "c607972272fda73b11e20b4866bedc9945705fd5be0ba38243c7118ecf2199e8"
+    },
+    {
+      "path": "work/performance/vulkan-repro-root/opt/jit-ss-diag-probe",
+      "bytes": 1691968,
+      "sha256": "dce66d840d8c9863b81030a11fb1c1c43a025530547dca683fc9f5dae0c5b9d9"
+    }
+  ],
+  "commands": {
+    "host_suite": "python3 work/LinPad/tests/manual/steam-compat/test-jit-ss-index.py --out work/performance/jit-ss-diagnostics-final",
+    "cli_build": "PATH=\"$PWD/work/compiler-bin:$PWD/work/build-tools/bin:/opt/homebrew/bin:$PATH\" ninja -C work/linpad-cli ish",
+    "probe_build": "ZIG_GLOBAL_CACHE_DIR=\"$PWD/work/zig-cache\" work/build-tools/bin/python -m ziglang cc -target aarch64-linux-musl -static -O1 work/LinPad/tests/manual/steam-compat/jit-ss-diag-probe.c -o work/performance/vulkan-repro-root/opt/jit-ss-diag-probe",
+    "probe_disabled": "ISH_JIT=1 work/linpad-cli/ish -r work/performance/vulkan-repro-root /opt/jit-ss-diag-probe",
+    "probe_enabled": "ISH_JIT=1 ISH_JIT_SS_DIAG=1 work/linpad-cli/ish -r work/performance/vulkan-repro-root /opt/jit-ss-diag-probe on",
+    "clang_tsan": "clang -O1 -g -std=c11 -Wall -Wextra -Werror -pthread -fsanitize=thread work/performance/jit-ss-diagnostics-final/jit-ss-index-harness.c -o work/performance/jit-ss-diagnostics-final/regression-tsan",
+    "run_tsan": "work/performance/jit-ss-diagnostics-final/regression-tsan > work/performance/jit-ss-diagnostics-final/regression-tsan.txt 2>&1"
+  },
+  "results": {
+    "asan_ubsan": {
+      "exit": 0,
+      "assertions": 632999
+    },
+    "tsan": {
+      "exit": 0,
+      "assertions": 576019,
+      "race_reports": 0
+    },
+    "cli_build_exit": 0,
+    "proc_disabled_exit": 0,
+    "proc_enabled_exit": 0,
+    "actual_guest_counts": {
+      "path_negative": 100000,
+      "path_exit": 100000,
+      "hit": 199998,
+      "cold": 2,
+      "samples": 192,
+      "truncated": false
+    }
+  },
+  "limitations": [
+    "Concurrent fixture assertion totals vary with scheduling.",
+    "Sample ring is the most recent64 approximately1/1024 random attempts, not a cumulative opcode distribution.",
+    "Diagnostic timing is not production performance.",
+    "Host fixture stubs translation/compiled-block machinery; separate actualARM64 proc probe executes real fallback paths."
+  ]
+}

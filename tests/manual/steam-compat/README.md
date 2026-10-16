@@ -21,6 +21,11 @@ null-mm trigger as the production reactivation path; it does not emulate host
 `madvise`. An eight-thread repeated-hit comparison reports exact mutex counts
 for the shared lookup and warmed context caches, with both paths also checked
 under ASan/UBSan.
+Opt-in diagnostic checks cover hit/miss classification, each shared lookup
+outcome, bounded proc traversal, address-space resets, unreadable opcode
+samples, and concurrent atomic sample publication/snapshotting. The counters
+count attempts, including retries; the opcode ring contains recent random
+samples rather than a whole-run frequency distribution.
 Its benchmark compares the original full-cache walk with the page index for
 nonmatching writes that collide in both the bloom filter and page hash.
 That synthetic host timing does not measure game startup or frame rate.
@@ -29,6 +34,12 @@ Translation and compiled-block machinery are stubbed; also run the real guest
 
 - `runtime-probe.c`: MIDR_EL1 and relative faccessat through pipe, file and
   directory descriptors. Requires `/opt/fex/hello-x86_64` to exist.
+- `jit-ss-diag-probe.c`: executes 200,000 MSR FPCR fallbacks through both direct
+  negative-block dispatch and native-block fallback exits, then reads
+  `/proc/ish/jit-ss`. Run normally to check disabled output, and pass `on` when
+  the host process has `ISH_JIT_SS_DIAG=1` to verify cache hits and exact sampled
+  instructions. This diagnoses fallback behavior; its timing is not a game
+  performance measurement.
 - `eventfd-probe.c`: semaphore reads, ordinary counter reads, nonblocking
   exhaustion and epoll readiness.
 - `pselect-probe.c`: null and packed-null signal masks, empty and ready pipes.

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "reviewed_at_utc": "2026-10-16T13:34:50.134292+00:00",
+  "source_sha256": {
+    "jit/jit.c": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+    "jit/jit_internal.h": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90",
+    "jit/jit.h": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc",
+    "fs/proc/ish.c": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961"
+  },
+  "evidence_sha256": {
+    "regression.txt": "2acb4c06a73b6e251c6a2f02814e661665fef303915531a5d399f9956a9bb848",
+    "regression-tsan.txt": "997da28f203e302c8e10fbf553743f0d62972aeb1776d51d6d915995756a1103",
+    "proc-enabled.txt": "1de4633183511e149ceb107c10e1bf58b2dd587e808a59a3c228e668a5c2fa51",
+    "proc-disabled.txt": "494b5e32c80e71814297acd254d29935bf2d28c32969e1eedf86fe2c4f385065",
+    "cli-build.log": "6f7566553f23a4c39c4bed08103a3c1623b25b2364449071f844f6fc1e0d3303",
+    "provenance.json": "9159e4fe90898605f99d953fadccfe612db461a0ca91cadc118d9fcb005e0174"
+  },
+  "own_checks": "Read-only review plus exact proc-shim JIT-enabled/JIT-disabled syntax compilation. Test and linked CLI evidence executed by memory_limits and independently inspected. TSan runtime dependency independently verified with otool.",
+  "limits": "Physical diagnostic run pending. This review does not measure gameplay performance. Test label/docs metadata pending with source owner; production reviewed files frozen.",
+  "no_device_or_git_actions": true
+}

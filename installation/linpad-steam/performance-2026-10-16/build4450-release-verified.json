@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-10-16T13:35:42.274106+00:00",
+  "url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4450",
+  "tag": "ipad-steam-build-4450",
+  "prerelease": true,
+  "target_commit": "508bcfa9907faab97e0dd1eee1f57d177d817f13",
+  "assets": [
+    {
+      "name": "LinPad-1.4.0-build4450-Konrad.ipa",
+      "size_bytes": 637223916,
+      "sha256": "2a54d8a34686f909b3259580d43c6a40d2699848a277b716f10693b0dd5e5066",
+      "server_digest_matches": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4450-dSYM.zip",
+      "size_bytes": 13523022,
+      "sha256": "1559dcd2b9e41f976c0ae6a93b484bd28deae3c24d109e3e5f35d7d5f653e2c7",
+      "server_digest_matches": true
+    },
+    {
+      "name": "build-manifest.json",
+      "size_bytes": 5222,
+      "sha256": "bba47975dd2d4d8659365d29bc365dedf875ef31ceb6cbc2c563d26403bbcbb8",
+      "server_digest_matches": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "size_bytes": 198,
+      "sha256": "43066134fb0849220853487a51909012760de1a2f52bed5abd6b94cee6b79322",
+      "server_digest_matches": true
+    },
+    {
+      "name": "VERIFICATION.md",
+      "size_bytes": 4469,
+      "sha256": "6dc9b0d0ddb691bc26c076191944348640d89be80ef00ab48af924ba3f97ba97",
+      "server_digest_matches": true
+    }
+  ],
+  "qualification": "Physical boot and SMC, visible title menu and 7.0 foreground compositor deliveries/s; user-reported audible music with severe stutter. Gameplay unqualified."
+}

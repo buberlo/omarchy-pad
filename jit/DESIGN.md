@@ -291,6 +291,29 @@ existing generation check, while the active context's epoch protects a block
 through execution. Address-space/id switches clear both context lookup caches;
 idle trimming sets ctx->mm to NULL and takes that same reset path on reentry.
 
+For diagnosis, launch the host with `ISH_JIT_SS_DIAG=1` and read
+`/proc/ish/jit-ss`. The default allocates no diagnostic data and adds only a
+cold conditional to the fallback cache path. Opt-in counters distinguish
+hits, empty slots, same-generation PC collisions and stale generations
+(including the same-PC subset), plus shared hits, persistent insertions,
+one-shot generation/budget exclusions and untracked allocation failures.
+They count fallback attempts, including fault retries. Stale generation takes
+precedence over collision classification; the same-PC subset identifies misses
+that cannot be explained solely by an overwritten PC slot.
+
+Each diagnostic context retains the most recent 64 approximately 1/1024
+pseudorandom samples, including exact PC/opcode, read-success flag, miss class
+and direct-negative/native-exit/no-code entry path. Hits are sampled too. This
+is a recent sample window, not a whole-run opcode histogram. Reading an opcode
+preserves TLB fault metadata. Per-context storage is separate from trimmed
+pages; address-space changes reset its identity and counters. Proc snapshotting
+visits at most 128 registered contexts, copies only atomic fields while holding
+the lifetime registry lock, then formats after unlocking. Identity retries are
+bounded, and truncation, busy samples and allocation failures are explicit.
+No signal handler or shared JIT-memory lock is used. Counter fields are an
+approximate cross-field snapshot; diagnostic overhead disqualifies its timing
+from direct production-performance comparisons.
+
 ## 10. Executable memory on iOS (TXM) and macOS
 
 * **macOS CLI**: by default the iOS scheme, an RX view plus an RW alias made

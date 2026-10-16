@@ -1,0 +1,69 @@
+{
+  "source_sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961",
+  "scope": "Exact fs/proc/ish.c syntax checks with the current CLI include configuration, JIT enabled and disabled. No linked runtime or device assertion.",
+  "checks": [
+    {
+      "mode": "jit-enabled",
+      "command": [
+        "/usr/bin/clang",
+        "-Ilibish.a.p",
+        "-I.",
+        "-I../LinPad",
+        "-Ivdso/arm64",
+        "-I../LinPad/vdso/arm64",
+        "-fdiagnostics-color=always",
+        "-Wall",
+        "-Winvalid-pch",
+        "-Wextra",
+        "-std=gnu11",
+        "-O2",
+        "-g",
+        "-Wimplicit-fallthrough",
+        "-Wtautological-constant-in-range-compare",
+        "-DDEBUG_strace=1",
+        "-DLOG_HANDLER_DPRINTF=1",
+        "-DENGINE_ASBESTOS=1",
+        "-DGUEST_ARM64=1",
+        "-DISH_JIT=1",
+        "-Wno-switch",
+        "../LinPad/fs/proc/ish.c",
+        "-fsyntax-only"
+      ],
+      "cwd": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "mode": "jit-disabled",
+      "command": [
+        "/usr/bin/clang",
+        "-Ilibish.a.p",
+        "-I.",
+        "-I../LinPad",
+        "-Ivdso/arm64",
+        "-I../LinPad/vdso/arm64",
+        "-fdiagnostics-color=always",
+        "-Wall",
+        "-Winvalid-pch",
+        "-Wextra",
+        "-std=gnu11",
+        "-O2",
+        "-g",
+        "-Wimplicit-fallthrough",
+        "-Wtautological-constant-in-range-compare",
+        "-DDEBUG_strace=1",
+        "-DLOG_HANDLER_DPRINTF=1",
+        "-DENGINE_ASBESTOS=1",
+        "-DGUEST_ARM64=1",
+        "-Wno-switch",
+        "../LinPad/fs/proc/ish.c",
+        "-fsyntax-only"
+      ],
+      "cwd": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/linpad-cli",
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

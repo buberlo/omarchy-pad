@@ -1,0 +1,49 @@
+{
+  "source_commit": "45f3e230cac85e946913279094f5e5afbb11c21d",
+  "status": "implemented; production-function and linked local CLI checks passed; physical diagnostic check pending",
+  "source_files": [
+    {
+      "path": "fs/proc/ish.c",
+      "sha256": "6fc0dd0b517de1b84169225eaabe1f9517b7f9d7b4fd950d7e92e961cf1f1961",
+      "bytes": 6970
+    },
+    {
+      "path": "jit/jit.c",
+      "sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+      "bytes": 94962
+    },
+    {
+      "path": "jit/jit.h",
+      "sha256": "722f873feccf2d59e4b11309ec9573bf2e264e4087bf24fed12e8433dfbe80bc",
+      "bytes": 2147
+    },
+    {
+      "path": "jit/jit_internal.h",
+      "sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90",
+      "bytes": 15499
+    },
+    {
+      "path": "tests/manual/steam-compat/test-jit-ss-index.py",
+      "sha256": "27a8fe2cd2763987aca3f8a16d35571074f90bcdfabd4d756cc89800d1df7466",
+      "bytes": 39239
+    },
+    {
+      "path": "tests/manual/steam-compat/jit-ss-diag-probe.c",
+      "sha256": "ed853e4cbc6aba5f5e67745926d63b2bcf3ad47279c74c4e9e8920ddcd7bfc7a",
+      "bytes": 2499
+    }
+  ],
+  "raw_control_logs": [
+    {
+      "path": "work/performance/jit-ss-diagnostics-final/proc-disabled.txt",
+      "bytes": 992,
+      "sha256": "6f319b395188c469968656be6e8045fa8e924232574395e437a63a857e3c8435"
+    },
+    {
+      "path": "work/performance/jit-ss-diagnostics-final/proc-enabled.txt",
+      "bytes": 12945,
+      "sha256": "498ef6f09d2cf8b1d7c243c70b4b005317dc14912ba6948d2f27131a3136a3ef"
+    }
+  ],
+  "scope": "Opt-in diagnosis only. No cache policy or opcode translation change. No physical speed claim."
+}

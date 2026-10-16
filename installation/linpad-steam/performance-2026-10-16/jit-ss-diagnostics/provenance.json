@@ -1,0 +1,83 @@
+{
+  "source": "jit/jit.c",
+  "source_sha256": "4c0a7ead9d6e97298fbc8976123b0d61d9875f1fd6c977dd275aeebecb48b1c6",
+  "header_sha256": "308d665d42e8281c1d7d252a6583ee22c62375367e6ba293aa34fbac78ba2c90",
+  "extracted_declarations": [
+    "static void ss_diag_begin(",
+    "static void ss_diag_count(",
+    "static void ss_diag_sample(",
+    "static void ss_diag_copy(",
+    "void jit_ss_diag_show(",
+    "struct ss_entry {",
+    "static inline size_t pc_hash(",
+    "static void ss_grow_locked(",
+    "static void ss_insert_locked(",
+    "static bool ss_invalidate_locked(",
+    "void jit_invalidate_range(",
+    "static struct fiber_block *ss_get(",
+    "static struct fiber_block *ss_get_diagnosed(",
+    "static struct fiber_block *ss_get_cached(",
+    "static void ctx_switch_mm("
+  ],
+  "commands": [
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "work/performance/jit-ss-diagnostics-final/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-diagnostics-final/regression"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-diagnostics-final/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-diagnostics-final/benchmark"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-diagnostics-final/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-diagnostics-final/lookup-benchmark"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-diagnostics-final/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-diagnostics-final/context-benchmark"
+    ]
+  ],
+  "scope": "Local host fixture runs actual production private functions; no device/gameplay performance claim.",
+  "stubs": "Translation, compiled-block removal, lifetime teardown and allocator-failure injection. No compiled blocks inserted.",
+  "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index.",
+  "lookup_benchmark": "65536 live PCs and permuted hits for 4/64/4096/65536-byte strides at high FEX-like addresses; exact old fixed-table hit path versus production ss_get with grown table. Node visits and local elapsed time only.",
+  "context_benchmark": "8 host threads, 400000 persistent hits; actual production shared lookup versus per-context cache; exact lock counts, not device throughput."
+}
