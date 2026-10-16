@@ -41,7 +41,14 @@ struct jit_tlb_entry {
 #define JIT_TLB_SIZE (1 << JIT_TLB_BITS)
 #define JIT_TLB_OFF 0x800
 #define JIT_LC_SIZE 4096
+#define JIT_SS_LC_SIZE 256
 #define JIT_FILLED_MAX 1024
+
+struct jit_ss_cache_entry {
+    addr_t pc;
+    struct fiber_block *block;
+    uint64_t gen;
+};
 
 enum jit_reason {
     JR_CHAIN = 1,       // direct branch exit; ctx->exit_slot = patchable slot
@@ -105,6 +112,7 @@ struct jit_ctx {
   };
     struct jit_tlb_entry tlbe[JIT_TLB_SIZE];
     struct { addr_t pc; struct jit_block *b; uint64_t gen; } lc[JIT_LC_SIZE];   // dispatcher lookup cache (valid if gen == mm->gen)
+    struct jit_ss_cache_entry ss_lc[JIT_SS_LC_SIZE]; // persistent SS blocks only; same generation/epoch rules
     // TLB entries filled since the last flush, so a flush only touches those
     // (page tables change often: every mmap/munmap/mprotect in the process).
     uint16_t filled[JIT_FILLED_MAX];

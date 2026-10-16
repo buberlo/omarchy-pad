@@ -1598,12 +1598,15 @@ int jit_fetch_code(struct jit_ctx *ctx, addr_t pc, const uint32_t **code, int ma
 // rest go to the jetsam list right away, or the cache would grow by one block per
 // pc run while the arena was full.
 #define SS_NOMEM_CACHED 8192
-static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb, bool keep) {
+static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb, bool keep,
+        struct jit_ss_cache_entry *cached) {
     pthread_mutex_lock(&mm->lock);
     size_t h = pc_hash(pc, mm->ss_size);
     for (struct ss_entry *e = mm->ss_hash[h]; e; e = e->next) {
         if (e->pc == pc) {
             struct fiber_block *b = e->block;
+            if (cached)
+                *cached = (struct jit_ss_cache_entry) {pc, b, atomic_load(&mm->gen)};
             pthread_mutex_unlock(&mm->lock);
             return b;
         }
@@ -1631,6 +1634,8 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
     e->block = block;
     if ((keep || mm->ss_count < SS_NOMEM_CACHED) && atomic_load(&mm->gen) == gen) {
         ss_insert_locked(mm, e);
+        if (cached)
+            *cached = (struct jit_ss_cache_entry) {pc, block, gen};
     } else {
         e->next = mm->ss_jetsam;   // used once, freed by reclaim
         mm->ss_jetsam = e;
@@ -1640,13 +1645,25 @@ static struct fiber_block *ss_get(struct jit_mm *mm, addr_t pc, struct tlb *tlb,
     return block;
 }
 
-static int gadget_step(struct jit_ctx *ctx, struct tlb *tlb, bool keep) {
+static struct fiber_block *ss_get_cached(struct jit_ctx *ctx, addr_t pc, struct tlb *tlb, bool keep) {
     struct jit_mm *mm = ctx->mm;
+    uint64_t gen = atomic_load_explicit(&mm->gen, memory_order_acquire);
+    struct jit_ss_cache_entry *cached = &ctx->ss_lc[pc_hash(pc, JIT_SS_LC_SIZE)];
+    if (cached->pc == pc && cached->gen == gen && cached->block != NULL)
+        return cached->block;
+    // Only persistent shared entries may fill this slot. One-shot blocks are
+    // retired without a generation bump and must never survive in this cache.
+    // The active context's existing epoch protects a hit through execution.
+    cached->block = NULL;
+    return ss_get(mm, pc, tlb, keep, cached);
+}
+
+static int gadget_step(struct jit_ctx *ctx, struct tlb *tlb, bool keep) {
     struct fiber_frame *frame = ctx->frame;
     for (int tries = 0; tries < 16; tries++) {
         if (tlb->mem_changes != __atomic_load_n(&tlb->mmu->changes, __ATOMIC_ACQUIRE))
             tlb_flush(tlb);
-        struct fiber_block *block = ss_get(mm, ctx->cpu.pc, tlb, keep);
+        struct fiber_block *block = ss_get_cached(ctx, ctx->cpu.pc, tlb, keep);
         frame->cpu = ctx->cpu;
         frame->last_block = NULL;
         jit_saved_pc = ctx->cpu.pc;
@@ -1815,6 +1832,18 @@ static void itab_set(struct jit_mm *mm, addr_t pc, struct jit_block *b) {
     pthread_mutex_unlock(&mm->lock);
 }
 
+static void ctx_switch_mm(struct jit_ctx *ctx, struct jit_mm *mm) {
+    if (ctx->mm != mm || ctx->mmu_id != mm->mmu->id) {
+        tlb_flush_ctx(ctx);
+        ctx->mem_changes = __atomic_load_n(&mm->mmu->changes, __ATOMIC_ACQUIRE);
+        ctx->mmu_id = mm->mmu->id;
+        ctx->lc_gen = 0;
+        memset(ctx->lc, 0, sizeof(ctx->lc));
+        memset(ctx->ss_lc, 0, sizeof(ctx->ss_lc));
+    }
+    ctx->mm = mm;
+}
+
 int jit_run(struct cpu_state *cpu, struct tlb *tlb, struct jit_mm *mm) {
     struct jit_ctx *ctx = get_ctx();
     if (ctx == NULL) {
@@ -1825,14 +1854,7 @@ int jit_run(struct cpu_state *cpu, struct tlb *tlb, struct jit_mm *mm) {
         return INT_GPF;
     }
     ctx_activate(ctx);
-    if (ctx->mm != mm || ctx->mmu_id != mm->mmu->id) {
-        tlb_flush_ctx(ctx);
-        ctx->mem_changes = __atomic_load_n(&mm->mmu->changes, __ATOMIC_ACQUIRE);
-        ctx->mmu_id = mm->mmu->id;
-        ctx->lc_gen = 0;
-        memset(ctx->lc, 0, sizeof(ctx->lc));
-    }
-    ctx->mm = mm;
+    ctx_switch_mm(ctx, mm);
     ctx->tlb = tlb;
     ctx->itab = (uint64_t) mm->itab;
     ctx->changes_ptr = (uint64_t) &mm->mmu->changes;
