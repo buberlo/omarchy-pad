@@ -1,0 +1,418 @@
+[
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so",
+    "needed": [
+      "libdrm.so.2",
+      "libLLVM.so.19.1",
+      "libexpat.so.1",
+      "libz.so.1",
+      "libzstd.so.1",
+      "libsensors.so.5",
+      "libxcb.so.1",
+      "libxcb-randr.so.0",
+      "libxcb-sync.so.1",
+      "libxcb-present.so.0",
+      "libxshmfence.so.1",
+      "libxcb-xfixes.so.0",
+      "libxcb-dri3.so.0",
+      "libelf.so.1",
+      "libdrm_amdgpu.so.1",
+      "libdrm_intel.so.1",
+      "libX11-xcb.so.1",
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "5597543f11c2ef62bc95b0237a8a81339aed87e225d82ae2c6570f8973b1cee5"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1",
+    "needed": [
+      "libz.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "133484229a28880812f38fa95c8763805a76ae444199e36a119e2f975c32f45b"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.124.0",
+    "needed": [
+      "libdrm.so.2",
+      "libpciaccess.so.0",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.17",
+    "sha256": "b00cda27eb75459c505dadcb345c8f1137378446b237a5e85ff330d200db109d"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+    "needed": [
+      "libGLdispatch.so.0",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "f4b60a4618fbf760f395f64dfd53320446ba1011151a80e411742b3232b194e6"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0",
+    "needed": [
+      "libc.so.6",
+      "libm.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "bc0d631e86716b83841db1e78c960a8c364f1536f9e678d355a2b5defee7b643"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+    "needed": [
+      "libgallium-25.0.7-2+deb13u1.so",
+      "libgbm.so.1",
+      "libexpat.so.1",
+      "libX11-xcb.so.1",
+      "libxcb.so.1",
+      "libxcb-randr.so.0",
+      "libxcb-xfixes.so.0",
+      "libxcb-shm.so.0",
+      "libdrm.so.2",
+      "libwayland-client.so.0",
+      "libwayland-server.so.0",
+      "libxcb-dri3.so.0",
+      "libxcb-present.so.0",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "af1229604d80d73422ff3767f572849dce074a0ecdba8254e93a06a88cfec2e6"
+  },
+  {
+    "path": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/dri/libdril_dri.so",
+    "needed": [
+      "libgbm.so.1",
+      "libm.so.6",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.34",
+    "sha256": "0d8044a389ab67ef838b1bf13a6b6ce34547a45540a8a994b46f7fdd5e7292d0"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libdrm.so.2",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "bb104cc793d1cf221cc3b34086a6b3abeb09499a35e0a9dbbb78b673ead72830"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1",
+    "needed": [
+      "libffi.so.8",
+      "libedit.so.2",
+      "libm.so.6",
+      "libz3.so.4",
+      "libz.so.1",
+      "libzstd.so.1",
+      "libxml2.so.2",
+      "libstdc++.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "3523f50f635d2a1ea47518a392451f2854b92823ceaf1345fb806099dd1a3b8a"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libexpat.so.1",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.36",
+    "sha256": "0fd7d092bd0bf5dcc29f31daaba2bad993b0d18a1ab771fb844e0a6dfa8efe18"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libz.so.1",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.14",
+    "sha256": "85590dd58edf5445e18bc7193e5ebc01ac5841f1ae187e97705a662e90c6421e"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libzstd.so.1",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.34",
+    "sha256": "27f07c9a49c2c956bcfb64cd4712976586a66facbf15fc7f09bc37413b5f2b21"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libxcb.so.1",
+    "needed": [
+      "libXau.so.6",
+      "libXdmcp.so.6",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "d927e3166922b55216179c030e5ffde76652e38d5eeed830add9a843b134b79f"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxcb-randr.so.0",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.4",
+    "sha256": "aa6d39eabd9e5505bfa49e74124878cdc4d3354c816a86277c93952ffc9a1bf7"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxcb-sync.so.1",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.14",
+    "sha256": "fbb0fe758e9b21d509ebe4270a6c7cba47ce41f069a1d5e3d6744e4d6db3bd9f"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libxcb-present.so.0",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.4",
+    "sha256": "b7d77d4788692555b155b060499ae7bac68bb7c00b444a6746dd34ef7a5620c9"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxshmfence.so.1",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "c97efbccf3efdc35e030a5751ea16153abfc108d23afc6e4dae35dc77ca70b15"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxcb-xfixes.so.0",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.4",
+    "sha256": "6858d9cad712d1bb676e44cd9763d355ab18c0234ee8ecb6d9e2cf3cfda5069f"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libxcb-dri3.so.0",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.4",
+    "sha256": "7293cd9200c0f83f6e5e07ec1eb8b0822453ef137b30e58c401e572f58b6fae4"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libelf.so.1",
+    "needed": [
+      "libz.so.1",
+      "libzstd.so.1",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "9750ae785e2718a570c42b3f757eb263a3ba8abf057945e84f749f6ae5a896c5"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libdrm_amdgpu.so.1",
+    "needed": [
+      "libdrm.so.2",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "d3e622a93c82b44a33eab334bbb9d4b283f262b678dfd6fa1fbb458a5ba079eb"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libX11-xcb.so.1",
+    "needed": [],
+    "max_glibc": null,
+    "sha256": "c73c2e98ad556a412dd6eef44b857dbd3cc02f191db8af30968084565f60f311"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "needed": [
+      "libm.so.6",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2",
+      "libgcc_s.so.1"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "972bb2a18b71140dab0240f8a1f68ab3fb1d56bcd4c4f824a91b70888faf5a00"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "needed": [
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.41",
+    "sha256": "6d567d53e895273ca14a1f9dc164fc6c8d39aed2f60aa46a733c2784228915f3"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "needed": [
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.35",
+    "sha256": "30c61ab012a4241bed033725a09b61f5fdd3bb7df95ee852d0b096520524c7af"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libc.so.6",
+    "needed": [
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.41",
+    "sha256": "9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92"
+  },
+  {
+    "path": "work/performance/glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "890baeef03fd73560a2fde85ebe9fb49ca3e90686923c5ee22101b28ec8ee7aa"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1",
+    "needed": [
+      "libdrm.so.2",
+      "libexpat.so.1",
+      "libm.so.6",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.34",
+    "sha256": "ab1e16db65ef9809ee3bc2925c611dcb15e2d78a510c310f0193716c16ea6c2e"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxcb-shm.so.0",
+    "needed": [
+      "libxcb.so.1",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.4",
+    "sha256": "4a57cf736337398b8dda5fd842da9d8d040ff484ee7b418836f499f875623e9c"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libwayland-client.so.0",
+    "needed": [
+      "libffi.so.8",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "072b30f33e0a8c284a0c8176173d9714d0ccfd89bc3fa2bafa5a67f1261fa52e"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libwayland-server.so.0",
+    "needed": [
+      "libffi.so.8",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "621758790dc004cdea3027400815c09a368c6133ddd6e73bdc17d598d08e57ba"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libffi.so.8",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "696db07ef7b21571dd5cc271b68f28955d0180878399cf50c2c8d16ff7793acd"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libedit.so.2",
+    "needed": [
+      "libtinfo.so.6",
+      "libbsd.so.0",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "4cde661dc336a1a835e605532086c629f6279a312374c91795215b8489ad4bcf"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libz3.so.4",
+    "needed": [
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "7accc397d4ac387468b09489bdaff9d82bfac4ca6a7e339b8fbb2167edf9c1c0"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libxml2.so.2",
+    "needed": [
+      "libz.so.1",
+      "liblzma.so.5",
+      "libm.so.6",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "8f2643af68a9eba917929046806dabd1848867068d0eee0f6799288a8e886963"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+    "needed": [],
+    "max_glibc": "GLIBC_2.35",
+    "sha256": "c8438e4fde1934e61c88311633f00949ff645d5c04cdb8671fa3d78164d2f307"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libXau.so.6",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.33",
+    "sha256": "a4c9599e7239dd654a0527f15d79698202875571a4b8add0ca7f2086ca7002ef"
+  },
+  {
+    "path": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libXdmcp.so.6",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.36",
+    "sha256": "969f4f7cebd610fa4bb490c54cc4c70b1ee3381e050e2a3d1b3b03046787717f"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libtinfo.so.6",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.33",
+    "sha256": "4013e7651ac68f547d8333517def25b2366c97eec7de7f06e105dbf3444ffebf"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libbsd.so.0",
+    "needed": [
+      "libmd.so.0",
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.38",
+    "sha256": "167e3fa2b6320ce61534a48002e6d0921f61d61eae88a669c117e23ed3de9f37"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/liblzma.so.5",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.34",
+    "sha256": "01e05a4b5268805a10a2414a8904fb1fb45c60626dce53b5ea19c1d491049b99"
+  },
+  {
+    "path": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libmd.so.0",
+    "needed": [
+      "libc.so.6"
+    ],
+    "max_glibc": "GLIBC_2.33",
+    "sha256": "1c8c51474c0eb67dabd9f1605097eb58195cdabef64427ae17cfcd2053c37479"
+  }
+]

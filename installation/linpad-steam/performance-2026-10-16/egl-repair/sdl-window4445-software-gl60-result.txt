@@ -1,0 +1,63 @@
+Fri Oct 16 10:45:45 UTC 2026
+SDL_MODE_BEGIN=opengl
+SDL_WINDOW_PROBE mode=opengl flags=0x6
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV __EGL_VENDOR_LIBRARY_FILENAMES=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ENV MESA_LOADER_DRIVER_OVERRIDE=swrast
+ENV LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+ENV VK_ICD_FILENAMES=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json
+ENV MESA_VK_WSI_DEBUG=sw
+STAGE 0.022 SDL_DLOPEN
+SDL_VERSION 2.32.4
+STAGE 0.212 SDL_VIDEO_INIT_WAYLAND
+SDL_WINDOW_DEADLINE_SECONDS 60
+SDL_VIDEO_INIT_PASS driver=wayland displays=1
+STAGE 0.396 SDL_CREATE_WINDOW
+libEGL debug: Found 'LIBGL_ALWAYS_SOFTWARE' set, will use a CPU renderer
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R16G16B16A16_FLOAT
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R16G16B16X16_FLOAT
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B10G10R10X2_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B10G10R10A2_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R10G10B10X2_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R10G10B10A2_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R8G8B8A8_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_R8G8B8X8_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B5G6R5_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B5G5R5A1_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B5G5R5X1_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B4G4R4A4_UNORM
+libEGL debug: No DRI config supports native format PIPE_FORMAT_B4G4R4X4_UNORM
+libEGL debug: ---------------
+libEGL debug: Configurations:
+libEGL debug: cho       bf lv colourbuffer dp st  ms           vis  cav  bi     renderable           supported
+libEGL debug: sen    id sz  l  r  g  b  a  th cl ns b           id  eat  nd  gl es es2 es3 vg         surfaces
+libEGL debug: ---------------
+libEGL debug:     0x001 32  0  8  8  8  8   0  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   8 0x002 32  0  8  8  8  8  16  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   9 0x003 32  0  8  8  8  8  24  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:  10 0x004 32  0  8  8  8  8  24  8  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:  11 0x005 32  0  8  8  8  8  32  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:     0x006 32  0  8  8  8  8   0  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:  12 0x007 32  0  8  8  8  8  16  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:  13 0x008 32  0  8  8  8  8  24  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:  14 0x009 32  0  8  8  8  8  24  8  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:  15 0x00a 32  0  8  8  8  8  32  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:     0x00b 24  0  8  8  8  0   0  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   0 0x00c 24  0  8  8  8  0  16  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   1 0x00d 24  0  8  8  8  0  24  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   2 0x00e 24  0  8  8  8  0  24  8  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:   3 0x00f 24  0  8  8  8  0  32  0  0 0 0x00000000--            y  y   y   y                win,
+libEGL debug:     0x010 24  0  8  8  8  0   0  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:   4 0x011 24  0  8  8  8  0  16  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:   5 0x012 24  0  8  8  8  0  24  0  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:   6 0x013 24  0  8  8  8  0  24  8  4 1 0x00000000--            y  y   y   y                win,
+libEGL debug:   7 0x014 24  0  8  8  8  0  32  0  4 1 0x00000000--            y  y   y   y                win,
+SDL_CREATE_WINDOW_PASS mode=opengl size=640x360 drawable=640x360 flags=0x6
+STAGE 40.503 SDL_EVENTS_BEGIN
+SDL_EVENTS_END events=3 quit=0
+STAGE 46.327 SDL_DESTROY_WINDOW
+STAGE 53.800 SDL_WINDOW_SETUP_PASS
+SDL_MODE_EXIT=opengl:0
+Fri Oct 16 10:46:41 UTC 2026

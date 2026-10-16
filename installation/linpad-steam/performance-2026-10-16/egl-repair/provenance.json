@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-10-16T10:35:29.003568+00:00",
+  "trigger": {
+    "report": "work/performance/reports/hollow4445-wayland-status-2.txt",
+    "error": "Error creating MainPlayerWindow: Could not load EGL library"
+  },
+  "install_prefix": "/opt/hollow-egl",
+  "base_runtime": "/opt/hollow-runtime",
+  "unchanged_vulkan_overlay": "/opt/hollow-mesa26",
+  "packages": [
+    {
+      "name": "libdrm-intel1",
+      "version": "2.4.124-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libd/libdrm/libdrm-intel1_2.4.124-2_amd64.deb",
+      "bytes": 64104,
+      "sha256": "188ab1fd74c838b3c8055d62107351e16a4bb7a25d39c30bbb9aac30ddd37238"
+    },
+    {
+      "name": "libegl1",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libegl1_1.7.0-1+b2_amd64.deb",
+      "bytes": 34588,
+      "sha256": "62e7bc8ccd47a60e55aad17f83d8d474310d782eb8589bbce2ab714c31712406"
+    },
+    {
+      "name": "libpciaccess0",
+      "version": "0.17-3+b3",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libp/libpciaccess/libpciaccess0_0.17-3+b3_amd64.deb",
+      "bytes": 51920,
+      "sha256": "d9a0091071635a84e837051e4813005ac445071731becea28fba4d9806df5252"
+    },
+    {
+      "name": "libsensors-config",
+      "version": "1:3.6.2-2",
+      "architecture": "all",
+      "url": "https://deb.debian.org/debian/pool/main/l/lm-sensors/libsensors-config_3.6.2-2_all.deb",
+      "bytes": 16236,
+      "sha256": "3056da80c7d963af795dab480ab6f6f4b154ad4ac39f522dc52d17c834fea253"
+    },
+    {
+      "name": "libsensors5",
+      "version": "1:3.6.2-2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/l/lm-sensors/libsensors5_3.6.2-2_amd64.deb",
+      "bytes": 37492,
+      "sha256": "f0a994a6d7cfa695dea5343d0d1ba7eed796c0ad920c7282998b95f60049c4f6"
+    },
+    {
+      "name": "libegl-mesa0",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/m/mesa/libegl-mesa0_25.0.7-2+deb13u1_amd64.deb",
+      "bytes": 128456,
+      "sha256": "0ddebd7e91b048aac812611d6bd008343386cb140b51e5e66df74c6b6263be65"
+    },
+    {
+      "name": "libgl1-mesa-dri",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/m/mesa/libgl1-mesa-dri_25.0.7-2+deb13u1_amd64.deb",
+      "bytes": 46240,
+      "sha256": "722fad9944bdfd29eb6421576331a2697f83bc4b3551d693edb7aefdde6bb198"
+    },
+    {
+      "name": "mesa-libgallium",
+      "version": "25.0.7-2+deb13u1",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/m/mesa/mesa-libgallium_25.0.7-2+deb13u1_amd64.deb",
+      "bytes": 9630224,
+      "sha256": "3e610f29321cdcc61337c86e6b4031ff60f0c9915fe19e6a862ac06480620ff4"
+    }
+  ],
+  "official_package_bytes": 10009260,
+  "cached_official_index_sha256": "4f2c68d67001d595fbd343f6dbad44468953a51c4d9dec3a4803249f6e295940",
+  "scope": {
+    "purpose": "Auxiliary Wayland EGL display/window initialization; the game renderer remains Mesa26 Venus Vulkan.",
+    "mesa_egl_version": "25.0.7-2+deb13u1",
+    "glvnd_version": "1.7.0-1+b2",
+    "reused_base_components": [
+      "GBM25",
+      "LLVM19",
+      "GLdispatch1.7",
+      "glibc2.41",
+      "other dependencies enumerated in elf-closure.json"
+    ],
+    "new_driver_modules": [
+      "libdril_dri.so",
+      "zink_dri.so",
+      "swrast_dri.so"
+    ],
+    "excluded": "Mesa26 EGL/Gallium candidate because actual libgallium-26.2.4-1.so requires GLIBC_2.43; base libc and loader are preserved.",
+    "no_system_configuration": "Only shared libraries, EGL vendor JSON and packaged copyright files are in the prefix; sensors system config and unrelated DRI aliases are excluded."
+  },
+  "validation": {
+    "elf_dependency_closure_count": 42,
+    "unresolved_dt_needed": [],
+    "required_glibc_versions_fit_base": true,
+    "shell_syntax": "PASS",
+    "physical_device_egl_initialize": {
+      "zink": {
+        "status": "timed out during eglInitialize",
+        "linpad_build": 4445,
+        "started_utc": "2026-10-16T10:35:04Z",
+        "ended_utc": "2026-10-16T10:36:34Z",
+        "exit": 142,
+        "libGL_and_libEGL_load": "PASS",
+        "SDL_EGL_required_symbols": "PASS",
+        "EGL_client_extensions": "returned",
+        "Wayland_connect": "PASS",
+        "EGL_platform_display": "returned",
+        "eglInitialize": "entered at19.918seconds; no result before90second alarm",
+        "window_configuration_enumeration": "not reached",
+        "report": "egl4445-zink-timeout.txt",
+        "report_sha256": "7d2efea82f16e1bb99549c90b4b7dbcea986bc198d3bfffde804ccfa3afafcca",
+        "probe_sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13",
+        "wrapper_sha256": "8bd790d13dbe5d06e2c78b2d17e7a0a996c6734bca2a453fe23bca4e31825f5f"
+      },
+      "software_control": {
+        "status": "PASS",
+        "linpad_build": 4445,
+        "device": "physical Apple M2 iPad",
+        "started_utc": "2026-10-16T10:41:32Z",
+        "ended_utc": "2026-10-16T10:42:08Z",
+        "program_seconds": 31.163,
+        "exit": 0,
+        "mode": "swrast",
+        "GALLIUM_DRIVER": "llvmpipe",
+        "LIBGL_ALWAYS_SOFTWARE": "1",
+        "EGL_version": "1.5",
+        "EGL_vendor": "Mesa Project",
+        "OpenGL_RGB8_window_configurations": 16,
+        "ES2_RGB8_window_configurations": 16,
+        "reported_maps": "EGL/Gallium25 from /opt/hollow-egl; LLVM19/GBM25/base from /opt/hollow-runtime",
+        "report": "egl4445-software-pass.txt",
+        "report_sha256": "d181277f17984676fda64b078478473ecd0e79adc8460788c7f70aa0259f729f",
+        "probe_sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13",
+        "wrapper": "egl4445-software-probe.sh",
+        "wrapper_sha256": "e00627a2d5a51c004dc6511c0a79a5a6d811268e0d039e4440aa56086331a561",
+        "scope": "EGL display initialization and window configuration enumeration; no context/window/rendering in this probe"
+      }
+    },
+    "gameplay": "unverified",
+    "physical_device_install": {
+      "status": "PASS",
+      "device": "physical iPad",
+      "linpad_build": 4445,
+      "date": "2026-10-16",
+      "report": "egl-device-install.txt",
+      "report_sha256": "e592a54b3079b8f391ae975572b8a717c19ff3fbbc47612d3b4bae8626822cbc",
+      "added_entries": [
+        "usr/lib/x86_64-linux-gnu/dri/libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+        "usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.124.0",
+        "usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so",
+        "usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1",
+        "usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0",
+        "usr/share/doc/libdrm-intel1/copyright",
+        "usr/share/doc/libegl-mesa0/copyright",
+        "usr/share/doc/libegl1/copyright",
+        "usr/share/doc/libgl1-mesa-dri/copyright",
+        "usr/share/doc/libpciaccess0/copyright",
+        "usr/share/doc/libsensors-config/copyright",
+        "usr/share/doc/libsensors5/copyright",
+        "usr/share/doc/mesa-libgallium/copyright",
+        "usr/share/glvnd/egl_vendor.d/50_mesa.json",
+        "usr/lib/x86_64-linux-gnu/dri/swrast_dri.so -> libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/dri/zink_dri.so -> libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/libEGL.so.1 -> libEGL.so.1.1.0",
+        "usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0 -> libEGL_mesa.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libdrm_intel.so.1 -> libdrm_intel.so.1.124.0",
+        "usr/lib/x86_64-linux-gnu/libpciaccess.so.0 -> libpciaccess.so.0.11.1",
+        "usr/lib/x86_64-linux-gnu/libsensors.so.5 -> libsensors.so.5.0.0"
+      ]
+    },
+    "physical_device_SDL_window_setup": {
+      "linpad_build": 4445,
+      "SDL_version": "2.32.4",
+      "backend": "wayland",
+      "window_dimensions": "640x360",
+      "vulkan": {
+        "status": "PASS",
+        "program_seconds": 7.752,
+        "exit": 0,
+        "report": "sdl-window4445-software-results.txt",
+        "probe": "sdl-window-probe-initial15"
+      },
+      "opengl_initial": {
+        "status": "insufficient diagnostic deadline",
+        "exit": 142,
+        "deadline_seconds": 15,
+        "report": "sdl-window4445-software-results.txt",
+        "probe": "sdl-window-probe-initial15"
+      },
+      "opengl_corrected": {
+        "status": "PASS",
+        "program_seconds": 53.8,
+        "exit": 0,
+        "deadline_seconds": 60,
+        "report": "sdl-window4445-software-gl60-result.txt",
+        "probe": "sdl-window-probe"
+      },
+      "scope": "External SDL2 window creation, events, and orderly destruction; no OpenGL context, Vulkan surface, rendering, or game performance"
+    },
+    "diagnostic_game_wrapper": {
+      "file": "fex-hollow-egl",
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397",
+      "real_translator": "/opt/fex/FEX-apple-m1-munmap",
+      "default_mode": "swrast",
+      "optional_mode": "zink",
+      "Vulkan_ICD": "/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json",
+      "host_mock_checks": 50,
+      "host_validation": "launcher-host-validation.txt",
+      "host_validation_scope": "Actual launch-game invokes wrapper and mock translator; environment sanitation/restore, argv/cwd, timestamps and invalid inputs",
+      "actual_game": "Parent started physical game 2026-10-16T10:46:58Z; result not yet qualified by this archive"
+    }
+  },
+  "archive": {
+    "filename": "linpad-x86-egl-runtime.tar.gz",
+    "bytes": 13882190,
+    "sha256": "b80be0cfbf3146ed1c25d4d92a9dc51a775223968363902e66c7808771b455d1"
+  },
+  "served_wrapper": {
+    "filename": "install-egl-runtime",
+    "sha256": "7147c1954d9c614e54a2ec03fd19d48193c296e4c7b08cb60abdef7a34e23907"
+  },
+  "updated_utc": "2026-10-16T10:50:03.735245+00:00",
+  "diagnostic_sources_and_evidence": [
+    {
+      "file": "EGL-VULKAN-AUDIT.md",
+      "sha256": "5f16a8a612fe35b152c2492d4d35eb8f9f47bd4b45591672edf3b4c38636e6b4",
+      "bytes": 2908
+    },
+    {
+      "file": "build-probes.sh",
+      "sha256": "1d3a3b82763af26c5d78e950abf7730cb76daeb55469c07ed90cb62e4c76ac8c",
+      "bytes": 523
+    },
+    {
+      "file": "egl-display-probe",
+      "sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13",
+      "bytes": 33544
+    },
+    {
+      "file": "egl-display-probe.c",
+      "sha256": "b8167946a82821989a2a09b4732cd0f879337c4f40c40fb91e37e63e5ade264a",
+      "bytes": 7161
+    },
+    {
+      "file": "egl-vulkan-elf-audit.json",
+      "sha256": "37d4926e3355117e5fad85580d894722f807792c44212f79e429143a28ea29ca",
+      "bytes": 7117
+    },
+    {
+      "file": "egl-vulkan-elf-readout.txt",
+      "sha256": "550e3537d35794c982aa38c188e9503a8f05446a9dc7c1fa057d4591c995ac8b",
+      "bytes": 2342
+    },
+    {
+      "file": "egl4445-software-pass.txt",
+      "sha256": "d181277f17984676fda64b078478473ecd0e79adc8460788c7f70aa0259f729f",
+      "bytes": 12267
+    },
+    {
+      "file": "egl4445-software-probe.sh",
+      "sha256": "e00627a2d5a51c004dc6511c0a79a5a6d811268e0d039e4440aa56086331a561",
+      "bytes": 1380
+    },
+    {
+      "file": "egl4445-zink-probe.sh",
+      "sha256": "8bd790d13dbe5d06e2c78b2d17e7a0a996c6734bca2a453fe23bca4e31825f5f",
+      "bytes": 1310
+    },
+    {
+      "file": "egl4445-zink-timeout.txt",
+      "sha256": "7d2efea82f16e1bb99549c90b4b7dbcea986bc198d3bfffde804ccfa3afafcca",
+      "bytes": 1498
+    },
+    {
+      "file": "fex-hollow-egl",
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397",
+      "bytes": 3197
+    },
+    {
+      "file": "hollow4445-egl-software-status.sh",
+      "sha256": "fecc8f17011b3c6b6efe693fe26a6f1c5744d242044c4f71760bad9709a5bf63",
+      "bytes": 688
+    },
+    {
+      "file": "hollow4445-egl-software.sh",
+      "sha256": "75d763a18a70e0c76806c46da98aeb44a4da2558f3148b42e2e79e86473390f0",
+      "bytes": 716
+    },
+    {
+      "file": "launch-game-tested",
+      "sha256": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3",
+      "bytes": 4507
+    },
+    {
+      "file": "launcher-host-validation.txt",
+      "sha256": "612dee98e565922082ae2c47211e25a3f55187d53dfb54b3f50b8a04542da6ab",
+      "bytes": 65
+    },
+    {
+      "file": "sdl-window-probe",
+      "sha256": "fd2104ec585d5f67ecfda2d0ef537a0928d418a5870f7d81f7fce31f1ec52d94",
+      "bytes": 29608
+    },
+    {
+      "file": "sdl-window-probe-initial15",
+      "sha256": "5f364cedd18d4f9d753d4c13843d77d4cbc20861c51291e890701c206f9d32f2",
+      "bytes": 29488
+    },
+    {
+      "file": "sdl-window-probe-initial15.c",
+      "sha256": "c22c600dd031c1fbf3a72949e996e8d669943e018750e1a7a9fc1442b21d28a3",
+      "bytes": 5055
+    },
+    {
+      "file": "sdl-window-probe.c",
+      "sha256": "d25496947452efb16a5d67fef79eea799d9e934fbca92cb7c2c005b2a991018b",
+      "bytes": 5256
+    },
+    {
+      "file": "sdl-window4445-software-gl60-probe.sh",
+      "sha256": "46d518e121fde73c05aca14f2130cc791f56bdb68e22aac0cb895d3ad2cfe3f2",
+      "bytes": 1571
+    },
+    {
+      "file": "sdl-window4445-software-gl60-result.txt",
+      "sha256": "0615b7d5cf86389d4a6db88b7c3bddbc9059377538fcee3af782cfa93b8e3142",
+      "bytes": 4747
+    },
+    {
+      "file": "sdl-window4445-software-probe.sh",
+      "sha256": "1b4015c550b94f6725e255416341caea642b90e3533db0269bbe696fe12f9bdc",
+      "bytes": 1573
+    },
+    {
+      "file": "sdl-window4445-software-results.txt",
+      "sha256": "5358093cc6aab1dfd9a361d04fbb790487f7424c769e1f3fcb355402804043c0",
+      "bytes": 1951
+    },
+    {
+      "file": "validate-egl-launcher.py",
+      "sha256": "3ce9c1873801b96c092d4c3238912cb45a7f67514150f0bd4ed4fa51bdcb037b",
+      "bytes": 6224
+    },
+    {
+      "file": "probe-source-audit.md",
+      "sha256": "9002c433a2b65cacebbd2a0b573a3d7fb6729742937c533164d6e9316a283948",
+      "bytes": 6521
+    },
+    {
+      "file": "unity-wayland-vulkan-audit.md",
+      "sha256": "04a9797887b380ebe102ee9c5fbb8dfc5427bb21c0d70ea0d4f931631fdead0e",
+      "bytes": 4776
+    }
+  ]
+}

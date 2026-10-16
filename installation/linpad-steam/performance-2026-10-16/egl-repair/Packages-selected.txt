@@ -1,0 +1,152 @@
+Package: libdrm-intel1
+Source: libdrm
+Version: 2.4.124-2
+Installed-Size: 182
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Depends: libc6 (>= 2.34), libdrm2 (>= 2.4.108), libpciaccess0
+Description: Userspace interface to intel-specific kernel DRM services -- runtime
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/mesa/drm/
+Description-md5: 7d5cde7098438ef4f6e5a2c7a8f37a2f
+Tag: role::shared-lib
+Section: libs
+Priority: optional
+Filename: pool/main/libd/libdrm/libdrm-intel1_2.4.124-2_amd64.deb
+Size: 64104
+MD5sum: 90e77d96c766f817f511e960788b8b7f
+SHA256: 188ab1fd74c838b3c8055d62107351e16a4bb7a25d39c30bbb9aac30ddd37238
+
+Package: libegl1
+Source: libglvnd (1.7.0-1)
+Version: 1.7.0-1+b2
+Installed-Size: 116
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Depends: libc6 (>= 2.38), libglvnd0 (= 1.7.0-1+b2), libegl-mesa0
+Description: Vendor neutral GL dispatch library -- EGL support
+Multi-Arch: same
+Homepage: https://gitlab.freedesktop.org/glvnd/libglvnd
+Description-md5: 1c6433db289e1066e3e6d8226697cf51
+Tag: role::shared-lib
+Section: libs
+Priority: extra
+Filename: pool/main/libg/libglvnd/libegl1_1.7.0-1+b2_amd64.deb
+Size: 34588
+MD5sum: 147e7b9c9dd00c7efba73f4c4562e183
+SHA256: 62e7bc8ccd47a60e55aad17f83d8d474310d782eb8589bbce2ab714c31712406
+
+Package: libpciaccess0
+Source: libpciaccess (0.17-3)
+Version: 0.17-3+b3
+Installed-Size: 97
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Depends: libc6 (>= 2.38), zlib1g (>= 1:1.1.4)
+Suggests: pciutils
+Description: Generic PCI access library for X
+Multi-Arch: same
+Description-md5: d0ad9b669375fc349fbc3c6888e88566
+Tag: role::shared-lib
+Section: libs
+Priority: optional
+Filename: pool/main/libp/libpciaccess/libpciaccess0_0.17-3+b3_amd64.deb
+Size: 51920
+MD5sum: cf5bbdf3fd7e3b6026f6380553ce2c0a
+SHA256: d9a0091071635a84e837051e4813005ac445071731becea28fba4d9806df5252
+
+Package: libsensors-config
+Source: lm-sensors
+Version: 1:3.6.2-2
+Installed-Size: 37
+Maintainer: Aurelien Jarno <aurel32@debian.org>
+Architecture: all
+Suggests: lm-sensors
+Description: lm-sensors configuration files
+Multi-Arch: foreign
+Homepage: https://github.com/hramrach/lm-sensors
+Description-md5: de095966ea2f42eaf8f0a3b1ec6bf389
+Section: utils
+Priority: optional
+Filename: pool/main/l/lm-sensors/libsensors-config_3.6.2-2_all.deb
+Size: 16236
+MD5sum: 9d468823435bd29c9fe580b1db754ae3
+SHA256: 3056da80c7d963af795dab480ab6f6f4b154ad4ac39f522dc52d17c834fea253
+
+Package: libsensors5
+Source: lm-sensors
+Version: 1:3.6.2-2
+Installed-Size: 100
+Maintainer: Aurelien Jarno <aurel32@debian.org>
+Architecture: amd64
+Depends: libsensors-config, libc6 (>= 2.38)
+Suggests: lm-sensors
+Description: library to read temperature/voltage/fan sensors
+Multi-Arch: same
+Homepage: https://github.com/hramrach/lm-sensors
+Description-md5: 369bc8769ec74bda1a1726b61f1c8e49
+Tag: role::shared-lib
+Section: libs
+Priority: optional
+Filename: pool/main/l/lm-sensors/libsensors5_3.6.2-2_amd64.deb
+Size: 37492
+MD5sum: 641055c30e7159c6504b7b945d7c01e7
+SHA256: f0a994a6d7cfa695dea5343d0d1ba7eed796c0ad920c7282998b95f60049c4f6
+
+Package: libegl-mesa0
+Source: mesa
+Version: 25.0.7-2+deb13u1
+Installed-Size: 414
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Provides: libegl-vendor
+Depends: libc6 (>= 2.38), libdrm2 (>= 2.4.121), libexpat1 (>= 2.0.1), libgbm1 (= 25.0.7-2+deb13u1), libgcc-s1 (>= 3.4), libwayland-client0 (>= 1.23.0), libwayland-server0 (>= 1.15.0), libx11-xcb1, libxcb-dri3-0 (>= 1.13), libxcb-present0, libxcb-randr0 (>= 1.3), libxcb-shm0, libxcb-xfixes0, libxcb1 (>= 1.6), mesa-libgallium (= 25.0.7-2+deb13u1)
+Description: free implementation of the EGL API -- Mesa vendor library
+Multi-Arch: same
+Homepage: https://mesa3d.org/
+Description-md5: b66a0a444abc380f2430455fec07e449
+Tag: role::shared-lib
+Section: libs
+Priority: optional
+Filename: pool/main/m/mesa/libegl-mesa0_25.0.7-2+deb13u1_amd64.deb
+Size: 128456
+MD5sum: 613f4ce753ab26afbd05d6e873af131d
+SHA256: 0ddebd7e91b048aac812611d6bd008343386cb140b51e5e66df74c6b6263be65
+
+Package: libgl1-mesa-dri
+Source: mesa
+Version: 25.0.7-2+deb13u1
+Installed-Size: 241
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Depends: libgbm1 (= 25.0.7-2+deb13u1), libvulkan1, libc6 (>= 2.34)
+Description: free implementation of the OpenGL API -- DRI modules
+Multi-Arch: same
+Homepage: https://mesa3d.org/
+Description-md5: 4ce0833dab51e157223384b77395619a
+Tag: role::shared-lib
+Section: libs
+Priority: optional
+Filename: pool/main/m/mesa/libgl1-mesa-dri_25.0.7-2+deb13u1_amd64.deb
+Size: 46240
+MD5sum: 6d88ad70feebab7182f9202b5d1f50f0
+SHA256: 722fad9944bdfd29eb6421576331a2697f83bc4b3551d693edb7aefdde6bb198
+
+Package: mesa-libgallium
+Source: mesa
+Version: 25.0.7-2+deb13u1
+Installed-Size: 41615
+Maintainer: Debian X Strike Force <debian-x@lists.debian.org>
+Architecture: amd64
+Provides: libglapi-mesa
+Depends: libc6 (>= 2.38), libdrm-amdgpu1 (>= 2.4.121), libdrm-intel1 (>= 2.4.121), libdrm2 (>= 2.4.121), libelf1t64 (>= 0.142), libexpat1 (>= 2.0.1), libgcc-s1 (>= 3.4), libllvm19 (>= 1:19.1.0), libsensors5 (>= 1:3.5.0), libstdc++6 (>= 11), libx11-xcb1, libxcb-dri3-0 (>= 1.13), libxcb-present0, libxcb-randr0, libxcb-sync1, libxcb-xfixes0, libxcb1 (>= 1.9.2), libxshmfence1, libzstd1 (>= 1.5.5), zlib1g (>= 1:1.1.4)
+Description: shared infrastructure for Mesa drivers
+Multi-Arch: same
+Homepage: https://mesa3d.org/
+Description-md5: bbed14c249d6107bdd29c797c354b48e
+Section: libs
+Priority: optional
+Filename: pool/main/m/mesa/mesa-libgallium_25.0.7-2+deb13u1_amd64.deb
+Size: 9630224
+MD5sum: b0e449b27b77918abfb89d1de90c8cc8
+SHA256: 3e610f29321cdcc61337c86e6b4031ff60f0c9915fe19e6a862ac06480620ff4

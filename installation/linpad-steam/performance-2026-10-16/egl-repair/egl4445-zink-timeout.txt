@@ -1,0 +1,27 @@
+Fri Oct 16 10:35:04 UTC 2026
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV __EGL_VENDOR_LIBRARY_FILENAMES=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ENV MESA_LOADER_DRIVER_OVERRIDE=zink
+ENV LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+ENV GALLIUM_DRIVER=(unset)
+ENV VK_ICD_FILENAMES=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json
+ENV MESA_VK_WSI_DEBUG=sw
+ENV LIBGL_ALWAYS_SOFTWARE=(unset)
+STAGE 0.020 libGL.so.1
+DLOPEN_PASS libGL.so.1
+STAGE 0.075 libEGL.so.1
+DLOPEN_PASS libEGL.so.1
+SDL_EGL_REQUIRED_SYMBOLS_PASS
+STAGE 0.083 EGL_CLIENT_EXTENSIONS
+EGL_CLIENT_EXTENSIONS EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_EXT_platform_base EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_EXT_platform_device EGL_EXT_explicit_device EGL_EXT_platform_wayland EGL_KHR_platform_wayland EGL_EXT_platform_x11 EGL_KHR_platform_x11 EGL_EXT_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+STAGE 19.621 libwayland-client.so.0
+DLOPEN_PASS libwayland-client.so.0
+STAGE 19.655 WAYLAND_CONNECT
+WAYLAND_CONNECT_PASS
+STAGE 19.817 EGL_GET_PLATFORM_DISPLAY
+STAGE 19.918 EGL_INITIALIZE
+Alarm clock
+EGL_PROBE_EXIT=142
+Fri Oct 16 10:36:34 UTC 2026

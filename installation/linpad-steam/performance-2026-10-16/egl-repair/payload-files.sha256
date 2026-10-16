@@ -1,0 +1,16 @@
+0d8044a389ab67ef838b1bf13a6b6ce34547a45540a8a994b46f7fdd5e7292d0  usr/lib/x86_64-linux-gnu/dri/libdril_dri.so
+f4b60a4618fbf760f395f64dfd53320446ba1011151a80e411742b3232b194e6  usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0
+af1229604d80d73422ff3767f572849dce074a0ecdba8254e93a06a88cfec2e6  usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+b00cda27eb75459c505dadcb345c8f1137378446b237a5e85ff330d200db109d  usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.124.0
+5597543f11c2ef62bc95b0237a8a81339aed87e225d82ae2c6570f8973b1cee5  usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+133484229a28880812f38fa95c8763805a76ae444199e36a119e2f975c32f45b  usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1
+bc0d631e86716b83841db1e78c960a8c364f1536f9e678d355a2b5defee7b643  usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0
+512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0  usr/share/doc/libdrm-intel1/copyright
+55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038  usr/share/doc/libegl-mesa0/copyright
+37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3  usr/share/doc/libegl1/copyright
+55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038  usr/share/doc/libgl1-mesa-dri/copyright
+59f90c1ad1face5bd0a516feb8a71e005075d532c522b64ff06b2bfeebde8fe8  usr/share/doc/libpciaccess0/copyright
+0b08081a35b0c3324b1729c68ee3de1808350a120d99dee4b2fa7dc2f43ee58d  usr/share/doc/libsensors-config/copyright
+0b08081a35b0c3324b1729c68ee3de1808350a120d99dee4b2fa7dc2f43ee58d  usr/share/doc/libsensors5/copyright
+55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038  usr/share/doc/mesa-libgallium/copyright
+cd3881df4227c13ca7f9cfe6c78820f21d5f7a00a41b299214f6f827e63be369  usr/share/glvnd/egl_vendor.d/50_mesa.json

@@ -423,6 +423,301 @@
       "sha256": "bc904acdac178e740afb257f8f53cd72d2f20ab82648868c46a743f0b1d63cc0"
     },
     {
+      "path": "egl-repair/ARCHIVE.md",
+      "bytes": 471,
+      "sha256": "1e94b1c17a68f637d1ae1402f7886e0066846f9e2f27761ffa9fd390d4971206"
+    },
+    {
+      "path": "egl-repair/EGL-VULKAN-AUDIT.md",
+      "bytes": 2908,
+      "sha256": "5f16a8a612fe35b152c2492d4d35eb8f9f47bd4b45591672edf3b4c38636e6b4"
+    },
+    {
+      "path": "egl-repair/Packages-selected.txt",
+      "bytes": 5718,
+      "sha256": "6c57c1bbc8335102077ce27da24dfa5646b214b31202be0671f1fd37846f6e98"
+    },
+    {
+      "path": "egl-repair/README.md",
+      "bytes": 4774,
+      "sha256": "f2c940e281363af0fd5a2caf7ff2183611c7f1e407d50522c4f920e15ac26cba"
+    },
+    {
+      "path": "egl-repair/SHA256SUMS",
+      "bytes": 5304,
+      "sha256": "3cfd92f4989024178517878841b9517d4aa0be3fbbda0dd76aa28dbf46bc742c"
+    },
+    {
+      "path": "egl-repair/build-probes.sh",
+      "bytes": 523,
+      "sha256": "1d3a3b82763af26c5d78e950abf7730cb76daeb55469c07ed90cb62e4c76ac8c"
+    },
+    {
+      "path": "egl-repair/egl-device-install.txt",
+      "bytes": 3205,
+      "sha256": "e592a54b3079b8f391ae975572b8a717c19ff3fbbc47612d3b4bae8626822cbc"
+    },
+    {
+      "path": "egl-repair/egl-display-probe",
+      "bytes": 33544,
+      "sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13"
+    },
+    {
+      "path": "egl-repair/egl-display-probe.c",
+      "bytes": 7161,
+      "sha256": "b8167946a82821989a2a09b4732cd0f879337c4f40c40fb91e37e63e5ade264a"
+    },
+    {
+      "path": "egl-repair/egl-vulkan-elf-audit.json",
+      "bytes": 7117,
+      "sha256": "37d4926e3355117e5fad85580d894722f807792c44212f79e429143a28ea29ca"
+    },
+    {
+      "path": "egl-repair/egl-vulkan-elf-readout.txt",
+      "bytes": 2342,
+      "sha256": "550e3537d35794c982aa38c188e9503a8f05446a9dc7c1fa057d4591c995ac8b"
+    },
+    {
+      "path": "egl-repair/egl4445-software-pass.txt",
+      "bytes": 12267,
+      "sha256": "d181277f17984676fda64b078478473ecd0e79adc8460788c7f70aa0259f729f"
+    },
+    {
+      "path": "egl-repair/egl4445-software-probe.sh",
+      "bytes": 1380,
+      "sha256": "e00627a2d5a51c004dc6511c0a79a5a6d811268e0d039e4440aa56086331a561"
+    },
+    {
+      "path": "egl-repair/egl4445-zink-probe.sh",
+      "bytes": 1310,
+      "sha256": "8bd790d13dbe5d06e2c78b2d17e7a0a996c6734bca2a453fe23bca4e31825f5f"
+    },
+    {
+      "path": "egl-repair/egl4445-zink-timeout.txt",
+      "bytes": 1498,
+      "sha256": "7d2efea82f16e1bb99549c90b4b7dbcea986bc198d3bfffde804ccfa3afafcca"
+    },
+    {
+      "path": "egl-repair/elf-closure.json",
+      "bytes": 12355,
+      "sha256": "c13739b65ca743f95fa0803171c9fb3eed768f75dbb72ae56562c7f473c19041"
+    },
+    {
+      "path": "egl-repair/fetch-command.txt",
+      "bytes": 1079,
+      "sha256": "cab6f5543295bf61d8f78207fd1c87759ff9260872a8369b220ff10f366a2013"
+    },
+    {
+      "path": "egl-repair/fex-hollow-egl",
+      "bytes": 3197,
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397"
+    },
+    {
+      "path": "egl-repair/hollow4445-egl-software-status.sh",
+      "bytes": 688,
+      "sha256": "fecc8f17011b3c6b6efe693fe26a6f1c5744d242044c4f71760bad9709a5bf63"
+    },
+    {
+      "path": "egl-repair/hollow4445-egl-software.sh",
+      "bytes": 716,
+      "sha256": "75d763a18a70e0c76806c46da98aeb44a4da2558f3148b42e2e79e86473390f0"
+    },
+    {
+      "path": "egl-repair/install-egl-runtime",
+      "bytes": 488,
+      "sha256": "7147c1954d9c614e54a2ec03fd19d48193c296e4c7b08cb60abdef7a34e23907"
+    },
+    {
+      "path": "egl-repair/install.sh",
+      "bytes": 2293,
+      "sha256": "45cffba394d5ab6b36b8a84be8207832aa9f774e839a1d1c358a27c8f042d4da"
+    },
+    {
+      "path": "egl-repair/launch-game-tested",
+      "bytes": 4507,
+      "sha256": "db885d884c7b6788086ad8dbb88d71ff63c39ad7fa402a28e7c4d176c07523c3"
+    },
+    {
+      "path": "egl-repair/launcher-host-validation.txt",
+      "bytes": 65,
+      "sha256": "612dee98e565922082ae2c47211e25a3f55187d53dfb54b3f50b8a04542da6ab"
+    },
+    {
+      "path": "egl-repair/libEGL.so.1.1.0.elf.txt",
+      "bytes": 2897,
+      "sha256": "bc4c5296ea014adc9463e7fb5c336c63bc6ff5ae965c00c18c8dd4b8ca9390a7"
+    },
+    {
+      "path": "egl-repair/libEGL_mesa.so.0.0.0.elf.txt",
+      "bytes": 3950,
+      "sha256": "52f975b4c818547f9e32d45a775212d0a2f11e1786d9ba62afef0be7c60902b5"
+    },
+    {
+      "path": "egl-repair/libdrm_intel.so.1.124.0.elf.txt",
+      "bytes": 2735,
+      "sha256": "7e17a8007112aac2f21f9308f77a4f9e7f8c1d56709e738651a1627a16a9ce33"
+    },
+    {
+      "path": "egl-repair/libgallium-25.0.7-2+deb13u1.so.elf.txt",
+      "bytes": 5240,
+      "sha256": "bdf54c8b3feea6467fd4f207ef7406e6d06af96eaeaa8d776707636c2f28aa0c"
+    },
+    {
+      "path": "egl-repair/libgallium-26.2.4-1.so.elf.txt",
+      "bytes": 5347,
+      "sha256": "5a76f4fb0b0908b54e9982a7404b1391e6e85c3677e7549f804b12de1e2a1997"
+    },
+    {
+      "path": "egl-repair/libgbm.so.1.0.0.elf.txt",
+      "bytes": 2771,
+      "sha256": "7e35c18951dc7824af5c57fc1ffe5a0f18f48e10db446283aa97f123053781db"
+    },
+    {
+      "path": "egl-repair/libpciaccess.so.0.11.1.elf.txt",
+      "bytes": 2765,
+      "sha256": "cb27418e62059fc022113a8d3e902b8add0c04e05ed444eb6fd967afa09d4dbd"
+    },
+    {
+      "path": "egl-repair/libsensors.so.5.0.0.elf.txt",
+      "bytes": 2890,
+      "sha256": "26d9cda5c04c6caea53b2ab7e0e77a206f699bed6719e4dc6ae859da9dafc26d"
+    },
+    {
+      "path": "egl-repair/licenses/libdrm-intel1/copyright",
+      "bytes": 15612,
+      "sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0"
+    },
+    {
+      "path": "egl-repair/licenses/libegl-mesa0/copyright",
+      "bytes": 14847,
+      "sha256": "55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038"
+    },
+    {
+      "path": "egl-repair/licenses/libegl1/copyright",
+      "bytes": 4422,
+      "sha256": "37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3"
+    },
+    {
+      "path": "egl-repair/licenses/libgl1-mesa-dri/copyright",
+      "bytes": 14847,
+      "sha256": "55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038"
+    },
+    {
+      "path": "egl-repair/licenses/libpciaccess0/copyright",
+      "bytes": 5421,
+      "sha256": "59f90c1ad1face5bd0a516feb8a71e005075d532c522b64ff06b2bfeebde8fe8"
+    },
+    {
+      "path": "egl-repair/licenses/libsensors-config/copyright",
+      "bytes": 4706,
+      "sha256": "0b08081a35b0c3324b1729c68ee3de1808350a120d99dee4b2fa7dc2f43ee58d"
+    },
+    {
+      "path": "egl-repair/licenses/libsensors5/copyright",
+      "bytes": 4706,
+      "sha256": "0b08081a35b0c3324b1729c68ee3de1808350a120d99dee4b2fa7dc2f43ee58d"
+    },
+    {
+      "path": "egl-repair/licenses/mesa-libgallium/copyright",
+      "bytes": 14847,
+      "sha256": "55268f06fbc193ee1a4fe694045a9cec58ba727d74bb17b5b1d54de36873a038"
+    },
+    {
+      "path": "egl-repair/linpad-x86-egl-runtime.tar.gz",
+      "bytes": 13882190,
+      "sha256": "b80be0cfbf3146ed1c25d4d92a9dc51a775223968363902e66c7808771b455d1"
+    },
+    {
+      "path": "egl-repair/linpad-x86-egl-runtime.tar.gz.sha256",
+      "bytes": 96,
+      "sha256": "fc8107759b33375d83a91053bf60a90509521d4957d69e23e29f0596f92e73f1"
+    },
+    {
+      "path": "egl-repair/packages.txt",
+      "bytes": 213,
+      "sha256": "d9400453a1c94454176d3ce4fdd21f98be706f9cb685d92a2b70241dd8afb5c0"
+    },
+    {
+      "path": "egl-repair/payload-files.sha256",
+      "bytes": 1730,
+      "sha256": "66a4676bc8cf833513fa9616c0225efc8e8a285dec0c2dab515aad32473ef2b5"
+    },
+    {
+      "path": "egl-repair/payload-symlinks.txt",
+      "bytes": 424,
+      "sha256": "60acbbae710b67e368e4b659854630539fac94838de434e9277eb3076c180c74"
+    },
+    {
+      "path": "egl-repair/prerequisites.sha256",
+      "bytes": 635,
+      "sha256": "a7aa01f9b4238f07ab194bd88dcea8e47625819b2fb6923af67a4da193abbd67"
+    },
+    {
+      "path": "egl-repair/probe-source-audit.md",
+      "bytes": 6521,
+      "sha256": "9002c433a2b65cacebbd2a0b573a3d7fb6729742937c533164d6e9316a283948"
+    },
+    {
+      "path": "egl-repair/provenance.json",
+      "bytes": 14147,
+      "sha256": "5dfbab19393b27dcc4579d602e7df6d71dce1ff43fcabc89e0a8cf94f7b6c742"
+    },
+    {
+      "path": "egl-repair/sdl-window-probe",
+      "bytes": 29608,
+      "sha256": "fd2104ec585d5f67ecfda2d0ef537a0928d418a5870f7d81f7fce31f1ec52d94"
+    },
+    {
+      "path": "egl-repair/sdl-window-probe-initial15",
+      "bytes": 29488,
+      "sha256": "5f364cedd18d4f9d753d4c13843d77d4cbc20861c51291e890701c206f9d32f2"
+    },
+    {
+      "path": "egl-repair/sdl-window-probe-initial15.c",
+      "bytes": 5055,
+      "sha256": "c22c600dd031c1fbf3a72949e996e8d669943e018750e1a7a9fc1442b21d28a3"
+    },
+    {
+      "path": "egl-repair/sdl-window-probe.c",
+      "bytes": 5256,
+      "sha256": "d25496947452efb16a5d67fef79eea799d9e934fbca92cb7c2c005b2a991018b"
+    },
+    {
+      "path": "egl-repair/sdl-window4445-software-gl60-probe.sh",
+      "bytes": 1571,
+      "sha256": "46d518e121fde73c05aca14f2130cc791f56bdb68e22aac0cb895d3ad2cfe3f2"
+    },
+    {
+      "path": "egl-repair/sdl-window4445-software-gl60-result.txt",
+      "bytes": 4747,
+      "sha256": "0615b7d5cf86389d4a6db88b7c3bddbc9059377538fcee3af782cfa93b8e3142"
+    },
+    {
+      "path": "egl-repair/sdl-window4445-software-probe.sh",
+      "bytes": 1573,
+      "sha256": "1b4015c550b94f6725e255416341caea642b90e3533db0269bbe696fe12f9bdc"
+    },
+    {
+      "path": "egl-repair/sdl-window4445-software-results.txt",
+      "bytes": 1951,
+      "sha256": "5358093cc6aab1dfd9a361d04fbb790487f7424c769e1f3fcb355402804043c0"
+    },
+    {
+      "path": "egl-repair/unity-wayland-vulkan-audit.md",
+      "bytes": 4776,
+      "sha256": "04a9797887b380ebe102ee9c5fbb8dfc5427bb21c0d70ea0d4f931631fdead0e"
+    },
+    {
+      "path": "egl-repair/validate-egl-launcher.py",
+      "bytes": 6224,
+      "sha256": "3ce9c1873801b96c092d4c3238912cb45a7f67514150f0bd4ed4fa51bdcb037b"
+    },
+    {
+      "path": "egl-repair/verification.json",
+      "bytes": 5875,
+      "sha256": "ec25f22c13d48682cdec6ba3ad6664c73429de3cf7f5f2c8e10e9b0d68e3ed3c"
+    },
+    {
       "path": "evidence/audio-baseline-cpu-excerpt.txt",
       "bytes": 691,
       "sha256": "b871b9596bae61e6f8f24fc939e086d834514a6445ef8170cf798c5d4940db1b"

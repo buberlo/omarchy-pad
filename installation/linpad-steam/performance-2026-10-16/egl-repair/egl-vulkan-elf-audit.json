@@ -1,0 +1,206 @@
+{
+  "audited_at_utc": "2026-10-16T10:46:09.548415+00:00",
+  "method": "read-only ELF dynamic-section, literal-byte and library-path inspection; no device action or new execution test",
+  "ld_library_path_order": [
+    "/opt/hollow-egl/usr/lib/x86_64-linux-gnu",
+    "/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu",
+    "/opt/hollow-runtime/usr/lib/x86_64-linux-gnu",
+    "/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio"
+  ],
+  "files": {
+    "venus26": {
+      "source": "work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so",
+      "size_bytes": 1805728,
+      "sha256": "1898fa4fb541a8c7693f9bd4125798afd640fa40abd7ad33d965355e02a1c721",
+      "dynamic_section_selected_lines": [
+        "  NEEDED       libz.so.1",
+        "  NEEDED       libzstd.so.1",
+        "  NEEDED       libdrm.so.2",
+        "  NEEDED       libxcb.so.1",
+        "  NEEDED       libX11-xcb.so.1",
+        "  NEEDED       libxcb-dri3.so.0",
+        "  NEEDED       libxcb-present.so.0",
+        "  NEEDED       libxcb-xfixes.so.0",
+        "  NEEDED       libxcb-sync.so.1",
+        "  NEEDED       libxcb-randr.so.0",
+        "  NEEDED       libxcb-shm.so.0",
+        "  NEEDED       libxshmfence.so.1",
+        "  NEEDED       libwayland-client.so.0",
+        "  NEEDED       libdisplay-info.so.3",
+        "  NEEDED       libexpat.so.1",
+        "  NEEDED       libm.so.6",
+        "  NEEDED       libgcc_s.so.1",
+        "  NEEDED       libc.so.6",
+        "  SONAME       libvulkan_virtio.so",
+        "  SYMBOLIC     0x0000000000000000"
+      ],
+      "literal_environment_name_present": {
+        "LIBGL_ALWAYS_SOFTWARE": false,
+        "GALLIUM_DRIVER": false,
+        "MESA_LOADER_DRIVER_OVERRIDE": false,
+        "MESA_VK_WSI_DEBUG": true
+      }
+    },
+    "egl_mesa25": {
+      "source": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+      "size_bytes": 374456,
+      "sha256": "af1229604d80d73422ff3767f572849dce074a0ecdba8254e93a06a88cfec2e6",
+      "dynamic_section_selected_lines": [
+        "  NEEDED       libgallium-25.0.7-2+deb13u1.so",
+        "  NEEDED       libgbm.so.1",
+        "  NEEDED       libexpat.so.1",
+        "  NEEDED       libX11-xcb.so.1",
+        "  NEEDED       libxcb.so.1",
+        "  NEEDED       libxcb-randr.so.0",
+        "  NEEDED       libxcb-xfixes.so.0",
+        "  NEEDED       libxcb-shm.so.0",
+        "  NEEDED       libdrm.so.2",
+        "  NEEDED       libwayland-client.so.0",
+        "  NEEDED       libwayland-server.so.0",
+        "  NEEDED       libxcb-dri3.so.0",
+        "  NEEDED       libxcb-present.so.0",
+        "  NEEDED       libm.so.6",
+        "  NEEDED       libgcc_s.so.1",
+        "  NEEDED       libc.so.6",
+        "  SONAME       libEGL_mesa.so.0",
+        "  SYMBOLIC     0x0000000000000000"
+      ],
+      "literal_environment_name_present": {
+        "LIBGL_ALWAYS_SOFTWARE": true,
+        "GALLIUM_DRIVER": true,
+        "MESA_LOADER_DRIVER_OVERRIDE": true,
+        "MESA_VK_WSI_DEBUG": false
+      }
+    },
+    "gallium25": {
+      "source": "work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so",
+      "size_bytes": 42565904,
+      "sha256": "5597543f11c2ef62bc95b0237a8a81339aed87e225d82ae2c6570f8973b1cee5",
+      "dynamic_section_selected_lines": [
+        "  NEEDED       libdrm.so.2",
+        "  NEEDED       libLLVM.so.19.1",
+        "  NEEDED       libexpat.so.1",
+        "  NEEDED       libz.so.1",
+        "  NEEDED       libzstd.so.1",
+        "  NEEDED       libsensors.so.5",
+        "  NEEDED       libxcb.so.1",
+        "  NEEDED       libxcb-randr.so.0",
+        "  NEEDED       libxcb-sync.so.1",
+        "  NEEDED       libxcb-present.so.0",
+        "  NEEDED       libxshmfence.so.1",
+        "  NEEDED       libxcb-xfixes.so.0",
+        "  NEEDED       libxcb-dri3.so.0",
+        "  NEEDED       libelf.so.1",
+        "  NEEDED       libdrm_amdgpu.so.1",
+        "  NEEDED       libdrm_intel.so.1",
+        "  NEEDED       libX11-xcb.so.1",
+        "  NEEDED       libstdc++.so.6",
+        "  NEEDED       libm.so.6",
+        "  NEEDED       libgcc_s.so.1",
+        "  NEEDED       libc.so.6",
+        "  SONAME       libgallium-25.0.7-2+deb13u1.so"
+      ],
+      "literal_environment_name_present": {
+        "LIBGL_ALWAYS_SOFTWARE": true,
+        "GALLIUM_DRIVER": true,
+        "MESA_LOADER_DRIVER_OVERRIDE": true,
+        "MESA_VK_WSI_DEBUG": false
+      }
+    },
+    "gbm25_base": {
+      "source": "work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0",
+      "size_bytes": 18736,
+      "sha256": "ab1e16db65ef9809ee3bc2925c611dcb15e2d78a510c310f0193716c16ea6c2e",
+      "dynamic_section_selected_lines": [
+        "  NEEDED       libdrm.so.2",
+        "  NEEDED       libexpat.so.1",
+        "  NEEDED       libm.so.6",
+        "  NEEDED       libc.so.6",
+        "  SONAME       libgbm.so.1"
+      ],
+      "literal_environment_name_present": {
+        "LIBGL_ALWAYS_SOFTWARE": false,
+        "GALLIUM_DRIVER": false,
+        "MESA_LOADER_DRIVER_OVERRIDE": false,
+        "MESA_VK_WSI_DEBUG": false
+      }
+    }
+  },
+  "filename_collisions": {
+    "egl__mesa26": [],
+    "egl__base": [],
+    "mesa26__base": [
+      {
+        "name": "libXau.so.6",
+        "identical": false
+      },
+      {
+        "name": "libXau.so.6.0.0",
+        "identical": false
+      },
+      {
+        "name": "libXdmcp.so.6",
+        "identical": false
+      },
+      {
+        "name": "libXdmcp.so.6.0.0",
+        "identical": false
+      },
+      {
+        "name": "libdrm.so.2",
+        "identical": false
+      },
+      {
+        "name": "libffi.so.8",
+        "identical": false
+      },
+      {
+        "name": "libvulkan_virtio.so",
+        "identical": false
+      },
+      {
+        "name": "libwayland-client.so.0",
+        "identical": false
+      },
+      {
+        "name": "libxcb-dri3.so.0",
+        "identical": false
+      },
+      {
+        "name": "libxcb-dri3.so.0.1.0",
+        "identical": false
+      },
+      {
+        "name": "libxcb-present.so.0",
+        "identical": false
+      },
+      {
+        "name": "libxcb-present.so.0.0.0",
+        "identical": false
+      },
+      {
+        "name": "libxcb.so.1",
+        "identical": false
+      },
+      {
+        "name": "libxcb.so.1.1.0",
+        "identical": false
+      }
+    ]
+  },
+  "venus_icd": {
+    "ICD": {
+      "api_version": "1.4.354",
+      "library_path": "libvulkan_virtio.so"
+    },
+    "file_format_version": "1.0.1"
+  },
+  "venus_icd_sha256": "1750a1025414936d30b9a10e6d243e2d12fe125c87f90ab1231dd6fc5593cfaa",
+  "actual_game_combined_egl_and_vulkan_selection_verified": false,
+  "limitations": [
+    "Environment strings alone do not prove every transitive runtime behavior.",
+    "Shared libdrm, Wayland, XCB and related libraries resolve according to load order; absence of private Mesa ABI coupling is not a full coexistence qualification.",
+    "Prior cube GPU selection and software EGL display initialization are separate processes.",
+    "Actual game GPU identity and mapped library paths after EGL setup are pending."
+  ]
+}

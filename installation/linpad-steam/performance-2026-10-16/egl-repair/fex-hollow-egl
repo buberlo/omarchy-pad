@@ -1,0 +1,54 @@
+#!/bin/sh
+# Diagnostic translator hook: run after launch-game has scrubbed Steam's env.
+set -eu
+die() { printf 'LinPad EGL diagnostic: %s\n' "$*" >&2; exit 64; }
+[ "$#" -gt 0 ] || die 'missing game executable'
+mode=${LINPAD_EGL_MODE:-swrast}
+case "$mode" in swrast|zink) ;; *) die 'LINPAD_EGL_MODE must be swrast or zink' ;; esac
+fex=${LINPAD_EGL_FEX_BINARY:-/opt/fex/FEX-apple-m1-munmap}
+egl=${LINPAD_EGL_PREFIX:-/opt/hollow-egl}
+base=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+mesa=${LINPAD_EGL_MESA_PREFIX:-/opt/hollow-mesa26}
+for prefix in "$fex" "$egl" "$base" "$mesa"; do
+    case "$prefix" in /*) ;; *) die 'all runtime and translator paths must be absolute' ;; esac
+done
+[ -x "$fex" ] || die "patched FEX executable unavailable: $fex"
+[ "$fex" != "$0" ] || die 'translator hook cannot invoke itself'
+vendor="$egl/usr/share/glvnd/egl_vendor.d/50_mesa.json"
+icd=${LINPAD_FEX_ICD:-$mesa/usr/share/vulkan/icd.d/virtio_icd.json}
+[ -f "$vendor" ] || die "EGL vendor manifest unavailable: $vendor"
+[ -f "$icd" ] || die "Venus ICD manifest unavailable: $icd"
+
+unset LD_PRELOAD LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT
+unset LIBGL_ALWAYS_SOFTWARE LIBGL_ALWAYS_INDIRECT GALLIUM_DRIVER LP_NUM_THREADS
+unset MESA_GL_VERSION_OVERRIDE MESA_GLES_VERSION_OVERRIDE MESA_GLSL_VERSION_OVERRIDE
+unset __GLX_VENDOR_LIBRARY_NAME DISPLAY XAUTHORITY
+unset VK_DRIVER_FILES VK_ADD_DRIVER_FILES VK_INSTANCE_LAYERS VK_LAYER_PATH VK_ADD_LAYER_PATH
+unset VK_LOADER_LAYERS_ENABLE VK_LOADER_DRIVERS_SELECT VK_LOADER_DRIVERS_DISABLE
+export XDG_RUNTIME_DIR="${LINPAD_FEX_XDG_RUNTIME_DIR:-/tmp/xdg-runtime}"
+export WAYLAND_DISPLAY="${LINPAD_FEX_WAYLAND_DISPLAY:-wayland-0-gpu}"
+export SDL_VIDEODRIVER=wayland EGL_PLATFORM=wayland
+export FEX_ROOTFS="${LINPAD_FEX_ROOTFS-$base}" FEX_DISABLETELEMETRY=1
+library_path="$egl/usr/lib/x86_64-linux-gnu:$mesa/usr/lib/x86_64-linux-gnu:$base/usr/lib/x86_64-linux-gnu:$base/usr/lib/x86_64-linux-gnu/pulseaudio"
+if [ -n "${LINPAD_FEX_EXTRA_LIBRARY_PATH:-}" ]; then
+    library_path="$library_path:$LINPAD_FEX_EXTRA_LIBRARY_PATH"
+fi
+export LD_LIBRARY_PATH="$library_path"
+export __EGL_VENDOR_LIBRARY_FILENAMES="$vendor"
+export LIBGL_DRIVERS_PATH="$egl/usr/lib/x86_64-linux-gnu/dri"
+export MESA_LOADER_DRIVER_OVERRIDE="$mode"
+if [ "$mode" = swrast ]; then
+    export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe
+fi
+export VK_ICD_FILENAMES="$icd" VK_LOADER_LAYERS_DISABLE='*' MESA_VK_WSI_DEBUG=sw
+# Only append on explicit request; an existing -timestamps remains unchanged.
+if [ "${LINPAD_EGL_ADD_TIMESTAMPS:-0}" = 1 ]; then
+    has_timestamps=0
+    for arg do [ "$arg" != -timestamps ] || has_timestamps=1; done
+    [ "$has_timestamps" -eq 1 ] || set -- "$@" -timestamps
+fi
+printf 'LINPAD_EGL_DIAGNOSTIC mode=%s auxiliary_driver=%s FEX=%s\n' "$mode" "${GALLIUM_DRIVER:-zink}" "$fex" >&2
+printf 'LD_LIBRARY_PATH=%s\nEGL_VENDOR=%s\nLIBGL_DRIVERS_PATH=%s\n' "$LD_LIBRARY_PATH" "$vendor" "$LIBGL_DRIVERS_PATH" >&2
+printf 'WAYLAND=%s/%s SDL_VIDEODRIVER=%s EGL_PLATFORM=%s\n' "$XDG_RUNTIME_DIR" "$WAYLAND_DISPLAY" "$SDL_VIDEODRIVER" "$EGL_PLATFORM" >&2
+printf 'VULKAN_ICD=%s VK_LOADER_LAYERS_DISABLE=%s LD_PRELOAD=unset argv_count=%s\n' "$icd" "$VK_LOADER_LAYERS_DISABLE" "$#" >&2
+exec "$fex" "$@"

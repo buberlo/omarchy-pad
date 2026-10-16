@@ -1,0 +1,128 @@
+{
+  "updated_utc": "2026-10-16T10:49:29.718437+00:00",
+  "validation": {
+    "elf_dependency_closure_count": 42,
+    "unresolved_dt_needed": [],
+    "required_glibc_versions_fit_base": true,
+    "shell_syntax": "PASS",
+    "physical_device_egl_initialize": {
+      "zink": {
+        "status": "timed out during eglInitialize",
+        "linpad_build": 4445,
+        "started_utc": "2026-10-16T10:35:04Z",
+        "ended_utc": "2026-10-16T10:36:34Z",
+        "exit": 142,
+        "libGL_and_libEGL_load": "PASS",
+        "SDL_EGL_required_symbols": "PASS",
+        "EGL_client_extensions": "returned",
+        "Wayland_connect": "PASS",
+        "EGL_platform_display": "returned",
+        "eglInitialize": "entered at19.918seconds; no result before90second alarm",
+        "window_configuration_enumeration": "not reached",
+        "report": "egl4445-zink-timeout.txt",
+        "report_sha256": "7d2efea82f16e1bb99549c90b4b7dbcea986bc198d3bfffde804ccfa3afafcca",
+        "probe_sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13",
+        "wrapper_sha256": "8bd790d13dbe5d06e2c78b2d17e7a0a996c6734bca2a453fe23bca4e31825f5f"
+      },
+      "software_control": {
+        "status": "PASS",
+        "linpad_build": 4445,
+        "device": "physical Apple M2 iPad",
+        "started_utc": "2026-10-16T10:41:32Z",
+        "ended_utc": "2026-10-16T10:42:08Z",
+        "program_seconds": 31.163,
+        "exit": 0,
+        "mode": "swrast",
+        "GALLIUM_DRIVER": "llvmpipe",
+        "LIBGL_ALWAYS_SOFTWARE": "1",
+        "EGL_version": "1.5",
+        "EGL_vendor": "Mesa Project",
+        "OpenGL_RGB8_window_configurations": 16,
+        "ES2_RGB8_window_configurations": 16,
+        "reported_maps": "EGL/Gallium25 from /opt/hollow-egl; LLVM19/GBM25/base from /opt/hollow-runtime",
+        "report": "egl4445-software-pass.txt",
+        "report_sha256": "d181277f17984676fda64b078478473ecd0e79adc8460788c7f70aa0259f729f",
+        "probe_sha256": "9df076a2b3def4539115c7e43eb63de4bd449e310f537bf1af2508fef6b32e13",
+        "wrapper": "egl4445-software-probe.sh",
+        "wrapper_sha256": "e00627a2d5a51c004dc6511c0a79a5a6d811268e0d039e4440aa56086331a561",
+        "scope": "EGL display initialization and window configuration enumeration; no context/window/rendering in this probe"
+      }
+    },
+    "gameplay": "unverified",
+    "physical_device_install": {
+      "status": "PASS",
+      "device": "physical iPad",
+      "linpad_build": 4445,
+      "date": "2026-10-16",
+      "report": "egl-device-install.txt",
+      "report_sha256": "e592a54b3079b8f391ae975572b8a717c19ff3fbbc47612d3b4bae8626822cbc",
+      "added_entries": [
+        "usr/lib/x86_64-linux-gnu/dri/libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/libEGL.so.1.1.0",
+        "usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libdrm_intel.so.1.124.0",
+        "usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so",
+        "usr/lib/x86_64-linux-gnu/libpciaccess.so.0.11.1",
+        "usr/lib/x86_64-linux-gnu/libsensors.so.5.0.0",
+        "usr/share/doc/libdrm-intel1/copyright",
+        "usr/share/doc/libegl-mesa0/copyright",
+        "usr/share/doc/libegl1/copyright",
+        "usr/share/doc/libgl1-mesa-dri/copyright",
+        "usr/share/doc/libpciaccess0/copyright",
+        "usr/share/doc/libsensors-config/copyright",
+        "usr/share/doc/libsensors5/copyright",
+        "usr/share/doc/mesa-libgallium/copyright",
+        "usr/share/glvnd/egl_vendor.d/50_mesa.json",
+        "usr/lib/x86_64-linux-gnu/dri/swrast_dri.so -> libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/dri/zink_dri.so -> libdril_dri.so",
+        "usr/lib/x86_64-linux-gnu/libEGL.so.1 -> libEGL.so.1.1.0",
+        "usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0 -> libEGL_mesa.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libdrm_intel.so.1 -> libdrm_intel.so.1.124.0",
+        "usr/lib/x86_64-linux-gnu/libpciaccess.so.0 -> libpciaccess.so.0.11.1",
+        "usr/lib/x86_64-linux-gnu/libsensors.so.5 -> libsensors.so.5.0.0"
+      ]
+    },
+    "physical_device_SDL_window_setup": {
+      "linpad_build": 4445,
+      "SDL_version": "2.32.4",
+      "backend": "wayland",
+      "window_dimensions": "640x360",
+      "vulkan": {
+        "status": "PASS",
+        "program_seconds": 7.752,
+        "exit": 0,
+        "report": "sdl-window4445-software-results.txt",
+        "probe": "sdl-window-probe-initial15"
+      },
+      "opengl_initial": {
+        "status": "insufficient diagnostic deadline",
+        "exit": 142,
+        "deadline_seconds": 15,
+        "report": "sdl-window4445-software-results.txt",
+        "probe": "sdl-window-probe-initial15"
+      },
+      "opengl_corrected": {
+        "status": "PASS",
+        "program_seconds": 53.8,
+        "exit": 0,
+        "deadline_seconds": 60,
+        "report": "sdl-window4445-software-gl60-result.txt",
+        "probe": "sdl-window-probe"
+      },
+      "scope": "External SDL2 window creation, events, and orderly destruction; no OpenGL context, Vulkan surface, rendering, or game performance"
+    },
+    "diagnostic_game_wrapper": {
+      "file": "fex-hollow-egl",
+      "sha256": "0638ad926ae9450d0b5bd1ce130006a3d74d333f0834526dd4393d414b4f5397",
+      "real_translator": "/opt/fex/FEX-apple-m1-munmap",
+      "default_mode": "swrast",
+      "optional_mode": "zink",
+      "Vulkan_ICD": "/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json",
+      "host_mock_checks": 50,
+      "host_validation": "launcher-host-validation.txt",
+      "host_validation_scope": "Actual launch-game invokes wrapper and mock translator; environment sanitation/restore, argv/cwd, timestamps and invalid inputs",
+      "actual_game": "Parent started physical game 2026-10-16T10:46:58Z; result not yet qualified by this archive"
+    }
+  },
+  "artifact_scope": "Expanded validation evidence; original installed payload tar unchanged"
+}

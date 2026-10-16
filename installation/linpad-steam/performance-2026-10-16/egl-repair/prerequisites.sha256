@@ -1,0 +1,5 @@
+9792e3cbb541c8f44c7acf5f14f4022ea62998ecc787d326bed4d8b6547dfd92  /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.6
+ab1e16db65ef9809ee3bc2925c611dcb15e2d78a510c310f0193716c16ea6c2e  /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1
+3523f50f635d2a1ea47518a392451f2854b92823ceaf1345fb806099dd1a3b8a  /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libLLVM.so.19.1
+890baeef03fd73560a2fde85ebe9fb49ca3e90686923c5ee22101b28ec8ee7aa  /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+1898fa4fb541a8c7693f9bd4125798afd640fa40abd7ad33d965355e02a1c721  /opt/hollow-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so

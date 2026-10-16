@@ -1,0 +1,7 @@
+usr/lib/x86_64-linux-gnu/dri/swrast_dri.so libdril_dri.so
+usr/lib/x86_64-linux-gnu/dri/zink_dri.so libdril_dri.so
+usr/lib/x86_64-linux-gnu/libEGL.so.1 libEGL.so.1.1.0
+usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0 libEGL_mesa.so.0.0.0
+usr/lib/x86_64-linux-gnu/libdrm_intel.so.1 libdrm_intel.so.1.124.0
+usr/lib/x86_64-linux-gnu/libpciaccess.so.0 libpciaccess.so.0.11.1
+usr/lib/x86_64-linux-gnu/libsensors.so.5 libsensors.so.5.0.0

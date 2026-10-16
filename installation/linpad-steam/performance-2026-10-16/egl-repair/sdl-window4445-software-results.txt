@@ -1,0 +1,41 @@
+Fri Oct 16 10:42:58 UTC 2026
+SDL_MODE_BEGIN=vulkan
+SDL_WINDOW_PROBE mode=vulkan flags=0x10000004
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV __EGL_VENDOR_LIBRARY_FILENAMES=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ENV MESA_LOADER_DRIVER_OVERRIDE=swrast
+ENV LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+ENV VK_ICD_FILENAMES=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json
+ENV MESA_VK_WSI_DEBUG=sw
+STAGE 0.022 SDL_DLOPEN
+SDL_VERSION 2.32.4
+STAGE 0.243 SDL_VIDEO_INIT_WAYLAND
+SDL_VIDEO_INIT_PASS driver=wayland displays=1
+STAGE 0.430 SDL_CREATE_WINDOW
+SDL_CREATE_WINDOW_PASS mode=vulkan size=640x360 drawable=640x360 flags=0x10000004
+STAGE 2.275 SDL_EVENTS_BEGIN
+SDL_EVENTS_END events=3 quit=0
+STAGE 7.397 SDL_DESTROY_WINDOW
+STAGE 7.752 SDL_WINDOW_SETUP_PASS
+SDL_MODE_EXIT=vulkan:0
+Fri Oct 16 10:43:06 UTC 2026
+SDL_MODE_BEGIN=opengl
+SDL_WINDOW_PROBE mode=opengl flags=0x6
+ENV LD_LIBRARY_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu:/opt/hollow-mesa26/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu:/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/pulseaudio
+ENV WAYLAND_DISPLAY=wayland-0-gpu
+ENV XDG_RUNTIME_DIR=/tmp/xdg-runtime
+ENV __EGL_VENDOR_LIBRARY_FILENAMES=/opt/hollow-egl/usr/share/glvnd/egl_vendor.d/50_mesa.json
+ENV MESA_LOADER_DRIVER_OVERRIDE=swrast
+ENV LIBGL_DRIVERS_PATH=/opt/hollow-egl/usr/lib/x86_64-linux-gnu/dri
+ENV VK_ICD_FILENAMES=/opt/hollow-mesa26/usr/share/vulkan/icd.d/virtio_icd.json
+ENV MESA_VK_WSI_DEBUG=sw
+STAGE 0.023 SDL_DLOPEN
+SDL_VERSION 2.32.4
+STAGE 0.214 SDL_VIDEO_INIT_WAYLAND
+SDL_VIDEO_INIT_PASS driver=wayland displays=1
+STAGE 0.401 SDL_CREATE_WINDOW
+Alarm clock
+SDL_MODE_EXIT=opengl:142
+Fri Oct 16 10:43:22 UTC 2026

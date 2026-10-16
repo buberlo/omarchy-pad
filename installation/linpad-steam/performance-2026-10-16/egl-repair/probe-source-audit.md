@@ -1,0 +1,32 @@
+# EGL display diagnostic
+
+`egl-display-probe.c` is a standalone x86_64 Linux diagnostic. It loads `libGL.so.1` and `libEGL.so.1`, verifies SDL2's required EGL exports, connects to the selected Wayland socket, obtains an explicit Wayland EGL display, initializes EGL, and enumerates RGB8 window configurations for OpenGL and ES2. It creates no window, context, game process or rendered frame. It reports loader paths and stage times, then terminates the EGL connection. Its 90-second alarm starts inside the x86 program; the served wrapper also bounds the whole FEX invocation.
+
+Exit codes: 2 missing GL; 3 missing EGL; 4 missing EGL/Wayland symbol; 5 missing Wayland client library; 6 Wayland connection failure; 7 no EGL display; 8 EGL initialization failure; 9 no RGB8 OpenGL window config; 0 successful initialization with at least one OpenGL window config. ES2 configurations are reported independently. Passing this probe does not establish Unity startup, context/surface creation, presentation or gameplay.
+
+Build from the session workspace with `sh work/performance/egl-display-audit/build-probe.sh`. The binary is staged at `work/performance/serve/egl-display-probe`; the proposed device invocation is staged as `work/performance/serve/egl4445-probe`. Neither was run on the physical device by this agent. The wrapper expects the separately prepared `/opt/hollow-egl` EGL/Gallium payload, `/opt/hollow-mesa26` Venus ICD and existing `/opt/hollow-runtime`.
+
+Local negative control: Mac-hosted LinPad ARM64 CLI → original FEX → x86 diagnostic, with only the GLVND repair supplied as a separate test prefix. `libGL.so.1` loads, then `libEGL.so.1` fails with ENOENT and the program exits 3. `local-result.json` records the raw-log hash; `local-missing-egl-excerpt.txt` keeps the narrow result.
+
+Upstream SDL2 source maps the observed Unity error `Could not load EGL library` to failure to load the EGL library or find `eglChooseConfig`, before display initialization. It uses `libEGL.so.1` by default on desktop Linux and accepts `SDL_VIDEO_EGL_DRIVER`. `Wayland_GLES_LoadLibrary` passes the native `wl_display *` with `EGL_PLATFORM_WAYLAND_EXT`; SDL tries the platform display APIs and falls back to `eglGetDisplay`, then calls `eglInitialize`. The precise SDL revision embedded in Unity 6000.0.61f1 has not been independently established, so these matching source paths identify the failing stage without proving every implementation detail matches Unity.
+
+Primary references, inspected 2026-10-16:
+
+- https://github.com/libsdl-org/SDL/blob/SDL2/src/video/SDL_egl.c (default library names, `SDL_EGL_LoadLibraryInternal`, `SDL_EGL_LoadLibrary`)
+- https://github.com/libsdl-org/SDL/blob/SDL2/src/video/wayland/SDL_waylandopengles.c (`Wayland_GLES_LoadLibrary`)
+
+The existing game launcher clears `__EGL_VENDOR_LIBRARY_FILENAMES`, `MESA_LOADER_DRIVER_OVERRIDE` and `LIBGL_DRIVERS_PATH`. An EGL game experiment must set the new isolated vendor/driver paths after that sanitation, or explicitly add corresponding supported launcher overrides. This diagnostic wrapper directly invokes FEX, preserving those values for the test. Keep `MESA_VK_WSI_DEBUG=sw`: existing ishwl presentation requires shared-memory buffers; GPU rendering still uses the Venus ICD.
+
+## Second-stage SDL window setup
+
+`sdl-window-probe.c` loads the existing external `libSDL2-2.0.so.0`, reports its version, explicitly initializes its Wayland video backend, then creates one 640×360 window. Invoke it with exactly one argument: `vulkan` or `opengl`. The two modes request `SDL_WINDOW_VULKAN` and `SDL_WINDOW_OPENGL`, respectively; each also requests `SDL_WINDOW_SHOWN`. The probe reports the actual window and drawable dimensions, processes events for at most five seconds, destroys the window and quits SDL. After successful video initialization, a 15-second alarm covers Vulkan window creation and cleanup; OpenGL gets 60 seconds because measured software EGL initialization alone takes about 31 seconds. Before video initialization the process has a 90-second alarm.
+
+The proposed `work/performance/serve/sdl-window4445-probe` wrapper repeats the same EGL/Venus configuration as the first probe, runs the modes as separate FEX processes, and records independent exit codes. It expects `/tmp/sdl-window-probe`. Run it only after the EGL display/config check passes. Exits: 2 SDL loading failure; 3 missing SDL export; 4 Wayland video initialization failure; 5 window creation failure; 64 invalid arguments; 0 successful window creation and orderly cleanup. A timeout/signal exit is a failure requiring inspection of the last completed stage.
+
+No GL context, Vulkan surface, rendering work or buffer presentation is performed. A successful result establishes external SDL2 window setup, not visible rendering or Unity's embedded SDL behavior. The compositor may keep an unbuffered Wayland surface invisible even though creation succeeds.
+
+Local tests execute both modes through Mac-hosted LinPad and the original FEX using the real SDL2 2.32.4 library. Both load SDL, reach explicit Wayland video initialization and correctly report `wayland not available` with exit 4 because no compositor runs locally. See `local-sdl-results.json` and the two `local-sdl-*-no-display-excerpt.txt` files. An initial local harness omitted the existing pulseaudio library directory; those earlier exit-2 logs are retained with `missing-pulse-path` in their filenames. The served device wrapper included the correct path from creation, and no runtime package changed.
+
+The first device run used a 15-second post-video-init deadline for both modes. The software-EGL Vulkan window passed in 7.75 seconds. The OpenGL case reached the deadline while creating its window. Since measured EGL initialization takes about 31 seconds, that result is an insufficient diagnostic time allowance, not established OpenGL incompatibility. The original source/binary are preserved as `sdl-window-probe-initial15.c` and `sdl-window-probe-initial15`. The updated binary grants OpenGL 60 seconds. The parent executed it physically: window creation passed by 40.503 seconds and complete cleanup passed by 53.800 seconds, exit 0 (`../reports/sdl-window4445-software-gl60-result.txt`). These probes create no graphics context or Vulkan surface and do not establish game rendering.
+
+The primary-source review of Unity's independent Wayland and Vulkan options, the separate GL/EGL bootstrap inference, and precise physical validation boundaries is in `unity-wayland-vulkan-audit.md`.

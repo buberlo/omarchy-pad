@@ -1,0 +1,72 @@
+FILE work/performance/x86-mesa26/usr/lib/x86_64-linux-gnu/libvulkan_virtio.so
+  NEEDED       libz.so.1
+  NEEDED       libzstd.so.1
+  NEEDED       libdrm.so.2
+  NEEDED       libxcb.so.1
+  NEEDED       libX11-xcb.so.1
+  NEEDED       libxcb-dri3.so.0
+  NEEDED       libxcb-present.so.0
+  NEEDED       libxcb-xfixes.so.0
+  NEEDED       libxcb-sync.so.1
+  NEEDED       libxcb-randr.so.0
+  NEEDED       libxcb-shm.so.0
+  NEEDED       libxshmfence.so.1
+  NEEDED       libwayland-client.so.0
+  NEEDED       libdisplay-info.so.3
+  NEEDED       libexpat.so.1
+  NEEDED       libm.so.6
+  NEEDED       libgcc_s.so.1
+  NEEDED       libc.so.6
+  SONAME       libvulkan_virtio.so
+  SYMBOLIC     0x0000000000000000
+
+FILE work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libEGL_mesa.so.0.0.0
+  NEEDED       libgallium-25.0.7-2+deb13u1.so
+  NEEDED       libgbm.so.1
+  NEEDED       libexpat.so.1
+  NEEDED       libX11-xcb.so.1
+  NEEDED       libxcb.so.1
+  NEEDED       libxcb-randr.so.0
+  NEEDED       libxcb-xfixes.so.0
+  NEEDED       libxcb-shm.so.0
+  NEEDED       libdrm.so.2
+  NEEDED       libwayland-client.so.0
+  NEEDED       libwayland-server.so.0
+  NEEDED       libxcb-dri3.so.0
+  NEEDED       libxcb-present.so.0
+  NEEDED       libm.so.6
+  NEEDED       libgcc_s.so.1
+  NEEDED       libc.so.6
+  SONAME       libEGL_mesa.so.0
+  SYMBOLIC     0x0000000000000000
+
+FILE work/performance/egl-repair/payload/usr/lib/x86_64-linux-gnu/libgallium-25.0.7-2+deb13u1.so
+  NEEDED       libdrm.so.2
+  NEEDED       libLLVM.so.19.1
+  NEEDED       libexpat.so.1
+  NEEDED       libz.so.1
+  NEEDED       libzstd.so.1
+  NEEDED       libsensors.so.5
+  NEEDED       libxcb.so.1
+  NEEDED       libxcb-randr.so.0
+  NEEDED       libxcb-sync.so.1
+  NEEDED       libxcb-present.so.0
+  NEEDED       libxshmfence.so.1
+  NEEDED       libxcb-xfixes.so.0
+  NEEDED       libxcb-dri3.so.0
+  NEEDED       libelf.so.1
+  NEEDED       libdrm_amdgpu.so.1
+  NEEDED       libdrm_intel.so.1
+  NEEDED       libX11-xcb.so.1
+  NEEDED       libstdc++.so.6
+  NEEDED       libm.so.6
+  NEEDED       libgcc_s.so.1
+  NEEDED       libc.so.6
+  SONAME       libgallium-25.0.7-2+deb13u1.so
+
+FILE work/performance/x86-runtime/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0
+  NEEDED       libdrm.so.2
+  NEEDED       libexpat.so.1
+  NEEDED       libm.so.6
+  NEEDED       libc.so.6
+  SONAME       libgbm.so.1
