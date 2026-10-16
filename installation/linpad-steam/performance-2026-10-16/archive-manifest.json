@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 7385,
-      "sha256": "acdeebfacda0ea0210dbabc18c6413ca09b2382071b49057f2f345b6654d0226"
+      "bytes": 8496,
+      "sha256": "8c829b5329da901adea391e2163eda70c0bec5fd219513910c6898c23a8490e7"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 11351,
-      "sha256": "23a821930a02ad3dd185dd1889b6fe50401c0eb9f5f08b2bb218f2cfbc1fdc55"
+      "bytes": 13592,
+      "sha256": "93e3e0bf49659935dffe6601103df1903d0d5073ec1bcf72c5a536f307edff7c"
     },
     {
       "path": "l4d-route/proton-arm64/evidence-app-console-trace.log",
@@ -4523,6 +4523,16 @@
       "sha256": "9e85ed30f4f438d08a7e77c11bb9d7cccd9d0a3cc459163ff1bf4034c2239128"
     },
     {
+      "path": "l4d-route/proton-arm64/high-va/build-instrumented.log",
+      "bytes": 63823,
+      "sha256": "8f65b8fe0efc5ebd9554d23a1ee40a738430e54c6282f6924e0d753b5f17fb3c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/high-va/evidence-app-stuck-on-jit.log",
+      "bytes": 1165,
+      "sha256": "95fef0b131748ad64f7fca815f55176a20a1dc1bef2e6038d6c9438bad5027b5"
+    },
+    {
       "path": "l4d-route/proton-arm64/linpad-proton-arm64",
       "bytes": 2733,
       "sha256": "f25abb545f0b075b52b47b6b1d2f6e0b3af39c54dc61f254629e04ba460306d1"
@@ -4531,6 +4541,11 @@
       "path": "l4d-route/proton-arm64/mmap-fixed-noreplace/README.md",
       "bytes": 5933,
       "sha256": "ffe801b65027df913eb7ec91d302ea7c6739187f1164d51fb4adb59d6eb4cd43"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/envcheck.c",
+      "bytes": 352,
+      "sha256": "0d12ce4839b443afb2bd577786b5bd7db0416ee30268b052919bb533356735a7"
     },
     {
       "path": "l4d-route/proton-arm64/probes/glibcheap.c",
@@ -4566,6 +4581,11 @@
       "path": "l4d-route/proton-arm64/probes/mapfixed.c",
       "bytes": 2054,
       "sha256": "2a145519d29b0cb909594a48df5c7c6e7ec38e67235511616342c7ea8116806d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/va_layout.c",
+      "bytes": 1242,
+      "sha256": "751ef4f3fc53586a627aae41e6a73ab10cfcc3dba18441bd2ef44dc9e4eb0002"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
@@ -4686,6 +4706,36 @@
       "path": "l4d-route/proton-arm64/reports/agent-86-fex-config-contract.txt",
       "bytes": 4467,
       "sha256": "ee5839833cd27219aac6f0821d040ea9b72e4122e820538038563a93602b2339"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-90-va-layout-and-hook.txt",
+      "bytes": 1148,
+      "sha256": "cd5908c35f396dd558037d22b4a04d426712b97ff17733c8dc34ada4cc5efe82"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-91-elf-types.txt",
+      "bytes": 1956,
+      "sha256": "d413bce2305b3d9cc42760d56956aed5b31cbf48f2394010c9cdab21b7bbeb0b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-92-highva-installed.txt",
+      "bytes": 1511,
+      "sha256": "60ac751b4f899762df9dd0f76862e9df90f0fade90697720e8e776130f44b976"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-93-env-check.txt",
+      "bytes": 1353,
+      "sha256": "bd3648556a7ff60944b2dd3872d44ac7482d5cb8f578204b3169e99f4437b310"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-94-highva-decision-log.txt",
+      "bytes": 698,
+      "sha256": "32b5e1a3a3a2b923f559dfc73b003a22a7772342e2bd7de2d2759b9e4cda22da"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-95-dmesg-highva.txt",
+      "bytes": 2447,
+      "sha256": "d0d3f577c68c2f53ccffd9df487c999773171bf217f0c8de94d2fdb9ac251f41"
     },
     {
       "path": "l4d-route/reports/agent-29-l4d-state.txt",

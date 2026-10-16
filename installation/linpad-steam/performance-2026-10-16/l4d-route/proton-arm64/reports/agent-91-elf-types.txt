@@ -1,0 +1,30 @@
+AGENT_BEGIN id=91-elf-types pid=204 Fri Oct 16 21:03:30 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine ET_DYN (PIE, relocatable)
+/root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver ET_DYN (PIE, relocatable)
+/usr/bin/python3                               ET_DYN (PIE, relocatable)
+/bin/busybox                                   ET_DYN (PIE, relocatable)
+/usr/bin/ishwl                                 total 956
+lrwxrwxrwx 1 root root      4 Oct 16 08:32 msidb -> wine
+-rwxr-xr-x 1 root root  71232 Oct 16 08:19 wine
+-rwxr-xr-x 1 root root 900000 Oct 16 08:19 wineserver
+
+=== where do wine's own mappings sit? (run it briefly) ===
+0000efe48000-0000efe4a000 r-xp 00000000 00:00 0          [vdso]
+
+=== the guest's ELF image addresses, as seen in maps ===
+0000ef965000-0000ef9b2000 r-xp 00000000 00:00 0          /usr/lib/libskarnet.so.2.14.3.0
+0000ef9b2000-0000ef9b5000 r--p 0003d000 00:00 0          /usr/lib/libskarnet.so.2.14.3.0
+0000ef9b5000-0000ef9b6000 rw-p 0003d000 00:00 0          /usr/lib/libskarnet.so.2.14.3.0
+0000ef9b6000-0000ef9bf000 rw-p 00000000 00:00 0          
+0000ef9bf000-0000ef9de000 r-xp 00000000 00:00 0          /usr/lib/libutmps.so.0.1.2.3
+0000ef9de000-0000ef9df000 r--p 0000f000 00:00 0          /usr/lib/libutmps.so.0.1.2.3
+0000ef9df000-0000ef9e0000 rw-p 0000f000 00:00 0          /usr/lib/libutmps.so.0.1.2.3
+0000ef9e0000-0000ef9ff000 r-xp 00000000 00:00 0          /usr/lib/libattr.so.1.1.2502
+0000ef9ff000-0000efa00000 r--p 0000f000 00:00 0          /usr/lib/libattr.so.1.1.2502
+0000efa00000-0000efa01000 rw-p 0000f000 00:00 0          /usr/lib/libattr.so.1.1.2502
+0000efa01000-0000efa20000 r-xp 00000000 00:00 0          /usr/lib/libacl.so.1.1.2302
+0000efa20000-0000efa21000 r--p 0000f000 00:00 0          /usr/lib/libacl.so.1.1.2302
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:03:33 UTC 2026

@@ -1,0 +1,18 @@
+AGENT_BEGIN id=94-highva-decision-log pid=92 Fri Oct 16 21:14:21 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent pid: 92  boot: kb4453 agent started pid=92 at Fri Oct 16 21:14:11 UTC 2026
+Fri Oct 16 21:14:21 UTC 2026
+
+=== run the probe without and with the switch ===
+ISH_HIGH_VA in my environment : (absent)
+stack address                 : 0xffffd834
+high stack expected           : 0x7fff....
+ISH_HIGH_VA in my environment : 1
+stack address                 : 0xffffd814
+high stack expected           : 0x7fff....
+
+=== and a shell that asked for it ===
+0000ffffb000-0000ffffe000 -w-p 00000000 00:00 0          [stack]
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:14:21 UTC 2026

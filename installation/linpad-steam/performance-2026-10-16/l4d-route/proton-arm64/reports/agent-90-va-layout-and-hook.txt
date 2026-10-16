@@ -1,0 +1,29 @@
+AGENT_BEGIN id=90-va-layout-and-hook pid=204 Fri Oct 16 21:02:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== permanent agent hook (the app will be reinstalled and relaunched several times) ===
+hook installed (persistent)
+
+=== where does this emulator place the address space? (glibc view = what wine sees) ===
+stack-ish (address of a local): 0xffffd9f4
+sbrk(0)                       : 0x10ed000
+fresh mmap(1 MB)              : 0xefc7e000
+libc function address         : 0xefe3cb40
+main                          : 0x1030558
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 3
+
+=== the guest's own musl view ===
+stack-ish (address of a local): 0xffffdb64
+sbrk(0)                       : 0x10ec000
+fresh mmap(1 MB)              : 0xefeb6000
+libc function address         : 0x108a83c
+main                          : 0x1035fa4
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 3
+
+=== stack/heap labels in maps ===
+0000ffffb000-0000ffffe000 -w-p 00000000 00:00 0          [stack]
+mappings above 4 GB in a shell process: 
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:02:18 UTC 2026

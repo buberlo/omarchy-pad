@@ -1,0 +1,41 @@
+AGENT_BEGIN id=95-dmesg-highva pid=92 Fri Oct 16 21:14:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== guest kernel log ===
+ish-highva: /bin/sh envp.count=4 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/head envp.count=12 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sh envp.count=4 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/cat envp.count=12 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/date envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/wget envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/cat envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sleep envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sh envp.count=4 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/head envp.count=12 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sh envp.count=4 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/cat envp.count=12 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/date envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/wget envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/cat envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/head envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sed envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/tr envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/tail envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/date envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/uname envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/timeout envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/sh envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/dmesg envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/tail envp.count=41 -> high_va=0 stack_page=0xffffe
+
+=== /dev/kmsg ===
+
+=== trigger a fresh exec so the log line is generated right now ===
+ish-highva: /usr/bin/head envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/env envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /tmp/env-check-probe envp.count=42 -> high_va=1 stack_page=0x7ffffff
+ish-highva: /bin/sleep envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /bin/dmesg envp.count=41 -> high_va=0 stack_page=0xffffe
+ish-highva: /usr/bin/tail envp.count=41 -> high_va=0 stack_page=0xffffe
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:14:37 UTC 2026

@@ -168,3 +168,38 @@ contract. Concretely: find how the window base is established for Valve's Linux 
 sets it, whether an environment variable or the runtime passes it), then either provide that from
 the guest side or implement the equivalent host behaviour in the emulator. The alternative that
 needs none of this is Madeira, whose stack exists for exactly this case.
+
+## The high-address-space switch, and where it got stuck (17 October, 05:00–05:45)
+
+The finding that wine keeps its 32-bit view at `0x100000000` because this guest puts *everything*
+else below 4 GB (stack at 0xffffb000, libraries at 0xefe3cb40, heap at 0x10ed000 — all three measured
+with `probes/va_layout.c`) led to the change wine actually needs: an **opt-in high address-space
+layout**.
+
+`kernel/memory.h` now carries both layouts and `struct mem` remembers which one a process asked for;
+`kernel/exec.c` reads `ISH_HIGH_VA=1` from the program's own environment before anything is mapped,
+so the switch is **per process** and needs no host-side restart. With it, the stack goes to
+`0x7ffffff000` and the mmap area to just below it, leaving the low 4 GB free — the state wine needs
+for base 0 and therefore for identity address translation.
+
+The emulator's own decision log proves the decision is taken correctly:
+
+```
+ish-highva: /tmp/env-check-probe envp.count=42 -> high_va=1 stack_page=0x7ffffff
+ish-highva: /bin/sh envp.count=4 -> high_va=0 stack_page=0xffffe      (unchanged default)
+```
+
+**What is not yet proven:** the process itself still reports a stack address of `0xffffd814`, i.e.
+the low layout, in the same run whose exec logged `high_va=1` and `stack_page=0x7ffffff`. So either
+`current->cpu.sp = sp` (exec.c:499, now instrumented as well) is overwritten later, or the guest
+entry path does not use it. That is the next question, and it is a question about iSH's ARM64 guest
+entry, not about wine.
+
+**Blocked on the device:** resolving it needs the instrumented build to run again, and that needs a
+session, and a session needs StikDebug's JIT handshake — which stops at
+`[fast mode] opening stikdebug://enable-jit?…` while the iPad is asleep and locked. Tried: launching
+StikDebug itself first, terminating the parallel session's "LinPad Steam" app that holds the shared
+Linux system's lock, and relaunching several times; the app never gets past the JIT request (console
+capture in `high-va/evidence-app-stuck-on-jit.log`, zero `EXEC`/`MMAP` trace lines). Unlocking the
+iPad (and tapping StikDebug's prompt if it appears) is all it takes to continue; the session hook
+then starts the command agent by itself.

@@ -1,0 +1,36 @@
+AGENT_BEGIN id=93-env-check pid=92 Fri Oct 16 21:10:50 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does the variable reach the program, and does the layout follow? ===
+--- without the variable
+ISH_HIGH_VA in my environment : (absent)
+stack address                 : 0xffffd834
+high stack expected           : 0x7fff....
+--- with the variable
+ISH_HIGH_VA in my environment : 1
+stack address                 : 0xffffd814
+high stack expected           : 0x7fff....
+--- with the variable, through sh
+ISH_HIGH_VA in my environment : 1
+stack address                 : 0xffffd814
+high stack expected           : 0x7fff....
+
+=== which build is running? (install time + any marker) ===
+total 0
+-r--r--r--  1 root root 0 Jan  1  1970 colors
+dr-xr-xr-x 18 root root 0 Jan  1  1970 defaults
+-r--r--r--  1 root root 0 Jan  1  1970 documents
+-r--r--r--  1 root root 0 Jan  1  1970 jit-ss
+-r--r--r--  1 root root 0 Jan  1  1970 memory
+-rw-r--r--  1 root root 0 Jan  1  1970 oom
+-r--r--r--  1 root root 0 Jan  1  1970 version
+supported 1
+enabled 0
+
+=== does the emulator expose a version/build marker anywhere? ===
+/proc/ish/version      iSH 1.4.0 (805) 
+/proc/ish/build        
+/etc/ishwl/version     
+/proc/version          Linux version 4.20.69-ish SUPER AWESOME Oct 17 2026 05:07:55 
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:10:50 UTC 2026

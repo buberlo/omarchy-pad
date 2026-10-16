@@ -1,0 +1,41 @@
+AGENT_BEGIN id=92-highva-installed pid=92 Fri Oct 16 21:10:31 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+boot log: kb4453 agent started pid=92|kb4453 agent started pid=92 at Fri Oct 16 21:08:57 UTC 2026|
+agent pid: 92
+Fri Oct 16 21:10:31 UTC 2026
+footprint_mb 695
+allowance_mb 8192
+headroom_mb 7496
+
+=== layout WITHOUT the switch (default: everything low) ===
+stack-ish (address of a local): 0xffffd6c4
+sbrk(0)                       : 0x10ed000
+fresh mmap(1 MB)              : 0xefb5e000
+libc function address         : 0xefdecb40
+main                          : 0x1030558
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 3
+
+=== layout WITH ISH_HIGH_VA=1 ===
+stack-ish (address of a local): 0xffffd6b4
+sbrk(0)                       : 0x10ed000
+fresh mmap(1 MB)              : 0xefb5e000
+libc function address         : 0xefdecb40
+main                          : 0x1030558
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 3
+
+=== and the musl probe with the switch ===
+stack-ish (address of a local): 0xffffd804
+sbrk(0)                       : 0x10ec000
+fresh mmap(1 MB)              : 0xefeb6000
+libc function address         : 0x108a83c
+main                          : 0x1035fa4
+4 GB mark                     : 0x100000000
+of those three, below 4 GB    : 3
+
+=== stack label in maps (a shell that asked for it) ===
+0000ffffb000-0000ffffe000 -w-p 00000000 00:00 0          [stack]
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 21:10:31 UTC 2026
