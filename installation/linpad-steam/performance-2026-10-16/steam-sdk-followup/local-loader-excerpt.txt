@@ -1,0 +1,6 @@
+	libdl.so.2 => /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libdl.so.2 (0x00000000cb4ad000)
+	librt.so.1 => /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/librt.so.1 (0x00000000cb4a8000)
+	libm.so.6 => /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libm.so.6 (0x00000000cb3b8000)
+	libpthread.so.0 => /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00000000cb3b3000)
+	libc.so.6 => /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.6 (0x00000000cb1bf000)
+	/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 (0x00000000ce5c6000)

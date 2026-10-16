@@ -1,6 +1,6 @@
 {
   "date": "2026-10-16",
-  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and scheduler/audio-thread repairs; no authentication or proprietary game binaries.",
+  "scope": "Curated LinPad performance, memory, Vulkan, FEX, Steam, EGL, SDL, Mono, JIT cache and audio repairs, plus visible Hollow Knight menu evidence; no authentication or proprietary game binaries.",
   "files": [
     {
       "path": "audio-path-audit/README.md",
@@ -111,6 +111,61 @@
       "path": "audio-path-audit/zero-token",
       "bytes": 256,
       "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+    },
+    {
+      "path": "audio-runtime-followup/README.md",
+      "bytes": 5120,
+      "sha256": "6f4bc16ca0b722e5603ea36c7c337c9e2c6b3e4a67e663ad5dff3cf253129d36"
+    },
+    {
+      "path": "audio-runtime-followup/SHA256SUMS",
+      "bytes": 862,
+      "sha256": "3f05ff7a379fd5917026c3a5a3c09b788b9f32e18c98443e44c8d805b8315bf9"
+    },
+    {
+      "path": "audio-runtime-followup/audio-stream4449-device.txt",
+      "bytes": 738,
+      "sha256": "dcc7de51642776713f401d08cb0be879b007edde7e23c62f25fb678048d93595"
+    },
+    {
+      "path": "audio-runtime-followup/audio-stream4449-probe",
+      "bytes": 2544,
+      "sha256": "0da91dc6d4d8f7f2c186b30e31eebf47a36cdc9f08b72df6351b54c5e935bfba"
+    },
+    {
+      "path": "audio-runtime-followup/bridge-result.json",
+      "bytes": 1464,
+      "sha256": "b63eed6651cd9aa4b1c74d614a070d649c0c262c9a94e22446661a20bc5249f4"
+    },
+    {
+      "path": "audio-runtime-followup/filter-game-sink-inputs.awk",
+      "bytes": 1127,
+      "sha256": "f85804cef794ea2a2d039ba6b8afcfc8e1fc402070676ad8b4b036b555013d72"
+    },
+    {
+      "path": "audio-runtime-followup/ishaudio4449-first.txt",
+      "bytes": 117,
+      "sha256": "ff23b9d6eb9155368d8c812bceba9db37232df5ed1a9723e41e3d9b799991c01"
+    },
+    {
+      "path": "audio-runtime-followup/ishaudio4449-second.txt",
+      "bytes": 117,
+      "sha256": "1eed2693805bcd7c1f85d9ee38c2d16e613219b52a1502d6e50783662c4f7347"
+    },
+    {
+      "path": "audio-runtime-followup/provenance.json",
+      "bytes": 2172,
+      "sha256": "c6bcbf3d35e92aa6ff80df4dc57192570a305e75c156795f81b8ca886c004802"
+    },
+    {
+      "path": "audio-runtime-followup/test-filter.py",
+      "bytes": 1391,
+      "sha256": "1b4ae74fe866d24c633f47cd96d80743d741b95951437da3cf45ed2b05afae74"
+    },
+    {
+      "path": "audio-runtime-followup/validation.json",
+      "bytes": 472,
+      "sha256": "6a5052ad02e93367a962f0d1b2d1e65f92db12c7211daa419d7d45b6345384cb"
     },
     {
       "path": "build4442/SHA256SUMS",
@@ -1126,6 +1181,201 @@
       "path": "build4448/symbols.json",
       "bytes": 266,
       "sha256": "600b79dfde7b4093dd6ec9cf6f66731e072c17a8f4e920ad23ff6a36ea5b2341"
+    },
+    {
+      "path": "build4449-release-verified.json",
+      "bytes": 1518,
+      "sha256": "9d342edabb0e8868263069cd414179feac5b04d6e666da3077222668ae61f4c9"
+    },
+    {
+      "path": "build4449-runtime-followup/PRESENTATION-NEXT.md",
+      "bytes": 2216,
+      "sha256": "80c0828b344b26246e7d6b1d76aa9508e3d2d6573e59d2767b05ad7fecac5672"
+    },
+    {
+      "path": "build4449-runtime-followup/README.md",
+      "bytes": 2403,
+      "sha256": "c00453abf3058acd7d1473b78aff41e5da813b995a493f0f885bda59330535cc"
+    },
+    {
+      "path": "build4449-runtime-followup/SHA256SUMS",
+      "bytes": 1137,
+      "sha256": "6ff57ff182b80f58ee3badd951d8132a61e9355f81921a7a3418739659d2f9b9"
+    },
+    {
+      "path": "build4449-runtime-followup/archive-build4449-runtime-followup.py",
+      "bytes": 9354,
+      "sha256": "7a402f6002eb3c8579cbc06a60bfca7083e3ac5ed765743317881a099a1ab565"
+    },
+    {
+      "path": "build4449-runtime-followup/diagnostics/hollow4449-compositor-status",
+      "bytes": 2440,
+      "sha256": "8589ffadce4652efcff9174abe8f810622c80f62f326467ad0a0505c00984874"
+    },
+    {
+      "path": "build4449-runtime-followup/diagnostics/hollow4449-frame-capture",
+      "bytes": 4266,
+      "sha256": "f36266d39e820303e395d2393d474304a6bdcf284886479efc96b470dc4e7a88"
+    },
+    {
+      "path": "build4449-runtime-followup/profile/capture-metadata.json",
+      "bytes": 585,
+      "sha256": "e5ddcb8ce725a5df3f55c320ade2bd9403a98cca3fed0427364c62619417d5fa"
+    },
+    {
+      "path": "build4449-runtime-followup/profile/summarize-time-profile.py",
+      "bytes": 2596,
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca"
+    },
+    {
+      "path": "build4449-runtime-followup/profile/summary.json",
+      "bytes": 12907,
+      "sha256": "433db00f31ebf121202e2a3c241630718ce8c1503b09b8cbb344e272a0f1b4aa"
+    },
+    {
+      "path": "build4449-runtime-followup/progress/hollow4449-short-1.txt",
+      "bytes": 3041,
+      "sha256": "dbf0787bc3ebcd6a28a4a18ba14be9f7d2fd03f70dc262d2cb6f615decc4cde1"
+    },
+    {
+      "path": "build4449-runtime-followup/progress/hollow4449-short-2.txt",
+      "bytes": 3041,
+      "sha256": "07358af7ce128b01288951cb21639d7fd3f161bb4e42146b8aadd6c3479ab791"
+    },
+    {
+      "path": "build4449-runtime-followup/progress/hollow4449-status-1.txt",
+      "bytes": 1251,
+      "sha256": "81e7bf83585109918b169d01a0a6fc14004b19dc399e2d445d8f25a7cd110958"
+    },
+    {
+      "path": "build4449-runtime-followup/provenance.json",
+      "bytes": 2890,
+      "sha256": "bc6829f74509af21b507e7d8f6472de3834cb984f01e26cc67e63f1da420c7fc"
+    },
+    {
+      "path": "build4449-visible-menu/README.md",
+      "bytes": 3971,
+      "sha256": "f2e07a40c01315b83d6efce585159fc3688795429c9a0ebacf9eadd8a374bb87"
+    },
+    {
+      "path": "build4449-visible-menu/SHA256SUMS",
+      "bytes": 2307,
+      "sha256": "4eb058bd3fda37d4ebde3e759063a8fae8636201935fa1e6194cb16df5788cc3"
+    },
+    {
+      "path": "build4449-visible-menu/archive-build4449-visible-menu.py",
+      "bytes": 11787,
+      "sha256": "c77ced2a5b0791da2fdd666b55a1d48a325b92583092398273ce9e7ead598e07"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/parse-hollow-frame-window.py",
+      "bytes": 4345,
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/parser-tests.json",
+      "bytes": 411,
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/serve/hollow4449-frame-capture",
+      "bytes": 4266,
+      "sha256": "f36266d39e820303e395d2393d474304a6bdcf284886479efc96b470dc4e7a88"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/serve/hollow4449-menu-cadence",
+      "bytes": 1908,
+      "sha256": "c3fcda61a311383d94272cf91038b03d889747b0791dfd57905a40b42a4d87d9"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/test-hollow-frame-parser.py",
+      "bytes": 1821,
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/test-menu-cadence-wrapper.py",
+      "bytes": 3071,
+      "sha256": "2b534105f662e8f274006ef7dcc846ea1d795bafe54152f00bc474645a02f161"
+    },
+    {
+      "path": "build4449-visible-menu/diagnostics/wrapper-tests.json",
+      "bytes": 532,
+      "sha256": "16bdee1b9d83aaa7f1cf26fd19a70af6d139f9a890d232edf422e3213a978bba"
+    },
+    {
+      "path": "build4449-visible-menu/first-visible-provenance.json",
+      "bytes": 1336,
+      "sha256": "3cfe4c26c1ae7c63f62fe03183d9e6d9f0e4d2dc6d0346cc8dbf8f1e487c4847"
+    },
+    {
+      "path": "build4449-visible-menu/hollow-knight-first-frame-4449.png",
+      "bytes": 285545,
+      "sha256": "2c2890d845a56391511327ca442b3b5e8faeaafefd7c9fe3f1a1f545fcedd9d5"
+    },
+    {
+      "path": "build4449-visible-menu/hollow-knight-title-menu-4449.png",
+      "bytes": 321972,
+      "sha256": "85a7bff826c6f91498855351693421d5ddf8fb667e3aa4370aed7b1977e3d7a2"
+    },
+    {
+      "path": "build4449-visible-menu/hollow4449-cadence-loading.txt",
+      "bytes": 10092,
+      "sha256": "9fdb3350a2601397cc1fd862c68ee340e38f7a5300bfac6bdffffb9d2ab4f3ae"
+    },
+    {
+      "path": "build4449-visible-menu/hollow4449-cadence-title-menu.txt",
+      "bytes": 11317,
+      "sha256": "52c386fa6db7529cc190237d297f0a5372d84e24c8f8d2672e0916edb4420a70"
+    },
+    {
+      "path": "build4449-visible-menu/input-and-resize-excerpt.txt",
+      "bytes": 619,
+      "sha256": "00998b2db6d4b02dc856159724685c6dc8d3165611f69743f192fe5e9ff78b0b"
+    },
+    {
+      "path": "build4449-visible-menu/loading-cadence-analysis.json",
+      "bytes": 960,
+      "sha256": "5cd7a3f3b66665b90ad4d310ea4278a609d76887b9f3392de62fae7913bf0142"
+    },
+    {
+      "path": "build4449-visible-menu/loading-window.meta",
+      "bytes": 107,
+      "sha256": "6d58ae2262f5ad9fcc798f50587b8f847ebf1070dcc1a6bad35b43d108989e80"
+    },
+    {
+      "path": "build4449-visible-menu/loading-window.status.txt",
+      "bytes": 4042,
+      "sha256": "b390eeeef92291fd2eb58afe184bd51e51ab00e6fb3fa150d8ceff8e8bf9d8e3"
+    },
+    {
+      "path": "build4449-visible-menu/loading-window.txt",
+      "bytes": 1200,
+      "sha256": "ed75e9a731c6359eae0ab39a5b2a8dc8a85ef81da8dd038365ced9f70048f0b7"
+    },
+    {
+      "path": "build4449-visible-menu/provenance.json",
+      "bytes": 3996,
+      "sha256": "7a186539e342802c668b773150feab2b192f645c8ea09b12409d1affcafcd272"
+    },
+    {
+      "path": "build4449-visible-menu/title-menu-cadence-analysis.json",
+      "bytes": 1120,
+      "sha256": "f0cb429c504dc141de09b82416dd87a65f6376eef0f1950b01546a3c69947275"
+    },
+    {
+      "path": "build4449-visible-menu/title-menu-window.meta",
+      "bytes": 107,
+      "sha256": "9cd9d8427c297be71a08c5d871135dd333a84284a316c0b39dd02849d5229352"
+    },
+    {
+      "path": "build4449-visible-menu/title-menu-window.status.txt",
+      "bytes": 4042,
+      "sha256": "b350428d78d3315cb0ee7a92fb6a112697dd91151bba93371ca5e146ee0b579a"
+    },
+    {
+      "path": "build4449-visible-menu/title-menu-window.txt",
+      "bytes": 2425,
+      "sha256": "325949f6dbec11b900bd15d4a344a10f21c7708f8254585b71d4132acbea8c1c"
     },
     {
       "path": "build4449/REPOSITORY-SHA256SUMS",
@@ -2223,14 +2473,29 @@
       "sha256": "c3d5faa6baef81d2eeae6231d9d7e5399f8127ecb031af8fc731bdf8514bb894"
     },
     {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGL.so.1",
+      "bytes": 542880,
+      "sha256": "b01915dfedf03be4710d3184bc62a3364880fc950043742fd5e07659b409ef1e"
+    },
+    {
       "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
       "bytes": 542880,
       "sha256": "b01915dfedf03be4710d3184bc62a3364880fc950043742fd5e07659b409ef1e"
     },
     {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLX.so.0",
+      "bytes": 141744,
+      "sha256": "6b9525981881bb388b8726c8862d2ac5c2484e81328738d924415692d873018c"
+    },
+    {
       "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
       "bytes": 141744,
       "sha256": "6b9525981881bb388b8726c8862d2ac5c2484e81328738d924415692d873018c"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0",
+      "bytes": 723248,
+      "sha256": "890baeef03fd73560a2fde85ebe9fb49ca3e90686923c5ee22101b28ec8ee7aa"
     },
     {
       "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
@@ -3501,6 +3766,51 @@
       "path": "steam-helper-repair/steam-launch-wrapper",
       "bytes": 749,
       "sha256": "6909e006c403338f0e65728d771592ef0ed15dd0d46aa857941d8d37bc013342"
+    },
+    {
+      "path": "steam-sdk-followup/PROVENANCE.json",
+      "bytes": 1112,
+      "sha256": "837f02d005ffc537af60a24d2e8a8e4a65de780e3b58d93efe02c8fb83d4c9e4"
+    },
+    {
+      "path": "steam-sdk-followup/README.md",
+      "bytes": 3521,
+      "sha256": "9c230700d32dabf3854047425e6623284c753edfeb6276d3af4b6156e94c37bf"
+    },
+    {
+      "path": "steam-sdk-followup/SHA256SUMS",
+      "bytes": 691,
+      "sha256": "5841228120646bb886185859a8a69b0385fef7320868c5b3cd8941dd1157193e"
+    },
+    {
+      "path": "steam-sdk-followup/archive-members.json",
+      "bytes": 446,
+      "sha256": "d5a52e42ef9ec5f6ce203f262f1b6e3c48f84927574a825bc4ebf3231f6a174a"
+    },
+    {
+      "path": "steam-sdk-followup/install-steam-sdk-x86",
+      "bytes": 3689,
+      "sha256": "064ebc604891e0297b057aafd99129443387f6714ffed6264018a22cfc8dcd23"
+    },
+    {
+      "path": "steam-sdk-followup/loader-check-launch.c",
+      "bytes": 543,
+      "sha256": "a35659196eb57093bf3dfe94b09a967cc8eae03f820e638bb27ba0806306dfac"
+    },
+    {
+      "path": "steam-sdk-followup/local-loader-excerpt.txt",
+      "bytes": 554,
+      "sha256": "f442f1b24e7a592f502baea8da45d998ecb0a71ef09943055632ad87eb7ff6cd"
+    },
+    {
+      "path": "steam-sdk-followup/local-loader-result.json",
+      "bytes": 269,
+      "sha256": "780b250ec08699f9920fd53babc0a57b76d720df0047db8b5d9eff65fd720c01"
+    },
+    {
+      "path": "steam-sdk-followup/payload-manifest.json",
+      "bytes": 409,
+      "sha256": "ef59f15fa4c7593e64f5e8afbe9ed6df2e9224a69e3d7e38ed519ac807dc2166"
     },
     {
       "path": "unity-sdl-repair/README.md",

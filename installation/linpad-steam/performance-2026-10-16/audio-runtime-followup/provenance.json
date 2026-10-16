@@ -1,0 +1,57 @@
+{
+  "status": "frozen: physical4449 game PID366 playback stream observed in two samples; native bridge counters advance in an earlier separate window; non-silent/audible output unverified",
+  "source_audio_bridge_sha256": "14164ee2c151225dc8b264c3d3b50cc8698a61de8d9615c0c59febd0740e2660",
+  "pactl_reference": "https://raw.githubusercontent.com/pulseaudio/pulseaudio/v17.0/src/utils/pactl.c",
+  "parser_fixtures": 3,
+  "test_result": "PASS",
+  "fifo_opened": false,
+  "audio_stream_created": false,
+  "game_changed": false,
+  "bridge_result": "bridge-result.json",
+  "frozen": true,
+  "physical_stream_probe": {
+    "source": "work/performance/reports/audio-stream4449-device.txt",
+    "sha256": "dcc7de51642776713f401d08cb0be879b007edde7e23c62f25fb678048d93595",
+    "build": 4449,
+    "game_pid": 366,
+    "begin_utc": "2026-10-16T13:02:41Z",
+    "end_utc": "2026-10-16T13:02:46Z",
+    "samples": 2,
+    "sink_input_count_each": 1,
+    "game_matching_count_each": 1,
+    "stream_index": 1,
+    "sink_index": 0,
+    "known_sink": "ishaudio",
+    "corked_each": false,
+    "muted_each": false,
+    "query_exit_each": 0,
+    "script_exit": 0,
+    "game_changed": false,
+    "audio_stream_created": false,
+    "fifo_opened": false
+  },
+  "served_files": [
+    {
+      "name": "audio-stream4449-probe",
+      "sha256": "0da91dc6d4d8f7f2c186b30e31eebf47a36cdc9f08b72df6351b54c5e935bfba"
+    },
+    {
+      "name": "filter-game-sink-inputs.awk",
+      "sha256": "f85804cef794ea2a2d039ba6b8afcfc8e1fc402070676ad8b4b036b555013d72"
+    }
+  ],
+  "dependency_archive": "../audio-path-audit/",
+  "dependency_hashes": {
+    "pulse-probe-client.conf": "f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52",
+    "pulse-probe-zero-token": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+  },
+  "qualification": {
+    "game_playback_stream_exists": true,
+    "game_stream_uncorked_unmuted": true,
+    "native_bridge_receive_and_render_progress": true,
+    "stream_and_bridge_windows_simultaneous": false,
+    "all_bridge_samples_proven_to_originate_from_game": false,
+    "non_silent_samples_verified": false,
+    "audible_playback_verified": false
+  }
+}

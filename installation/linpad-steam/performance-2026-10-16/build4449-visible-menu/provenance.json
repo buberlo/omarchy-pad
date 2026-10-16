@@ -1,0 +1,98 @@
+{
+  "scope": "Visible menus and accepted language input; black-transition cadence plus title-menu cadence with uncertain/partial foreground; no gameplay FPS claim.",
+  "snapshot_end_utc": "2026-10-16T13:07:13Z",
+  "files": [
+    {
+      "source": "outputs/hollow-knight-first-frame-4449.png",
+      "destination": "hollow-knight-first-frame-4449.png",
+      "sha256": "2c2890d845a56391511327ca442b3b5e8faeaafefd7c9fe3f1a1f545fcedd9d5",
+      "bytes": 285545,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "outputs/hollow-knight-title-menu-4449.png",
+      "destination": "hollow-knight-title-menu-4449.png",
+      "sha256": "85a7bff826c6f91498855351693421d5ddf8fb667e3aa4370aed7b1977e3d7a2",
+      "bytes": 321972,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/archive-build4449-visible-menu.py",
+      "destination": "archive-build4449-visible-menu.py",
+      "sha256": "c77ced2a5b0791da2fdd666b55a1d48a325b92583092398273ce9e7ead598e07",
+      "bytes": 11787,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-cadence-loading.txt",
+      "destination": "hollow4449-cadence-loading.txt",
+      "sha256": "9fdb3350a2601397cc1fd862c68ee340e38f7a5300bfac6bdffffb9d2ab4f3ae",
+      "bytes": 10092,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-cadence-title-menu.txt",
+      "destination": "hollow4449-cadence-title-menu.txt",
+      "sha256": "52c386fa6db7529cc190237d297f0a5372d84e24c8f8d2672e0916edb4420a70",
+      "bytes": 11317,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-short-3.txt",
+      "destination": "input-and-resize-excerpt.txt",
+      "raw_sha256": "c08cde68812c14d3a6716df5a09153717a63aba90035b1a3cba4706a87fdcf8a",
+      "raw_bytes": 4705,
+      "archived_sha256": "00998b2db6d4b02dc856159724685c6dc8d3165611f69743f192fe5e9ff78b0b",
+      "mode": "numbered input/language/resize/map milestones; raw process and game logs remain local"
+    },
+    {
+      "source": "work/performance/serve/hollow4449-menu-cadence",
+      "destination": "diagnostics/serve/hollow4449-menu-cadence",
+      "sha256": "c3fcda61a311383d94272cf91038b03d889747b0791dfd57905a40b42a4d87d9",
+      "bytes": 1908,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4449-frame-capture",
+      "destination": "diagnostics/serve/hollow4449-frame-capture",
+      "sha256": "f36266d39e820303e395d2393d474304a6bdcf284886479efc96b470dc4e7a88",
+      "bytes": 4266,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/parse-hollow-frame-window.py",
+      "destination": "diagnostics/parse-hollow-frame-window.py",
+      "sha256": "587e94064322eb3012661ced0d2ec1454a47cb37acdc17dcb758a02a3d368325",
+      "bytes": 4345,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/test-hollow-frame-parser.py",
+      "destination": "diagnostics/test-hollow-frame-parser.py",
+      "sha256": "9ef4acef58ff30e3f7b2d8f2cc1ae1f6c64da837b4ef9d054444cde93c089bba",
+      "bytes": 1821,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/frame-parser-test-results.json",
+      "destination": "diagnostics/parser-tests.json",
+      "sha256": "ed04d2728c499f047696746769be945000414b28cae43a9cfa86165685b85432",
+      "bytes": 411,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/test-menu-cadence-wrapper.py",
+      "destination": "diagnostics/test-menu-cadence-wrapper.py",
+      "sha256": "2b534105f662e8f274006ef7dcc846ea1d795bafe54152f00bc474645a02f161",
+      "bytes": 3071,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/menu-cadence-wrapper-tests.json",
+      "destination": "diagnostics/wrapper-tests.json",
+      "sha256": "16bdee1b9d83aaa7f1cf26fd19a70af6d139f9a890d232edf422e3213a978bba",
+      "bytes": 532,
+      "mode": "byte-identical"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+1: Fri Oct 16 12:48:14 UTC 2026
+3: Fri Oct 16 12:47:41 UTC 2026
+43: 2026-10-16T12:47:42.507Z|0xcc410540|The selected window backend is wayland 
+47: 2026-10-16T12:47:44.026Z|0xcc410540|Display 0 'DesktopKit': 1180x780 (primary device).
+50: 2026-10-16T12:47:44.225Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+233: 2026-10-16T12:47:47.661Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+235: 2026-10-16T12:47:47.661Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+237: 2026-10-16T12:47:47.661Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+238: 2026-10-16T12:47:47.662Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+240: 2026-10-16T12:47:48.632Z|0xcc410540|Begin MonoManager ReloadAssembly
+241: 2026-10-16T12:47:54.098Z|0xcc410540|- Loaded All Assemblies, in  5.466 seconds
+244: 2026-10-16T12:47:54.284Z|0xcc410540|[Physics::Module] Name: PhysX
+249: 2026-10-16T12:48:07.934Z|0xcc410540|requesting resize 960 x 540
+250: 2026-10-16T12:48:07.947Z|0xcc410540|resizing window to 960 x 540
+251: 2026-10-16T12:48:07.961Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+252: 2026-10-16T12:48:07.963Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1

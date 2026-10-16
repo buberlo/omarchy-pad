@@ -1,0 +1,11 @@
+{
+  "scope": "synthetic parser verification, no device performance claim",
+  "checks": [
+    "two early frames then 30-second-window stall cannot become 62.5 full-window FPS",
+    "timestamp and sequence 32-bit wrap preserve a 16ms interval",
+    "sequence loss and long stall explicitly flagged",
+    "no frames is zero full-window rate, not missing success",
+    "malformed row rejected"
+  ],
+  "passed": 5
+}

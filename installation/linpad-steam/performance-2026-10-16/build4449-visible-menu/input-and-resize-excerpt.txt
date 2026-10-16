@@ -1,0 +1,9 @@
+1: Fri Oct 16 13:02:04 UTC 2026
+19: 2026-10-16T12:51:16.853Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+26: 2026-10-16T12:56:44.031Z|0xcc410540|Loaded saved language code 'DE'
+27: 2026-10-16T12:56:44.040Z|0xcc410540|Restored language code 'DE'
+39: 2026-10-16T13:01:19.367Z|0xcc410540|Performing automatic level start.
+40: 2026-10-16T13:01:32.057Z|0xcc410540|Game controller set to None.
+41: 2026-10-16T13:01:35.576Z|0xcc410540|Loaded saved language code 'DE'
+42: 2026-10-16T13:01:35.577Z|0xcc410540|Restored language code 'DE'
+58: ishwl 49313.675: map toplevel 1 'Hollow Knight' hollow_knight.x86_64

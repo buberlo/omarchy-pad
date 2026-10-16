@@ -1,0 +1,20 @@
+{
+  "shell_syntax": "PASS",
+  "parser_fixtures": 3,
+  "parser_privacy_and_pid_matching": "PASS",
+  "physical_game_stream_samples": 2,
+  "physical_query_exits": [
+    0,
+    0
+  ],
+  "physical_script_exit": 0,
+  "source_mutable_report_marker_checked": true,
+  "native_bridge_counter_deltas": {
+    "frames_received": 866304,
+    "frames_played": 866400,
+    "frames_dropped": 0,
+    "underruns": 0
+  },
+  "windows_simultaneous": false,
+  "audible_output": "not verified"
+}

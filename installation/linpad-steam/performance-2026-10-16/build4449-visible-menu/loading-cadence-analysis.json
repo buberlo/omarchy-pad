@@ -1,0 +1,32 @@
+{
+  "metric": "composited_game_view_delivery_cadence",
+  "view_id": 1,
+  "captured_wall_seconds": 30,
+  "wall_clock_resolution_seconds": 1,
+  "frames_observed": 48,
+  "other_view_rows_excluded": 0,
+  "full_window_rate_approx_fps": 1.6,
+  "active_span_seconds": 15.663,
+  "active_span_rate_fps": 3.0007022920257933,
+  "interval_ms": {
+    "p50": 297,
+    "p95": 389,
+    "p99": 1766,
+    "max": 1766
+  },
+  "first_timestamp_ms": 550096967,
+  "last_timestamp_ms": 550112630,
+  "first_sequence": 4436,
+  "last_sequence": 4483,
+  "damage_dimensions_observed": [
+    [
+      659,
+      540
+    ]
+  ],
+  "sequence_discontinuities": [],
+  "warnings": [
+    "gap of at least 1.5 seconds: correlate compositor ack-timeout messages"
+  ],
+  "interpretation": "Full-window rate includes observed idle time; active-span rate must not replace it. Damage dimensions are not swapchain extent. This is not GPU render duration or independently verified physical display FPS."
+}

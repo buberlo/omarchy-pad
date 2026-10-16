@@ -1,0 +1,40 @@
+{
+  "verified_at_utc": "2026-10-16T13:01:56.625273+00:00",
+  "url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4449",
+  "tag": "ipad-steam-build-4449",
+  "target_commitish": "a12ac91bc69ca75097cb3125f210d4e80c2bde5f",
+  "prerelease": true,
+  "assets": [
+    {
+      "name": "LinPad-1.4.0-build4449-Konrad.ipa",
+      "size_bytes": 637224488,
+      "sha256": "cc44b2f37b2283cebc617f6864f796763fd14b6a7bc2c268dcb18bc171f74bdd",
+      "server_digest_matches": true
+    },
+    {
+      "name": "LinPad-1.4.0-build4449-dSYM.zip",
+      "size_bytes": 13519246,
+      "sha256": "527425fcf3eaf7dd53a0ca49869f140c26d2f5625157f991157a67349e39905f",
+      "server_digest_matches": true
+    },
+    {
+      "name": "build-manifest.json",
+      "size_bytes": 5671,
+      "sha256": "cc900aa5b289c052c3a7edda5d17b5b548e947493276d9400d484b8206d00447",
+      "server_digest_matches": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "size_bytes": 198,
+      "sha256": "3d021b79840d25f9c63da8ad06d5f409aae1dbd758e2d330194a0147f983ee45",
+      "server_digest_matches": true
+    },
+    {
+      "name": "VERIFICATION.md",
+      "size_bytes": 3132,
+      "sha256": "3a3dce4fd59fc004c27f6516025eeb0d4d60ae50e5aff6dca14df48dabbcb103",
+      "server_digest_matches": true
+    }
+  ],
+  "qualification": "Frozen release contains physical boot/JIT, self-modifying code, scheduler and exact Unity audio-thread helper checks. Later visible game UI is documented separately; gameplay and FPS remain unqualified."
+}

@@ -1,0 +1,10 @@
+{
+  "tar_path": "work/performance/serve/steam-sdk-x86-1792110651.tar.gz",
+  "tar_bytes": 18199806,
+  "tar_sha256": "e9f627ea5bae77e2cc3cb704e561b85c84cc3df9376c7395ad07c8e08c17f524",
+  "installer_sha256": "064ebc604891e0297b057aafd99129443387f6714ffed6264018a22cfc8dcd23",
+  "binary_payload_archived_in_git": false,
+  "steam_launched": false,
+  "device_installed": false,
+  "steamapi_init_qualified": false
+}

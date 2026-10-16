@@ -1,0 +1,30 @@
+[
+  {
+    "path": "linux32/",
+    "bytes": 0
+  },
+  {
+    "path": "linux64/",
+    "bytes": 0
+  },
+  {
+    "path": "linux32/crashhandler.so",
+    "bytes": 1046708
+  },
+  {
+    "path": "linux32/steamclient.so",
+    "bytes": 53449016
+  },
+  {
+    "path": "linux32/steamerrorreporter",
+    "bytes": 271704
+  },
+  {
+    "path": "linux64/crashhandler.so",
+    "bytes": 1002544
+  },
+  {
+    "path": "linux64/steamclient.so",
+    "bytes": 51017392
+  }
+]

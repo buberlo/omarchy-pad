@@ -1,0 +1,496 @@
+{
+  "input_sha256": "7fa2697fa3d5b097dd8bb85133441629e96b9d0be7fbcecf354911a08dcc8b3a",
+  "scope": "Statistical CPU samples from the already-recorded own-app trace. Weighted sample time is not wall time or game FPS.",
+  "samples": 6202,
+  "missing_backtrace_rows": 0,
+  "sample_weight_seconds": 6.202,
+  "sample_span_seconds": 5.4023265,
+  "top_self": [
+    {
+      "function": "_platform_memmove",
+      "weighted_seconds": 0.981,
+      "percent": 15.81747823282812
+    },
+    {
+      "function": "__psynch_mutexwait",
+      "weighted_seconds": 0.225,
+      "percent": 3.6278619800064495
+    },
+    {
+      "function": "__psynch_mutexdrop",
+      "weighted_seconds": 0.224,
+      "percent": 3.6117381489841986
+    },
+    {
+      "function": "lookup_lockfree",
+      "weighted_seconds": 0.157,
+      "percent": 2.531441470493389
+    },
+    {
+      "function": "ss_get",
+      "weighted_seconds": 0.133,
+      "percent": 2.144469525959368
+    },
+    {
+      "function": "jit_run",
+      "weighted_seconds": 0.118,
+      "percent": 1.9026120606256047
+    },
+    {
+      "function": "fiber_enter_raw",
+      "weighted_seconds": 0.115,
+      "percent": 1.854240567558852
+    },
+    {
+      "function": "get_block",
+      "weighted_seconds": 0.113,
+      "percent": 1.8219929055143502
+    },
+    {
+      "function": "gadget_step",
+      "weighted_seconds": 0.103,
+      "percent": 1.6607545952918414
+    },
+    {
+      "function": "pthread_mutex_unlock",
+      "weighted_seconds": 0.095,
+      "percent": 1.5317639471138342
+    },
+    {
+      "function": "fiber_exit",
+      "weighted_seconds": 0.094,
+      "percent": 1.5156401160915833
+    },
+    {
+      "function": "pthread_mutex_lock",
+      "weighted_seconds": 0.076,
+      "percent": 1.2254111576910673
+    },
+    {
+      "function": "gadget_load64_imm_signed_fast",
+      "weighted_seconds": 0.071,
+      "percent": 1.144792002579813
+    },
+    {
+      "function": "get_block_slow",
+      "weighted_seconds": 0.064,
+      "percent": 1.0319251854240568
+    },
+    {
+      "function": "_tlv_get_addr",
+      "weighted_seconds": 0.058,
+      "percent": 0.9351821992905515
+    }
+  ],
+  "top_inclusive": [
+    {
+      "function": "thread_start",
+      "weighted_seconds": 4.097,
+      "percent": 66.05933569816189
+    },
+    {
+      "function": "_pthread_start",
+      "weighted_seconds": 4.097,
+      "percent": 66.05933569816189
+    },
+    {
+      "function": "task_thread",
+      "weighted_seconds": 4.007,
+      "percent": 64.60819090615931
+    },
+    {
+      "function": "task_run_current",
+      "weighted_seconds": 4.007,
+      "percent": 64.60819090615931
+    },
+    {
+      "function": "cpu_run_to_interrupt",
+      "weighted_seconds": 3.737,
+      "percent": 60.25475653015157
+    },
+    {
+      "function": "jit_run",
+      "weighted_seconds": 2.654,
+      "percent": 42.79264753305385
+    },
+    {
+      "function": "gadget_step",
+      "weighted_seconds": 2.062,
+      "percent": 33.247339567881326
+    },
+    {
+      "function": "_platform_memmove",
+      "weighted_seconds": 0.981,
+      "percent": 15.81747823282812
+    },
+    {
+      "function": "ss_get",
+      "weighted_seconds": 0.742,
+      "percent": 11.963882618510159
+    },
+    {
+      "function": "get_block",
+      "weighted_seconds": 0.418,
+      "percent": 6.73976136730087
+    },
+    {
+      "function": "get_block_slow",
+      "weighted_seconds": 0.305,
+      "percent": 4.917768461786521
+    },
+    {
+      "function": "handle_interrupt",
+      "weighted_seconds": 0.27,
+      "percent": 4.35343437600774
+    },
+    {
+      "function": "_pthread_mutex_firstfit_lock_slow",
+      "weighted_seconds": 0.251,
+      "percent": 4.047081586584973
+    },
+    {
+      "function": "_pthread_mutex_firstfit_lock_wait",
+      "weighted_seconds": 0.232,
+      "percent": 3.740728797162206
+    },
+    {
+      "function": "_pthread_mutex_firstfit_unlock_slow",
+      "weighted_seconds": 0.226,
+      "percent": 3.6439858110287005
+    }
+  ],
+  "threads": [
+    {
+      "thread": "FEX-apple-m-366 (0x422ca1) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 5.165,
+      "percent": 83.27958722992582,
+      "top_self": [
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.9,
+          "percent": 14.511447920025798
+        },
+        {
+          "function": "lookup_lockfree",
+          "weighted_seconds": 0.134,
+          "percent": 2.160593356981619
+        },
+        {
+          "function": "fiber_enter_raw",
+          "weighted_seconds": 0.112,
+          "percent": 1.8058690744920993
+        },
+        {
+          "function": "ss_get",
+          "weighted_seconds": 0.112,
+          "percent": 1.8058690744920993
+        }
+      ]
+    },
+    {
+      "thread": "Finalizer-379 (0x422cbe) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.298,
+      "percent": 4.804901644630764,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.043,
+          "percent": 0.6933247339567882
+        },
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.043,
+          "percent": 0.6933247339567882
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.04,
+          "percent": 0.6449532408900355
+        },
+        {
+          "function": "jit_invalidate_range",
+          "weighted_seconds": 0.015,
+          "percent": 0.2418574653337633
+        }
+      ]
+    },
+    {
+      "thread": "FEX-apple-m-420 (0x422d6a) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.217,
+      "percent": 3.4988713318284423,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.043,
+          "percent": 0.6933247339567882
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.039,
+          "percent": 0.6288294098677846
+        },
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.018,
+          "percent": 0.29022895840051594
+        },
+        {
+          "function": "pthread_mutex_lock",
+          "weighted_seconds": 0.012,
+          "percent": 0.19348597226701064
+        }
+      ]
+    },
+    {
+      "thread": "threaded-ml-419 (0x422d68) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.189,
+      "percent": 3.0474040632054176,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.037,
+          "percent": 0.5965817478232828
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.035,
+          "percent": 0.5643340857787811
+        },
+        {
+          "function": "_platform_memmove",
+          "weighted_seconds": 0.016,
+          "percent": 0.2579812963560142
+        },
+        {
+          "function": "0x1249e809d",
+          "weighted_seconds": 0.009,
+          "percent": 0.14511447920025797
+        }
+      ]
+    },
+    {
+      "thread": "pulseaudio-56 (0x42261d) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.066,
+      "percent": 1.0641728474685586,
+      "top_self": [
+        {
+          "function": "poll",
+          "weighted_seconds": 0.027,
+          "percent": 0.43534343760077393
+        },
+        {
+          "function": "kevent",
+          "weighted_seconds": 0.009,
+          "percent": 0.14511447920025797
+        },
+        {
+          "function": "write",
+          "weighted_seconds": 0.003,
+          "percent": 0.04837149306675266
+        },
+        {
+          "function": "pthread_mutex_unlock",
+          "weighted_seconds": 0.003,
+          "percent": 0.04837149306675266
+        }
+      ]
+    },
+    {
+      "thread": "Main Thread (0x422361) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.048,
+      "percent": 0.7739438890680426,
+      "top_self": [
+        {
+          "function": "AG::Graph::propagate_dirty(AG::AttributeID)",
+          "weighted_seconds": 0.014,
+          "percent": 0.22573363431151242
+        },
+        {
+          "function": "<deduplicated_symbol>",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        },
+        {
+          "function": "-[CALayer release]",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        },
+        {
+          "function": "objc_msgSend",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        }
+      ]
+    },
+    {
+      "thread": "pipe-sink-61 (0x422622) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.047,
+      "percent": 0.7578200580457917,
+      "top_self": [
+        {
+          "function": "kevent",
+          "weighted_seconds": 0.008,
+          "percent": 0.1289906481780071
+        },
+        {
+          "function": "poll",
+          "weighted_seconds": 0.006,
+          "percent": 0.09674298613350532
+        },
+        {
+          "function": "write",
+          "weighted_seconds": 0.003,
+          "percent": 0.04837149306675266
+        },
+        {
+          "function": "0x11869aed1",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        }
+      ]
+    },
+    {
+      "thread": "AURemoteIO::IOThread (0x422d40) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.034,
+      "percent": 0.5482102547565302,
+      "top_self": [
+        {
+          "function": "mach_msg2_trap",
+          "weighted_seconds": 0.013,
+          "percent": 0.20960980328926151
+        },
+        {
+          "function": "closure #1 in ISHAudioBridge.startEngine()",
+          "weighted_seconds": 0.003,
+          "percent": 0.04837149306675266
+        },
+        {
+          "function": "AUGraphNodeBaseV3::InputBlock() const",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        },
+        {
+          "function": "ausdk::AUBase::DoRender(unsigned int&, AudioTimeStamp const&, unsigned int, unsigned int, AudioBufferList&)",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        }
+      ]
+    },
+    {
+      "thread": "FEX-apple-m-421 (0x422d6b) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.032,
+      "percent": 0.5159625927120284,
+      "top_self": [
+        {
+          "function": "__psynch_mutexwait",
+          "weighted_seconds": 0.005,
+          "percent": 0.08061915511125443
+        },
+        {
+          "function": "__psynch_mutexdrop",
+          "weighted_seconds": 0.005,
+          "percent": 0.08061915511125443
+        },
+        {
+          "function": "pthread_mutex_unlock",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        },
+        {
+          "function": "ss_get",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        }
+      ]
+    },
+    {
+      "thread": "ishaudio.reader (0x4223ba) (Linux for iPad, pid: 21395)",
+      "weighted_seconds": 0.03,
+      "percent": 0.4837149306675266,
+      "top_self": [
+        {
+          "function": "stat",
+          "weighted_seconds": 0.022,
+          "percent": 0.3547242824895195
+        },
+        {
+          "function": "poll",
+          "weighted_seconds": 0.002,
+          "percent": 0.032247662044501774
+        },
+        {
+          "function": "dyld4::APIs::dyld_get_active_platform()",
+          "weighted_seconds": 0.001,
+          "percent": 0.016123831022250887
+        },
+        {
+          "function": "__rename",
+          "weighted_seconds": 0.001,
+          "percent": 0.016123831022250887
+        }
+      ]
+    }
+  ],
+  "ss_invalidation_paths": [
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "discard_host_run",
+        "mem_discard",
+        "sys_madvise",
+        "handle_interrupt"
+      ],
+      "weighted_seconds": 0.005
+    },
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "mmu_translate",
+        "jtlb_fill",
+        "jit_helper"
+      ],
+      "weighted_seconds": 0.003
+    },
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "jit_run",
+        "cpu_run_to_interrupt",
+        "task_run_current",
+        "task_thread"
+      ],
+      "weighted_seconds": 0.002
+    },
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "__user_write_mem",
+        "user_write_task",
+        "fast_read"
+      ],
+      "weighted_seconds": 0.001
+    },
+    {
+      "frames": [
+        "ss_invalidate_locked",
+        "jit_invalidate_range",
+        "asbestos_invalidate_page",
+        "mem_ptr",
+        "mmu_translate",
+        "jtlb_fill",
+        "commit_bounce"
+      ],
+      "weighted_seconds": 0.001
+    }
+  ]
+}

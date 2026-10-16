@@ -1,0 +1,22 @@
+{
+  "build": "4449",
+  "source_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "image_sha256": "2c2890d845a56391511327ca442b3b5e8faeaafefd7c9fe3f1a1f545fcedd9d5",
+  "image_transformation": "none; byte-identical screenshot",
+  "title_image_sha256": "85a7bff826c6f91498855351693421d5ddf8fb667e3aa4370aed7b1977e3d7a2",
+  "title_image_observation_utc": "2026-10-16T13:05:00Z",
+  "observation_utc": "2026-10-16T12:54:00Z",
+  "observation_precision": "minute only; first captured observation, not exact first-frame timestamp",
+  "visual_review": "Hollow Knight window displays a language list and ARE YOU SURE? YES/NO confirmation on the mirrored physical iPad.",
+  "input_evidence": "Parent reports accepting Deutsch; Unity subsequently logs restored DE at12:56:44 and13:01:35.",
+  "capture_scene": "Parent observed black transition after accepted Deutsch; no gameplay scene.",
+  "second_capture_scene": "Title menu context, but foreground uncertain/partial from 13:06:43 to 13:07:13 UTC; unsuitable as a controlled foreground baseline.",
+  "gate_status": {
+    "visible_menu": true,
+    "language_selection_input_response": true,
+    "bounded_loading_compositor_cadence_recorded": true,
+    "normal_gameplay": "pending",
+    "audio_playback": "not qualified by this archive",
+    "steady_state_playable_performance": "pending"
+  }
+}

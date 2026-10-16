@@ -1,0 +1,36 @@
+1: Fri Oct 16 12:49:25 UTC 2026
+7: 2026-10-16T12:48:07.934Z|0xcc410540|requesting resize 960 x 540
+8: 2026-10-16T12:48:07.947Z|0xcc410540|resizing window to 960 x 540
+9: 2026-10-16T12:48:07.961Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+10: 2026-10-16T12:48:07.963Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+11: 2026-10-16T12:48:30.082Z|0xcc410540|UnloadTime: 30.280000 ms
+12: 2026-10-16T12:48:36.649Z|0xcc410540|Steam initializing
+13: [S_API] SteamAPI_Init(): SteamAPI_IsSteamRunning() did not locate a running instance of Steam.
+15: /root/.steam/sdk64/steamclient.so
+17: /root/.steam/sdk64/steamclient.so: cannot open shared object file: No such file or directory
+18: [S_API] SteamAPI_Init(): Failed to load module '/root/.steam/sdk64/steamclient.so'
+19: 2026-10-16T12:48:36.893Z|0xcc410540|Steam failed to initialize
+21: 2026-10-16T12:48:42.055Z|0xcc410540|Couldn't find a Game Manager, make sure one exists in the scene.
+22: 2026-10-16T12:48:42.516Z|0xcc410540|Discovered supported languages: DE, EN, ES, FR, IT, JA, KO, PT, RU, ZH, ZH_TW
+23: 2026-10-16T12:48:42.527Z|0xa1d1b6c0|Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+24: 2026-10-16T12:48:42.696Z|0xcc410540|Loaded saved language code 'EN'
+25: 2026-10-16T12:48:42.699Z|0xcc410540|Restored language code 'EN'
+26: 2026-10-16T12:48:50.688Z|0xcc410540|Unloading 49 unused Assets to reduce memory usage. Loaded Objects now: 3942.
+27: 2026-10-16T12:48:50.688Z|0xcc410540|Total: 386.944000 ms (FindLiveObjects: 7.418000 ms CreateObjectMapping: 2.410000 ms MarkObjects: 375.112000 ms  DeleteObjects: 1.955000 ms)
+29: 2026-10-16T12:48:50.784Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+30: 2026-10-16T12:48:50.785Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+31: 2026-10-16T12:48:51.231Z|0xcc410540|Couldn't find GameCameras, make sure one exists in the scene.
+32: 2026-10-16T12:48:55.182Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+33: 2026-10-16T12:48:55.225Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+34: 2026-10-16T12:48:55.244Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+35: 2026-10-16T12:48:55.263Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+36: 2026-10-16T12:48:55.282Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+37: 2026-10-16T12:48:55.299Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+38: 2026-10-16T12:48:55.317Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+39: 2026-10-16T12:48:55.334Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+40: 2026-10-16T12:48:55.351Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+41: 2026-10-16T12:48:55.370Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+42: 2026-10-16T12:48:55.388Z|0xcc410540|Couldn't find a UIManager, make sure one exists in the scene.
+55: FRAME_LINES
+56: 0 /tmp/hollow4449-frames.txt
+57: COMPOSITOR_MAPS

@@ -1,0 +1,8 @@
+{
+  "exit": 0,
+  "timed_out": false,
+  "seconds": 0.218,
+  "raw_sha256": "86cf512a0d22b1774e08f23b421298f706cf53b3d7589ee79eba031ea625dfbe",
+  "cli_sha256": "2f8a87fc674799138ee99226292528a8bb498fb22e768e0ab111f17e0073d007",
+  "constructors_or_entrypoint_run": false
+}

@@ -1,0 +1,7 @@
+frames_received 7850982
+frames_played 7847488
+frames_dropped 0
+underruns 1
+buffered_ms 72.8
+target_ms 80.0
+playing 1

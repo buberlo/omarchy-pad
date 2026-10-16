@@ -1,0 +1,181 @@
+FRAME_CAPTURE_REPORT_BEGIN
+BUILD=4449
+METRIC=composited_game_view_delivery_cadence
+GAMEPLAY_FPS_CLAIM=0
+GAME_MUTATIONS=0
+REQUESTED_VIEW=auto
+CAPTURE_DIRECTORY=/tmp/hollow4449-cadence-20261016T130357Z-PGHgeH
+PRE_DELAY_BEGIN
+Fri Oct 16 13:03:57 UTC 2026
+MEASUREMENT_BEGIN
+Fri Oct 16 13:04:02 UTC 2026
+CAPTURE_START
+SELECTED_VIEW_ID=1
+Fri Oct 16 13:04:02 UTC 2026
+FRAME_LOG=/tmp/hollow4449-frames.txt
+FRAME_LOG_ROWS=4435
+549899059 1 4431 659 540
+549899122 1 4432 659 540
+549899185 1 4433 659 540
+549899748 1 4434 659 540
+550070379 1 4435 659 540
+HOLLOW_TITLE_MAP_CANDIDATES
+ishwl 49313.675: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+HOLLOW_ACTIVE_BUFFER_CANDIDATES
+VIEW_ID=1
+8641517 -rw-r--r--    1 0        0          1423440 Oct 16 12:51 /tmp/ishwl/v1-2.buf
+UNITY_GRAPHICS_MILESTONES
+2026-10-16T12:47:47.446Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_relaxed_extended_instruction [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_rotate [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_uniform_control_flow [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_spirv_1_4 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_synchronization2 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_timeline_semaphore [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_variable_pointers [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vertex_attribute_divisor [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vulkan_memory_model [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_zero_initialize_workgroup_memory [enabled=0, external=0]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan device type 1
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T12:47:47.662Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T12:47:47.724Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T12:48:07.961Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:48:07.963Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+2026-10-16T12:48:50.784Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:48:50.785Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:51:16.853Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+CAPTURE_END
+Fri Oct 16 13:04:32 UTC 2026
+SELECTED_VIEW_ID=1
+8641517 -rw-r--r--    1 0        0          1423440 Oct 16 12:51 /tmp/ishwl/v1-2.buf
+COMPOSITOR_WINDOW_EVENTS
+CAPTURE_META
+start_second=1792155842 end_second=1792155872 start_line=4435 end_line=4483 view_id=1 requested_seconds=30
+SELECTED_VIEW_ROWS
+48
+CAPTURE_FILES=/tmp/hollow4449-cadence-20261016T130357Z-PGHgeH/window.meta /tmp/hollow4449-cadence-20261016T130357Z-PGHgeH/window.txt /tmp/hollow4449-cadence-20261016T130357Z-PGHgeH/window.status.txt
+CAPTURE_EXIT=0
+MEASUREMENT_END
+Fri Oct 16 13:04:32 UTC 2026
+BEGIN_CAPTURE_meta
+start_second=1792155842 end_second=1792155872 start_line=4435 end_line=4483 view_id=1 requested_seconds=30
+END_CAPTURE_meta
+BEGIN_CAPTURE_status.txt
+CAPTURE_START
+SELECTED_VIEW_ID=1
+Fri Oct 16 13:04:02 UTC 2026
+FRAME_LOG=/tmp/hollow4449-frames.txt
+FRAME_LOG_ROWS=4435
+549899059 1 4431 659 540
+549899122 1 4432 659 540
+549899185 1 4433 659 540
+549899748 1 4434 659 540
+550070379 1 4435 659 540
+HOLLOW_TITLE_MAP_CANDIDATES
+ishwl 49313.675: map toplevel 1 'Hollow Knight' hollow_knight.x86_64
+HOLLOW_ACTIVE_BUFFER_CANDIDATES
+VIEW_ID=1
+8641517 -rw-r--r--    1 0        0          1423440 Oct 16 12:51 /tmp/ishwl/v1-2.buf
+UNITY_GRAPHICS_MILESTONES
+2026-10-16T12:47:47.446Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_relaxed_extended_instruction [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_rotate [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_subgroup_uniform_control_flow [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_spirv_1_4 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_maintenance1 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format [enabled=1, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_synchronization2 [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_timeline_semaphore [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_variable_pointers [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vertex_attribute_divisor [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_vulkan_memory_model [enabled=0, external=0]
+2026-10-16T12:47:47.447Z|0xcc410540|[Vulkan init] extensions: name=VK_KHR_zero_initialize_workgroup_memory [enabled=0, external=0]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan API version 1.1.0 (1.1.357 supported by driver, 1.1.0 requested)
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan vendor=[Unknown (ID=106b)] id=[106b]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan renderer=[Virtio-GPU Venus (Apple M2 GPU)] id=[1b000008]
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan device type 1
+2026-10-16T12:47:47.661Z|0xcc410540|Vulkan driverversion=[26.2.4 (0x06802004)] uint=[109060100]
+2026-10-16T12:47:47.662Z|0xcc410540|Vulkan driverLibraryString=[venus (22), Mesa 26.2.4-1]
+2026-10-16T12:47:47.724Z|0xcc410540|Vulkan PSO: cache data not found [path=/tmp/Team Cherry/Hollow Knight/vulkan_pso_cache.bin]
+2026-10-16T12:48:07.961Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:48:07.963Z|0xcc410540|InitializeOrResetSwapChain 960x540 hdr=0 samples=1
+2026-10-16T12:48:50.784Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:48:50.785Z|0xcc410540|Desktop is 1180 x 780 @ 60 Hz
+2026-10-16T12:51:16.853Z|0xcc410540|InitializeOrResetSwapChain 659x540 hdr=0 samples=1
+CAPTURE_END
+Fri Oct 16 13:04:32 UTC 2026
+SELECTED_VIEW_ID=1
+8641517 -rw-r--r--    1 0        0          1423440 Oct 16 12:51 /tmp/ishwl/v1-2.buf
+COMPOSITOR_WINDOW_EVENTS
+CAPTURE_META
+start_second=1792155842 end_second=1792155872 start_line=4435 end_line=4483 view_id=1 requested_seconds=30
+SELECTED_VIEW_ROWS
+48
+END_CAPTURE_status.txt
+BEGIN_CAPTURE_txt
+550096967 1 4436 659 540
+550098733 1 4437 659 540
+550099130 1 4438 659 540
+550099494 1 4439 659 540
+550099883 1 4440 659 540
+550100180 1 4441 659 540
+550100508 1 4442 659 540
+550100801 1 4443 659 540
+550101101 1 4444 659 540
+550101386 1 4445 659 540
+550101679 1 4446 659 540
+550101970 1 4447 659 540
+550102262 1 4448 659 540
+550102573 1 4449 659 540
+550102872 1 4450 659 540
+550103183 1 4451 659 540
+550103481 1 4452 659 540
+550103778 1 4453 659 540
+550104074 1 4454 659 540
+550104363 1 4455 659 540
+550104659 1 4456 659 540
+550104946 1 4457 659 540
+550105248 1 4458 659 540
+550105565 1 4459 659 540
+550105870 1 4460 659 540
+550106161 1 4461 659 540
+550106461 1 4462 659 540
+550106756 1 4463 659 540
+550107042 1 4464 659 540
+550107328 1 4465 659 540
+550107624 1 4466 659 540
+550107926 1 4467 659 540
+550108219 1 4468 659 540
+550108521 1 4469 659 540
+550108817 1 4470 659 540
+550109105 1 4471 659 540
+550109402 1 4472 659 540
+550109700 1 4473 659 540
+550109984 1 4474 659 540
+550110276 1 4475 659 540
+550110573 1 4476 659 540
+550110864 1 4477 659 540
+550111156 1 4478 659 540
+550111455 1 4479 659 540
+550111753 1 4480 659 540
+550112046 1 4481 659 540
+550112331 1 4482 659 540
+550112630 1 4483 659 540
+END_CAPTURE_txt
+FRAME_CAPTURE_REPORT_END

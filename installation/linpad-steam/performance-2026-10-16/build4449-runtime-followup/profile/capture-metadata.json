@@ -1,0 +1,12 @@
+{
+  "build": "4449",
+  "source_commit": "d8fa5c1ed8bbe324677408ae8768a2f243cde412",
+  "matching_app_dsym_uuid": "AB1037BA-59E4-36E9-B2EB-A55908E809CB",
+  "start": "2026-10-16T20:48:35.823+08:00",
+  "end": "2026-10-16T20:48:41.613+08:00",
+  "duration": "5.789238",
+  "raw_toc_sha256": "0c1227b0fea7bdfce265a82c0b73564698b9dafbf1f918c4d4f902bbc1fc17e2",
+  "raw_export_sha256": "7fa2697fa3d5b097dd8bb85133441629e96b9d0be7fbcecf354911a08dcc8b3a",
+  "raw_trace_and_device_identifiers_archived": false,
+  "metric": "statistical native CPU sample weight; not GPU use, lock duration or FPS"
+}

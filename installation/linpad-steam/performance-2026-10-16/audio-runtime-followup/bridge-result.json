@@ -1,0 +1,44 @@
+{
+  "build": 4449,
+  "snapshots": [
+    {
+      "source": "work/performance/reports/ishaudio4449-first.txt",
+      "sha256": "ff23b9d6eb9155368d8c812bceba9db37232df5ed1a9723e41e3d9b799991c01",
+      "source_file_mtime_utc": "2026-10-16T12:50:10+00:00",
+      "counters": {
+        "frames_received": 6984678.0,
+        "frames_played": 6981088.0,
+        "frames_dropped": 0.0,
+        "underruns": 1.0,
+        "buffered_ms": 74.8,
+        "target_ms": 80.0,
+        "playing": 1.0
+      }
+    },
+    {
+      "source": "work/performance/reports/ishaudio4449-second.txt",
+      "sha256": "1eed2693805bcd7c1f85d9ee38c2d16e613219b52a1502d6e50783662c4f7347",
+      "source_file_mtime_utc": "2026-10-16T12:50:28+00:00",
+      "counters": {
+        "frames_received": 7850982.0,
+        "frames_played": 7847488.0,
+        "frames_dropped": 0.0,
+        "underruns": 1.0,
+        "buffered_ms": 72.8,
+        "target_ms": 80.0,
+        "playing": 1.0
+      }
+    }
+  ],
+  "deltas": {
+    "frames_received": 866304.0,
+    "frames_played": 866400.0,
+    "frames_dropped": 0.0,
+    "underruns": 0.0
+  },
+  "inference": "native bridge receives frames and AVAudio render consumes them; no new drops or underruns between these snapshots",
+  "game_attribution_verified": false,
+  "non_silent_content_verified": false,
+  "audible_playback_verified": false,
+  "mtime_warning": "file mtimes are18seconds apart; these are not a controlled timestamped playback-rate measurement"
+}

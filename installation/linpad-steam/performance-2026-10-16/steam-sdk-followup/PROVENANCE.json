@@ -1,0 +1,33 @@
+{
+  "source_url": "https://client-update.steamstatic.com/bins_sdk_linuxarm64.zip.d95d3d94b73855a16840659dffefc7ed6f26c25b",
+  "archive_sha256": "c23f87048d79f2c05821e6ce203ff89816b350bf0211d864bd15b32bc20b321b",
+  "archive_bytes": 37294533,
+  "manifest": "work/steam/steam_client_publicbeta_linuxarm64",
+  "manifest_version": "1792110651",
+  "manifest_sha256": "9aea03301c1ee053046c725c62b39b82ad63e7c7eda627e810d05deb6c5cf12d",
+  "members": [
+    {
+      "member": "linux64/crashhandler.so",
+      "sha256": "8e39a286364eb6ea9eeb2cb8d419e1778ddb0818d50f197c0e819f570c5d47aa",
+      "bytes": 1002544
+    },
+    {
+      "member": "linux64/steamclient.so",
+      "sha256": "6998dceeecf27a32cac3591516c9e20b5c8e9491de7adb7f897f0ef78fb8011c",
+      "bytes": 51017392
+    }
+  ],
+  "elf": "x86-64 ELF64 little-endian",
+  "steamclient_build_id": "c4bb71f08316d0d3915daf238a9cf6d126d6058f",
+  "needed": [
+    "libdl.so.2",
+    "librt.so.1",
+    "libm.so.6",
+    "libpthread.so.0",
+    "libc.so.6",
+    "ld-linux-x86-64.so.2"
+  ],
+  "runpath": "$ORIGIN",
+  "device_installed": false,
+  "steamapi_init_qualified": false
+}

@@ -1,0 +1,51 @@
+#!/bin/sh
+# Read-only Pulse introspection. Does not open PCM FIFO, create audio streams,
+# change stream state/volume, inspect game env or signal the game/daemon.
+set -eu
+PID=${1:-}
+case "$PID" in ''|*[!0-9]*) echo 'usage: audio-stream4449-probe GAME_PID'; exit 64;; esac
+SERVER=http://192.168.0.104:8766
+P=/tmp/linpad-pulse-probe
+OUT=/tmp/audio-stream4449-probe.txt
+upload() {
+    rc=$?
+    trap - EXIT
+    printf 'SCRIPT_EXIT=%s\n' "$rc" >> "$OUT"
+    wget -T 10 -t 1 -q --post-file="$OUT" "$SERVER/report" -O /dev/null || true
+    tail -60 "$OUT"
+    exit "$rc"
+}
+: > "$OUT"
+trap upload EXIT
+{
+    date -u '+CAPTURE_BEGIN_UTC=%Y-%m-%dT%H:%M:%SZ'
+    printf 'REQUESTED_GAME_PID=%s\nGAME_CHANGED=0\nFIFO_OPENED=0\nAUDIO_STREAM_CREATED=0\n' "$PID"
+    [ ! -L "$P" ] || exit 65
+    [ ! -e "$P" ] || [ -d "$P" ] || exit 65
+    mkdir -p "$P"; chmod 700 "$P"
+    fetch() {
+        name=$1;target=$2;digest=$3
+        [ ! -L "$P/$target.download" ] || exit 65
+        wget -T 20 -t 1 -qO "$P/$target.download" "$SERVER/$name"
+        printf '%s  %s\n' "$digest" "$P/$target.download" | sha256sum -c -
+        chmod 600 "$P/$target.download"
+        mv "$P/$target.download" "$P/$target"
+    }
+    fetch pulse-probe-client.conf client.conf f777c1aa985793a5e2269c9ba33e97320454a598647ba626094583a032e30c52
+    fetch pulse-probe-zero-token zero-token 5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1
+    fetch filter-game-sink-inputs.awk stream-filter.awk f85804cef794ea2a2d039ba6b8afcfc8e1fc402070676ad8b4b036b555013d72
+    unset LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG DISPLAY PULSE_PROP PULSE_RUNTIME_PATH PULSE_CONFIG PULSE_BINARY PULSE_SCRIPT
+    export HOME="$P" XDG_CONFIG_HOME="$P" PULSE_COOKIE="$P/zero-token" PULSE_CLIENTCONFIG="$P/client.conf" LC_ALL=C
+    export PULSE_SERVER=unix:/tmp/ishaudio/native
+    command -v pactl >/dev/null || { echo PACTL_UNAVAILABLE=1;exit 69; }
+    for sample in 1 2; do
+        printf 'SAMPLE=%s\n' "$sample"
+        date -u '+SAMPLE_UTC=%Y-%m-%dT%H:%M:%SZ'
+        { timeout -k 1 6 pactl --server=unix:/tmp/ishaudio/native list short sinks 2>/dev/null || true; } |
+          awk '$1 ~ /^[0-9]+$/ && $2 == "ishaudio" {printf "ISHAUDIO_SINK_INDEX=%s\n",$1}'
+        { if timeout -k 1 8 pactl --server=unix:/tmp/ishaudio/native list sink-inputs 2>/dev/null; then rc=0;else rc=$?;fi;printf 'QUERY_EXIT=%s\n' "$rc"; } |
+          awk -v target="$PID" -f "$P/stream-filter.awk"
+        [ "$sample" -eq 2 ] || sleep 5
+    done
+    date -u '+CAPTURE_END_UTC=%Y-%m-%dT%H:%M:%SZ'
+} >> "$OUT" 2>&1

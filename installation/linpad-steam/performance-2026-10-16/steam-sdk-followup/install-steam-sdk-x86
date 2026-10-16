@@ -1,0 +1,84 @@
+#!/bin/sh
+# Reversible, versioned official x86 Steam SDK companion install only.
+# Does not launch Steam, touch account data, or change the running game.
+set -eu
+SERVER=http://192.168.0.104:8766
+OUT=/tmp/install-steam-sdk-x86.txt
+VERSION=1792110651
+DEST=/opt/steam-sdk-x86/$VERSION
+SDK="${HOME:?}/.steam/sdk64"
+WORK=
+finish() {
+    rc=$?
+    trap - EXIT
+    printf 'SCRIPT_EXIT=%s\n' "$rc" >> "$OUT"
+    wget -T 10 -t 1 -q --post-file="$OUT" "$SERVER/report" -O /dev/null || true
+    tail -70 "$OUT"
+    exit "$rc"
+}
+: > "$OUT"
+trap finish EXIT
+{
+    date -u '+INSTALL_BEGIN_UTC=%Y-%m-%dT%H:%M:%SZ'
+    printf 'STEAM_LAUNCHED=0\nACCOUNT_FILES_ACCESSED=0\nGAME_CHANGED=0\n'
+    [ ! -L /opt/steam-sdk-x86 ] || { echo INSTALL_PARENT_IS_SYMLINK;exit 65; }
+    [ ! -L "$DEST" ] || { echo INSTALL_DEST_IS_SYMLINK;exit 65; }
+    if [ -e "$SDK" ] && [ ! -L "$SDK" ]; then
+        echo EXISTING_SDK64_IS_NOT_SYMLINK_PRESERVED;exit 65
+    fi
+    WORK=$(mktemp -d /tmp/linpad-steam-sdk.XXXXXX)
+    wget -T 60 -t 1 -qO "$WORK/payload.tar.gz" "$SERVER/steam-sdk-x86-1792110651.tar.gz"
+    printf '%s  %s\n' e9f627ea5bae77e2cc3cb704e561b85c84cc3df9376c7395ad07c8e08c17f524 "$WORK/payload.tar.gz" | sha256sum -c -
+    mkdir "$WORK/tree"
+    tar -xzf "$WORK/payload.tar.gz" -C "$WORK/tree"
+    check_tree() {
+        printf '%s  %s\n' \
+          6998dceeecf27a32cac3591516c9e20b5c8e9491de7adb7f897f0ef78fb8011c "$1/linux64/steamclient.so" \
+          8e39a286364eb6ea9eeb2cb8d419e1778ddb0818d50f197c0e819f570c5d47aa "$1/linux64/crashhandler.so" | sha256sum -c -
+        for lib in steamclient.so crashhandler.so; do
+            [ ! -L "$1/linux64/$lib" ] && [ -f "$1/linux64/$lib" ] || exit 65
+            magic=$(od -An -tx1 -N6 "$1/linux64/$lib" | tr -d ' \n')
+            machine=$(od -An -tu1 -j18 -N2 "$1/linux64/$lib" | tr -s ' ' | sed 's/^ //;s/ $//')
+            [ "$magic" = 7f454c460201 ] && [ "$machine" = '62 0' ] || { echo ELF_X86_64_CHECK_FAILED;exit 65; }
+            printf 'ELF_X86_64_PASS=%s\n' "$lib"
+        done
+    }
+    check_tree "$WORK/tree"
+    if [ -e "$DEST" ]; then
+        [ -d "$DEST" ] || exit 65
+        check_tree "$DEST"
+        echo EXISTING_MATCHED_VERSION_REUSED=1
+    else
+        mkdir -p /opt/steam-sdk-x86
+        mv "$WORK/tree" "$DEST"
+    fi
+    unset LD_PRELOAD LD_AUDIT LD_DEBUG FEX_MULTIBLOCK
+    export FEX_ROOTFS=/opt/hollow-runtime FEX_DISABLETELEMETRY=1
+    export LD_LIBRARY_PATH=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu
+    LOADER=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+    [ -f "$LOADER" ] || { echo X86_LOADER_MISSING;exit 66; }
+    echo X86_NEEDED_LOADER_CHECK_BEGIN
+    timeout -k 3 40 /opt/fex/FEX-apple-m1-munmap "$LOADER" --list "$DEST/linux64/steamclient.so"
+    echo X86_NEEDED_LOADER_CHECK_PASS=1
+    [ -d "$HOME/.steam" ] || mkdir -p "$HOME/.steam"
+    if [ -L "$SDK" ]; then
+        previous=$(readlink "$SDK")
+        if [ "$previous" = "$DEST/linux64" ]; then
+            echo SDK64_ALREADY_MATCHED=1
+        else
+            backup="$SDK.linpad-backup-$(date -u +%Y%m%dT%H%M%SZ)"
+            [ ! -e "$backup" ] && [ ! -L "$backup" ] || exit 65
+            mv "$SDK" "$backup"
+            ln -s "$DEST/linux64" "$SDK"
+            printf 'SDK64_BACKUP=%s\n' "$backup"
+        fi
+    else
+        # Refuse a non-symlink that appeared while checking the runtime.
+        [ ! -e "$SDK" ] || { echo SDK64_APPEARED_PRESERVED;exit 65; }
+        ln -s "$DEST/linux64" "$SDK"
+        echo SDK64_CREATED=1
+    fi
+    [ "$(readlink "$SDK")" = "$DEST/linux64" ] || exit 65
+    printf 'SDK64_TARGET=%s\nSTEAM_SDK_X86_INSTALL_PASS=1\n' "$DEST/linux64"
+    date -u '+INSTALL_END_UTC=%Y-%m-%dT%H:%M:%SZ'
+} >> "$OUT" 2>&1

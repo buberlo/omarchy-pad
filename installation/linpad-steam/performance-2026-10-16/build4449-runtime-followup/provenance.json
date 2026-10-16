@@ -1,0 +1,69 @@
+{
+  "build": "4449",
+  "release_artifacts_unchanged": true,
+  "snapshot_end_utc": "2026-10-16T12:50:25Z",
+  "game_frame_qualified": false,
+  "gameplay_qualified": false,
+  "performance_qualified": false,
+  "files": [
+    {
+      "source": "work/performance/archive-build4449-runtime-followup.py",
+      "destination": "archive-build4449-runtime-followup.py",
+      "sha256": "7a402f6002eb3c8579cbc06a60bfca7083e3ac5ed765743317881a099a1ab565",
+      "bytes": 9354,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/jit-ss-index/summarize-time-profile.py",
+      "destination": "profile/summarize-time-profile.py",
+      "sha256": "5008537cc02d97f8744152c1042f337cc8a0e3122b90dac21bb4a4b812daaeca",
+      "bytes": 2596,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/build4449/startup-profile-summary.json",
+      "destination": "profile/summary.json",
+      "sha256": "433db00f31ebf121202e2a3c241630718ce8c1503b09b8cbb344e272a0f1b4aa",
+      "bytes": 12907,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-status-1.txt",
+      "destination": "progress/hollow4449-status-1.txt",
+      "raw_sha256": "1ab0202886a16d5661f7ed4f94ebec96315b8d29595ed8926ce5f86fc70f85d8",
+      "raw_bytes": 30236,
+      "archived_sha256": "81e7bf83585109918b169d01a0a6fc14004b19dc399e2d445d8f25a7cd110958",
+      "mode": "numbered selected lines; raw process and game logs remain local"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-short-1.txt",
+      "destination": "progress/hollow4449-short-1.txt",
+      "raw_sha256": "a9eeb2f6a479c4185bdee8bfd62d428d7103b48f471e3084e619cb77a1f13fd9",
+      "raw_bytes": 4124,
+      "archived_sha256": "dbf0787bc3ebcd6a28a4a18ba14be9f7d2fd03f70dc262d2cb6f615decc4cde1",
+      "mode": "numbered selected lines; raw process and game logs remain local"
+    },
+    {
+      "source": "work/performance/reports/hollow4449-short-2.txt",
+      "destination": "progress/hollow4449-short-2.txt",
+      "raw_sha256": "a672193d70c0a1f1d06869f1454772641c4e3638fe2d6619478ed48514b389d0",
+      "raw_bytes": 4125,
+      "archived_sha256": "07358af7ce128b01288951cb21639d7fd3f161bb4e42146b8aadd6c3479ab791",
+      "mode": "numbered selected lines; raw process and game logs remain local"
+    },
+    {
+      "source": "work/performance/serve/hollow4449-frame-capture",
+      "destination": "diagnostics/hollow4449-frame-capture",
+      "sha256": "f36266d39e820303e395d2393d474304a6bdcf284886479efc96b470dc4e7a88",
+      "bytes": 4266,
+      "mode": "byte-identical"
+    },
+    {
+      "source": "work/performance/serve/hollow4449-compositor-status",
+      "destination": "diagnostics/hollow4449-compositor-status",
+      "sha256": "8589ffadce4652efcff9174abe8f810622c80f62f326467ad0a0505c00984874",
+      "bytes": 2440,
+      "mode": "byte-identical"
+    }
+  ]
+}

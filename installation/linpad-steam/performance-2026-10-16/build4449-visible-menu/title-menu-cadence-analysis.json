@@ -1,0 +1,31 @@
+{
+  "metric": "composited_game_view_delivery_cadence",
+  "view_id": 1,
+  "captured_wall_seconds": 30,
+  "wall_clock_resolution_seconds": 1,
+  "frames_observed": 97,
+  "other_view_rows_excluded": 0,
+  "full_window_rate_approx_fps": 3.2333333333333334,
+  "active_span_seconds": 29.517,
+  "active_span_rate_fps": 3.252363045024901,
+  "interval_ms": {
+    "p50": 304,
+    "p95": 327,
+    "p99": 436,
+    "max": 436
+  },
+  "first_timestamp_ms": 550243642,
+  "last_timestamp_ms": 550273159,
+  "first_sequence": 4908,
+  "last_sequence": 5004,
+  "damage_dimensions_observed": [
+    [
+      659,
+      540
+    ]
+  ],
+  "sequence_discontinuities": [],
+  "warnings": [],
+  "interpretation": "Full-window rate includes observed idle time; active-span rate must not replace it. Damage dimensions are not swapchain extent. This is not GPU render duration or independently verified physical display FPS.",
+  "qualification": "Title menu context; foreground uncertain/partial. Parent observed the terminal foreground initially and confirmed the game foreground around 13:07 UTC. Not a controlled foreground baseline or gameplay FPS."
+}

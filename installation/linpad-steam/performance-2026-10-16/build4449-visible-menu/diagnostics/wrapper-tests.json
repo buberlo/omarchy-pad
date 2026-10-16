@@ -1,0 +1,11 @@
+{
+  "scope": "Host synthetic regular files and stub waits/network only. No device, real timing or FPS result.",
+  "checks": [
+    "exact five-second pre-delay and thirty-second collector request, using stub clock waits",
+    "exact title/live-buffer identification and delimited metadata/status/new rows preserved",
+    "completed report sent once through bounded POST path",
+    "repeat capture uses a new directory and preserves earlier files",
+    "unproven view fails and failure report is still collected"
+  ],
+  "passed": 5
+}
