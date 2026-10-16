@@ -1993,7 +1993,8 @@ static void proc_inet_address(const struct sockaddr_storage *addr, bool ipv6,
 }
 
 void sock_proc_show_inet(struct proc_data *buf, bool ipv6, bool udp) {
-    proc_printf(buf, "  sl  local_address rem_address   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n");
+    proc_printf(buf, "  sl  local_address %s   st tx_queue rx_queue tr tm->when retrnsmt   uid  timeout inode\n",
+            ipv6 ? "remote_address" : "rem_address");
     unsigned slot = 0;
     // Close removes the socket under this lock before closing its host fd.
     // getsockname/getpeername and TCP_CONNECTION_INFO do not wait for traffic.

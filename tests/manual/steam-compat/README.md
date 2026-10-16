@@ -14,6 +14,8 @@ convenient for running them under both the CLI emulator and iPad app.
   and hangup stays disabled until rearmed.
 - `epoll-nested-probe.c`: MOD rearming an already-ready one-shot eventfd
   wakes a thread blocked on an outer edge-triggered epoll set.
+- `proc-thread-list-probe.c`: lists only process leaders at /proc, while
+  preserving direct thread-ID status lookup and /proc/self/task entries.
 - `proc-inet-probe.c`: IPv4/IPv6 TCP and UDP loopback endpoints, listening
   and connected TCP state, socket inode matching, and dup lifetime.
 - `proc-fd-exit-probe.c`: repeatedly scan a child process file-descriptor

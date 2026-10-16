@@ -222,7 +222,12 @@ static bool proc_root_readdir(struct proc_entry *UNUSED(entry), unsigned long *i
         lock(&pids_lock);
         do {
             pid++;
-        } while (pid <= MAX_PID && pid_get_task(pid) == NULL);
+            struct task *task = pid <= MAX_PID ? pid_get_task(pid) : NULL;
+            // Linux exposes thread IDs through direct lookup and /pid/task,
+            // but lists only process leaders in the /proc root directory.
+            if (task != NULL && task->pid == task->tgid)
+                break;
+        } while (pid <= MAX_PID);
         unlock(&pids_lock);
         if (pid > MAX_PID)
             return false;

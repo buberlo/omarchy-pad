@@ -19,7 +19,23 @@ static int proc_lookup(const char *path, struct proc_entry *entry) {
         unsigned long index = 0;
         struct proc_entry next_entry = {0};
         char entry_name[MAX_NAME];
+        // Thread IDs are addressable directly even though /proc readdir lists
+        // only process leaders. Avoid a full process-directory scan per lookup.
+        if (entry->meta == &proc_root && component[0] >= '0' && component[0] <= '9') {
+            char *end;
+            unsigned long pid = strtoul(component, &end, 10);
+            lock(&pids_lock);
+            bool exists = *end == '\0' && pid > 0 && pid <= MAX_PID && pid_get_task(pid) != NULL;
+            unlock(&pids_lock);
+            if (!exists) {
+                err = _ENOENT;
+                break;
+            }
+            next_entry = (struct proc_entry) {&proc_pid, .pid = pid};
+            goto resolve_child;
+        }
         while (proc_dir_read(entry, &index, &next_entry)) {
+resolve_child:
             // tack on some dynamically generated attributes
             if (next_entry.meta->parent == NULL)
                 next_entry.meta->parent = entry->meta;
