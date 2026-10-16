@@ -309,6 +309,12 @@ int_t sys_sched_getparam(pid_t_ UNUSED(pid), addr_t param_addr) {
     return 0;
 }
 #define SCHED_OTHER_ 0
+#define SCHED_FIFO_ 1
+#define SCHED_RR_ 2
+#define SCHED_BATCH_ 3
+#define SCHED_IDLE_ 5
+#define SCHED_DEADLINE_ 6
+#define SCHED_EXT_ 7
 int_t sys_sched_getscheduler(pid_t_ UNUSED(pid)) {
     return SCHED_OTHER_;
 }
@@ -323,11 +329,32 @@ int_t sys_sched_setscheduler(pid_t_ UNUSED(pid), int_t policy, addr_t param_addr
     return 0;
 }
 
+static int_t sched_priority_bound(int_t policy, bool maximum) {
+    // These are Linux ABI limits, independent of permission to use a policy.
+    // glibc also queries them when validating inherited pthread attributes.
+    switch (policy) {
+        case SCHED_FIFO_:
+        case SCHED_RR_:
+            return maximum ? 99 : 1;
+        case SCHED_OTHER_:
+        case SCHED_BATCH_:
+        case SCHED_IDLE_:
+        case SCHED_DEADLINE_:
+        case SCHED_EXT_:
+            return 0;
+        default:
+            return _EINVAL;
+    }
+}
+
 int_t sys_sched_get_priority_max(int_t policy) {
     STRACE("sched_get_priority_max(%d)", policy);
-    if (policy == 0)
-        return 0;
-    return _EINVAL;
+    return sched_priority_bound(policy, true);
+}
+
+int_t sys_sched_get_priority_min(int_t policy) {
+    STRACE("sched_get_priority_min(%d)", policy);
+    return sched_priority_bound(policy, false);
 }
 
 int_t sys_ioprio_get(int_t UNUSED(which), int_t UNUSED(who), int_t UNUSED(ioprio)) {
