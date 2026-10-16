@@ -1,0 +1,183 @@
+{
+  "build": "4446",
+  "version": "1.4.0",
+  "bundle_id": "com.konradkern.linpad",
+  "recorded_at_utc": "2026-10-16T11:22:12.533556+00:00",
+  "source_head": "72e1eef8b3125b39e7c852abf2d16bf7a1f82029",
+  "source_base": "d97cbde414974b7e532cf5feb3a043e8c4911954",
+  "source_fix_commits": [
+    "72e1eef8b3125b39e7c852abf2d16bf7a1f82029"
+  ],
+  "source_capture_note": "The parent committed this fix before starting xcodebuild. These snapshots match committed blobs and the worktree rechecked after compilation; this recorder does not claim an independent pre-build dirty-state snapshot.",
+  "source_files": [
+    {
+      "path": "fs/netlink.c",
+      "sha256": "e2e4938d0e6ab82bba89ee33e073308b1bc6783bd2490b752cf8ad5b973a63f8",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "fs/netlink.h",
+      "sha256": "012caba25298daea59d94eeb20299b8920a4887eb9cc43b985c970e15f50072f",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "fs/fd.h",
+      "sha256": "272426c6a0d3959d880bda6b05b6739dbe1ea939a4490d7ad9b584971425a233",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "fs/sock.c",
+      "sha256": "c4409a7bcf31cd66caff607f41a446eb72dab8d0b76cf1efcdff2416ae2b3a6c",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "tests/manual/steam-compat/netlink-uevent-probe.c",
+      "sha256": "67ab9513a3c744c42b385bb69e4a0c30a217bac463bdd25224799a83c9c805d1",
+      "matches_source_commit_and_postbuild_worktree": true
+    },
+    {
+      "path": "tests/manual/steam-compat/README.md",
+      "sha256": "fbf1dd9cfb881c5ce13bfa3612b48b5fa594ddde60d4d252bc39d88add7042f6",
+      "matches_source_commit_and_postbuild_worktree": true
+    }
+  ],
+  "source_patch_sha256": "c391d9fb8d2e57cdad1348eeadeea9ac21bd709b0ee4259534571d4f36cd75cc",
+  "build_verified": true,
+  "build_log_path": "/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4446/build.log",
+  "build_log_sha256": "970eeba9594b1a5a7a5c3a4a993e8baa74f5db8ca8ea340a0b3a118577abb227",
+  "signing_verified": true,
+  "signing_evidence": "codesign-verification.txt",
+  "memory_entitlements": {
+    "com.apple.developer.kernel.increased-memory-limit": true,
+    "com.apple.developer.kernel.extended-virtual-addressing": true
+  },
+  "entitlements_evidence": "signed-entitlements.plist",
+  "uuid_records": [
+    {
+      "uuid": "7BF394C6-2F81-36E0-A997-90220832DB68",
+      "architecture": "arm64"
+    }
+  ],
+  "binary_uuid": "7BF394C6-2F81-36E0-A997-90220832DB68",
+  "dsym_uuid": "7BF394C6-2F81-36E0-A997-90220832DB68",
+  "executable_sha256": "9eb6e63d009ef1032f12a8c8145c5a3c75e444eacb68419e1614d234abe7e46f",
+  "dsym_dwarf_sha256": "4d06f0ce3b9c9dc158cf15f42a9fda8ab85af875e0962e74d5822036470db24f",
+  "app_files_manifest": "app-files.sha256",
+  "app_files_manifest_sha256": "808328e9c769921882a6b47cfdb31a704804fc07a522f856d1a78d6b313516c0",
+  "dsym_files_manifest": "dsym-files.sha256",
+  "dsym_files_manifest_sha256": "9d5218d166e8eafb1191f4e181629377aed04542ff7eb8c3c3993a70c84bb62a",
+  "rootfs_sha256": "b5e852cfe2d9763863323895a6f94194ac980b226926a6f6aba27c5f5e41ea9b",
+  "rootfs_unchanged_from_build4445": true,
+  "archives": [
+    {
+      "name": "LinPad-1.4.0-build4446-Konrad.ipa",
+      "size_bytes": 637224889,
+      "sha256": "8d09419efc5a68e8bf88bf2a22dae5148c3d0dcd254ff5754062153862ba87c2",
+      "zip_crc_verified": true,
+      "zip_entries": 1047,
+      "original_files_compared_count": 1047
+    },
+    {
+      "name": "LinPad-1.4.0-build4446-dSYM.zip",
+      "size_bytes": 13521056,
+      "sha256": "59e9f9e9fa4f9d83734fdf78ffe304ab6c097cc374bf2e47033ff8875fb30f00",
+      "zip_crc_verified": true,
+      "zip_entries": 3,
+      "original_files_compared_count": 3
+    }
+  ],
+  "installed": true,
+  "launched": true,
+  "device_accepted": true,
+  "physical_device_validation": "PASS for boot with native JIT512MiB, all35 native netlink cases, and exact embedded Unity SDL initialization including full0x3221 with one display. GPU/game frame, gameplay and steady-state performance remain pending.",
+  "device_validation": {
+    "boot": {
+      "result": "pass",
+      "reported_boot_seconds": 0.18,
+      "native_jit": true,
+      "jit_code_arena_mib": 512,
+      "evidence": "device-boot-excerpt.txt"
+    },
+    "native_netlink_probe": {
+      "result": "pass",
+      "case_count": 35,
+      "exit_code": 0,
+      "evidence": "netlink4446-device-pass.txt"
+    },
+    "exact_unity_sdl_init": {
+      "result": "pass",
+      "flags_tested": [
+        "0x1000",
+        "0x200",
+        "0x21",
+        "0x3221"
+      ],
+      "video_display_count": 1,
+      "combined_display_count": 1,
+      "evidence": "unity-sdl-v2-4446-after.txt"
+    },
+    "gpu_test": "pending",
+    "rendered_game_frame_verified": false,
+    "gameplay_verified": false,
+    "steady_state_performance_qualified": false
+  },
+  "publication_status": "Prepared local checkpoint; no upload or release by this updater",
+  "host_regressions": {
+    "execution": "Local macOS-hosted LinPad CLI, native ARM64 / x86 through FEX",
+    "native_uevent": {
+      "result": "pass",
+      "case_count": 35,
+      "log": "local-netlink-final-native-excerpt.txt",
+      "provenance": "local-netlink-final-provenance.json"
+    },
+    "negative_control": "Prior CLI rejects protocol15 socket with errno97; netlink-uevent-before.txt",
+    "embedded_unity_sdl": "Haptic0x1000 and joystick0x200 failed before and return0 after the monitor fix. These after samples precede the final group-mask readback correction; the final native35-case run covers that committed source.",
+    "libudev_boundary": "Monitor construction succeeds; filter enable still returns-22 because BPF is unsupported. This is not full libudev event-delivery qualification.",
+    "evidence": [
+      {
+        "name": "netlink-uevent-before.txt",
+        "sha256": "2da38e077d62521dda2f9f7284133bfcc92b9cbd792dc08d06b634a7d3af2279"
+      },
+      {
+        "name": "local-netlink-final-native-excerpt.txt",
+        "sha256": "21f00a3bb5c5352e7a7c2878e0cba76ffeef8b2f7048842186f2016d3af3a16f"
+      },
+      {
+        "name": "local-netlink-final-provenance.json",
+        "sha256": "7465f1b92bad2b17579e2f2fbd1d26dc8bd4dbeea7027f70250e9eb5b2862e60"
+      },
+      {
+        "name": "local-unity-sdl-udev-excerpt.txt",
+        "sha256": "34f463bfd577c6cf851e21545997cffae2abe51c127372f7634a4205248f80c9"
+      },
+      {
+        "name": "local-unity-sdl-1000-excerpt.txt",
+        "sha256": "d0f7e37916a38a7c2088fcbaf8b3daee1165f344051847c7900864a05e45aa70"
+      },
+      {
+        "name": "local-unity-sdl-200-excerpt.txt",
+        "sha256": "023cca0d98b05e5a950116e025dc892abd7fb27f59c9809ba414b82d29d357a2"
+      },
+      {
+        "name": "local-netlink-after-udev-excerpt.txt",
+        "sha256": "93f18f375d78150864c3c9e96bfcfb0a8152f2d49a9467b1cb50ea1182a7e2b7"
+      },
+      {
+        "name": "local-netlink-after-1000-excerpt.txt",
+        "sha256": "13e16c3b639c05aa331c1d5327cdf8c8687e821f18a1114968b4547f6ec6d743"
+      },
+      {
+        "name": "local-netlink-after-200-excerpt.txt",
+        "sha256": "a7c579f72badce9b5e29c11f93ed96639b378d5ddfea050e55c217386352eeca"
+      }
+    ]
+  },
+  "limitations": [
+    "No host hotplug-event producer or guest-to-guest uevent delivery.",
+    "BPF filters and dynamic membership options are unsupported and return errors.",
+    "FEX, Mesa26, EGL25 and installed games remain separate guest data, not embedded in the IPA."
+  ],
+  "device_acceptance_scope": "Physical boot and netlink/embedded-SDL initialization checkpoint only",
+  "device_recorded_at_utc": "2026-10-16T11:27:54.659840+00:00",
+  "device_evidence": "device-validation-provenance.json"
+}

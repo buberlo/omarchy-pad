@@ -2,7 +2,7 @@
 
 The traced Hollow Knight run on physical LinPad build 4445 failed because Unity wrote the first entry of an empty per-display vector. The original guest fault is precisely mapped to the installed Unity ELF. Independent external SDL testing on the same iPad fails Unity's combined subsystem flags with `Could not initialize UDEV`; its video-only step succeeds. The exact embedded SDL and libudev diagnostics are kept separately in `embedded-probe`.
 
-This archive records the failure and diagnostic tools. It does not claim the prospective kernel repair has passed on device, that the game renders, or that gameplay is performant. The proprietary 39 MB UnityPlayer library is not included or modified.
+The repair in build 4446 now passes the same embedded SDL probe on the physical iPad: all tested flag sets return0, and the combined game flags see one display. The native uevent regression also passes all 35 checks. These results qualify subsystem initialization; game rendering and playable performance remain pending. The proprietary 39 MB UnityPlayer library is not included or modified.
 
 ## Decisive crash evidence
 
@@ -28,6 +28,20 @@ The exact binary, source, build command, invocation wrapper and complete narrow 
 
 The display-state fault and the external combined-subsystem failure are physically observed. The exact embedded SDL probe also reproduces the failure on build 4445: isolated haptic and joystick initialization fail with `Could not initialize UDEV`; timer plus video succeeds; combined flags0x3221 fail and leave a null video pointer. Direct libudev monitor creation returns NULL with errno97. Local syscall tracing identifies `socket(AF_NETLINK, SOCK_RAW|SOCK_NONBLOCK|SOCK_CLOEXEC, 15)` as the unsupported request.
 
-The focused host repair passed 35 checks in the local macOS-hosted LinPad CLI after its final group-mask correction. Exact embedded haptic and joystick initialization also returned0 in the local CLI before that mask-only correction, and libudev monitor creation succeeded. Libudev filter/enable remains unsupported with `-EINVAL`; the embedded SDL path ignores those return values. These results do not establish hotplug-event delivery. The physical v2 baseline in `physical-v2-before.txt` confirms timer plus video sees one display, while combined flags0x3221 fail and clear the video pointer. Its SHA256-pinned v2 probe will be reused after the repair in source commit `72e1eef8b3125b39e7c852abf2d16bf7a1f82029`. The physical post-fix probe and a fresh game run are pending.
+The focused host repair passed 35 checks in the local macOS-hosted LinPad CLI after its final group-mask correction. Exact embedded haptic and joystick initialization also returned0 in the local CLI before that mask-only correction, and libudev monitor creation succeeded.
+
+The matched physical v2 results use the identical diagnostic SHA256 `42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6` and unchanged UnityPlayer library:
+
+| Check | Build 4445 before | Build 4446 after |
+| --- | --- | --- |
+| Real libudev monitor creation | NULL, errno97 | Non-null monitor |
+| Embedded haptic0x1000 | -1, UDEV failure | 0, exit0 |
+| Embedded joystick0x200 | -1, UDEV failure | 0, exit0 |
+| Embedded timer+video0x21 | 0, one display | 0, one display |
+| Embedded combined0x3221 | -1, UDEV failure, null video | 0, one display |
+
+`physical-v2-before.txt` and `physical-v2-after.txt` retain the full narrow reports. Successful calls can retain an earlier SDL error string; the recorded integer return and video/display fields determine success. The post-fix direct libudev diagnostic exits6 because receiving-enable returns `-EINVAL`; input and sound filter-add calls return0. This remaining BPF limitation is explicit and does not prevent the embedded SDL initialization path, which ignores receiving-enable's result. No hotplug-event delivery is claimed.
+
+`physical-netlink-after.txt` records all 35 native checks passing on build 4446, including idle poll, port binding and reuse, group-mask readback, explicit unsupported-operation failures, and preserved route replies. The source repair is commit `72e1eef8b3125b39e7c852abf2d16bf7a1f82029`. A fresh game launch is in progress; this archive does not yet contain a rendered-frame or gameplay result.
 
 `embedded-probe/embedded-provenance.json` binds the detailed before/after artifacts and source fingerprints. `provenance.json` and `SHA256SUMS` bind the complete current evidence; the common archive manifest and commits are owned by the parent task.

@@ -1,0 +1,8 @@
+{
+  "outcome": "success",
+  "bundle_id": "com.konradkern.linpad",
+  "command_type": "devicectl.device.install.app",
+  "source_file": "install.json",
+  "source_sha256": "67c64148afdb02805d055ec7c0b087dee140b5fec11d07b09e615a48f9b82d39",
+  "curation": "Device serial, container identifiers and command environment omitted."
+}

@@ -1,0 +1,10 @@
+Local Release build4446
+Source: 72e1eef8b3125b39e7c852abf2d16bf7a1f82029
+
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project work/LinPad/iSH.xcodeproj -target iSH-ARM64 -configuration Release -sdk iphoneos SYMROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-build OBJROOT=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/ios-obj IPHONEOS_DEPLOYMENT_TARGET=17.0 ISH_JIT_BUILD=enabled CODE_SIGNING_ALLOWED=NO "ROOTFS_ARCHIVE=/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/signed/Payload/iSH ARM64.app/root.tar.gz" build
+
+BUILD SUCCEEDED; independent codesign verification passed.
+App/dSYM UUID records: [{"uuid": "7BF394C6-2F81-36E0-A997-90220832DB68", "architecture": "arm64"}]
+Full build log SHA256: 970eeba9594b1a5a7a5c3a4a993e8baa74f5db8ca8ea340a0b3a118577abb227
+Physical boot/JIT512, native35-case netlink and exact Unity SDL initialization PASS. GPU/gameplay/performance pending.

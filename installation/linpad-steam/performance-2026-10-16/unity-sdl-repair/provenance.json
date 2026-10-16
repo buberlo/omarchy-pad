@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-16T11:17:03.451565+00:00",
+  "updated_utc": "2026-10-16T11:22:14.715181+00:00",
   "scope": "Unity SDL initialization and zero-display crash diagnosis; proprietary UnityPlayer remains outside archive.",
   "game_binary_identity": {
     "filename": "UnityPlayer.so",
@@ -105,14 +105,15 @@
     "zero_display_precursor": "confirmed by registers, log, setter/fault disassembly",
     "external_SDL_combined_failure": "confirmed physical build4445",
     "embedded_SDL_udev_failure": "confirmed physical build4445: direct monitor NULL errno97; isolated haptic/joystick and combined0x3221 fail, timer/video succeeds",
-    "host_protocol15_fix": "local native endpoint regression35PASS on final source; local embedded haptic/joystick PASS before final mask-only correction; filter/enable-EINVAL remains unsupported",
-    "post_fix_device_game": "pending",
+    "host_protocol15_fix": "Physical build4446 and local native endpoint regression35PASS; unsupported BPF receiving-enable remains-EINVAL",
+    "post_fix_device_game": "launch in progress; no result archived",
     "gameplay": "unverified",
-    "hotplug_event_delivery": "unverified"
+    "hotplug_event_delivery": "unverified; receiving-enable unsupported",
+    "post_fix_device_SDL": "Physical matched v2 probe PASS: isolated haptic/joystick, timer+video, and combined0x3221 all return0; timer+video and combined count1"
   },
   "embedded_SDL_probe": {
     "provenance": "embedded-probe/embedded-provenance.json",
-    "provenance_sha256": "64b5bfa7b8cdee4b3b4bb342168836f7e2f4e8734d141f6011468bdc540a965e",
+    "provenance_sha256": "506b68d2ec7aa5d6a1f0954f8c5799c57f08fd1a3f02ff9d6ceb4a1f9deb5f06",
     "physical_before": {
       "build": 4445,
       "report": "unity-sdl4445-before-fail.txt",
@@ -128,7 +129,7 @@
       "unity_joystick": "PASS return0 before mask-only correction",
       "udev_monitor_creation": "PASS nonnull",
       "udev_filter_enable": "UNSUPPORTED: -EINVAL retained, diagnostic exit6; ignored by embedded SDL",
-      "physical_after": "pending"
+      "physical_after": "See physical_after: matched physical build4446 v2 probe passed initialization; receiving-enable remains unsupported."
     },
     "physical_v2_before": {
       "source": "work/performance/reports/unity-sdl-v2-4445-before.txt",
@@ -149,8 +150,69 @@
         "video_pointer": null,
         "probe_exit": 10
       },
-      "purpose": "Exact v2 binary baseline for the planned post-build4446 comparison; does not imply a post-fix result."
+      "purpose": "Exact v2 binary baseline matched to physical build4446 after report; the Unity binary and diagnostic SHA256 values are identical."
+    },
+    "physical_v2_after": {
+      "source": "work/performance/reports/unity-sdl-v2-4446-after.txt",
+      "report": "physical-v2-after.txt",
+      "report_sha256": "075c6e973929a2e8545563bd034af792931cd6e6b0ca0899e0ba97e77dcf6272",
+      "linpad_build": 4446,
+      "started_utc": "2026-10-16T11:20:06Z",
+      "finished_utc": "2026-10-16T11:20:20Z",
+      "probe_sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6",
+      "matched_before_report": "physical-v2-before.txt",
+      "matched_UnityPlayer_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+      "direct_udev": {
+        "monitor_creation": "PASS nonnull",
+        "input_filter": 0,
+        "sound_filter": 0,
+        "enable": -22,
+        "probe_exit": 6,
+        "limitation": "Monitor receiving remains unsupported because BPF filtering is unsupported; embedded SDL ignores this return. Not a hotplug-event qualification."
+      },
+      "embedded_flags": [
+        {
+          "flags": "0x1000",
+          "result": 0,
+          "probe_exit": 0,
+          "video_pointer": null
+        },
+        {
+          "flags": "0x200",
+          "result": 0,
+          "probe_exit": 0,
+          "video_pointer": null
+        },
+        {
+          "flags": "0x21",
+          "result": 0,
+          "probe_exit": 0,
+          "num_displays": 1,
+          "video_pointer": "nonnull"
+        },
+        {
+          "flags": "0x3221",
+          "result": 0,
+          "probe_exit": 0,
+          "num_displays": 1,
+          "video_pointer": "nonnull"
+        }
+      ],
+      "SDL_error_strings": "Retained error strings despite success returns are preserved in the report; they do not turn result0 into an initialization failure.",
+      "game_renderer_created": false
     }
   },
-  "host_source_commit": "72e1eef8b3125b39e7c852abf2d16bf7a1f82029"
+  "host_source_commit": "72e1eef8b3125b39e7c852abf2d16bf7a1f82029",
+  "physical_netlink_after": {
+    "source": "work/performance/reports/netlink4446-device-pass.txt",
+    "report": "physical-netlink-after.txt",
+    "report_sha256": "910385235c3ace8e8b4e7de943fa10f4e8a8bb1b8de4e749636d06118ee88a23",
+    "linpad_build": 4446,
+    "utc": "2026-10-16T11:19:45Z",
+    "probe_sha256": "2702a958e557037da23e944629f2ec74eb658d5fc506b02251ea13ac8c1b06ee",
+    "checks": 35,
+    "failures": 0,
+    "exit": 0,
+    "scope": "Idle uevent endpoint semantics and preserved route replies; unsupported BPF/membership/uevent writes deliberately report failure."
+  }
 }

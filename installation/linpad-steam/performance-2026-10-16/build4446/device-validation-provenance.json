@@ -1,0 +1,34 @@
+{
+  "recorded_at_utc": "2026-10-16T11:27:54.659840+00:00",
+  "acceptance_scope": "Physical boot and netlink/embedded-SDL initialization checkpoint only",
+  "install": {
+    "outcome": "success",
+    "bundle_id": "com.konradkern.linpad",
+    "command_type": "devicectl.device.install.app",
+    "source_file": "install.json",
+    "source_sha256": "67c64148afdb02805d055ec7c0b087dee140b5fec11d07b09e615a48f9b82d39",
+    "curation": "Device serial, container identifiers and command environment omitted."
+  },
+  "console_source": {
+    "file": "device-console.log",
+    "snapshot_bytes": 54015,
+    "snapshot_sha256": "3883fc52ccdeededf886ee88933407195727308ceadf5289bd814cd12bc1dc54",
+    "note": "The live console continues growing; hash applies to the first snapshot_bytes bytes at this checkpoint. Only boot/JIT lines are archived."
+  },
+  "report_sources": [
+    {
+      "file": "../reports/netlink4446-device-pass.txt",
+      "sha256": "910385235c3ace8e8b4e7de943fa10f4e8a8bb1b8de4e749636d06118ee88a23",
+      "curation": "Only timestamp, diagnostic hash and native test result through NETLINK_EXIT retained; process list, memory and filesystem inventory omitted."
+    },
+    {
+      "file": "../reports/unity-sdl-v2-4446-after.txt",
+      "sha256": "075c6e973929a2e8545563bd034af792931cd6e6b0ca0899e0ba97e77dcf6272",
+      "curation": "Copied unchanged; contains diagnostic results only."
+    }
+  ],
+  "unity_player_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+  "embedded_probe_sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6",
+  "native_probe_sha256": "2702a958e557037da23e944629f2ec74eb658d5fc506b02251ea13ac8c1b06ee",
+  "libudev_boundary": "Monitor construction succeeds. BPF filter enable remains unsupported (-22), so direct UDEV diagnostic exit6 is expected and retained. All four exact Unity SDL initialization calls return0."
+}

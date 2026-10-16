@@ -1,0 +1,63 @@
+Fri Oct 16 11:19:45 UTC 2026
+2702a958e557037da23e944629f2ec74eb658d5fc506b02251ea13ac8c1b06ee  /tmp/netlink-uevent-probe
+uevent monitor socket PASS errno=0
+nonblocking flag PASS errno=0
+close-on-exec flag PASS errno=0
+socket identity PASS errno=0
+socket identity PASS errno=0
+socket identity PASS errno=0
+enable credentials PASS errno=0
+credentials round trip PASS errno=0
+short credential option rejected PASS errno=22
+receive buffer PASS errno=22
+unbound name PASS errno=22
+short bind rejected PASS errno=22
+wrong bind family rejected PASS errno=22
+bind udev group PASS errno=22
+bound name PASS errno=22
+second monitor PASS errno=22
+unique automatic port PASS errno=22
+duplicate explicit port rejected PASS errno=98
+same port rebind PASS errno=98
+full group mask readback PASS errno=98
+different port rebind rejected PASS errno=22
+idle elapsed_ms=101.1 result=0 revents=0
+idle monitor sleeps PASS errno=22
+empty receive PASS errno=11
+uevent send rejects route payload PASS errno=95
+uevent write unsupported PASS errno=95
+uevent sendmsg unsupported PASS errno=95
+no synthetic route reply PASS errno=95
+unsupported BPF reports failure PASS errno=22
+unsupported membership option reports failure PASS errno=22
+dup retains bound port PASS errno=98
+last close releases port PASS errno=98
+route socket preserved PASS errno=98
+route request preserved PASS errno=98
+route reply readiness PASS errno=98
+route reply remains netlink PASS errno=98
+NETLINK_UEVENT_PASS failures=0
+NETLINK_EXIT=0
+footprint_mb 703
+allowance_mb 8192
+headroom_mb 7488
+soft_mb 1638
+hard_mb 819
+oom_enabled 1
+kills 0
+proc 71 9 0 0 thunar
+proc 120 5 0 0 xfconfd
+proc 32 5 0 1 pulseaudio
+proc 16 1 0 1 ishwl
+proc 14 1 0 1 -sh
+proc 27 1 0 1 -sh
+proc 30 1 0 1 -sh
+proc 22 1 0 1 dbus-daemon
+proc 155 1 0 1 sh
+proc 86 1 0 1 getty
+proc 1 1 0 1 init
+proc 7 1 0 1 getty
+Filesystem                Size      Used Available Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data
+                        106.0G     78.1G     28.0G  74% /
+Fri Oct 16 11:19:45 UTC 2026

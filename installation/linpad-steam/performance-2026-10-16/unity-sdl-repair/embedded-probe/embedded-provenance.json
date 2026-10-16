@@ -147,8 +147,8 @@
     },
     {
       "name": "unity-sdl-udev-audit.md",
-      "bytes": 6210,
-      "sha256": "aa8d4a006f5045ba27aaf00a5b8435811f5d10e467d128af1bccc33fee5b181e"
+      "bytes": 6356,
+      "sha256": "bc6a822348bc8bf543f6718d95695365ca004591c6835ac73e45dce6182cfa90"
     },
     {
       "name": "unity-sdl4445-before-fail.txt",
@@ -176,6 +176,55 @@
     "unity_joystick": "PASS return0 before mask-only correction",
     "udev_monitor_creation": "PASS nonnull",
     "udev_filter_enable": "UNSUPPORTED: -EINVAL retained, diagnostic exit6; ignored by embedded SDL",
-    "physical_after": "pending"
+    "physical_after": "See physical_after: matched physical build4446 v2 probe passed initialization; receiving-enable remains unsupported."
+  },
+  "physical_after": {
+    "source": "work/performance/reports/unity-sdl-v2-4446-after.txt",
+    "report": "../physical-v2-after.txt",
+    "report_sha256": "075c6e973929a2e8545563bd034af792931cd6e6b0ca0899e0ba97e77dcf6272",
+    "linpad_build": 4446,
+    "started_utc": "2026-10-16T11:20:06Z",
+    "finished_utc": "2026-10-16T11:20:20Z",
+    "probe_sha256": "42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6",
+    "matched_before_report": "../physical-v2-before.txt",
+    "matched_UnityPlayer_sha256": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+    "direct_udev": {
+      "monitor_creation": "PASS nonnull",
+      "input_filter": 0,
+      "sound_filter": 0,
+      "enable": -22,
+      "probe_exit": 6,
+      "limitation": "Monitor receiving remains unsupported because BPF filtering is unsupported; embedded SDL ignores this return. Not a hotplug-event qualification."
+    },
+    "embedded_flags": [
+      {
+        "flags": "0x1000",
+        "result": 0,
+        "probe_exit": 0,
+        "video_pointer": null
+      },
+      {
+        "flags": "0x200",
+        "result": 0,
+        "probe_exit": 0,
+        "video_pointer": null
+      },
+      {
+        "flags": "0x21",
+        "result": 0,
+        "probe_exit": 0,
+        "num_displays": 1,
+        "video_pointer": "nonnull"
+      },
+      {
+        "flags": "0x3221",
+        "result": 0,
+        "probe_exit": 0,
+        "num_displays": 1,
+        "video_pointer": "nonnull"
+      }
+    ],
+    "SDL_error_strings": "Retained error strings despite success returns are preserved in the report; they do not turn result0 into an initialization failure.",
+    "game_renderer_created": false
   }
 }

@@ -1,0 +1,2 @@
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4446/Payload/iSH ARM64.app: valid on disk
+/Users/konrad/Documents/Codex/2026-10-16/https-github-com-fspecii-linpad-https/work/performance/build4446/Payload/iSH ARM64.app: satisfies its Designated Requirement

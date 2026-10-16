@@ -1,0 +1,39 @@
+Fri Oct 16 11:20:06 UTC 2026
+12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33  /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+42ea48be641a1211f5291b224c7cc34585b6a04a8323b2855c33c03d28bd30d6  /tmp/unity-sdl-init-probe-v2
+DIRECT_UDEV_BEGIN
+UDEV_NEW pointer=0x1005200 errno=0
+UDEV_MONITOR_NEW pointer=0x1006d60 errno=22 text=Invalid argument
+UDEV_MONITOR_READY fd=3 input_filter=0 sound_filter=0 enable=-22 errno=22 text=Invalid argument
+DIRECT_UDEV_EXIT=6
+EMBEDDED_SDL_BEGIN=1000
+UNITY_SDL_PROBE flags=0x1000 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x1000 result=0 error_active=1 error=Failed loading udev_device_get_action: /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so: undefined symbol
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=1000:0
+EMBEDDED_SDL_BEGIN=200
+UNITY_SDL_PROBE flags=0x200 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x200 result=0 error_active=1 error=Failed loading udev_device_get_action: /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so: undefined symbol
+UNITY_SDL_VIDEO_POINTER (nil)
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=200:0
+EMBEDDED_SDL_BEGIN=21
+UNITY_SDL_PROBE flags=0x21 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x21 result=0 error_active=1 error=displayIndex must be in the range 0 - -1
+UNITY_SDL_VIDEO_POINTER 0x102dc90
+UNITY_SDL_NUM_DISPLAYS 1
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=21:0
+EMBEDDED_SDL_BEGIN=3221
+UNITY_SDL_PROBE flags=0x3221 library=/root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so
+UNITY_FUNCTION_GUARDS_PASS base=0xcc554000
+UNITY_SDL_INIT_RESULT flags=0x3221 result=0 error_active=1 error=Failed loading udev_device_get_action: /root/.local/share/Steam/steamapps/common/Hollow Knight/UnityPlayer.so: undefined symbol
+UNITY_SDL_VIDEO_POINTER 0x102dc90
+UNITY_SDL_NUM_DISPLAYS 1
+UNITY_SDL_PROBE_CLEANUP_COMPLETE
+EMBEDDED_SDL_EXIT=3221:0
+Fri Oct 16 11:20:20 UTC 2026

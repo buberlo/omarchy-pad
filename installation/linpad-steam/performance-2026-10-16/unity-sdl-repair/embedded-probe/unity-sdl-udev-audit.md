@@ -37,7 +37,7 @@ The parent executed the same probe on physical build 4445 from 11:09:27 to 11:09
 
 The parent coordinates the kernel protocol-15 fix. Local post-fix tests confirm that real libudev monitor creation succeeds and both exact Unity haptic/joystick calls return 0. The subsequent libudev filter-enable step still returns `-EINVAL` because BPF filtering remains unsupported; the embedded SDL ignores that result. This is deliberately an idle receive endpoint, not a full hotplug implementation. The native endpoint regression passes 35 checks after the final mask-preservation change, including idle poll, unique port binding, full group-mask readback, last-close reuse and existing route replies. See `local-netlink-after-results.json` and `local-netlink-final-provenance.json` for exact scope and source hashes.
 
-Another agent's independent fatal-RIP audit identifies Unity's actual later crash as an element-zero access in a zero-sized display list, supporting this causal chain. Physical post-fix subsystem setup and game recovery still require fresh runs.
+Another agent's independent fatal-RIP audit identifies Unity's actual later crash as an element-zero access in a zero-sized display list, supporting this causal chain. Physical post-fix subsystem setup subsequently passed on build 4446 using the identical v2 probe; see `../physical-v2-after.txt` and the root README for the matched comparison. Game recovery remains a separate pending gate.
 
 ## Device diagnostic prepared, not executed here
 

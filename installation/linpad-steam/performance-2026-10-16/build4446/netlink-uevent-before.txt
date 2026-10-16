@@ -1,0 +1,7 @@
+1 call 96  getpid() = 0x1
+1 call 103 setitimer(0, {10s 0us, 0s 0us}, 0xffffbb60) = 0x0
+1 call 198 socket(16, 526339, 15) = 0xffffff9f
+1 call 66  writev(1, 0xffffb880, 2) {"uevent monitor socket FAIL errno=97
+uevent monitor socket FAIL errno=97
+", 36} {"", 0} = 0x24
+1 call 94  exit_group(1)

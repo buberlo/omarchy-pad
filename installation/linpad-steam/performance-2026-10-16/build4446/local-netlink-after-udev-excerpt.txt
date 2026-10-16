@@ -1,0 +1,3 @@
+UDEV_NEW pointer=0x1005200 errno=0
+UDEV_MONITOR_NEW pointer=0x1007d60 errno=22 text=Invalid argument
+UDEV_MONITOR_READY fd=3 input_filter=0 sound_filter=0 enable=-22 errno=22 text=Invalid argument
