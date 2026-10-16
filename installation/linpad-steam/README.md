@@ -1,12 +1,29 @@
 # Verified handoff: LinPad, Steam and FEX
 
-Current runtime checkpoint: **LinPad1.4.0 build4453**, signed, installed and booted on the physical M2 iPad with both approved memory entitlements and512MiB native JIT. It fixes the keyboard in games: an app on `LinuxTextInputMode`'s list receives its hardware keys as key codes instead of as iPadOS text input, which is why Hollow Knight previously accepted Enter and nothing else. **The user reports that the keyboard in Hollow Knight works on 4453** -- the first non-Enter key reported working in the game. [Build4453 verification](performance-2026-10-16/build4453-keyboard/VERIFICATION.md). No per-key result, screenshot, gameplay/audio acceptance or numerical frame-rate result was captured, and the second, prepared fix (the compositor holding the input queue for up to 250 ms per key) is built and checked but **not installed**. [Current handoff and next steps](performance-2026-10-16/HANDOFF-4453.md)
+Current runtime checkpoint: the iPad runs the parallel LinPad Steam work (desktop build 4478,
+app "LinPad Steam" build 4480, one shared Linux system) on top of the keyboard routing fix
+(`b432013e`). **The keyboard now works and is proven by the compositor's own log**: `ishwl` built
+from `bd6e9881` was installed on the device and the session restarted onto it, after which
+printable keys appear as key events for the first time (X 116×, Z 30×, Y 14×, Space 44×), where the
+system compositor logged nothing for them. The waiting defect that made a released key keep moving
+is measured gone — text after a bare key press arrives in **0.0 ms** against **260.6 ms** with the
+previous revision, while Return, Tab and Backspace still wait as designed. [Deployment and key log](performance-2026-10-16/build4453-keyboard/ishwl-deployed/README.md).
+[Headless before/after measurement](performance-2026-10-16/build4453-keyboard/ishwl/README.md).
+
+**Steam starts the game.** Steam's `reaper` dies under iSH (`prctl() failed!`) before the
+compatibility tool is reached, and the tool defaulted to the wrong translator and display mode;
+both are fixed, and a launch through the client is verified up to a running game, a fresh Unity log,
+a live audio stream and 1 801 frame deliveries in 30 s. [Steam route](performance-2026-10-16/steam-game-route/README.md).
+
+**Open: gameplay and audio have not been confirmed by hand** for either route, and frame
+*deliveries* are not an FPS measurement. [Current handoff and next steps](performance-2026-10-16/HANDOFF-4453.md)
 
 Build 4452 remains the checkpoint for the JIT work: its physical guest probe passes19151 checks with zero failures, including8190 memory/register/address cases, exact fault attribution,200 code rewrites and10000 thread exchanges, and both physical SMC probes pass. [Build4452 verification](performance-2026-10-16/build4452/VERIFICATION.md)
 
-Hollow Knight's German main menu was visibly confirmed on 4452, and the user reports smooth operation. No new numerical frame-rate result or gameplay/audio qualification was measured. The previous 4451 foreground menu capture remains 212 deliveries in 30 seconds (7.0667/s at 659×540). The user takes over recording and play. [Build4452 status](performance-2026-10-16/build4452-menu-followup/README.md).
+Hollow Knight's German main menu was visibly confirmed on 4452, and the user reports smooth operation. The previous 4451 foreground menu capture remains 212 deliveries in 30 seconds (7.0667/s at 659×540); a later hand-launched play session delivered 1 026 in 30 s (34.2/s at 1366×950) and the Steam launch 1 801-1 802 (60.1/s at 659×540) — the same metric, different windows, and not FPS. [Build4452 status](performance-2026-10-16/build4452-menu-followup/README.md).
 
-Start on the current iPad: open Linux for iPad, approve StikDebug's Enable and Run Script if shown, then run `sh /tmp/hollow4452-egl` in Terminal. This is the actual working saved launcher; the desktop shortcut and final production Steam-to-game path are not yet qualified.
+Start on the current iPad: open Linux for iPad, approve StikDebug's Enable and Run Script if shown,
+then either press Play in Steam (the route above) or run `sh /tmp/hollow4452-egl` in Terminal.
 
 The actual game startup diagnostic identifies LDAPUR/STLUR in all 1,223 retained sample records. A separate launch using only `FEX_HOSTFEATURES=disablelrcpc2` exits 139 before Unity initialization; it is not a recommended setting. The baseline was deliberately stopped for this test. [Controlled launch experiment](performance-2026-10-16/build4451-lrcpc2-control/README.md)
 

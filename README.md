@@ -2,9 +2,28 @@
 
 Private archive of the LinPad work verified on 16 October 2026.
 
-**Current device checkpoint:** development-signed LinPad1.4.0 build4453 is installed and running on the M2 iPad. It adds the keyboard routing fix: an app on `LinuxTextInputMode`'s list receives its hardware keys as key codes instead of as iPadOS text input, which is why Hollow Knight previously took Enter and nothing else. [Build4453 verification](installation/linpad-steam/performance-2026-10-16/build4453-keyboard/VERIFICATION.md).
+**Current device checkpoint:** the iPad runs the parallel LinPad Steam work — desktop build 4478
+and the second app "LinPad Steam" build 4480 (`com.konradkern.linpad.steam`, same app group, one
+shared Linux system) — plus the two fixes recorded here, both of which are in that lineage:
+the keyboard routing fix (`b432013e`, an ancestor of the Steam commit) and the deployed
+compositor fix (`bd6e9881`).
 
-**The user reports that the keyboard in Hollow Knight works on build 4453** — the first non-Enter key reported working in the game. A per-key result, a screenshot, gameplay/audio acceptance and a numerical performance result are still open, and the second, prepared fix (the compositor holding the input queue for up to 250 ms per key, unverified and not yet installed) is described in [build4453-keyboard/ishwl](installation/linpad-steam/performance-2026-10-16/build4453-keyboard/ishwl/README.md). [Current handoff and next steps](installation/linpad-steam/performance-2026-10-16/HANDOFF-4453.md).
+**The keyboard works, and it is now proven by the compositor's own log.** `ishwl` built from
+`bd6e9881` was installed on the device and the session restarted onto it; in one play session it
+logged printable keys as key events for the first time — X 116×, Z 30×, Y 14×, Space 44× — where
+the system compositor had produced no key event at all for them. The wait that made a released key
+keep moving is measured gone: text after a bare key press arrives in **0.0 ms** against **260.6 ms**
+with the previous revision, while an edit key still waits as intended. [Deployment and key log](installation/linpad-steam/performance-2026-10-16/build4453-keyboard/ishwl-deployed/README.md),
+[headless before/after measurement](installation/linpad-steam/performance-2026-10-16/build4453-keyboard/ishwl/README.md).
+
+**Steam now starts Hollow Knight.** Every launch used to die in the same second because Steam's own
+`reaper` calls a `prctl()` iSH does not implement, and the compatibility tool defaulted to the wrong
+translator and display mode for this device. Both are fixed and the Play path is verified up to a
+running game, a fresh Unity log and 1 801 frame deliveries in 30 s on the Venus renderer.
+[Steam route, device changes and rollback](installation/linpad-steam/performance-2026-10-16/steam-game-route/README.md).
+
+**Still open: nobody has confirmed gameplay and audio by hand** with either route (movement, combat,
+menus, sound), and frame *deliveries* are not an FPS measurement. [Current handoff and next steps](installation/linpad-steam/performance-2026-10-16/HANDOFF-4453.md).
 
 Build 4452 remains the checkpoint for the JIT work: it adds native translation for the LDAPUR/STLUR memory instructions identified as the dominant slow fallback, and its physical ARM64 regression passes19151 checks, including8190 memory cases,200 code rewrites and10000 thread exchanges. [Build4452 verification](installation/linpad-steam/performance-2026-10-16/build4452/VERIFICATION.md). [Private signed build and symbols](https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4452).
 
