@@ -1,0 +1,96 @@
+/work/glvnd-test/repair/payload/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=1a2250733b59bf97099381e3abb35d0557faf19e, stripped
+
+Dynamic section at offset 0x83d80 contains 29 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libGLdispatch.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libGLX.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000000e (SONAME)             Library soname: [libGL.so.1]
+ 0x0000000000000010 (SYMBOLIC)           0x0
+ 0x000000000000000c (INIT)               0x43000
+ 0x000000000000000d (FINI)               0x61000
+ 0x0000000000000019 (INIT_ARRAY)         0x77cc0
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x77cd0
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x260
+ 0x0000000000000005 (STRTAB)             0x1b028
+ 0x0000000000000006 (SYMTAB)             0x68c8
+ 0x000000000000000a (STRSZ)              74413 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x84fe8
+ 0x0000000000000002 (PLTRELSZ)           288 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x428a8
+ 0x0000000000000007 (RELA)               0x2ee50
+ 0x0000000000000008 (RELASZ)             80472 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000000000001e (FLAGS)              SYMBOLIC STATIC_TLS
+ 0x000000006ffffffe (VERNEED)            0x2ee20
+ 0x000000006fffffff (VERNEEDNUM)         1
+ 0x000000006ffffff0 (VERSYM)             0x2d2d6
+ 0x000000006ffffff9 (RELACOUNT)          3347
+ 0x0000000000000000 (NULL)               0x0
+/work/glvnd-test/repair/payload/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=1ce7ee74b847c204a4967972b8f40fa0206b3aed, stripped
+
+Dynamic section at offset 0x21d88 contains 29 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libGLdispatch.so.0]
+ 0x0000000000000001 (NEEDED)             Shared library: [libX11.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000000e (SONAME)             Library soname: [libGLX.so.0]
+ 0x0000000000000010 (SYMBOLIC)           0x0
+ 0x000000000000000c (INIT)               0x3000
+ 0x000000000000000d (FINI)               0x1d4dc
+ 0x0000000000000019 (INIT_ARRAY)         0x22880
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x22890
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x260
+ 0x0000000000000005 (STRTAB)             0xde0
+ 0x0000000000000006 (SYMTAB)             0x3d8
+ 0x000000000000000a (STRSZ)              1750 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x22fe8
+ 0x0000000000000002 (PLTRELSZ)           1320 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x25a0
+ 0x0000000000000007 (RELA)               0x1610
+ 0x0000000000000008 (RELASZ)             3984 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000000000001e (FLAGS)              SYMBOLIC
+ 0x000000006ffffffe (VERNEED)            0x1590
+ 0x000000006fffffff (VERNEEDNUM)         1
+ 0x000000006ffffff0 (VERSYM)             0x14b6
+ 0x000000006ffffff9 (RELACOUNT)          160
+ 0x0000000000000000 (NULL)               0x0
+/work/glvnd-test/repair/payload/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=9957653a3b88426436244ee76c38df59f0e73b05, stripped
+
+Dynamic section at offset 0xafdb8 contains 26 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x000000000000000e (SONAME)             Library soname: [libGLdispatch.so.0]
+ 0x000000000000000c (INIT)               0x41000
+ 0x000000000000000d (FINI)               0x7f000
+ 0x0000000000000019 (INIT_ARRAY)         0x942a0
+ 0x000000000000001b (INIT_ARRAYSZ)       16 (bytes)
+ 0x000000000000001a (FINI_ARRAY)         0x942b0
+ 0x000000000000001c (FINI_ARRAYSZ)       16 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x298
+ 0x0000000000000005 (STRTAB)             0x750
+ 0x0000000000000006 (SYMTAB)             0x348
+ 0x000000000000000a (STRSZ)              787 (bytes)
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0xaffe8
+ 0x0000000000000002 (PLTRELSZ)           504 (bytes)
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000017 (JMPREL)             0x402f8
+ 0x0000000000000007 (RELA)               0xb30
+ 0x0000000000000008 (RELASZ)             260040 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000000000001e (FLAGS)              STATIC_TLS
+ 0x000000006ffffffe (VERNEED)            0xac0
+ 0x000000006fffffff (VERNEEDNUM)         1
+ 0x000000006ffffff0 (VERSYM)             0xa64
+ 0x000000006ffffff9 (RELACOUNT)          10829
+ 0x0000000000000000 (NULL)               0x0

@@ -1,0 +1,8 @@
+#!/bin/sh
+# Diagnostic only. Select this through LINPAD_FEX_BINARY for one game launch.
+set -eu
+real_fex=${LINPAD_FEX_REAL_BINARY:-/opt/fex/FEX-apple-m1-munmap}
+reporter=${LINPAD_X86_CRASH_REPORTER:-/tmp/x86-game-crash-report.so}
+[ -x "$real_fex" ] || { printf 'Missing FEX binary: %s\n' "$real_fex" >&2; exit 126; }
+[ -r "$reporter" ] || { printf 'Missing diagnostic reporter: %s\n' "$reporter" >&2; exit 126; }
+exec env LD_PRELOAD="$reporter" "$real_fex" "$@"

@@ -1,0 +1,10 @@
+usr/lib/x86_64-linux-gnu/libc.so.6: OK
+usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2: OK
+usr/lib/x86_64-linux-gnu/libX11.so.6: OK
+usr/lib/x86_64-linux-gnu/libGL.so.1.7.0: OK
+usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0: OK
+usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0: OK
+usr/share/doc/libgl1/copyright: OK
+usr/share/doc/libglvnd0/copyright: OK
+usr/share/doc/libglx0/copyright: OK
+GLVND repair: refusing to replace existing file: usr/lib/x86_64-linux-gnu/libGL.so.1.7.0

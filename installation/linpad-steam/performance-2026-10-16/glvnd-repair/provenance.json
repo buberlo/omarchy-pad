@@ -1,0 +1,107 @@
+{
+  "created_utc": "2026-10-16T10:20:04.687085+00:00",
+  "trigger": {
+    "report": "work/performance/reports/hollow4445-patched-unity-full.txt",
+    "line": 10,
+    "error": "Error creating MainPlayerWindow: Failed loading libGL.so.1: libGL.so.1: cannot open shared object file: No such file or directory"
+  },
+  "packages": [
+    {
+      "name": "libgl1",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libgl1_1.7.0-1+b2_amd64.deb",
+      "bytes": 89504,
+      "sha256": "87fa2f6e5abaed4ed385fac879c8dd735af719ee2300222d901793c66e041678",
+      "debian_dependencies": "libc6 (>= 2.34), libglvnd0 (= 1.7.0-1+b2), libglx0 (= 1.7.0-1+b2)"
+    },
+    {
+      "name": "libglvnd0",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libglvnd0_1.7.0-1+b2_amd64.deb",
+      "bytes": 51960,
+      "sha256": "887f74008166549ce9e100c906aa937e95d6e5ce1c8d86efe8c95fd953359b9c",
+      "debian_dependencies": "libc6 (>= 2.38)"
+    },
+    {
+      "name": "libglx0",
+      "version": "1.7.0-1+b2",
+      "architecture": "amd64",
+      "url": "https://deb.debian.org/debian/pool/main/libg/libglvnd/libglx0_1.7.0-1+b2_amd64.deb",
+      "bytes": 34892,
+      "sha256": "2721fdca0fe3bd963cb39482eabc253af52b88f4a7f6dbb69e475549daf5af3b",
+      "debian_dependencies": "libc6 (>= 2.38), libglvnd0 (= 1.7.0-1+b2), libx11-6 (>= 2:1.4.99.1), libglx-mesa0"
+    }
+  ],
+  "cached_official_index_sha256": "4f2c68d67001d595fbd343f6dbad44468953a51c4d9dec3a4803249f6e295940",
+  "payload_libraries": [
+    "libGL.so.1",
+    "libGLX.so.0",
+    "libGLdispatch.so.0"
+  ],
+  "package_dependency_omitted": "libglx-mesa0: a GLX vendor implementation is not required for the verified dlopen/symbol test; adding it is deferred until an actual GLX context need is demonstrated.",
+  "elf_dependencies": {
+    "libGL.so.1": [
+      "libGLdispatch.so.0",
+      "libGLX.so.0",
+      "libc.so.6"
+    ],
+    "libGLX.so.0": [
+      "libGLdispatch.so.0",
+      "libX11.so.6",
+      "libc.so.6"
+    ],
+    "libGLdispatch.so.0": [
+      "libc.so.6"
+    ]
+  },
+  "validation": {
+    "host": "isolated local ARM64 Linux VM",
+    "fex_sha256": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "baseline_libgl_missing": true,
+    "patched_runtime_dlopen_and_three_symbols": "PASS",
+    "idempotent_install": "PASS",
+    "conflicting_file_refused_before_writes": "PASS",
+    "device_execution": {
+      "status": "PASS",
+      "device": "physical iPad",
+      "linpad_build": 4445,
+      "date": "2026-10-16",
+      "report_timestamp": "not included in captured stdout",
+      "operator_provenance": "Physical device and build reported by parent device operator; archived served wrapper verifies archive and runtime fingerprints and executes patched FEX with LD_PRELOAD unset.",
+      "report": "glvnd-device-install.txt",
+      "report_sha256": "ed5c47b72e891c2d2c8c30dd5fc68715d1d34d0ede25819ad7f05d74520c0025",
+      "preload_used": false,
+      "symbols_verified": [
+        "glXGetProcAddressARB",
+        "glXQueryVersion",
+        "glGetString"
+      ],
+      "added_entries": [
+        "usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
+        "usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+        "usr/share/doc/libgl1/copyright",
+        "usr/share/doc/libglvnd0/copyright",
+        "usr/share/doc/libglx0/copyright",
+        "usr/lib/x86_64-linux-gnu/libGL.so.1 -> libGL.so.1.7.0",
+        "usr/lib/x86_64-linux-gnu/libGLX.so.0 -> libGLX.so.0.0.0",
+        "usr/lib/x86_64-linux-gnu/libGLdispatch.so.0 -> libGLdispatch.so.0.0.0"
+      ]
+    },
+    "graphics_context_or_gameplay": "not tested by this probe"
+  },
+  "archive": {
+    "filename": "linpad-x86-glvnd-repair.tar.gz",
+    "bytes": 274252,
+    "sha256": "e293149c05731bf83628a4e87c0a8538d9cb8cec16aa8370ccd43063a1e4a9cd"
+  },
+  "served_wrapper": {
+    "filename": "install-glvnd-repair",
+    "sha256": "99a2007660a015e645b57e7b9eb6ad620b77cc9019dfd38e761302b67529e139"
+  },
+  "runtime_prefix": "/opt/hollow-runtime",
+  "rollback": "Only remove paths recorded by ADDED output after confirming they still match payload hashes/link targets.",
+  "updated_utc": "2026-10-16T10:20:48.467991+00:00"
+}

@@ -1,0 +1,45 @@
+{
+  "source": "work/performance/reports/hollow4445-glvnd-manual-stop.txt",
+  "size_bytes": 18063,
+  "sha256": "61050865a0bd88639609e4ce579a0f04313c424ce8caf20ccd27ff506eb99c9e",
+  "archive": "glvnd-game-manual-stop-excerpt.txt",
+  "selected_source_lines_1_based": [
+    1,
+    46,
+    47,
+    48,
+    50,
+    53,
+    54,
+    57,
+    58,
+    59,
+    86,
+    88,
+    90,
+    91,
+    118,
+    119,
+    120,
+    242
+  ],
+  "linpad_build": 4445,
+  "start_utc": "2026-10-16T10:20:06Z",
+  "stop_utc": "2026-10-16T10:24:02Z",
+  "termination": "operator-requested stop; exit137 is not a spontaneous crash",
+  "window_error": "GLX is not supported",
+  "vulkan_enumeration_reached": true,
+  "gameplay_verified": false,
+  "next_experiment": {
+    "started_utc": "2026-10-16T10:24:09Z",
+    "status": "pending at documentation update",
+    "display_mode": "wayland",
+    "arguments_added": [
+      "-force-wayland"
+    ],
+    "renderer_argument_preserved": "-force-vulkan",
+    "script_archive": "hollow4445-wayland",
+    "script_sha256": "8d51b9b284b89abfaabffa31775a094ce1bbb0e625f6a176877fc28d1a9c79e0",
+    "source": "https://docs.unity3d.com/6000.0/Documentation/Manual/PlayerCommandLineArguments.html"
+  }
+}

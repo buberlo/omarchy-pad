@@ -1,0 +1,18 @@
+Fri Oct 16 10:20:06 UTC 2026
+Killed
+X connection to :14 broken (explicit kill or server shutdown).
+GAME_EXIT=137
+The selected window backend is (null) 
+Input System module state changed to: Initialized.
+Error getting num native displays: Video subsystem has not been initialized
+Error getting num native displays: Video subsystem has not been initialized
+Desktop is 0 x 0 @ 0 Hz
+Error creating MainPlayerWindow: GLX is not supported
+[Vulkan init] Physical Device 0x4a29d0 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+Initialize engine version: 6000.0.61f1 (74a0adb02c31)
+Forcing GfxDevice: Vulkan
+GfxDevice: creating device client; kGfxThreadingModeThreaded
+[Vulkan init] Physical Device 0x493c30 [0]: "Virtio-GPU Venus (Apple M2 GPU)" deviceType=1 vendorID=106b deviceID=1b000008
+[Vulkan init] Selected physical device 0x493c30
+[Vulkan init] Graphics queue count=1
+Fri Oct 16 10:24:02 UTC 2026

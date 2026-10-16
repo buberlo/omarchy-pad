@@ -1,0 +1,51 @@
+{
+  "verified_at_utc": "2026-10-16T10:21:17.811712+00:00",
+  "url": "https://github.com/buberlo/linpad-ipad-steam/releases/tag/ipad-steam-build-4445",
+  "tag": "ipad-steam-build-4445",
+  "prerelease": true,
+  "assets": [
+    {
+      "name": "LinPad-1.5.0-build4445-Konrad.ipa",
+      "size_bytes": 637273907,
+      "sha256": "fc1986ef643e61656bd1e128f7e18e205932e1cbbcc5ae80827d4bdb45ecca72",
+      "server_digest_matches": true
+    },
+    {
+      "name": "LinPad-1.5.0-build4445-dSYM.zip",
+      "size_bytes": 13518692,
+      "sha256": "870ae56634de35556821e80f8d0264415f88773cfbdf0524cddc062e7109d029",
+      "server_digest_matches": true
+    },
+    {
+      "name": "SHA256SUMS",
+      "size_bytes": 3731,
+      "sha256": "a008c4b1cfff86eed850476ea539b81fa99186eee30e8bf722118392e5173d4d",
+      "server_digest_matches": true
+    },
+    {
+      "name": "build-manifest.json",
+      "size_bytes": 7662,
+      "sha256": "a813d85f9eaae8567465d96977171107c1063626dbc5da6a04872e871f4355e8",
+      "server_digest_matches": true
+    },
+    {
+      "name": "VERIFICATION.md",
+      "size_bytes": 3968,
+      "sha256": "003fbcd8ae00dcfb2b20bcc39f1c43feb26d5159526b431b748daa025a3c9de6",
+      "server_digest_matches": true
+    },
+    {
+      "name": "fex-munmap-repair.tar.gz",
+      "size_bytes": 1985883,
+      "sha256": "72bc163211e1957ad79d3c2c4d0b1647508276d2699d7ac54560757fd83430c3",
+      "server_digest_matches": true
+    },
+    {
+      "name": "fex-munmap-repair.tar.gz.sha256",
+      "size_bytes": 91,
+      "sha256": "28fd4df2d19845b6479eb387fd485d70175b6fbea24ecb591083a8f27e664ada",
+      "server_digest_matches": true
+    }
+  ],
+  "qualification": "Boot, protected memory and bounded Vulkan cube only; no gameplay or FPS qualification."
+}

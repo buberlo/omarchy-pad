@@ -1,0 +1,35 @@
+{
+  "kind": "optional diagnostic, not a runtime fix",
+  "physical_game_test": "not executed or qualified by this archive",
+  "shared_object": {
+    "original_path": "work/performance/serve/x86-game-crash-report.so",
+    "sha256": "90ddd9710b54670480eefcea2dc19317f75f4185a4ea35bd3018d6a4be82266c",
+    "included_in_git": false
+  },
+  "compiler": "bundled Zig cc",
+  "compile_flags": {
+    "reporter": "-target x86_64-linux-gnu -O2 -shared -fPIC -ldl",
+    "probe": "-target x86_64-linux-gnu -O2",
+    "native_launcher": "-target aarch64-linux-musl -O2 -static"
+  },
+  "local_results": [
+    {
+      "case": "chain",
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "result": "PASS",
+      "log": "local-chain.txt",
+      "sha256": "67b5aa8912c8695469e28d330f2321efec560a503efb133a31db1916a65a3081"
+    },
+    {
+      "case": "fatal",
+      "expected_exit": 139,
+      "actual_exit": 139,
+      "result": "PASS",
+      "log": "local-fatal.txt",
+      "sha256": "574b94e742d0bbc83f3247b087bef1eb1c35b14eea988c61b6a7c9be54ab8076"
+    }
+  ],
+  "no_production_source_changes": true,
+  "game_claim": "none"
+}

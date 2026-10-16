@@ -1,0 +1,32 @@
+/tmp/linpad-glvnd.AlmOdh/payload.tar.gz: OK
+usr/lib/x86_64-linux-gnu/libc.so.6: OK
+usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2: OK
+usr/lib/x86_64-linux-gnu/libX11.so.6: OK
+usr/lib/x86_64-linux-gnu/libGL.so.1.7.0: OK
+usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0: OK
+usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0: OK
+usr/share/doc/libgl1/copyright: OK
+usr/share/doc/libglvnd0/copyright: OK
+usr/share/doc/libglx0/copyright: OK
+ADDED usr/lib/x86_64-linux-gnu/libGL.so.1.7.0
+ADDED usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0
+ADDED usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0
+ADDED usr/share/doc/libgl1/copyright
+ADDED usr/share/doc/libglvnd0/copyright
+ADDED usr/share/doc/libglx0/copyright
+ADDED usr/lib/x86_64-linux-gnu/libGL.so.1 -> libGL.so.1.7.0
+ADDED usr/lib/x86_64-linux-gnu/libGLX.so.0 -> libGLX.so.0.0.0
+ADDED usr/lib/x86_64-linux-gnu/libGLdispatch.so.0 -> libGLdispatch.so.0.0.0
+usr/lib/x86_64-linux-gnu/libGL.so.1.7.0: OK
+usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0: OK
+usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0: OK
+usr/share/doc/libgl1/copyright: OK
+usr/share/doc/libglvnd0/copyright: OK
+usr/share/doc/libglx0/copyright: OK
+GLVND_REPAIR_INSTALLED
+LIBGL_SYMBOL_PASS glXGetProcAddressARB
+LIBGL_SYMBOL_PASS glXQueryVersion
+LIBGL_SYMBOL_PASS glGetString
+LIBGL_LOAD_PASS
+GLVND_DEVICE_LIBGL_PASS
+Repair evidence retained at /tmp/linpad-glvnd.AlmOdh

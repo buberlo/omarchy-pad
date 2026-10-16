@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+BASE=${LINPAD_REPAIR_BASE:-http://192.168.0.104:8766}
+stage=$(mktemp -d /tmp/linpad-glvnd.XXXXXX)
+wget -T 25 -qO "$stage/payload.tar.gz" "$BASE/linpad-x86-glvnd-repair.tar.gz"
+printf '%s  %s\n' e293149c05731bf83628a4e87c0a8538d9cb8cec16aa8370ccd43063a1e4a9cd "$stage/payload.tar.gz" | sha256sum -c -
+tar -xzf "$stage/payload.tar.gz" -C "$stage"
+sh "$stage/glvnd-repair/install.sh"
+(
+ unset LD_PRELOAD
+ export FEX_DISABLETELEMETRY=1 FEX_ROOTFS=/opt/hollow-runtime LD_LIBRARY_PATH=/opt/hollow-runtime/usr/lib/x86_64-linux-gnu
+ /opt/fex/FEX-apple-m1-munmap "$stage/glvnd-repair/gl-load-probe-x86"
+)
+printf 'GLVND_DEVICE_LIBGL_PASS\n'
+printf 'Repair evidence retained at %s\n' "$stage"

@@ -1,0 +1,57 @@
+Raw log: work/performance/game-fault-report/local-chain.txt
+SHA256 67b5aa8912c8695469e28d330f2321efec560a503efb133a31db1916a65a3081
+Original line numbers retained; omissions separate excerpts.
+
+[...]
+5110: 1 call 113 clock_gettime(1, 0xffffbf78) {116015s 146296000ns} = 0x0
+5111: X86_FAULT_REPORTER_READY (diagnostic; handlers chained)
+5112: 1 call 64  (fast) = 0x38
+5113: 1 call 113 clock_gettime(1, 0xffffc078) {116015s 146317000ns} = 0x0
+5114: 1 call 113 clock_gettime(1, 0xffffbe98) {116015s 146320000ns} = 0x0
+5115: 1 call 113 clock_gettime(1, 0xffffbed8) {116015s 146326000ns} = 0x0
+[...]
+5340: 1 call 113 clock_gettime(1, 0xffffb6b8) {116015s 150190000ns} = 0x0
+5341: X86_FAULT signal=0xb code=0x1 address=0x0 rip=0x1001a67 rsp=0x808007fff950 rbp=0x808007fff950 rax=0x0 rbx=0x808007fffc68 rcx=0xcec51754 rdx=0x0 rsi=0x1 rdi=0x0
+5342: 1 call 64  (fast) = 0xa0
+5343: 1 call 113 clock_gettime(1, 0xffffb6b8) {116015s 150320000ns} = 0x0
+5344: 1 call 113 clock_gettime(1, 0xffffb4d8) {116015s 150324000ns} = 0x0
+5345: 1 call 113 clock_gettime(1, 0xffffb518) {116015s 150330000ns} = 0x0
+[...]
+5383: 000001001000-0" = 0x1000
+5384: X86_MAP 1 call 64  (fast) = 0x8
+5385: 000001001000-000001002000 r-xp 00000000 00:00 0          /opt/game-crash-report-probe1 call 64  (fast) = 0x55
+5386: 
+5387: 1 call 64  (fast) = 0x1
+5388: X86_RIP_FILE_OFFSET 0xa67
+5389: 1 call 64  (fast) = 0x1a
+5390: 1 call 63  read(3, 0x7ffda68, 4096) "    
+5391: 800135045000-800136044000 rwxp 00000000 00:00 0          
+5392: 800136044000-800136045000 ---p 000000" = 0x3e0
+[...]
+5573: 1 call 113 clock_gettime(0, 0xffffad78) {1792145600s 14949000ns} = 0x0
+5574: X86_FAULT signal=0x4 code=0x0 address=0x1 rip=0xcec4c69a rsp=0x808007fff910 rbp=0x808007fffb50 rax=0xea rbx=0x1 rcx=0xcec4c69c rdx=0x4 rsi=0x1 rdi=0x1
+5575: 1 call 64  (fast) = 0x97
+5576: 1 call 437  = 0xffffffda
+5577: 1 call 56  openat(-100, "/proc/self/maps", 0x80000, 0x0) = 0x3
+5578: 1 call 78  readlinkat(-100, "/proc/self/fd/3", 0xffffa028, 0x1000) "/proc/1/maps" = 0xc
+[...]
+5580: 000001001000-0" = 0x1000
+5581: X86_MAP 1 call 64  (fast) = 0x8
+5582: 0000cebe0000-0000ced43000 r-xp 00028000 00:00 0          /opt/hollow-runtime/usr/lib/x86_64-linux-gnu/libc.so.61 call 64  (fast) = 0x6f
+5583: 
+5584: 1 call 64  (fast) = 0x1
+5585: X86_RIP_FILE_OFFSET 0x9469a
+5586: 1 call 64  (fast) = 0x1c
+5587: 1 call 63  read(3, 0x7ffda28, 4096) "    
+5588: 800135045000-800136044000 rwxp 00000000 00:00 0          
+5589: 800136044000-800136045000 ---p 000000" = 0x3e0
+[...]
+5966: 1 call 113 clock_gettime(1, 0xffffb6b8) {116015s 176341000ns} = 0x0
+5967: PASS reporter chains handlers installed after constructor and preserves action queries
+5968: 1 call 64  (fast) = 0x57
+5969: 1 call 113 clock_gettime(1, 0xffffb6b8) {116015s 176400000ns} = 0x0
+5970: 1 call 113 clock_gettime(1, 0xffffb4d8) {116015s 176406000ns} = 0x0
+5971: 1 call 113 clock_gettime(1, 0xffffb518) {116015s 176458000ns} = 0x0
+[...]
+6153: 1 call 35  unlinkat(-100, "/dev/shm/fex-1-stats", 0) = 0xfffffffe
+6154: 1 call 94  exit_group(0)

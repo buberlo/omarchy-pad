@@ -458,6 +458,11 @@
       "sha256": "e102e014233dc985a357575643368350eea66d81bafc68968981cdf2d62ec8c8"
     },
     {
+      "path": "evidence/build4445-release-verified.json",
+      "bytes": 1747,
+      "sha256": "91274cc57ad6ccb3098168e8d6487a21a96417a783e04b45837aba9c42f95a7f"
+    },
+    {
       "path": "evidence/cache-cleanup.txt",
       "bytes": 983,
       "sha256": "e1ccf107da6342b4a95cf0f60f2a23198df43c98da0f07ae4c1aa5f4aefa578f"
@@ -743,19 +748,234 @@
       "sha256": "b77bad2c80a73ce8abfbab9a5910e7502a0853bdddeea6727549497ed4143b8a"
     },
     {
+      "path": "game-fault-report/PROVENANCE.json",
+      "bytes": 1110,
+      "sha256": "cf7a4dc21118bea2d93903670931b3bffeeac6b7ee7081ab2a73fbd12cacc4be"
+    },
+    {
+      "path": "game-fault-report/README.md",
+      "bytes": 4611,
+      "sha256": "daad7ddd7a51a254d35b68fdeecb36b72958d22be6d7db7c0a13a95507f796df"
+    },
+    {
+      "path": "game-fault-report/SHA256SUMS",
+      "bytes": 750,
+      "sha256": "6086a6ef72476cd4e10f6cd7430de5551656bd78d65ab7d02fbad6e0ccf292a4"
+    },
+    {
+      "path": "game-fault-report/fex-game-crash-report",
+      "bytes": 462,
+      "sha256": "52177b933138d861c6b945d5af42be67f3638f44bc9bd90a67c66393486fac24"
+    },
+    {
+      "path": "game-fault-report/launch.c",
+      "bytes": 459,
+      "sha256": "31286409a5c57986fe7b82680066b8475eec4f9e3e0f5e7e9a1bf34943acb5cf"
+    },
+    {
+      "path": "game-fault-report/local-chain-excerpt.txt",
+      "bytes": 3028,
+      "sha256": "191fdc30a5817d651cf4a5855a39f306dc185877f955235adceb896210545954"
+    },
+    {
+      "path": "game-fault-report/local-fatal-excerpt.txt",
+      "bytes": 3830,
+      "sha256": "d5f6bd82246483bf12a2e056f4f93a241dee4bf151177d06deed149452cd74ca"
+    },
+    {
+      "path": "game-fault-report/local-results.json",
+      "bytes": 425,
+      "sha256": "8455498aad75b4a099f7eca6c51a5f8e8c87c844326f7c1ed57de54a289a9ae5"
+    },
+    {
+      "path": "game-fault-report/probe.c",
+      "bytes": 1124,
+      "sha256": "68f4e7e2134c73a5f4c77c7fb444fc2d4bcbf3780cf08cb7a1f29a04f881e5c7"
+    },
+    {
+      "path": "game-fault-report/x86-game-crash-report.c",
+      "bytes": 6513,
+      "sha256": "5fac32fbe54c10d634f4f2335e68164ec86ab2200e52490b1214e689cfcbee44"
+    },
+    {
+      "path": "glvnd-repair/ELF-DEPENDENCIES.txt",
+      "bytes": 5344,
+      "sha256": "5f58701db4167bfcaeeedf74382b08d9ef070d2f004ef71469ee10bd7f848325"
+    },
+    {
+      "path": "glvnd-repair/Packages-selected.txt",
+      "bytes": 2033,
+      "sha256": "440fa3bf7755298fdc3f90a17e844b4a5a7cf0ae1e8ea40253d33f0ec6660b52"
+    },
+    {
+      "path": "glvnd-repair/README.md",
+      "bytes": 1990,
+      "sha256": "6fc465bceb91b465730245bf93beb03f282f6aaad4309da64b183870a71b086a"
+    },
+    {
+      "path": "glvnd-repair/SHA256SUMS",
+      "bytes": 2640,
+      "sha256": "85f1f0c689284cf8e5203aa9af515248cfbb8e455013ad8cdb83738a49f0da9f"
+    },
+    {
+      "path": "glvnd-repair/VALIDATION.txt",
+      "bytes": 309,
+      "sha256": "e4c02b2f959e84672346cfc2b8afce98a152fa5c76843afab417c9f60fefb565"
+    },
+    {
+      "path": "glvnd-repair/gl-load-probe-x86",
+      "bytes": 11640,
+      "sha256": "148effbba9f5f437d31736d22a75c2a3a6101aad880d57059e9635c8fd6fa7a2"
+    },
+    {
+      "path": "glvnd-repair/gl-load-probe.c",
+      "bytes": 660,
+      "sha256": "3ecd6d63e902a1ef83bdc49df4a6873d5b3d6befa3076c950e216b4efa237cec"
+    },
+    {
+      "path": "glvnd-repair/glvnd-device-install.txt",
+      "bytes": 1353,
+      "sha256": "ed5c47b72e891c2d2c8c30dd5fc68715d1d34d0ede25819ad7f05d74520c0025"
+    },
+    {
+      "path": "glvnd-repair/install-glvnd-repair",
+      "bytes": 700,
+      "sha256": "99a2007660a015e645b57e7b9eb6ad620b77cc9019dfd38e761302b67529e139"
+    },
+    {
+      "path": "glvnd-repair/install.sh",
+      "bytes": 2286,
+      "sha256": "39aaf62ec075aabbbbdc4c25e2dd2c2f57936e66b9eee2b24ec0da0785805794"
+    },
+    {
+      "path": "glvnd-repair/linpad-x86-glvnd-repair.tar.gz",
+      "bytes": 274252,
+      "sha256": "e293149c05731bf83628a4e87c0a8538d9cb8cec16aa8370ccd43063a1e4a9cd"
+    },
+    {
+      "path": "glvnd-repair/linpad-x86-glvnd-repair.tar.gz.sha256",
+      "bytes": 97,
+      "sha256": "092eed19116d0f508438c52710b593ef5b0d7b46f568bad553008f70c68baaa0"
+    },
+    {
+      "path": "glvnd-repair/packages.txt",
+      "bytes": 58,
+      "sha256": "905c50f708ad5fdc11f9bfaab37c461377704b74304525b3ea78fd281df8d5d0"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGL.so.1.7.0",
+      "bytes": 542880,
+      "sha256": "b01915dfedf03be4710d3184bc62a3364880fc950043742fd5e07659b409ef1e"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLX.so.0.0.0",
+      "bytes": 141744,
+      "sha256": "6b9525981881bb388b8726c8862d2ac5c2484e81328738d924415692d873018c"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/lib/x86_64-linux-gnu/libGLdispatch.so.0.0.0",
+      "bytes": 723248,
+      "sha256": "890baeef03fd73560a2fde85ebe9fb49ca3e90686923c5ee22101b28ec8ee7aa"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/share/doc/libgl1/copyright",
+      "bytes": 4422,
+      "sha256": "37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/share/doc/libglvnd0/copyright",
+      "bytes": 4422,
+      "sha256": "37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3"
+    },
+    {
+      "path": "glvnd-repair/payload/usr/share/doc/libglx0/copyright",
+      "bytes": 4422,
+      "sha256": "37920f219f60efa2fde5d003c51be0608b2159cc74c5eb6d70d630907db2d9a3"
+    },
+    {
+      "path": "glvnd-repair/payload-files.sha256",
+      "bytes": 622,
+      "sha256": "d716ca94b62f5e0345b22f36815c6d60675a321a7ff54d33f96479c7eb22caf6"
+    },
+    {
+      "path": "glvnd-repair/payload-symlinks.txt",
+      "bytes": 171,
+      "sha256": "c3d5faa6baef81d2eeae6231d9d7e5399f8127ecb031af8fc731bdf8514bb894"
+    },
+    {
+      "path": "glvnd-repair/provenance.json",
+      "bytes": 4343,
+      "sha256": "e7ecddade1c732fc59e8c2565ad7da3f21a6c501cf76c19f8c19a9655bf1cd38"
+    },
+    {
+      "path": "glvnd-repair/runtime-fingerprint.sha256",
+      "bytes": 316,
+      "sha256": "ca73f15313b78420c81a50e1b0e7225b8f77c08d0dd9b66bc04f8e083f451575"
+    },
+    {
+      "path": "glvnd-repair/test-after.txt",
+      "bytes": 119,
+      "sha256": "2f97642758dfb23d7e12b6e3e3f741c512bb6938f09945e2ed74e94c4421e9c7"
+    },
+    {
+      "path": "glvnd-repair/test-before.txt",
+      "bytes": 86,
+      "sha256": "6c0331b254015181d9472e911734719085318ccb1f178b7d1e8a05fbc85e5f39"
+    },
+    {
+      "path": "glvnd-repair/test-idempotent.txt",
+      "bytes": 653,
+      "sha256": "7fa3f50c46d880e1056e1a125af324990b398c1876def5bb56360e6730723c5a"
+    },
+    {
+      "path": "glvnd-repair/test-in-container.sh",
+      "bytes": 1233,
+      "sha256": "0f8be0abedec58b003762937c16fd657d2cbc80039a072612e25ed49c927c4de"
+    },
+    {
+      "path": "glvnd-repair/test-install.txt",
+      "bytes": 1113,
+      "sha256": "62c5ea80e1beeb98ac4dfc31b298d695f6c4b8f51a23479bde5abfb23765272a"
+    },
+    {
+      "path": "glvnd-repair/test-refuse-existing.txt",
+      "bytes": 469,
+      "sha256": "e7b83d6e7b67d4c96f6977685ed783ce68ae197b89737ddd51fb16fb8ed9f29c"
+    },
+    {
+      "path": "glvnd-repair/trigger.txt",
+      "bytes": 694,
+      "sha256": "64b6f3f7f5128301cee13389bc044d307766f298f308b663a0a1f441f3e91f4f"
+    },
+    {
       "path": "hollow4445-startup/PROVENANCE.json",
       "bytes": 1608,
       "sha256": "2f54bf299a671d63dae6a2469320d5fcf6100d3b24bd04fc3c44f3661d20e72e"
     },
     {
       "path": "hollow4445-startup/README.md",
-      "bytes": 2092,
-      "sha256": "d36534f603bfcdc86d2ea9877ee427122af64a176f9583b7625dda55ce34c1a6"
+      "bytes": 3643,
+      "sha256": "19bf6970135293fed227e2a2dc6a2c1129630d5b9b7d637688f7f5afbdad70ba"
     },
     {
       "path": "hollow4445-startup/SHA256SUMS",
-      "bytes": 434,
-      "sha256": "3931c1e5c42831ce62169d3ed6ff725750232568167bb4350f9814d9ec51c2b5"
+      "bytes": 717,
+      "sha256": "82effd2afca9fe4bf70bb55b9d518588c7b2dbb93ab313fab2e9a2ad204dc90d"
+    },
+    {
+      "path": "hollow4445-startup/glvnd-followup-provenance.json",
+      "bytes": 1201,
+      "sha256": "0f07225e963d33035ea105c80bdea571c59ae0c6908468ed711e977ca290ee59"
+    },
+    {
+      "path": "hollow4445-startup/glvnd-game-manual-stop-excerpt.txt",
+      "bytes": 934,
+      "sha256": "3396b557b1ca7e840cf52af1cc5fbf41ec5f77f52c9ef699952953f961a55eb4"
+    },
+    {
+      "path": "hollow4445-startup/hollow4445-wayland",
+      "bytes": 675,
+      "sha256": "8d51b9b284b89abfaabffa31775a094ce1bbb0e625f6a176877fc28d1a9c79e0"
     },
     {
       "path": "hollow4445-startup/manual-stop-excerpt.txt",
