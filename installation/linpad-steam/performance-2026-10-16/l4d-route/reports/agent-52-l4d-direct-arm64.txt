@@ -1,0 +1,32 @@
+AGENT_BEGIN id=52-l4d-direct-arm64 pid=1143 Fri Oct 16 19:31:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== run the ARM64 Proton chain directly (no Steam client) ===
+t= 35s pfx=no  procs=[steam-local steam-local steam ]
+t= 70s pfx=no  procs=[steam-local steam-local steam ]
+t=105s pfx=no  procs=[steam-local steam-local steam ]
+t=140s pfx=no  procs=[steam-local steam-local steam ]
+t=175s pfx=no  procs=[steam-local steam-local steam ]
+t=210s pfx=no  procs=[steam-local steam-local steam ]
+t=245s pfx=no  procs=[steam-local steam-local steam ]
+
+=== chain output ===
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/pressure-vessel/bin/pressure-vessel-wrap: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+--- tail ---
+/root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/pressure-vessel/bin/pressure-vessel-wrap: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+
+=== memory ===
+footprint_mb 1687
+allowance_mb 8192
+headroom_mb 6504
+soft_mb 1638
+hard_mb 819
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:35:58 UTC 2026

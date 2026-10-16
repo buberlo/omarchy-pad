@@ -1,0 +1,32 @@
+AGENT_BEGIN id=57-l4d-via-wrapper2 pid=1143 Fri Oct 16 19:44:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+-rwxr-xr-x 1 root root 749 Oct 16 09:39 /root/.steam/sdkarm64/steam-launch-wrapper
+t= 35s pfx=no  procs=[]
+t= 70s pfx=no  procs=[]
+t=105s pfx=no  procs=[]
+t=140s pfx=no  procs=[]
+t=175s pfx=no  procs=[]
+t=210s pfx=no  procs=[]
+
+=== output (first 20 / last 25) ===
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+reaper: prctl() failed!
+  ...
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+reaper: prctl() failed!
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server/Server.lock
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server/0.FEXServer.Socket
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+footprint_mb 1710
+allowance_mb 8192
+headroom_mb 6481
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:47:48 UTC 2026

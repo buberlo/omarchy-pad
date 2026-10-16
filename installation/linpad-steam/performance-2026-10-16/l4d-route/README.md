@@ -99,3 +99,39 @@ appear both before and after the client broke, so they are not established as th
 - `scripts/kb4453-steam-launchopts` — the earlier tested editor for an app's launch options.
 - `scripts/linpad-hk-fex` — the Hollow Knight Steam wrapper, kept here because the L4D work touched
   the same Steam chain.
+
+## Later the same night: why Proton cannot start here at all
+
+Reproducing the launch chain by hand (reports 52–57) turned the remaining uncertainty into a clear
+answer, and it is not about Left 4 Dead:
+
+- **The ARM64 route cannot start on this guest.** `steam-launch-wrapper` composes a glibc
+  `LD_LIBRARY_PATH` for Valve's ARM64 runtime and then runs
+  `SteamLinuxRuntime_4-arm64/_v2-entry-point` — a **shell script**. That script therefore runs in
+  the guest's *musl* shell, which then tries to load the glibc libraries from that path and dies:
+  `Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol
+  not found` (and eleven more), immediately, with no process left behind. Reproduced both with the
+  wrapper and without it; the wrapper is what makes it unavoidable, because that environment is
+  exactly what the runtime stages need.
+- **Steam restores its own `reaper`.** The stub installed for the Hollow Knight route is back to
+  the original ELF (`6105162a…`) — Steam repairs its runtime files, and the first reproduction died
+  with `reaper: prctl() failed!` until the stub was re-applied (`69bfb211…` this time; the archived
+  stub script is `scripts/…`, the served copy had been fetched from `reports/` and 404ed, so the
+  stub is written inline in report 58). **Any Steam runtime repair undoes the stub.**
+- **The lesson:** on this guest only routes in which *everything* is translated by the device's own
+  FEX can work. The device's FEX is what runs Hollow Knight; Valve's runtime chain is built for a
+  glibc host (SteamOS-style) and mixes glibc and musl in one command line, which this filesystem
+  cannot satisfy.
+- Hence the x86_64 route is the more promising one after all, and concretely: make
+  `/usr/share/guestos/fex-mesa` exist — `fex-compat-tool` writes it into the FEX config as `RootFS`
+  and it does not exist here — pointing at the device's own x86_64 stack (`/opt/hollow-runtime` for
+  the guest libs and loader, `/opt/hollow-mesa26` and `/opt/hollow-egl` for graphics, all proven by
+  the Hollow Knight route), then map appid 500 back to the FEX tool. Everything x86_64 in that
+  chain (SteamLinuxRuntime_4's entry point, pressure-vessel, Proton, wine) then runs under the FEX
+  that already works here, instead of mixing a glibc ARM64 runtime into a musl shell.
+- Two self-inflicted traps are worth recording: exporting `LD_LIBRARY_PATH` for the whole shell
+  breaks every busybox tool in it (report 53, exit 127), and busybox `timeout` is unreliable on
+  iSH (`timer_create: Bad address`) — scope both, or avoid them.
+
+Nothing above changes the verdict on L4D itself: it has still never started, and whether Proton can
+handle a 32-bit Source engine title through FEX's wow64 path remains untested.

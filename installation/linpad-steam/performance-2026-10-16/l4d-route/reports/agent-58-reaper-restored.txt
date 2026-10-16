@@ -1,0 +1,61 @@
+AGENT_BEGIN id=58-reaper-restored pid=1143 Fri Oct 16 19:48:04 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is the reaper the stub or the original? ===
+6105162a0b337c4f082f382b4bbd0211c03808df36b698a9dbfadd2d768a7161  /root/.local/share/Steam/steamrtarm64/reaper
+stub digest  : 25a0ae879ba43c06f0959dab30e4a048e5a2dd53ca1cfbd32aab349b86667939
+original     : 6105162a0b337c4f082f382b4bbd0211c03808df36b698a9dbfadd2d768a7161
+^?ELF^B^A^A^@^@^@^@^@^@^@^@^@^C^@M-7^@^A^@^@^@M-@^H^@^@^@^@^@^@@^@^@^@^@^@^@^@^HC^@^@^@^@^@^@^@^@^@^@@^@8^@	^@@^@"^@!^@^F^@^@^@^D^@^@^@@^@^@^@^@^@^@^@@^@^@^@^@^@^@^@@^@^@^@^@^@^@^@M-x^A^@^@^@^@^@^@M-x^A^@^@^@^@^@^@^H^@^@^@^@^@^@^@^C^@^@^@^D^@^@^@8^B^@^@^@^@^@^@8^B^@^@^@^@^@^@8^B^@^@^@^@^@^@^[^@^@^@^@^@^@^@^[^@^@^@^@^@^@^@^A^@^@^@^@^@^@^@^A^@^@^@^E^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@M-\^M^@^@^@^@^@^@M-\^M^@^@^@^@^@^@^@^@^A^@^@^@^@^@^A^@^@^@^F^@^@^@M- ^]^@^@^@^@^@^@M- ^]^A^@^@^@^@^@M- ^]^A^@^@^@^@^@M-P^B^@^@^@^@^@^@M-X^B^@^@^@^@^@^@^@^@^A^@^@^@^@^@^B^@^@^@^F^@^@^@M-0^]^@^@^@^@^@^@M-0^]^A^@^@^@^@^@M-0^]^A^@^@^@^@^@M-p^A^@^@^@^@^@^@M-p^A^@^@^@^@^@^@^H^@^@^@^@^@^@^@^D^@^@^@^D^@^@^@T^B^@^@^@^@^@^@T^B^@^@^@^@^@^@T^B^@^@^@^@^@^@D^@^@^@^@^@^@^@D^@^@^@^@^@^@^@^D^@^@^@^@^@^@^@PM-etd^D^@^@^@M-0^L^@^@^@^@^@^@M-0^L^@^@^@^@^@^@M-0^L^@^@^@^@^@^@D^@^@^@^@^@^@^@D^@^@^@^@^@^@^@^D^@^@^@^@^@^@^@QM-etd^F^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^P^@^@^@^@^@^@^@RM-etd^D^@^@^@M- ^]^@^@^@^@^@^@M- ^]^A^@^@^@^@^@M- ^]^A^@^@^@^@^@`^B^@^@^@^@^@^@`^B^@^@^@^@^@^@^A^@^@^@^@^@^@^@/lib/ld-linux-aarch64.so.1^@^@^D^@^@^@^T^@^@^@^C^@^@^@GNU^@M-iqM-z"M-^T)M-b<^[g^[]M-@hM-^LM-^?M-bM-tM-(>^D^@^@^@^P^@^@^@^A^@^@^@GNU^@^@^@^@^@^C^@^@^@^G^@^@^@^@^@^@^@^A^@^@^@^A^@^@^@^A^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^C^@^K^@M-H^G^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^C^@^W^@` ^A^@^@^@^@^@^@^@^@^@^@^@^@^@H^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^A^@^@^@ ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@x^@^@^@"^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@c^@^@^@^Q^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@R^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@M-^N^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@M-E^@^@^@ ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@W^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@j^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@M-^G^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@q^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@M^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^]^@^@^@ ^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@7^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@]^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@_ITM_deregisterTMCloneTable^@_ITM_registerTMCloneTable^@__errno_location^@exit^@wait^@fork^@abort^@prctl^@stderr^@execvp^@fwrite^@__cxa_finalize^@strcmp^@__libc_start_main^@libpthread.so.0^@libc.so.6^@GLIBC_2.17^@__gmon_start__^@^@^@^@^@^@^@^B^@^@^@^B^@^B^@^B^@^B^@^@^@^B^@^B^@^B^@^B^@^B^@^@^@^C^@^B^@^A^@^A^@M- ^@^@^@^P^@^@^@ ^@^@^@M-^WM-^QM-^V^F^@^@^C^@M-:^@^@^@^@^@^@^@^A^@^A^@M-0^@^@^@^P^@^@^@^@^@^@^@M-^WM-^QM-^V^F^@^@^B^@M-:^@^@^@^@^@^@^@M- ^]^A^@^@^@^@^@^C^D^@^@^@^@^@^@M-P	^@^@^@^@^@^@M-(^]^A^@^@^@^@^@^C^D^@^@^@^@^@^@M-^@	^@^@^@^@^@^@M-(^_^A^@^@^@^@^@^C^D^@^@^@^@^@^@0^L^@^@^@^@^@^@M-P^_^A^@^@^@^@^@^C^D^@^@^@^@^@^@M-0^K^@^@^@^@^@^@M-X^_^A^@^@^@^@^@^C^D^@^@^@^@^@^@M-T	^@^@^@^@^@^@h ^A^@^@^@^@^@^C^D^@^@^@^@^@^@h ^A^@^@^@^@^@M-0^_^A^@^@^@^@^@^A^D^@^@^D^@^@^@^@^@^@^@^@^@^@^@M-8^_^A^@^@^@^@^@^A^D^@^@^E^@^@^@^@^@^@^@^@^@^@^@M-@^_^A^@^@^@^@^@^A^D^@^@^F^@^@^@^@^@^@^@^@^@^@^@M-H^_^A^@^@^@^@^@^A^D^@^@	^@^@^@^@^@^@^@^@^@^@^@M-`^_^A^@^@^@^@^@^A^D^@^@^O^@^@^@^@^@^@^@^@^@^@^@^@ ^A^@^@^@^@^@^B^D^@^@^C^@^@^@^@^@^@^@^@^@^@^@^H ^A^@^@^@^@^@^B^D^@^@^E^@^@^@^@^@^@^@^@^@^@^@^P ^A^@^@^@^@^@^B^D^@^@^G^@^@^@^@^@^@^@^@^@^@^@^X ^A^@^@^@^@^@^B^D^@^@^H^@^@^@^@^@^@^@^@^@^@^@  ^A^@^@^@^@^@^B^D^@^@	^@^@^@^@^@^@^@^@^@^@^@( ^A^@^@^@^@^@^B^D^@^@
+^@^@^@^@^@^@^@^@^@^@^@0 ^A^@^@^@^@^@^B^D^@^@^K^@^@^@^@^@^@^@^@^@^@^@8 ^A^@^@^@^@^@^B^D^@^@^L^@^@^@^@^@^@^@^@^@^@^@@ ^A^@^@^@^@^@^B^D^@^@^M^@^@^@^@^@^@^@^@^@^@^@H ^A^@^@^@^@^@^B^D^@^@^N^@^@^@^@^@^@^@^@^@^@^@P ^A^@^@^@^@^@^B^D^@^@^P^@^@^@^@^@^@^@^@^@^@^@X ^A^@^@^@^@^@^B^D^@^@^Q^@^@^@^@^@^@^@^@^@^@^@M-}{M-?M-)M-}^C^@M-^QJ^@^@M-^TM-}{M-AM-(M-@^C_M-V^@^@^@^@M-p{M-?M-)M-^P^@^@M-0^QM-~GM-y^PM-b?M-^Q ^B^_M-V^_ ^CM-U^_ ^CM-U^_ ^CM-UM-^P^@^@M-P^Q^B@M-y^P^B^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^F@M-y^P"^@M-^Q ^B^_M-VM-^P^@^@M-P^Q
+@M-y^PB^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^N@M-y^Pb^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^R@M-y^PM-^B^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^V@M-y^PM-"^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^Z@M-y^PM-B^@M-^Q ^B^_M-VM-^P^@^@M-P^Q^^@M-y^PM-b^@M-^Q ^B^_M-VM-^P^@^@M-P^Q"@M-y^P^B^AM-^Q ^B^_M-VM-^P^@^@M-P^Q&@M-y^P"^AM-^Q ^B^_M-VM-^P^@^@M-P^Q*@M-y^PB^AM-^Q ^B^_M-VM-^P^@^@M-P^Q.@M-y^Pb^AM-^Q ^B^_M-V^]^@M-^@M-R^^^@M-^@M-RM-e^C^@M-*M-a^C@M-yM-b#^@M-^QM-f^C^@M-^QM-^@^@^@M-0^@M-lGM-yM-^C^@^@M-0cM-hGM-yM-^D^@^@M-0M-^DM-TGM-yM-PM-^?M-^?M-^WM-WM-^?M-^?M-^WM-^@^@^@M-0^@M-dGM-y@^@^@M-4M-OM-^?M-^?^WM-@^C_M-V^_ ^CM-UM-^@^@^@M-P^@M-@^AM-^QM-^A^@^@M-P!M-@^AM-^Q?^@^@M-kM-@^@^@TM-^A^@^@M-0!M-XGM-ya^@^@M-4M-p^C^AM-*^@^B^_M-VM-@^C_M-VM-^@^@^@M-P^@M-@^AM-^QM-^A^@^@M-P!M-@^AM-^Q!^@^@M-K"M-|^?M-SA^LM-^AM-^K!M-|AM-^SM-A^@^@M-4M-^B^@^@M-0BM-pGM-yb^@^@M-4M-p^C^BM-*^@^B^_M-VM-@^C_M-V^_ ^CM-UM-}{M->M-)M-}^C^@M-^QM-s^K^@M-yM-^S^@^@M-P`M-BA9@^A^@5M-^@^@^@M-0^@M-\GM-yM-^@^@^@M-4M-^@^@^@M-P^@4@M-yM-^YM-^?M-^?M-^WM-XM-^?M-^?M-^W ^@M-^@R`M-B^A9M-s^K@M-yM-}{M-BM-(M-@^C_M-V^_ ^CM-U^_ ^CM-UM-\M-^?M-^?^WM-}{M-=M-)M-}^C^@M-^QM-`^_^@M-9M-a^K^@M-yM-^?/^@M-9M-^?+^@M-9M-a+@M-9M-`^_@M-9?^@^@k*^C^@TM-`+M-^@M-9^@M-p}M-SM-a^K@M-y ^@^@M-^K^@^@@M-yM-a^C^@M-*^@^@^@M-^P^@@1M-^QM-^UM-^?M-^?M-^W^_^@^@qA^A^@TM-`+@M-9^@^D^@^QM-a^_@M-9?^@^@kM--^@^@TM-`+@M-9^@^D^@^QM-`/^@M-9^E^@^@^TM-`+@M-9^@^D^@^QM-`+^@M-9M-eM-^?M-^?^WM-`/@M-9^_^@^@qM-^A^A^@TM-^@^@^@M-0^@M-`GM-y^@^@@M-yM-c^C^@M-*^B^CM-^@M-R!^@M-^@M-R^@^@^@M-^P^@`1M-^Q~M-^?M-^?M-^W ^@M-^@R\M-^?M-^?M-^W^D^@M-^@R^C^@M-^@R^B^@M-^@R!^@M-^@RM-^@^DM-^@RM-^BM-^?M-^?M-^W^_^D^@1M-`^WM-^_^Z^@^\^@^R^_^@^@qM-^@^A^@TM-^@^@^@M-0^@M-`GM-y^@^@@M-yM-c^C^@M-*^B^CM-^@M-R!^@M-^@M-R^@^@^@M-^P^@M-`1M-^QhM-^?M-^?M-^W ^@M-^@RFM-^?M-^?M-^WMM-^?M-^?M-^WM-`'^@M-9M-`'@M-9^_^D^@1M-^A^A^@TM-^@^@^@M-0^@M-`GM-y^@^@@M-yM-c^C^@M-*M-b^BM-^@M-R!^@M-^@M-R^@^@^@M-^P^@`2M-^QXM-^?M-^?M-^W ^@M-^@R6M-^?M-^?M-^WM-`'@M-9^_^@^@qM-!^A^@TM-`/M-^@M-9^@M-p}M-SM-a^K@M-y ^@^@M-^K^B^@@M-yM-`/M-^@M-9^@M-p}M-SM-a^K@M-y ^@^@M-^KM-a^C^@M-*M-`^C^BM-*?M-^?M-^?M-^W^@^@M-^@M-RIM-^?M-^?M-^WM-`#^@M-9M-`#@M-9^_^D^@1aM-^?M-^?THM-^?M-^?M-^W^@^@@M-9^_(^@q@^@^@TM-vM-^?M-^?^W^_ ^CM-U^@^@M-^@RM-}{M-CM-(M-@^C_M-V^_ ^CM-U^_ ^CM-U^_ ^CM-UM-}{M-<M-)M-}^C^@M-^QM-sS^AM-)M-^T^@^@M-0M-^TM-"6M-^QM-u[^BM-)M-^U^@^@M-0M-5M-^B6M-^QM-^T^B^UM-KM-v^C^@*M-wc^CM-)M-w^C^AM-*M-x^C^BM-*M-^TM-~CM-^SM-xM-~M-^?M-^Wt^A^@M-4^S^@M-^@M-R^_ ^CM-UM-#zsM-xM-b^C^XM-*s^F^@M-^QM-a^C^WM-*M-`^C^V*`^@?M-VM-^_^B^SM-k!M-^?M-^?TM-sSAM-)M-u[BM-)M-wcCM-)M-}{M-DM-(M-@^C_M-V^_ ^CM-UM-@^C_M-VM-}{M-?M-)M-}^C^@M-^QM-}{M-AM-(M-@^C_M-V^@^@^@^@^A^@^B^@^@^@^@^@--^@^@^@^@^@^@reaper: no sub-command!
+
+=== re-apply the stub ===
+wget: server returned error: HTTP/1.0 404 File not found
+download failed; writing the stub inline
+stub in place: 69bfb2117f6a7ecd
+
+=== retry the wrapper chain ===
+t= 35s pfx=no  procs=[]
+t= 70s pfx=no  procs=[]
+t=105s pfx=no  procs=[]
+t=140s pfx=no  procs=[]
+t=175s pfx=no  procs=[]
+
+=== output (first 15 / last 25) ===
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memset_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __vfprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+  ...
+steam-launch-wrapper: VK_INSTANCE_LAYERS=VK_LAYER_VALVE_rpo:VK_LAYER_VALVE_fdm_injection
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memset_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __vfprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+footprint_mb 1402
+allowance_mb 8192
+headroom_mb 6789
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:50:59 UTC 2026

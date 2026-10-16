@@ -1,0 +1,71 @@
+AGENT_BEGIN id=55-l4d-direct-retry pid=1143 Fri Oct 16 19:36:48 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== previous command artefact (did it even run?) ===
+B=/root/.local/share/Steam
+echo "=== previous command artefact (did it even run?) ==="
+head -4 /tmp/kb-agent-cmd.sh 2>&1
+echo "--- previous output file ---"
+--- previous output file ---
+AGENT_BEGIN id=55-l4d-direct-retry pid=1143 Fri Oct 16 19:36:48 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== previous command artefact (did it even run?) ===
+B=/root/.local/share/Steam
+--- agent log tail ---
+Fri Oct 16 19:35:58 UTC 2026 ran id=52-l4d-direct-arm64 AGENT_EXIT=0
+Fri Oct 16 19:36:17 UTC 2026 ran id=53-l4d-direct-with-libs AGENT_EXIT=127
+Fri Oct 16 19:36:31 UTC 2026 ran id=54-l4d-direct-scoped AGENT_EXIT=0
+
+=== start the ARM64 chain (scoped env, output to file) ===
+runner syntax ok
+t= 35s pfx=no  procs=[]
+t= 70s pfx=no  procs=[]
+t=105s pfx=no  procs=[]
+t=140s pfx=no  procs=[]
+t=175s pfx=no  procs=[]
+t=210s pfx=no  procs=[]
+
+=== runner output ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memset_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __vfprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+  ...
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memset_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __vfprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __isoc23_strtol: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __memcpy_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: makecontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: setcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __strcat_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __snprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libz.so.1: __vsnprintf_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libzstd.so.1: __fprintf_chk: symbol not found
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+footprint_mb 1696
+allowance_mb 8192
+headroom_mb 6495
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:40:18 UTC 2026

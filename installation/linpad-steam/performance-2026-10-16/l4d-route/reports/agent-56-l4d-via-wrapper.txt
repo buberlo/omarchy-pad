@@ -1,0 +1,28 @@
+AGENT_BEGIN id=56-l4d-via-wrapper pid=1143 Fri Oct 16 19:40:35 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+runner2 syntax ok
+t= 35s pfx=no  procs=[]
+t= 70s pfx=no  procs=[]
+t=105s pfx=no  procs=[]
+t=140s pfx=no  procs=[]
+t=175s pfx=no  procs=[]
+t=210s pfx=no  procs=[]
+
+=== runner2 output (first 25 / last 20) ===
+/tmp/kb4453-l4d-run2.sh: exec: line 10: /root/.local/share/Steam/steamrtarm64/steam-launch-wrapper: not found
+  ...
+/tmp/kb4453-l4d-run2.sh: exec: line 10: /root/.local/share/Steam/steamrtarm64/steam-launch-wrapper: not found
+
+=== prefix ===
+/root/.local/share/Steam/steamapps/compatdata/500
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Server
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/Config.json
+/root/.local/share/Steam/steamapps/compatdata/500/fex-emu/AppConfig
+footprint_mb 1703
+allowance_mb 8192
+headroom_mb 6488
+soft_mb 1638
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:44:05 UTC 2026

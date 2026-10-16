@@ -4499,13 +4499,13 @@
     },
     {
       "path": "l4d-route/README.md",
-      "bytes": 6943,
-      "sha256": "ebc5126bfd2fceb95699fac8a697453d554bc4c02bd4867c1605b4743e68438e"
+      "bytes": 9738,
+      "sha256": "afd7591ca4cf16d7f86eb5745997b07f8e4bdc9a15bd27bedc068e353bb41754"
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 2669,
-      "sha256": "cc253e412c2094180848b4b9a1f92edf62dfda30479d30eec0df772c7538f625"
+      "bytes": 3400,
+      "sha256": "64a78d9c7dec70c09d3e8076b0102195f3f8fd635f4aaa33cf5d87ef555e1cd1"
     },
     {
       "path": "l4d-route/reports/agent-29-l4d-state.txt",
@@ -4621,6 +4621,41 @@
       "path": "l4d-route/reports/agent-51-vgui-attempt.txt",
       "bytes": 2126,
       "sha256": "dbfef4772e49658e519c37a266ca97820a3afbc2ea8e5bc5649526fd75455771"
+    },
+    {
+      "path": "l4d-route/reports/agent-52-l4d-direct-arm64.txt",
+      "bytes": 1517,
+      "sha256": "907ff372d2f1dcb83b52e4c20a46f7f880c26305e944bd53517518918f69261d"
+    },
+    {
+      "path": "l4d-route/reports/agent-53-l4d-direct-with-libs.txt",
+      "bytes": 15454,
+      "sha256": "ab2ffa188934829bc0cb1a64e5af3366772a0ee2be45112c2e7fe44e3df268dd"
+    },
+    {
+      "path": "l4d-route/reports/agent-54-l4d-direct-scoped.txt",
+      "bytes": 186,
+      "sha256": "7a8d1ac658bd2102f786426aaf29db763eb6bb2dccc3bc9f9efddc0e327a48ae"
+    },
+    {
+      "path": "l4d-route/reports/agent-55-l4d-direct-retry.txt",
+      "bytes": 4473,
+      "sha256": "4f4a1f3c2aedcb75a0579cb96413942ce47d5c90979dceafb1443872e1850143"
+    },
+    {
+      "path": "l4d-route/reports/agent-56-l4d-via-wrapper.txt",
+      "bytes": 1010,
+      "sha256": "bae741d9e44a81cbeb86f5e8f5dd1bcbb3b7984bc4863ae47c218b1da2e67dc7"
+    },
+    {
+      "path": "l4d-route/reports/agent-57-l4d-via-wrapper2.txt",
+      "bytes": 1235,
+      "sha256": "c5289e021f73d84ffdaf590bae9a5f05f836f1420913343be618aaaa24ce35a1"
+    },
+    {
+      "path": "l4d-route/reports/agent-58-reaper-restored.txt",
+      "bytes": 10588,
+      "sha256": "613f0824c1d464af372235db12c7d7533b076f7a9153cbbb20268e7b1de67285"
     },
     {
       "path": "l4d-route/scripts/kb4453-steam-launchopts",

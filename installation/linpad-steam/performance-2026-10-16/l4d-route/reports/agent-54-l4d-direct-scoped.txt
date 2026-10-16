@@ -1,0 +1,5 @@
+AGENT_BEGIN id=54-l4d-direct-scoped pid=1143 Fri Oct 16 19:36:31 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 19:36:31 UTC 2026
