@@ -1,0 +1,2 @@
+CONTEXT_CACHE_BENCH threads=8 hits=400000 local_cache=0 mutex_locks=400000 elapsed_ns=9596000
+CONTEXT_CACHE_BENCH threads=8 hits=400000 local_cache=1 mutex_locks=0 elapsed_ns=127000

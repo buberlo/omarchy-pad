@@ -1,0 +1,77 @@
+{
+  "source": "jit/jit.c",
+  "source_sha256": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4",
+  "header_sha256": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18",
+  "extracted_declarations": [
+    "struct ss_entry {",
+    "static inline size_t pc_hash(",
+    "static void ss_grow_locked(",
+    "static void ss_insert_locked(",
+    "static bool ss_invalidate_locked(",
+    "void jit_invalidate_range(",
+    "static struct fiber_block *ss_get(",
+    "static struct fiber_block *ss_get_cached(",
+    "static void ctx_switch_mm("
+  ],
+  "commands": [
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "-fsanitize=address,undefined",
+      "-fno-omit-frame-pointer",
+      "work/performance/jit-ss-context-cache/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-context-cache/regression"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-context-cache/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-context-cache/benchmark"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-context-cache/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-context-cache/lookup-benchmark"
+    ],
+    [
+      "clang",
+      "-O2",
+      "-g",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-pthread",
+      "work/performance/jit-ss-context-cache/jit-ss-index-harness.c",
+      "-o",
+      "work/performance/jit-ss-context-cache/context-benchmark"
+    ]
+  ],
+  "scope": "Local host fixture runs actual production private functions; no device/gameplay performance claim.",
+  "stubs": "Translation, compiled-block removal, lifetime teardown and allocator-failure injection. No compiled blocks inserted.",
+  "benchmark": "65536 entries, 1000 false-positive page invalidations; original full scan versus actual new index.",
+  "lookup_benchmark": "65536 live PCs and permuted hits for 4/64/4096/65536-byte strides at high FEX-like addresses; exact old fixed-table hit path versus production ss_get with grown table. Node visits and local elapsed time only.",
+  "context_benchmark": "8 host threads, 400000 persistent hits; actual production shared lookup versus per-context cache; exact lock counts, not device throughput."
+}

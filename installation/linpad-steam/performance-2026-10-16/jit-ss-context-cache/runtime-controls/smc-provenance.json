@@ -1,0 +1,11 @@
+{
+  "scope": "Local macOS-hosted LinPad CLI, SS per-context persistent cache. No device performance claim.",
+  "source_head": "f93f14493b4d1b38f5e42b97613237891c1e9b48",
+  "files": {
+    "work/linpad-cli/ish": "b47c299a4da7445ee0aa2ba8dd5accd6ac682d2425a6af125e682988a348ef35",
+    "work/performance/vulkan-repro-root/opt/smc": "2142c33c8463ad1d85f90615f1d38c0a0bb9a80a61a1215b26d33b5df2e88ae2",
+    "work/performance/vulkan-repro-root/opt/jit-ss-smc-probe": "1877fa1b6da5795ca30d0af409bfd47ce5b4913adab1fc08d093fa21ac9a9bba",
+    "work/LinPad/jit/jit.c": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4",
+    "work/LinPad/jit/jit_internal.h": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18"
+  }
+}

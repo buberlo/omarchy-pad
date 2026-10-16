@@ -1,0 +1,15 @@
+{
+  "review": "PASS; no blocking correctness finding",
+  "scope": "Independent read-only source and existing focused harness evidence review; no additional device execution",
+  "files": {
+    "jit/jit.c": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4",
+    "jit/jit_internal.h": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18",
+    "tests/manual/steam-compat/test-jit-ss-index.py": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed"
+  },
+  "evidence": [
+    "regression.txt",
+    "context-benchmark.txt",
+    "provenance.json"
+  ],
+  "required_next_gate": "Unchanged real ARM64 ordinary/fallback self-modification and Mono controls on rebuilt CLI; physical performance remains separate."
+}

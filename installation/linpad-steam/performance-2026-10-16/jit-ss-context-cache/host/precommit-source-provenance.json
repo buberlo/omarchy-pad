@@ -1,0 +1,12 @@
+{
+  "source_head": "a12ac91bc69ca75097cb3125f210d4e80c2bde5f",
+  "files": {
+    "jit/jit.c": "f3a55cc77ac8436d09d34b272d22796eff9b64ab5bab4f6613c98049b45f28e4",
+    "jit/jit_internal.h": "c1609de004a6eb9706310caf9b413a7b18f0b0ed0bfcbe90b620dc2b70ab9f18",
+    "jit/DESIGN.md": "4175d8b916b5ba854910883ab28f512db266e12909cd9abece11f538ea7c9ed5",
+    "tests/manual/steam-compat/test-jit-ss-index.py": "f73853516277d6672e46664e831dd359a3980c3a25d5de70dbdeb37302e69eed",
+    "tests/manual/steam-compat/README.md": "02acb7ca245376d054a5854f3ffe08a4b8b7b0fcd340e554d55d0b5b87c55281"
+  },
+  "scope": "Independent review, extracted actual-function sanitizers, local CLI rebuild and real unchanged SMC/Mono controls passed. Physical device validation pending.",
+  "cli_sha256": "b47c299a4da7445ee0aa2ba8dd5accd6ac682d2425a6af125e682988a348ef35"
+}

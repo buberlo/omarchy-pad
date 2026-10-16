@@ -1,0 +1,11 @@
+ninja: Entering directory `work/linpad-cli'
+[1/6] Compiling C object libish_emu.a.p/jit_pcache.c.o
+[2/6] Compiling C object libish_emu.a.p/jit_codemem.c.o
+ninja: Entering directory `work/linpad-cli'
+[1/6] Compiling C object libish_emu.a.p/jit_pcache.c.o
+[2/6] Compiling C object libish_emu.a.p/jit_codemem.c.o
+[3/6] Compiling C object libish_emu.a.p/jit_jit.c.o
+[4/6] Compiling C object libish_emu.a.p/jit_translate.c.o
+[5/6] Linking static target libish_emu.a
+[6/6] Linking target ish
+ld: warning: ignoring duplicate libraries: '-lsqlite3'

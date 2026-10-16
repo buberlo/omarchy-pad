@@ -1,0 +1,13 @@
+{
+  "scope": "Local macOS-hosted LinPad CLI only; not a physical iPad game test",
+  "sdl_video_driver": "dummy; local no-display control",
+  "files": {
+    "work/linpad-cli/ish": "b47c299a4da7445ee0aa2ba8dd5accd6ac682d2425a6af125e682988a348ef35",
+    "work/performance/game-fault-report/libmonobdwgc-2.0.so": "682d74f03efd9cebd05d38e82c4b296a0a1865f070440281aa1ac51022220b94",
+    "work/performance/vulkan-repro-root/opt/UnityPlayer.so": "12ce7af93c41b13b3e7d9b75b591336cc56c9ce113714143fd897cc1dcf00e33",
+    "work/performance/vulkan-repro-root/opt/fex/FEX-apple-m1-munmap": "343c8c29bfb933d317ffea15bbb898f58bcdeb82911461a70b5235afb9600e0d",
+    "work/performance/vulkan-repro-root/opt/mono-init/probe": "9359890704d5fc5b9a0302a45765fa016dbe704738d5f3487b163f312f11a789",
+    "work/performance/vulkan-repro-root/opt/mono-init/launch": "82775d5b51b1901ec2aad9664f617d8929ed14988f45580cf21a7e2d534b3059",
+    "work/performance/game-fault-report/mscorlib.dll": "19c81960f79980f14cd4dc271ed42c3e7f031f024c17977fc0f4a9f672a23b86"
+  }
+}

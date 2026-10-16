@@ -1,0 +1,51 @@
+commit 0afc2925adbae7b772e8331ef619ba141be771cb
+Author:     Konrad <konrad@MacBook-Pro-von-Konrad.local>
+AuthorDate: Fri Oct 16 21:08:44 2026 +0800
+Commit:     Konrad <konrad@MacBook-Pro-von-Konrad.local>
+CommitDate: Fri Oct 16 21:08:44 2026 +0800
+
+    Document per-context fallback cache lifetime and validation
+
+diff --git a/jit/DESIGN.md b/jit/DESIGN.md
+index 87e71239..f0cc3586 100644
+--- a/jit/DESIGN.md
++++ b/jit/DESIGN.md
+@@ -278,8 +278,18 @@ link, leaving the page index and entry/block addresses unchanged. The old
+ bucket array can then be freed immediately; code generations and deferred
+ block reclamation are unchanged. Failed allocation retains the existing table
+ and defers the next attempt until the live count doubles. Capacity arithmetic
+-is checked before allocation. This avoids long fallback lookup chains in large
+-FEX workloads without adding another executable-block cache or lock-free path.
++is checked before allocation. This bounds average lookup chains as FEX
++workloads grow.
++
++Repeated single-step lookups also use a 256-entry, 6 KiB cache in each thread's
++context. Entries carry the guest PC and mm generation; a hit avoids the shared
++mutex. The locked slow path fills it only for a persistent shared SS entry and
++records the generation before unlocking. One-shot, failed-allocation and
++stale-generation results never enter it, since one-shot retirement does not
++advance the generation. Code invalidation rejects old entries through the
++existing generation check, while the active context's epoch protects a block
++through execution. Address-space/id switches clear both context lookup caches;
++idle trimming sets ctx->mm to NULL and takes that same reset path on reentry.
+ 
+ ## 10. Executable memory on iOS (TXM) and macOS
+ 
+diff --git a/tests/manual/steam-compat/README.md b/tests/manual/steam-compat/README.md
+index c56f09e4..162eb54c 100644
+--- a/tests/manual/steam-compat/README.md
++++ b/tests/manual/steam-compat/README.md
+@@ -14,6 +14,13 @@ lookups during growth, repaired invalidation backlinks, overflow prevention,
+ and allocation-failure backoff/recovery. A second benchmark compares the
+ original 256-bucket lookup with the growing table for 65,536 live instructions
+ at high addresses and several code strides, reporting exact node visits.
++Per-context checks cover generation changes during publication, a reclaimed
++stale block, slot collisions, one-shot and allocation-failure exclusions, and
++the actual address-space switch/reset helper. The trim check uses the same
++null-mm trigger as the production reactivation path; it does not emulate host
++`madvise`. An eight-thread repeated-hit comparison reports exact mutex counts
++for the shared lookup and warmed context caches, with both paths also checked
++under ASan/UBSan.
+ Its benchmark compares the original full-cache walk with the page index for
+ nonmatching writes that collide in both the bloom filter and page hash.
+ That synthetic host timing does not measure game startup or frame rate.
