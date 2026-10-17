@@ -388,8 +388,15 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     // Everything else keeps the plain private path: a PE image or a prefix file is a regular file, and
     // its data sections are written during loading, where a fault plus page copy per write is far too
     // slow under emulation.
+    // The guest's own view of the link count decides: the fake filesystem removes the database entry
+    // on unlink but keeps the host file, so the host's st_nlink stays 1 while the guest correctly sees
+    // 0. Wine's server creates its shared sections, unlinks them and passes them on, so they are
+    // unlinked for the guest; a PE image or a prefix file is not.
+    struct statbuf guest_st;
+    bool guest_unlinked = fd->mount != NULL && fd->mount->fs != NULL && fd->mount->fs->fstat != NULL &&
+        fd->mount->fs->fstat(fd, &guest_st) == 0 && guest_st.nlink == 0;
     bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
-        (fd->flags & O_ACCMODE_) == O_RDONLY_ && have_stat && st.st_nlink == 0;
+        (fd->flags & O_ACCMODE_) == O_RDONLY_ && guest_unlinked;
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
         // A MAP_SHARED mapping is always a direct file-backed host mapping,
