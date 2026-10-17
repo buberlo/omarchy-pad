@@ -114,6 +114,7 @@ static struct fd *at_fd(fd_t f) {
 }
 
 static dword_t sys_stat_path(fd_t at_f, addr_t path_addr, addr_t statbuf_addr, bool follow_links) {
+    { char p[MAX_PATH]; if (user_read_string(path_addr, p, sizeof(p)) == 0) ish_note_path("stat", p); }
     int err;
     char path[MAX_PATH];
     if (user_read_string(path_addr, path, sizeof(path)))

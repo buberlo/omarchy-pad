@@ -18,6 +18,20 @@ struct ish_syscall_entry {
 static struct ish_syscall_entry ish_syscall_ring[ISH_SYSCALL_RING];
 static int ish_syscall_ring_pos;
 
+// The client probes for its helper binaries (the crash reporter in particular) with stat/access/open
+// and then reports "Could not find steamerrorreporter binary" without saying where it looked. Log the
+// paths that mention those helpers, so the place it wants them is a fact instead of a guess.
+void ish_note_path(const char *what, const char *path) {
+    if (path == NULL)
+        return;
+    if (strstr(path, "errorreporter") == NULL && strstr(path, "crashhandler") == NULL &&
+            strstr(path, "breakpad") == NULL)
+        return;
+    static int noted;
+    if (noted++ < 120)
+        printk("ish-path: %d(%s) %s '%s'\n", current->pid, current->comm, what, path);
+}
+
 bool ish_traced_process(void) {
     return strncmp(current->comm, "ld-linux", 8) == 0 ||
            strstr(current->comm, "steam") != NULL ||

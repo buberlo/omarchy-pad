@@ -376,3 +376,5 @@ void ish_dump_syscall_ring(const char *why);
 // Is this one of the processes under investigation?
 bool ish_traced_process(void);
 int_t sys_sched_setparam(pid_t_ pid, addr_t param_addr);
+// Log a helper path a traced process is probing (see kernel/calls.c).
+void ish_note_path(const char *what, const char *path);

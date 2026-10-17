@@ -53,6 +53,7 @@ dword_t sys_faccessat(fd_t at_f, addr_t path_addr, mode_t_ mode, dword_t flags) 
     if (at == NULL)
         return _EBADF;
     STRACE("faccessat(%d, \"%s\", 0x%x, %d)", at_f, path, mode, flags);
+    ish_note_path("access", path);
 
     if (flags & AT_EACCESS_)
         return generic_accessat(at, path, mode);
@@ -68,6 +69,7 @@ dword_t sys_faccessat(fd_t at_f, addr_t path_addr, mode_t_ mode, dword_t flags) 
 }
 
 fd_t sys_openat(fd_t at_f, addr_t path_addr, dword_t flags, mode_t_ mode) {
+    { char p[MAX_PATH]; if (user_read_string(path_addr, p, sizeof(p)) == 0) ish_note_path("open", p); }
     char path[MAX_PATH];
     if (user_read_string(path_addr, path, sizeof(path)))
         return _EFAULT;
