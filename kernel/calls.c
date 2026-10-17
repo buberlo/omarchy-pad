@@ -5,6 +5,30 @@
 #include <time.h>
 #include "debug.h"
 #include "kernel/calls.h"
+
+// Bounded ring of the last slow-path syscalls of the processes under investigation, dumped when one of
+// them dies of a fatal signal. See ish_note_syscall() in the dispatch below.
+#define ISH_SYSCALL_RING 96
+struct ish_syscall_entry {
+    int pid;
+    char comm[16];
+    int num;
+    int64_t result;
+};
+static struct ish_syscall_entry ish_syscall_ring[ISH_SYSCALL_RING];
+static int ish_syscall_ring_pos;
+
+void ish_dump_syscall_ring(const char *why) {
+    printk("ish-ring: %s for %d(%s), last %d syscalls:\n", why, current->pid, current->comm,
+           ISH_SYSCALL_RING);
+    for (int i = 0; i < ISH_SYSCALL_RING; i++) {
+        struct ish_syscall_entry *e = &ish_syscall_ring[(ish_syscall_ring_pos + i) % ISH_SYSCALL_RING];
+        if (e->pid == 0)
+            continue;
+        printk("ish-ring:   %d(%s) syscall %d = %lld\n", e->pid, e->comm, e->num,
+               (long long) e->result);
+    }
+}
 #include "fs/fake-flush.h"
 #include "emu/interrupt.h"
 #include "util/signpost.h"
@@ -137,7 +161,19 @@ void handle_interrupt(int interrupt) {
                         (strncmp(current->comm, "ld-linux", 8) == 0 ||
                          strstr(current->comm, "steam") != NULL ||
                          strstr(current->comm, "reaper") != NULL)) {
-                    static int eperm_traced;
+                    // Ring buffer of the last slow-path syscalls of the processes under investigation.
+                // Nothing is printed until one of them takes a fatal signal (see signal.c), which is
+                // exactly when the last few calls name the cause.
+                if (strncmp(current->comm, "ld-linux", 8) == 0 ||
+                        strstr(current->comm, "steam") != NULL ||
+                        strstr(current->comm, "reaper") != NULL) {
+                    struct ish_syscall_entry *e = &ish_syscall_ring[ish_syscall_ring_pos++ % ISH_SYSCALL_RING];
+                    e->pid = current->pid;
+                    snprintf(e->comm, sizeof(e->comm), "%s", current->comm);
+                    e->num = (int) syscall_num;
+                    e->result = result;
+                }
+                static int eperm_traced;
                     if (eperm_traced++ < 200)
                         printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
                                current->pid, current->comm, syscall_num);
