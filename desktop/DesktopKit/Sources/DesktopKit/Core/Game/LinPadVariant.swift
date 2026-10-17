@@ -28,4 +28,13 @@ public enum LinPadVariant: String, Sendable {
 
     /// The game app boots into Steam instead of the desktop.
     public var isGameMode: Bool { self == .steam }
+
+    /// Which Linux root this build boots. The desktop app keeps `default` (its Alpine system, with the
+    /// user's files); the game app boots `arch` (the Arch Linux ARM image, `roots/arch`). One container
+    /// holds both, and neither may mount the other's.
+    ///
+    /// This is the rule. `VariantRootName()` in app/AppDelegate.m mirrors it because the boot path runs
+    /// in Objective-C before any of this is reachable -- change one, change both. Tested in
+    /// `GameModeTests.testEachVariantKnowsWhichRootItBoots`.
+    public var rootName: String { isGameMode ? "arch" : "default" }
 }

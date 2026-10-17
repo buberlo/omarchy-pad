@@ -466,6 +466,11 @@ static void RequestFastMode(BOOL afterBoot, void (^done)(BOOL on)) {
 
 /// Which root this build boots, from the variant the build baked into Info.plist (app/AppARM64.xcconfig,
 /// LINPAD_VARIANT via app/Info.plist LinPadVariant). One container, one root per app variant.
+///
+/// This mirrors `LinPadVariant.rootName` (desktop/DesktopKit/.../Game/LinPadVariant.swift), which is the
+/// tested statement of the rule -- Objective-C needs it here because the boot path runs before the Swift
+/// package is reachable. Change one, change both; the rule itself is covered by
+/// GameModeTests.testEachVariantKnowsWhichRootItBoots.
 static NSString *VariantRootName(void) {
     NSString *variant = [NSBundle.mainBundle objectForInfoDictionaryKey:@"LinPadVariant"];
     return [variant isEqualToString:@"steam"] ? @"arch" : @"default";

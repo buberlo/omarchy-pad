@@ -327,4 +327,20 @@ final class GameModeTests: XCTestCase {
         coordinator.openDesktop()
         XCTAssertEqual(asked, 1)
     }
+
+    /// The most consequential thing this type decides: an app that boots the wrong root mounts a
+    /// different Linux system than the one it shipped. The desktop's Alpine root is the default for
+    /// anything unrecognised, and an unknown value must never invent a root name.
+    func testEachVariantKnowsWhichRootItBoots() {
+        XCTAssertEqual(LinPadVariant.parse("steam").rootName, "arch")
+        XCTAssertEqual(LinPadVariant.parse("desktop").rootName, "default")
+        XCTAssertEqual(LinPadVariant.parse(nil).rootName, "default")
+        XCTAssertEqual(LinPadVariant.parse("").rootName, "default")
+        XCTAssertEqual(LinPadVariant.parse(" ARCH ").rootName, "default", "unknown values must not invent a root")
+        XCTAssertEqual(LinPadVariant.current(bundle: Bundle(for: type(of: self))).rootName, "default",
+                       "a test bundle has no LinPadVariant key, so it is the desktop")
+        XCTAssertEqual(LinPadVariant.steam.rootName, "arch")
+        XCTAssertNotEqual(LinPadVariant.desktop.rootName, LinPadVariant.steam.rootName,
+                          "the two apps must never share a root name")
+    }
 }
