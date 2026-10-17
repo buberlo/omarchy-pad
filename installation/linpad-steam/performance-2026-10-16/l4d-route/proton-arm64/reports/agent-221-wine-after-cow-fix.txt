@@ -1,0 +1,17 @@
+AGENT_BEGIN id=221-wine-after-cow-fix pid=43 Sat Oct 17 06:18:27 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== Left 4 Dead under wine, with a display, after the CoW fix ===
+t= 38s game=0 class_err=0 desktop_err=0 windows=1
+t= 76s game=0 class_err=0 desktop_err=0 windows=1
+t=114s game=0 class_err=0 desktop_err=0 windows=1
+t=152s game=0 class_err=0 desktop_err=0 windows=1
+t=190s game=0 class_err=0 desktop_err=0 windows=1
+t=228s game=0 class_err=0 desktop_err=0 windows=1
+t=266s game=0 class_err=0 desktop_err=0 windows=1
+
+=== the windows that appeared ===
+ishwl 12152.169: map toplevel 1 '' env
+=== log: the interesting lines ===
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:22:57 UTC 2026

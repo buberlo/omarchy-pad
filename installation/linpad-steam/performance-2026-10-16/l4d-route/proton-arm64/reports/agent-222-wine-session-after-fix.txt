@@ -1,0 +1,21 @@
+AGENT_BEGIN id=222-wine-session-after-fix pid=43 Sat Oct 17 06:23:10 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+log size from the last attempt: 514 bytes
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+wineserver: using server-side synchronization.
+ishwl-x11 running: 2
+
+=== a plain wine run: only the session and window classes matter ===
+t= 32s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+t= 64s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+t= 96s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+t=128s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+t=160s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+t=192s wine=1 explorer=0 class_err=0 desktop_err=0 arm64ec=0 log=47 bytes
+
+=== the log ===
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:26:22 UTC 2026

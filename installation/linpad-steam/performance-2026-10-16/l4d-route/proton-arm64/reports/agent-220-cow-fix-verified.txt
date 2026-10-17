@@ -1,0 +1,17 @@
+AGENT_BEGIN id=220-cow-fix-verified pid=43 Sat Oct 17 06:18:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the probe that failed before the fix ===
+  reader (MAP_PRIVATE, page faulted before the write): 0x0000000000000000 -> 0x8888888888888888  sees the writer's mapping write (copy-on-write over the page cache)
+ok
+exit=0
+
+=== and the rest of the sharing probes ===
+wget: server returned error: HTTP/1.0 404 File not found
+  fork-shared-mapping              env: ‘/tmp/fork-shared-mapping’: No such file or directory
+wget: server returned error: HTTP/1.0 404 File not found
+  file-grow-under-mapping          env: ‘/tmp/file-grow-under-mapping’: No such file or directory
+wget: server returned error: HTTP/1.0 404 File not found
+  private-mapping-coherence        env: ‘/tmp/private-mapping-coherence’: No such file or directory
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:18:14 UTC 2026

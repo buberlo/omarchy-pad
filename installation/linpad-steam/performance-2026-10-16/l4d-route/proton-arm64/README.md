@@ -671,3 +671,35 @@ Other suspects cleared in this round, each with a probe that passes on real Linu
 `probes/growmap.c` (a file growing under two live mappings), `probes/forkmap.c` (a shared mapping
 inherited across `fork`), and the silent-fallback instrumentation, which logged 681 shared mappings in
 one run and not a single private copy.
+
+## Round of 17 October, 14:15–14:30: **the fix works — wine's window layer is up**
+
+The copy-on-write fix (commit `4292df6e`, `fs/real.c`) makes private file mappings behave like Linux:
+the host file is mapped shared but read-only so reads follow the page cache, the guest pages are marked
+P_COW, and memory.c's existing fault path copies a page privately on the first guest write. The probe
+that failed before now passes on the device:
+
+```
+reader (MAP_PRIVATE, page faulted before the write): 0x0 -> 0x8888888888888888
+  sees the writer's mapping write (copy-on-write over the page cache)      ok
+```
+
+And wine's shared session comes up. A plain run after the fix:
+
+```
+t= 32s  wine=1  class_err=0  desktop_err=0  alloc_arm64ec=0
+t=192s  wine=1  class_err=0  desktop_err=0  alloc_arm64ec=0
+
+log: "wineserver: using server-side synchronization."     <- nothing else, no errors at all
+```
+
+`Failed to get shared session object for window class` is gone, and so is `get_desktop_window failed`.
+A previous attempt with a display also logged no errors (514 bytes: Xwayland's glamor fallback and the
+wineserver line); the game simply had not started inside the observation window, since wine in
+interpreter mode needs minutes.
+
+That closes the defect this whole investigation was circling: one emulator bug (eager copies of private
+file mappings) hid behind `NtUserRegisterClassExWOW`, the missing desktop window and the game that
+never opened one. Along the way this session fixed three more: memfd sealing (`F_ADD_SEALS`), lazy
+mapping of large anonymous regions (wine's 4 GB ARM64EC bitmap) and, earlier, `MAP_FIXED_NOREPLACE`
+plus the opt-in high address layout.

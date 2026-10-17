@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 25233,
-      "sha256": "1a3881b73b41ca0e1c784e179ef984207761a48495f52131b79ca6852642c5d8"
+      "bytes": 25699,
+      "sha256": "f2f7b30f6838dfb1a812a75a31e56414ea563dc75fc07ee1f19bebed48350f07"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 40798,
-      "sha256": "6c80793aef45e9266915ffd7c12e46d5bb178a27f51f07acc20db06b73a3499d"
+      "bytes": 42466,
+      "sha256": "475c45082e7282f12a67c0f09808883b47712979240fc1b099930fee8df07e40"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -4521,6 +4521,11 @@
       "path": "l4d-route/proton-arm64/breakthrough/l4d-play",
       "bytes": 3656,
       "sha256": "b7f63444b1894852ca16c59bdf9d079919d4bb042c5dd2f204f0ef27b34e7633"
+    },
+    {
+      "path": "l4d-route/proton-arm64/cow-fix/real.c.after-fix",
+      "bytes": 32474,
+      "sha256": "cb4b99ddc4944448173519a0350ec152fc22328a9682107f14874cba722f5292"
     },
     {
       "path": "l4d-route/proton-arm64/evidence-app-console-trace.log",
@@ -5311,6 +5316,21 @@
       "path": "l4d-route/proton-arm64/reports/agent-219-private-reader-shared-writer.txt",
       "bytes": 449,
       "sha256": "874ab01c98aed845d92af32e801f985a96a07fa50b5fbc3fb04d1f1f159414b0"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-220-cow-fix-verified.txt",
+      "bytes": 923,
+      "sha256": "fa4efe116a882df4c4ec24c5ba0bfea556302d03dea2f11e0ac734df0d6d9fd7"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-221-wine-after-cow-fix.txt",
+      "bytes": 711,
+      "sha256": "114bfe0d345791869c60d047112e9e8277211056890997064313009e0b4d8ff2"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-222-wine-session-after-fix.txt",
+      "bytes": 980,
+      "sha256": "13ed6bab4066539834fbd345c9c64c9ee40680841c3afee380e4f65c1bb273f0"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

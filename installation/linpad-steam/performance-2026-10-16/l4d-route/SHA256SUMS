@@ -1,7 +1,8 @@
 afd7591ca4cf16d7f86eb5745997b07f8e4bdc9a15bd27bedc068e353bb41754  README.md
-6c80793aef45e9266915ffd7c12e46d5bb178a27f51f07acc20db06b73a3499d  proton-arm64/README.md
+475c45082e7282f12a67c0f09808883b47712979240fc1b099930fee8df07e40  proton-arm64/README.md
 c7f8d6bea5c9386f740b60e9c0e8723dc844e239e4d39d5332bcca0bbfc2f99a  proton-arm64/breakthrough/gui-file-pe.c
 b7f63444b1894852ca16c59bdf9d079919d4bb042c5dd2f204f0ef27b34e7633  proton-arm64/breakthrough/l4d-play
+cb4b99ddc4944448173519a0350ec152fc22328a9682107f14874cba722f5292  proton-arm64/cow-fix/real.c.after-fix
 e030be1208c1b6f6789c1949462497fd19af5c9b301f5300241761da16a07fb4  proton-arm64/evidence-app-console-trace.log
 9e85ed30f4f438d08a7e77c11bb9d7cccd9d0a3cc459163ff1bf4034c2239128  proton-arm64/evidence-emulator-trace.log
 e6dd8e84073ce47c5bef9b36a35c66cd56221d13027f1d89102d2465d200e539  proton-arm64/fault-trace/emulator-fault-trace.log
@@ -160,6 +161,9 @@ bfdc37c647f099bc77eaa4ba3330d9b960684ca54950461657eb9b1342c9f982  proton-arm64/r
 822659dcd42efa9f4b21e2696f102d06453dc1f652f10eb2c2910eed51bb5992  proton-arm64/reports/agent-217-light-wine-trace.txt
 c36028ad4cb4ee3afc3ec93454e5996ce1e9b421eaed47103bfcd49fe7335c04  proton-arm64/reports/agent-218-private-mapping-coherence.txt
 874ab01c98aed845d92af32e801f985a96a07fa50b5fbc3fb04d1f1f159414b0  proton-arm64/reports/agent-219-private-reader-shared-writer.txt
+fa4efe116a882df4c4ec24c5ba0bfea556302d03dea2f11e0ac734df0d6d9fd7  proton-arm64/reports/agent-220-cow-fix-verified.txt
+114bfe0d345791869c60d047112e9e8277211056890997064313009e0b4d8ff2  proton-arm64/reports/agent-221-wine-after-cow-fix.txt
+13ed6bab4066539834fbd345c9c64c9ee40680841c3afee380e4f65c1bb273f0  proton-arm64/reports/agent-222-wine-session-after-fix.txt
 8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c  proton-arm64/reports/agent-61-phase0-state.txt
 9e93b5493349bcdb92b26acb825b851a4a37cc621baea811ebd7d798f55518bc  proton-arm64/reports/agent-62-phaseA-rootfs.txt
 6db0881b75310144f64f2e0d50aedaece4b2ec9fb9d152287d839ba17bb8cbc3  proton-arm64/reports/agent-63-proton-pe-control.txt
