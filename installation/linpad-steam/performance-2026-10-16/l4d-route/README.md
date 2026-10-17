@@ -135,3 +135,30 @@ answer, and it is not about Left 4 Dead:
 
 Nothing above changes the verdict on L4D itself: it has still never started, and whether Proton can
 handle a 32-bit Source engine title through FEX's wow64 path remains untested.
+
+## Round of 17 October, 18:45–19:05: the last missing capability — driving the iPad itself
+
+Everything up to the game's launch chain is in place, but two things were out of reach for an agent
+without hands: confirming StikDebug (the JIT, worth roughly a factor of ten in speed) and pressing
+things inside the Steam client. The user pointed at
+[ZSeven-W/dsh-ios](https://github.com/ZSeven-W/dsh-ios), a DeepSeek Harness plugin that puts a live,
+interactive view of a USB-connected iPhone or iPad into the conversation — 22 tools including
+`ios_sim_interact` (tap at normalised coordinates, type text, press hardware buttons),
+`ios_sim_find_text` / `ios_sim_tap_text` (Vision OCR and tap the matched text),
+`ios_sim_ui_tree` / `ios_sim_tap_element` (tap by accessibility identity), `ios_sim_screenshot`,
+`ios_sim_wait_for` and `ios_sim_logs`, plus a sidebar panel the user can tap and drag on directly.
+
+That is exactly what this route was missing, so it was installed into the desktop profile:
+
+```
+/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh \
+    plugin --profile desktop add @zseven-w/dsh-ios@latest      # -> @zseven-w/dsh-ios@0.1.0-rc.10
+git clone --depth 1 https://github.com/appium/WebDriverAgent ~/Library/Caches/dsh-ios/wda/src
+```
+
+The plugin loads on the next start of the app (a restart the user performs; the session and every
+commit survive it). After that the plan is: `ios_real_start_wda` to build and launch WebDriverAgent on
+the iPad, tap the StikDebug JIT confirmation with `ios_sim_tap_text`, then press Play in the Steam
+client — and verify the game's window with a screenshot instead of inferring it from process lists.
+Requirements on the device side: unlocked screen (WDA cannot start on a locked device), Developer Mode
+enabled (it is), and a data-capable USB cable.
