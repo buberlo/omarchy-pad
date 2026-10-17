@@ -343,12 +343,31 @@ int realfs_poll(struct fd *fd) {
     return p.revents;
 }
 
+// A guest MAP_PRIVATE mapping of a file must behave like Linux: reads follow the page cache, so a
+// write another process makes *through its MAP_SHARED mapping* is visible, while the first write by
+// this process copies the page privately and never reaches the file. iSH used to map the host file
+// MAP_PRIVATE, which on Darwin hands out a snapshot taken at map time, so a reader never saw later
+// writes -- wine reads its whole shared session that way and failed with "Failed to get shared
+// session object for window class". Instead the host mapping is MAP_SHARED (so reads follow the page
+// cache) but read-only, and the guest pages are marked P_COW: memory.c's copy-on-write fault path
+// already copies the page into private memory on the first guest write.
+static void mark_private_cow(struct mem *mem, page_t start, pages_t pages, int prot) {
+    if (!(prot & P_WRITE))
+        return;
+    for (pages_t i = 0; i < pages; i++) {
+        struct pt_entry *entry = mem_pt(mem, start + i);
+        if (entry != NULL)
+            entry->flags |= P_COW;
+    }
+}
+
 int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off_t offset, int prot, int flags) {
     int mmap_flags = 0;
     if (flags & MMAP_PRIVATE) mmap_flags |= MAP_PRIVATE;
     if (flags & MMAP_SHARED) mmap_flags |= MAP_SHARED;
     int mmap_prot = PROT_READ;
     if (prot & P_WRITE) mmap_prot |= PROT_WRITE;
+    bool guest_private = (flags & MMAP_PRIVATE) != 0;
 
     off_t real_offset = (offset / real_page_size) * real_page_size;
     off_t correction = offset - real_offset;
@@ -405,6 +424,27 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
                    fd->real_fd, map_size, (long long) real_offset,
                    (long long) (have_stat ? st.st_size : -1));
 
+        if (guest_private) {
+            // Same treatment when the mapping reaches past the current end of file: the shared,
+            // read-only host mapping follows the file as it grows (wine extends its session), reads
+            // stay coherent with the writer, and guest writes are copied privately.
+            int host_prot = PROT_READ;
+            char *shared = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
+                    host_prot, MAP_SHARED, fd->real_fd, real_offset);
+            if (shared != MAP_FAILED) {
+                int err = pt_map(mem, start, pages, shared, correction, prot);
+                if (err < 0)
+                    return err;
+                mark_private_cow(mem, start, pages, prot);
+                for (pages_t i = 0; i < pages; i++) {
+                    struct pt_entry *entry = mem_pt(mem, start + i);
+                    if (entry != NULL && (off_t) (offset + i * PAGE_SIZE) >= st.st_size)
+                        entry->flags |= P_PAST_EOF;
+                }
+                return 0;
+            }
+        }
+
         // Create anonymous backing for the full range (zeros for BSS)
         char *memory = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
                 PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
@@ -439,12 +479,23 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
         return pt_map(mem, start, pages, memory, correction, prot);
     }
 
+    int host_flags = mmap_flags;
+    int host_prot = mmap_prot;
+    if (guest_private) {
+        host_flags = MAP_SHARED;              // let reads follow the page cache
+        host_prot &= ~PROT_WRITE;             // and make the first guest write fault
+    }
     char *memory = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
-            mmap_prot, mmap_flags, fd->real_fd, real_offset);
+            host_prot, host_flags, fd->real_fd, real_offset);
     if (memory == MAP_FAILED)
         return _ENOMEM;
 
-    return pt_map(mem, start, pages, memory, correction, prot);
+    int err = pt_map(mem, start, pages, memory, correction, prot);
+    if (err < 0)
+        return err;
+    if (guest_private)
+        mark_private_cow(mem, start, pages, prot);
+    return 0;
 }
 
 ssize_t realfs_readlink(struct mount *mount, const char *path, char *buf, size_t bufsize) {
