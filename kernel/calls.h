@@ -375,3 +375,4 @@ dword_t syscall_success_stub(void);
 void ish_dump_syscall_ring(const char *why);
 // Is this one of the processes under investigation?
 bool ish_traced_process(void);
+int_t sys_sched_setparam(pid_t_ pid, addr_t param_addr);
