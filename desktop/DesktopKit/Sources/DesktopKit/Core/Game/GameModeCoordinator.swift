@@ -217,6 +217,20 @@ public final class GameModeCoordinator {
             return
         }
         phase = .stopped(.steamNotResponding)
+        exportDiagnosticsForFailure()
+    }
+
+    /// Steam never appeared, so this run is over -- leave its evidence behind. The game app has no
+    /// Settings UI, so without this the kernel log, the emulator log (which is where unsupported
+    /// system calls show up), the session log and any crash report are unreachable on a device: this
+    /// export lands in the app's Documents, and a container copy can read Documents even though it
+    /// cannot read `roots/`, where the guest keeps its own logs.
+    private func exportDiagnosticsForFailure() {
+        Task { [host] in
+            let model = DiagnosticsExportModel(host: host)
+            await model.collect()
+            model.export()
+        }
     }
 
     private func startStatusPolling() {
