@@ -319,12 +319,25 @@ int_t sys_sched_getscheduler(pid_t_ UNUSED(pid)) {
     return SCHED_OTHER_;
 }
 int_t sys_sched_setscheduler(pid_t_ UNUSED(pid), int_t policy, addr_t param_addr) {
-    if (policy != SCHED_OTHER_)
-        return _EINVAL;
+    // Accept the policies and priorities a program asks for instead of refusing everything except
+    // SCHED_OTHER at priority 0. There is no real scheduler behind this and the value is not used,
+    // but callers treat the refusal as fatal: Steam's client asserts in tier0/threadtools while
+    // setting a thread priority and tears itself down ("Assertion Failed: Permission denied"), even
+    // though nothing else in its startup fails. Only a policy outside the known set is an error.
+    switch (policy) {
+        case SCHED_OTHER_:
+        case SCHED_FIFO_:
+        case SCHED_RR_:
+        case SCHED_BATCH_:
+        case SCHED_IDLE_:
+            break;
+        default:
+            return _EINVAL;
+    }
     int_t sched_priority;
     if (user_get(param_addr, sched_priority))
         return _EFAULT;
-    if (sched_priority != 0)
+    if (sched_priority < 0 || sched_priority > 99)
         return _EINVAL;
     return 0;
 }
@@ -345,6 +358,16 @@ static int_t sched_priority_bound(int_t policy, bool maximum) {
         default:
             return _EINVAL;
     }
+}
+
+int_t sys_sched_setparam(pid_t_ UNUSED(pid), addr_t param_addr) {
+    // Same reasoning as sys_sched_setscheduler: accept it, do not refuse it.
+    int_t sched_priority;
+    if (user_get(param_addr, sched_priority))
+        return _EFAULT;
+    if (sched_priority < 0 || sched_priority > 99)
+        return _EINVAL;
+    return 0;
 }
 
 int_t sys_sched_get_priority_max(int_t policy) {
