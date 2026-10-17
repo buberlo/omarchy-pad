@@ -20,6 +20,12 @@
 #include "fs/dev.h"
 #include "fs/devices.h"
 #include "fs/real.h"
+
+// Private file mappings up to this size stay coherent with the page cache (copy-on-write), so a
+// reader sees what another process writes through its shared mapping. Bigger mappings keep the plain
+// private path: wine's shared session is a small read-only section, while making the prefix's large
+// files pay a fault and a page copy per write is far too slow under emulation.
+#define COHERENT_PRIVATE_MAX_BYTES (4u << 20)
 #include "kernel/inotify.h"
 #define ISH_INTERNAL
 #include "fs/fake.h"
@@ -375,7 +381,8 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     // privately mapped PE images (relocations) and those mappings must stay fast. An image does not
     // change after it is loaded, so a snapshot is fine for it.
     bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
-        (fd->flags & O_ACCMODE_) == O_RDONLY_;
+        (fd->flags & O_ACCMODE_) == O_RDONLY_ &&
+        (size_t) pages * PAGE_SIZE <= COHERENT_PRIVATE_MAX_BYTES;
 
     off_t real_offset = (offset / real_page_size) * real_page_size;
     off_t correction = offset - real_offset;
