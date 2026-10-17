@@ -1,0 +1,26 @@
+AGENT_BEGIN id=164-wine-window-layer pid=43 Sat Oct 17 00:17:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== Left 4 Dead under wine with a display, after the sealing fix ===
+t= 38s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t= 76s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t=114s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t=152s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t=190s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t=228s game=1 class_err=10 desktop_err=2 new_toplevels=1
+t=266s game=1 class_err=10 desktop_err=2 new_toplevels=1
+
+=== new toplevels (windows!) ===
+ishwl 90381.648: map toplevel 1 '' Steam
+ishwl 90477.681: map toplevel 2 '' env
+=== log: the interesting lines ===
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:21:43 UTC 2026

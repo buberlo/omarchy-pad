@@ -464,3 +464,52 @@ the next attempt must be made with the JIT — which needs the iPad unlocked.
 starts the Steam client inside a rootful Xwayland and waits for the login (`-c`), starts Left 4 Dead
 through Steam (`-applaud 500`, the real path with the DRM handshake), or starts the game directly
 under wine (`-g`) when the handshake is not wanted.
+
+## Round of 17 October, 08:10–08:40: memfd sealing implemented — and what wine still misses
+
+**A real emulator defect, found with a probe and fixed.** Chromium/CEF and modern wine create their
+shared memory as `memfd_create(MFD_ALLOW_SEALING)` + `ftruncate` + `F_ADD_SEALS` and treat any error as
+a failed allocation; virglrenderer/Venus seals its device-memory fds the same way. This kernel
+answered both `fcntl` commands with a constant and the seal bits were unknown, so callers saw
+`EINVAL`. Measured on the device before the fix, and on real Linux for reference:
+
+```
+iPad : F_ADD_SEALS(0x7) failed: Invalid argument     -> SHARED-MEMORY CAPABILITY MISSING
+Linux: seals applied: 0x7 (asked 0x7)                -> sealed memfd refused to shrink
+```
+
+`kernel/memfd.c` now carries real per-memfd state (name, seals, whether `MFD_ALLOW_SEALING` was
+given) and `fs/fd.c` routes `F_ADD_SEALS`/`F_GET_SEALS` to it, with Linux semantics: `EINVAL` for a
+non-memfd or unknown bits, `EPERM` without `MFD_ALLOW_SEALING` or after `F_SEAL_SEAL`. Verified on the
+device after the install:
+
+```
+seals applied: 0x7 (asked 0x7)
+```
+
+Not enforced yet, and documented as such: shrinking/growing a sealed memfd is not refused, and
+`F_SEAL_WRITE` does not block writes. Commit `c65a746d`; source: `probes/shmcaps.c`.
+
+**What wine still misses.** The sealing fix alone did not bring wine's window layer up, so the server
+conversation was traced (`WINEDEBUG=+server`, 184k lines, summarised in the reports). It shows the
+shape of the failure precisely:
+
+```
+get_thread_desktop() = 0 { locator={id=00000001,offset=000ffd20}, handle=006c }
+create_class()       = 0 { locator={id=00000002,offset=000fff70}, atom=8001 }
+err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+open_mapping( name=L"\\KernelObjects\\__wine_user_shared_data" ); open_mapping() = 0 { handle=0004 }
+get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, ... }
+get_handle_fd() = INVALID_HANDLE
+```
+
+The server side is fine — it hands out valid locators. What is missing is the **file descriptor that
+makes a mapping shared**: `shared_file=0000` and `get_handle_fd() = INVALID_HANDLE`, so the client
+maps its own anonymous copy and `find_shared_session_object()` looks into an empty one. The client's
+`find_shared_session_object` is the caller in wine's `dlls/win32u/class.c` (fetched copy in
+`wine-internals/`); the shared state itself is wine's `shared_session` (`session_shm_t`).
+
+Cleared as the cause: file identity is consistent (`probes/fileid.c`: `stat(path)`, `fstat(fd)` and a
+second process all report the same `st_dev`/`st_ino`), even though the server log repeats
+`is_same_mapping() = NOT_SAME_DEVICE` — that is the normal answer when comparing different files.

@@ -1,0 +1,29 @@
+AGENT_BEGIN id=162-shm-capabilities pid=43 Sat Oct 17 00:09:44 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== /dev/shm on the iPad ===
+Filesystem                                                                                              Size  Used Avail Use% Mounted on
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data  108G   90G   18G  84% /
+drwxrwxrwt 2 root root 2144 Oct 17 00:09 /dev/shm
+fex-1082-stats
+fex-11041-stats
+fex-11584-stats
+fex-1217-stats
+fex-12383-stats
+entries: 65
+
+=== the capability probe (glibc, as wine and CEF use it) ===
+=== memfd sealing ===
+mapped and touched 32 MB through a memfd: ok
+F_ADD_SEALS(0x7) failed: Invalid argument
+=== /dev/shm capacity ===
+wrote 32 MB into /dev/shm: ok
+/dev/shm file size after write: 33554432 bytes
+summary: SHARED-MEMORY CAPABILITY MISSING
+exit=1
+
+=== and with the musl toolchain for comparison ===
+/tmp/shm-capabilities-probe: error while loading shared libraries: libc.so.6: cannot open shared object file: No such file or directory
+exit=127
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:09:45 UTC 2026

@@ -1,0 +1,53 @@
+AGENT_BEGIN id=165-server-trace pid=43 Sat Oct 17 00:22:56 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine with the server-call trace (first 30 s of a simple program) ===
+log lines: 184644
+
+=== session / shared / mapping related server calls ===
+0024: init_first_thread() = 0 { pid=0020, tid=0024, server_start=1dd5dcdaaa4a2d6 (-0.0009200), session_id=00000001, inproc_device=0000, info_size=0, m
+0024: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+0024: open_key( parent=0000, access=00020019, attributes=00000040, name=L"\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Session Manager\\En
+0024: enum_key_value() = 0 { type=1, total=38, namelen=22, name=L"SESSIONNAME", data={43,00,6f,00,6e,00,73,00,6f,00,6c,00,65,00,00,00} }
+0024: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+0024: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=0, total=168, image={base=140000000,stack_size=00100000,stack
+0024: new_process( token=0000, debug=0000, parent_process=0000, flags=00000000, socket_fd=11, access=001fffff, machine=aa64, info_size=354, handles_si
+002c: init_first_thread() = 0 { pid=0028, tid=002c, server_start=1dd5dcdaaa4a2d6 (-0.0260670), session_id=00000001, inproc_device=0000, info_size=5900
+002c: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+002c: get_startup_info() = 0 { info_size=354, machine=aa64, info={debug_flags=0,console_flags=0,console=0000,hstdin=0000,hstdout=0000,hstderr=0004,x=0
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stac
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stac
+
+=== the window-class path ===
+12465-0064: get_thread_desktop( tid=0064 )
+12466-0064: get_thread_desktop() = 0 { locator={id=00000001,offset=000ffd20}, handle=006c }
+12467-0064: close_handle( handle=0064 )
+12468-0064: close_handle() = 0
+12469-0064: create_class( local=0, atom=8001, style=00000008, instance=6ffffea70000, client_ptr=7fffc7f0010, cls_extra=0, win_extra=0, name_offset=0, 
+12470-0064: create_class() = 0 { locator={id=00000002,offset=000fff70}, atom=8001 }
+12471:0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+12472-0064: destroy_class( atom=0000, instance=6ffffea70000, name=L"#32769" )
+12473-0064: destroy_class() = 0 { client_ptr=7fffc7f0010 }
+12474-0064: create_class( local=0, atom=0000, style=00000000, instance=6ffffea70000, client_ptr=7fffc7f0010, cls_extra=0, win_extra=0, name_offset=0, 
+12475-0064: create_class() = 0 { locator={id=00000003,offset=000fff70}, atom=c01d }
+12476:0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+--
+21955-00a0: set_thread_desktop( handle=0084 )
+21956-00a0: set_thread_desktop() = 0 { locator={id=00000001,offset=000ffd20} }
+21957-00a0: close_handle( handle=007c )
+21958-00a0: close_handle() = 0
+21959-00a0: create_class( local=0, atom=8001, style=00000008, instance=6ffffea70000, client_ptr=7fffca68010, cls_extra=0, win_extra=0, name_offset=0, 
+21960-00a0: create_class() = 0 { locator={id=00000004,offset=000fff70}, atom=8001 }
+21961:00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== any failures ===
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c:err:winediag:getaddrinfo Failed to resolve your host name IP
+002c: ioctl() = INVALID_HANDLE { wait=0000, options=00000000, out_data={} }
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:24:30 UTC 2026

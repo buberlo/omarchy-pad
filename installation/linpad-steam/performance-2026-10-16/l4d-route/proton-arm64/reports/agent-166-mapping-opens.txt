@@ -1,0 +1,57 @@
+AGENT_BEGIN id=166-mapping-opens pid=43 Sat Oct 17 00:24:57 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== all open_mapping calls and their results ===
+0024: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+0024: open_mapping() = 0 { handle=0004 }
+0024: get_handle_fd( handle=0004 )
+--
+0024: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+0024: open_mapping() = 0 { handle=0008 }
+0024: get_handle_fd( handle=0008 )
+--
+002c: open_mapping( access=000f001f, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_user_shared_data" )
+002c: open_mapping() = 0 { handle=0008 }
+002c: get_handle_fd( handle=0008 )
+--
+002c: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\NLS\\NlsSectionLANG_INTL" )
+002c: open_mapping() = 0 { handle=0014 }
+002c: get_mapping_info( handle=0014, access=00000004 )
+--
+002c: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\NLS\\NlsSectionCP1252" )
+002c: open_mapping() = OBJECT_NAME_NOT_FOUND { handle=0000 }
+002c: create_file( access=80000000, sharing=00000001, create=1, options=00000010, attrs=00000000, objattr={rootdir=0000,attributes=00000000,sd={},name=L"\\??\\C:\\wi
+--
+002c: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\NLS\\NlsSectionCP437" )
+002c: open_mapping() = OBJECT_NAME_NOT_FOUND { handle=0000 }
+002c: create_file( access=80000000, sharing=00000001, create=1, options=00000010, attrs=00000000, objattr={rootdir=0000,attributes=00000000,sd={},name=L"\\??\\C:\\wi
+--
+
+=== distinct mapping names ===
+   3120 name=L"MUI_Std"
+   3120 name=L"MUI_Dlt"
+   3000 name=L"Dynamic DST"
+   2940 name=L"TZI"
+   2815 name=L""
+   1920 name=L"2026"
+    590 name=L"\\??\\C:\\windows\\system32\\tzres.dll"
+    300 name=L"LogPixels"
+
+=== session / shared data mapping sizes and flags ===
+0024: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=0, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,map_size=000
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,map_size=00
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,map_size=00
+002c: get_mapping_info() = 0 { size=001c0000, flags=01800000, shared_file=0000, name_len=66, total=171, image={base=180000000,stack_size=00100000,stack_commit=00001000,entry_point=00082ab0,map_size=00
+
+=== any failing server call ===
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: ioctl() = INVALID_HANDLE { wait=0000, options=00000000, out_data={} }
+002c: ioctl() = INVALID_HANDLE { wait=0000, options=00000000, out_data={} }
+3060
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:25:07 UTC 2026

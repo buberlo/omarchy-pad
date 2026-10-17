@@ -1,0 +1,19 @@
+AGENT_BEGIN id=163-seals-verify pid=43 Sat Oct 17 00:17:01 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Sat Oct 17 00:15:40 UTC 2026
+Sat Oct 17 00:17:01 UTC 2026
+
+=== memfd sealing after the fix ===
+=== memfd sealing ===
+mapped and touched 32 MB through a memfd: ok
+seals applied: 0x7 (asked 0x7)
+sealed memfd accepted a shrink (should fail)
+=== /dev/shm capacity ===
+wrote 32 MB into /dev/shm: ok
+/dev/shm file size after write: 33554432 bytes
+summary: SHARED-MEMORY CAPABILITY MISSING
+exit=1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:17:01 UTC 2026

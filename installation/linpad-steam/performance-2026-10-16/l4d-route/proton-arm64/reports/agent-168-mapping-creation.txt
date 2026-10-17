@@ -1,0 +1,54 @@
+AGENT_BEGIN id=168-mapping-creation pid=43 Sat Oct 17 00:25:55 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== mapping/section creation calls in the server log ===
+0024: get_handle_fd( handle=0004 )
+0024: get_handle_fd() = 0 { type=1, cacheable=1, access=000f001f, options=00000020 }
+0024: get_handle_fd( handle=0008 )
+0024: get_handle_fd() = 0 { type=1, cacheable=1, access=000f001f, options=00000020 }
+0024: get_handle_fd( handle=000c )
+0024: get_handle_fd() = 0 { type=2, cacheable=1, access=00100020, options=00000020 }
+0024: create_mapping( access=000f000d, flags=01000000, file_access=00000001, size=00000000, file_handle=000c, objattr={} )
+0024: create_mapping() = 0 { handle=0010 }
+0024: get_handle_fd( handle=0000 )
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0024: get_handle_fd( handle=0000 )
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+002c: get_handle_fd( handle=0008 )
+002c: get_handle_fd() = 0 { type=1, cacheable=1, access=000f001f, options=00000020 }
+002c: create_mapping( access=000f000d, flags=01000000, file_access=00000001, size=00000000, file_handle=000c, objattr={} )
+002c: create_mapping() = 0 { handle=0010 }
+
+=== the context of the first get_handle_fd failure ===
+0024: close_handle() = 0
+0024: new_process( token=0000, debug=0000, parent_process=0000, flags=00000000, socket_fd=11, access=001fffff, machine=aa64, info_size=354, handles_size=0, jobs_size
+0024: *fd* 11 <- 27
+0024: new_process() = 0 { info=0010, pid=0028, handle=0014 }
+0024: new_thread( process=0014, access=001fffff, flags=00000001, request_fd=-1, objattr={} )
+0024: *fd* 03a3 -> 29
+0024: new_thread() = 0 { tid=002c, handle=0018 }
+0024: get_handle_fd( handle=0000 )
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0024: get_handle_fd( handle=0000 )
+0024: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0024: select( flags=2, cookie=7fffffd73c, timeout=infinite, size=8, prev_apc=0000, result={}, data={WAIT,handles={0010}}, contexts={} )
+0024: select() = PENDING { apc_handle=0000, signaled=0, call={}, contexts={} }
+
+=== all distinct server calls with their results (top 15) ===
+  13533 close_handle() = 0
+  11774 get_key_value() = 0
+  11088 enum_key_value() = 0
+   9859 is_same_mapping() = NOT_SAME_DEVICE
+   6587 open_key() = 0
+   5445 get_key_value() = OBJECT_NAME_NOT_FOUND
+   4416 get_mapping_info() = 0
+   3082 enum_key() = 0
+   2733 get_handle_fd() = 0
+   2458 create_file() = 0
+   2263 set_key_value() = 0
+   2120 create_mapping() = 0
+   1921 open_key() = OBJECT_NAME_NOT_FOUND
+   1352 open_mapping() = 0
+   1325 create_key() = OBJECT_NAME_EXISTS
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:26:02 UTC 2026

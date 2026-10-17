@@ -1,0 +1,40 @@
+AGENT_BEGIN id=167-wine-shared-files pid=43 Sat Oct 17 00:25:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the wineserver's shared-file directory ===
+drwx------ 4 root root 128 Oct 16 22:26 /tmp/.wine-0
+--- /tmp/.wine-0
+total 0
+drwx------  4 root root   128 Oct 16 22:26 .
+drwxrwxrwt 83 root root 22432 Oct 17 00:22 ..
+drwx------  2 root root   128 Oct 17 00:23 server-10c-84c21e
+drwx------  2 root root    96 Oct 16 22:27 server-10c-84d73a
+  --- /tmp/.wine-0/server-10c-84c21e
+total 0
+drwx------ 2 root root 128 Oct 17 00:23 .
+drwx------ 4 root root 128 Oct 16 22:26 ..
+-rw------- 1 root root   0 Oct 17 00:22 lock
+srw------- 1 root root   0 Oct 17 00:22 socket
+  --- /tmp/.wine-0/server-10c-84d73a
+total 0
+drwx------ 2 root root  96 Oct 16 22:27 .
+drwx------ 4 root root 128 Oct 16 22:26 ..
+-rw------- 1 root root   0 Oct 16 22:26 lock
+
+=== wine's own temp/prefix dirs ===
+
+=== are there any *shared* files wine should have created? (recent, in /tmp) ===
+total 155016
+-rw-r--r--  1 root root      987 Oct 17 00:25 kb-agent-out.txt
+-rw-r--r--  1 root root      659 Oct 17 00:25 kb-agent-cmd.sh
+-rw-r--r--  1 root root      685 Oct 17 00:25 kb-agent-next
+-rw-r--r--  1 root root      330 Oct 17 00:25 kb-agent.log
+-rw-r--r--  1 root root 22326092 Oct 17 00:23 wine-server.log
+drwxrwxrwt 83 root root    22432 Oct 17 00:22 .
+drwxr-xr-x  2 root root      704 Oct 17 00:22 ishwl-x11
+drwxrwxrwt  2 root root      800 Oct 17 00:22 .X11-unix
+drwxr-xr-x  2 root root      224 Oct 17 00:22 ishwl
+-rw-r--r--  1 root root      733 Oct 17 00:22 ishwl.log
+-rw-r--r--  1 root root     4767 Oct 17 00:22 l4d-seals.log
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:25:37 UTC 2026

@@ -1,0 +1,11 @@
+AGENT_BEGIN id=169-file-identity pid=43 Sat Oct 17 00:26:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+parent:
+  stat(path)                   dev=268 ino=8726889 size=6
+  fstat(fd)                    dev=268 ino=8726889 size=6
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:26:23 UTC 2026
