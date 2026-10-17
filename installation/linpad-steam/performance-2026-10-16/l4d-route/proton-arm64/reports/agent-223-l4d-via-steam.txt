@@ -1,0 +1,25 @@
+AGENT_BEGIN id=223-l4d-via-steam pid=43 Sat Oct 17 06:27:01 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+webhelper symlink: 1  login: [2026-10-17 04:53:53] [Logged On, 4, 7] [U
+=== 1. Steam client with a display ===
+  t= 35s steam=1 webhelper=6 | [2026-10-17 06:27:31] [Logged On, 4, 7] 
+  t= 70s steam=1 webhelper=7 | [2026-10-17 06:27:31] [Logged On, 4, 7] 
+  t=105s steam=1 webhelper=7 | [2026-10-17 06:27:31] [Logged On, 4, 7] 
+  t=140s steam=1 webhelper=7 | [2026-10-17 06:27:31] [Logged On, 4, 7] 
+
+=== 2. Left 4 Dead through Proton, signed-in client in place ===
+t= 34s game=0 steam.exe=0 class_err=0 windows=2
+t= 68s game=0 steam.exe=0 class_err=0 windows=2
+t=102s game=0 steam.exe=0 class_err=0 windows=2
+t=136s game=0 steam.exe=0 class_err=0 windows=2
+t=170s game=0 steam.exe=0 class_err=0 windows=2
+
+=== windows ===
+ishwl 12152.169: map toplevel 1 '' env
+ishwl 12661.975: map toplevel 2 '' steam
+ishwl 12662.711: map toplevel 3 '' Steam
+=== game log ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:32:12 UTC 2026

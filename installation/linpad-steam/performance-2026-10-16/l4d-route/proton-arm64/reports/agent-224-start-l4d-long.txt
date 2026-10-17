@@ -1,0 +1,36 @@
+AGENT_BEGIN id=224-start-l4d-long pid=43 Sat Oct 17 06:32:41 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== state before ===
+steam client: 1  webhelper: 7
+login: [2026-10-17 06:27:31] [Logged On, 4, 7] [U
+Xwayland: 2  DISPLAY sockets: 33
+footprint_mb 4796
+allowance_mb 8192
+headroom_mb 3395
+after cleanup: 5480 MB headroom
+
+=== start Left 4 Dead in its own display, detached ===
+started; top levels before: 3
+t= 42s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3859MB
+t= 84s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3861MB
+t=126s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3863MB
+t=168s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3865MB
+t=210s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3866MB
+t=252s game=0 steam.exe=0 services=0 class_err=0 windows=1 mem=3868MB
+
+=== new windows ===
+ishwl 12661.975: map toplevel 2 '' steam
+ishwl 12662.711: map toplevel 3 '' Steam
+ishwl 13007.816: map toplevel 4 '' linpad-proton-arm64
+=== log ===
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:37:02 UTC 2026

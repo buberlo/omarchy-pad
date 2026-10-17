@@ -1,0 +1,20 @@
+AGENT_BEGIN id=227-scoped-coherence-verified pid=43 Sat Oct 17 07:04:35 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1. coherence probe (reader opens O_RDONLY, so it takes the coherent path) ===
+  reader (MAP_PRIVATE, page faulted before the write): 0x0000000000000000 -> 0x8888888888888888  sees the writer's mapping write (copy-on-write over the page cache)
+ok
+
+=== 2. wine again: does it make progress now? ===
+t= 32s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t= 64s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t= 96s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t=128s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t=160s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t=192s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+t=224s wine=1 services=0 explorer=0 class_err=0 desktop_err=0
+
+=== log ===
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 07:08:23 UTC 2026

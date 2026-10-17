@@ -703,3 +703,26 @@ file mappings) hid behind `NtUserRegisterClassExWOW`, the missing desktop window
 never opened one. Along the way this session fixed three more: memfd sealing (`F_ADD_SEALS`), lazy
 mapping of large anonymous regions (wine's 4 GB ARM64EC bitmap) and, earlier, `MAP_FIXED_NOREPLACE`
 plus the opt-in high address layout.
+
+## Round of 17 October, 15:00–15:30: the fix is right, its scope is too broad
+
+Two A/B measurements settle it. With the coherent treatment in place the probe passes and wine's shared
+session comes up — `class_err=0`, `desktop_err=0`, and the log contains nothing but the wineserver line.
+Without it, the same run finishes but reports the session errors again:
+
+| build | wine | session errors |
+| --- | --- | --- |
+| `build-lazy` (no CoW, no instrumentation) | **completes** (33 s) | 8 |
+| `build-final` (CoW, instrumentation removed) | **stalls** (150 s, 47 bytes of log) | 0 |
+
+So the semantics are right and the cost is the problem: some data mapping that wine writes during prefix
+setup now turns every write into a fault plus a page copy, which under emulation is far too slow. An
+instrumented build looked like the culprit first (printk goes to synchronous os_log on iOS and wine maps
+thousands of files that large), and the instrumentation was removed, but the stall remained — it belongs
+to the fix's breadth, not to logging.
+
+Narrowing the scope is the next step and is cheap to try: wine's shared session is a 1.3 MB read-only
+section, so limiting the coherent treatment to small data mappings (say up to a few MB, still excluding
+images) should keep the session coherent and leave the slow paths — the prefix's large files — on the
+old, fast code. Note also that the earlier "wine hangs" observations in this session were this same
+effect seen through instrumented builds.

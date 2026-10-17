@@ -1,0 +1,10 @@
+AGENT_BEGIN id=228-agent-check-scoped pid=43 Sat Oct 17 07:08:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Sat Oct 17 07:04:35 UTC 2026
+Sat Oct 17 07:08:23 UTC 2026
+headroom: 5029 MB
+probe cache: 1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 07:08:23 UTC 2026

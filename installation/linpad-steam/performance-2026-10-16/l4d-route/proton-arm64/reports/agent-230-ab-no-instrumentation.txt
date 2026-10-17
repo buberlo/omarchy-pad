@@ -1,0 +1,22 @@
+AGENT_BEGIN id=230-ab-no-instrumentation pid=43 Sat Oct 17 07:13:38 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is the printk instrumentation gone from this build? (it should be) ===
+probe: ok
+=== wine on the uninstrumented build ===
+t= 33s wine=0 services=0 explorer=0 class_err=8 log=1411B
+t= 66s wine=0 services=0 explorer=0 class_err=8 log=1411B
+t= 99s wine=0 services=0 explorer=0 class_err=8 log=1411B
+t=132s wine=0 services=0 explorer=0 class_err=8 log=1411B
+t=165s wine=0 services=0 explorer=0 class_err=8 log=1411B
+t=198s wine=0 services=0 explorer=0 class_err=8 log=1411B
+
+=== log ===
+00a4:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c00000e5
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1359
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 07:17:00 UTC 2026
