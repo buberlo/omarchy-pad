@@ -6,6 +6,16 @@
 #include <string.h>
 
 // Returns stopped child with the given pid, locked with the ptrace lock
+// A task may always trace itself (Linux allows it, and a crash handler installing itself does
+// exactly that: breakpad reads its own registers right after installing the handler). Every case
+// below used to look only for a child, so a process inspecting itself got EPERM and Steam's client
+// aborted with "Assertion Failed: Permission denied" in tier0/threadtools during startup.
+static struct task *ptrace_target(pid_t_ pid) {
+    if (pid == 0 || pid == current->pid || pid == current->tgid)
+        return current;
+    return ptrace_target(pid);
+}
+
 static struct task *find_child(pid_t_ pid) {
     struct task *child = NULL;
     list_for_each_entry(&current->children, child, siblings) {
@@ -90,7 +100,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
         case PTRACE_PEEKDATA_: {
             STRACE("ptrace(PTRACE_PEEKDATA, %d, %#x, %#x)", pid, addr, data);
             dword_t peek;
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             if (user_get_task(child, addr, peek)) {
@@ -108,7 +118,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
         case PTRACE_PEEKUSER_: {
             STRACE("ptrace(PTRACE_PEEKUSER, %d, %#x, %#x)", pid, addr, data);
             dword_t peek;
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             struct user_ user_ = {};
@@ -130,7 +140,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
         case PTRACE_POKETEXT_:
         case PTRACE_POKEDATA_: {
             STRACE("ptrace(PTRACE_POKEDATA, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             if (user_write_task_ptrace(child, addr, &data, sizeof(data))) {
@@ -144,7 +154,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_CONT_: {
             STRACE("ptrace(PTRACE_CONT, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
 #if !defined(GUEST_ARM64)
@@ -159,7 +169,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_KILL_: {
             STRACE("ptrace(PTRACE_KILL, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             child->ptrace.stopped = false;
@@ -171,7 +181,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_SINGLESTEP_: {
             STRACE("ptrace(PTRACE_SINGLESTEP, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
 #if !defined(GUEST_ARM64)
@@ -186,7 +196,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_GETREGS_: {
             STRACE("ptrace(PTRACE_GETREGS, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             struct user_regs_struct_ user_regs_ = {};
@@ -202,7 +212,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_SETREGS_: {
             STRACE("ptrace(PTRACE_SETREGS, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             struct user_regs_struct_ user_regs_;
@@ -219,7 +229,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
         // GDB needs the fpregs functions to exist if you want to evaluate things
         case PTRACE_GETFPREGS_: {
             STRACE("ptrace(PTRACE_GETFPREGS, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             struct user_fpregs_struct_ user_fpregs_ = {};
@@ -235,7 +245,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_SETFPREGS_: {
             STRACE("ptrace(PTRACE_SETFPREGS, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             struct user_fpregs_struct_ user_fpregs_;
@@ -255,7 +265,7 @@ dword_t sys_ptrace(dword_t request, dword_t pid, addr_t addr, addr_t data) {
 
         case PTRACE_GETSIGINFO_: {
             STRACE("ptrace(PTRACE_GETSIGINFO, %d, %#x, %#x)", pid, addr, data);
-            struct task *child = find_child(pid);
+            struct task *child = ptrace_target(pid);
             if (!child) return _EPERM;
 
             if (data && user_put(data, child->ptrace.info)) {
