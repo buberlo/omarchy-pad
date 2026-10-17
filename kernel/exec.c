@@ -862,6 +862,14 @@ dword_t sys_execve(addr_t filename_addr, addr_t argv_addr, addr_t envp_addr) {
         envp[0] = envp[1] = '\0';
     }
 
+    // Diagnostic: an argv[0] that begins with "-" is not a program name, it is a switch that reached
+    // exec by mistake. This chain produces exactly that ("-child-update-ui: error while loading shared
+    // libraries: -child-update-ui: cannot open shared object file") and the failing process exits 127
+    // somewhere else entirely, so log the caller and what it tried to run.
+    if (argv[0] == '-')
+        printk("ish-exec: %d(%s) exec filename '%s' argv0 '%s'\n", current->pid, current->comm,
+               filename, argv);
+
     STRACE("execve(\"%.1000s\", {", filename);
     const char *args = argv;
     while (*args != '\0') {
