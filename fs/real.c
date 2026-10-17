@@ -397,14 +397,16 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
         fd->mount->fs->fstat(fd, &guest_st) == 0 && guest_st.nlink == 0;
     bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
         (fd->flags & O_ACCMODE_) == O_RDONLY_ && guest_unlinked;
-    // Bounded diagnostic: the first twenty file mappings only, so it cannot flood os_log.
+    // Bounded diagnostic for the interesting case only: a mapping whose guest link count says the
+    // file has been unlinked, which is what wine's shared sections look like. Capped, because printk
+    // is synchronous os_log on iOS.
     static int traced;
-    if (traced < 20) {
+    if (guest_st.nlink == 0 && traced < 12) {
         traced++;
-        printk("ish-mm: pid %d flags %#x prot %#x acc %d guestnlink %lld hostnlink %lld size %zu "
+        printk("ish-mm: pid %d flags %#x prot %#x acc %d guestnlink 0 hostnlink %lld size %zu "
                "coherent %d\n", current ? current->pid : -1, flags, prot, fd->flags & O_ACCMODE_,
-               (long long) guest_st.nlink, (long long) (have_stat ? st.st_nlink : -1),
-               (size_t) pages * PAGE_SIZE, guest_private ? 1 : 0);
+               (long long) (have_stat ? st.st_nlink : -1), (size_t) pages * PAGE_SIZE,
+               guest_private ? 1 : 0);
     }
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
