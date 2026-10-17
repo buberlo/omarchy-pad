@@ -726,3 +726,35 @@ section, so limiting the coherent treatment to small data mappings (say up to a 
 images) should keep the session coherent and leave the slow paths — the prefix's large files — on the
 old, fast code. Note also that the earlier "wine hangs" observations in this session were this same
 effect seen through instrumented builds.
+
+## Round of 17 October, 16:50–17:10: **the shared session works — mapped as the shared memory object it is**
+
+The deadlock explains why the copy-on-write attempt could never work here, and it is measured, not
+guessed: with the CoW build wine sat at **two ticks of CPU over 272 seconds**. A read-only host page
+turns every store into a fault, and iSH's fault path takes a *blocking* `write_wrlock` on the same lock
+the storing thread holds. That is a deadlock, not slowness.
+
+The right model is simpler. A private mapping of a file nobody can open any more **is** a shared memory
+object: wine's server creates its shared sections, unlinks them and passes them on by descriptor. Such
+a mapping has to stay shared in *both* directions — the client must see the pages wineserver writes,
+and its own writes (the sequence locks inside the shared objects) belong to the same memory. Mapping the
+host file `MAP_SHARED|PROT_READ|PROT_WRITE` gives exactly that, with no emulated copy per page, and the
+writes land in a file nobody else can reach. Images and prefix files are regular files, so they keep the
+plain private path and their loader writes stay fast.
+
+Verified on the device:
+
+```
+control run (`cmd /c exit`):  t=32s … t=192s   wine=0   class_err=0   desktop_err=0   log 940 B
+direct game run (display):    class_err=0, wine works, then "Segmentation fault"
+```
+
+So the session is fixed — wine registers window classes and creates its desktop window with no errors
+at all, at full speed — and the failure moved to somewhere else: the game itself now crashes instead of
+hanging, while the control run goes through cleanly. That crash is game-specific (its Steam DRM path
+without a handshake), not an emulator problem any more.
+
+Also worth recording from this round: the earlier "wine hangs" observations were two different things.
+The instrumented builds stalled because `printk` is synchronous os_log on iOS and wine maps thousands of
+files; the CoW builds stalled because of the deadlock above. Both are gone now, and the emulator is back
+to its normal speed with the session intact.

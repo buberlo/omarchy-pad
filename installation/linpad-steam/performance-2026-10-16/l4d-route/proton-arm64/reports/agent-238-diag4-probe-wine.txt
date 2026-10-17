@@ -1,0 +1,10 @@
+AGENT_BEGIN id=238-diag4-probe-wine pid=43 Sat Oct 17 08:05:57 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the probe (private, read-only fd, unlinked) ===
+  links left on the session file: 0
+FAIL: an unlinked private mapping is not coherent
+
+wine class_err: 6
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:06:52 UTC 2026

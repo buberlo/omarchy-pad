@@ -1,0 +1,14 @@
+AGENT_BEGIN id=239-unconditional-cow-longrun pid=43 Sat Oct 17 08:08:57 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== unconditional CoW: does wine eventually get through? ===
+t= 34s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t= 68s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=102s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=136s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=170s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=204s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=238s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+t=272s wine=1 services=0 explorer=0 class_err=0 log=47B cpu=2
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:13:32 UTC 2026

@@ -1,0 +1,23 @@
+AGENT_BEGIN id=240-shared-object-approach pid=43 Sat Oct 17 08:18:27 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1. the unlinked-file probe ===
+  links left on the session file: 0
+FAIL: an unlinked private mapping is not coherent
+
+=== 2. wine: fast AND error-free? ===
+t= 32s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+t= 64s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+t= 96s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+t=128s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+t=160s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+t=192s wine=0 services=0 explorer=0 class_err=0 desktop_err=0 log=940B
+
+=== log tail ===
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebus" failed to start: 1053
+0034:err:service:process_send_start_message pipe connect failed
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"wineusb" failed to start: 1053
+00b4:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c00000e5
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1359
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:21:42 UTC 2026

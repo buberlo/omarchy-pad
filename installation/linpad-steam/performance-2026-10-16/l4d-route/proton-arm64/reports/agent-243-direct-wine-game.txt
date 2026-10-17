@@ -1,0 +1,27 @@
+AGENT_BEGIN id=243-direct-wine-game pid=43 Sat Oct 17 08:32:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the game directly under wine, with a display and the Steam client up ===
+t= 38s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+t= 76s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+t=114s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+t=152s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+t=190s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+t=228s game=0 services=0 explorer=0 class_err=0 new_windows=1 log=3724B
+
+=== windows ===
+ishwl 19582.801: map toplevel 2 '' linpad-proton-arm64
+ishwl 19872.117: map toplevel 3 '' steam
+ishwl 19872.445: map toplevel 4 '' Steam
+ishwl 20183.414: map toplevel 5 '' env
+=== game output ===
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+Segmentation fault
+X connection to :50 broken (explicit kill or server shutdown).
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:36:11 UTC 2026

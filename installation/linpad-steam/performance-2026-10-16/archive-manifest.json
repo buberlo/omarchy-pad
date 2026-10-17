@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 26880,
-      "sha256": "12d151e6261908ae210dc458f463c0b869031b1107fb4bb1b47af1c8fa2fe1d4"
+      "bytes": 27837,
+      "sha256": "fbd7bdbc1f33a3630f04178d9c44bfff4b52303c44e49d3adf764e1db9feb358"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 43961,
-      "sha256": "b88e4fe046d0ec25381665ff25619437dc078fe835c9480be78ba92404c2e62e"
+      "bytes": 46059,
+      "sha256": "4609a23ed401a718d85c181a658cca44cfd8d9b44e70a5cbff1feed54d7d1445"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -5383,6 +5383,36 @@
       "sha256": "5ab676ebcbc8d95e04d46780c5a85ddc55026d8e87fa1c95e56b4df6eebb1d26"
     },
     {
+      "path": "l4d-route/proton-arm64/reports/agent-238-diag4-probe-wine.txt",
+      "bytes": 341,
+      "sha256": "733a737f0d068a7c77df60aa9099462f84c1ae366f35d6188f564015ad132cac"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-239-unconditional-cow-longrun.txt",
+      "bytes": 750,
+      "sha256": "da38f06b7ca9ab341ef186dff97180a11e4eeb0c6f6f2006a96c293b4afb6e7a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-240-shared-object-approach.txt",
+      "bytes": 1298,
+      "sha256": "d8fd7695a8ae8dd13fd68005c7062b809e9b9817d51776db6d57e647644f14a9"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-241-l4d-final-attempt.txt",
+      "bytes": 1449,
+      "sha256": "8fa98c1d83a01010b9bd6324f18a6f2a74850c1b0b72acd7ef46d2a5c1274915"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-242-client-then-game.txt",
+      "bytes": 1218,
+      "sha256": "6998f1eeceaa2bed44a87ffa014d301e1b360a254f7db6318a90ba3641cc611c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-243-direct-wine-game.txt",
+      "bytes": 1493,
+      "sha256": "637b52af8adace154ef043bb91dc14a4692e91d69a50d430062ea2ef6a69736a"
+    },
+    {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
       "bytes": 1031,
       "sha256": "8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c"
@@ -5536,6 +5566,16 @@
       "path": "l4d-route/proton-arm64/reports/app-console-instrumented.log",
       "bytes": 118056,
       "sha256": "87830b8b604fde360602ac34844ddfa588d3d2badcb3a7fee3df27bed754c51c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/shared-object-fix/cow-deadlock-evidence.txt",
+      "bytes": 750,
+      "sha256": "da38f06b7ca9ab341ef186dff97180a11e4eeb0c6f6f2006a96c293b4afb6e7a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/shared-object-fix/real.c.final",
+      "bytes": 31909,
+      "sha256": "bd1ea2b4a22060361d5f3cc9d9021f671cd0c293e55960a89ee41af147afffad"
     },
     {
       "path": "l4d-route/proton-arm64/wine-internals/ntdll-unix-virtual.c",

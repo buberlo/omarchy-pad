@@ -1,0 +1,26 @@
+AGENT_BEGIN id=241-l4d-final-attempt pid=43 Sat Oct 17 08:22:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== Left 4 Dead through Proton, with a display, after the shared-object fix ===
+t= 38s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t= 76s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t=114s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t=152s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t=190s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t=228s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+t=266s game=0 steam.exe=0 services=0 class_err=0 windows=1 log=732B
+
+=== windows ===
+ishwl 19288.601: map toplevel 1 '' Steam
+ishwl 19582.801: map toplevel 2 '' linpad-proton-arm64
+=== game log ===
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+wineserver: using server-side synchronization.
+X connection to :48 broken (explicit kill or server shutdown).
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:26:48 UTC 2026

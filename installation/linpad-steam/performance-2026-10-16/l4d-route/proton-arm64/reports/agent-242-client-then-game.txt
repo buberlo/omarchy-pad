@@ -1,0 +1,24 @@
+AGENT_BEGIN id=242-client-then-game pid=43 Sat Oct 17 08:27:07 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1. Steam client with a display (needed for the DRM handshake) ===
+  t= 35s steam=1 webhelper=6 | [2026-10-17 08:27:45] [Logged On, 4, 7
+  t= 70s steam=1 webhelper=7 | [2026-10-17 08:27:45] [Logged On, 4, 7
+  t=105s steam=1 webhelper=7 | [2026-10-17 08:27:45] [Logged On, 4, 7
+  t=140s steam=1 webhelper=7 | [2026-10-17 08:27:45] [Logged On, 4, 7
+
+=== 2. Left 4 Dead through Proton ===
+t= 35s game=0 steam.exe=0 class_err=0 toplevels=0 log=201B
+t= 70s game=0 steam.exe=0 class_err=0 toplevels=0 log=201B
+t=105s game=0 steam.exe=0 class_err=0 toplevels=0 log=201B
+t=140s game=0 steam.exe=0 class_err=0 toplevels=0 log=201B
+=== windows ===
+ishwl 19288.601: map toplevel 1 '' Steam
+ishwl 19582.801: map toplevel 2 '' linpad-proton-arm64
+ishwl 19872.117: map toplevel 3 '' steam
+ishwl 19872.445: map toplevel 4 '' Steam
+=== game log ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:31:52 UTC 2026
