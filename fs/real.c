@@ -21,11 +21,6 @@
 #include "fs/devices.h"
 #include "fs/real.h"
 
-// Private file mappings up to this size stay coherent with the page cache (copy-on-write), so a
-// reader sees what another process writes through its shared mapping. Bigger mappings keep the plain
-// private path: wine's shared session is a small read-only section, while making the prefix's large
-// files pay a fault and a page copy per write is far too slow under emulation.
-#define COHERENT_PRIVATE_MAX_BYTES (4u << 20)
 #include "kernel/inotify.h"
 #define ISH_INTERNAL
 #include "fs/fake.h"
@@ -380,16 +375,21 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     // faults plus page copies is correct but far too slow under emulation -- wine's loader writes its
     // privately mapped PE images (relocations) and those mappings must stay fast. An image does not
     // change after it is loaded, so a snapshot is fine for it.
-    bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
-        (fd->flags & O_ACCMODE_) == O_RDONLY_ &&
-        (size_t) pages * PAGE_SIZE <= COHERENT_PRIVATE_MAX_BYTES;
-
     off_t real_offset = (offset / real_page_size) * real_page_size;
     off_t correction = offset - real_offset;
     size_t map_size = (pages * PAGE_SIZE) + correction;
 
     struct stat st;
     int have_stat = (fstat(fd->real_fd, &st) == 0);
+
+    // The coherent treatment is for the kind of mapping wine's session uses: a private mapping of a
+    // file that cannot legitimately write the file (opened read-only) and that nobody else can open
+    // any more, because it has been unlinked -- wine's server creates its shared sections that way.
+    // Everything else keeps the plain private path: a PE image or a prefix file is a regular file, and
+    // its data sections are written during loading, where a fault plus page copy per write is far too
+    // slow under emulation.
+    bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
+        (fd->flags & O_ACCMODE_) == O_RDONLY_ && have_stat && st.st_nlink == 0;
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
         // A MAP_SHARED mapping is always a direct file-backed host mapping,
