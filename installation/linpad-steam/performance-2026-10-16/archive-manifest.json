@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 29912,
-      "sha256": "c66ee0747dcce1a2382d01ca36df5c8360458213fa20f2a8e02ca5acb8c583a3"
+      "bytes": 32083,
+      "sha256": "81e06e78c8f03eb3e93b64eaf184798e05198c6447026698a9a224d948dbee4b"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 48041,
-      "sha256": "06853720aeda25317f39c33c23c475c487e7588915f7e8231faf0a5f26b14f5d"
+      "bytes": 49834,
+      "sha256": "bd7f2f75384bc4010f342a17778473eff33b22c03dabe9f1671d41170154460a"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -5493,6 +5493,91 @@
       "sha256": "2839d383048b4e866abf7ad1ff3a0caa013494161f15ec0f876893b992cf50c3"
     },
     {
+      "path": "l4d-route/proton-arm64/reports/agent-275-state-jit-client.txt",
+      "bytes": 535,
+      "sha256": "22c096258b20b72053d4898a3a1a960aa5c498f7d266d63f340045237d4b4852"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-276-jit-after-fastlaunch.txt",
+      "bytes": 315,
+      "sha256": "b76179301ce3d649dffb871e65169e5b915a05dc1752871b5771ddda4bd6ab77"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-277-relaunch-and-fix-override.txt",
+      "bytes": 586,
+      "sha256": "e004345ac0868689830e65a2d31d88f4887b3e154373f9a442cd352eaab4b9f2"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-278-one-client-for-play.txt",
+      "bytes": 687,
+      "sha256": "b9b3b19cffd7f1c053bf5364e98362cf2b187a28b0d453cddfe8636b23eee9f5"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-279-why-client-dies.txt",
+      "bytes": 2220,
+      "sha256": "c3b6dabb25c5d4a254c92396a34810885c4d85cf8ac67e565077c48bdc3ee9d7"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-280-client-death-watch.txt",
+      "bytes": 1605,
+      "sha256": "29a3a3e041c066c393356ecf18dbb2d7e5723cb36b4198621aa4ad716d8d773c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-281-webhelper-check.txt",
+      "bytes": 2359,
+      "sha256": "df9d5d2bad56a6f0af47853650730d9143a68e0fa6e73a6000739ce5f2a283ff"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-282-webhelper-with-glibc.txt",
+      "bytes": 1751,
+      "sha256": "8d771c56df67a7cc9987526c7ce71b311599a75dca244d7607032595c9af1e56"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-283-webhelper-with-steam-libs.txt",
+      "bytes": 926,
+      "sha256": "2fbe01afe5269cfdc0ca3577272919aaf98e769aa025b09f3b74376380a51e15"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-284-webhelper-full-path.txt",
+      "bytes": 1647,
+      "sha256": "8c1f8b65d6bda06a0fc6179ae631586c575a531b8c9ddacb4406830db6e10d8c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-285-webhelper-wrapper.txt",
+      "bytes": 1471,
+      "sha256": "7a5910b2f388e0e3dbb6db2cc5bed9334b5ba3ad670995bb381c7c1151790919"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-286-find-loader-and-fix.txt",
+      "bytes": 1245,
+      "sha256": "100b5b1330651350cc53eac445bdc2cfffc9522d0ab96f7353475c21c3f2b765"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-287-compare-elfs.txt",
+      "bytes": 832,
+      "sha256": "c7192a8161b99b8fcd9424d979264ccd7cbf34bde806a14f456b45b483a10e33"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-288-restore-webhelper.txt",
+      "bytes": 1383,
+      "sha256": "86a92fae30bb782f62d39a6d269203d8ff2b70b8289a94e5a5710954fd667080"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-289-symlink-and-client.txt",
+      "bytes": 1055,
+      "sha256": "e6ec40adc96eb5368d794239a8ad633550bcbc8cac590f01f9bf530be2ca96de"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-290-webhelper-wrapper-safe.txt",
+      "bytes": 1182,
+      "sha256": "55b35d03abe4317427189ea79e2012944f2ae8f6d3e3a8a31f582afceb50b3f7"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-291-client-launch-failure.txt",
+      "bytes": 1840,
+      "sha256": "0b2409e47efef3176a8d8b68d7a93933755c15ac61097369d1deb9cc433e002c"
+    },
+    {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
       "bytes": 1031,
       "sha256": "8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c"
@@ -5656,6 +5741,11 @@
       "path": "l4d-route/proton-arm64/shared-object-fix/real.c.final",
       "bytes": 31909,
       "sha256": "bd1ea2b4a22060361d5f3cc9d9021f671cd0c293e55960a89ee41af147afffad"
+    },
+    {
+      "path": "l4d-route/proton-arm64/steam-client-fix/steamwebhelper-wrapper",
+      "bytes": 1001,
+      "sha256": "c87f40f0de33d783f402b394810554f5ae828352f7e7b4fedf7d181a44dd7bdb"
     },
     {
       "path": "l4d-route/proton-arm64/steam-launch-chain/_v2-entry-point",

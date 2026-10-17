@@ -1,0 +1,27 @@
+AGENT_BEGIN id=280-client-death-watch pid=43 Sat Oct 17 10:40:31 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43  JIT: supported 1 enabled 0   headroom: 4243 MB
+=== start the client, capturing EVERYTHING ===
+t= 32s steam=2 webhelper=0 xwayland=2 ishwl-x11=2 | login: [2026-10-17 09:21:54] [Logged On
+t= 64s steam=2 webhelper=0 xwayland=2 ishwl-x11=2 | login: [2026-10-17 09:21:54] [Logged On
+t= 96s steam=2 webhelper=0 xwayland=2 ishwl-x11=2 | login: [2026-10-17 09:21:54] [Logged On
+t=128s steam=2 webhelper=0 xwayland=2 ishwl-x11=2 | login: [2026-10-17 09:21:54] [Logged On
+t=160s steam=0 webhelper=0 xwayland=1 ishwl-x11=1 | login: [2026-10-17 09:21:54] [Logged On
+t=192s steam=0 webhelper=0 xwayland=1 ishwl-x11=1 | login: [2026-10-17 09:21:54] [Logged On
+
+=== the full client log ===
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+X connection to :55 broken (explicit kill or server shutdown).
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:43:47 UTC 2026

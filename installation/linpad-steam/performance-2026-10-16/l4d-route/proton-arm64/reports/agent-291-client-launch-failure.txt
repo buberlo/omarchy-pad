@@ -1,0 +1,37 @@
+AGENT_BEGIN id=291-client-launch-failure pid=43 Sat Oct 17 11:08:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the client's own output ===
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+X connection to :55 broken (explicit kill or server shutdown).
+
+=== does the client binary run at all? ===
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamrtarm64/steam: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+
+=== and the webhelper wrapper? ===
+timeout: warning: timer_create: Bad address
+10/17 11:08:16 /tmp/dumps: insufficient permissions - delete and recreate
+src/common/html/chrome_ipc_shared.cpp (82) : unHostPid != 0
+src/common/html/chrome_ipc_shared.cpp (82) : unHostPid != 0
+
+=== steam's own state files ===
+total 17744
+-rw-r--r-- 1 root root    3855 Oct 17 11:04 steamwebhelper.log
+-rw-r--r-- 1 root root  251604 Oct 17 11:04 cef_log.txt
+-rwxr-xr-x 1 root root 1223906 Oct 17 11:04 webhelper.txt
+-rwxr-xr-x 1 root root  123277 Oct 17 11:04 webhelper_gpu.txt
+224 /root/.local/share/Steam/config/loginusers.vdf
+=== is anything holding a lock? ===
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 11:08:16 UTC 2026

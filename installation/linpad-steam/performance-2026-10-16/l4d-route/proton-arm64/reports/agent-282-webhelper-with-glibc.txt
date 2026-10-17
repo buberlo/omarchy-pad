@@ -1,0 +1,29 @@
+AGENT_BEGIN id=282-webhelper-with-glibc pid=43 Sat Oct 17 10:44:30 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the launcher scripts ===
+#!/bin/sh
+export STEAM_PIPE_DIAGNOSTIC=1 STEAM_PIPE_PACKET_FALLBACK=1
+exec /usr/local/bin/steam-local "$@"
+--- steam-local:
+23:    export LD_LIBRARY_PATH="$LIBS"
+25:    exec "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/xtigervncviewer \
+32:    export LD_LIBRARY_PATH="$LIBS" STEAM_RUNTIME=0
+33:    export GLIBC_TUNABLES=glibc.pthread.stack_cache_size=0
+39:    exec "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+41:unset LD_LIBRARY_PATH MESA_LOADER_DRIVER_OVERRIDE LIBGL_DRIVERS_PATH __GLX_VENDOR_LIBRARY_NAME
+53:env LD_LIBRARY_PATH="$LIBS" LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe \
+
+=== does the webhelper run with the glibc path? ===
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamrtarm64/steamwebhelper: error while loading shared libraries: libibus-1.0.so.5: cannot open shared object file: No such file or directory
+
+=== restart the client WITH the glibc path ===
+t= 32s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+t= 64s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+t= 96s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+t=128s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+t=160s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+t=192s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged  | wh_log: LINPAD_THREAD result=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:47:46 UTC 2026

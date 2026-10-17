@@ -797,3 +797,36 @@ Also created but currently unused: a real compatibility tool `compatibilitytools
 (linux → windows) with a `run` that hands the game to `linpad-proton-arm64`. Steam ignores it for a
 Windows app unless the tool declares `require_tool_appid`, which would drag the runtime chain back in,
 so the runtime stub above is the working route.
+
+## Round of 17 October, 18:20–19:10: the client's own UI backend was the reason it kept dying
+
+The Steam client started, produced **no steamwebhelper at all**, and gave up after about two and a half
+minutes with nothing but `X connection to :55 broken` in its log. The reason is the client's self-update:
+the webhelper is now a **glibc** program, and this guest is musl, so executing it directly fails on glibc
+symbols:
+
+```
+$ /root/steamwebhelper --version
+/root/steamwebhelper: error while loading shared libraries: libdl.so.2: cannot open shared object file
+```
+
+The client's own launcher already runs glibc programs through the glibc loader
+(`/opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1` with a `--library-path`), and the
+webhelper is spawned by `execve` on `$HOME/steamwebhelper`, so that path has to be a wrapper that does
+the same. With it in place the backend actually runs — verified on the device, it prints real CEF output
+(`src/common/html/chrome_ipc_shared.cpp (82) : unHostPid != 0`) instead of a loader error.
+
+**A mistake worth recording**: `$HOME/steamwebhelper` was a symlink to
+`steamrtarm64/steamwebhelper`, and writing the wrapper with `cat >` went *through* the symlink and
+overwrote the real 10 MB binary with 623 bytes of shell script. Steam restored it immediately with
+
+```
+/usr/local/bin/steam -forcesteamupdate -forcepackagedownload -exitsteam
+```
+
+and the file came back byte-for-byte the same size. The wrapper must therefore be installed by removing
+the symlink first; that trap is the reason the "invalid ELF header" error appeared earlier, not a wrong
+loader path.
+
+Still open on this front: `steamrtarm64/steam` itself now fails the same way (`libdl.so.2`), so the
+client needs the same loader treatment before the next Play attempt.

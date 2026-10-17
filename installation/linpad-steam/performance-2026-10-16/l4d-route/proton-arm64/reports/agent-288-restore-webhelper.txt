@@ -1,0 +1,22 @@
+AGENT_BEGIN id=288-restore-webhelper pid=43 Sat Oct 17 10:59:49 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== any copy of the real webhelper left? ===
+total 671136
+-rw-r--r-- 1 root root       11 Oct 16 05:11 beta
+-rwxr-xr-x 1 root root  9016860 Oct 17 00:10 bins_androidarm64_linuxarm64.zip.vz.c615698e9400b116e58f1eef89c6cb482d06a063_9016860
+-rwxr-xr-x 1 root root 12849241 Oct 16 05:27 bins_codecs_linuxarm64.zip.vz.c5b755a90a924e54b2fb8d156b669955984d9999_12849241
+-rwxr-xr-x 1 root root  9644164 Oct 16 05:27 bins_codecs_steamrt_linuxarm64.zip.vz.d7d075019c82fe8a39503bc1c2a21c6cfc98bf4d_9644164
+-rwxr-xr-x 1 root root   298751 Oct 16 05:26 bins_hardware_all.zip.vz.b7bacd960fd19cefde78219c11c7774a8ee00d4c_298751
+-rwxr-xr-x 1 root root 10039405 Oct 16 05:27 bins_hardware_linuxarm64.zip.da8814f3cc3788fd3789ce233dd86f107b2b244a
+-rwxr-xr-x 1 root root 44326965 Oct 17 00:10 bins_linuxarm64.zip.vz.3cda571a2d5bd665d78364ed4ba34f08f0ca7968_44326965
+
+=== remove my broken wrapper (do not touch a symlink again) ===
+it is a symlink: removing only the symlink
+ls: cannot access '/root/steamwebhelper': No such file or directory
+
+=== can Steam re-fetch the runtime tool? (force update + validate, no UI) ===
+t= 35s size=10326560  log: timeout: warning: timer_create: Bad address
+RESTORED (10326560 bytes)
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 11:00:27 UTC 2026

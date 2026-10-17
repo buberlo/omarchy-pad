@@ -1,0 +1,9 @@
+AGENT_BEGIN id=276-jit-after-fastlaunch pid=43 Sat Oct 17 10:28:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Sat Oct 17 10:28:32 UTC 2026
+Sat Oct 17 10:28:32 UTC 2026
+JIT: supported 1 enabled 0 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:28:32 UTC 2026

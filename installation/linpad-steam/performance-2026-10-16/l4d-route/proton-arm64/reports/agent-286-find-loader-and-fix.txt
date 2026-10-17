@@ -1,0 +1,26 @@
+AGENT_BEGIN id=286-find-loader-and-fix pid=43 Sat Oct 17 10:59:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== how the launcher defines L ===
+#!/bin/sh
+set -eu
+BASE="$HOME/.local/share/Steam"
+L=/opt/steam-host/usr/lib/aarch64-linux-gnu
+LOADER="$L/ld-linux-aarch64.so.1"
+LIBS="$L:$L/pulseaudio:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+# Screen and viewer size. steam-bigpicture passes --geometry, which exports
+# STEAM_GEOMETRY; unset it is the verified 1024x700, so the launcher behaves exactly as
+# before for every caller that does not ask for another size. Xvnc and the viewer must
+# use the same value, or the viewer shows a cropped or padded picture.
+
+=== the real glibc loaders present ===
+/opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+/opt/steam-host/usr/lib/ld-linux-aarch64.so.1
+
+=== fix the webhelper wrapper with the real loader ===
+using loader: /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+--- test it:
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamrtarm64/steamwebhelper: error while loading shared libraries: /root/.local/share/Steam/steamrtarm64/steamwebhelper: invalid ELF header
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:59:09 UTC 2026

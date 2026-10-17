@@ -1,0 +1,43 @@
+AGENT_BEGIN id=279-why-client-dies pid=43 Sat Oct 17 10:33:56 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the client's own stderr ===
+_XSERVTransSocketCreateListener: failed to bind listener
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: failed to create listener for local
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+X connection to :55 broken (explicit kill or server shutdown).
+
+=== steamwebhelper log ===
+LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/17 09:21:36 /tmp/dumps: insufficient permissions - delete and recreate
+LINPAD_THREAD attr=0xffffc8f8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+
+=== console log tail ===
+[2026-10-17 09:22:35] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 --
+[2026-10-17 09:22:35] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-17 09:22:35] GameAction [AppID 500, ActionID 1] : LaunchApp changed task to WaitingGameWindow with ""
+[2026-10-17 09:22:35] GameAction [AppID 500, ActionID 1] : LaunchApp changed task to Completed with ""
+[2026-10-17 09:22:36] Controller slots reset
+[2026-10-17 09:22:36] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Stea
+
+=== memory now ===
+footprint_mb 257
+allowance_mb 8192
+headroom_mb 7934
+soft_mb 1638
+=== dumps dir ===
+drwxr-x--- 2 root root 64 Oct 17 10:29 /tmp/dumps
+=== anything still running? ===
+  807 ishwl-x11
+  812 Xwayland
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:33:56 UTC 2026

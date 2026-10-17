@@ -1,0 +1,15 @@
+#!/bin/sh
+# Install as $HOME/steamwebhelper, REPLACING the symlink (writing through that symlink once destroyed the
+# real binary; Steam restored it with -forcesteamupdate -forcepackagedownload).
+#
+# The Steam client spawns its UI backend as $HOME/steamwebhelper. After the client's self-update that
+# binary is a glibc program, and this guest is musl: executed directly it dies on glibc symbols
+# (libdl.so.2 and friends), the client ends up with no webhelper process at all and gives up after a
+# couple of minutes with nothing but "X connection broken" in its log. Running it through the glibc
+# loader with the same library path the client's own launcher uses fixes it — verified: the webhelper
+# then prints real CEF output (chrome_ipc_shared.cpp, /tmp/dumps warnings).
+L=/opt/steam-host/usr/lib/aarch64-linux-gnu
+B=/root/.local/share/Steam
+exec "$L/ld-linux-aarch64.so.1" \
+    --library-path "$L:$L/pulseaudio:$B/steamrtarm64:$B/steamrtarm64/libs" \
+    "$B/steamrtarm64/steamwebhelper" "$@"

@@ -1,0 +1,28 @@
+AGENT_BEGIN id=290-webhelper-wrapper-safe pid=43 Sat Oct 17 11:04:38 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== remove the symlink FIRST, then write the wrapper (never write through a symlink) ===
+ls: cannot access '/root/steamwebhelper': No such file or directory
+wrapper:
+B=/root/.local/share/Steam
+exec "$L/ld-linux-aarch64.so.1" \
+    --library-path "$L:$L/pulseaudio:$B/steamrtarm64:$B/steamrtarm64/libs" \
+    "$B/steamrtarm64/steamwebhelper" "$@"
+
+=== is the real binary still intact? ===
+7f454c46 size=10326560
+
+=== start the client ===
+t= 33s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 66s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 99s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=132s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=165s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=198s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+
+=== webhelper log ===
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xffffaff0 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 11:07:59 UTC 2026

@@ -1,0 +1,23 @@
+AGENT_BEGIN id=284-webhelper-full-path pid=43 Sat Oct 17 10:52:27 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the webhelper with the full host library path ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+
+=== and the client itself? ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+
+=== start the client so its children inherit that path ===
+t= 34s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logge | wh: LINPAD_THREAD result=0
+t= 68s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logge | wh: LINPAD_THREAD result=0
+t=102s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logge | wh: LINPAD_THREAD result=0
+t=136s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logge | wh: LINPAD_THREAD result=0
+t=170s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logge | wh: LINPAD_THREAD result=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:55:20 UTC 2026

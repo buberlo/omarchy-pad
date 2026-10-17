@@ -1,0 +1,14 @@
+AGENT_BEGIN id=278-one-client-for-play pid=43 Sat Oct 17 10:29:52 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+left: 0  headroom: 7972 MB
+t= 38s steam=2 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+t= 76s steam=2 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+t=114s steam=2 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+t=152s steam=0 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+t=190s steam=0 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+t=228s steam=0 webhelper=0 | [2026-10-17 09:21:54] [Logged On, 4,
+=== put the reaper stub back (Steam restores the ELF at client start) ===
+#!
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:33:44 UTC 2026

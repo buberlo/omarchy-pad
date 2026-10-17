@@ -1,0 +1,22 @@
+AGENT_BEGIN id=289-symlink-and-client pid=43 Sat Oct 17 11:00:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== make sure the real binary is intact ===
+7f454c46 size=10326560
+=== restore the symlink the client looks for (safe now: the target is the real binary) ===
+lrwxrwxrwx 1 root root 52 Oct 17 11:00 /root/steamwebhelper -> /root/.local/share/Steam/steamrtarm64/steamwebhelper
+
+=== start the client normally ===
+t= 33s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 66s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 99s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=132s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=165s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=198s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+
+=== webhelper log tail ===
+LINPAD_THREAD result=0
+LINPAD_THREAD result=0
+LINPAD_THREAD attr=0xdcfa6270 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 11:04:14 UTC 2026

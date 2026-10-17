@@ -1,0 +1,28 @@
+AGENT_BEGIN id=285-webhelper-wrapper pid=43 Sat Oct 17 10:55:41 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== keep a copy of the old symlink ===
+lrwxrwxrwx 1 root root 52 Oct 17 00:41 /root/steamwebhelper -> /root/.local/share/Steam/steamrtarm64/steamwebhelper
+
+wrapper in place:
+#!/bin/sh
+# The Steam client spawns its UI backend as $HOME/steamwebhelper. That binary is a glibc program, and
+# this guest is musl: executed directly it dies on missing glibc symbols (libdl.so.2 and friends), which
+
+=== does it run now? ===
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamrtarm64/steamwebhelper: error while loading shared libraries: /root/.local/share/Steam/steamrtarm64/steamwebhelper: invalid ELF header
+
+=== start the client normally (its children inherit nothing special) ===
+t= 34s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 68s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=102s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=136s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=170s steam=2 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+
+=== webhelper log ===
+[2937:2952:1017/105245.315591:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/sys
+LINPAD_THREAD attr=0xffffbf40 stack=(nil) size=800000 guard=1000 entry=0x80063102a4
+LINPAD_THREAD result=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:58:35 UTC 2026

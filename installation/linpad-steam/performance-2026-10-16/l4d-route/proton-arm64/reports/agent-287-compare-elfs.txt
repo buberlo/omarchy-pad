@@ -1,0 +1,14 @@
+AGENT_BEGIN id=287-compare-elfs pid=43 Sat Oct 17 10:59:30 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+steamrtarm64/steam                                         7f454c460201010000000000000000000300b700  size=10174384
+steamrtarm64/steamwebhelper                                23212f62696e2f73680a23205468652053746561  size=623
+ubuntu12_64/steamwebhelper                                 7f454c4602010100000000000000000002003e00  size=12597384
+
+expected aarch64 ELF header: 7f454c46020101...  (e_machine=0xb7 at byte 18)
+
+=== which loader does each declare? (PT_INTERP) ===
+steam                                    /lib/ld-linux-aarch64.so.1
+steamwebhelper                           exec "/opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1" \
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:59:30 UTC 2026

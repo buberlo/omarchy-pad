@@ -1,0 +1,23 @@
+AGENT_BEGIN id=283-webhelper-with-steam-libs pid=43 Sat Oct 17 10:48:15 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== what library path does the launcher use? ===
+3:BASE="$HOME/.local/share/Steam"
+5:LOADER="$L/ld-linux-aarch64.so.1"
+6:LIBS="$L:$L/pulseaudio:$BASE/steamrtarm64:$BASE/steamrtarm64/libs"
+
+LIBS=
+
+=== does the webhelper run with the launcher's own LIBS? ===
+
+=== how libibus looks there ===
+/opt/steam-host/usr/lib/aarch64-linux-gnu/libibus-1.0.so.5
+
+=== start the client with exactly that path ===
+t= 34s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 68s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=102s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=136s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+t=170s steam=0 webhelper=0 | login: [2026-10-17 09:21:54] [Logged 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:52:06 UTC 2026

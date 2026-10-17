@@ -1,0 +1,37 @@
+AGENT_BEGIN id=281-webhelper-check pid=43 Sat Oct 17 10:44:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the symlink the client needs ===
+lrwxrwxrwx 1 root root 52 Oct 17 00:41 /root/steamwebhelper -> /root/.local/share/Steam/steamrtarm64/steamwebhelper
+=== the real binary ===
+-rwxr-xr-x 10326560 /root/.local/share/Steam/steamrtarm64/steamwebhelper
+-rwxr-xr-x 12597384 /root/.local/share/Steam/ubuntu12_64/steamwebhelper
+
+=== what the webhelper says when run by hand ===
+timeout: warning: timer_create: Bad address
+/root/steamwebhelper: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+
+=== its log ===
+LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/17 09:21:36 /tmp/dumps: insufficient permissions - delete and recreate
+LINPAD_THREAD attr=0xffffc8f8 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xef4f6a40
+LINPAD_THREAD result=0
+10/17 09:21:36 minidumps folder is set to /tmp/dumps
+=== dumps dir ===
+drwxr-x--- 2 root root 64 Oct 17 10:40 /tmp/dumps
+=== does the client's own log mention the webhelper? ===
+[2026-10-16 07:34:44] GetIPCConnectionDetails: 688	/root/.local/share/Steam/steamrtarm64/steamwebhelper	206	/root/.local/share/Steam/config/htmlcache/
+[2026-10-16 07:34:44] GetIPCConnectionDetails: 688	/root/.local/share/Steam/steamrtarm64/steamwebhelper	207	/root/.local/share/Steam/config/htmlcache/
+[2026-10-16 07:34:44] GetIPCConnectionDetails: 688	/root/.local/share/Steam/steamrtarm64/steamwebhelper	208	/root/.local/share/Steam/config/htmlcache/
+[2026-10-16 07:34:44] GetIPCConnectionDetails: 688	/root/.local/share/Steam/steamrtarm64/steamwebhelper	209	/root/.local/share/Steam/config/htmlcache/
+[2026-10-16 07:34:44] GetIPCConnectionDetails: 688	/root/.local/share/Steam/steamrtarm64/steamwebhelper	210	/root/.local/share/Steam/config/htmlcache/
+=== and what does the client's bootstrap say? ===
+total 17724
+-rwxr-xr-x 1 root root   92367 Oct 17 10:42 updateui_child.txt
+-rwxr-xr-x 1 root root  178237 Oct 17 10:42 bootstrap_log.txt
+-rwxr-xr-x 1 root root   87394 Oct 17 09:23 systemmanager.txt
+-rw-r--r-- 1 root root   14762 Oct 17 09:23 steamwebhelper.log
+-rwxr-xr-x 1 root root  175991 Oct 17 09:22 cloud_log.txt
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 10:44:07 UTC 2026
