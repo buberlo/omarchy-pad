@@ -373,3 +373,5 @@ dword_t syscall_success_stub(void);
 
 // Dump the last syscalls of the traced processes (see kernel/calls.c).
 void ish_dump_syscall_ring(const char *why);
+// Is this one of the processes under investigation?
+bool ish_traced_process(void);

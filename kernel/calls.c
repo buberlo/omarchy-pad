@@ -18,6 +18,12 @@ struct ish_syscall_entry {
 static struct ish_syscall_entry ish_syscall_ring[ISH_SYSCALL_RING];
 static int ish_syscall_ring_pos;
 
+bool ish_traced_process(void) {
+    return strncmp(current->comm, "ld-linux", 8) == 0 ||
+           strstr(current->comm, "steam") != NULL ||
+           strstr(current->comm, "reaper") != NULL;
+}
+
 void ish_dump_syscall_ring(const char *why) {
     printk("ish-ring: %s for %d(%s), last %d syscalls:\n", why, current->pid, current->comm,
            ISH_SYSCALL_RING);
@@ -157,16 +163,11 @@ void handle_interrupt(int interrupt) {
                 // Only the interesting processes are logged (the Steam client runs as
                 // "ld-linux-aarch64" here because it is started through the glibc loader), so the
                 // boot's own EPERMs cannot fill the cap before it gets there.
-                if (result == -_EPERM &&
-                        (strncmp(current->comm, "ld-linux", 8) == 0 ||
-                         strstr(current->comm, "steam") != NULL ||
-                         strstr(current->comm, "reaper") != NULL)) {
+                if (result == -_EPERM && ish_traced_process()) {
                     // Ring buffer of the last slow-path syscalls of the processes under investigation.
                 // Nothing is printed until one of them takes a fatal signal (see signal.c), which is
                 // exactly when the last few calls name the cause.
-                if (strncmp(current->comm, "ld-linux", 8) == 0 ||
-                        strstr(current->comm, "steam") != NULL ||
-                        strstr(current->comm, "reaper") != NULL) {
+                if (ish_traced_process()) {
                     struct ish_syscall_entry *e = &ish_syscall_ring[ish_syscall_ring_pos++ % ISH_SYSCALL_RING];
                     e->pid = current->pid;
                     snprintf(e->comm, sizeof(e->comm), "%s", current->comm);

@@ -54,6 +54,12 @@ static struct task *find_new_parent(struct task *task) {
 }
 
 noreturn void do_exit(int status) {
+    // Diagnostic: when one of the traced processes leaves, say how -- an assertion that calls exit()
+    // rather than abort() never reached the fatal-signal dump -- and print its last syscalls.
+    if (ish_traced_process()) {
+        printk("ish-ring: %d(%s) exiting with status %d\n", current->pid, current->comm, status);
+        ish_dump_syscall_ring("exit");
+    }
     if (current && current->pid == 1) {
         extern void dump_pc_hist(void);
         extern void dump_pc_trace(void);
