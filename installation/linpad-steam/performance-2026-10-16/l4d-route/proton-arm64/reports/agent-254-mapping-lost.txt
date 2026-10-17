@@ -1,0 +1,40 @@
+AGENT_BEGIN id=254-mapping-lost pid=43 Sat Oct 17 08:53:52 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== is the mapping still in config.vdf? ===
+				"CompatToolMapping"
+				{
+					"500"
+					{
+						"name"		"linpad-proton"
+						"config"		""
+						"priority"		"250"
+--- backups:
+20141 /root/.local/share/Steam/config/config.vdf
+19311 /root/.local/share/Steam/config/config.vdf.kb4453-mapping-backup
+20118 /root/.local/share/Steam/config/config.vdf.kb4453-tool-backup
+
+=== did the client see the tool? ===
+--- /tmp/steam-main.log
+LINPAD_THREAD attr=0xd3ffc818 stack=0xfffffffffff00000 size=100000 guard=1000 entry=0xeca76a40
+LINPAD_THREAD result=0
+--- /tmp/steam-viewer.log
+
+=== tool dir contents and manifest ===
+total 0
+drwxr-xr-x  4 root root  128 Oct 17 08:41 .
+drwxr-xr-x 30 root root 1376 Oct 17 08:49 ..
+drwx------  2 root root  224 Oct 16 18:06 linpad-fex-native
+drwxr-xr-x  2 root root  160 Oct 17 08:41 linpad-proton
+"manifest"
+{
+  "version" "2"
+  "commandline" "/run %verb% --"
+  "compatmanager_layer_name" "linpad-proton"
+}
+=== for comparison, the tool Steam *does* know (HK) is Linux-only ===
+      "display_name" "LinPad FEX (Linux Vulkan)"
+      "from_oslist" "linux"
+      "to_oslist" "linux"
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:53:53 UTC 2026

@@ -1,0 +1,33 @@
+AGENT_BEGIN id=253-full-command pid=43 Sat Oct 17 08:53:26 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the full command line Steam launched (untruncated) ===
+[2026-10-17 08:49:07] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- '/root/.local/share/Steam/stea
+mapps/common/left 4 dead/left4dead.exe'", ProcID 7105, IP 0.0.0.0:0
+
+=== does Steam mention my tool at all? ===
+0
+=== the compatibility tool list Steam built ===
+[2026-10-17 06:27:43] Waiting for compat in post-logon took: 10.774598s
+[2026-10-17 06:44:37] Waiting for compat in post-logon took: 6.543925s
+[2026-10-17 07:05:17] Waiting for compat in post-logon took: 4.102992s
+[2026-10-17 07:13:09] Waiting for compat in post-logon took: 4.117002s
+[2026-10-17 07:21:15] Waiting for compat in post-logon took: 4.769829s
+[2026-10-17 07:29:00] Waiting for compat in post-logon took: 7.894690s
+[2026-10-17 08:27:50] Waiting for compat in post-logon took: 4.376848s
+[2026-10-17 08:43:03] Waiting for compat in post-logon took: 4.511041s
+
+=== what is running right now? ===
+    8 sh
+ 5530 steam
+ 7940 sh
+
+=== is there a launcher error in the wrapper log? ===
+-rw-r--r-- 1 root root      962 Oct 17 08:52 /tmp/kb-agent.log
+-rw-r--r-- 1 root root    17133 Oct 17 08:49 /tmp/steam-main.log
+-rw-r--r-- 1 root root     1146 Oct 17 08:49 /tmp/steam-viewer.log
+-rw-r--r-- 1 root root     1527 Oct 17 08:49 /tmp/steam-xvnc.log
+-rw-r--r-- 1 root root     1041 Oct 17 08:49 /tmp/ishwl.log
+-rw-r--r-- 1 root root        0 Oct 17 08:49 /tmp/steam-wm.log
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:53:28 UTC 2026

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Steam calls the Steam Linux Runtime entry point as
+#   _v2-entry-point --verb=waitforexitandrun -- <command...>
+# The real script cannot relocate its glibc libraries in this musl guest, so this runs the command
+# after the "--": Proton's own proton script, which brings its own wine and needs no runtime. The
+# original is kept as _v2-entry-point.kb4453-original.
+set -eu
+while [ $# -gt 0 ] && [ "$1" != "--" ]; do shift; done
+[ "${1:-}" = "--" ] && shift
+[ "$#" -gt 0 ] || { printf '%s\n' 'linpad runtime entry point: no command after --' >&2; exit 64; }
+exec "$@"

@@ -1,0 +1,64 @@
+AGENT_BEGIN id=247-hk-tool-files pid=43 Sat Oct 17 08:41:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== compatibilitytool.vdf ===
+"compatibilitytools"
+{
+  "compat_tools"
+  {
+    "linpad-fex-native"
+    {
+      "install_path" "."
+      "display_name" "LinPad FEX (Linux Vulkan)"
+      "from_oslist" "linux"
+      "to_oslist" "linux"
+    }
+  }
+}
+=== run ===
+#!/bin/sh
+set -eu
+
+case "${1:-}" in
+    run|waitforexitandrun) shift ;;
+    *) printf '%s\n' 'LinPad FEX: expected run or waitforexitandrun.' >&2; exit 64 ;;
+esac
+[ "${1:-}" != -- ] || shift
+[ "$#" -gt 0 ] || { printf '%s\n' 'LinPad FEX: missing Linux game command.' >&2; exit 64; }
+
+# Resolve this script without changing the game's Steam-provided working directory.
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+exec "$tool_dir/launch-game" "$@"
+=== launch-game ===
+#!/bin/sh
+# Direct Linux ELF launcher. Steam registration and game qualification are pending.
+set -eu
+
+die() { printf 'LinPad FEX: %s\n' "$*" >&2; exit 64; }
+
+inside_x11=0
+if [ "${1:-}" = --linpad-display-ready ]; then
+    inside_x11=1
+    shift
+fi
+[ "$#" -gt 0 ] || die 'missing Linux game executable'
+case "$1" in
+    *.exe|*.EXE) die 'Windows executable selected; select the native Linux compatibility tool first' ;;
+esac
+[ -f "$1" ] || die "game executable does not exist relative to the current directory: $1"
+
+runtime=${LINPAD_FEX_RUNTIME:-/opt/hollow-runtime}
+translator=${LINPAD_FEX_BINARY:-/usr/local/bin/linpad-egl-hook}
+case "$runtime" in /*) ;; *) die 'LINPAD_FEX_RUNTIME must be an absolute path' ;; esac
+case "$translator" in /*) ;; *) die 'LINPAD_FEX_BINARY must be an absolute path' ;; esac
+[ -x "$translator" ] || die "FEX executable unavailable: $translator"
+[ -f "$runtime/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2" ] || die "x86 glibc loader unavailable in $runtime"
+
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+display_mode=${LINPAD_FEX_DISPLAY_MODE:-wayland}
+
+# ARM64 Steam uses a private GLX/llvmpipe runtime. Do not pass that runtime,
+# its overlay, or its browser settings into Xwayland or the x86 game.
+unset LD_PRELOAD LD_LIBRARY_PATH LD_AUDIT LD_DEBUG LD_DEBUG_OUTPUT
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:41:36 UTC 2026

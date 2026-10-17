@@ -1,0 +1,31 @@
+AGENT_BEGIN id=252-reaper-stub-fixed pid=43 Sat Oct 17 08:48:58 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== keep the original (it is already backed up as reaper.before-kb4453) ===
+reaper replaced:
+#!/bin/sh
+# Steam's reaper binary refuses to run here: it calls a prctl this emulator does not implement and
+# dies with "reaper: prctl() failed!", which makes Steam report the game process as removed the moment
+-rwxr-xr-x 704 /root/.local/share/Steam/steamrtarm64/reaper
+-rwxr-xr-x 19336 /root/.local/share/Steam/steamrtarm64/reaper.before-kb4453
+
+=== try the Steam launch again ===
+t= 38s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+t= 76s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+t=114s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+t=152s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+t=190s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+t=228s steam.exe=0 game=0 services=0 tool=0 new_windows=1
+
+=== windows ===
+ishwl 20798.015: map toplevel 7 '' Steam
+ishwl 20937.932: map toplevel 8 '' Steam
+ishwl 21180.781: map toplevel 9 '' Steam
+=== Steam's view ===
+[2026-10-16 18:44:22] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-16 18:47:44] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-16 19:06:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-17 08:45:02] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-17 08:49:07] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:52:53 UTC 2026

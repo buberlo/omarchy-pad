@@ -1,0 +1,51 @@
+AGENT_BEGIN id=246-compat-tools pid=43 Sat Oct 17 08:41:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== existing compat tools ===
+total 0
+drwxr-xr-x  3 root root   96 Oct 16 09:16 .
+drwxr-xr-x 30 root root 1376 Oct 17 08:29 ..
+drwx------  2 root root  224 Oct 16 18:06 linpad-fex-native
+
+=== the Hollow Knight tool's manifest (the proven pattern) ===
+--- /root/.local/share/Steam/compatibilitytools.d/linpad-fex-native/
+"manifest"
+{
+  "version" "2"
+  "commandline" "/run %verb% --"
+  "compatmanager_layer_name" "linpad-fex"
+}
+compatibilitytool.vdf
+launch-game
+launch-game.before-kb4453
+run
+toolmanifest.vdf
+
+=== Proton's own manifest for reference ===
+"manifest"
+{
+  "version" "2"
+  "commandline" "/proton %verb%"
+  "require_tool_appid" "4185400"
+  "use_sessions" "1"
+  "compatmanager_layer_name" "proton"
+}
+
+=== the current mapping for 500 and 367520 ===
+						"500"		"2362116_5204965586071007641_32912350_fozpipelinesv6\\steam_pipeline_cache.foz"
+					}
+					"CompatToolBucketHashes"
+					{
+--
+					"500"
+					{
+						"DecryptionKey"		"b17ac8c5e383af45264bd21caaac5f45e1f40e9883bbef39cb25d308b4083ab7"
+					"367520"
+					{
+						"name"		"linpad-fex-native"
+						"config"		""
+						"priority"		"250"
+					}
+					"500"
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:41:24 UTC 2026

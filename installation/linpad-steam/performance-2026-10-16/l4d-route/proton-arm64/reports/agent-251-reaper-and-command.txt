@@ -1,0 +1,7 @@
+AGENT_BEGIN id=251-reaper-and-command pid=43 Sat Oct 17 08:48:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the current reaper (my stub) ===
+-rwxr-xr-x 1 root root 19336 Oct 16 23:27 /root/.local/share/Steam/steamrtarm64/reaper
+-rwxr-xr-x 1 root root 19336 Sep 28  2022 /root/.local/share/Steam/steamrtarm64/reaper.before-kb4453
+ELF

@@ -758,3 +758,42 @@ Also worth recording from this round: the earlier "wine hangs" observations were
 The instrumented builds stalled because `printk` is synchronous os_log on iOS and wine maps thousands of
 files; the CoW builds stalled because of the deadlock above. Both are gone now, and the emulator is back
 to its normal speed with the session intact.
+
+## Round of 17 October, 17:15–18:10: **Steam drives the whole chain now — the blocker was a platform override**
+
+Steam never used a compatibility tool for Left 4 Dead, and that had nothing to do with Proton or the
+runtime. App 500 was pinned to the Linux platform:
+
+```
+userdata/38877668/config/compat.vdf
+"platform_overrides"
+{
+	"500" { "dest" "linux"  "src" "windows" }      <- this made Steam look for a Linux build
+}
+```
+
+With that override Steam considered the app a Linux title, found the Windows executable and ran it
+directly — which is why the compat mapping in `config.vdf` was ignored no matter what it said. Removing
+the entry (backup: `compat.vdf.kb4453-backup`) and restarting the client produced the full chain:
+
+```
+[2026-10-17 09:08:25] Game process added : AppID 500
+  "…/steam-launch-wrapper -- …/reaper SteamLaunch AppId=500 --
+   '…/SteamLinuxRuntime_4-arm64'/_v2-entry-point --verb=waitforexitandrun --
+   '…/Proton 11.0 (ARM64)'/proton waitforexitandrun '…/left4dead.exe'"
+```
+
+Two stubs make that chain work here, both kept in this directory:
+
+* `reaper` — Steam's reaper binary dies on `prctl() failed!`, so Steam reported the game process as
+  removed the moment it was added; the stub runs the command after the `--` instead
+  (original: `reaper.before-kb4453`).
+* `_v2-entry-point` — the Steam Linux Runtime entry point cannot relocate its glibc libraries in this
+  musl guest; the stub runs the command after its `--`, which is Proton itself, so the runtime stage
+  disappears exactly as `linpad-proton-arm64` already does by hand
+  (original: `_v2-entry-point.kb4453-original`).
+
+Also created but currently unused: a real compatibility tool `compatibilitytools.d/linpad-proton`
+(linux → windows) with a `run` that hands the game to `linpad-proton-arm64`. Steam ignores it for a
+Windows app unless the tool declares `require_tool_appid`, which would drag the runtime chain back in,
+so the runtime stub above is the working route.

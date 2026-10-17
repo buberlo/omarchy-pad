@@ -1,0 +1,50 @@
+AGENT_BEGIN id=245-amdxcffx64 pid=43 Sat Oct 17 08:41:02 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does the file exist anywhere in Proton? ===
+-r-xr-xr-x 1 root root 655360 Oct 16 08:19 /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-windows/amdxc64.dll
+=== and in the prefix? ===
+
+=== what does Proton do with it? (the copy step in its script) ===
+182-            link_debug = False
+183-
+184-        if file_exists(dst + '.debug', follow_symlinks=False):
+185-            os.remove(dst + '.debug')
+186-        elif link_debug and track_file:
+187-            track_file.write(os.path.relpath(dst + '.debug', prefix) + '\n')
+188-
+189-        if link_debug:
+190-            os.symlink(src + '.debug', dst + '.debug')
+191-
+192-    except FileNotFoundError as e:
+193-        if optional:
+194:            log('Error while copying to \"' + dst + '\": ' + e.strerror)
+195-        else:
+196-            raise
+197-
+198-    except PermissionError as e:
+199-        if e.errno == errno.EPERM:
+200-            #be forgiving about permissions errors; if it's a real problem, things will explode later anyway
+201:            log('Error while copying to \"' + dst + '\": ' + e.strerror)
+202-        else:
+203-            raise
+204-
+205-#rsync-like directory sync, deletes files at dst not present in src
+206-def dir_sync(dst, src):
+207-    if not os.path.exists(dst):
+--
+276-    copyfile = shutil.copyfile
+277-
+278-def try_copyfile(src, dst):
+279-    try:
+280-        if os.path.isdir(dst):
+281-            dst = dst + "/" + os.path.basename(src)
+282-        if file_exists(dst, follow_symlinks=False):
+283-            os.remove(dst)
+284-        copyfile(src, dst)
+285-    except PermissionError as e:
+286-        if e.errno == errno.EPERM:
+287-            #be forgiving about permissions errors; if it's a real problem, things will explode later anyway
+288:            log('Error while copying to \"' + dst + '\": ' + e.strerror)
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:41:03 UTC 2026

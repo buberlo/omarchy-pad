@@ -1,0 +1,29 @@
+AGENT_BEGIN id=258-fix-platform-override pid=43 Sat Oct 17 09:00:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+removed the 500 platform override: True
+=== compat.vdf now ===
+"platform_overrides"
+{
+	"367520"
+	{
+		"dest"		"linux"
+		"src"		"windows"
+	}
+}
+
+=== restart the client so it re-reads the config, then play ===
+  t= 35s steam=2 webhelper=0 | [2026-10-17 08:55:40] [Logged Off, 0
+  t= 70s steam=2 webhelper=0 | [2026-10-17 08:55:40] [Logged Off, 0
+  t=105s steam=2 webhelper=0 | [2026-10-17 08:55:40] [Logged Off, 0
+  t=140s steam=2 webhelper=0 | [2026-10-17 08:55:40] [Logged Off, 0
+
+t= 36s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t= 72s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=108s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=144s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+=== the command Steam used ===
+[2026-10-17 08:55:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch App
+Id=500 -- '/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 8632, IP 0.0.0.0:0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 09:04:55 UTC 2026

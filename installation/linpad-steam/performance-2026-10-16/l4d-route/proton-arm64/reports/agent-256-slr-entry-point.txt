@@ -1,0 +1,43 @@
+AGENT_BEGIN id=256-slr-entry-point pid=43 Sat Oct 17 08:55:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the runtime entry point ===
+-rwxr-xr-x 1 root root 9257 Oct 16 08:19 /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point
+#!/bin/sh
+# Copyright 2020-2022 Collabora Ltd.
+# SPDX-License-Identifier: MIT
+
+=== map 500 back to Valve's Proton tool ===
+mapping for 500 -> proton_11-arm64
+				"CompatToolMapping"
+				{
+					"500"
+					{
+						"name"		"proton_11-arm64"
+						"config"		""
+
+=== replace the runtime's entry point with something that works here ===
+-rwxr-xr-x 641 /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point
+-rwxr-xr-x 9257 /root/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4-arm64/_v2-entry-point.kb4453-original
+
+=== play ===
+t= 40s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t= 80s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=120s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=160s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=200s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+t=240s steam.exe=0 game=0 services=0 wine=0 new_windows=1
+
+=== windows ===
+ishwl 20937.932: map toplevel 8 '' Steam
+ishwl 21180.781: map toplevel 9 '' Steam
+ishwl 21566.300: map toplevel 10 '' Steam
+=== Steam's view ===
+[2026-10-17 08:45:02] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- 
+'/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 6208, IP 0.0.0.0:0
+[2026-10-17 08:49:07] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- 
+'/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 7105, IP 0.0.0.0:0
+[2026-10-17 08:55:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 -- 
+'/root/.local/share/Steam/steamapps/common/left 4 dead/left4dead.exe'", ProcID 8632, IP 0.0.0.0:0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:59:26 UTC 2026

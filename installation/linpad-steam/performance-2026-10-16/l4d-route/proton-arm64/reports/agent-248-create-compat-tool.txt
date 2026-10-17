@@ -1,0 +1,27 @@
+AGENT_BEGIN id=248-create-compat-tool pid=43 Sat Oct 17 08:41:59 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the tool ===
+total 12
+-rw-r--r-- 1 root root 232 Oct 17 08:41 compatibilitytool.vdf
+-rwxr-xr-x 1 root root 878 Oct 17 08:41 run
+-rw-r--r-- 1 root root 109 Oct 17 08:41 toolmanifest.vdf
+6
+
+=== map appid 500 to it (with a backup) ===
+CompatToolMapping found: True
+inserted a new 500 entry
+=== the mapping now ===
+				"CompatToolMapping"
+				{
+						"500"
+						{
+							"name"		"linpad-proton"
+						{
+							"name"		"linpad-proton"
+							"config"		""
+							"priority"		"250"
+						}
+					"367520"
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:41:59 UTC 2026

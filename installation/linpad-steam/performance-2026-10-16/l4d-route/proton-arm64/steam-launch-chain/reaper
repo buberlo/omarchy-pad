@@ -1,0 +1,10 @@
+#!/bin/sh
+# Steam's reaper binary calls a prctl this emulator does not implement and dies with
+# "reaper: prctl() failed!", so Steam reported the game process as removed the moment it was added and
+# the launch never reached the compatibility tool. This stands in for it and runs the command after the
+# "--" that steam-launch-wrapper appended. The original is kept as reaper.before-kb4453.
+set -eu
+while [ $# -gt 0 ] && [ "$1" != "--" ]; do shift; done
+[ "${1:-}" = "--" ] && shift
+[ "$#" -gt 0 ] || { printf '%s\n' 'reaper stub: no command after --' >&2; exit 64; }
+exec "$@"

@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 27837,
-      "sha256": "fbd7bdbc1f33a3630f04178d9c44bfff4b52303c44e49d3adf764e1db9feb358"
+      "bytes": 29912,
+      "sha256": "cb7a6d1f45306d526c553586997cab01bed9835cd78952830fe85f92d4253398"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 46059,
-      "sha256": "4609a23ed401a718d85c181a658cca44cfd8d9b44e70a5cbff1feed54d7d1445"
+      "bytes": 48041,
+      "sha256": "06853720aeda25317f39c33c23c475c487e7588915f7e8231faf0a5f26b14f5d"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -5413,6 +5413,86 @@
       "sha256": "637b52af8adace154ef043bb91dc14a4692e91d69a50d430062ea2ef6a69736a"
     },
     {
+      "path": "l4d-route/proton-arm64/reports/agent-244-proton-log.txt",
+      "bytes": 785,
+      "sha256": "673fd7925d454b0a053b0aa1312477a39d93668a2dacc040a9b0520a53d1bc54"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-245-amdxcffx64.txt",
+      "bytes": 2035,
+      "sha256": "829945e600f6c1c5050207dd47a265a928e2a134a9703fba192292588ac2ecd5"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-246-compat-tools.txt",
+      "bytes": 1300,
+      "sha256": "59ae91161262baf7d3a4b6f3964d1d3da5137c4640ad3d53291a47a13ce6787c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-247-hk-tool-files.txt",
+      "bytes": 2223,
+      "sha256": "571969c896a57ed5179e397d08de238895b073e5047186afdee39a4819623bbb"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-248-create-compat-tool.txt",
+      "bytes": 688,
+      "sha256": "887bfdcaf8ea73493bf186159d33e0a921a025779c89b5f14644d4354dbe4fad"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-249-check-config.txt",
+      "bytes": 945,
+      "sha256": "8799755b3afef3ffa16198fc70560cbf715ac66b6f9309a6177d8e3b0adfb05f"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-250-steam-applaunch-l4d.txt",
+      "bytes": 2375,
+      "sha256": "0814e1f95752af25d33e96e89e069177f93fc570a9886826fa3d4594a19e5893"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-251-reaper-and-command.txt",
+      "bytes": 366,
+      "sha256": "df088befcf5e517841eb9e8bbc955238a930527f9bb0d90d8bba3fff647ebbb4"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-252-reaper-stub-fixed.txt",
+      "bytes": 1926,
+      "sha256": "6851a285c6649a950171bfce7c05f19f274b3fa833f9f3f911235d0945776476"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-253-full-command.txt",
+      "bytes": 1684,
+      "sha256": "2a73c32084615d212dbbdcd679f40cb9acb8e8eb188d75325d7e0a155a3d85db"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-254-mapping-lost.txt",
+      "bytes": 1287,
+      "sha256": "3309d45efdc568a5017d56d699c6526dd8063722f5de82236a24b4643e8b690c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-255-localconfig.txt",
+      "bytes": 674,
+      "sha256": "2ecbd5652aedc30d4fcaac31d932c8aae2ddcf45375e4dc757a3317e5ccbf33d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-256-slr-entry-point.txt",
+      "bytes": 2220,
+      "sha256": "44e4fb89c659a0cd421139ad05f70289703177bf54f43648336ebf614eec9fe6"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-257-compat-vdf.txt",
+      "bytes": 1007,
+      "sha256": "2d16f4bb208a9604139cd87921512922b4f44db037ebc5659f9540a6478fb5f2"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-258-fix-platform-override.txt",
+      "bytes": 1201,
+      "sha256": "bbc8cf23c65cc748dce469c8e78bd6602a5d59fa2ea13dd0d72d489a93646320"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-259-login-and-play.txt",
+      "bytes": 1987,
+      "sha256": "2839d383048b4e866abf7ad1ff3a0caa013494161f15ec0f876893b992cf50c3"
+    },
+    {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
       "bytes": 1031,
       "sha256": "8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c"
@@ -5576,6 +5656,16 @@
       "path": "l4d-route/proton-arm64/shared-object-fix/real.c.final",
       "bytes": 31909,
       "sha256": "bd1ea2b4a22060361d5f3cc9d9021f671cd0c293e55960a89ee41af147afffad"
+    },
+    {
+      "path": "l4d-route/proton-arm64/steam-launch-chain/_v2-entry-point",
+      "bytes": 578,
+      "sha256": "af2d0e2a5863a98a10dbfa7ec512ed82e26c5be483eb06e2c5d6b171002d5b87"
+    },
+    {
+      "path": "l4d-route/proton-arm64/steam-launch-chain/reaper",
+      "bytes": 578,
+      "sha256": "0d00ea459932c5ce541633b0d79c6f522f210400b19417e18eb1290b5129e433"
     },
     {
       "path": "l4d-route/proton-arm64/wine-internals/ntdll-unix-virtual.c",

@@ -1,0 +1,28 @@
+AGENT_BEGIN id=249-check-config pid=43 Sat Oct 17 08:42:16 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== backups ===
+-rwxr-xr-x 1 root root 20222 Oct 17 08:41 /root/.local/share/Steam/config/config.vdf
+-rwx------ 1 root root 19311 Oct 16 19:09 /root/.local/share/Steam/config/config.vdf.kb4453-mapping-backup
+-rwxr-xr-x 1 root root 20118 Oct 17 08:41 /root/.local/share/Steam/config/config.vdf.kb4453-tool-backup
+
+=== the CompatToolMapping block, verbatim ===
+742: 				"CompatToolMapping"
+743: 				{
+744: 						"500"
+745: 						{
+746: 							"name"		"linpad-proton"
+747: 							"config"		""
+748: 							"priority"		"250"
+749: 						}
+750: 					"367520"
+751: 					{
+752: 						"name"		"linpad-fex-native"
+753: 						"config"		""
+754: 						"priority"		"250"
+755: 					}
+
+=== brace balance of the whole file ===
+final depth: 0 | underflows: 0 | in-quote at EOF: False
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:42:16 UTC 2026

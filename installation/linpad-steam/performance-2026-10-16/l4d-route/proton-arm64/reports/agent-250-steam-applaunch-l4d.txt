@@ -1,0 +1,32 @@
+AGENT_BEGIN id=250-steam-applaunch-l4d pid=43 Sat Oct 17 08:42:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1. Steam client with a display (reads compatibilitytools.d at startup) ===
+  t= 35s steam=1 webhelper=6 | [2026-10-17 08:42:58] [Logged On, 4, 7
+  t= 70s steam=1 webhelper=7 | [2026-10-17 08:42:58] [Logged On, 4, 7
+  t=105s steam=1 webhelper=7 | [2026-10-17 08:42:58] [Logged On, 4, 7
+  t=140s steam=1 webhelper=7 | [2026-10-17 08:42:58] [Logged On, 4, 7
+
+=== 2. ask Steam to play appid 500 (it will use linpad-proton) ===
+t= 36s steam.exe=0 game=0 services=0 compat_tool_log=0 new_windows=3
+t= 72s steam.exe=0 game=0 services=0 compat_tool_log=0 new_windows=3
+t=108s steam.exe=0 game=0 services=0 compat_tool_log=0 new_windows=3
+t=144s steam.exe=0 game=0 services=0 compat_tool_log=0 new_windows=3
+t=180s steam.exe=0 game=0 services=0 compat_tool_log=0 new_windows=3
+
+=== windows ===
+ishwl 20183.414: map toplevel 5 '' env
+ishwl 20797.602: map toplevel 6 '' steam
+ishwl 20798.015: map toplevel 7 '' Steam
+ishwl 20937.932: map toplevel 8 '' Steam
+=== what Steam did with the app ===
+[2026-10-16 18:55:23] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-applaunch' '500'"
+[2026-10-16 19:06:31] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 --
+[2026-10-16 19:06:31] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-16 19:06:32] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Stea
+[2026-10-17 08:44:57] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-no-cef-sandbox' '-cef-dis
+[2026-10-17 08:45:02] /bin/sh\0-c\0/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper SteamLaunch AppId=500 --
+[2026-10-17 08:45:02] Game process added : AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Steam
+[2026-10-17 08:45:02] Game process removed: AppID 500 "/root/.steam/sdkarm64/steam-launch-wrapper -- /root/.local/share/Steam/steamrtarm64/reaper Stea
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:48:02 UTC 2026

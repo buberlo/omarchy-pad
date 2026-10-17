@@ -1,0 +1,34 @@
+AGENT_BEGIN id=255-localconfig pid=43 Sat Oct 17 08:54:21 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== userdata ===
+38877668
+--- /root/.local/share/Steam/userdata/38877668/
+cloudstorage
+compat.vdf
+librarycache
+licensecache
+localconfig.vdf
+
+=== the app's own config entry ===
+					"500"
+					{
+						"LastPlayed"		"1792226947"
+						"cloud"
+						{
+							"last_sync_state"		"synchronized"
+						}
+						"autocloud"
+						{
+--
+		"HintAppsToPreload"		"500"
+	}
+	"WebStorage"
+	{
+
+=== appmanifest: what platform does Steam think 500 is? ===
+	"appid"		"500"
+	"name"		"Left 4 Dead"
+	"StateFlags"		"4"
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 08:54:21 UTC 2026
