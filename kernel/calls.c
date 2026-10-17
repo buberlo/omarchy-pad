@@ -130,11 +130,17 @@ void handle_interrupt(int interrupt) {
                 // strerror(EPERM) -- so some syscall in its early path returns EPERM. Nothing obvious
                 // does (setpriority, sched_*, prctl, ptrace and setpgid were all checked or fixed),
                 // so name the caller instead of guessing. Capped: printk is synchronous os_log here.
-                static int eperm_traced;
-                if (result == -_EPERM && eperm_traced < 60) {
-                    eperm_traced++;
-                    printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
-                           current->pid, current->comm, syscall_num);
+                // Only the interesting processes are logged (the Steam client runs as
+                // "ld-linux-aarch64" here because it is started through the glibc loader), so the
+                // boot's own EPERMs cannot fill the cap before it gets there.
+                if (result == -_EPERM &&
+                        (strncmp(current->comm, "ld-linux", 8) == 0 ||
+                         strstr(current->comm, "steam") != NULL ||
+                         strstr(current->comm, "reaper") != NULL)) {
+                    static int eperm_traced;
+                    if (eperm_traced++ < 200)
+                        printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
+                               current->pid, current->comm, syscall_num);
                 }
                 // sigreturn/rt_sigreturn restore the full CPU state from the
                 // signal frame. Do NOT touch regs[0] — it was already restored
