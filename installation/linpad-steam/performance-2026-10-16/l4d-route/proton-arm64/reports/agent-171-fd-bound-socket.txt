@@ -1,0 +1,11 @@
+AGENT_BEGIN id=171-fd-bound-socket pid=43 Sat Oct 17 00:30:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+client: received fd 5
+client: object id read from the shared section: 0x1122334455667788 (want 0x1122334455667788)
+client: after the server's later write: 0xaabbccddeeff0011 (want 0xaabbccddeeff0011)
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:30:27 UTC 2026

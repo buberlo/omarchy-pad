@@ -1,0 +1,25 @@
+AGENT_BEGIN id=177-webhelper-symlink pid=43 Sat Oct 17 00:41:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== provide the path the client asks for ===
+lrwxrwxrwx 1 root root 52 Oct 17 00:41 /root/steamwebhelper -> /root/.local/share/Steam/steamrtarm64/steamwebhelper
+
+=== start the client again ===
+t= 38s steam=1 webhelper=6 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t= 76s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t=114s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t=152s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t=190s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t=228s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+t=266s steam=1 webhelper=7 | login: [2026-10-17 00:42:06] [Logged On, 4, 7 | wh_log=LINPAD_THREAD attr=0xffffc4b8 stack=0xfffffffffff00000 size=100000 gua
+
+=== client log ===
+[2026-10-17 00:42:16] IPC function call IClientApps::GetAllAppsKVRaw took too long: 289 msec
+[2026-10-17 00:42:17] IPC function call IClientUser::NumGamesRunning took too long: 88 msec
+[2026-10-17 00:42:18] System startup time: 40.54 seconds
+[2026-10-17 00:42:29] ExecCommandLine: "'/root/.local/share/Steam/steamrtarm64/steam' '-no-cef-sandbox' '-cef-disable-gpu' '-no-cef-sandbox'
+footprint_mb 2404
+allowance_mb 8192
+headroom_mb 5787
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:46:02 UTC 2026

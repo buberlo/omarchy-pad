@@ -1,0 +1,37 @@
+AGENT_BEGIN id=173-session-fd-context pid=43 Sat Oct 17 00:31:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== everything thread 0064 did around the session section (first time) ===
+0064: get_handle_fd( handle=0000 )
+0064: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0064: get_handle_fd( handle=0000 )
+0064: get_handle_fd() = INVALID_HANDLE { type=0, cacheable=0, access=00000000, options=00000000 }
+0064: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+0064: open_mapping() = 0 { handle=0024 }
+0064: get_mapping_info( handle=0024, access=00000004 )
+0064: get_mapping_info() = 0 { size=00144000, flags=08000000, shared_file=0000, name_len=0, total=0, image={}, name=L"", exp_name="" }
+0064: get_handle_fd( handle=0024 )
+0064: *fd* 0024 -> 20
+0064: get_handle_fd() = 0 { type=1, cacheable=1, access=00000004, options=00000020 }
+0064: map_view( mapping=0024, access=00000004, base=00710000, size=00144000, start=00000000 )
+0064: map_view() = 0
+0064: close_handle( handle=0024 )
+0064: close_handle() = 0
+
+=== how many fds were sent *to* the client threads (023/024/025/026/027 are client fds) ===
+     65 19
+     64 37
+     64 33
+     63 55
+     63 39
+     63 38
+
+=== does the server itself map the session? (map_view calls) ===
+002c: map_view( mapping=0014, access=00000004, base=00120000, size=00030000, start=00000000 )
+002c: map_view() = 0
+002c: map_view( mapping=0018, access=00000004, base=00010000, size=00001000, start=00000000 )
+002c: map_view() = 0
+002c: unmap_view( base=00010000 )
+002c: unmap_view() = 0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:31:26 UTC 2026

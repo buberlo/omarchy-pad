@@ -1,0 +1,45 @@
+AGENT_BEGIN id=172-fd-transfers pid=43 Sat Oct 17 00:30:46 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== all fd transfers the server logged (*fd*) ===
+0020: *fd* 03a3 -> 23
+0024: *fd* 7 <- 23
+0024: *fd* 9 <- 24
+0024: *fd* 0004 -> 19
+0024: *fd* 0008 -> 19
+0024: *fd* 2 <- 25
+0024: *fd* 000c -> 26
+0024: *fd* 11 <- 27
+0024: *fd* 03a3 -> 29
+002c: *fd* 5 <- 29
+002c: *fd* 8 <- 30
+002c: *fd* 0008 -> 19
+total: 3099
+
+=== the session-section opens and their results ===
+0064: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+0064: open_mapping() = 0 { handle=0024 }
+0064: get_mapping_info( handle=0024, access=00000004 )
+--
+00a0: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+00a0: open_mapping() = 0 { handle=004c }
+00a0: get_mapping_info( handle=004c, access=00000004 )
+--
+002c: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+002c: open_mapping() = 0 { handle=003c }
+002c: get_mapping_info( handle=003c, access=00000004 )
+--
+
+=== get_mapping_info replies for those handles (shared_file!) ===
+0024: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=0, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,ma
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,m
+002c: get_mapping_info() = 0 { size=00080000, flags=01800000, shared_file=0000, name_len=72, total=168, image={base=140000000,stack_size=00100000,stack_commit=00001000,entry_point=00016ac0,m
+002c: get_mapping_info() = 0 { size=001c0000, flags=01800000, shared_file=0000, name_len=66, total=171, image={base=180000000,stack_size=00100000,stack_commit=00001000,entry_point=00082ab0,m
+002c: get_mapping_info() = 0 { size=00030000, flags=00800000, shared_file=0000, name_len=0, total=0, image={}, name=L"", exp_name="" }
+002c: get_mapping_info() = 0 { size=00110000, flags=01800000, shared_file=0000, name_len=0, total=180, image={base=180000000,stack_size=00100000,stack_commit=00001000,entry_point=0003baa0,ma
+
+=== does the server ever create a mapping *without* a file? ===
+1
+0024: create_mapping( access=000f001f, flags=08000000, file_access=00000003, size=00004000, file_handle=0000, objattr={} )
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:31:00 UTC 2026

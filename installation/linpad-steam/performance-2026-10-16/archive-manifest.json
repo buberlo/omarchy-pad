@@ -4504,13 +4504,13 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 18201,
-      "sha256": "e9efae868ad5ffac9d89f813575f54af4b43db224b3e5c94d89a2176f88c71b4"
+      "bytes": 19578,
+      "sha256": "b7cd446e6b45d06c983a14f054bde7b8d34162c102858226f7659a806a72a91d"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 31620,
-      "sha256": "d22e812786974e33b24f901604f8da27a140cec3b1b9589660b0745759a4c575"
+      "bytes": 33839,
+      "sha256": "e34cbfb252b2063bf674cbc0e5c0338beed10b4c1c4d5950cccfb510297889c5"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
@@ -4581,6 +4581,16 @@
       "path": "l4d-route/proton-arm64/probes/fdpass.c",
       "bytes": 3934,
       "sha256": "47fae272794a685ab9d8e9802dc8fc8bec8e23cfc86b2cf74840e8235072ab0b"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/fdpass2.c",
+      "bytes": 4765,
+      "sha256": "4a847ff6c90e6a83bef57eee48844b5cb0b450a168c54bd9f80dc4ba3a761f5a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/fdpass3.c",
+      "bytes": 4971,
+      "sha256": "0fb01e5bd405db57df1d1fd2c93696f3a9cf038e6115e6229b392ace5f47dce9"
     },
     {
       "path": "l4d-route/proton-arm64/probes/fileid.c",
@@ -5011,6 +5021,56 @@
       "path": "l4d-route/proton-arm64/reports/agent-169-file-identity.txt",
       "bytes": 335,
       "sha256": "44cc1a831ea987a4fdf08e7e05280c58efbf2c1c1461cb353199b9635fbf420a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-170-session-section.txt",
+      "bytes": 2658,
+      "sha256": "399682824a1b5e3489888c67bc571efeaa1bb02b026f27a05246d43d0630c436"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-171-fd-bound-socket.txt",
+      "bytes": 413,
+      "sha256": "5bf8bb7cab77d04439ebd1f2c9fcb0e37ab98c4fb7274491610e14d631433368"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-172-fd-transfers.txt",
+      "bytes": 2528,
+      "sha256": "abb818e87d5f48fa26ccd2137fab8c9f48dc96680cb92a9b30b9cbaa41d48969"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-173-session-fd-context.txt",
+      "bytes": 1700,
+      "sha256": "d67e57cd0b404daac341a3dcf4911f09b4f86572259cece0ee85f20787209703"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-174-readonly-shared.txt",
+      "bytes": 523,
+      "sha256": "375f45a1672184c091ef7bb1d65df507ce80f07d098cf2c6ab0e3a20d6155577"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-175-cef-after-sealing-fix.txt",
+      "bytes": 1514,
+      "sha256": "6e99046e47e69d5382d2d04d30b4ed241c81e4dcba3c593ef7e830a49f990fee"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-176-webhelper-path.txt",
+      "bytes": 1876,
+      "sha256": "58884b5ec9bafc7f27994f07331652577d7195e6b7f0921ae6e7f7eadd01a64d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-177-webhelper-symlink.txt",
+      "bytes": 1922,
+      "sha256": "c53386dff62700b582b634dbe6dc8a38de8aed9ae32cc8bf9fcfe22a687e7101"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-178-l4d-with-logged-in-steam.txt",
+      "bytes": 1469,
+      "sha256": "2775e00b555b1095f6ff47d022f7ec14db5849e499ab679c67e4dee88d7d713c"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-179-launcher-retry.txt",
+      "bytes": 2128,
+      "sha256": "af35ea91b54884719fc4db398100f8eda29bf9b6c61c19ebd58aaa23689d0235"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

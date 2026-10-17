@@ -1,0 +1,13 @@
+AGENT_BEGIN id=174-readonly-shared pid=43 Sat Oct 17 00:31:55 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+client: received fd 5
+client: object id read from the shared section: 0x1122334455667788 (want 0x1122334455667788)
+client: id read again immediately: 0x1122334455667788
+client: id before the server writes: 0x1122334455667788
+client: after the server's later write: 0xaabbccddeeff0011 (want 0xaabbccddeeff0011)
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:31:59 UTC 2026

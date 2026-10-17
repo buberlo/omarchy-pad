@@ -1,0 +1,26 @@
+AGENT_BEGIN id=176-webhelper-path pid=43 Sat Oct 17 00:37:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== where is steamwebhelper? ===
+-rwxr-xr-x 1 root root 10326560 Oct 17 00:34 /root/.local/share/Steam/steamrtarm64/steamwebhelper
+-rwxr-xr-x 1 root root 12597384 Oct 17 00:33 /root/.local/share/Steam/ubuntu12_64/steamwebhelper
+=== what does the launcher do? ===
+3:exec /usr/local/bin/steam-local "$@"
+
+=== clean up wine leftovers and start the client from the Steam directory ===
+footprint_mb 547
+allowance_mb 8192
+headroom_mb 7644
+t= 40s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+t= 80s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+t=120s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+t=160s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+t=200s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+t=240s steam=1 webhelper=0 | login: [2026-10-17 00:37:22] [Logged Off, 0,  | webhelper_log=env: ‘/root/steamwebhelper’: No such file or directory 
+
+=== client log tail ===
+[2026-10-17 00:40:54] Created mapping SteamChrome_MasterStream_uid0_spid4576_mem when set to fail if created
+[2026-10-17 00:41:05] Created mapping SteamChrome_MasterStream_uid0_spid4576_mem when set to fail if created
+[2026-10-17 00:41:15] Created mapping SteamChrome_MasterStream_uid0_spid4576_mem when set to fail if created
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:41:18 UTC 2026

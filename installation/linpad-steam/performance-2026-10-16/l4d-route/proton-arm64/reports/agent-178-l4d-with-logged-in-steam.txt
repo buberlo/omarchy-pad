@@ -1,0 +1,28 @@
+AGENT_BEGIN id=178-l4d-with-logged-in-steam pid=43 Sat Oct 17 00:46:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+steam: 1 client, 7 webhelper, login: [2026-10-17 00:42:06] [Logged On, 4, 7] 
+=== Left 4 Dead through Proton (launcher) with the signed-in client ===
+t= 36s game=0 steam.exe=0 wine=0 new_windows=1 mem=2677MB
+t= 72s game=0 steam.exe=0 wine=0 new_windows=1 mem=2676MB
+t=108s game=0 steam.exe=0 wine=0 new_windows=1 mem=2681MB
+t=144s game=0 steam.exe=0 wine=0 new_windows=1 mem=2684MB
+t=180s game=0 steam.exe=0 wine=0 new_windows=1 mem=2684MB
+t=216s game=0 steam.exe=0 wine=0 new_windows=1 mem=2685MB
+t=252s game=0 steam.exe=0 wine=0 new_windows=1 mem=2681MB
+t=288s game=0 steam.exe=0 wine=0 new_windows=1 mem=2683MB
+
+=== new windows ===
+ishwl 91936.341: map toplevel 7 '' steam
+ishwl 91936.754: map toplevel 8 '' Steam
+ishwl 92223.811: map toplevel 9 '' linpad-proton-arm64
+=== game log ===
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+wineserver: using server-side synchronization.
+X connection to :28 broken (explicit kill or server shutdown).
+=== the game's own log file ===
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:51:14 UTC 2026

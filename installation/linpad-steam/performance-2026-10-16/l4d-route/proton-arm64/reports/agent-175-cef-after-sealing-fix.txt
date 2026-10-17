@@ -1,0 +1,25 @@
+AGENT_BEGIN id=175-cef-after-sealing-fix pid=43 Sat Oct 17 00:32:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+mem before: 4663 MB
+=== Steam client with a display, after the memfd sealing fix ===
+t= 38s steam=2 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t= 76s steam=2 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t=114s steam=0 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t=152s steam=0 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t=190s steam=0 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t=228s steam=0 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+t=266s steam=0 webhelper=0 | login: [2026-10-17 00:07:48] [Logged Off, 0, 0] | cef_err=322
+
+=== webhelper log ===
+env: ‘/root/steamwebhelper’: No such file or directory
+=== client log tail ===
+[2026-10-17 00:14:34] Created mapping SteamChrome_MasterStream_uid0_spid22290_mem when set to fail if created
+[2026-10-17 00:14:44] Created mapping SteamChrome_MasterStream_uid0_spid22290_mem when set to fail if created
+[2026-10-17 00:14:55] Created mapping SteamChrome_MasterStream_uid0_spid22290_mem when set to fail if created
+[2026-10-17 00:15:05] Created mapping SteamChrome_MasterStream_uid0_spid22290_mem when set to fail if created
+footprint_mb 4670
+allowance_mb 8192
+headroom_mb 3521
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:36:57 UTC 2026

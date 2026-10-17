@@ -1,0 +1,36 @@
+AGENT_BEGIN id=170-session-section pid=43 Sat Oct 17 00:28:15 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does the server ever create __wine_session? (existing 184k-line log) ===
+57
+0064: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+00a0: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+002c: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+0024: open_mapping( access=00000004, attributes=00000000, rootdir=0000, name=L"\\KernelObjects\\__wine_session" )
+=== mappings the server created ===
+0024: create_mapping( access=000f000d, flags=01000000, file_access=00000001, size=00000000, file_handle=000c, objattr={} )
+0024: create_mapping() = 0 { handle=0010 }
+002c: create_mapping( access=000f000d, flags=01000000, file_access=00000001, size=00000000, file_handle=000c, objattr={} )
+002c: create_mapping() = 0 { handle=0010 }
+002c: create_mapping( access=000f000d, flags=01000000, file_access=00000001, size=00000000, file_handle=000c, objattr={} )
+002c: create_mapping() = 0 { handle=0014 }
+
+=== now wine with the winstation channel on ===
+lines: 41
+=== the session block messages ===
+0064:warn:winstation:find_shared_session_object Session object id doesn't match expected id 1
+0064:warn:winstation:find_shared_session_object Session object id doesn't match expected id 1
+0064:warn:winstation:find_shared_session_object Session object id doesn't match expected id 2
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:warn:winstation:find_shared_session_object Session object id doesn't match expected id 3
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:warn:winstation:find_shared_session_object Session object id doesn't match expected id 4
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:warn:winstation:find_shared_session_object Session object id doesn't match expected id 5
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:warn:winstation:find_shared_session_object Session object id doesn't match expected id 6
+002c:warn:winstation:find_shared_session_object Session object id doesn't match expected id 6
+002c:warn:winstation:find_shared_session_object Session object id doesn't match expected id 7
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:29:55 UTC 2026

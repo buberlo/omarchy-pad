@@ -513,3 +513,49 @@ maps its own anonymous copy and `find_shared_session_object()` looks into an emp
 Cleared as the cause: file identity is consistent (`probes/fileid.c`: `stat(path)`, `fstat(fd)` and a
 second process all report the same `st_dev`/`st_ino`), even though the server log repeats
 `is_same_mapping() = NOT_SAME_DEVICE` — that is the normal answer when comparing different files.
+
+## Round of 17 October, 08:45–09:00: **the Steam client works — CEF runs and the account is signed in**
+
+Two independent defects were in the way, and both are fixed:
+
+1. **`memfd` sealing** (previous round, commit `c65a746d`) — CEF, modern wine and virglrenderer/Venus
+   all allocate shared memory as `memfd_create(MFD_ALLOW_SEALING)` + `ftruncate` + `F_ADD_SEALS` and
+   fail the allocation on any error. The device now reports `seals applied: 0x7`.
+2. **The webhelper path.** The client spawns its UI backend as `$HOME/steamwebhelper`, and
+   `logs/steamwebhelper.log` said so plainly:
+
+   ```
+   env: '/root/steamwebhelper': No such file or directory
+   ```
+
+   A symlink `$HOME/steamwebhelper -> $STEAM/steamrtarm64/steamwebhelper` fixes it (device change,
+   documented here, one line to remove). Starting the client from the Steam directory did *not* help;
+   it really wants that path.
+
+With both in place:
+
+```
+steam=1  steamwebhelper=7            <- CEF is running
+connection_log.txt: [2026-10-17 00:42:06] [Logged On, 4, 7]
+console_log.txt:    System startup time: 40.54 seconds
+```
+
+The client is signed in as `buberlo` with a working UI, inside a rootful Xwayland on the iPad. That
+was the blocker that had stood in front of everything: Proton's `steam.exe` DRM handshake needs a
+signed-in client.
+
+Wine's own remaining defect is narrowed but not fixed: the client maps the section
+`\KernelObjects\__wine_session` successfully (the server even transfers the descriptor —
+`*fd* 0024 -> 20`), yet reports
+
+```
+warn:winstation:find_shared_session_object Session object id doesn't match expected id 1
+```
+
+so the client's view of the shared session differs from the server's. Everything around it works in
+isolation, verified with probes that pass on real Linux first: fd passing over a *bound* socket,
+read-only `MAP_SHARED` mappings that see later writes, and consistent file identity. Wine's window
+classes therefore still cannot be created, which is what stops the game from opening a window.
+
+Immediate next step: get the launcher and the display and the signed-in client into one run without
+losing the X server (the last two attempts died on display bookkeeping, `X connection to :28 broken`).

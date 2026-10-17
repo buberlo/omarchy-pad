@@ -1,0 +1,45 @@
+AGENT_BEGIN id=179-launcher-retry pid=43 Sat Oct 17 00:51:33 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== the previous attempt's full log ===
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+X connection to :28 broken (explicit kill or server shutdown).
+
+=== X servers currently running? ===
+ 5557 ishwl-x11
+ 5560 Xwayland
+ 5564 ishwl-x11-wm
+ 5573 ishwl-x11
+ 5574 ishwl-x11-wm
+steam client: 1
+
+=== retry the launcher, watching the first seconds ===
+t= 40s game=0 steam.exe=0 wineserver=0 python=0
+t= 80s game=0 steam.exe=0 wineserver=0 python=0
+t=120s game=0 steam.exe=0 wineserver=0 python=0
+t=160s game=0 steam.exe=0 wineserver=0 python=0
+t=200s game=0 steam.exe=0 wineserver=0 python=0
+t=240s game=0 steam.exe=0 wineserver=0 python=0
+
+=== log ===
+Failed to initialize glamor, falling back to sw
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or directory
+wineserver: using server-side synchronization.
+X connection to :28 broken (explicit kill or server shutdown).
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:55:36 UTC 2026
