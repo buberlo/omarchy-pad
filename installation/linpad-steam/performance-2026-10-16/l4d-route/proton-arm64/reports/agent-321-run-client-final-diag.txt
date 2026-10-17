@@ -1,0 +1,7 @@
+AGENT_BEGIN id=321-run-client-final-diag pid=43 Sat Oct 17 13:02:33 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+steam: 0  assertion: 4
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:03:25 UTC 2026

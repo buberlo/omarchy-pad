@@ -4504,8 +4504,8 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 32083,
-      "sha256": "81e06e78c8f03eb3e93b64eaf184798e05198c6447026698a9a224d948dbee4b"
+      "bytes": 34241,
+      "sha256": "fa92cc5af9fbf3b21e3228a5bc64b92532f9ae4a8f6cd2d95664e6fedbcfabd7"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
@@ -5578,6 +5578,91 @@
       "sha256": "0b2409e47efef3176a8d8b68d7a93933755c15ac61097369d1deb9cc433e002c"
     },
     {
+      "path": "l4d-route/proton-arm64/reports/agent-316-loader-error.txt",
+      "bytes": 1580,
+      "sha256": "14ffe1eab351138cbf40c6e0b1a73566a0dc7d34cfd95ae27fab0e7f1e55a502"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-317-argv0-fix.txt",
+      "bytes": 965,
+      "sha256": "bf8256876eea859105e2e57ed1031f9092d88d06b6318e750a663ecea73a188e"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-318-client-with-argv0.txt",
+      "bytes": 1393,
+      "sha256": "ece84359e8dfa8310fd6c4f6ff69eed39f6da29e21f270d5de6a8e3b53f5893d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-319-run-client-for-exec.txt",
+      "bytes": 233,
+      "sha256": "4a602e497929e66d6867b95d36eb0c951e4c8501829a3905b3875e6cf93fa7eb"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-320-argv0-everywhere.txt",
+      "bytes": 2287,
+      "sha256": "db21beeeafb0ad06674a57d20369e552746ff465a38b2d2144df54d2ba45d196"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-321-run-client-final-diag.txt",
+      "bytes": 222,
+      "sha256": "b18ed4fbf1d4268489a70c6faa8181ea9ddb35873f1554c9907a59acc3e5995f"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-322-client-with-sched-fix.txt",
+      "bytes": 1435,
+      "sha256": "391c6ba6e4257f7f26498bea554b71495d61068bad4b0f96e99c16a64bfb5b63"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-323-client-without-xim.txt",
+      "bytes": 1307,
+      "sha256": "852b3056abf5a36ce3727b5f3e8942ec5d692fbb6b612b8cbd8dea22dce49ae8"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-324-dumps-ownership.txt",
+      "bytes": 1409,
+      "sha256": "5adccb1eff2dd9317d73513c03c4170040e228366beeff739b84a5fdd740e150"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-325-steamerrorreporter.txt",
+      "bytes": 1127,
+      "sha256": "a13d79d07dbe7a90ac964d0521c7b60a66c005117edcf085484817bf37c66990"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-326-provide-glibc-interpreter.txt",
+      "bytes": 1835,
+      "sha256": "7a47dc9c94e1a85e5f6c832a9087effbc8a8b531c6d2bd6a4e5ec12b8d0bcadd"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-327-errorreporter-wrapper.txt",
+      "bytes": 1214,
+      "sha256": "7f5b48ba78b9b25bb8161809889678956f7a4018f56d7ad0cd96b237a15f97ca"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-328-all-errorreporters.txt",
+      "bytes": 1299,
+      "sha256": "a35b02073dab08111ad1b9ae8bf67f31b650a89734296c43a39577f4eb97e5b8"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-329-run-client-for-paths.txt",
+      "bytes": 221,
+      "sha256": "00f54d34a4145dd89128f10eb3a1b8b081972a197209fc91feeba843397f1c6d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-330-wrap-every-probed-path.txt",
+      "bytes": 1432,
+      "sha256": "7bf1c8ce50eccc66afd2535755cc0ae174d86dd38fae06c9afb09b38b73713d9"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-331-client-with-all-reporters.txt",
+      "bytes": 1094,
+      "sha256": "d4d9832e32e8518a82aaa1a15519f0bdd04e38b4052bd78c72c260455f098eae"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-332-restore-and-link-libs.txt",
+      "bytes": 275343,
+      "sha256": "1e79a49d8f0d60ca1fc935a45efea6a7d929510e1e4d37d4385d4be983257b46"
+    },
+    {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",
       "bytes": 1031,
       "sha256": "8f24cc61ee31d959ed34cd2b3a59f5a9eb579123e8ea43e9a4a6bd390d5e092c"
@@ -5741,6 +5826,11 @@
       "path": "l4d-route/proton-arm64/shared-object-fix/real.c.final",
       "bytes": 31909,
       "sha256": "bd1ea2b4a22060361d5f3cc9d9021f671cd0c293e55960a89ee41af147afffad"
+    },
+    {
+      "path": "l4d-route/proton-arm64/steam-client-fix/README.md",
+      "bytes": 2327,
+      "sha256": "50b2579afc07b5a1e8521174b01b0ed05bfdf75ec906f0e9ec3ea7d390a21fe1"
     },
     {
       "path": "l4d-route/proton-arm64/steam-client-fix/steamwebhelper-wrapper",

@@ -1,0 +1,28 @@
+AGENT_BEGIN id=326-provide-glibc-interpreter pid=43 Sat Oct 17 13:29:49 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does the interpreter the binaries name exist? ===
+lrwxrwxrwx 1 root root 63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+what the reporter names:
+/lib/ld-linux-aarch64.so.1
+
+=== can it run at all right now? ===
+timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/steamrtarm64/steamerrorreporter: error while loading shared libraries: libdl.so.2: cannot open shared object file: No such file or directory
+
+=== provide the interpreter where PT_INTERP looks for it ===
+lrwxrwxrwx 1 root root 63 Oct 16 05:09 /lib/ld-linux-aarch64.so.1 -> /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1
+=== does it run now (with the client's library path)? ===
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __syslog_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: getcontext: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fdelt_chk: symbol not found
+Error relocating /opt/steam-host/usr/lib/aarch64-linux-gnu/libcrypto.so.3: __fprintf_chk: symbol not found
+
+=== now start the client ===
+t= 36s steam=0 webhelper=0 | assertion=4 | reporter-msg=3 | login: [2026-10-17 09:21:54] 
+t= 72s steam=0 webhelper=0 | assertion=4 | reporter-msg=3 | login: [2026-10-17 09:21:54] 
+t=108s steam=0 webhelper=0 | assertion=4 | reporter-msg=3 | login: [2026-10-17 09:21:54] 
+t=144s steam=0 webhelper=0 | assertion=4 | reporter-msg=3 | login: [2026-10-17 09:21:54] 
+t=180s steam=0 webhelper=0 | assertion=4 | reporter-msg=3 | login: [2026-10-17 09:21:54] 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:32:53 UTC 2026

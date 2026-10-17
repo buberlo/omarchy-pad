@@ -1,0 +1,34 @@
+AGENT_BEGIN id=320-argv0-everywhere pid=43 Sat Oct 17 12:51:10 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== all loader invocations before ===
+5:LOADER="$L/ld-linux-aarch64.so.1"
+25:    exec "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/xtigervncviewer \
+35:    export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe MESA_LOADER_DRIVER_OVERRIDE=swrast
+39:    exec "$LOADER" --argv0 "$BASE/steamrtarm64/steam" --library-path "$LIBS" "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+41:unset LD_LIBRARY_PATH MESA_LOADER_DRIVER_OVERRIDE LIBGL_DRIVERS_PATH __GLX_VENDOR_LIBRARY_NAME
+54:    MESA_LOADER_DRIVER_OVERRIDE=swrast LIBGL_DRIVERS_PATH="$L/dri" \
+55:    "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/Xtigervnc :55 \
+viewer/tigervnc argv0 added: 3
+5:LOADER="$L/ld-linux-aarch64.so.1"
+25:    exec "$LOADER" --argv0 /opt/steam-host/usr/bin/xtigervncviewer --library-path "$LIBS" /opt/steam-host/usr/bin/xtigervncviewer \
+35:    export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe MESA_LOADER_DRIVER_OVERRIDE=swrast
+39:    exec "$LOADER" --argv0 "$BASE/steamrtarm64/steam" --library-path "$LIBS" "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+41:unset LD_LIBRARY_PATH MESA_LOADER_DRIVER_OVERRIDE LIBGL_DRIVERS_PATH __GLX_VENDOR_LIBRARY_NAME
+54:    MESA_LOADER_DRIVER_OVERRIDE=swrast LIBGL_DRIVERS_PATH="$L/dri" \
+
+=== start the client again ===
+t= 36s steam=0 webhelper=0 Xvnc=0 | child-ui_err=1 | login: [2026-10-17 09:21:54] [Logge
+t= 72s steam=0 webhelper=0 Xvnc=0 | child-ui_err=1 | login: [2026-10-17 09:21:54] [Logge
+t=108s steam=0 webhelper=0 Xvnc=0 | child-ui_err=1 | login: [2026-10-17 09:21:54] [Logge
+t=144s steam=0 webhelper=0 Xvnc=0 | child-ui_err=1 | login: [2026-10-17 09:21:54] [Logge
+t=180s steam=0 webhelper=0 Xvnc=0 | child-ui_err=1 | login: [2026-10-17 09:21:54] [Logge
+
+=== assertion + log tail ===
+4
+10/17 12:51:16 /tmp/dumps: insufficient permissions - delete and recreate
+10/17 12:51:16 minidumps folder is set to /tmp/dumps
+10/17 12:51:16 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-process10/17 12:51:16 Init: Installing breakpad e
+10/17 12:51:16 Failed writing minidump, nothing to upload.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 12:54:14 UTC 2026

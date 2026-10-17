@@ -1,0 +1,24 @@
+AGENT_BEGIN id=324-dumps-ownership pid=43 Sat Oct 17 13:18:21 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== who owns the offending directory, and who are we? ===
+drwxr-x--- 2 501 root 96 Oct 17 13:14 /tmp/dumps
+uid=0 gid=0
+=== give it to us, in every way it might check ===
+drwx------ 2 root root 64 Oct 17 13:18 /tmp/dumps
+=== start immediately (before anything recreates it) ===
+t= 36s steam=0 webhelper=0 | assertion=4 | dumps-owner=501 | dumps-msg=9
+t= 72s steam=0 webhelper=0 | assertion=4 | dumps-owner=501 | dumps-msg=9
+t=108s steam=0 webhelper=0 | assertion=4 | dumps-owner=501 | dumps-msg=9
+t=144s steam=0 webhelper=0 | assertion=4 | dumps-owner=501 | dumps-msg=9
+t=180s steam=0 webhelper=0 | assertion=4 | dumps-owner=501 | dumps-msg=9
+
+=== the dumps-related lines ===
+10/17 13:18:25 /tmp/dumps: insufficient permissions - delete and recreate
+10/17 13:18:25 minidumps folder is set to /tmp/dumps
+10/17 13:18:25 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-process10/17 13:18:25 Init: Installing breakpad exception h
+10/17 13:18:27 /tmp/dumps: is not owned by us - delete and recreate.
+10/17 13:18:27 minidumps folder is set to /tmp/dumps
+10/17 13:18:27 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-processsrc/tier0/threadtools.cpp (2526) : Assertion Failed:
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:21:25 UTC 2026

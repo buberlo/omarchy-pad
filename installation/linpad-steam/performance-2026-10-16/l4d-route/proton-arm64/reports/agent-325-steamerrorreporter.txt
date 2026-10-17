@@ -1,0 +1,45 @@
+AGENT_BEGIN id=325-steamerrorreporter pid=43 Sat Oct 17 13:28:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does steamerrorreporter exist anywhere? ===
+/root/.local/share/Steam/steamrtarm64/steamerrorreporter
+/root/.local/share/Steam/linuxarm64/steamerrorreporter
+/root/.local/share/Steam/linux32/steamerrorreporter
+/opt/steam-host/usr/lib/steamrtarm64/steamerrorreporter
+/opt/steam-host/usr/lib/linuxarm64/steamerrorreporter
+
+=== which path does the client expect? (from its own strings) ===
+
+=== what IS in the client directory ===
+builddate.txt
+cefsimple
+chrome_100_percent.pak
+chrome_200_percent.pak
+chromehtml.so
+crashhandler.so
+extensions
+filesystem_stdio.so
+fossilize_replay
+friendsui.so
+gameoverlayrenderer.so
+gameoverlayui
+gameoverlayui.so
+gldriverquery
+headless_command_resources.pak
+icudtl.dat
+libEGL.so
+libGLESv2.so
+libSDL3.so.0
+libSDL3_image.so.0
+libSDL3_ttf.so.0
+libVkLayer_khronos_validation.so
+libVkLayer_steam_fossilize.so
+libaom.so.3
+libaudio.so
+libavcodec.so
+libavcodec.so.58
+libavcodec.so.62
+libavfilter.so
+libavfilter.so.11
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:29:33 UTC 2026

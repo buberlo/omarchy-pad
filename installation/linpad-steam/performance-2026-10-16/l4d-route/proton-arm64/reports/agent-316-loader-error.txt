@@ -1,0 +1,25 @@
+AGENT_BEGIN id=316-loader-error pid=43 Sat Oct 17 12:40:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== loader / exec errors in the start logs ===
+--- /tmp/steam-main.log
+-child-update-ui: error while loading shared libraries: -child-update-ui: cannot open shared object file: No such file or directory
+10/17 12:38:39 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-processsrc/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+[2026-10-17 12:38:37] Failed to load cached hosts file (File 'update_hosts_cached.vdf' not found), using defaults
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+--- /tmp/steam-r27.log
+--- /tmp/steam-holder.log
+--- /tmp/steam-xvnc.log
+MESA-LOADER: failed to open dri: /usr/lib/aarch64-linux-gnu/gbm/dri_gbm.so: cannot open shared object file: No such file or directory (search paths /usr/lib/aarch64-linux-gnu/gbm, suffix _gbm)
+
+=== what steam-local tries to run (the programs in the chain) ===
+25:    exec "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/xtigervncviewer \
+39:    exec "$LOADER" --library-path "$LIBS" "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+55:    "$LOADER" --library-path "$LIBS" /opt/steam-host/usr/bin/Xtigervnc :55 \
+
+=== do all of those exist? ===
+  /opt/steam-host/usr/bin/Xtigervnc                            ok
+  /opt/steam-host/usr/bin/xtigervncviewer                      ok
+  /opt/steam-host/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1 ok
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 12:40:22 UTC 2026

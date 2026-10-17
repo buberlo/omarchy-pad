@@ -1,0 +1,24 @@
+AGENT_BEGIN id=318-client-with-argv0 pid=43 Sat Oct 17 12:41:06 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== start the client (argv0 fixed) ===
+t= 36s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+t= 72s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+t=108s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+t=144s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+t=180s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+t=216s steam=0 webhelper=0 Xvnc=0 | login: [2026-10-17 09:21:54] [Logged 
+
+=== the child-update-ui error gone? ===
+1
+=== assertion count ===
+4
+=== log tail ===
+XOpenIM() failed, LANG = C.UTF-8src/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction
+src/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction[Bootstrapper HTTP Client] still
+10/17 12:41:11 /tmp/dumps: insufficient permissions - delete and recreate
+10/17 12:41:11 minidumps folder is set to /tmp/dumps
+10/17 12:41:11 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-process10/17 12:41:11 Init: Installing breakpad exception h
+10/17 12:41:11 Failed writing minidump, nothing to upload.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 12:44:46 UTC 2026

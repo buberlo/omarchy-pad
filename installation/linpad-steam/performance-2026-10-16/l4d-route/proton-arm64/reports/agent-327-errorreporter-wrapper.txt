@@ -1,0 +1,21 @@
+AGENT_BEGIN id=327-errorreporter-wrapper pid=43 Sat Oct 17 13:33:14 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== how the reporter must be run (through the loader like everything else) ===
+steamerrorreporter[4215]: Uploading dump (out-of-process)
+/root/.local/share/Steam/steamrtarm64/steamerrorreporter
+steamerrorreporter[4215]: Finished uploading minidump (out-of-process): success = no
+
+=== wrap it, the same way the webhelper is wrapped ===
+#!/bin/sh
+# The client spawns this by path and, like the webhelper, it is a glibc program in a musl guest: run it
+158240 /root/.local/share/Steam/steamrtarm64/steamerrorreporter.kb4453-original
+
+=== start the client ===
+t= 36s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t= 72s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=108s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=144s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=180s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:36:18 UTC 2026

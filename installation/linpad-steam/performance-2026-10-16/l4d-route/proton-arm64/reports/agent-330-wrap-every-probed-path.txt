@@ -1,0 +1,23 @@
+AGENT_BEGIN id=330-wrap-every-probed-path pid=43 Sat Oct 17 13:45:54 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== every path the client probed (from the console log) ===
+=== which of the probed paths exist? ===
+  /opt/steam-host/usr/lib/steamrtarm64/steamerrorreporter                exists
+  /opt/steam-host/usr/lib/linuxarm64/steamerrorreporter                  exists
+  /opt/steam-host/usr/lib/aarch64-linux-gnu/steamerrorreporter           MISSING
+  /opt/steam-host/usr/lib/aarch64-linux-gnu/bin/steamerrorreporter       MISSING
+  /root/.steam/sdkarm64/steamerrorreporter                               MISSING
+=== wrap the ones that exist ===
+  wrapped /opt/steam-host/usr/lib/steamrtarm64/steamerrorreporter
+  wrapped /opt/steam-host/usr/lib/linuxarm64/steamerrorreporter
+=== and provide the ones that are missing (link to a working copy) ===
+  created /root/.steam/sdkarm64/steamerrorreporter
+  created /opt/steam-host/usr/lib/aarch64-linux-gnu/bin/steamerrorreporter
+=== do they run? ===
+timeout: warning: timer_create: Bad address
+steamerrorreporter[628]: Uploading dump (out-of-process)
+timeout: warning: timer_create: Bad address
+/root/.steam/sdkarm64/steamerrorreporter.kb4453-original: error while loading shared libraries: /root/.steam/sdkarm64/steamerrorreporter.kb4453-original: cannot open shared object file: No such file or directory
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:45:54 UTC 2026

@@ -1,0 +1,19 @@
+AGENT_BEGIN id=323-client-without-xim pid=43 Sat Oct 17 13:14:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== start with XIM disabled and a plain locale ===
+t= 36s steam=0 webhelper=0 | assertion=4 | XOpenIM=2 | login: [2026-10-17 09:21:54] [L
+t= 72s steam=0 webhelper=0 | assertion=4 | XOpenIM=2 | login: [2026-10-17 09:21:54] [L
+t=108s steam=0 webhelper=0 | assertion=4 | XOpenIM=2 | login: [2026-10-17 09:21:54] [L
+t=144s steam=0 webhelper=0 | assertion=4 | XOpenIM=2 | login: [2026-10-17 09:21:54] [L
+t=180s steam=0 webhelper=0 | assertion=4 | XOpenIM=2 | login: [2026-10-17 09:21:54] [L
+
+=== log ===
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+XOpenIM() failed, LANG = C
+XOpenIM() failed, LANG = Csrc/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction[Boots
+src/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction[Bootstrapper HTTP Client] still
+10/17 13:14:58 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-process10/17 13:14:58 Init: Installing breakpad exception h
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:17:56 UTC 2026

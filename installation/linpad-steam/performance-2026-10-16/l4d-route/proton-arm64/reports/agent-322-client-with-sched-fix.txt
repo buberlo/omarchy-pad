@@ -1,0 +1,21 @@
+AGENT_BEGIN id=322-client-with-sched-fix pid=43 Sat Oct 17 13:10:46 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+=== start the client with the scheduler fix ===
+t= 36s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+t= 72s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+t=108s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+t=144s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+t=180s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+t=216s steam=0 webhelper=0 Xvnc=0 | assertion=4 | login: [2026-10-17 09:21:54] [Log
+
+=== log tail ===
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied
+XOpenIM() failed, LANG = C.UTF-8src/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction
+src/common/framefunction.cpp (238) : Assertion Failed: CFrameFunctionMgr::~CFrameFunctionMgr: non static FrameFunction[Bootstrapper HTTP Client] still
+10/17 13:10:51 Could not find steamerrorreporter binary. Any minidumps will be uploaded in-process10/17 13:10:51 Init: Installing breakpad exception h
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:14:26 UTC 2026

@@ -1,0 +1,22 @@
+AGENT_BEGIN id=328-all-errorreporters pid=43 Sat Oct 17 13:36:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== can the other two run as they are? ===
+/root/.local/share/Steam/linuxarm64/steamerrorreporter  7f454c46  timeout: warning: timer_create: Bad address
+/root/.local/share/Steam/linux32/steamerrorreporter     7f454c46  timeout: warning: timer_create: Bad address
+
+=== wrap every steamerrorreporter the client might look for (each execs the kept original) ===
+wrapped: /root/.local/share/Steam/linuxarm64/steamerrorreporter
+wrapped: /root/.local/share/Steam/linux32/steamerrorreporter
+=== does the wrapper work? ===
+timeout: warning: timer_create: Bad address
+steamerrorreporter[4798]: Uploading dump (out-of-process)
+
+=== start the client ===
+t= 36s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t= 72s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=108s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=144s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+t=180s steam=0 webhelper=0 | assertion=4 | reporter_missing=3 | login: [2026-10-17 09:21:54] 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 13:39:57 UTC 2026

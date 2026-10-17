@@ -1,0 +1,19 @@
+AGENT_BEGIN id=317-argv0-fix pid=43 Sat Oct 17 12:40:49 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== does the loader support --argv0? ===
+timeout: warning: timer_create: Bad address
+CProcessEnvironmentManager is ready, 5 preallocated environment variables.
+WARNING: setlocale('en_US.UTF-8') failed, using locale: 'C'. International characters may not work.
+
+=== fix steam-local: keep argv[0] pointing at the client ===
+steam-local patched (argv0)
+39:    exec "$LOADER" --argv0 "$BASE/steamrtarm64/steam" --library-path "$LIBS" "$BASE/steamrtarm64/steam" -no-cef-sandbox -cef-disable-gpu "$@"
+
+=== fix the webhelper wrapper the same way ===
+#!/bin/sh
+# The Steam client spawns its UI backend as $HOME/steamwebhelper and, like the client itself, may
+# re-exec by argv[0]; without --argv0 the loader would be taken for the program and the re-exec fails
+7f454c46 (webhelper binary intact)
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 12:40:51 UTC 2026
