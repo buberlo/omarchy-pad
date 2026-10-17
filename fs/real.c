@@ -344,24 +344,6 @@ int realfs_poll(struct fd *fd) {
     return p.revents;
 }
 
-// A guest MAP_PRIVATE mapping of a file must behave like Linux: reads follow the page cache, so a
-// write another process makes *through its MAP_SHARED mapping* is visible, while the first write by
-// this process copies the page privately and never reaches the file. iSH used to map the host file
-// MAP_PRIVATE, which on Darwin hands out a snapshot taken at map time, so a reader never saw later
-// writes -- wine reads its whole shared session that way and failed with "Failed to get shared
-// session object for window class". Instead the host mapping is MAP_SHARED (so reads follow the page
-// cache) but read-only, and the guest pages are marked P_COW: memory.c's copy-on-write fault path
-// already copies the page into private memory on the first guest write.
-static void mark_private_cow(struct mem *mem, page_t start, pages_t pages, int prot) {
-    if (!(prot & P_WRITE))
-        return;
-    for (pages_t i = 0; i < pages; i++) {
-        struct pt_entry *entry = mem_pt(mem, start + i);
-        if (entry != NULL)
-            entry->flags |= P_COW;
-    }
-}
-
 int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off_t offset, int prot, int flags) {
     int mmap_flags = 0;
     if (flags & MMAP_PRIVATE) mmap_flags |= MAP_PRIVATE;
@@ -382,28 +364,20 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     struct stat st;
     int have_stat = (fstat(fd->real_fd, &st) == 0);
 
-    // The coherent treatment is for the kind of mapping wine's session uses: a private mapping of a
-    // file that cannot legitimately write the file (opened read-only) and that nobody else can open
-    // any more, because it has been unlinked -- wine's server creates its shared sections that way.
-    // Everything else keeps the plain private path: a PE image or a prefix file is a regular file, and
-    // its data sections are written during loading, where a fault plus page copy per write is far too
-    // slow under emulation.
-    // The guest's own view of the link count decides: the fake filesystem removes the database entry
-    // on unlink but keeps the host file, so the host's st_nlink stays 1 while the guest correctly sees
-    // 0. Wine's server creates its shared sections, unlinks them and passes them on, so they are
-    // unlinked for the guest; a PE image or a prefix file is not.
+    // A private mapping of a file nobody can open any more is a shared memory object in disguise:
+    // wine's server creates its shared sections, unlinks them and passes them on by descriptor. Such a
+    // mapping has to stay shared in both directions -- the client has to see the pages wineserver
+    // writes, and its own writes (the sequence locks inside the shared objects) belong to the same
+    // memory. Mapping the host file shared and writable gives exactly that, with no emulated copy per
+    // page, and the writes land in a file nobody else can reach. Handing such a mapping a
+    // copy-on-write view instead deadlocks here: a read-only host page turns every store into a fault,
+    // and the fault path blocks on the same lock the storing thread holds (measured: two ticks of CPU
+    // over 272 seconds). Images and prefix files are regular files and keep the plain private path.
     struct statbuf guest_st;
-    bool guest_unlinked = fd->mount != NULL && fd->mount->fs != NULL && fd->mount->fs->fstat != NULL &&
-        fd->mount->fs->fstat(fd, &guest_st) == 0 && guest_st.nlink == 0;
-    bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) &&
-        (fd->flags & O_ACCMODE_) == O_RDONLY_ && guest_unlinked;
-    // Diagnostic for the interesting case only: a private mapping of an unlinked file opened
-    // read-only -- exactly what wine's shared sections look like, and rare enough not to flood os_log.
-    if ((flags & MMAP_PRIVATE) && (fd->flags & O_ACCMODE_) == O_RDONLY_ && guest_st.nlink == 0)
-        printk("ish-mm: pid %d flags %#x prot %#x acc %d guestnlink 0 hostnlink %lld size %zu "
-               "coherent %d\n", current ? current->pid : -1, flags, prot, fd->flags & O_ACCMODE_,
-               (long long) (have_stat ? st.st_nlink : -1), (size_t) pages * PAGE_SIZE,
-               guest_private ? 1 : 0);
+    bool unlinked = (fd->mount != NULL && fd->mount->fs != NULL && fd->mount->fs->fstat != NULL &&
+                     fd->mount->fs->fstat(fd, &guest_st) == 0 && guest_st.nlink == 0) ||
+                    (have_stat && st.st_nlink == 0);
+    bool guest_shared_object = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC) && unlinked;
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
         // A MAP_SHARED mapping is always a direct file-backed host mapping,
@@ -440,18 +414,15 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
                    fd->real_fd, map_size, (long long) real_offset,
                    (long long) (have_stat ? st.st_size : -1));
 
-        if (guest_private) {
-            // Same treatment when the mapping reaches past the current end of file: the shared,
-            // read-only host mapping follows the file as it grows (wine extends its session), reads
-            // stay coherent with the writer, and guest writes are copied privately.
-            int host_prot = PROT_READ;
+        if (guest_shared_object) {
+            // A shared memory object that reaches past the current end of file: the host mapping
+            // follows the file as its writer extends it, and both directions stay shared.
             char *shared = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
-                    host_prot, MAP_SHARED, fd->real_fd, real_offset);
+                    PROT_READ | PROT_WRITE, MAP_SHARED, fd->real_fd, real_offset);
             if (shared != MAP_FAILED) {
                 int err = pt_map(mem, start, pages, shared, correction, prot);
                 if (err < 0)
                     return err;
-                mark_private_cow(mem, start, pages, prot);
                 for (pages_t i = 0; i < pages; i++) {
                     struct pt_entry *entry = mem_pt(mem, start + i);
                     if (entry != NULL && (off_t) (offset + i * PAGE_SIZE) >= st.st_size)
@@ -497,23 +468,16 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
 
     int host_flags = mmap_flags;
     int host_prot = mmap_prot;
-    if (guest_private) {
-        host_flags = MAP_SHARED;              // let reads follow the page cache
-        host_prot &= ~PROT_WRITE;             // and make the first guest write fault
-        printk("ish-mm: coherent path taken pid %d: host mmap %s, %zu bytes at %lld\n",
-               current ? current->pid : -1, "attempted", map_size, (long long) real_offset);
+    if (guest_shared_object) {
+        host_flags = MAP_SHARED;
+        host_prot |= PROT_WRITE;
     }
     char *memory = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
             host_prot, host_flags, fd->real_fd, real_offset);
     if (memory == MAP_FAILED)
         return _ENOMEM;
 
-    int err = pt_map(mem, start, pages, memory, correction, prot);
-    if (err < 0)
-        return err;
-    if (guest_private)
-        mark_private_cow(mem, start, pages, prot);
-    return 0;
+    return pt_map(mem, start, pages, memory, correction, prot);
 }
 
 ssize_t realfs_readlink(struct mount *mount, const char *path, char *buf, size_t bufsize) {
