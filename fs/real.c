@@ -356,6 +356,13 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
 
     struct stat st;
     int have_stat = (fstat(fd->real_fd, &st) == 0);
+    // Instrumentation for a sharing defect: wine's clients read different bytes from the same
+    // session file at the same offset. A guest MAP_SHARED request that silently becomes a private
+    // copy would explain exactly that, so every shared mapping and every fallback is logged.
+    if (mmap_flags & MAP_SHARED)
+        printk("ish-mmap: SHARED pid %d fd %d pages %u off %lld prot %#x mapsize %zu file %lld\n",
+               current ? current->pid : -1, fd->real_fd, pages, (long long) offset, prot, map_size,
+               (long long) (have_stat ? st.st_size : -1));
 
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
@@ -383,7 +390,15 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
                 return 0;
             }
             // mmap failed — fall through to anonymous path
+            printk("ish-mmap: SHARED pid %d fd %d host mmap FAILED for %zu bytes at %lld: %s\n",
+                   current ? current->pid : -1, fd->real_fd, map_size, (long long) real_offset,
+                   strerror(errno));
         }
+        if (mmap_flags & MAP_SHARED)
+            printk("ish-mmap: SHARED pid %d fd %d BECAME A PRIVATE COPY (%zu bytes at %lld, file %lld)"
+                   " — sharing is broken for this mapping\n", current ? current->pid : -1,
+                   fd->real_fd, map_size, (long long) real_offset,
+                   (long long) (have_stat ? st.st_size : -1));
 
         // Create anonymous backing for the full range (zeros for BSS)
         char *memory = mem_host_alloc_fails() ? MAP_FAILED : mmap(NULL, map_size,
