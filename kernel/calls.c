@@ -125,6 +125,17 @@ void handle_interrupt(int interrupt) {
                     cpu->regs[0], cpu->regs[1], cpu->regs[2],
                     cpu->regs[3], cpu->regs[4], cpu->regs[5]);
                 STRACE(" = 0x%llx\n", (unsigned long long)result);
+                // Bounded diagnostic: Steam's client aborts during startup with
+                // "src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied", which is
+                // strerror(EPERM) -- so some syscall in its early path returns EPERM. Nothing obvious
+                // does (setpriority, sched_*, prctl, ptrace and setpgid were all checked or fixed),
+                // so name the caller instead of guessing. Capped: printk is synchronous os_log here.
+                static int eperm_traced;
+                if (result == -_EPERM && eperm_traced < 60) {
+                    eperm_traced++;
+                    printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
+                           current->pid, current->comm, syscall_num);
+                }
                 // sigreturn/rt_sigreturn restore the full CPU state from the
                 // signal frame. Do NOT touch regs[0] — it was already restored
                 // by restore_sigcontext. Any post-processing could corrupt the
