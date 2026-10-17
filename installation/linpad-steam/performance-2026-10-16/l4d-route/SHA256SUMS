@@ -10,6 +10,8 @@ e6dd8e84073ce47c5bef9b36a35c66cd56221d13027f1d89102d2465d200e539  proton-arm64/f
 8f65b8fe0efc5ebd9554d23a1ee40a738430e54c6282f6924e0d753b5f17fb3c  proton-arm64/high-va/build-instrumented.log
 e2c8ce6822b915f27d2802e2502608fe1d72f15abdf8cce31332d7fdd7ba93df  proton-arm64/high-va/build-with-mm-switch-fix.log
 95fef0b131748ad64f7fca815f55176a20a1dc1bef2e6038d6c9438bad5027b5  proton-arm64/high-va/evidence-app-stuck-on-jit.log
+3626674697a32fa36390c8e261f7c9fd2b4c0751016dda1c04c52ec956c64640  proton-arm64/launcher-fix/README.md
+72f9a8518230520bb4efe0f9ae05f8a506c9020710fbdb8e67457ca5962854ae  proton-arm64/launcher-fix/linpad-proton-arm64
 f25abb545f0b075b52b47b6b1d2f6e0b3af39c54dc61f254629e04ba460306d1  proton-arm64/linpad-proton-arm64
 ffe801b65027df913eb7ec91d302ea7c6739187f1164d51fb4adb59d6eb4cd43  proton-arm64/mmap-fixed-noreplace/README.md
 194f3de6fc8c33cee1f0e2f754c4d35cde2ec16c6e66bd6fe78518317a294bc1  proton-arm64/probes/brkhole.c

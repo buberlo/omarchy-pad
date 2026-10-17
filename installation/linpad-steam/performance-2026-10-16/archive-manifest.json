@@ -4504,8 +4504,8 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 34241,
-      "sha256": "fa92cc5af9fbf3b21e3228a5bc64b92532f9ae4a8f6cd2d95664e6fedbcfabd7"
+      "bytes": 34455,
+      "sha256": "d4a6431dcc5033b4afa76e01fed16798c8467b30c4761354ccc96df4c95e059e"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
@@ -4561,6 +4561,16 @@
       "path": "l4d-route/proton-arm64/high-va/evidence-app-stuck-on-jit.log",
       "bytes": 1165,
       "sha256": "95fef0b131748ad64f7fca815f55176a20a1dc1bef2e6038d6c9438bad5027b5"
+    },
+    {
+      "path": "l4d-route/proton-arm64/launcher-fix/README.md",
+      "bytes": 1687,
+      "sha256": "3626674697a32fa36390c8e261f7c9fd2b4c0751016dda1c04c52ec956c64640"
+    },
+    {
+      "path": "l4d-route/proton-arm64/launcher-fix/linpad-proton-arm64",
+      "bytes": 4119,
+      "sha256": "72f9a8518230520bb4efe0f9ae05f8a506c9020710fbdb8e67457ca5962854ae"
     },
     {
       "path": "l4d-route/proton-arm64/linpad-proton-arm64",
