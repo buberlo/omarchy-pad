@@ -370,3 +370,6 @@ dword_t syscall_success_stub(void);
 
 
 #endif
+
+// Dump the last syscalls of the traced processes (see kernel/calls.c).
+void ish_dump_syscall_ring(const char *why);
