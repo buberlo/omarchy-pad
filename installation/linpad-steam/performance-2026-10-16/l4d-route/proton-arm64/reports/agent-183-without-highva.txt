@@ -1,0 +1,32 @@
+AGENT_BEGIN id=183-without-highva pid=43 Sat Oct 17 01:02:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine WITHOUT the high address layout ===
+t= 35s game=1 arm64ec_err=1 class_err=54 desktop_err=19
+t= 70s game=1 arm64ec_err=1 class_err=56 desktop_err=19
+t=105s game=1 arm64ec_err=1 class_err=56 desktop_err=19
+t=140s game=1 arm64ec_err=1 class_err=56 desktop_err=19
+t=175s game=1 arm64ec_err=1 class_err=56 desktop_err=19
+t=210s game=1 arm64ec_err=1 class_err=56 desktop_err=19
+
+=== log lines of interest ===
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x7ffefe000000-0x7ffffe000000, unix_prot 0x1.
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x6ffefc5a0000-0x6ffffc5a0000, unix_prot 0x1.
+002c:err:virtual:alloc_arm64ec_map failed to allocate ARM64EC map: c0000017
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== tail ===
+0198:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0190:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0190:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01a8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01a8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 01:05:56 UTC 2026

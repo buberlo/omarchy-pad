@@ -1,0 +1,31 @@
+AGENT_BEGIN id=191-arm64ec-after-fix pid=43 Sat Oct 17 04:54:50 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Sat Oct 17 04:53:30 UTC 2026
+footprint_mb 1779
+allowance_mb 8192
+headroom_mb 6412
+
+=== the probe: does a 4 GB mapping like wine's now work? ===
+  hint 0x7ffefe000000, PROT_READ                       ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+
+=== wine again, with the lazy large mappings ===
+t= 38s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+t= 76s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+t=114s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+t=152s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+t=190s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+t=228s game=1 arm64ec_err=0 class_err=72 desktop_err=32
+
+=== highlights ===
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:58:39 UTC 2026

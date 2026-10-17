@@ -1,0 +1,9 @@
+AGENT_BEGIN id=192-mmap-offsets pid=43 Sat Oct 17 04:59:04 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+wget: server returned error: HTTP/1.0 404 File not found
+=== on the iPad ===
+env: ‘/tmp/mmap-file-offset-probe’: No such file or directory
+exit=127
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:59:04 UTC 2026

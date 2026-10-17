@@ -1,0 +1,29 @@
+AGENT_BEGIN id=182-wineserver-lifetime pid=43 Sat Oct 17 01:00:08 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine with a short-lived program; watch the server ===
+t= 12s wineserver=[10311 ] wine=1 cmd=0
+t= 24s wineserver=[] wine=0 cmd=0
+t= 36s wineserver=[] wine=0 cmd=0
+t= 48s wineserver=[] wine=0 cmd=0
+t= 60s wineserver=[] wine=0 cmd=0
+t= 72s wineserver=[] wine=0 cmd=0
+t= 84s wineserver=[] wine=0 cmd=0
+t= 96s wineserver=[] wine=0 cmd=0
+
+=== the server's own output ===
+0034:fixme:service:scmdatabase_autostart_services Auto-start service L"winebth" failed to start: 1359
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x7ffefe000000-0x7ffffe000000, unix_prot 0x1.
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x6ffefc960000-0x6ffffc960000, unix_prot 0x1.
+002c:err:virtual:alloc_arm64ec_map failed to allocate ARM64EC map: c0000017
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== is there a wineserver binary problem? (run it by hand) ===
+Wine 11.0
+wineserver: using server-side synchronization.
+manual server alive: 1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 01:01:55 UTC 2026

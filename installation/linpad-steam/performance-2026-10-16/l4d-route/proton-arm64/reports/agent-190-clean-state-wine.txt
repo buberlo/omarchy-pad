@@ -1,0 +1,28 @@
+AGENT_BEGIN id=190-clean-state-wine pid=57 Sat Oct 17 04:45:53 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== kill every wine process (by exact name) ===
+left: 0
+footprint_mb 2702
+allowance_mb 8192
+headroom_mb 5489
+soft_mb 1638
+
+=== wine with the ARM64EC map, clean state ===
+t= 38s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5558MB
+t= 76s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5621MB
+t=114s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5624MB
+t=152s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5622MB
+t=190s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5618MB
+t=228s game=0 arm64ec_err=1 class_err=4 desktop_err=0 headroom=5622MB
+
+=== log highlights ===
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x7ffefe000000-0x7ffffe000000, unix_prot 0x1.
+002c:err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x6ffefc960000-0x6ffffc960000, unix_prot 0x1.
+002c:err:virtual:alloc_arm64ec_map failed to allocate ARM64EC map: c0000017
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:49:46 UTC 2026

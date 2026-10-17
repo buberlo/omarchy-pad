@@ -1,0 +1,33 @@
+AGENT_BEGIN id=189-mmap-sizes pid=57 Sat Oct 17 04:45:07 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+free memory before: 7492 MB headroom
+=== sizes 1..6 GB, with and without NORESERVE ===
+page size 4096
+  1 GB, no hint, PROT_READ|NORESERVE                   ok at 0x80000000 (hint 0)
+  1 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  1 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  1 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  2 GB, no hint, PROT_READ|NORESERVE                   ok at 0x40000000 (hint 0)
+  2 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  2 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  2 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  3 GB, no hint, PROT_READ|NORESERVE                   ok at 0x2fcd0000 (hint 0)
+  3 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  3 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  3 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  4 GB, no hint, PROT_READ|NORESERVE                   ok at 0x8000000000 (hint 0)
+  4 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  4 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  4 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  5 GB, no hint, PROT_READ|NORESERVE                   ok at 0x8000000000 (hint 0)
+  5 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  5 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  5 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  6 GB, no hint, PROT_READ|NORESERVE                   ok at 0x8000000000 (hint 0)
+  6 GB, hint 0x7ffefe000000, PROT_READ|NORESERVE       ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  6 GB, hint, PROT_READ (no NORESERVE)                 ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  6 GB, hint, PROT_NONE|NORESERVE                      ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+free memory after:  7440 MB headroom
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:45:08 UTC 2026

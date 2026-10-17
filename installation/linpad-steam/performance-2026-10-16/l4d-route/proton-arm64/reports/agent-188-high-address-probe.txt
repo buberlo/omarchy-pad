@@ -1,0 +1,30 @@
+AGENT_BEGIN id=188-high-address-probe pid=57 Sat Oct 17 04:40:15 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== default layout (what wine would use without ISH_HIGH_VA) ===
+page size 4096
+  no hint, PROT_READ|NORESERVE                         ok at 0x80000000 (hint 0)
+  no hint, PROT_READ                                   ok at 0x80000000 (hint 0)
+  hint 0x7ffefe000000, PROT_READ                       ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_NONE|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE|NOREPLACE   ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NOREPLACE             ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint +2GB, PROT_READ                                 ok at 0x7fff7e000000 (hint 0x7fff7e000000)
+  hint 0x6ffefc5a0000, PROT_READ                       ok at 0x6ffefc5a0000 (hint 0x6ffefc5a0000)
+  hint 0x7ffefe000000, 64 KB                           ok
+
+=== with my high layout ===
+page size 4096
+  no hint, PROT_READ|NORESERVE                         ok at 0x7ff80000000 (hint 0)
+  no hint, PROT_READ                                   ok at 0x7ff80000000 (hint 0)
+  hint 0x7ffefe000000, PROT_READ                       ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_NONE|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE|NOREPLACE   ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NOREPLACE             ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint +2GB, PROT_READ                                 ok at 0x7fff7e000000 (hint 0x7fff7e000000)
+  hint 0x6ffefc5a0000, PROT_READ                       ok at 0x6ffefc5a0000 (hint 0x6ffefc5a0000)
+  hint 0x7ffefe000000, 64 KB                           ok
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:40:15 UTC 2026

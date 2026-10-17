@@ -1,0 +1,14 @@
+AGENT_BEGIN id=185-agent-check pid=42 Sat Oct 17 04:00:41 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 42
+kb4453 agent started pid=43 at Sat Oct 17 00:15:40 UTC 2026
+kb4453 agent started pid=42 at Sat Oct 17 04:00:40 UTC 2026
+Sat Oct 17 04:00:41 UTC 2026
+hook: /etc/ishwl/session.d/99-kb4453-agent.sh
+footprint_mb 177
+allowance_mb 8192
+headroom_mb 8014
+probe: 1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:00:41 UTC 2026

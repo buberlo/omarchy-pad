@@ -1,0 +1,14 @@
+AGENT_BEGIN id=193-mmap-offsets-2 pid=43 Sat Oct 17 04:59:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  offset      0 (page  0): first byte 0xa0 last 0xa0, want 0xa0 -- ok
+  offset   4096 (page  1): first byte 0xa1 last 0xa1, want 0xa1 -- ok
+  offset  12288 (page  3): first byte 0xa3 last 0xa3, want 0xa3 -- ok
+  offset  32768 (page  8): first byte 0xa8 last 0xa8, want 0xa8 -- ok
+  offset  65536 (page 16): first byte 0xb0 last 0xb0, want 0xb0 -- ok
+  offset 126976 (page 31): first byte 0xbf last 0xbf, want 0xbf -- ok
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:59:17 UTC 2026

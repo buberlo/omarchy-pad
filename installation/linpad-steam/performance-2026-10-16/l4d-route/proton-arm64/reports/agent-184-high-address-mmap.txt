@@ -1,0 +1,18 @@
+AGENT_BEGIN id=184-high-address-mmap pid=42 Sat Oct 17 04:00:40 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+page size 4096
+  no hint, PROT_READ|NORESERVE                         ok at 0x80000000 (hint 0)
+  no hint, PROT_READ                                   ok at 0x80000000 (hint 0)
+  hint 0x7ffefe000000, PROT_READ                       ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_NONE|NORESERVE             ok at 0x7ffec0000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NORESERVE|NOREPLACE   ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint 0x7ffefe000000, PROT_READ|NOREPLACE             ok at 0x7ffefe000000 (hint 0x7ffefe000000)
+  hint +2GB, PROT_READ                                 ok at 0x7fff7e000000 (hint 0x7fff7e000000)
+  hint 0x6ffefc5a0000, PROT_READ                       ok at 0x6ffefc5a0000 (hint 0x6ffefc5a0000)
+  hint 0x7ffefe000000, 64 KB                           ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:00:41 UTC 2026

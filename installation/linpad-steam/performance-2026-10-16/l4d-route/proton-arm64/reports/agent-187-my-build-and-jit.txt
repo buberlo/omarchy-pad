@@ -1,0 +1,15 @@
+AGENT_BEGIN id=187-my-build-and-jit pid=57 Sat Oct 17 04:40:00 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 57
+kb4453 agent started pid=57 at Sat Oct 17 04:38:52 UTC 2026
+Sat Oct 17 04:40:00 UTC 2026
+jit: supported 1 enabled 0 
+footprint_mb 2778
+allowance_mb 8192
+headroom_mb 5413
+sealing (my fix):
+seals applied: 0x7 (asked 0x7)
+summary: SHARED-MEMORY CAPABILITY MISSING
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 04:40:01 UTC 2026

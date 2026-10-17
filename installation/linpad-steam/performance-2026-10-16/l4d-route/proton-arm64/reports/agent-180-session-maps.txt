@@ -1,0 +1,20 @@
+AGENT_BEGIN id=180-session-maps pid=43 Sat Oct 17 00:56:37 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine session with the game (no display, only the maps matter) ===
+=== processes ===
+ 8867 left4dead.exe
+ 8892 services.exe
+ 8895 winedevice.exe
+
+=== memfd / wine-file mappings per process ===
+--- pid 8867 (left4dead.exe): 590 mappings
+    0000007e0000-000000924000 r-xp /tmp/.wine-0/server-10c-84c21e/tmpmap-36314f34
+    00007ffe0000-00007ffe1000 r-x- /tmp/.wine-0/server-10c-84c21e/tmpmap-79762aad
+    0000ffff0000-0000ffff4000 rwx- /tmp/.wine-0/server-10c-84c21e/tmpmap-fbfb7758
+--- pid 8892 (services.exe): 202 mappings
+    00007ffe0000-00007ffe1000 r--- /tmp/.wine-0/server-10c-84c21e/tmpmap-79762aad
+
+=== all file-backed mappings >= 1 MB, grouped by file ===
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:57:41 UTC 2026

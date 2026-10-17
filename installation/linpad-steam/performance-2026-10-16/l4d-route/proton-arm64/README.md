@@ -559,3 +559,44 @@ classes therefore still cannot be created, which is what stops the game from ope
 
 Immediate next step: get the launcher and the display and the signed-in client into one run without
 losing the X server (the last two attempts died on display bookkeeping, `X connection to :28 broken`).
+
+## Round of 17 October, 12:40–13:00: the ARM64EC map is fixed; the shared session still is not
+
+**A real emulator defect, found in wine's source and fixed.** Wine allocates its ARM64EC code bitmap
+as one bit per page of the address space:
+
+```c
+static void alloc_arm64ec_map(void) {
+    SIZE_T size = ((ULONG_PTR)address_space_limit + page_size) >> (page_shift + 3);  /* 4 GB */
+    status = map_view( &arm64ec_view, NULL, size, MEM_TOP_DOWN, VPROT_READ | VPROT_COMMITTED, 0, 0, 0 );
+    if (status) { ERR( "failed to allocate ARM64EC map: %08x\n", status ); exit(1); }
+```
+
+4 GB, *committed* (no `MAP_NORESERVE`), placed at the top of the address space — and this kernel
+demanded all of it as host memory up front, so it failed whenever the app had less than about 4.2 GB
+available:
+
+```
+err:virtual:try_map_free_area mmap() error Cannot allocate memory, range 0x7ffefe000000-0x7ffffe000000
+err:virtual:alloc_arm64ec_map failed to allocate ARM64EC map: c0000017
+```
+
+Anonymous mappings of 256 MB or more now go through the reservation path (commit `2f962c42`), the same
+threshold the `MAP_NORESERVE` path uses: the range is granted, pages are mapped on first touch, and the
+demand-map path in `calls.c` serves every read fault plus every write fault above 4 GB or inside a
+reservation — which is exactly the shape of this bitmap. Verified on the device: `alloc_arm64ec_map`
+errors went from 1 to **0**, and the 4 GB mapping at `0x7ffefe000000` now succeeds where the log
+previously reported ENOMEM. Wine still keeps its own 4 GB reservation; it only touches the pages that
+hold ARM64EC code.
+
+**What is still broken:** the shared session. `NtUserRegisterClassExWOW` still reports
+`Failed to get shared session object for window class` and `get_desktop_window` still fails, so the
+game cannot open a window. Cleared as causes this round:
+
+| Suspect | Evidence |
+| --- | --- |
+| the app's available memory (the `host_memory_low` check) | a clean slate with 5.6 GB free and no stale wine processes still fails; the probe maps 1–6 GB fine at 7.4 GB free |
+| the high address layout (`ISH_HIGH_VA`) | identical failure with and without it |
+| a dying `wineserver` | it runs while clients do (`wineserver` present, `Wine 11.0` when started by hand) |
+| `mmap` ignoring the file offset | `probes/offsetmap.c`: offsets 0, 4 KB, 12 KB, 32 KB, 64 KB and 124 KB all map the right page |
+| fd passing, shared memory, file identity, read-only sharing, `SCL_RIGHTS` over bound sockets | previous rounds, each with a probe that passes on real Linux first |
