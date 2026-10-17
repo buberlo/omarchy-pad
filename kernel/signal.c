@@ -522,6 +522,7 @@ static void receive_signal(struct sighand *sighand, struct siginfo_ *info) {
                 return;
             }
             if (sig == SIGABRT_) {
+                ish_dump_syscall_ring("SIGABRT");
                 struct cpu_state *cpu = &current->cpu;
                 if (ish_exec_trace())
                     fprintf(stderr, "V8_SIGABRT: pc=0x%llx sp=%llx fp=%llx lr=%llx\n",
