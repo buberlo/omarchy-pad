@@ -42,6 +42,28 @@ libgme0 libchromaprint1 librabbitmq4 librist4 libsrt1.5-gnutls liblilv-0-0 libmy
 libgtk2.0-0t64"
 
 #
+#
+# What the shipped layer actually needs, measured (Round 77): parsing DT_NEEDED across its 512 libraries
+# gives 36 sonames that the layer does not contain --
+#
+#   libaom.so.3 libdav1d.so.7 libvpx.so.12 libx264.so.165 libxvidcore.so.4 libgsm.so.1 libspeex.so.1
+#   libtheoradec/enc.so.2 libopenjp2.so.7 libsnappy.so.1 libwebpmux.so.3 libxml2.so.16 liblz4.so.1
+#   libnuma.so.1 libssh.so.4 libbluray.so.4 libdvdnav.so.4 libdvdread.so.8 libopenmpt.so.0
+#   libplacebo.so.360 libass.so.9 libbs2b.so.0 librubberband.so.3 libvidstab.so.1.2 libzimg.so.2
+#   libzmq.so.5 libsoxr.so.0 libOpenCL.so.1 libva-drm.so.2 libhwy.so.1 liblcms2.so.2 libcjson.so.1
+#   librsvg-2.so.2 libglycin-2.so.0 libpulsecommon-17.0.so
+#
+# -- and the guest still reports 0 missing, because Arch supplies every one of them (ALARM's base image
+# carries ffmpeg, and the desktop packages bring the rest). That is the division of labour: this script
+# provides the FFmpeg-8 vintage and GTK2 that Arch no longer ships, and pacman provides their ordinary
+# dependencies. Do not resolve these names here; if the guest ever reports one missing, install the Arch
+# package that owns it in build-arch-app-image.sh.
+#
+# libsmbclient.so.0, libtesseract.so.5 and libleptonica.so.6 are provably NOT in that set -- nothing in
+# the layer has them as DT_NEEDED. They were phantoms reported against a layer whose own build had died
+# early (Round 75), and chasing them pulled in Samba's internals and made the closure worse (Round 76).
+# The lesson: only add a name the client reports against a layer that is otherwise complete.
+#
 # The list below is not the whole closure and cannot be: fetching a library reveals needs of its own
 # (Round 75 -- the resolved layer still left 6 missing: libaribb24, libvo-amrwbenc, libsmbclient,
 # libtesseract, libzix). The procedure is therefore an iteration, and it is cheap:
@@ -64,7 +86,7 @@ libchromaprint.so.1 librabbitmq.so.4 librist.so.4 libsrt-gnutls.so.1.5 liblilv-0
 libflite.so.1 libgtk-x11-2.0.so.0 libgdk-x11-2.0.so.0 \
 libnuma.so.1 libnettle.so.8 libhogweed.so.6 libcjson.so.1 libserd-0.so.0 libsord-0.so.0 \
 libsratom-0.so.0 \
-libaribb24.so.0 libvo-amrwbenc.so.0 libsmbclient.so.0 libtesseract.so.5 libzix-0.so.0"
+libaribb24.so.0 libvo-amrwbenc.so.0 libzix-0.so.0"
 
 die() { echo "fetch-arch-compat-layer: $*" >&2; exit 1; }
 need() { command -v "$1" >/dev/null 2>&1 || die "needs $1 (macOS: brew install xz; ar and tar ship with the OS)"; }
