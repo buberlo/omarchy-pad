@@ -21,7 +21,9 @@ extension LinuxGUIBridge: GameCommandLauncher {}
 /// the guest's /tmp, so the panel and the bar can say it too.
 @Observable @MainActor
 public final class GameModeCoordinator {
-    public private(set) var phase: GameModePhase = .waitingForSystem
+    public private(set) var phase: GameModePhase = .waitingForSystem {
+        didSet { notePhase(String(describing: phase)) }
+    }
     /// The last line /tmp/steam-bigpicture-status held (bigpicture, desktop-fallback, exited N…).
     public private(set) var launcherStatus: String?
     /// steam-bigpicture reported that the gamepad UI failed and it started the classic UI.
@@ -284,5 +286,23 @@ public final class GameModeCoordinator {
     /// What the bar shows for the current choice.
     public var geometryDescription: String {
         launchGeometry() ?? "1024x700 (verified)"
+    }
+
+    /// Game mode is invisible from outside the iPad: no Settings UI, the guest's logs live in `roots/`
+    /// (outside what a container copy may read), and the screen cannot be captured without a developer
+    /// disk image. So every phase change also appends a line to `game-mode-status.txt` in the app's
+    /// Documents -- the one place a container copy *can* read. It turns "did Steam appear?" from an
+    /// inference drawn from a missing export into a fact that can be read off the device.
+    private func notePhase(_ text: String) {
+        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let url = documents.appendingPathComponent("game-mode-status.txt")
+        let line = "\(ISO8601DateFormatter().string(from: Date())) \(text)\n"
+        if let handle = try? FileHandle(forWritingTo: url) {
+            handle.seekToEndOfFile()
+            handle.write(Data(line.utf8))
+            try? handle.close()
+        } else {
+            try? line.write(to: url, atomically: true, encoding: .utf8)
+        }
     }
 }
