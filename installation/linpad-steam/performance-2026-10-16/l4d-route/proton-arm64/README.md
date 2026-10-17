@@ -600,3 +600,38 @@ game cannot open a window. Cleared as causes this round:
 | a dying `wineserver` | it runs while clients do (`wineserver` present, `Wine 11.0` when started by hand) |
 | `mmap` ignoring the file offset | `probes/offsetmap.c`: offsets 0, 4 KB, 12 KB, 32 KB, 64 KB and 124 KB all map the right page |
 | fd passing, shared memory, file identity, read-only sharing, `SCL_RIGHTS` over bound sockets | previous rounds, each with a probe that passes on real Linux first |
+
+## Round of 17 October, 13:30–13:45: the session file is mapped by everyone, and still differs per process
+
+Hard numbers, taken from the live processes (`probes/guest-memread.c` reads another process's memory
+with `pread`, which works here where `dd`'s `lseek` does not). Every wine process maps **the same
+file at the same offset**, and they read **different bytes at +0xfff70**:
+
+| process | session mapping | bytes at +0xfff70 |
+| --- | --- | --- |
+| `wineserver` (pid 591) | `0x7fffea8c000`, 1327104 bytes, off 0 | `22 00 … 0a 00 …` |
+| `explorer.exe` (65 of them) | `0x710000`, same size, off 0 | `22 00 … 0a 00 …` |
+| `left4dead.exe` (pid 608) | `0x7e0000`, same size, off 0 | `12 00 … 00 00 …` |
+| `plugplay.exe` (pid 636) | `0x710000`, same size, off 0 | `00 00 … 00 00 …` |
+
+All of them map `/tmp/.wine-0/server-10c-84c21e/tmpmap-2ae4e0d1` — one server directory, one file, one
+offset (verified with the full paths, not just the names). A persistent `wineserver -p -f` started
+before wine stays alive and changes nothing.
+
+**Every mechanism this could rest on works, on the device, exactly as on real Linux** (each probe
+validated in a Debian container first):
+
+| Probe | Result |
+| --- | --- |
+| `fdpass.c`, `fdpass2.c` | fd passing over socketpair *and* over a bound/connected/accepted socket |
+| `sharedwrite.c`, `sharedwrite2.c` | a write through a `MAP_SHARED` mapping is seen by a process that mapped earlier and already faulted the page — with *and* without `msync` |
+| `coherence2.c` | a `pwrite()` to the file appears in another process's read-only mapping |
+| `fixedmap.c` | the same with `MAP_SHARED\|MAP_FIXED` at two different fixed addresses |
+| `offsetmap.c` | `mmap` honours file offsets (0 … 124 KB) |
+| `fileid.c` | `stat`, `fstat` and a second process agree on `st_dev`/`st_ino` |
+| `shmcaps.c` | memfd sealing now works (`seals applied: 0x7`) |
+
+So the defect is not in any of those mechanisms, yet the same file gives different bytes per process
+in wine's case. Note for the next attempt: the ids the clients read (`0x12`, `0x22`) are *larger* than
+the ones the server allocates (1, 2, 3 …), which fits either a per-process snapshot taken at first
+touch or each process reading a different part of the session.

@@ -1,0 +1,23 @@
+AGENT_BEGIN id=202-server-check pid=43 Sat Oct 17 05:23:17 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent pid: 43  Sat Oct 17 05:23:17 UTC 2026
+footprint_mb 136
+allowance_mb 8192
+headroom_mb 8055
+
+=== processes ===
+wineserver: 0
+
+=== the manual server log ===
+wineserver: using server-side synchronization.
+=== the wine log: did the session work this time? ===
+class errors: 254  desktop errors: 205  arm64ec: 0
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:23:17 UTC 2026

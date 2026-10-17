@@ -1,0 +1,29 @@
+AGENT_BEGIN id=204-persistent-server-2 pid=43 Sat Oct 17 05:24:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== 1. start the wineserver first and keep it ===
+server: 1  log: wineserver: using server-side synchronization. 
+
+=== 2. wine with the game, server already up ===
+t= 36s server=1 game=1 class_err=114 desktop_err=37
+t= 72s server=1 game=0 class_err=188 desktop_err=116
+t=108s server=1 game=0 class_err=224 desktop_err=166
+t=144s server=1 game=0 class_err=275 desktop_err=197
+t=180s server=1 game=0 class_err=314 desktop_err=220
+t=216s server=1 game=0 class_err=376 desktop_err=246
+
+=== log ===
+0068:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0068:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a4:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00a4:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+002c:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== server still alive? ===
+  464 wineserver
+wineserver: using server-side synchronization.
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:28:36 UTC 2026

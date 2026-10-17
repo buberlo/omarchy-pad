@@ -1,0 +1,18 @@
+AGENT_BEGIN id=197-session-bytes pid=43 Sat Oct 17 05:04:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== every process whose comm mentions wine (scanning /proc, no ps names) ===
+
+client pid: 3390
+awk: cmd. line:1: Call to undefined function
+session mapping line: 
+
+=== does any *other* process map that same tmpmap file? ===
+  1: 
+  100: 
+  105: 
+  114: 
+  115: 
+  12: 
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:05:17 UTC 2026

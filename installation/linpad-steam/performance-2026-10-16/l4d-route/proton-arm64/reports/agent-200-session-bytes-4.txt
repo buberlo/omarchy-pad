@@ -1,0 +1,18 @@
+AGENT_BEGIN id=200-session-bytes-4 pid=43 Sat Oct 17 05:06:07 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+client pid: 3390
+session block at 0x0000007e0000
+=== what the client sees (offset 0 = shared_session header, 0xfff70 = the class object) ===
+0x7e0000 (48 bytes): 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 
+0x8dff70 (96 bytes): 1200000000000000 0000000000000000 fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe 
+0x8e0000 (32 bytes): fefefefefefefefe fefefefefefefefe fefefefefefefefe fefefefefefefefe 
+
+=== the same offsets in a second client (explorer.exe) ===
+pid: 3482
+0x8dff70 (96 bytes): 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 0000000000000000 
+
+=== does the wineserver appear at all? (full process scan) ===
+  3418: winedevice.exe
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:06:08 UTC 2026

@@ -1,0 +1,10 @@
+AGENT_BEGIN id=208-shared-mapping-write pid=42 Sat Oct 17 05:42:41 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  child (mapped before the write, page already faulted): 0x0000000000000000 -> 0x5555555555555555  sees the write (shared)
+  file content after A's mapping write:                    0x5555555555555555  reached the file
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:42:42 UTC 2026

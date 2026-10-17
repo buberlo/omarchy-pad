@@ -1,0 +1,15 @@
+AGENT_BEGIN id=206-after-oom-setting pid=42 Sat Oct 17 05:40:18 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 42
+kb4453 agent started pid=42 at Sat Oct 17 05:37:24 UTC 2026
+Sat Oct 17 05:40:18 UTC 2026
+footprint_mb 139
+allowance_mb 8192
+headroom_mb 8052
+soft_mb 1638
+oom setting: enabled 0 protect  builtin init,ishwl,ishwl-session,Xwayland,dbus-daemon,dbus-launch,pulseaudio,sh,ash,bash,zsh,fish,dash,login,getty,sshd,openrc,su,sudo,tmux,screen 
+
+=== for every process: its own session block and the object bytes the server handed out ===
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:40:18 UTC 2026

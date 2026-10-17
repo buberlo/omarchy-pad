@@ -1,0 +1,41 @@
+AGENT_BEGIN id=198-session-bytes-2 pid=43 Sat Oct 17 05:05:29 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+client pid: 3390
+=== wine-ish processes (from /proc status) ===
+  3390: left4dead.exe
+  3414: services.exe
+  3418: winedevice.exe
+  3427: plugplay.exe
+  3434: svchost.exe
+  3482: explorer.exe
+  3489: explorer.exe
+  3491: explorer.exe
+
+=== the session mapping (largest tmpmap) in the client ===
+  0000007e0000 1327104 00000000 /tmp/.wine-0/server-10c-84c21e/tmpmap-0d171435 (size 1327104 bytes)
+=== bytes at offset 0 (the shared_session header) ===
+0000000 6f72702f203a6464 6d2f303933332f63
+0000016 6e6e6163203a6d65 2070696b7320746f
+0000032 6963657073206f74 66666f2064656966
+=== bytes at offset 0xfff70 (the window-class object the server returned) ===
+0000000 6f72702f203a6464 6d2f303933332f63
+0000016 6e6e6163203a6d65 2070696b7320746f
+0000032 6963657073206f74 66666f2064656966
+=== and at a few other offsets ===
+  offset 0x1000   : 0000000000000000
+  offset 0x10000  : 0000000000000000
+  offset 0x80000  : 0000000000000000
+  offset 0x100000 : fefefefefefefefe
+  offset 0x140000 : 0000000000000000
+
+=== who else maps that file? ===
+  file: /tmp/.wine-0/server-10c-84c21e/tmpmap-0d171435
+  3390: left4dead.exe
+  3427: plugplay.exe
+  3482: explorer.exe
+  3489: explorer.exe
+  3491: explorer.exe
+  3494: explorer.exe
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:05:31 UTC 2026

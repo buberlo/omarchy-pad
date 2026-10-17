@@ -1,0 +1,14 @@
+AGENT_BEGIN id=199-session-bytes-3 pid=43 Sat Oct 17 05:05:58 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+wget: server returned error: HTTP/1.0 404 File not found
+client pid: 3390
+session block at 0x0000007e0000, size 1327104 bytes
+=== what the client sees at the offsets the server handed out ===
+env: ‘/tmp/guest-memread’: No such file or directory
+
+=== for comparison: the same offsets in the *server-side* file as another client sees it ===
+second client pid: 3482
+env: ‘/tmp/guest-memread’: No such file or directory
+AGENT_EXIT=127
+AGENT_END Sat Oct 17 05:05:58 UTC 2026

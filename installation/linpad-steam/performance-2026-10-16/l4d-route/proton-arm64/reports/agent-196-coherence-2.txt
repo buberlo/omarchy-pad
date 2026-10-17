@@ -1,0 +1,10 @@
+AGENT_BEGIN id=196-coherence-2 pid=43 Sat Oct 17 05:02:58 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  child's read-only mapping sees the parent's pwrite(): yes (0x1111111111111111)
+  parent's pread() sees the child's mapping write: NO (0x0)
+FAIL: file I/O and mappings are not coherent
+exit=1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:02:58 UTC 2026

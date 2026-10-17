@@ -1,0 +1,29 @@
+AGENT_BEGIN id=194-session-offset-compare pid=43 Sat Oct 17 05:00:32 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== processes ===
+ 2155 left4dead.exe
+ 2177 services.exe
+ 2184 winedevice.exe
+
+=== every tmpmap mapping: addr perms OFFSET dev inode file (server first) ===
+--- pid 2155 (left4dead.exe)
+    0000007e0000-000000924000 r-xp off=00000000 ino=0 /tmp/.wine-0/server-10c-84c21e/tmpmap-70d824cb
+    00007ffe0000-00007ffe1000 r-x- off=00000000 ino=0 /tmp/.wine-0/server-10c-84c21e/tmpmap-a0900e67
+    0000ffff0000-0000ffff4000 rwx- off=00000000 ino=0 /tmp/.wine-0/server-10c-84c21e/tmpmap-480414c9
+--- pid 2177 (services.exe)
+    00007ffe0000-00007ffe1000 r--- off=00000000 ino=0 /tmp/.wine-0/server-10c-84c21e/tmpmap-a0900e67
+--- pid 2184 (winedevice.exe)
+    00007ffe0000-00007ffe1000 r--- off=00000000 ino=0 /tmp/.wine-0/server-10c-84c21e/tmpmap-a0900e67
+
+=== does the session file exist and how big is it? ===
+/tmp/.wine-0/server-10c-84c21e/:
+total 0
+-rw------- 1 root root 0 Oct 17 05:00 lock
+srw------- 1 root root 0 Oct 17 05:00 socket
+
+/tmp/.wine-0/server-10c-84d73a/:
+total 0
+-rw------- 1 root root 0 Oct 16 22:26 lock
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:01:31 UTC 2026

@@ -1,0 +1,9 @@
+AGENT_BEGIN id=195-file-mapping-coherence pid=43 Sat Oct 17 05:02:36 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  parent reads the child's mapping write from the file: NO (0x0)
+FAIL: file I/O and mappings are not coherent
+exit=1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:02:37 UTC 2026
