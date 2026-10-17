@@ -1,0 +1,10 @@
+AGENT_BEGIN id=215-fork-shared-mapping pid=43 Sat Oct 17 06:03:24 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  child (inherited the mapping across fork): 0x1111111111111111 -> 0x2222222222222222  sees the parent's later write (shared)
+  file content: 0x2222222222222222  (the parent's write)
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:03:24 UTC 2026

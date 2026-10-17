@@ -1,0 +1,9 @@
+AGENT_BEGIN id=219-private-reader-shared-writer pid=43 Sat Oct 17 06:13:09 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+  reader (MAP_PRIVATE, page faulted before the write): 0x0000000000000000 -> 0x0000000000000000  STALE SNAPSHOT -- the private mapping was copied at map time
+FAIL: a MAP_PRIVATE reader does not see a MAP_SHARED writer's pages
+exit=1
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:13:10 UTC 2026

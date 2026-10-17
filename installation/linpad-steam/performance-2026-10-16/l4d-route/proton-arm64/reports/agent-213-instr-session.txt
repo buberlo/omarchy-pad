@@ -1,0 +1,11 @@
+AGENT_BEGIN id=213-instr-session pid=43 Sat Oct 17 05:52:13 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+agent: 43
+kb4453 agent started pid=43 at Sat Oct 17 05:51:24 UTC 2026
+Sat Oct 17 05:52:13 UTC 2026
+footprint_mb 139
+allowance_mb 8192
+headroom_mb 8052
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 05:52:13 UTC 2026

@@ -1,0 +1,19 @@
+AGENT_BEGIN id=216-which-filesystem pid=43 Sat Oct 17 06:03:45 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== mounts in the guest ===
+devpts on /dev/pts type devpts (rw)
+proc on /proc type proc (rw)
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data on / type fake (rw)
+
+=== where does /tmp live? ===
+/private/var/mobile/Containers/Shared/AppGroup/F5D76EBF-A140-46E0-A44C-9FA2F11665C3/roots/default/data 112317480 96637480  15680000  87% /
+/tmp dev=268 ino=8561457
+/tmp/.wine-0 dev=268 ino=8704333
+=== and the wine session file's home ===
+total 0
+drwx------  3 root root    96 Oct 17 05:52 .
+drwxrwxrwt 97 root root 24608 Oct 17 06:03 ..
+drwx------  2 root root   128 Oct 17 05:52 server-10c-84c21e
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:03:45 UTC 2026

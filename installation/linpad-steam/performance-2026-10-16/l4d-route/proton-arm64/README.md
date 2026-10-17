@@ -635,3 +635,39 @@ So the defect is not in any of those mechanisms, yet the same file gives differe
 in wine's case. Note for the next attempt: the ids the clients read (`0x12`, `0x22`) are *larger* than
 the ones the server allocates (1, 2, 3 …), which fits either a per-process snapshot taken at first
 touch or each process reading a different part of the session.
+
+## Round of 17 October, 14:05–14:15: **root cause found and reproduced in isolation**
+
+`MAP_PRIVATE` file mappings are copied eagerly in this emulator; Linux treats them as copy-on-write
+over the shared page cache, so a reader must still see writes another process makes *through its
+`MAP_SHARED` mapping*. The probe (`probes/mixmap.c`) is the exact combination wine uses, and it is the
+only one that was never tested:
+
+```
+real Linux : reader (MAP_PRIVATE, page faulted before the write): 0x0 -> 0x8888…  sees the write
+iPad       : reader (MAP_PRIVATE, page faulted before the write): 0x0 -> 0x0      STALE SNAPSHOT
+```
+
+Wine maps the shared session exactly that way, measured on the device with the instrumentation added to
+`realfs_mmap` (commit `6a1d699a`):
+
+```
+pid 692  prot 0x83  guestflags 0x1   hostflags 0x1   MAP_SHARED   ← wineserver writes the session
+pid 716  prot 0x3   guestflags 0x12  hostflags 0x2   MAP_PRIVATE  ← every wine client reads it
+pid 694/738 …        guestflags 0x12  hostflags 0x2   MAP_PRIVATE
+```
+
+So a client's view is a snapshot taken when it mapped the file: clients that mapped before the server
+wrote the window-class objects read stale bytes (`left4dead.exe` read id 0x12, `plugplay.exe` zeros)
+while the 65 `explorer.exe` instances started afterwards read the server's data (id 0x22 plus the
+sequence number). That is the whole defect behind `Failed to get shared session object for window
+class`, the missing desktop window and the game never opening a window.
+
+**The fix** belongs in `realfs_mmap`: for a guest `MAP_PRIVATE` mapping of a file, map the host file
+`MAP_SHARED` so reads follow the page cache, and mark the guest pages `P_COW` (the emulator already has
+that flag and `pt_copy_on_demand`) so guest writes stay private and never reach the file.
+
+Other suspects cleared in this round, each with a probe that passes on real Linux first:
+`probes/growmap.c` (a file growing under two live mappings), `probes/forkmap.c` (a shared mapping
+inherited across `fork`), and the silent-fallback instrumentation, which logged 681 shared mappings in
+one run and not a single private copy.

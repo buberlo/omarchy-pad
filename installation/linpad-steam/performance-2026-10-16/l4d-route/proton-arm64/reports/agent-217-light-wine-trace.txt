@@ -1,0 +1,12 @@
+AGENT_BEGIN id=217-light-wine-trace pid=43 Sat Oct 17 06:09:47 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== a light wine program: it triggers the same session and window-class path ===
+t= 30s wineserver=0 wine=0 explorer=0 class_err=8
+t= 60s wineserver=0 wine=0 explorer=0 class_err=8
+t= 90s wineserver=0 wine=0 explorer=0 class_err=8
+t=120s wineserver=0 wine=0 explorer=0 class_err=8
+t=150s wineserver=0 wine=0 explorer=0 class_err=8
+mem: 142 MB
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 06:12:17 UTC 2026

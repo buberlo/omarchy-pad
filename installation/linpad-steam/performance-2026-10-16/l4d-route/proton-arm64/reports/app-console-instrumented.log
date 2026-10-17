@@ -1,0 +1,810 @@
+Launched application with com.konradkern.linpad bundle identifier.
+Waiting for the application to terminate…
+2026-10-17 13:51:24.145 iSH ARM64[24816:6405044] [boot] case_sensitive_container=yes
+2026-10-17 13:51:24.145 iSH ARM64[24816:6405044] [fast mode] not requested: setting is off
+2026-10-17 13:51:24.145 iSH ARM64[24816:6405054] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x1085c2b80 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-17 13:51:24.145 iSH ARM64[24816:6405054] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x1085c2ca0 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-17 13:51:24.145 iSH ARM64[24816:6405054] error adjusting domains: Error Domain=NSFileProviderErrorDomain Code=-2001 "Das Programm kann gerade nicht verwendet werden." UserInfo={NSLocalizedDescription=Das Programm kann gerade nicht verwendet werden., NSUnderlyingError=0x1085c2ca0 {Error Domain=NSFileProviderErrorDomain Code=-2014 "(null)"}}
+2026-10-17 13:51:24.347 iSH ARM64[24816:6405044] [RootfsPatch] bundle not found in app, skipping overlay
+2026-10-17 13:51:24.350 iSH ARM64[24816:6405044] [boot] boot_seconds=0.20
+2026-10-17 13:51:24.628 iSH ARM64[24816:6405044] CoreText note: Client requested name ".SFCompact", it will get TimesNewRomanPSMT rather than the intended font. All system UI font access should be through proper APIs such as CTFontCreateUIFontForLanguage() or +[UIFont systemFontOfSize:].
+2026-10-17 13:51:24.628 iSH ARM64[24816:6405044] CoreText note: Set a breakpoint on CTFontLogSystemFontNameRequest to debug.
+sandbox_extension_issue_file failed for /var/containers/Bundle/Application/AB2E810E-AAC5-4D99-8514-E2179D648485/iSH ARM64.app: 1 (Operation not permitted)
+2026-10-17 13:51:24.736 iSH ARM64[24816:6405044] UIKeyboardWillChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-17 13:51:24.923 iSH ARM64[24816:6405240] ish-mmap: SHARED pid 39 fd 146 pages 3 off 0 prot 0x83 mapsize 12288 file 12288
+2026-10-17 13:51:24.951 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 53 pages 8 off 0 prot 0x81 mapsize 32768 file 29243
+2026-10-17 13:51:24.954 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 53 pages 7 off 0 prot 0x81 mapsize 28672 file 25758
+2026-10-17 13:51:24.960 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 44 pages 1 off 0 prot 0x81 mapsize 4096 file 2176
+2026-10-17 13:51:24.961 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 179
+2026-10-17 13:51:24.961 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 596
+2026-10-17 13:51:24.962 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1107
+2026-10-17 13:51:24.962 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 432
+2026-10-17 13:51:24.963 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 2 off 0 prot 0x81 mapsize 8192 file 5183
+2026-10-17 13:51:24.965 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 2 off 0 prot 0x81 mapsize 8192 file 7674
+2026-10-17 13:51:24.968 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1658
+2026-10-17 13:51:24.969 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 218
+2026-10-17 13:51:24.969 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 228
+2026-10-17 13:51:24.969 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 996
+2026-10-17 13:51:24.970 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 469
+2026-10-17 13:51:24.970 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 466
+2026-10-17 13:51:24.970 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1492
+2026-10-17 13:51:24.971 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 2 off 0 prot 0x81 mapsize 8192 file 4578
+2026-10-17 13:51:24.973 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1121
+2026-10-17 13:51:24.974 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:24.975 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 486
+2026-10-17 13:51:24.975 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:24.976 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:24.977 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1842
+2026-10-17 13:51:24.978 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1273
+2026-10-17 13:51:24.978 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 585
+2026-10-17 13:51:24.979 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 2726
+2026-10-17 13:51:24.980 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 1 off 0 prot 0x81 mapsize 4096 file 1803
+2026-10-17 13:51:24.980 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:24.981 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:24.982 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 28 off 0 prot 0x81 mapsize 114688 file 113392
+2026-10-17 13:51:24.984 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 81 pages 20 off 0 prot 0x81 mapsize 81920 file 80340
+2026-10-17 13:51:25.027 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 210 pages 8 off 0 prot 0x81 mapsize 32768 file 29243
+2026-10-17 13:51:25.031 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 233 pages 7 off 0 prot 0x81 mapsize 28672 file 25758
+2026-10-17 13:51:25.036 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 258 pages 1 off 0 prot 0x81 mapsize 4096 file 2176
+2026-10-17 13:51:25.037 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 265 pages 1 off 0 prot 0x81 mapsize 4096 file 179
+2026-10-17 13:51:25.037 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 265 pages 1 off 0 prot 0x81 mapsize 4096 file 596
+2026-10-17 13:51:25.037 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 265 pages 1 off 0 prot 0x81 mapsize 4096 file 1107
+2026-10-17 13:51:25.038 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 1 off 0 prot 0x81 mapsize 4096 file 432
+2026-10-17 13:51:25.039 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 2 off 0 prot 0x81 mapsize 8192 file 5183
+2026-10-17 13:51:25.041 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 2 off 0 prot 0x81 mapsize 8192 file 7674
+2026-10-17 13:51:25.045 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 1 off 0 prot 0x81 mapsize 4096 file 1658
+2026-10-17 13:51:25.045 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 1 off 0 prot 0x81 mapsize 4096 file 218
+2026-10-17 13:51:25.045 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 1 off 0 prot 0x81 mapsize 4096 file 228
+2026-10-17 13:51:25.045 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 1 off 0 prot 0x81 mapsize 4096 file 996
+2026-10-17 13:51:25.046 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 254 pages 1 off 0 prot 0x81 mapsize 4096 file 469
+2026-10-17 13:51:25.046 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 254 pages 1 off 0 prot 0x81 mapsize 4096 file 466
+2026-10-17 13:51:25.046 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 254 pages 1 off 0 prot 0x81 mapsize 4096 file 1492
+2026-10-17 13:51:25.047 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 270 pages 2 off 0 prot 0x81 mapsize 8192 file 4578
+2026-10-17 13:51:25.049 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 252 pages 1 off 0 prot 0x81 mapsize 4096 file 1121
+2026-10-17 13:51:25.050 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 255 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.051 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 255 pages 1 off 0 prot 0x81 mapsize 4096 file 486
+2026-10-17 13:51:25.051 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 255 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.052 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 255 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.053 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 254 pages 1 off 0 prot 0x81 mapsize 4096 file 1842
+2026-10-17 13:51:25.054 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 260 pages 1 off 0 prot 0x81 mapsize 4096 file 1273
+2026-10-17 13:51:25.055 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 260 pages 1 off 0 prot 0x81 mapsize 4096 file 585
+2026-10-17 13:51:25.055 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 260 pages 1 off 0 prot 0x81 mapsize 4096 file 2726
+2026-10-17 13:51:25.056 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 260 pages 1 off 0 prot 0x81 mapsize 4096 file 1803
+2026-10-17 13:51:25.057 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:25.057 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:25.059 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 23 off 0 prot 0x81 mapsize 94208 file 93950
+2026-10-17 13:51:25.071 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 234 pages 2 off 0 prot 0x81 mapsize 8192 file 5233
+2026-10-17 13:51:25.072 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 44 pages 20 off 0 prot 0x81 mapsize 81920 file 80340
+2026-10-17 13:51:25.139 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 319 pages 1 off 0 prot 0x83 mapsize 4096 file 2304
+2026-10-17 13:51:25.141 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 319 pages 2 off 0 prot 0x83 mapsize 8192 file 5568
+2026-10-17 13:51:25.141 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 319 pages 3 off 0 prot 0x83 mapsize 12288 file 12096
+2026-10-17 13:51:25.141 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 319 pages 7 off 0 prot 0x83 mapsize 28672 file 25216
+2026-10-17 13:51:25.142 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 8 off 0 prot 0x81 mapsize 32768 file 29243
+2026-10-17 13:51:25.143 iSH ARM64[24816:6405044] UIKeyboardDidChangeFrameNotification NSRect: {{inf, inf}, {0, 0}}
+2026-10-17 13:51:25.146 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 7 off 0 prot 0x81 mapsize 28672 file 25758
+2026-10-17 13:51:25.151 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 2176
+2026-10-17 13:51:25.152 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 179
+2026-10-17 13:51:25.152 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 596
+2026-10-17 13:51:25.152 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 1107
+2026-10-17 13:51:25.153 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 432
+2026-10-17 13:51:25.153 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 2 off 0 prot 0x81 mapsize 8192 file 5183
+2026-10-17 13:51:25.156 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 2 off 0 prot 0x81 mapsize 8192 file 7674
+2026-10-17 13:51:25.160 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 332 pages 1 off 0 prot 0x81 mapsize 4096 file 1658
+2026-10-17 13:51:25.160 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 218
+2026-10-17 13:51:25.160 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 228
+2026-10-17 13:51:25.161 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 996
+2026-10-17 13:51:25.161 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 469
+2026-10-17 13:51:25.161 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 466
+2026-10-17 13:51:25.162 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 334 pages 1 off 0 prot 0x81 mapsize 4096 file 1492
+2026-10-17 13:51:25.162 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 2 off 0 prot 0x81 mapsize 8192 file 4578
+2026-10-17 13:51:25.165 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 1121
+2026-10-17 13:51:25.165 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.166 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 486
+2026-10-17 13:51:25.166 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.167 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 3053
+2026-10-17 13:51:25.168 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 1842
+2026-10-17 13:51:25.169 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 1273
+2026-10-17 13:51:25.170 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 585
+2026-10-17 13:51:25.170 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 2726
+2026-10-17 13:51:25.171 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 1 off 0 prot 0x81 mapsize 4096 file 1803
+2026-10-17 13:51:25.172 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:25.172 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 6 off 0 prot 0x81 mapsize 24576 file 23990
+2026-10-17 13:51:25.174 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 28 off 0 prot 0x81 mapsize 114688 file 113392
+2026-10-17 13:51:25.175 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 320 pages 20 off 0 prot 0x81 mapsize 81920 file 80340
+2026-10-17 13:51:25.187 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 319 pages 1 off 0 prot 0x81 mapsize 4096 file 25216
+2026-10-17 13:51:25.187 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 319 pages 2 off 0 prot 0x81 mapsize 8192 file 25216
+2026-10-17 13:51:25.187 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 319 pages 3 off 0 prot 0x81 mapsize 12288 file 25216
+2026-10-17 13:51:25.187 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 319 pages 7 off 0 prot 0x81 mapsize 28672 file 25216
+2026-10-17 13:51:25.503 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 1 off 0 prot 0x83 mapsize 4096 file 2304
+2026-10-17 13:51:25.505 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 2 off 0 prot 0x83 mapsize 8192 file 6912
+2026-10-17 13:51:25.506 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 4 off 0 prot 0x83 mapsize 16384 file 16128
+2026-10-17 13:51:25.507 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 9 off 0 prot 0x83 mapsize 36864 file 34560
+2026-10-17 13:51:25.516 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 18 off 0 prot 0x83 mapsize 73728 file 71424
+2026-10-17 13:51:25.516 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 36 off 0 prot 0x83 mapsize 147456 file 145152
+2026-10-17 13:51:25.516 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 72 off 0 prot 0x83 mapsize 294912 file 292608
+2026-10-17 13:51:25.524 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 323 pages 144 off 0 prot 0x83 mapsize 589824 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 1 off 0 prot 0x81 mapsize 4096 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 2 off 0 prot 0x81 mapsize 8192 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 4 off 0 prot 0x81 mapsize 16384 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 9 off 0 prot 0x81 mapsize 36864 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 18 off 0 prot 0x81 mapsize 73728 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 36 off 0 prot 0x81 mapsize 147456 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 72 off 0 prot 0x81 mapsize 294912 file 587520
+2026-10-17 13:51:25.580 iSH ARM64[24816:6405133] ish-mmap: SHARED pid 22 fd 323 pages 144 off 0 prot 0x81 mapsize 589824 file 587520
+2026-10-17 13:51:25.583 iSH ARM64[24816:6405253] ish-mmap: SHARED pid 49 fd 300 pages 17 off 0 prot 0x81 mapsize 69632 file 66786
+2026-10-17 13:52:24.527 iSH ARM64[24816:6405991] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wineserver asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:24.542 iSH ARM64[24816:6405991] ish-mmap: SHARED pid 366 fd 365 pages 1 off 0 prot 0x82 mapsize 4096 file 4096
+2026-10-17 13:52:24.543 iSH ARM64[24816:6405991] ish-mmap: SHARED pid 366 fd 366 pages 324 off 0 prot 0x83 mapsize 1327104 file 1327104
+2026-10-17 13:52:34.558 iSH ARM64[24816:6406055] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/bin-arm64/wine asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:34.568 iSH ARM64[24816:6406055] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:34.580 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:34.594 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 365 pages 1 off 0 prot 0x83 mapsize 4096 file 4096
+2026-10-17 13:52:34.601 iSH ARM64[24816:6406058] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:34.607 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:34.761 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 365 pages 1 off 0 prot 0x83 mapsize 4096 file 4096
+2026-10-17 13:52:39.944 iSH ARM64[24816:6406094] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:39.950 iSH ARM64[24816:6406094] ish-mmap: SHARED pid 400 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:40.241 iSH ARM64[24816:6406098] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:40.247 iSH ARM64[24816:6406098] ish-mmap: SHARED pid 403 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:40.547 iSH ARM64[24816:6406108] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:40.552 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:40.974 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 562 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:40.976 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 563 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:40.979 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 564 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:40.980 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 565 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:40.981 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 566 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:40.982 iSH ARM64[24816:6406108] ish-mmap: SHARED pid 413 fd 567 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:41.494 iSH ARM64[24816:6406115] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:41.499 iSH ARM64[24816:6406115] ish-mmap: SHARED pid 419 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:42.111 iSH ARM64[24816:6406133] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:42.117 iSH ARM64[24816:6406133] ish-mmap: SHARED pid 426 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:42.885 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 718 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:42.886 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 719 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:42.886 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 706 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:42.887 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 721 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:42.887 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 722 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:42.887 iSH ARM64[24816:6406139] ish-mmap: SHARED pid 432 fd 723 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:43.008 iSH ARM64[24816:6406144] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:43.014 iSH ARM64[24816:6406144] ish-mmap: SHARED pid 435 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:43.691 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 676 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:43.691 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 677 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:43.693 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 678 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:43.693 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 679 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:43.694 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 681 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:43.694 iSH ARM64[24816:6406058] ish-mmap: SHARED pid 387 fd 682 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:44.665 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 398 pages 4 off 0 prot 0x83 mapsize 16384 file 16384
+2026-10-17 13:52:45.691 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 677 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:45.692 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 678 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:45.693 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 679 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:45.694 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 681 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:45.694 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 682 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:45.695 iSH ARM64[24816:6406055] ish-mmap: SHARED pid 384 fd 684 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:47.281 iSH ARM64[24816:6406181] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:47.289 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:47.893 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 844 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:47.894 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 845 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:47.895 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 846 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:47.895 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 847 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:47.896 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 848 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:47.897 iSH ARM64[24816:6406181] ish-mmap: SHARED pid 456 fd 849 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:48.549 iSH ARM64[24816:6406187] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:48.558 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:48.669 iSH ARM64[24816:6406189] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:48.676 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:49.193 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 885 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:49.194 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 887 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:49.195 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 893 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:49.196 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 894 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:49.196 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 897 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:49.197 iSH ARM64[24816:6406187] ish-mmap: SHARED pid 462 fd 898 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:49.353 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 860 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:49.354 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 900 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:49.355 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 902 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:49.356 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 901 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:49.357 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 903 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:49.357 iSH ARM64[24816:6406189] ish-mmap: SHARED pid 464 fd 904 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:49.929 iSH ARM64[24816:6406197] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:49.941 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:50.011 iSH ARM64[24816:6406199] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:50.018 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:50.097 iSH ARM64[24816:6406201] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:50.105 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:50.593 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 999 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:50.594 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 1002 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:50.595 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 1003 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:50.596 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 982 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:50.596 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 1004 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:50.597 iSH ARM64[24816:6406197] ish-mmap: SHARED pid 469 fd 1005 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:50.690 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 1001 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:50.691 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 988 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:50.692 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 1000 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:50.693 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 1018 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:50.694 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 1019 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:50.695 iSH ARM64[24816:6406199] ish-mmap: SHARED pid 471 fd 1020 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:50.830 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1017 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:50.831 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1016 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:50.833 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1007 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:50.834 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1025 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:50.835 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1022 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:50.836 iSH ARM64[24816:6406201] ish-mmap: SHARED pid 473 fd 1021 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:51.533 iSH ARM64[24816:6406220] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:51.550 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:51.616 iSH ARM64[24816:6406225] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:51.626 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:51.694 iSH ARM64[24816:6406230] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:51.703 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:51.802 iSH ARM64[24816:6406233] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:51.809 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:51.872 iSH ARM64[24816:6406235] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:51.879 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:52.272 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1166 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:52.272 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1161 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:52.274 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1167 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:52.274 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1173 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:52.275 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1174 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:52.276 iSH ARM64[24816:6406220] ish-mmap: SHARED pid 475 fd 1175 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:52.367 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1056 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:52.368 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1172 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:52.373 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1082 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:52.375 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1159 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:52.375 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1188 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:52.376 iSH ARM64[24816:6406225] ish-mmap: SHARED pid 477 fd 1190 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:52.455 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1186 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:52.456 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1171 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:52.459 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1201 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:52.467 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1192 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:52.469 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1089 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:52.470 iSH ARM64[24816:6406230] ish-mmap: SHARED pid 482 fd 1206 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:52.616 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1200 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:52.617 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1205 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:52.620 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1204 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:52.621 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1198 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:52.626 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1214 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:52.628 iSH ARM64[24816:6406233] ish-mmap: SHARED pid 485 fd 1218 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:52.763 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1194 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:52.765 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1217 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:52.769 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1223 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:52.770 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1219 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:52.772 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1222 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:52.773 iSH ARM64[24816:6406235] ish-mmap: SHARED pid 487 fd 1212 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:53.703 iSH ARM64[24816:6406247] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:53.728 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:53.861 iSH ARM64[24816:6406249] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:53.874 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:53.930 iSH ARM64[24816:6406251] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:53.939 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.032 iSH ARM64[24816:6406253] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:54.045 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.066 iSH ARM64[24816:6406255] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:54.074 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.113 iSH ARM64[24816:6406257] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:54.121 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.127 iSH ARM64[24816:6406259] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:54.139 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.150 iSH ARM64[24816:6406261] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:54.157 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:54.609 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1456 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:54.610 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1460 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:54.612 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1453 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:54.613 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1439 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:54.616 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1463 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:54.617 iSH ARM64[24816:6406247] ish-mmap: SHARED pid 489 fd 1462 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:54.699 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1448 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:54.701 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1461 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:54.706 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1464 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:54.707 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1297 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:54.708 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1438 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:54.709 iSH ARM64[24816:6406249] ish-mmap: SHARED pid 491 fd 1457 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:54.780 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1466 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:54.782 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1475 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:54.786 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1482 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:54.787 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1480 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:54.788 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1485 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:54.790 iSH ARM64[24816:6406251] ish-mmap: SHARED pid 493 fd 1486 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:54.963 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1494 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:54.967 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1468 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:54.972 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1502 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:54.975 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1505 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:54.978 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1506 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:54.980 iSH ARM64[24816:6406253] ish-mmap: SHARED pid 495 fd 1504 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:55.038 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1496 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:55.040 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1522 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:55.045 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1490 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:55.047 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1516 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:55.053 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1524 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:55.056 iSH ARM64[24816:6406255] ish-mmap: SHARED pid 497 fd 1521 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:55.173 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1225 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:55.177 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1401 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:55.183 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1531 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:55.186 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1447 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:55.191 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1519 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:55.194 iSH ARM64[24816:6406257] ish-mmap: SHARED pid 499 fd 1536 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:55.267 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1315 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:55.269 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1529 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:55.275 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1511 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:55.277 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1535 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:55.279 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1458 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:55.281 iSH ARM64[24816:6406259] ish-mmap: SHARED pid 501 fd 1532 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:55.332 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1545 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:55.334 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1542 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:55.340 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1533 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:55.343 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1544 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:55.346 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1294 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:55.351 iSH ARM64[24816:6406261] ish-mmap: SHARED pid 503 fd 1539 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:56.731 iSH ARM64[24816:6406282] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:56.772 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.006 iSH ARM64[24816:6406285] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.035 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.140 iSH ARM64[24816:6406287] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.171 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.378 iSH ARM64[24816:6406289] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.386 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.426 iSH ARM64[24816:6406291] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.436 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.467 iSH ARM64[24816:6406293] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.475 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.513 iSH ARM64[24816:6406295] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.515 iSH ARM64[24816:6406297] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.517 iSH ARM64[24816:6406299] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.526 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.528 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.528 iSH ARM64[24816:6406301] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.529 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.536 iSH ARM64[24816:6406303] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.538 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.549 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.621 iSH ARM64[24816:6406305] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.632 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:57.638 iSH ARM64[24816:6406307] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:52:57.648 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:52:58.077 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1886 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.078 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1888 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.079 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1894 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.080 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1882 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.081 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1897 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.082 iSH ARM64[24816:6406282] ish-mmap: SHARED pid 510 fd 1899 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.204 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1903 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.205 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1908 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.208 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1893 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.209 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1913 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.209 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1916 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.210 iSH ARM64[24816:6406285] ish-mmap: SHARED pid 512 fd 1915 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.269 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1892 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.270 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1923 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.273 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1910 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.274 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1927 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.276 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1924 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.277 iSH ARM64[24816:6406287] ish-mmap: SHARED pid 514 fd 1931 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.468 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1925 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.469 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1934 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.472 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1922 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.473 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1551 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.474 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1929 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.476 iSH ARM64[24816:6406289] ish-mmap: SHARED pid 516 fd 1909 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.638 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 1926 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.639 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 1992 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.650 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 2001 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.656 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 2003 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.663 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 2007 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.667 iSH ARM64[24816:6406291] ish-mmap: SHARED pid 518 fd 1997 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.778 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 1995 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.783 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 1985 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.796 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 2013 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.798 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 1999 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.804 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 1984 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.809 iSH ARM64[24816:6406293] ish-mmap: SHARED pid 520 fd 1964 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.909 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 2012 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.911 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 2005 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.921 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 1939 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.928 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 2017 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.929 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 1816 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.933 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 2009 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.933 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 2014 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.940 iSH ARM64[24816:6406295] ish-mmap: SHARED pid 522 fd 1968 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.941 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 2015 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.945 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 2019 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.947 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 2008 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.953 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 2022 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.955 iSH ARM64[24816:6406297] ish-mmap: SHARED pid 524 fd 2018 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.959 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 2011 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.970 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 2021 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.972 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 2026 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:58.977 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 1996 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:58.981 iSH ARM64[24816:6406299] ish-mmap: SHARED pid 526 fd 2025 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:58.986 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2029 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.989 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2020 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:58.992 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 2027 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:58.996 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2032 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:58.996 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 1973 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:59.002 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2038 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:59.004 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 2037 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:59.004 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2031 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:59.008 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 2034 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:59.009 iSH ARM64[24816:6406301] ish-mmap: SHARED pid 528 fd 2041 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:59.013 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 1959 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:59.017 iSH ARM64[24816:6406303] ish-mmap: SHARED pid 530 fd 2048 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:59.329 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 2056 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:59.332 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 2044 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:59.345 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 2062 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:59.349 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 2063 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:59.352 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 2053 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:59.355 iSH ARM64[24816:6406305] ish-mmap: SHARED pid 532 fd 1857 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:52:59.404 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2068 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:52:59.407 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2051 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:52:59.416 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2064 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:52:59.419 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2016 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:52:59.424 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2070 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:52:59.429 iSH ARM64[24816:6406307] ish-mmap: SHARED pid 534 fd 2058 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:00.930 iSH ARM64[24816:6406325] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:00.994 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:01.309 iSH ARM64[24816:6406332] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:01.319 iSH ARM64[24816:6406334] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:01.358 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:01.372 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:01.778 iSH ARM64[24816:6406339] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:01.840 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.266 iSH ARM64[24816:6406342] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.308 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.653 iSH ARM64[24816:6406345] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.663 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.691 iSH ARM64[24816:6406347] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.700 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.759 iSH ARM64[24816:6406349] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.768 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.768 iSH ARM64[24816:6406351] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.782 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.784 iSH ARM64[24816:6406353] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.794 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.806 iSH ARM64[24816:6406355] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.815 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.819 iSH ARM64[24816:6406357] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.833 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.845 iSH ARM64[24816:6406360] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.846 iSH ARM64[24816:6406361] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.857 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.858 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.875 iSH ARM64[24816:6406363] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.884 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.908 iSH ARM64[24816:6406365] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.909 iSH ARM64[24816:6406367] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.919 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.921 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.926 iSH ARM64[24816:6406370] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.937 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.960 iSH ARM64[24816:6406372] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.969 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:02.984 iSH ARM64[24816:6406374] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:02.994 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:03.055 iSH ARM64[24816:6406376] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:03.068 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:03.366 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2585 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:03.367 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2607 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:03.369 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2600 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:03.370 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2608 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:03.371 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2609 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:03.371 iSH ARM64[24816:6406325] ish-mmap: SHARED pid 543 fd 2611 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:03.522 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2582 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:03.524 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2623 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:03.526 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2624 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:03.528 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2631 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:03.529 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2636 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:03.530 iSH ARM64[24816:6406334] ish-mmap: SHARED pid 551 fd 2637 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:03.558 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2612 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:03.559 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2635 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:03.560 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2632 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:03.561 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2638 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:03.562 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2639 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:03.562 iSH ARM64[24816:6406332] ish-mmap: SHARED pid 549 fd 2621 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:03.781 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2223 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:03.782 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2217 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:03.783 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2650 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:03.784 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2653 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:03.785 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2655 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:03.787 iSH ARM64[24816:6406339] ish-mmap: SHARED pid 553 fd 2660 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:03.954 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2664 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:03.954 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2665 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:03.956 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2669 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:03.957 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2670 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:03.958 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2667 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:03.959 iSH ARM64[24816:6406342] ish-mmap: SHARED pid 555 fd 2219 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.184 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2691 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.185 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2699 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.189 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2686 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.191 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2706 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.192 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2711 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.193 iSH ARM64[24816:6406345] ish-mmap: SHARED pid 557 fd 2712 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.286 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2679 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.288 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2728 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.297 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2367 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.305 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2727 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.311 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2729 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.315 iSH ARM64[24816:6406347] ish-mmap: SHARED pid 559 fd 2734 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.556 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2748 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.559 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 206 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.565 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2714 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.567 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 2777 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.577 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2721 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.580 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2779 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.581 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 2776 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.581 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2750 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.587 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2715 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.590 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2780 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.590 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 2778 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.600 iSH ARM64[24816:6406351] ish-mmap: SHARED pid 563 fd 2782 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.601 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 2758 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.605 iSH ARM64[24816:6406349] ish-mmap: SHARED pid 561 fd 2783 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.609 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2726 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.623 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2781 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.639 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2790 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.647 iSH ARM64[24816:6406353] ish-mmap: SHARED pid 565 fd 2744 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.782 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2761 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.790 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2800 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.790 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2792 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.794 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2787 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.804 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2814 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.811 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2819 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.815 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2816 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.817 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2805 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.818 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2810 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.820 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2806 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.823 iSH ARM64[24816:6406357] ish-mmap: SHARED pid 569 fd 2830 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.827 iSH ARM64[24816:6406355] ish-mmap: SHARED pid 567 fd 2763 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.925 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2835 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.933 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2824 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.950 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2851 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:04.959 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2847 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:04.960 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2850 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:04.968 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2839 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:04.971 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2793 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:04.986 iSH ARM64[24816:6406361] ish-mmap: SHARED pid 573 fd 2836 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:04.999 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2858 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.021 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2853 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.031 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2834 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.045 iSH ARM64[24816:6406360] ish-mmap: SHARED pid 572 fd 2791 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.086 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2855 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.093 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2822 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.112 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2788 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.121 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2878 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.130 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2867 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.142 iSH ARM64[24816:6406363] ish-mmap: SHARED pid 575 fd 2880 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.299 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2821 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.308 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2765 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.311 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2865 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.325 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2871 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.331 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2840 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.346 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2856 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.346 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2895 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.353 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2884 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.356 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2861 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.359 iSH ARM64[24816:6406367] ish-mmap: SHARED pid 579 fd 2825 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.364 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2362 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.373 iSH ARM64[24816:6406365] ish-mmap: SHARED pid 577 fd 2877 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.485 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2844 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.493 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2907 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.498 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2870 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.525 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2911 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.525 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2886 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.532 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2905 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.538 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2828 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.540 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2912 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.543 iSH ARM64[24816:6406370] ish-mmap: SHARED pid 581 fd 2919 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.554 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2876 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.568 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2915 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.598 iSH ARM64[24816:6406372] ish-mmap: SHARED pid 583 fd 2866 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.683 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2926 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.690 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2914 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.706 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2927 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.717 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2864 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.730 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2887 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.741 iSH ARM64[24816:6406374] ish-mmap: SHARED pid 585 fd 2826 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:05.803 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2889 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:05.809 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2556 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:05.826 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2918 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:05.833 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2892 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:05.838 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2772 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:05.846 iSH ARM64[24816:6406376] ish-mmap: SHARED pid 587 fd 2925 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:07.002 iSH ARM64[24816:6406419] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.049 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.353 iSH ARM64[24816:6406425] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.368 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.369 iSH ARM64[24816:6406427] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.382 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.399 iSH ARM64[24816:6406429] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.413 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.588 iSH ARM64[24816:6406431] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.590 iSH ARM64[24816:6406433] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.609 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.613 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.691 iSH ARM64[24816:6406435] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.708 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:07.813 iSH ARM64[24816:6406437] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:07.843 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:09.445 iSH ARM64[24816:6406447] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:09.524 iSH ARM64[24816:6406447] ish-mmap: SHARED pid 613 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:10.006 iSH ARM64[24816:6406452] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:10.075 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:10.658 iSH ARM64[24816:6406478] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:10.714 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:10.914 iSH ARM64[24816:6406480] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:10.930 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:10.932 iSH ARM64[24816:6406482] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:10.946 iSH ARM64[24816:6406482] ish-mmap: SHARED pid 636 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:10.959 iSH ARM64[24816:6406484] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:10.974 iSH ARM64[24816:6406484] ish-mmap: SHARED pid 638 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.007 iSH ARM64[24816:6406487] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.008 iSH ARM64[24816:6406488] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.025 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.025 iSH ARM64[24816:6406487] ish-mmap: SHARED pid 641 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.044 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3376 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.045 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3364 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.046 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3379 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.047 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3378 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.048 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3381 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.049 iSH ARM64[24816:6406419] ish-mmap: SHARED pid 593 fd 3380 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:11.172 iSH ARM64[24816:6406492] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.197 iSH ARM64[24816:6406492] ish-mmap: SHARED pid 644 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.293 iSH ARM64[24816:6406495] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.294 iSH ARM64[24816:6406497] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.297 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3458 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.300 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3457 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.307 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3464 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.309 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3469 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.313 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3473 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.316 iSH ARM64[24816:6406425] ish-mmap: SHARED pid 599 fd 3477 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:11.330 iSH ARM64[24816:6406495] ish-mmap: SHARED pid 647 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.335 iSH ARM64[24816:6406497] ish-mmap: SHARED pid 648 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.337 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 3422 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.338 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 3468 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.342 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 533 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.343 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 3482 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.344 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 3485 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.345 iSH ARM64[24816:6406427] ish-mmap: SHARED pid 601 fd 3488 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:11.345 iSH ARM64[24816:6406499] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.374 iSH ARM64[24816:6406499] ish-mmap: SHARED pid 650 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.395 iSH ARM64[24816:6406501] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.407 iSH ARM64[24816:6406503] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.415 iSH ARM64[24816:6406505] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.428 iSH ARM64[24816:6406501] ish-mmap: SHARED pid 652 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.438 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3576 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.439 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3491 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.442 iSH ARM64[24816:6406503] ish-mmap: SHARED pid 654 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.442 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.446 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3580 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.449 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3584 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.451 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3569 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.453 iSH ARM64[24816:6406429] ish-mmap: SHARED pid 603 fd 3585 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:11.456 iSH ARM64[24816:6406507] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.475 iSH ARM64[24816:6406511] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.476 iSH ARM64[24816:6406510] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.484 iSH ARM64[24816:6406513] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.499 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.502 iSH ARM64[24816:6406511] ish-mmap: SHARED pid 662 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.506 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.511 iSH ARM64[24816:6406515] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.514 iSH ARM64[24816:6406513] ish-mmap: SHARED pid 664 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.536 iSH ARM64[24816:6406515] ish-mmap: SHARED pid 666 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.713 iSH ARM64[24816:6406518] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.749 iSH ARM64[24816:6406518] ish-mmap: SHARED pid 668 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.843 iSH ARM64[24816:6406520] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.849 iSH ARM64[24816:6406522] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.884 iSH ARM64[24816:6406520] ish-mmap: SHARED pid 670 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.887 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.890 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3658 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.891 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3670 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.892 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3676 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.893 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3648 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.894 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3348 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.895 iSH ARM64[24816:6406431] ish-mmap: SHARED pid 605 fd 3340 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:11.909 iSH ARM64[24816:6406525] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.910 iSH ARM64[24816:6406526] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.916 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 3021 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:11.918 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 3035 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:11.921 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 3040 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:11.922 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 3370 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:11.923 iSH ARM64[24816:6406433] ish-mmap: SHARED pid 607 fd 3036 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:11.930 iSH ARM64[24816:6406526] ish-mmap: SHARED pid 676 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.930 iSH ARM64[24816:6406525] ish-mmap: SHARED pid 675 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.934 iSH ARM64[24816:6406528] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.950 iSH ARM64[24816:6406528] ish-mmap: SHARED pid 678 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.972 iSH ARM64[24816:6406531] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.973 iSH ARM64[24816:6406532] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:11.987 iSH ARM64[24816:6406532] ish-mmap: SHARED pid 682 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:11.987 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.002 iSH ARM64[24816:6406534] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.017 iSH ARM64[24816:6406534] ish-mmap: SHARED pid 684 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.120 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3501 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:12.122 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3696 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:12.124 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3756 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:12.127 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3754 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:12.128 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3761 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:12.129 iSH ARM64[24816:6406435] ish-mmap: SHARED pid 609 fd 3762 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:12.195 iSH ARM64[24816:6406537] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.207 iSH ARM64[24816:6406537] ish-mmap: SHARED pid 686 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.287 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3051 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:12.288 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3761 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:12.291 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3534 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:12.293 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3772 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:12.297 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3770 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:12.300 iSH ARM64[24816:6406437] ish-mmap: SHARED pid 611 fd 3775 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:12.421 iSH ARM64[24816:6406540] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.421 iSH ARM64[24816:6406541] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.449 iSH ARM64[24816:6406541] ish-mmap: SHARED pid 690 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.449 iSH ARM64[24816:6406540] ish-mmap: SHARED pid 689 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.726 iSH ARM64[24816:6406544] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.737 iSH ARM64[24816:6406544] ish-mmap: SHARED pid 692 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.813 iSH ARM64[24816:6406546] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.828 iSH ARM64[24816:6406546] ish-mmap: SHARED pid 694 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:12.949 iSH ARM64[24816:6406549] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:12.965 iSH ARM64[24816:6406549] ish-mmap: SHARED pid 696 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.191 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 208 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:13.191 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 3020 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:13.192 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 3308 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:13.193 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 3309 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:13.194 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 3311 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:13.195 iSH ARM64[24816:6406452] ish-mmap: SHARED pid 618 fd 3312 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:13.327 iSH ARM64[24816:6406552] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.341 iSH ARM64[24816:6406552] ish-mmap: SHARED pid 698 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.581 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2809 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:13.582 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2913 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:13.584 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2883 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:13.585 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2933 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:13.586 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2948 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:13.587 iSH ARM64[24816:6406478] ish-mmap: SHARED pid 632 fd 2965 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:13.628 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2845 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:13.628 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2943 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:13.630 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2954 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:13.633 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2989 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:13.634 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2993 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:13.635 iSH ARM64[24816:6406480] ish-mmap: SHARED pid 634 fd 2988 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:13.649 iSH ARM64[24816:6406564] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.657 iSH ARM64[24816:6406566] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.668 iSH ARM64[24816:6406564] ish-mmap: SHARED pid 704 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.672 iSH ARM64[24816:6406566] ish-mmap: SHARED pid 706 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.712 iSH ARM64[24816:6406568] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.723 iSH ARM64[24816:6406568] ish-mmap: SHARED pid 708 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.834 iSH ARM64[24816:6406572] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.850 iSH ARM64[24816:6406572] ish-mmap: SHARED pid 710 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:13.894 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 531 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:13.895 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 2948 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:13.896 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 371 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:13.897 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 373 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:13.897 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 3214 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:13.898 iSH ARM64[24816:6406488] ish-mmap: SHARED pid 642 fd 3243 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:13.945 iSH ARM64[24816:6406574] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:13.959 iSH ARM64[24816:6406574] ish-mmap: SHARED pid 712 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:14.078 iSH ARM64[24816:6406497] ish-mmap: SHARED pid 648 fd 3278 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.167 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3396 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.167 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3399 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:14.169 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3371 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:14.171 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3400 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:14.173 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3404 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:14.174 iSH ARM64[24816:6406505] ish-mmap: SHARED pid 656 fd 3405 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:14.197 iSH ARM64[24816:6406576] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:14.200 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3411 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.201 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3415 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:14.203 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3416 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:14.204 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3417 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:14.205 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3419 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:14.206 iSH ARM64[24816:6406510] ish-mmap: SHARED pid 661 fd 3300 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:14.218 iSH ARM64[24816:6406576] ish-mmap: SHARED pid 714 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:14.268 iSH ARM64[24816:6406578] ish-highva: /root/.local/share/Steam/steamapps/common/Proton 11.0 (ARM64)/files/lib/wine/aarch64-unix/wine-preloader asked for the high address-space layout (stack page 0x7ffffff)
+2026-10-17 13:53:14.279 iSH ARM64[24816:6406578] ish-mmap: SHARED pid 716 fd 365 pages 1 off 0 prot 0x81 mapsize 4096 file 4096
+2026-10-17 13:53:14.344 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3300 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.345 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3432 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:14.352 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3445 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:14.353 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3446 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:14.354 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3447 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:14.355 iSH ARM64[24816:6406507] ish-mmap: SHARED pid 658 fd 3448 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:14.525 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2817 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.526 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2917 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:14.528 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2553 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:14.528 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2993 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:14.529 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2972 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:14.530 iSH ARM64[24816:6406522] ish-mmap: SHARED pid 672 fd 2997 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+2026-10-17 13:53:14.665 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 345 pages 3 off 0 prot 0x81 mapsize 12288 file 10240
+2026-10-17 13:53:14.665 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 2917 pages 13 off 0 prot 0x81 mapsize 53248 file 51504
+2026-10-17 13:53:14.666 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 2987 pages 17 off 0 prot 0x81 mapsize 69632 file 66288
+2026-10-17 13:53:14.666 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 3015 pages 8 off 0 prot 0x81 mapsize 32768 file 30624
+2026-10-17 13:53:14.667 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 3023 pages 30 off 0 prot 0x81 mapsize 122880 file 119800
+2026-10-17 13:53:14.667 iSH ARM64[24816:6406531] ish-mmap: SHARED pid 681 fd 3031 pages 15 off 0 prot 0x81 mapsize 61440 file 58360
+App terminated due to signal 9.
