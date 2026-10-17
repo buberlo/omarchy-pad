@@ -155,29 +155,29 @@ void handle_interrupt(int interrupt) {
                     cpu->regs[0], cpu->regs[1], cpu->regs[2],
                     cpu->regs[3], cpu->regs[4], cpu->regs[5]);
                 STRACE(" = 0x%llx\n", (unsigned long long)result);
-                // Bounded diagnostic: Steam's client aborts during startup with
-                // "src/tier0/threadtools.cpp (2526) : Assertion Failed: Permission denied", which is
-                // strerror(EPERM) -- so some syscall in its early path returns EPERM. Nothing obvious
-                // does (setpriority, sched_*, prctl, ptrace and setpgid were all checked or fixed),
-                // so name the caller instead of guessing. Capped: printk is synchronous os_log here.
-                // Only the interesting processes are logged (the Steam client runs as
-                // "ld-linux-aarch64" here because it is started through the glibc loader), so the
-                // boot's own EPERMs cannot fill the cap before it gets there.
-                if (result == -_EPERM && ish_traced_process()) {
-                    // Ring buffer of the last slow-path syscalls of the processes under investigation.
-                // Nothing is printed until one of them takes a fatal signal (see signal.c), which is
-                // exactly when the last few calls name the cause.
+                // Bounded diagnostics for the Steam client's startup abort. The ring is filled for
+                // every slow-path syscall of the traced processes; the first EPERM dumps it while the
+                // failing call is still the newest entry, because the client runs ~96 more syscalls
+                // before it asserts and a dump at exit would miss it. printk is synchronous os_log, so
+                // both the log and the number of dumps are capped. The earlier version of this block
+                // nested the ring inside the EPERM test, so the ring only ever held EPERMs -- that is
+                // why its dumps showed no real sequence.
                 if (ish_traced_process()) {
-                    struct ish_syscall_entry *e = &ish_syscall_ring[ish_syscall_ring_pos++ % ISH_SYSCALL_RING];
+                    struct ish_syscall_entry *e =
+                        &ish_syscall_ring[ish_syscall_ring_pos++ % ISH_SYSCALL_RING];
                     e->pid = current->pid;
                     snprintf(e->comm, sizeof(e->comm), "%s", current->comm);
                     e->num = (int) syscall_num;
                     e->result = result;
-                }
-                static int eperm_traced;
-                    if (eperm_traced++ < 200)
-                        printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
-                               current->pid, current->comm, syscall_num);
+                    if (result == -_EPERM) {
+                        static int eperm_traced;
+                        if (eperm_traced++ < 100)
+                            printk("ish-eperm: %d(%s) syscall %d -> EPERM\n",
+                                   current->pid, current->comm, syscall_num);
+                        static int eperm_dumped;
+                        if (eperm_dumped++ < 4)
+                            ish_dump_syscall_ring("EPERM");
+                    }
                 }
                 // sigreturn/rt_sigreturn restore the full CPU state from the
                 // signal frame. Do NOT touch regs[0] — it was already restored
