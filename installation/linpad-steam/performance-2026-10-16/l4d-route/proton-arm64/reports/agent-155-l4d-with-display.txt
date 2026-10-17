@@ -1,0 +1,34 @@
+AGENT_BEGIN id=155-l4d-with-display pid=43 Fri Oct 16 23:46:52 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== ishwl before ===
+5
+=== the game inside a rootful Xwayland ===
+t= 36s game=[1] x11=[2] toplevels=6 class_err=10
+t= 72s game=[1] x11=[2] toplevels=6 class_err=10
+t=108s game=[1] x11=[2] toplevels=6 class_err=10
+t=144s game=[1] x11=[2] toplevels=6 class_err=10
+t=180s game=[1] x11=[2] toplevels=6 class_err=10
+t=216s game=[1] x11=[2] toplevels=6 class_err=10
+t=252s game=[1] x11=[2] toplevels=6 class_err=10
+
+=== ishwl toplevels (the window!) ===
+ishwl 88065.088: map toplevel 4 '' steam
+ishwl 88065.386: map toplevel 5 '' Steam
+ishwl 88655.856: map toplevel 6 '' env
+=== game/wine output tail ===
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+0024:fixme:thread:NtGetCurrentProcessorNumber need multicore support (8 processors)
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+=== x11 log tail ===
+0024:err:win:get_desktop_window failed to create desktop window
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:51:07 UTC 2026

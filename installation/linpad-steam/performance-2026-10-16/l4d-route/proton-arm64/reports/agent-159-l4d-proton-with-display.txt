@@ -1,0 +1,21 @@
+AGENT_BEGIN id=159-l4d-proton-with-display pid=43 Fri Oct 16 23:58:23 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+mem: 280 MB; toplevels before: 8
+=== L4D through Proton (so steam.exe + explorer exist) inside a real display ===
+t= 40s game=0 explorer=0 desktop_err=0 mem=1728MB toplevels=9
+t= 80s game=0 explorer=0 desktop_err=0 mem=1735MB toplevels=9
+t=120s game=0 explorer=0 desktop_err=0 mem=1735MB toplevels=9
+t=160s game=0 explorer=0 desktop_err=0 mem=1735MB toplevels=9
+t=200s game=0 explorer=0 desktop_err=0 mem=1736MB toplevels=9
+t=240s game=0 explorer=0 desktop_err=0 mem=1736MB toplevels=9
+
+=== new ishwl toplevels (windows!) ===
+ishwl 88655.856: map toplevel 6 '' env
+ishwl 88927.187: map toplevel 7 '' env
+ishwl 89185.894: map toplevel 8 '' env
+ishwl 89347.644: map toplevel 9 '' linpad-proton-arm64
+=== log: errors and steam lines ===
+Proton: Error while copying to "/root/.local/share/Steam/steamapps/compatdata/500/pfx/drive_c/windows/system32/amdxcffx64.dll": No such file or direct
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:02:28 UTC 2026

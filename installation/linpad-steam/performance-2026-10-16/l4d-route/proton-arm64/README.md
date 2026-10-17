@@ -423,3 +423,44 @@ when the emulator ran with the **JIT** enabled, and every attempt in this round 
 **interpreter** (the app was booted with `-fastMode.setting off` so it would start without StikDebug
 while the iPad is locked). CEF timing out in interpreter mode is plausible and would explain the
 regression, so the next attempt should be made with the JIT — which needs the iPad unlocked.
+
+## Round of 17 October, 07:40–08:10: Left 4 Dead's own executable runs under wine
+
+`left4dead.exe` starts under wine and stays alive for minutes — the process list shows it, memory
+settles at ~1.8 GB and nothing crashes:
+
+```
+procs=[left4dead.exe winedevice.exe]          (alive for 272 s and counting)
+```
+
+That is the closest this has come to the goal. It is run with wine directly (no Proton, so no
+`steam.exe` wrapper) inside a real display. What it does *not* do is open a window, because wine's own
+window layer fails first:
+
+```
+err:win:get_desktop_window failed to create desktop window
+err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+```
+
+`explorer.exe` cannot help either — started by hand in the same session it fails with
+`ole:apartment_createwindowifneeded CreateWindow failed with error 1411` (invalid window class) — and
+the game then reports the same class error. So the window-station/desktop objects wine keeps shared
+between server and clients cannot be created in this environment.
+
+Cleared as suspects in this round, each with a probe validated on real Linux first:
+
+| Suspect | Evidence |
+| --- | --- |
+| file-descriptor passing (wine hands its shared-session objects to clients with `SCM_RIGHTS`, Chromium/CEF does the same for its IPC) | `probes/fdpass.c`: both a memfd and a file fd arrive intact, and writes through the received fd are visible in the sender |
+| shared memory (again, now across two independent `open`+`mmap`) | earlier `probes/shmfile.c` |
+| the display | Xwayland runs (`/opt/steam-x11/bin`), its WM and the Steam window appear in the compositor — the desktop/class failure happens with and without it |
+
+**Everything in this round ran on the interpreter**, because the app had to be started with
+`-fastMode.setting off` to get a session at all while the iPad is locked. The Steam client's CEF
+backend and wine's shared-session objects both worked earlier today when the emulator had the JIT, so
+the next attempt must be made with the JIT — which needs the iPad unlocked.
+
+**`l4d-play` is installed on the device** (`/usr/local/bin/l4d-play`, source in this directory): it
+starts the Steam client inside a rootful Xwayland and waits for the login (`-c`), starts Left 4 Dead
+through Steam (`-applaud 500`, the real path with the DRM handshake), or starts the game directly
+under wine (`-g`) when the handshake is not wanted.

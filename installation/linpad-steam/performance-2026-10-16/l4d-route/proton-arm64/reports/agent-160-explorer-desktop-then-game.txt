@@ -1,0 +1,27 @@
+AGENT_BEGIN id=160-explorer-desktop-then-game pid=43 Sat Oct 17 00:02:46 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+t= 38s explorer=0 game=0 desktop_err=4 toplevels=10
+t= 76s explorer=0 game=1 desktop_err=6 toplevels=10
+t=114s explorer=0 game=1 desktop_err=6 toplevels=10
+t=152s explorer=0 game=1 desktop_err=6 toplevels=10
+t=190s explorer=0 game=1 desktop_err=6 toplevels=10
+t=228s explorer=0 game=1 desktop_err=6 toplevels=10
+t=266s explorer=0 game=1 desktop_err=6 toplevels=10
+
+=== toplevels ===
+ishwl 89185.894: map toplevel 8 '' env
+ishwl 89347.644: map toplevel 9 '' linpad-proton-arm64
+ishwl 89611.365: map toplevel 10 '' desktop-then-game.sh
+=== explorer log ===
+0024:err:ole:apartment_createwindowifneeded CreateWindow failed with error 1411
+0024:err:ole:StdMarshalImpl_MarshalInterface Failed to create ifstub, hr 0x80070583
+0024:err:ole:CoMarshalInterface Failed to marshal the interface {6d5140c1-7436-11ce-8034-00aa006009fa}, hr 0x80070583
+0024:err:ole:apartment_get_local_server_stream Failed: 0x80070583
+=== game log ===
+0024:err:win:get_desktop_window failed to create desktop window
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:07:17 UTC 2026

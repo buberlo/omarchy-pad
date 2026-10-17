@@ -4504,18 +4504,23 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 15819,
-      "sha256": "a50fe8c9e12f711206dcf1a193dc991c879c131535df183b45fc57c87c9d185c"
+      "bytes": 16969,
+      "sha256": "e243141599ab933ecf5eda18c33f5c1820b5effa93ade4aef14ce4edabe8fbf9"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
-      "bytes": 26411,
-      "sha256": "5655679e105b1e3efe808e7d9ec601c000acc88bee80005453b76088d3738531"
+      "bytes": 28832,
+      "sha256": "d4a635cd7a822e1e0d7d18fa1a851b39dac98fa57a2c0379f9bc71afc8ed2482"
     },
     {
       "path": "l4d-route/proton-arm64/breakthrough/gui-file-pe.c",
       "bytes": 538,
       "sha256": "c7f8d6bea5c9386f740b60e9c0e8723dc844e239e4d39d5332bcca0bbfc2f99a"
+    },
+    {
+      "path": "l4d-route/proton-arm64/breakthrough/l4d-play",
+      "bytes": 3656,
+      "sha256": "b7f63444b1894852ca16c59bdf9d079919d4bb042c5dd2f204f0ef27b34e7633"
     },
     {
       "path": "l4d-route/proton-arm64/evidence-app-console-trace.log",
@@ -4571,6 +4576,11 @@
       "path": "l4d-route/proton-arm64/probes/envcheck.c",
       "bytes": 352,
       "sha256": "0d12ce4839b443afb2bd577786b5bd7db0416ee30268b052919bb533356735a7"
+    },
+    {
+      "path": "l4d-route/proton-arm64/probes/fdpass.c",
+      "bytes": 3934,
+      "sha256": "47fae272794a685ab9d8e9802dc8fc8bec8e23cfc86b2cf74840e8235072ab0b"
     },
     {
       "path": "l4d-route/proton-arm64/probes/filepe.c",
@@ -4911,6 +4921,46 @@
       "path": "l4d-route/proton-arm64/reports/agent-153-cef-disable-retry.txt",
       "bytes": 2246,
       "sha256": "e946d3816cb69afbd0eebc607605f5a93884bcc9322c79250f46d97dd0440dc9"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-154-l4d-direct-wine.txt",
+      "bytes": 2181,
+      "sha256": "3382eb5c2a533a2fed99d4a50c906b7b89e8f771fce9d9ec9e25b22dbe4d8a33"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-155-l4d-with-display.txt",
+      "bytes": 1786,
+      "sha256": "dcffcf805ddbbb1f70b60f6fe52e0babbfdf6f32785ccd900b14ae548a5ff00d"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-156-game-with-desktop.txt",
+      "bytes": 1554,
+      "sha256": "768be65eb9772800b46664015030cc49bdc9869711e73f34bc545ce71b844312"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-157-win-class-trace.txt",
+      "bytes": 1817,
+      "sha256": "aeee748f282e0290a70f5331e26e99dfe6fd865726d021ba71e0c478c8ce5411"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-158-fd-passing.txt",
+      "bytes": 254,
+      "sha256": "4ab1cdd5f88b62724ccaf95a9fa4eed21dfd7798d7dad17d406f9f223d507afa"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-159-l4d-proton-with-display.txt",
+      "bytes": 1076,
+      "sha256": "3de04f109b782e9df039ca1078574f87f0bfdef3687927422ea416f2a0985e21"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-160-explorer-desktop-then-game.txt",
+      "bytes": 1428,
+      "sha256": "54dabf42c1c78573a10e409c52646af5e23237d0516db5c8f45e9a030cbd7e54"
+    },
+    {
+      "path": "l4d-route/proton-arm64/reports/agent-161-install-l4d-play.txt",
+      "bytes": 709,
+      "sha256": "b7985df1d5795b2771c5df5a114c5f5b68bb7b7617790447b702b652c1faece2"
     },
     {
       "path": "l4d-route/proton-arm64/reports/agent-61-phase0-state.txt",

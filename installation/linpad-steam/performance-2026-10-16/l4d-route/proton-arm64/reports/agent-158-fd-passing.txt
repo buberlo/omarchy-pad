@@ -1,0 +1,10 @@
+AGENT_BEGIN id=158-fd-passing pid=43 Fri Oct 16 23:58:10 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== on the iPad ===
+parent: received fds 4 5
+parent: child exit=0
+ok
+exit=0
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:58:10 UTC 2026

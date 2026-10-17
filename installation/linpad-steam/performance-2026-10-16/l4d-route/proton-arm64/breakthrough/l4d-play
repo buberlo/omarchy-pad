@@ -1,0 +1,79 @@
+#!/bin/sh
+# Left 4 Dead auf dem iPad starten — der komplette Weg in einem Befehl.
+#
+#   l4d-play                 Steam mit Display starten, auf die Anmeldung warten, dann L4D starten
+#   l4d-play -g              dasselbe, aber das Spiel direkt unter Wine (ohne Steam-DRM-Handshake)
+#   l4d-play -c              nur den Steam-Client mit Display starten (zum Anmelden)
+#
+# Was hier zusammengefasst ist (alles in diesem Repo belegt, siehe
+# installation/linpad-steam/performance-2026-10-16/l4d-route/proton-arm64/):
+#   * Wine braucht den Allocator-Workaround, sonst stirbt es in Sekunden an glibc-Heap-Korruption
+#     (MALLOC_MMAP_THRESHOLD_=1: keine brk-Nutzung) — steckt auch im Launcher.
+#   * Das hohe Adresslayout (ISH_HIGH_VA=1) gibt Wine die unteren 4 GB frei.
+#   * Windows-Programme laufen nachweislich: unser eigener GUI-PE hat unter Wine eine Datei
+#     geschrieben.
+#   * Xwayland liegt in /opt/steam-x11/bin (nicht im PATH des Agenten) und ishwl-x11 startet eine
+#     X11-App in einem eigenen rootful Xwayland.
+#   * Proton startet nicht das Spiel, sondern steam.exe <Spiel> für den DRM-Handshake; der braucht
+#     einen angemeldeten Linux-Steam-Client. Ohne Anmeldung wartet steam.exe endlos.
+set -eu
+B=${LINPAD_STEAM_ROOT:-/root/.local/share/Steam}
+G="$B/steamapps/common/left 4 dead"
+P="$B/steamapps/common/Proton 11.0 (ARM64)"
+X11=/usr/local/bin/ishwl-x11
+GEOMETRY=${LINPAD_L4D_GEOMETRY:-1280x800}
+OPTIONS="-timestamps -force-vulkan -screen-width 960 -screen-height 540 -console"
+
+mode=steam
+case "${1:-}" in
+    -g) mode=game ;;
+    -c) mode=client ;;
+    "") ;;
+    *) echo "usage: l4d-play [-g|-c]" >&2; exit 64 ;;
+esac
+
+[ -x "$X11" ] || { echo "missing $X11" >&2; exit 80; }
+[ -x "$P/files/bin-arm64/wine" ] || { echo "Proton ARM64 not found under $B" >&2; exit 80; }
+[ -d /opt/steam-x11/bin ] || echo "warning: /opt/steam-x11/bin missing, Xwayland may not be found"
+
+steam_logged_in() {
+    # The client writes its session state to connection_log.txt; a signed-in client ends with
+    # "Logged On".
+    last=$(grep -aE 'Logged On|Logged Off' "$B/logs/connection_log.txt" 2>/dev/null | tail -1 || true)
+    case "$last" in *"Logged On"*) return 0 ;; *) return 1 ;; esac
+}
+
+start_client() {
+    echo "Steam-Client mit Display starten (anmelden im Fenster, falls nötig)…"
+    PATH=/opt/steam-x11/bin:$PATH XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0 \
+        setsid "$X11" -g "$GEOMETRY" /usr/local/bin/steam -no-cef-sandbox -cef-disable-gpu \
+        > /tmp/l4d-steam-client.log 2>&1 &
+    i=0
+    while [ "$i" -lt 30 ]; do
+        sleep 5
+        i=$((i + 1))
+        steam_logged_in && { echo "Steam ist angemeldet."; return 0; }
+    done
+    echo "Steam ist nach 150 s noch nicht angemeldet — im Fenster auf dem iPad anmelden." >&2
+    return 1
+}
+
+case "$mode" in
+    client)
+        start_client
+        ;;
+    game)
+        echo "Spiel direkt unter Wine (ohne Steam-DRM-Handshake; das Spiel wird sich über das"
+        echo "fehlende Steam beschweren, zeigt aber, wie weit die Engine kommt)…"
+        PATH=/opt/steam-x11/bin:$PATH XDG_RUNTIME_DIR=/tmp/xdg-runtime WAYLAND_DISPLAY=wayland-0 \
+            setsid "$X11" -g "$GEOMETRY" /usr/local/bin/linpad-proton-arm64 "$G/left4dead.exe" $OPTIONS \
+            > /tmp/l4d-game.log 2>&1 &
+        echo "Log: /tmp/l4d-game.log — Fenster erscheinen im iPad-Compositor."
+        ;;
+    steam)
+        start_client || exit 1
+        echo "Left 4 Dead über Steam starten…"
+        /usr/local/bin/steam -no-cef-sandbox -cef-disable-gpu -applaunch 500
+        echo "Logs: $B/logs/console_log.txt, /tmp/steam-main.log, /tmp/l4d-game.log"
+        ;;
+esac

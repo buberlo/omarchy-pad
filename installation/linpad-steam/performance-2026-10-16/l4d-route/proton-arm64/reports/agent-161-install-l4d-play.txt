@@ -1,0 +1,21 @@
+AGENT_BEGIN id=161-install-l4d-play pid=43 Sat Oct 17 00:07:44 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+installed and syntax ok
+-rwxr-xr-x 3656 /usr/local/bin/l4d-play
+-rwxr-xr-x 3688 /usr/local/bin/linpad-proton-arm64
+
+=== quick self-test: the -c path (client with display) ===
+Steam-Client mit Display starten (anmelden im Fenster, falls nötig)…
+steam procs: 1, X: X9
+
+=== current state summary for the user ===
+wine launcher: present with 1 workaround
+game exe: 98304 bytes
+login: [2026-10-17 00:07:48] [Logged Off, 0, 0] [U:1:0] CCMInterfac
+JIT: supported 1 enabled 0 
+footprint_mb 2113
+allowance_mb 8192
+headroom_mb 6078
+AGENT_EXIT=0
+AGENT_END Sat Oct 17 00:08:44 UTC 2026

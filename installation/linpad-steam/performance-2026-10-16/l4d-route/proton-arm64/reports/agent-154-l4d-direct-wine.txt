@@ -1,0 +1,36 @@
+AGENT_BEGIN id=154-l4d-direct-wine pid=43 Fri Oct 16 23:41:57 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+game exe: 98304 bytes
+agent: 43  mem: 548 MB
+=== Left 4 Dead's own exe, wine directly, no Proton wrapper ===
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t= 34s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t= 68s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=102s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=136s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=170s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=204s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=238s procs=[left4dead.exe winedevice.exe ] unity_log=0
+/tmp/kb-agent-cmd.sh: line 17: can't open /tmp/l4d-wine-unity.txt: no such file
+t=272s procs=[left4dead.exe winedevice.exe ] unity_log=0
+
+=== wine output ===
+01f4:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01f4:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01fc:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+01fc:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0204:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0204:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0214:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0214:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+
+=== the game's own log ===
+AGENT_EXIT=1
+AGENT_END Fri Oct 16 23:46:33 UTC 2026

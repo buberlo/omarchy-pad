@@ -1,0 +1,28 @@
+AGENT_BEGIN id=156-game-with-desktop pid=43 Fri Oct 16 23:51:22 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+mem before: 728 MB
+=== the game with a display, and the desktop shell allowed to live ===
+t= 40s game=1 explorer=0 desktop_err=2 mem=1850MB toplevels=7
+t= 80s game=1 explorer=0 desktop_err=2 mem=1850MB toplevels=7
+t=120s game=1 explorer=0 desktop_err=2 mem=1850MB toplevels=7
+t=160s game=1 explorer=0 desktop_err=2 mem=1851MB toplevels=7
+t=200s game=1 explorer=0 desktop_err=2 mem=1851MB toplevels=7
+t=240s game=1 explorer=0 desktop_err=2 mem=1851MB toplevels=7
+
+=== ishwl toplevels ===
+ishwl 88065.088: map toplevel 4 '' steam
+ishwl 88065.386: map toplevel 5 '' Steam
+ishwl 88655.856: map toplevel 6 '' env
+ishwl 88927.187: map toplevel 7 '' env
+=== errors/warnings of interest ===
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f0:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+00f8:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0024:err:win:get_desktop_window failed to create desktop window
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:55:27 UTC 2026

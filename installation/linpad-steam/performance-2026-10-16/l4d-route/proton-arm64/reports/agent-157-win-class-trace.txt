@@ -1,0 +1,30 @@
+AGENT_BEGIN id=157-win-class-trace pid=43 Fri Oct 16 23:55:42 UTC 2026
+AGENT_HOST=iPad
+timeout: warning: timer_create: Bad address
+=== wine's window/class trace (first failures only) ===
+log lines: 75
+
+=== the first desktop/window-station error and its context ===
+Xwayland glamor: GBM Wayland interfaces not available
+Failed to initialize glamor, falling back to sw
+wineserver: using server-side synchronization.
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+002c:err:winediag:getaddrinfo Failed to resolve your host name IP
+0064:trace:class:NtUserRegisterClassExWOW name=L"#32769" hinst=0x6ffffea70000 style=0x8 clExtr=0x0 winExtr=0x0
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:trace:class:NtUserRegisterClassExWOW name=L"Message" hinst=0x6ffffea70000 style=0x0 clExtr=0x0 winExtr=0x0
+0064:err:class:NtUserRegisterClassExWOW Failed to get shared session object for window class
+0064:trace:win:User32InitializeImmEntryTable (19650412)
+
+=== what wine says about the graphics driver ===
+Xwayland glamor: GBM Wayland interfaces not available
+00a0:err:wineusb:DriverEntry Failed to initialize Unix library, status 0xc0000135.
+00a0:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\wineusb": c0000135
+00a0:err:ntoskrnl:ZwLoadDriver failed to create driver L"\\Registry\\Machine\\System\\CurrentControlSet\\Services\\winebth": c00000e5
+AGENT_EXIT=0
+AGENT_END Fri Oct 16 23:57:45 UTC 2026
