@@ -229,7 +229,11 @@ public final class GameModeCoordinator {
     /// cannot read `roots/`, where the guest keeps its own logs.
     private func exportDiagnosticsForFailure() {
         Task { [host] in
-            let model = DiagnosticsExportModel(host: host)
+            // The output directory must be given explicitly: with no directory the export only prepares
+            // its items for the Settings sheet to share, and a game-mode failure has no sheet. Documents
+            // is both readable off the device and visible in the Files app.
+            let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let model = DiagnosticsExportModel(host: host, outputDirectory: documents)
             await model.collect()
             model.export()
         }
