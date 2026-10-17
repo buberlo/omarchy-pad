@@ -363,8 +363,10 @@ dword_t sys_fcntl(fd_t f, dword_t cmd, addr_t arg) {
 #endif
     fd_t new_f;
     switch (cmd) {
-        case F_ADD_SEALS_: return 0;
-        case F_GET_SEALS_: return 0;
+        // Real seals, tracked per memfd (see kernel/memfd.c). Everything that is not a memfd gets
+        // EINVAL, exactly as Linux does.
+        case F_ADD_SEALS_: return memfd_add_seals(fd, (unsigned int) arg);
+        case F_GET_SEALS_: return memfd_get_seals(fd);
         case F_DUPFD_:
             STRACE("fcntl(%d, F_DUPFD, %d)", f, arg);
             fd->refcount++;

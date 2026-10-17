@@ -119,6 +119,10 @@ dword_t sys_pwritev(fd_t fd_no, addr_t iovec_addr, dword_t iovec_count,
                     dword_t pos_l, dword_t pos_h);
 dword_t sys_ioctl(fd_t f, dword_t cmd, addr_t arg);
 dword_t sys_fcntl(fd_t f, dword_t cmd, addr_t arg);
+// memfd seals (kernel/memfd.c): real state for F_ADD_SEALS/F_GET_SEALS instead of a fixed answer.
+bool memfd_is_memfd(struct fd *fd);
+int memfd_add_seals(struct fd *fd, unsigned int seals);
+int memfd_get_seals(struct fd *fd);
 dword_t sys_fcntl32(fd_t fd, dword_t cmd, addr_t arg);
 dword_t sys_dup(fd_t fd);
 dword_t sys_dup2(fd_t fd, fd_t new_fd);
