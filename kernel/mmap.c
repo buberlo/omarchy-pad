@@ -22,6 +22,10 @@ _Atomic long anon_page_count;
 // ENOMEM while less than this headroom is left, so the guest program fails (a
 // browser tab, a decoder) instead of the whole app.
 #define HOST_MEMORY_HEADROOM (192ull << 20)
+// Anonymous mappings at least this large are tracked as reservations and demand-mapped page by page
+// instead of being backed with host memory up front (256 MB, the same threshold the MAP_NORESERVE
+// path uses).
+#define LAZY_ANONYMOUS_MIN_PAGES 0x10000
 // Before failing, give the out-of-memory monitor (kernel/oom.c) the chance to close
 // the process it would pick anyway, as Linux's allocator waits for the OOM killer:
 // otherwise whichever process allocates next gets ENOMEM, often a browser's parent
@@ -253,6 +257,21 @@ static addr_t do_mmap(addr_t addr, uint64_t len, dword_t prot, dword_t flags, fd
         // mprotect/touch. The INT_GPF write-fault demand-map path
         // uses mem_find_reservation to detect cage pages.
         if (is_prot_none && pages >= 0x8000) {
+            if ((err = pt_map_lazy(current->mem, page, pages, prot)) < 0)
+                return err;
+            return page << PAGE_BITS;
+        }
+        // Large anonymous mappings are mapped lazily even when they are "committed" (no
+        // MAP_NORESERVE): the guest gets the address range immediately and pages are mapped on first
+        // touch, which is what overcommit does on Linux. Wine needs this for its ARM64EC code
+        // bitmap: one bit per page of the address space, 4 GB of it, placed at the top of the
+        // address space, of which only the pages that actually hold ARM64EC code are ever touched.
+        // Demanding 4 GB of host memory up front made wine fail to start
+        // ("err:virtual:alloc_arm64ec_map failed to allocate ARM64EC map: c0000017"), and that in
+        // turn left its shared session objects and window classes broken, which is what stopped the
+        // game from opening a window. The demand-map path in calls.c serves every read fault and
+        // every write fault above 4 GB or inside a reservation, so both cases are covered.
+        if (pages >= LAZY_ANONYMOUS_MIN_PAGES) {
             if ((err = pt_map_lazy(current->mem, page, pages, prot)) < 0)
                 return err;
             return page << PAGE_BITS;
