@@ -367,7 +367,12 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     if (flags & MMAP_SHARED) mmap_flags |= MAP_SHARED;
     int mmap_prot = PROT_READ;
     if (prot & P_WRITE) mmap_prot |= PROT_WRITE;
-    bool guest_private = (flags & MMAP_PRIVATE) != 0;
+    // Only data mappings need the coherent treatment above. Wine maps its PE images privately and
+    // then writes them (relocations); turning every one of those writes into a fault and a copy is
+    // correct but ruinously slow under emulation, and an image does not change after it is loaded, so
+    // a snapshot is fine there. Wine's shared session is a data mapping (prot has no P_EXEC), which is
+    // exactly the case that has to stay coherent.
+    bool guest_private = (flags & MMAP_PRIVATE) != 0 && !(prot & P_EXEC);
 
     off_t real_offset = (offset / real_page_size) * real_page_size;
     off_t correction = offset - real_offset;
