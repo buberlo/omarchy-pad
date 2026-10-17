@@ -1983,3 +1983,43 @@ its data-link symlinks, the 524-file compatibility layer, and a root version sta
 `BootStrapperInhibitAll` (a Mac-harness workaround; the device must be allowed to bootstrap).
 
 The superseded build-4512 IPA has been removed from the deliverables so it cannot be installed by mistake.
+
+## Round 76: chasing the closure made it worse — 6 missing became 24, and the reason matters
+
+Two layers, two guest checks:
+
+| Layer | Guest `ldd steamui.so` |
+| --- | --- |
+| the 524-file layer shipped inside the IPA | **0 missing** (verified Round 54) |
+| the script's 106-file rebuild (37 sonames) | **24 missing** |
+
+The 24 are almost entirely Samba's internals (`libndr.so.6`, `libsamba-*`, `libtalloc.so.2`,
+`libtevent.so.0`, `libdcerpc*`, `libsecrets3`, …), plus `libleptonica.so.6` — and they appeared **because I
+added `libsmbclient.so.0` and `libtesseract.so.5` to the soname list in Round 75**. Fetching those
+packages introduced libraries whose own dependencies are then unmet, so the count went up, not down.
+
+Where those two names came from is the real lesson: they were reported by the guest against a **partial**
+layer (the Round-75 run had died early on a bad package name, so the layer under test was incomplete).
+A missing-library list is only meaningful against a layer that is otherwise complete — mine was not, so
+two of the names I chased may be phantoms. The genuine ones are the FFmpeg codec dependencies
+(`libaribb24`, `libvo-amrwbenc`, `libzix` are plausible parts of Debian's avcodec/avfilter build);
+`libsmbclient`/`libtesseract` need to be *proved* before they are chased.
+
+**The one command that settles it**, and the next step (no Mac-side guessing involved):
+
+```sh
+# in a guest with the layer that measured 0 missing:
+LD_LIBRARY_PATH=$B/steamrtarm64:$B/steamrtarm64/libs:/opt/steam-compat/usr/lib/aarch64-linux-gnu \
+    ldd $B/steamrtarm64/libavformat.so.62 | grep -E 'smbclient|tesseract|not found'
+```
+
+If nothing prints, Debian's `libavformat.so.62` does not link Samba and both names were phantoms, to be
+removed from the list. If they print, the layer must carry Samba's tree — which is a real cost (~25
+packages) and an argument for sourcing FFmpeg from a leaner build instead of Debian's everything-enabled one.
+
+**Decision recorded**: the 524-file layer is the reference. It is the one measured complete, it is what
+the shipped IPA carries, and it stays. The script's value is reproducibility of the *inputs* we know
+(FFmpeg 8 + GTK2 + the closure the Alpine-era tarball supplied), not solving the closure from a name list —
+and Rounds 75-76 show why: an incomplete layer's error output leads the list astray. Convergence must be
+measured against a complete layer, one dependency at a time, with each name proved by `ldd` on the library
+that supposedly needs it.
