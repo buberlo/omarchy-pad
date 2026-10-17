@@ -359,10 +359,15 @@ int realfs_mmap(struct fd *fd, struct mem *mem, page_t start, pages_t pages, off
     // Instrumentation for a sharing defect: wine's clients read different bytes from the same
     // session file at the same offset. A guest MAP_SHARED request that silently becomes a private
     // copy would explain exactly that, so every shared mapping and every fallback is logged.
-    if (mmap_flags & MAP_SHARED)
-        printk("ish-mmap: SHARED pid %d fd %d pages %u off %lld prot %#x mapsize %zu file %lld\n",
-               current ? current->pid : -1, fd->real_fd, pages, (long long) offset, prot, map_size,
-               (long long) (have_stat ? st.st_size : -1));
+    // Log every sizeable file mapping with the host file's identity, so it is possible to see which
+    // process maps wine's session and whether two processes really refer to the same host file.
+    if (pages >= 32)
+        printk("ish-mmap: pid %d fd %d pages %u off %lld prot %#x guestflags %#x hostflags %#x "
+               "mapsize %zu file %lld hostdev %llu hostino %llu\n",
+               current ? current->pid : -1, fd->real_fd, pages, (long long) offset, prot, flags,
+               mmap_flags, map_size, (long long) (have_stat ? st.st_size : -1),
+               (unsigned long long) (have_stat ? st.st_dev : 0),
+               (unsigned long long) (have_stat ? st.st_ino : 0));
 
     // Check if the mapping extends beyond the file size.
     if (have_stat && (off_t)(real_offset + map_size) > st.st_size) {
