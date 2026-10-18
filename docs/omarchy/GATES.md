@@ -18,7 +18,7 @@ kept space-free anyway.
 | 0.4 | Hyprland renders a frame with a headless output | **in progress** | `installation/omarchy/hyprland-pad/`: patches written and applied on Hyprland 0.56.2 + Aquamarine 0.15.1 (headless render-node fd + SHM allocator; EGL device from the render node; shm render target with readback). Packages built: `work/omarchy-pad/gate-0.4/pkgs/{aquamarine-pad-0.15.1-1,hyprland-pad-0.56.2-1}-aarch64.pkg.tar.zst`. They are now baked into the image by `installation/omarchy/build-image.sh`. |
 | 0.5 | Systemd-less Omarchy session (supervisor, shims, Quickshell) | **partial** | `work/omarchy-pad/evidence/gate-0.5/session-probe.txt`: init starts the buses/daemons, and every shim answers (systemctl verbs, systemd-run, systemd-cat, uwsm-app, journalctl, loginctl, hostnamectl, timedatectl, udevadm, ufw, bluetoothctl, rfkill, brightnessctl). **`omarchy-hw-platform` now answers `aarch64`** after the procfs magic-link fix below. Quickshell itself is next. |
 | 0.6 | `omarchy-pad-bridge`: screencopy frames into ishwl + input injection | **pass** | `work/omarchy-pad/evidence/gate-0.6/`: mock-compositor chain, real-Hyprland chain, and `on-screen/` — a clean app boot of image `202610180603` in the Simulator puts the whole desktop on the canvas: session started by the app's own launch request, Hyprland on `wayland-1`, Omarchy's Quickshell shell mapped as the `omarchy-bar` layer, a **real `foot` window composited into the frame** (with Hyprland's border and the cursor) at the iPad's own 1024x1366 size. |
-| 0.7 | iPad text input / IME into the guest | **partial** | the pointer path is proven end to end: `motion 1 700 900` on the app's own events channel leaves the composited cursor at x 700..711, y 901..920 in the captured frame. For the keyboard, everything up to the bridge is proven (`input_key` counts the keys it forwards; Hyprland lists `hl-virtual-keyboard-omarchy-pad-bridge` with the app's `de` keymap parsed), but **no key reaches a client and no compositor bind fires** -- the keys are dropped inside Hyprland. Reproduce with `installation/omarchy/probe-keyboard.sh`; the analysis and what was ruled out are in `work/omarchy-pad/evidence/gate-0.7/keyboard-chain.txt`. |
+| 0.7 | iPad text input / IME into the guest | **pass, guest side** | the pointer and the keyboard both work through the app's own input channel. Pointer: `motion 1 700 900` leaves the composited cursor at x 700..711, y 901..920 in the captured frame. Keyboard: `installation/omarchy/probe-keyboard.sh` types `hello` as raw evdev codes into a terminal on the desktop and reads the canvas back -- it reports **KEYBOARD-CHAIN-OK** (`evidence/gate-0.7/canvas-typed-hello.png`, OCR `heeeeeeeeello`). Not measured here: the app side of that channel (UIKit keyboard -> `LinuxGUIBridge.key`), which is upstream LinPad code and needs the device or UI automation. |
 | 0.8 | Simulator end-to-end + performance/memory numbers | **partial** | the app builds (device + simulator), 408 DesktopKit tests pass, it imports the Arch/Omarchy rootfs and boots Linux (`import_seconds=14.55`, `boot_seconds=18.48`), starts the session, and shows the running desktop. Measured: **~1 fps** at 1024x1366 (467 frames in ~8 minutes), 5.5 MB per frame, `capture_failures=0`. Memory/CPU numbers and the device run are still open. |
 
 ## Engine changes carried or made so far
@@ -35,6 +35,28 @@ kept space-free anyway.
 | Case-only path collisions are resolved at image build time | `installation/omarchy/resolve-case-collisions.sh` | Arch ships 64 case-only duplicate paths (terminfo, man aliases, xtables, perl, `Hyprland`/`hyprland`). The iPad's case-insensitive container cannot hold both and the importer died with `EEXIST` on the first pair. The resolver materialises the lowercase name when it is a symlink to the dropped one (so `/usr/bin/hyprland` survives as a real binary) and fails the build if any pair remains. |
 | The importer names the entry it failed on | `tools/fakefs.c` | `POSIX_ERR()` reported only "File exists" plus a line number; the failing path is now part of the message, which is how the collision above was found. |
 | iSH `prctl` breadth (fork, not ours) | `kernel/misc.c` | `PR_SET_NO_NEW_PRIVS`, `SET_DUMPABLE`, `SET_PDEATHSIG`, `CAPBSET_READ`… already answered by commit `64f54210` |
+
+## Gate results, round 13
+
+- **The keyboard works, and the thing that hid it was the test.** Key events written to ishwl's
+  events FIFO come out as text in a terminal on the desktop: `probe-keyboard.sh` types `hello`
+  and the canvas shows it. Two detours were mine, not the product's:
+  - a client that runs `read line` in this guest returns immediately with an empty line -- the
+    emulated pty answers EOF before any input arrives -- so a file-based check says `GOT=[]`
+    whether or not the keys work. The canvas is the signal that cannot lie.
+  - a code sweep in an earlier test left Shift pressed in the compositor, so the letters came out
+    as capitals; the probe now releases the modifiers a previous run may have left behind.
+- What made the path visible: `HYPRLAND_TRACE=1` with `debug { disable_logs = false,
+  enable_stdout_logs = true }` (all three are live-diagnostics only; the shipped config keeps
+  Hyprland quiet), and one **observable that needs no client**: with DPMS off and
+  `misc:key_press_enables_dpms`, a key turns it back on -- so a key was proven to reach
+  Hyprland's input manager (`onKeyboardKey`), not merely the virtual-keyboard device.
+- Ruled out: the permission gate (`ecosystem:enforce_permissions` is false, and the
+  `hl.permission` rule for `hl-virtual-keyboard-.*` changed nothing -- kept because it is right
+  where the gate is on), a disabled device, a late keymap, and focus.
+- `install-into-fakefs.py` now gives extracted files the *package's* permission bits: the host
+  umask was turning every installed binary into 0644 and the guest answered "Permission denied"
+  for `hyprctl`, which broke exactly the diagnostics this needed.
 
 ## Gate results, round 11
 
