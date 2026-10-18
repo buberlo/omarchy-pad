@@ -1130,8 +1130,16 @@ int_t sys_setsockopt(fd_t sock_fd, dword_t level, dword_t option, addr_t value_a
         return 0;
 
     int err = setsockopt(sock->real_fd, real_level, real_opt, value, value_len);
-    if (err < 0)
+    if (err < 0) {
+        // Darwin refuses SO_RCVTIMEO/SO_SNDTIMEO on some socket families (AF_UNIX in
+        // particular). iSH already implements the timeout itself in sock_wait_for, so the
+        // guest's intent is honoured even when the host will not store it; refusing the
+        // call made hyprctl abort on every request ("Couldn't set socket timeout"), which
+        // took the compositor's own readiness checks with it.
+        if (level == SOL_SOCKET_ && (option == SO_RCVTIMEO_ || option == SO_SNDTIMEO_))
+            return 0;
         return errno_map();
+    }
     return 0;
 }
 

@@ -76,7 +76,16 @@ static void *timer_thread(void *param) {
         }
         if (timer->active) {
             timer->overrun = timer_skip_missed_periods(timer, timespec_now(timer->clockid));
+            // Run the callback without the timer lock. A callback may take locks that the
+            // waiting side holds while it waits for this timer, and that ABBA order
+            // deadlocked the emulator the first time a real compositor re-armed its frame
+            // timer: sys_timerfd_settime holds fd->lock and waits for the timer lock, while
+            // timerfd_callback (here) held the timer lock and waited for fd->lock. The
+            // timer cannot be freed underneath us: thread_running stays true until this
+            // loop exits, and timer_free only frees an inactive timer.
+            unlock(&timer->lock);
             timer->callback(timer->data);
+            lock(&timer->lock);
             timer->overrun = 0;
         }
         if (timer->active && timespec_positive(timer->interval)) {

@@ -1,4 +1,5 @@
 #include <string.h>
+#include <limits.h>
 #include <sys/stat.h>
 #include "kernel/calls.h"
 #include "kernel/fs.h"
@@ -267,6 +268,96 @@ const struct fd_ops procfs_fdops = {
     .readdir = proc_readdir,
     .close = proc_close,
 };
+
+// Magic links: /proc/<pid>/fd/<n>, /dev/fd/<n>, /dev/stdin, /dev/stdout, /dev/stderr.
+// Opening one of these duplicates the descriptor it names; it never opens the link's
+// textual target. Following the link instead resolves to a description such as
+// "pipe:[12]" (or a socket path) that cannot be opened, which is why bash process
+// substitution -- `read -r owner mode < <(stat -c '%u %a' -- "$1")`, which Omarchy's own
+// platform detector uses -- failed with ENOENT. Recognising the shape here and handing
+// back a retained descriptor is the Linux behaviour.
+static bool parse_fd_magic_link(const char *path, pid_t_ *pid, int *fd_no) {
+    const char *rest;
+    if (strncmp(path, "/proc/", 6) == 0) {
+        const char *p = path + 6;
+        if (strncmp(p, "self/", 5) == 0) {
+            *pid = current->tgid;
+            p += 5;
+        } else if (strncmp(p, "thread-self/", 12) == 0) {
+            *pid = current->pid;
+            p += 12;
+        } else {
+            char *end;
+            unsigned long v = strtoul(p, &end, 10);
+            if (end == p || *end != '/' || v == 0 || v > MAX_PID)
+                return false;
+            *pid = (pid_t_) v;
+            p = end + 1;
+        }
+        if (strncmp(p, "fd/", 3) != 0)
+            return false;
+        rest = p + 3;
+    } else if (strncmp(path, "/dev/fd/", 8) == 0) {
+        *pid = current->tgid;
+        rest = path + 8;
+    } else if (strcmp(path, "/dev/stdin") == 0) {
+        *pid = current->tgid;
+        rest = "0";
+    } else if (strcmp(path, "/dev/stdout") == 0) {
+        *pid = current->tgid;
+        rest = "1";
+    } else if (strcmp(path, "/dev/stderr") == 0) {
+        *pid = current->tgid;
+        rest = "2";
+    } else {
+        return false;
+    }
+
+    char *end;
+    unsigned long n = strtoul(rest, &end, 10);
+    // Accept exactly "<n>" and "<n>/"; anything else is a normal path under fd/.
+    if (end == rest || (*end != '\0' && !(*end == '/' && end[1] == '\0')))
+        return false;
+    if (n > INT_MAX)
+        return false;
+    *fd_no = (int) n;
+    return true;
+}
+
+struct fd *proc_magic_link_open(const char *path, int flags) {
+    if (flags & (O_CREAT_ | O_EXCL_))
+        return NULL;
+
+    pid_t_ pid;
+    int fd_no;
+    if (!parse_fd_magic_link(path, &pid, &fd_no))
+        return NULL;
+
+    lock(&pids_lock);
+    struct task *task = pid_get_task(pid);
+    // Also reject tasks that are mid-exit: their fd table may already be detached.
+    if (task != NULL && (task->exiting || task->sighand == NULL || task->group == NULL))
+        task = NULL;
+    if (task == NULL) {
+        unlock(&pids_lock);
+        return ERR_PTR(_ENOENT);
+    }
+
+    struct fd *fd = NULL;
+    lock(&task->general_lock);
+    if (task->files != NULL) {
+        lock(&task->files->lock);
+        fd = fdtable_get(task->files, fd_no);
+        if (fd != NULL)
+            fd_retain(fd);
+        unlock(&task->files->lock);
+    }
+    unlock(&task->general_lock);
+    unlock(&pids_lock);
+
+    STRACE("magic link %s -> fd %d (pid %d)", path, fd_no, pid);
+    return fd != NULL ? fd : ERR_PTR(_EBADF);
+}
 
 static ssize_t proc_readlink(struct mount *UNUSED(mount), const char *path, char *buf, size_t bufsize) {
     struct proc_entry entry = {0};

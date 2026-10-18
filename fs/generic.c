@@ -7,6 +7,7 @@
 #include "fs/inode.h"
 #include "fs/path.h"
 #include "fs/dev.h"
+#include "fs/proc.h"
 #include "kernel/task.h"
 #include "kernel/errno.h"
 #include "kernel/inotify.h"
@@ -35,6 +36,20 @@ bool contains_mount_point(const char *path) {
 struct fd *generic_openat(struct fd *at, const char *path_raw, int flags, int mode) {
     if (flags & O_RDWR_ && flags & O_WRONLY_)
         return ERR_PTR(_EINVAL);
+
+    // Host-side callers reach this before (or after) the kernel runs: the app's Objective-C
+    // helpers read /etc/apk/world and /ish/version while the UI loads, and path resolution
+    // needs a current task (it dereferences current->fs). Answering ENOENT keeps those
+    // reads failing cleanly instead of crashing the whole app on a null task.
+    if (current == NULL)
+        return ERR_PTR(_ENOENT);
+
+    // /proc/<pid>/fd/<n> and its /dev aliases duplicate a descriptor instead of opening
+    // the link's textual target; path_normalize would follow the link into a description
+    // that cannot be opened (see fs/proc.c).
+    struct fd *magic = proc_magic_link_open(path_raw, flags);
+    if (magic != NULL)
+        return magic;
 
     // TODO really, really, seriously reconsider what I'm doing with the strings
     char path[MAX_PATH];

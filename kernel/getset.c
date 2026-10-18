@@ -174,13 +174,59 @@ int_t sys_setgroups(dword_t size, addr_t list) {
     return 0;
 }
 
-// this does not really work
+// Linux capability ABI: a two-word header (version, pid) followed by one or two
+// three-word records. glibc's libcap reads the record it asks for, so the old version
+// of this function returned 0 without filling the caller's buffer and libcap then read
+// uninitialised memory. There is no capability model here: root is unconstrained and
+// every other user has nothing, which is what these records now say.
+#define CAP_VERSION_1_ 0x19980330
+#define CAP_VERSION_2_ 0x20071026
+#define CAP_VERSION_3_ 0x20080522
+
+struct cap_header_ {
+    uint32_t version;
+    int32_t pid;
+};
+struct cap_data_ {
+    uint32_t effective;
+    uint32_t permitted;
+    uint32_t inheritable;
+};
+
+static bool cap_version_supported(uint32_t version) {
+    return version == CAP_VERSION_1_ || version == CAP_VERSION_2_ || version == CAP_VERSION_3_;
+}
+
 int_t sys_capget(addr_t header_addr, addr_t data_addr) {
-    STRACE("capget(%#x, %#x)", header_addr, data_addr);
+    struct cap_header_ header;
+    if (user_read(header_addr, &header, sizeof(header)))
+        return _EFAULT;
+    STRACE("capget(version %#x, pid %d)", header.version, header.pid);
+    if (!cap_version_supported(header.version))
+        return _EINVAL;
+
+    struct cap_data_ data[2] = {};
+    if (superuser())
+        data[0].effective = data[0].permitted = data[1].effective = data[1].permitted = 0xffffffff;
+
+    size_t size = header.version == CAP_VERSION_1_ ? sizeof(data[0]) : sizeof(data);
+    if (user_write(data_addr, data, size))
+        return _EFAULT;
+    // The kernel reports the pid it acted on; this always acts on the caller.
+    header.pid = 0;
+    if (user_write(header_addr, &header, sizeof(header)))
+        return _EFAULT;
     return 0;
 }
 int_t sys_capset(addr_t header_addr, addr_t data_addr) {
-    STRACE("capset(%#x, %#x)", header_addr, data_addr);
+    struct cap_header_ header;
+    if (user_read(header_addr, &header, sizeof(header)))
+        return _EFAULT;
+    STRACE("capset(version %#x, pid %d)", header.version, header.pid);
+    if (!cap_version_supported(header.version))
+        return _EINVAL;
+    // Nothing is enforced, so a drop is accepted and ignored: callers keep their own
+    // bookkeeping and the emulator keeps letting root do what it did before.
     return 0;
 }
 

@@ -298,7 +298,8 @@ syscall_t syscall_table[] = {
     [427] = (syscall_t) syscall_silent_stub, // io_uring_register
     [428 ... 433] = (syscall_t) syscall_stub, // open_tree/move_mount/fs* mount API
     [434] = (syscall_t) syscall_silent_stub, // pidfd_open: ENOSYS, GLib falls back to SIGCHLD
-    [435] = (syscall_t) syscall_stub, // clone3 (musl falls back to clone)
+    [435] = (syscall_t) syscall_silent_stub, // clone3: ENOSYS quietly; glibc/musl fall back to clone
+                                             // (the loud stub logged a diagnostic on every thread start)
     [436] = (syscall_t) sys_close_range,    // *** unblocks Anthropic claude-cli ***
     [437] = (syscall_t) syscall_stub, // openat2 (glibc falls back to openat)
     [438] = (syscall_t) syscall_stub, // pidfd_getfd

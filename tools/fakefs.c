@@ -178,7 +178,11 @@ bool fakefs_import(const char *archive_path, const char *fs, struct fakefsify_er
                 fd = openat(root_fd, fix_path(entry_path), O_WRONLY | O_CREAT | O_TRUNC, 0666);
                 if (fd < 0) {
                     if (errno == EISDIR) continue; // assuming it's case insensitivity
-                    POSIX_ERR();
+                    // Report which entry failed: POSIX_ERR alone says "File exists" and a
+                    // line number, which is not enough to act on.
+                    char why[MAX_PATH + 64];
+                    snprintf(why, sizeof(why), "openat(%s): %s", entry_path, strerror(errno));
+                    FILL_ERR(ERR_POSIX, errno, why);
                 }
                 break;
 

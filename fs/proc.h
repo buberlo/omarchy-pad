@@ -70,6 +70,10 @@ void proc_entry_getname(struct proc_entry *entry, char *buf);
 int proc_entry_stat(struct proc_entry *entry, struct statbuf *stat);
 void proc_entry_cleanup(struct proc_entry *entry);
 
+// fs/proc.c: opening /proc/<pid>/fd/<n> (and /dev/fd/<n>, /dev/std*) duplicates the
+// descriptor; returns NULL when the path is not one of those magic links.
+struct fd *proc_magic_link_open(const char *path, int flags);
+
 void free_string_array(char **array);
 
 bool proc_dir_read(struct proc_entry *entry, unsigned long *index, struct proc_entry *next_entry);
