@@ -14,6 +14,17 @@ if [ ! -c /dev/dri/renderD128 ]; then
     return 0 2>/dev/null || exit 0
 fi
 
-export VK_ICD_FILENAMES=${VK_ICD_FILENAMES:-/usr/share/vulkan/icd.d/virtio_icd.aarch64.json}
+# The ICD's filename differs between Mesa builds: Arch Linux ARM's vulkan-virtio installs
+# virtio_icd.json, while the upstream aarch64 build names it virtio_icd.aarch64.json. Naming
+# a file that is not there is worse than naming none: the loader then fails with
+# VK_ERROR_INCOMPATIBLE_DRIVER, zink has no Vulkan, and the compositor falls back to
+# llvmpipe -- which is a ~1 fps desktop at 1024x1366 instead of a GPU one.
+for _icd in /usr/share/vulkan/icd.d/virtio_icd.json /usr/share/vulkan/icd.d/virtio_icd.aarch64.json; do
+    if [ -r "$_icd" ]; then
+        export VK_ICD_FILENAMES=${VK_ICD_FILENAMES:-$_icd}
+        break
+    fi
+done
+unset _icd
 export MESA_LOADER_DRIVER_OVERRIDE=${MESA_LOADER_DRIVER_OVERRIDE:-zink}
 export MESA_VK_WSI_DEBUG=${MESA_VK_WSI_DEBUG:-sw}

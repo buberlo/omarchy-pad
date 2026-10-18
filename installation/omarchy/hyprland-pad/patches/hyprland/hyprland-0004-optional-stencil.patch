@@ -1,0 +1,50 @@
+--- a/src/render/gl/GLFramebuffer.cpp
++++ b/src/render/gl/GLFramebuffer.cpp
+@@ -51,19 +51,42 @@
+         glDrawBuffers(1, drawBuffers);
+     }
+ 
++    /* A depth/stencil attachment is not universally available. zink on Mesa's Venus (the
++     * emulator's virtio-gpu) fails this glTexImage2D with GL_OUT_OF_MEMORY for every
++     * depth/stencil format, and a renderbuffer attachment is reported as
++     * GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT instead, so with a stencil the framebuffer can
++     * never be complete -- and the RASSERT below then aborts the compositor on its first
++     * frame. The stencil is a masking aid (rounded corners, shadows, blur); nothing reads it
++     * back while rendering, and GL's stencil test is a no-op without storage, so leaving it
++     * out costs looks rather than correctness. Only the combos that work are attached. */
++    bool stencilAttached = false;
+     if (m_stencilTex && m_stencilTex->ok()) {
++        while (glGetError() != GL_NO_ERROR) {
++        }
+         m_stencilTex->bind();
+         glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, w, h, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, nullptr);
+-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_stencilTex->m_texID, 0);
+-
+-        glDisable(GL_DEPTH_TEST);
+-        glDepthMask(GL_FALSE);
++        if (glGetError() == GL_NO_ERROR) {
++            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_stencilTex->m_texID, 0);
++            glDisable(GL_DEPTH_TEST);
++            glDepthMask(GL_FALSE);
++            stencilAttached = true;
++        } else {
++            Log::logger->log(Log::ERR, "no depth/stencil storage on this driver; rendering without a stencil mask");
++            m_stencilTex->unbind();
++        }
+     }
+ 
+     auto status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
++    if (status != GL_FRAMEBUFFER_COMPLETE && stencilAttached) {
++        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, 0, 0);
++        Log::logger->log(Log::ERR, "depth/stencil attachment rejected by the driver; rendering without a stencil mask");
++        m_stencilTex.reset();
++        stencilAttached = false;
++        status        = glCheckFramebufferStatus(GL_FRAMEBUFFER);
++    }
+     RASSERT((status == GL_FRAMEBUFFER_COMPLETE), "Framebuffer incomplete, couldn't create! (FB status: {}, GL Error: 0x{:x})", status, sc<int>(glGetError()));
+ 
+-    if (m_stencilTex && m_stencilTex->ok())
++    if (stencilAttached)
+         m_stencilTex->unbind();
+ 
+     Log::logger->log(Log::DEBUG, "Framebuffer \"{}\" created, status {}", m_name, status);

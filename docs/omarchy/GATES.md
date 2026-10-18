@@ -14,7 +14,7 @@ kept space-free anyway.
 | 0.1 | macOS `ish` CLI + `fakefsify` build and run | **pass** | `build-arm64-release/ish`, `build-arm64-release/tools/fakefsify`; `python3 -m mako`/`ziglang` in `work/tools/venv` |
 | 0.1b | The CLI + fakefs + boot pipeline works at all | **pass** | `work/omarchy-pad/evidence/01-alpine-control.txt` — Alpine 3.21 aarch64 boots, `ALPINE_CONTROL_OK`; note: `fakefsify <tar> <dir>` makes `<dir>` itself the fs-control directory |
 | 0.2 | An Arch Linux ARM + Omarchy image builds and boots | **pass** | `installation/omarchy/build-image.sh` → `work/omarchy-pad/omarchy-aarch64-pad.tar.gz` (897 MB, 448 packages, version 202610171543); boot evidence `work/omarchy-pad/evidence/boot-omarchy-aarch64-pad.txt` (`/etc/os-release` = Omarchy, glibc 2.43, `quickshell --version` answers, `hyprland` starts) |
-| 0.3 | Guest graphics capability | **pass** | `work/omarchy-pad/evidence/gate-0.3/gpu-probe.txt`: `/dev/dri/renderD128` exists; **zink on Venus works** (`zink Vulkan 1.4(Virtio-GPU Venus (Apple M3 Pro) (MOLTENVK))`) and reports **GLES 2.0**, becoming **GLES 3.0 with `MESA_GLES_VERSION_OVERRIDE=3.0`**; llvmpipe reports **GLES 3.2** as the software fallback |
+| 0.3 | Guest graphics capability | **pass, with one driver limitation** | `work/omarchy-pad/evidence/gate-0.3/gpu-probe.txt`: `/dev/dri/renderD128` exists; **zink on Venus works** (`zink Vulkan 1.4(Virtio-GPU Venus (Apple M3 Pro) (MOLTENVK))`) and reports **GLES 2.0**, becoming **GLES 3.0 with `MESA_GLES_VERSION_OVERRIDE=3.0`**; llvmpipe reports **GLES 3.2** as the software fallback. `framebuffer-probe.txt` (run it with `installation/omarchy/probe-gl.sh`) checks what a compositor actually needs: surfaceless EGL and a GLES 3.0 context work, GL_RGBA8 colour attachments (texture and renderbuffer), two colour attachments and 4x multisampled renderbuffers are all COMPLETE, and a clear plus readback returns exactly what was written. **No depth/stencil attachment is available on zink here**: a depth or depth/stencil *texture* fails with `GL_OUT_OF_MEMORY` and leaves the framebuffer UNSUPPORTED, and a *renderbuffer* is reported as INCOMPLETE_ATTACHMENT; on llvmpipe all four combinations are COMPLETE. That is what aborted Hyprland on its first frame, and why `hyprland-0004-optional-stencil.patch` makes the stencil attachment optional. |
 | 0.4 | Hyprland renders a frame with a headless output | **in progress** | `installation/omarchy/hyprland-pad/`: patches written and applied on Hyprland 0.56.2 + Aquamarine 0.15.1 (headless render-node fd + SHM allocator; EGL device from the render node; shm render target with readback). Packages built: `work/omarchy-pad/gate-0.4/pkgs/{aquamarine-pad-0.15.1-1,hyprland-pad-0.56.2-1}-aarch64.pkg.tar.zst`. They are now baked into the image by `installation/omarchy/build-image.sh`. |
 | 0.5 | Systemd-less Omarchy session (supervisor, shims, Quickshell) | **partial** | `work/omarchy-pad/evidence/gate-0.5/session-probe.txt`: init starts the buses/daemons, and every shim answers (systemctl verbs, systemd-run, systemd-cat, uwsm-app, journalctl, loginctl, hostnamectl, timedatectl, udevadm, ufw, bluetoothctl, rfkill, brightnessctl). **`omarchy-hw-platform` now answers `aarch64`** after the procfs magic-link fix below. Quickshell itself is next. |
 | 0.6 | `omarchy-pad-bridge`: screencopy frames into ishwl + input injection | **pass** | `work/omarchy-pad/evidence/gate-0.6/`: mock-compositor chain, real-Hyprland chain, and `on-screen/` — a clean app boot of image `202610180603` in the Simulator puts the whole desktop on the canvas: session started by the app's own launch request, Hyprland on `wayland-1`, Omarchy's Quickshell shell mapped as the `omarchy-bar` layer, a **real `foot` window composited into the frame** (with Hyprland's border and the cursor) at the iPad's own 1024x1366 size. |
@@ -35,6 +35,44 @@ kept space-free anyway.
 | Case-only path collisions are resolved at image build time | `installation/omarchy/resolve-case-collisions.sh` | Arch ships 64 case-only duplicate paths (terminfo, man aliases, xtables, perl, `Hyprland`/`hyprland`). The iPad's case-insensitive container cannot hold both and the importer died with `EEXIST` on the first pair. The resolver materialises the lowercase name when it is a symlink to the dropped one (so `/usr/bin/hyprland` survives as a real binary) and fails the build if any pair remains. |
 | The importer names the entry it failed on | `tools/fakefs.c` | `POSIX_ERR()` reported only "File exists" plus a line number; the failing path is now part of the message, which is how the collision above was found. |
 | iSH `prctl` breadth (fork, not ours) | `kernel/misc.c` | `PR_SET_NO_NEW_PRIVS`, `SET_DUMPABLE`, `SET_PDEATHSIG`, `CAPBSET_READ`… already answered by commit `64f54210` |
+
+## Gate results, round 11
+
+- **The GPU was off in the app guest, and turning it on revealed the real bug.**
+  `/etc/profile.d/gpu.sh` pointed `VK_ICD_FILENAMES` at
+  `/usr/share/vulkan/icd.d/virtio_icd.aarch64.json`; Arch Linux ARM's `vulkan-virtio` installs
+  `virtio_icd.json`. Vulkan then answered `VK_ERROR_INCOMPATIBLE_DRIVER`, zink had no device, and
+  Hyprland silently fell back to llvmpipe -- a ~1 fps desktop at 1024x1366. The hook now takes
+  whichever ICD is installed.
+- **With zink live, Hyprland aborted on its first frame**: `Framebuffer incomplete, couldn't
+  create! (FB status: 36061, GL Error: 0x505)` from `src/render/gl/GLFramebuffer.cpp` -- 36061 is
+  `GL_FRAMEBUFFER_UNSUPPORTED`, 0x505 is `GL_OUT_OF_MEMORY`. The probe above reproduces exactly
+  that call: it is the depth/stencil attachment the compositor's monitor framebuffers carry
+  (`CMonitorResources` gives every monitor framebuffer a stencil texture for rounded corners,
+  shadows and blur). Nothing reads the stencil back while rendering and GL's stencil test is a
+  no-op without storage, so `hyprland-0004-optional-stencil.patch` checks the allocation and drops
+  the attachment with a log line instead of asserting; the desktop then renders without the
+  stencil mask instead of not rendering at all.
+- **The session survives a compositor that dies anyway**: `omarchy-pad-session` waits on
+  Hyprland, and if it exits -- before or after the bridge connected -- the session restarts itself
+  once with `MESA_LOADER_DRIVER_OVERRIDE=llvmpipe` and says so in the canvas status. A slow desktop
+  is a desktop; a black window is not.
+- **The GPU is opt-in, because the app guest cannot use it yet.** With the ICD fixed and the
+  stencil patched, the CLI guest renders on zink/Venus (`gate-0.4/zink-stencil-fix.txt`), but the
+  **iOS simulator's** Vulkan device cannot create a graphics pipeline at all -- it has no
+  `VK_EXT_depth_clip_enable`, so `vkCreateGraphicsPipelines` answers
+  `VK_ERROR_FEATURE_NOT_PRESENT` -- and the GPU path's memory footprint then killed the app inside
+  the simulator's ~900 MB guest limit while Hyprland was still initialising
+  (`gate-0.8-app/gpu-vs-software.txt`). The session therefore starts on llvmpipe and tries the GPU
+  only when `/etc/omarchy-pad/gpu` exists (or `OMARCHY_PAD_GPU=1`); either way it watches for
+  `vkCreateGraphicsPipelines failed`/`Framebuffer incomplete` and for the bridge's first frame, and
+  re-execs itself on software if the driver misbehaves. Which default ships is a device question.
+- **A stale artifact looked exactly like a fresh build.** `installation/omarchy/hyprland-pad/build.sh`
+  copied packages out of the container with `docker cp` and never checked it: an afternoon went into
+  a patch that was in the container's package and not in the file being installed (and, separately,
+  the fakefs lives on a case-insensitive filesystem where `usr/bin/Hyprland` and `usr/bin/hyprland`
+  are one file, so the package's binary has to be written to the lowercase name the guest runs).
+  The copy is now verified against the container's checksum before it lands.
 
 ## Gate results (updated after the execution round)
 

@@ -95,6 +95,21 @@ export AQ_HEADLESS_NO_TIMERFD=${AQ_HEADLESS_NO_TIMERFD:-1}
 # The GPU hook the image ships: Venus ICD, zink, software WSI. Sourced with an if, not an
 # `A && B` list: under `set -e` a missing file would end the script silently, which is
 # exactly how the first device run lost its session.
+# Which rasteriser to start on.
+#
+# The GPU path is real and much faster where it works -- Hyprland renders through zink on
+# Venus, and the probe in installation/omarchy/probe-gl.sh proves frames come out -- but it is
+# not yet safe to assume. On the iOS simulator's Vulkan device zink cannot create a graphics
+# pipeline at all (no VK_EXT_depth_clip_enable) and its memory footprint killed the whole app
+# before the session could react, so software is the default and the GPU is opted into with
+# /etc/omarchy-pad/gpu (or OMARCHY_PAD_GPU=1). A device that has been measured with the GPU is
+# where that file belongs; the frame check further down still falls back if it misbehaves.
+if [ "${OMARCHY_PAD_SOFTWARE:-0}" = 1 ] || { [ "${OMARCHY_PAD_GPU:-0}" != 1 ] && [ ! -e /etc/omarchy-pad/gpu ]; }; then
+    OMARCHY_PAD_SOFTWARE=1
+    export OMARCHY_PAD_SOFTWARE
+    MESA_LOADER_DRIVER_OVERRIDE=llvmpipe
+    export MESA_LOADER_DRIVER_OVERRIDE
+fi
 if [ -r /etc/profile.d/gpu.sh ]; then
     . /etc/profile.d/gpu.sh
 fi
@@ -191,6 +206,63 @@ else
     log "omarchy-pad-bridge is not installed yet; the desktop runs headless"
     fail "omarchy-pad-bridge is not installed in this root"
 fi
+BRIDGE_PID=$!
 
+# --- does the driver actually render? ---------------------------------------------------
+# A compositor that stays up is not the same as a desktop. On the iOS simulator's GPU, zink
+# cannot create a graphics pipeline at all (that Vulkan device has no
+# VK_EXT_depth_clip_enable, so vkCreateGraphicsPipelines answers VK_ERROR_FEATURE_NOT_PRESENT
+# and Mesa logs "ZINK: vkCreateGraphicsPipelines failed"): Hyprland runs, the bridge connects,
+# and no frame is ever produced. Watch what the bridge reports and come back on the software
+# rasteriser rather than leaving an empty canvas.
+if [ "${OMARCHY_PAD_SOFTWARE:-0}" != 1 ]; then
+    frames=0
+    waited=0
+    while [ "$waited" -lt 45 ]; do
+        kill -0 "$BRIDGE_PID" 2>/dev/null || break
+        # An immediate, unambiguous verdict: Mesa could not create a pipeline, so nothing will
+        # ever be drawn (the iOS simulator's Vulkan device has no VK_EXT_depth_clip_enable).
+        # Waiting the full 45 s here does not just waste time: the GPU path also holds far more
+        # memory, and the simulator's ~900 MB guest limit killed the whole app before the wait
+        # was over.
+        if grep -qE "vkCreateGraphicsPipelines failed|Framebuffer incomplete" "$LOG" 2>/dev/null; then
+            log "the driver could not create a pipeline; giving up on it before it exhausts memory"
+            frames=0
+            waited=0
+            break
+        fi
+        frames=$(sed -n 's/^frames=//p' "$STATUS" 2>/dev/null | head -1)
+        case ${frames:-} in
+        '' | *[!0-9]*) frames=0 ;;
+        esac
+        [ "$frames" -gt 0 ] && break
+        sleep 3
+        waited=$((waited + 3))
+    done
+    if kill -0 "$BRIDGE_PID" 2>/dev/null && [ "$frames" -eq 0 ] && kill -0 "$HYPRLAND_PID" 2>/dev/null; then
+        log "no frame within ${waited}s on $MESA_LOADER_DRIVER_OVERRIDE; restarting the session on the software rasteriser"
+        status "the GPU driver produced no frame; restarting the desktop in software"
+        kill "$BRIDGE_PID" 2>/dev/null || true
+        kill "$HYPRLAND_PID" 2>/dev/null || true
+        sleep 2
+        OMARCHY_PAD_SOFTWARE=1 MESA_LOADER_DRIVER_OVERRIDE=llvmpipe exec "$0" "$@"
+    fi
+    log "the desktop produced frames (${frames} so far) on ${MESA_LOADER_DRIVER_OVERRIDE:-default}"
+fi
+
+# --- if the compositor dies, come back on the software rasteriser ---------------------
+# A GPU driver that cannot allocate the compositor's own framebuffers kills it (zink on Venus
+# did, until the stencil patch: depth/stencil storage failed and Hyprland aborted on its first
+# frame). The canvas would sit empty with no way back, so the session restarts itself once
+# with llvmpipe and records which driver it ended up on: a slow desktop is a desktop, a black
+# window is not. Anything the renderer does not need -- this is not a retry loop; the second
+# attempt is final, whatever it does.
 wait "$HYPRLAND_PID"
 log "hyprland exited"
+if [ "${OMARCHY_PAD_SOFTWARE:-0}" != 1 ]; then
+    log "restarting the session on the software rasteriser (MESA_LOADER_DRIVER_OVERRIDE=llvmpipe)"
+    status "the compositor exited; restarting the desktop in software"
+    kill "$BRIDGE_PID" 2>/dev/null || true
+    OMARCHY_PAD_SOFTWARE=1 MESA_LOADER_DRIVER_OVERRIDE=llvmpipe exec "$0" "$@"
+fi
+log "hyprland exited again on the software rasteriser; leaving the session down"

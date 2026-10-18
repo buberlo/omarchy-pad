@@ -114,6 +114,15 @@ CONTAINER_SCRIPT
 ################################################################################
 echo "build.sh: copying packages to $OUT"
 $DOCKER exec "$CONTAINER" sh -c 'ls /build/gate04/pkgs/*.pkg.tar.zst 2>/dev/null' | while read -r f; do
-    $DOCKER cp "$CONTAINER:$f" "$OUT/"
+    # docker cp can fail without a word (the path did not exist yet, the daemon hiccupped),
+    # and a stale package in $OUT then looks exactly like a fresh build: an afternoon went
+    # into a patch that was in the container and not in the file being installed. Copy to a
+    # temporary name, compare checksums with the container's file, and only then move it in.
+    base=$(basename "$f")
+    $DOCKER cp "$CONTAINER:$f" "$OUT/$base.tmp" || { echo "build.sh: could not copy $f" >&2; exit 1; }
+    remote=$($DOCKER exec "$CONTAINER" sha256sum "$f" | cut -d' ' -f1)
+    local_sum=$(sha256sum "$OUT/$base.tmp" | cut -d' ' -f1)
+    [ "$remote" = "$local_sum" ] || { echo "build.sh: $base differs after copying ($local_sum != $remote)" >&2; exit 1; }
+    mv "$OUT/$base.tmp" "$OUT/$base"
 done
 ls -la "$OUT"/*.pkg.tar.zst
