@@ -4504,8 +4504,8 @@
     },
     {
       "path": "l4d-route/SHA256SUMS",
-      "bytes": 34741,
-      "sha256": "1cca5569dec390351c5d03b4421fbb8c10127fdfcacaec2e1599c73a97744a7c"
+      "bytes": 35040,
+      "sha256": "654c1e03afca98003a7534eaf8108620dc6545c982d9aa938873639243024925"
     },
     {
       "path": "l4d-route/proton-arm64/README.md",
@@ -5871,6 +5871,21 @@
       "path": "l4d-route/recovery/README.md",
       "bytes": 3151,
       "sha256": "bd27f593a46bf4ee930959d70440e49d6504d29dec9df35a0a5212d99ea49095"
+    },
+    {
+      "path": "l4d-route/recovery/guest-repair-2026-10-18.md",
+      "bytes": 3713,
+      "sha256": "104368c53ef5eb05d4f44e4e2d1db7d24983d7c59f3ae6b8ec43c5700a06f3fd"
+    },
+    {
+      "path": "l4d-route/recovery/guest-tools/l4d-go.sh",
+      "bytes": 549,
+      "sha256": "8226c52bdd63adc630bb7377cb48331b34c11ccb742e3d2e6f2fcbef6eabc472"
+    },
+    {
+      "path": "l4d-route/recovery/guest-tools/wine-wrapper",
+      "bytes": 707,
+      "sha256": "2f9f386b2d83e982ec9b21316b120f00b782fd426c3169a2a2c8d7d77a741dfe"
     },
     {
       "path": "l4d-route/recovery/libc-transfer/README.md",

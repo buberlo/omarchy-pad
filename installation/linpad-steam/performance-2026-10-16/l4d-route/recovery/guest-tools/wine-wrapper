@@ -1,0 +1,12 @@
+#!/bin/sh
+# Install as <Proton>/files/bin-arm64/wine with the original renamed to wine.real.
+# Wine is a glibc program in a musl guest: it needs the glibc libraries, but python3 (musl, and the
+# thing that starts Proton) must NOT have them on its own library path or it loads the glibc libcrypto
+# and floods the terminal with "symbol not found". So the path is set here, in the wrapper that Proton
+# calls for wine, and nowhere else.
+L=/opt/linpad-glibc
+B=/root/.local/share/Steam
+P="$B/steamapps/common/Proton 11.0 (ARM64)"
+export LD_LIBRARY_PATH="$L${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export MALLOC_MMAP_THRESHOLD_=1 MALLOC_TRIM_THRESHOLD_=1 MALLOC_TOP_PAD_=0
+exec "$P/files/bin-arm64/wine.real" "$@"
