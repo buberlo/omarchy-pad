@@ -37,6 +37,54 @@ void log_msg(struct server *s, const char *fmt, ...) {
     va_end(ap);
 }
 
+/* The supervisor runs launch requests with PID 1's environment, so a child started that
+ * way would lose WAYLAND_DISPLAY, XDG_RUNTIME_DIR, the session bus address, the toolkit
+ * variables and the scm-compat LD_PRELOAD. Write this process's environment into a small
+ * script beside the request and hand its path to the supervisor: the child then starts
+ * exactly as it would have from a direct execve here. The script deletes itself (after the
+ * shell has opened it, so there is no race with the supervisor) and the directory does not
+ * grow. Returns the path, or NULL when nothing could be written. */
+static const char *write_launch_script(char *path, size_t path_size, const char *command) {
+    snprintf(path, path_size, "/run/omarchy-pad/spawn-%d.sh", (int) getpid());
+    FILE *f = fopen(path, "w");
+    if (!f) {
+        snprintf(path, path_size, "/tmp/ishwl-spawn-%d.sh", (int) getpid());
+        f = fopen(path, "w");
+    }
+    if (!f) return NULL;
+    fputs("#! /bin/sh\nrm -f \"$0\" 2>/dev/null\n", f);
+    for (char **entry = environ; *entry; entry++) {
+        const char *eq = strchr(*entry, '=');
+        if (!eq || eq == *entry) continue;
+        const char *p = *entry;
+        for (; p < eq; p++) {
+            bool first = (p == *entry);
+            bool ok = (*p == '_' || (*p >= 'A' && *p <= 'Z') || (*p >= 'a' && *p <= 'z') ||
+                       (!first && *p >= '0' && *p <= '9'));
+            if (!ok) break;
+        }
+        if (p != eq) continue;  /* not a usable shell name (BASH_FUNC_...%% and friends) */
+        fputs("export ", f);
+        fwrite(*entry, 1, (size_t) (eq - *entry), f);
+        fputc('=', f);
+        fputc('\'', f);
+        for (const char *v = eq + 1; *v; v++) {
+            if (*v == '\'')
+                fputs("'\\''", f);
+            else if (*v == '\n')
+                fputc(' ', f);
+            else
+                fputc(*v, f);
+        }
+        fputs("'\n", f);
+    }
+    fputs(command, f);
+    fputc('\n', f);
+    fclose(f);
+    chmod(path, 0755);
+    return path;
+}
+
 void spawn_command(struct server *s, const char *command) {
     pid_t pid = fork();
     if (pid < 0) {
@@ -47,10 +95,65 @@ void spawn_command(struct server *s, const char *command) {
         log_msg(s, "spawned %d: %s", pid, command);
         return;
     }
+    /* Launch requests go to the supervisor when its channel exists. A guest execve from
+     * this forked process fails in this emulator build -- every existing path returns
+     * ENOTDIR (see docs/omarchy/GATES.md) -- while PID 1's own fork/exec works, which is
+     * how omarchy-pad-init starts every daemon. Without the channel (CLI runs) the direct
+     * execs below are used. */
+    {
+        char path[128];
+        const char *script = write_launch_script(path, sizeof(path), command);
+        if (script) {
+            /* The supervisor reopens its FIFO between writers, so a request can arrive in
+             * the gap where no reader is attached; that open fails with ENXIO and the
+             * supervisor's next reopen is imminent, so it is worth a real wait. ENOENT
+             * means there is no channel at all -- a run without a supervisor, e.g. a CLI
+             * guest -- and the direct execs below are the right answer quickly. Both are
+             * bounded: a launch must never hang the compositor. */
+            int lf = -1;
+            int waited = 0;
+            int budget = 0;
+            for (;;) {
+                lf = open("/run/omarchy-pad/launch", O_WRONLY | O_NONBLOCK);
+                if (lf >= 0) break;
+                if (errno == EINTR) {
+                    if (waited >= 1000) break;
+                } else if (errno == ENXIO) {
+                    budget = 5000;  /* the supervisor exists and will reopen shortly */
+                } else if (errno == ENOENT) {
+                    if (budget < 500) budget = 500;  /* no channel yet: give it a moment */
+                } else {
+                    break;
+                }
+                if (waited >= budget) break;
+                usleep(50 * 1000);
+                waited += 50;
+            }
+            if (lf >= 0) {
+                if (dprintf(lf, "%s\n", script) > 0) {
+                    close(lf);
+                    _exit(0);
+                }
+                log_msg(s, "launch request write failed: %s", strerror(errno));
+                close(lf);
+            } else {
+                log_msg(s, "launch channel open failed after %dms: %s", waited, strerror(errno));
+            }
+            /* Not delivered: the direct execs below take over, so the script that was
+             * written for the supervisor must not stay behind in /run. */
+            unlink(script);
+        } else {
+            log_msg(s, "could not write launch script: %s", strerror(errno));
+        }
+    }
     setsid();
     /* The launcher applies /etc/ishwl/apps (X11-only apps, compat preloads). */
     execl(ISHWL_PREFIX "/bin/ishwl-launch", "ishwl-launch", command, (char *) NULL);
+    log_msg(s, "execl %s failed: %s", ISHWL_PREFIX "/bin/ishwl-launch", strerror(errno));
     execl("/bin/sh", "sh", "-c", command, (char *) NULL);
+    log_msg(s, "execl /bin/sh failed: %s", strerror(errno));
+    execl("/usr/bin/bash", "sh", "-c", command, (char *) NULL);
+    log_msg(s, "execl /usr/bin/bash failed: %s", strerror(errno));
     _exit(127);
 }
 
