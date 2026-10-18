@@ -6,12 +6,15 @@ build-local.sh; this script gives each its identity:
 
   desktop  com.konradkern.linpad        app group group.com.konradkern.linpad (as before)
   steam    com.konradkern.linpad.steam  app group group.com.konradkern.linpad (the same one)
+  omarchy  com.konradkern.omarchy       app group group.com.konradkern.linpad (the same one)
 
-The shared app group is the whole point of the game app: both apps read their Linux system
-from the same container, so Steam, FEX, Mesa, games and saves are not installed twice.
+The shared app group is the whole point of the game and canvas apps: every app reads its
+Linux system from the same container, so Steam, FEX, Mesa, games, saves and the Omarchy
+image are not installed twice.
 
-  python3 sign-variant.py --variant steam  --app work/performance/steam-app-steam/Payload/"LinPad Steam.app"
+  python3 sign-variant.py --variant steam   --app work/performance/steam-app-steam/Payload/"LinPad Steam.app"
   python3 sign-variant.py --variant desktop --app work/performance/steam-app-desktop/Payload/"iSH ARM64.app"
+  python3 sign-variant.py --variant omarchy --app work/omarchy-pad/app/Payload/"Omarchy Pad.app"
 
 The provisioning profile must already cover the bundle id and the app group; Xcode-managed
 signing produces it from work/signing (see installation/steam-app/README.md). Everything the
@@ -50,6 +53,12 @@ VARIANTS = {
         "display_name": "LinPad Steam",
         "app_group": APP_GROUP,
         "profile": ROOT / "work/signing/profiles/com.konradkern.linpad.steam.mobileprovision",
+    },
+    "omarchy": {
+        "bundle_id": "com.konradkern.omarchy",
+        "display_name": "Omarchy Pad",
+        "app_group": APP_GROUP,
+        "profile": ROOT / "work/signing/profiles/com.konradkern.omarchy.mobileprovision",
     },
 }
 

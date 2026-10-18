@@ -6,12 +6,15 @@ import Foundation
 ///
 /// - `desktop`: LinPad's Linux desktop, as before.
 /// - `steam`:   the dedicated game app, which boots straight into Steam Big Picture.
+/// - `omarchy`: the Omarchy canvas app, which boots the Omarchy root and shows its one
+///              guest Wayland surface edge to edge (the desktop is one reveal strip away).
 ///
 /// A missing or unknown key means `desktop`, so test hosts, previews and the shipping
 /// desktop build behave exactly as they did before this type existed.
 public enum LinPadVariant: String, Sendable {
     case desktop
     case steam
+    case omarchy
 
     public static let infoPlistKey = "LinPadVariant"
 
@@ -29,12 +32,24 @@ public enum LinPadVariant: String, Sendable {
     /// The game app boots into Steam instead of the desktop.
     public var isGameMode: Bool { self == .steam }
 
+    /// The Omarchy app boots the guest session and shows its single Wayland surface full
+    /// screen. It shares the game mode machinery but is not a game: there is no Steam UI to
+    /// start, no classic fallback and no screen-size flag.
+    public var isCanvasMode: Bool { self == .omarchy }
+
     /// Which Linux root this build boots. The desktop app keeps `default` (its Alpine system, with the
-    /// user's files); the game app boots `arch` (the Arch Linux ARM image, `roots/arch`). One container
-    /// holds both, and neither may mount the other's.
+    /// user's files); the game app boots `arch` (the Arch Linux ARM image, `roots/arch`); the canvas
+    /// app boots `omarchy` (the Arch Linux ARM + Omarchy image, `roots/omarchy`). One container holds
+    /// all of them, and none may mount another's.
     ///
     /// This is the rule. `VariantRootName()` in app/AppDelegate.m mirrors it because the boot path runs
     /// in Objective-C before any of this is reachable -- change one, change both. Tested in
     /// `GameModeTests.testEachVariantKnowsWhichRootItBoots`.
-    public var rootName: String { isGameMode ? "arch" : "default" }
+    public var rootName: String {
+        switch self {
+        case .desktop: "default"
+        case .steam: "arch"
+        case .omarchy: "omarchy"
+        }
+    }
 }

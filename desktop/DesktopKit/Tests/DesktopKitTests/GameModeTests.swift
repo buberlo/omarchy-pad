@@ -85,6 +85,8 @@ final class GameModeTests: XCTestCase {
     func testVariantParsing() {
         XCTAssertEqual(LinPadVariant.parse("steam"), .steam)
         XCTAssertEqual(LinPadVariant.parse(" STEAM "), .steam)
+        XCTAssertEqual(LinPadVariant.parse("omarchy"), .omarchy)
+        XCTAssertEqual(LinPadVariant.parse(" OMARCHY "), .omarchy)
         XCTAssertEqual(LinPadVariant.parse("desktop"), .desktop)
         // Anything else is the shipping desktop app: a build without the key must not change.
         XCTAssertEqual(LinPadVariant.parse(nil), .desktop)
@@ -92,6 +94,14 @@ final class GameModeTests: XCTestCase {
         XCTAssertEqual(LinPadVariant.parse("bogus"), .desktop)
         XCTAssertTrue(LinPadVariant.steam.isGameMode)
         XCTAssertFalse(LinPadVariant.desktop.isGameMode)
+    }
+
+    func testOmarchyVariantIsACanvasNotAGame() {
+        XCTAssertEqual(LinPadVariant.parse("omarchy").rootName, "omarchy")
+        XCTAssertFalse(LinPadVariant.parse("omarchy").isGameMode)
+        XCTAssertTrue(LinPadVariant.parse("omarchy").isCanvasMode)
+        XCTAssertFalse(LinPadVariant.steam.isCanvasMode)
+        XCTAssertFalse(LinPadVariant.desktop.isCanvasMode)
     }
 
     /// The test bundle has no LinPadVariant key, which is exactly the fallback case.
@@ -186,6 +196,54 @@ final class GameModeTests: XCTestCase {
         await coordinator.begin()
         XCTAssertEqual(coordinator.lastCommand, "steam-bigpicture --classic")
         coordinator.stop()
+    }
+
+    // MARK: - The Omarchy canvas
+
+    func testOmarchyConfigurationDescribesTheCanvasSession() {
+        let config = GameModeConfiguration.omarchy
+        XCTAssertEqual(config.subjectName, "Omarchy")
+        XCTAssertEqual(config.command, "omarchy-pad-session")
+        XCTAssertEqual(config.launcherPaths, ["/usr/local/bin/omarchy-pad-session"])
+        XCTAssertEqual(config.claimedAppIDs, ["omarchy-pad"])
+        XCTAssertEqual(config.startupTimeout, .seconds(300))
+        XCTAssertEqual(config.statusPath, "/tmp/omarchy-pad/status")
+        XCTAssertEqual(config.fallbackMarkerPath, "/tmp/omarchy-pad/error")
+        XCTAssertNil(config.bigPictureFlag)
+        XCTAssertNil(config.classicFlag)
+        XCTAssertNil(config.geometryFlag)
+        XCTAssertFalse(config.usesClassicUIByDefault)
+        XCTAssertFalse(LinPadVariant.omarchy.isGameMode)
+        XCTAssertTrue(LinPadVariant.omarchy.isCanvasMode)
+    }
+
+    func testOmarchyClaimsItsOwnSurface() {
+        let coordinator = makeCoordinator(configuration: .omarchy)
+        XCTAssertTrue(coordinator.claims(appID: "omarchy-pad"))
+        XCTAssertTrue(coordinator.claims(appID: "Omarchy-Pad"))
+        XCTAssertFalse(coordinator.claims(appID: "Steam"))
+    }
+
+    func testOmarchyLaunchesTheSessionWithNoSteamFlags() async {
+        let coordinator = makeCoordinator(timeout: .seconds(300), configuration: .omarchy)
+        // Even with the persisted screen-size preference on, the canvas has no --geometry.
+        coordinator.fillsScreen = true
+        await coordinator.begin()
+        XCTAssertEqual(coordinator.lastCommand, "omarchy-pad-session")
+        XCTAssertEqual(launcher.commands, ["omarchy-pad-session"])
+        XCTAssertFalse(coordinator.lastCommand?.contains("--bigpicture") ?? true)
+        XCTAssertFalse(coordinator.lastCommand?.contains("--classic") ?? true)
+        XCTAssertFalse(coordinator.lastCommand?.contains("--geometry") ?? true)
+        coordinator.stop()
+    }
+
+    func testFailureCopyUsesTheConfiguredSubject() {
+        XCTAssertEqual(GameModeFailure.steamMissing.title(subject: "Omarchy"), "Omarchy is not installed")
+        XCTAssertTrue(GameModeFailure.steamNotResponding.detail(subject: "Omarchy").contains("Omarchy"))
+        XCTAssertTrue(GameModeFailure.steamStopped("").detail(subject: "Omarchy").contains("Omarchy"))
+        // The Steam copy keeps the wording the game app has always shown.
+        XCTAssertEqual(GameModeFailure.steamMissing.title, "Steam is not installed")
+        XCTAssertEqual(GameModeFailure.steamStopped("").title, "Steam closed")
     }
 
     // MARK: - Claiming the game surface
@@ -333,6 +391,7 @@ final class GameModeTests: XCTestCase {
     /// anything unrecognised, and an unknown value must never invent a root name.
     func testEachVariantKnowsWhichRootItBoots() {
         XCTAssertEqual(LinPadVariant.parse("steam").rootName, "arch")
+        XCTAssertEqual(LinPadVariant.parse("omarchy").rootName, "omarchy")
         XCTAssertEqual(LinPadVariant.parse("desktop").rootName, "default")
         XCTAssertEqual(LinPadVariant.parse(nil).rootName, "default")
         XCTAssertEqual(LinPadVariant.parse("").rootName, "default")
@@ -340,7 +399,12 @@ final class GameModeTests: XCTestCase {
         XCTAssertEqual(LinPadVariant.current(bundle: Bundle(for: type(of: self))).rootName, "default",
                        "a test bundle has no LinPadVariant key, so it is the desktop")
         XCTAssertEqual(LinPadVariant.steam.rootName, "arch")
+        XCTAssertEqual(LinPadVariant.omarchy.rootName, "omarchy")
         XCTAssertNotEqual(LinPadVariant.desktop.rootName, LinPadVariant.steam.rootName,
                           "the two apps must never share a root name")
+        XCTAssertNotEqual(LinPadVariant.omarchy.rootName, LinPadVariant.steam.rootName,
+                          "the canvas and the game app must never share a root name")
+        XCTAssertNotEqual(LinPadVariant.omarchy.rootName, LinPadVariant.desktop.rootName,
+                          "the canvas must never mount the desktop's Alpine root")
     }
 }

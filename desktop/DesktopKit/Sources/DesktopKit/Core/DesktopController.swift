@@ -194,7 +194,14 @@ final class DesktopController {
                                  style: DesktopStyle.stored(UserDefaults.standard.string(forKey: DesktopStyle.storageKey) ?? ""))
         linux = (host as? any LinuxGraphicsHost).map { LinuxGUIBridge(host: $0) }
         linux?.delegate = self
-        linux?.start()
+        // The bridge is *not* started here. SwiftUI evaluates a view's `init` on every
+        // render, and a controller built for a render that SwiftUI then discards (the
+        // adopted one is the first) would otherwise start a real session connection -- and
+        // open the bridge's FIFOs -- for nothing: on the Omarchy canvas that leaked
+        // thousands of file descriptors during boot and exhausted the process, after which
+        // the emulator's event loop failed with EBADF and never saw a spawn request. The
+        // owning view starts it in its `.task`, before it waits for the session (the boot
+        // progress waits for `linux.state == .running`).
         input.controller = self
         osdObserver = OSDObserver(controller: self)
         memoryCloseObserver = NotificationCenter.default.addObserver(

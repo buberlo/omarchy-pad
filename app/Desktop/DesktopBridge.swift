@@ -6,9 +6,10 @@ import UIKit
 /// since SceneDelegate.m is also built into targets without Swift).
 ///
 /// The build's variant (Info.plist `LinPadVariant`, see LinPadVariant in DesktopKit) decides
-/// what the app shows: the ordinary Linux desktop, or — in the dedicated game app — Steam's
-/// Big Picture UI full screen with no desktop around it. The same code is in both apps; only
-/// signing and one build setting differ (installation/steam-app).
+/// what the app shows: the ordinary Linux desktop, Steam's Big Picture UI full screen in the
+/// dedicated game app, or the Omarchy canvas (one guest Wayland surface, edge to edge) in the
+/// Omarchy app. The same code is in all of them; only signing, one build setting and the
+/// variant's configuration differ (installation/steam-app, installation/omarchy).
 @objc(DesktopBridge)
 final class DesktopBridge: NSObject {
     /// Set to NO (Settings app, or `defaults write`) to get the classic single-terminal UI back.
@@ -59,11 +60,20 @@ final class DesktopBridge: NSObject {
         return host
     }
 
-    /// The variant's default screen, unless the user asked for the desktop in the game app.
+    /// The variant's default screen, unless the user asked for the desktop in the game or
+    /// canvas app.
     @MainActor
     private static func makeRoot(for host: ISHLinuxHost) -> AnyView {
-        let wantsGameMode = LinPadVariant.current().isGameMode
-            && (SessionMode.stored() ?? .game) == .game
+        let variant = LinPadVariant.current()
+        let wantsFullScreen = (SessionMode.stored() ?? .game) == .game
+        if variant.isCanvasMode && wantsFullScreen {
+            return AnyView(CanvasRootView(host: host, apps: BuiltinApps.all(),
+                                          systemControls: ISHSystemControls(),
+                                          configuration: .omarchy) {
+                switchToDesktop()
+            })
+        }
+        let wantsGameMode = variant.isGameMode && wantsFullScreen
         if wantsGameMode {
             return AnyView(GameModeRootView(host: host, apps: BuiltinApps.all(),
                                             systemControls: ISHSystemControls(),

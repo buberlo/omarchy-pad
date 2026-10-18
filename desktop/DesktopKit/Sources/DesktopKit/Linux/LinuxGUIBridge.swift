@@ -80,6 +80,46 @@ final class LinuxGUIBridge {
     private(set) var state = State.stopped
     private(set) var applications: [LinuxDesktopEntry] = []
 
+    /// Closes everything this bridge owns: the two FIFOs, the reader thread, the health poll,
+    /// the frame display link and the pasteboard observer.
+    ///
+    /// Dropping the last reference to a bridge does *not* close its descriptors or stop its
+    /// reader thread -- a host fd survives the object that opened it -- so a bridge that is
+    /// discarded without this keeps its pair of FIFOs open for the life of the process, and
+    /// its reader thread keeps polling them. SwiftUI evaluates a view's `init` on every
+    /// render (only the first controller it builds is kept), which is exactly how the Omarchy
+    /// canvas leaked thousands of descriptors during boot and left the emulator failing every
+    /// `epoll_wait` with EBADF, so ishwl never saw the spawn request that starts the session.
+    func stop() {
+        startTask?.cancel()
+        startTask = nil
+        healthTask?.cancel()
+        healthTask = nil
+        displayLink?.invalidate()
+        displayLink = nil
+        reader?.stop()
+        reader = nil
+        if eventsFD >= 0 {
+            close(eventsFD)
+            eventsFD = -1
+        }
+        for token in observers { NotificationCenter.default.removeObserver(token) }
+        observers.removeAll()
+        surfaces.removeAll()
+        state = .stopped
+    }
+
+    deinit {
+        // The same teardown for the paths that never call stop(); the classes involved are
+        // main-actor bound but deallocation happens on the main thread here.
+        startTask?.cancel()
+        healthTask?.cancel()
+        displayLink?.invalidate()
+        reader?.stop()
+        if eventsFD >= 0 { close(eventsFD) }
+        for token in observers { NotificationCenter.default.removeObserver(token) }
+    }
+
     @ObservationIgnored weak var delegate: LinuxGUIBridgeDelegate?
     @ObservationIgnored private let host: any LinuxGraphicsHost
     @ObservationIgnored private var surfaces: [UInt32: LinuxSurface] = [:]
@@ -286,6 +326,16 @@ final class LinuxGUIBridge {
         _ = await host.run(Self.stopSessionScript)
         if state == .running || !surfaces.isEmpty { sessionEnded() }
         state = .stopped
+        // The old session's FIFOs belong to the ishwl that just exited: close them here, or
+        // the next connect() would replace both descriptors and leak the pair.
+        reader?.stop()
+        reader = nil
+        if eventsFD >= 0 {
+            close(eventsFD)
+            eventsFD = -1
+        }
+        displayLink?.invalidate()
+        displayLink = nil
         start()
     }
 

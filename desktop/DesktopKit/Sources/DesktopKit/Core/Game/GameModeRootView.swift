@@ -1,13 +1,14 @@
 import SwiftUI
 import UIKit
 
-/// The whole screen of the dedicated game app: Linux boots behind a splash, then Steam's
-/// toplevel fills the screen with nothing around it. A hairline strip at the top edge
-/// reveals the few controls that must exist (restart, classic UI, screen size, desktop).
+/// The whole screen of a full-screen variant: Linux boots behind a splash, then the
+/// subject's toplevel fills the screen with nothing around it. A hairline strip at the top
+/// edge reveals the few controls that must exist (restart, classic UI, screen size, desktop).
 ///
 /// It reuses the desktop's `DesktopController`, so the guest session, input, clipboard,
 /// audio and diagnostics behave exactly as they do on the desktop; only the presentation
-/// differs (`DesktopController.gameMode`).
+/// differs (`DesktopController.gameMode`). The Steam game shell and the Omarchy canvas
+/// share it; `GameModeConfiguration` decides the copy and which controls exist.
 public struct GameModeRootView: View {
     @State private var controller: DesktopController
     @State private var coordinator: GameModeCoordinator
@@ -66,6 +67,9 @@ public struct GameModeRootView: View {
     // MARK: - Boot
 
     private func start() async {
+        // Once, from the view SwiftUI actually keeps: the controller no longer connects from
+        // its initializer (see DesktopController.init). `start()` is idempotent.
+        controller.linux?.start()
         await controller.boot.run(host: controller.host, linux: controller.linux)
         // The other LinPad app holds the shared Linux system: no probe, no Steam, just say so.
         if let reason = (controller.host as? any LinuxSystemBusyReporting)?.sessionBusyReason {
@@ -78,6 +82,14 @@ public struct GameModeRootView: View {
 
     // MARK: - Content
 
+    /// Steam has Big Picture/classic modes; the Omarchy canvas has neither. The presence of
+    /// the flags is what the shared shell uses to choose its copy and controls.
+    private var isGameConfiguration: Bool {
+        configuration.bigPictureFlag != nil || configuration.classicFlag != nil
+    }
+
+    private var subject: String { configuration.subjectName }
+
     @ViewBuilder
     private var content: some View {
         if !controller.boot.isFinished {
@@ -85,11 +97,11 @@ public struct GameModeRootView: View {
         } else {
             switch coordinator.phase {
             case .waitingForSystem, .checkingSteam:
-                GameModeProgressPanel(title: "Starting the game system…",
-                                      detail: "Linux is up; looking for Steam.",
+                GameModeProgressPanel(title: waitingTitle,
+                                      detail: waitingDetail,
                                       showsSpinner: true)
             case .startingSteam:
-                GameModeProgressPanel(title: "Starting Steam…",
+                GameModeProgressPanel(title: "Starting \(subject)…",
                                       detail: startingDetail,
                                       showsSpinner: true)
             case .presenting(let surfaceID):
@@ -97,18 +109,36 @@ public struct GameModeRootView: View {
             case .stopped(let failure):
                 GameModeFailurePanel(failure: failure,
                                      coordinator: coordinator,
-                                     controller: controller)
+                                     controller: controller,
+                                     subject: subject,
+                                     offersClassicUI: configuration.classicFlag != nil)
             }
         }
     }
 
+    private var waitingTitle: String {
+        isGameConfiguration ? "Starting the game system…" : "Starting the \(subject) session…"
+    }
+
+    private var waitingDetail: String {
+        isGameConfiguration ? "Linux is up; looking for Steam." : "Linux is up; starting \(subject)."
+    }
+
     private var startingDetail: String {
-        var lines = ["Big Picture (`-gamepadui`); the first start after an update takes longer."]
+        var lines = [isGameConfiguration
+            ? "Big Picture (`-gamepadui`); the first start after an update takes longer."
+            : "The first start after a boot takes longer while the \(subject) session comes up."]
         if let started = coordinator.startedAt {
-            lines.append("\(Int(now.timeIntervalSince(started))) s so far. The screen is \(coordinator.geometryDescription).")
+            var line = "\(Int(now.timeIntervalSince(started))) s so far."
+            if configuration.geometryFlag != nil {
+                line += " The screen is \(coordinator.geometryDescription)."
+            }
+            lines.append(line)
         }
         if coordinator.usedClassicUIFallback {
-            lines.append("Big Picture did not start, so Steam's classic UI is starting instead.")
+            lines.append(isGameConfiguration
+                ? "Big Picture did not start, so Steam's classic UI is starting instead."
+                : "\(subject) reported a startup problem; the session is continuing.")
         }
         return lines.joined(separator: " ")
     }
@@ -119,13 +149,13 @@ public struct GameModeRootView: View {
             LinuxWindowContent(view: view)
                 .ignoresSafeArea()
         } else {
-            GameModeProgressPanel(title: "Steam is starting…",
+            GameModeProgressPanel(title: "\(subject) is starting…",
                                   detail: "Waiting for its window.",
                                   showsSpinner: true)
         }
     }
 
-    /// A 24 pt strip along the top edge reveals the bar; it never blocks the game otherwise.
+    /// A 24 pt strip along the top edge reveals the bar; it never blocks the subject otherwise.
     private var revealStrip: some View {
         VStack {
             Color.clear
@@ -133,7 +163,7 @@ public struct GameModeRootView: View {
                 .frame(maxWidth: .infinity)
                 .contentShape(Rectangle())
                 .onTapGesture { isBarRevealed.toggle() }
-                .accessibilityLabel("Show game controls")
+                .accessibilityLabel(isGameConfiguration ? "Show game controls" : "Show canvas controls")
             Spacer()
         }
         .ignoresSafeArea()
@@ -198,34 +228,43 @@ private struct GameModeBar: View {
 
     private var title: String {
         switch coordinator.phase {
-        case .presenting: "Steam Big Picture"
-        case .startingSteam: "Starting Steam…"
-        case .stopped(let failure): failure.title
-        default: "LinPad Steam"
+        case .presenting: configuration.bigPictureFlag != nil ? "Steam Big Picture" : configuration.subjectName
+        case .startingSteam: "Starting \(configuration.subjectName)…"
+        case .stopped(let failure): failure.title(subject: configuration.subjectName)
+        default: configuration.bigPictureFlag != nil ? "LinPad Steam" : "\(configuration.subjectName) Pad"
         }
     }
 
     private var subtitle: String {
         var parts: [String] = []
         if let status = coordinator.launcherStatus { parts.append("launcher: \(status)") }
-        parts.append("screen: \(coordinator.geometryDescription)")
+        // The canvas shows the guest surface at the screen's own size; there is no geometry
+        // flag to report.
+        if configuration.geometryFlag != nil {
+            parts.append("screen: \(coordinator.geometryDescription)")
+        }
         return parts.joined(separator: " · ")
     }
 
     @ViewBuilder
     private var buttons: some View {
-        if coordinator.prefersClassicUI {
-            barButton("Big Picture", symbol: "gamecontroller") { coordinator.useBigPicture() }
-        } else {
-            barButton("Classic UI", symbol: "macwindow") { coordinator.useClassicUI() }
+        // Big Picture and the classic UI only exist when the subject has those modes.
+        if configuration.bigPictureFlag != nil, configuration.classicFlag != nil {
+            if coordinator.prefersClassicUI {
+                barButton("Big Picture", symbol: "gamecontroller") { coordinator.useBigPicture() }
+            } else {
+                barButton("Classic UI", symbol: "macwindow") { coordinator.useClassicUI() }
+            }
         }
-        barButton(coordinator.fillsScreen ? "Verified screen" : "Fill screen",
-                  symbol: coordinator.fillsScreen ? "arrow.down.right.and.arrow.up.left"
-                                                  : "arrow.up.left.and.arrow.down.right") {
-            coordinator.fillsScreen.toggle()
-            coordinator.startSteam(forceBigPicture: !coordinator.prefersClassicUI)
+        if configuration.geometryFlag != nil {
+            barButton(coordinator.fillsScreen ? "Verified screen" : "Fill screen",
+                      symbol: coordinator.fillsScreen ? "arrow.down.right.and.arrow.up.left"
+                                                      : "arrow.up.left.and.arrow.down.right") {
+                coordinator.fillsScreen.toggle()
+                coordinator.startSteam(forceBigPicture: !coordinator.prefersClassicUI)
+            }
         }
-        barButton("Restart Steam", symbol: "arrow.clockwise") {
+        barButton("Restart \(configuration.subjectName)", symbol: "arrow.clockwise") {
             coordinator.startSteam(forceBigPicture: !coordinator.prefersClassicUI)
         }
         barButton("Restart Linux", symbol: "power") {
@@ -245,27 +284,29 @@ private struct GameModeBar: View {
     }
 }
 
-/// A failure the game app can act on, with the actions that make sense for it.
+/// A failure the full-screen app can act on, with the actions that make sense for it.
 private struct GameModeFailurePanel: View {
     let failure: GameModeFailure
     let coordinator: GameModeCoordinator
     let controller: DesktopController
+    let subject: String
+    let offersClassicUI: Bool
 
     var body: some View {
         VStack(spacing: 16) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.system(size: 34))
                 .foregroundStyle(.yellow)
-            Text(failure.title).font(.title2.weight(.semibold))
-            Text(failure.detail)
+            Text(failure.title(subject: subject)).font(.title2.weight(.semibold))
+            Text(failure.detail(subject: subject))
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 560)
             HStack(spacing: 10) {
-                Button("Start Steam again") { coordinator.startSteam() }
+                Button("Start \(subject) again") { coordinator.startSteam() }
                     .buttonStyle(.borderedProminent)
-                if failure.suggestsClassicUI && !coordinator.prefersClassicUI {
+                if offersClassicUI && failure.suggestsClassicUI && !coordinator.prefersClassicUI {
                     Button("Use the classic UI") { coordinator.useClassicUI() }
                         .buttonStyle(.bordered)
                 }

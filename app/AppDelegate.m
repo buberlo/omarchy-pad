@@ -473,7 +473,9 @@ static void RequestFastMode(BOOL afterBoot, void (^done)(BOOL on)) {
 /// GameModeTests.testEachVariantKnowsWhichRootItBoots.
 static NSString *VariantRootName(void) {
     NSString *variant = [NSBundle.mainBundle objectForInfoDictionaryKey:@"LinPadVariant"];
-    return [variant isEqualToString:@"steam"] ? @"arch" : @"default";
+    if ([variant isEqualToString:@"steam"]) return @"arch";
+    if ([variant isEqualToString:@"omarchy"]) return @"omarchy";
+    return @"default";
 }
 
 - (int)boot {

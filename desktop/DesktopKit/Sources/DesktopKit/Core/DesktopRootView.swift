@@ -121,6 +121,9 @@ public struct DesktopRootView: View {
             if !UserDefaults.standard.bool(forKey: OnboardingFlow.completedKey) {
                 controller.presentOnboarding()
             }
+            // The bridge connects from here, not from the controller's initializer, which
+            // SwiftUI may run for renders it then discards (see DesktopController.init).
+            controller.linux?.start()
             await controller.boot.run(host: controller.host, linux: controller.linux)
             controller.offerSystemUpdateIfAvailable()
             controller.startUpdateChecks()

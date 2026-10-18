@@ -180,12 +180,16 @@ public final class GameModeCoordinator {
         watchdogExtensions = 0
         claimedSurfaceID = nil
         usedClassicUIFallback = false
-        var command = configuration.steamCommand
-        if let geometry = launchGeometry() { command += " --geometry \(geometry)" }
+        var command = configuration.command
+        // nil flags are how a session that has no such mode (the Omarchy canvas) says so:
+        // nothing is appended for it, whatever the persisted Steam preferences say.
+        if let flag = configuration.geometryFlag, let geometry = launchGeometry() {
+            command += " \(flag) \(geometry)"
+        }
         if forceBigPicture {
-            command += " --bigpicture"
+            if let flag = configuration.bigPictureFlag { command += " \(flag)" }
         } else if prefersClassicUI || configuration.usesClassicUIByDefault {
-            command += " --classic"
+            if let flag = configuration.classicFlag { command += " \(flag)" }
         }
         lastCommand = command
         guard let launcher else {
