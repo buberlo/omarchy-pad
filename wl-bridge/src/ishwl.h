@@ -335,6 +335,8 @@ bool dnd_pointer_button(struct server *s, uint32_t button, bool pressed);
 
 /* bridge.c */
 void bridge_init(struct server *s);
+/* Handles everything the host has written to the events FIFO; see bridge.c. */
+void events_drain(struct server *s);
 void bridge_send(struct server *s, const char *fmt, ...) __attribute__((format(printf, 2, 3)));
 char *bridge_escape(const char *text);
 

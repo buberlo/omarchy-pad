@@ -595,11 +595,16 @@ private final class DragFIFOReader: @unchecked Sendable {
         var pending = [UInt8]()
         var buffer = [UInt8](repeating: 0, count: 4096)
         while !stopped.withLock({ $0 }) {
+            // Read every pass, not only when poll reports the FIFO readable: the guest's writes
+            // do not wake this side's poll (see FIFOLineReader in LinuxGUIBridge).
             var pfd = pollfd(fd: fd, events: Int16(POLLIN), revents: 0)
-            guard poll(&pfd, 1, 500) > 0 else { continue }
+            _ = poll(&pfd, 1, 100)
             let count = buffer.withUnsafeMutableBytes { read(fd, $0.baseAddress, $0.count) }
-            if count < 0 && errno == EINTR { continue }
-            guard count > 0 else { return }
+            if count < 0 {
+                if errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR { continue }
+                return
+            }
+            if count == 0 { continue }
             pending.append(contentsOf: buffer[0..<count])
             guard let lastNewline = pending.lastIndex(of: 0x0A) else { continue }
             let lines = pending[...lastNewline].split(separator: 0x0A).map { String(decoding: $0, as: UTF8.self) }

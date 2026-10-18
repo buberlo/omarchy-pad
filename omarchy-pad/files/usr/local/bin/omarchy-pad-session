@@ -37,6 +37,9 @@ rm -f "$ERROR"
 status "starting Hyprland"
 
 # --- environment ----------------------------------------------------------------------
+# ishwl's socket, captured before Hyprland's value replaces WAYLAND_DISPLAY below: the
+# bridge is a client of both compositors and needs to be told which one is which.
+ISHWL_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}
 export HOME=/root USER=root LOGNAME=root SHELL=/bin/sh
 # The app starts this through ishwl's spawn channel. ishwl hands its own environment over
 # (the supervisor runs the request, so nothing is inherited implicitly), and these are the
@@ -112,9 +115,29 @@ fi
 if [ "$MINIMAL" = 1 ]; then
     CONFIG=/usr/share/omarchy-pad/hyprland-pad.conf
     log "starting Hyprland with the bring-up config $CONFIG"
+else
+    CONFIG=""
+    log "starting Hyprland with Omarchy's configuration"
+fi
+
+# Hyprland's clients must reach *Hyprland*, not ishwl. The session inherits ishwl's
+# environment, where WAYLAND_DISPLAY is ishwl's own socket (wayland-0), and Hyprland passes
+# its environment to everything it starts -- Omarchy's shell (autostart.lua runs
+# omarchy-launch-shell), every exec-once, every app launched from the desktop. With the
+# inherited value they all attached to ishwl instead: Quickshell's bar and background never
+# became part of the composited output, nothing damaged the headless output, and the canvas
+# showed a still frame of an empty desktop. Naming Hyprland's socket explicitly (wayland-1,
+# because ishwl holds wayland-0) makes its children land on the right compositor.
+# Stale sockets and instance directories from a previous session would confuse the discovery
+# in hyprctl and Omarchy's own scripts, so they are cleared first: the session starts the
+# compositor itself, and any surviving Hyprland was already stopped by the caller.
+rm -rf "$XDG_RUNTIME_DIR/hypr" "$XDG_RUNTIME_DIR/wayland-1" "$XDG_RUNTIME_DIR/wayland-1.lock"
+export WAYLAND_DISPLAY=${HYPR_PAD_DISPLAY:-wayland-1}
+log "starting Hyprland on $WAYLAND_DISPLAY"
+
+if [ -n "$CONFIG" ]; then
     hyprland ${ROOT_FLAG} -c "$CONFIG" >>"$LOG" 2>&1 &
 else
-    log "starting Hyprland with Omarchy's configuration"
     hyprland ${ROOT_FLAG} >>"$LOG" 2>&1 &
 fi
 HYPRLAND_PID=$!
@@ -155,9 +178,13 @@ done
 }
 
 # --- the display/input bridge ---------------------------------------------------------
+# --ishwl-socket is passed explicitly: the bridge defaults it to $WAYLAND_DISPLAY, which is
+# Hyprland's socket by now (see above), and it then excludes that socket from the candidates
+# it tries as "Hyprland" -- so it looked at ishwl's sockets only and never found the
+# compositor. ISHWL_DISPLAY was captured before WAYLAND_DISPLAY was overwritten.
 if command -v omarchy-pad-bridge >/dev/null 2>&1; then
-    log "starting omarchy-pad-bridge"
-    omarchy-pad-bridge >>"$LOG" 2>&1 &
+    log "starting omarchy-pad-bridge (ishwl socket $ISHWL_DISPLAY, hyprland socket $WAYLAND_DISPLAY)"
+    omarchy-pad-bridge --ishwl-socket "$ISHWL_DISPLAY" >>"$LOG" 2>&1 &
     log "bridge pid $!"
     status "the desktop is on screen"
 else

@@ -151,8 +151,17 @@ static void handle_line(struct server *s, char *line) {
 #undef ARGI
 }
 
-static int events_readable(int fd, uint32_t mask, void *data) {
-    struct server *s = data;
+/* Reads whatever the host has written and handles every complete line.
+ *
+ * Called both from the event loop and, unconditionally, from the tick: in the app guest the
+ * event loop is not woken by the host's writes. Data written by the app's long-lived writer
+ * fd sat unread in the FIFO (visible as its buffer size) while epoll said nothing, so the
+ * session the canvas asked for was never started. Draining on the tick costs one non-blocking
+ * read per frame period and does not depend on the emulator's readiness plumbing. */
+void events_drain(struct server *s) {
+    int fd = s->events_fd;
+    if (fd < 0)
+        return;
     for (;;) {
         ssize_t n = read(fd, s->event_buf + s->event_len, sizeof(s->event_buf) - 1 - s->event_len);
         if (n <= 0)
@@ -170,6 +179,12 @@ static int events_readable(int fd, uint32_t mask, void *data) {
         if (s->event_len == sizeof(s->event_buf) - 1)
             s->event_len = 0; /* an absurdly long line: drop it */
     }
+}
+
+static int events_readable(int fd, uint32_t mask, void *data) {
+    (void) fd;
+    (void) mask;
+    events_drain(data);
     return 0;
 }
 

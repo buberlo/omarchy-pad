@@ -172,6 +172,8 @@ static void reap_children(struct server *s) {
 }
 
 static void tick(struct server *s) {
+    /* Unconditionally: the emulator's event loop does not wake on the host's writes (bridge.c). */
+    events_drain(s);
     if (!wl_list_empty(&s->orphan_callbacks))
         surface_send_frame_done(&s->orphan_callbacks, now_ms());
     struct view *v;

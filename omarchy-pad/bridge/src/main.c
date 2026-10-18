@@ -300,9 +300,11 @@ void bp_pump(struct bp *b) {
     }
 
     if (b->capturing) {
-        /* copy_with_damage legitimately waits for damage, so the timeout only guards the
-         * first frame: a compositor that never renders must not leave the window empty. */
-        if (b->frames == 0 && b->capture_ms && now - b->capture_ms >= BP_CAPTURE_TIMEOUT_MS) {
+        /* A request that produced nothing at all must not hold the stream: with a full copy
+         * every request completes within a frame or two, so this is a safety net rather than
+         * the normal path. It used to guard only the first frame, which let a wedged request
+         * freeze the canvas for good. */
+        if (b->capture_ms && now - b->capture_ms >= BP_CAPTURE_TIMEOUT_MS) {
             blog(b, "no screencopy frame after %llu ms", (unsigned long long) (now - b->capture_ms));
             hypr_abort_capture(b, "screencopy timeout");
             b->next_capture_ms = now + BP_RETRY_MS;

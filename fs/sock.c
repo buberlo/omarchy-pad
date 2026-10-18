@@ -1136,7 +1136,9 @@ int_t sys_setsockopt(fd_t sock_fd, dword_t level, dword_t option, addr_t value_a
         // guest's intent is honoured even when the host will not store it; refusing the
         // call made hyprctl abort on every request ("Couldn't set socket timeout"), which
         // took the compositor's own readiness checks with it.
-        if (level == SOL_SOCKET_ && (option == SO_RCVTIMEO_ || option == SO_SNDTIMEO_))
+        bool timeout_opt = option == SO_RCVTIMEO_ || option == SO_SNDTIMEO_ ||
+                           option == SO_RCVTIMEO_LINUX_ || option == SO_SNDTIMEO_LINUX_;
+        if (level == SOL_SOCKET_ && timeout_opt)
             return 0;
         return errno_map();
     }

@@ -19,6 +19,7 @@
 #include <unistd.h>
 
 static bool hypr_ipc(struct bp *b, const char *cmd, char *reply, size_t reply_size);
+static bool hypr_reply_is_error(const char *reply);
 
 static void raise_socket_buffers(int fd) {
     /* iSH's sockets are Darwin sockets with 8 KiB buffers (see wl-bridge/DESIGN.md); a
@@ -166,7 +167,18 @@ static void frame_buffer(void *data, struct zwlr_screencopy_frame_v1 *f, uint32_
         return;
     }
     b->cap_buf = buf;
-    zwlr_screencopy_frame_v1_copy_with_damage(f, buf->hypr);
+    /* A full copy, not copy_with_damage.
+     *
+     * copy_with_damage lets the compositor skip the copy until something changes, which
+     * sounds like the right trade for a desktop -- but it also means a request completes
+     * only for damage Hyprland counts as output damage. Cursor motion (injected from the
+     * iPad) did not, so a pending request sat unanswered while the pointer moved and the
+     * canvas kept showing an old frame; when the whole screen was static for long enough,
+     * the stream froze until some window appeared. The desktop here runs at the rate the
+     * iPad acks frames (~1 fps under the interpreter), so a full copy per frame costs what
+     * the damage-driven path cost anyway and always reflects the compositor's current
+     * output. The damage event is still recorded, for the log and for the stats. */
+    zwlr_screencopy_frame_v1_copy(f, buf->hypr);
     hflush(b);
 }
 
@@ -328,24 +340,39 @@ void hypr_resize_output(struct bp *b, int32_t w, int32_t h) {
     blog(b, "resizing %s to %dx%d", b->output_name, w, h);
 
     /* Hyprland's own IPC socket, the same request hyprctl sends; the fork/exec path is
-     * only the fallback (hyprctl cannot always set its socket timeouts under iSH). */
-    char cmd[256], reply[512] = "";
-    snprintf(cmd, sizeof(cmd), "keyword monitor %s", spec);
-    if (hypr_ipc(b, cmd, reply, sizeof(reply))) {
-        blog(b, "hyprland ipc: '%s' -> %s", cmd, reply);
+     * only the fallback (hyprctl cannot always set its socket timeouts under iSH).
+     *
+     * Hyprland 0.56 configures itself with Lua, and its IPC rejects `keyword` for a
+     * non-legacy parser ("keyword can't work with non-legacy parsers. Use eval.") -- which
+     * is how the iPad's size was silently ignored and the canvas kept a 1280x800 frame
+     * stretched into a 1024x1366 window. `eval` runs Lua in the compositor, so the monitor
+     * is configured through the same API Omarchy's own monitors.lua uses. `keyword` stays
+     * as the fallback for a legacy-parser compositor. */
+    char eval[320], reply[512] = "";
+    snprintf(eval, sizeof(eval),
+             "eval hl.monitor({ output = \"%s\", mode = \"%dx%d@60\", position = \"0x0\", scale = 1 })",
+             b->output_name, w, h);
+    if (hypr_ipc(b, eval, reply, sizeof(reply)) && !hypr_reply_is_error(reply)) {
+        blog(b, "hyprland ipc: '%s' -> %s", eval, reply);
     } else {
-        char *argv[8];
-        int n = 0;
-        argv[n++] = (char *) "hyprctl";
-        if (b->hypr_instance[0]) {
-            argv[n++] = (char *) "--instance";
-            argv[n++] = b->hypr_instance;
+        char cmd[256];
+        snprintf(cmd, sizeof(cmd), "keyword monitor %s", spec);
+        if (hypr_ipc(b, cmd, reply, sizeof(reply)) && !hypr_reply_is_error(reply)) {
+            blog(b, "hyprland ipc: '%s' -> %s", cmd, reply);
+        } else {
+            blog(b, "hyprland ipc could not resize the output (%s); trying hyprctl", reply);
+            char *argv[8];
+            int n = 0;
+            argv[n++] = (char *) "hyprctl";
+            if (b->hypr_instance[0]) {
+                argv[n++] = (char *) "--instance";
+                argv[n++] = b->hypr_instance;
+            }
+            argv[n++] = (char *) "eval";
+            argv[n++] = eval + 5; /* past "eval " */
+            argv[n] = NULL;
+            bp_spawn(b, argv, "hyprctl eval");
         }
-        argv[n++] = (char *) "keyword";
-        argv[n++] = (char *) "monitor";
-        argv[n++] = spec;
-        argv[n] = NULL;
-        bp_spawn(b, argv, "hyprctl keyword monitor");
     }
     /* The mode change lands asynchronously; give it a moment before capturing again. */
     b->next_capture_ms = bp_now() + 250;
@@ -643,6 +670,14 @@ int hypr_connect(struct bp *b) {
 }
 
 /* --- hyprctl IPC (no fork/exec under the emulator) --- */
+
+/* Hyprland answers a request it could not carry out with text, not with a failed read:
+ * "keyword can't work with non-legacy parsers. Use eval." or "Invalid dispatcher". Treat
+ * the words it uses for a refusal as a failure so the caller can fall back. */
+static bool hypr_reply_is_error(const char *reply) {
+    return strstr(reply, "can't work") || strstr(reply, "Invalid") || strstr(reply, "error") ||
+           strstr(reply, "Error") || strstr(reply, "unknown") || strstr(reply, "not found");
+}
 
 static bool hypr_ipc(struct bp *b, const char *cmd, char *reply, size_t reply_size) {
     if (!b->hypr_instance[0])

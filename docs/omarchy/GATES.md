@@ -17,10 +17,9 @@ kept space-free anyway.
 | 0.3 | Guest graphics capability | **pass** | `work/omarchy-pad/evidence/gate-0.3/gpu-probe.txt`: `/dev/dri/renderD128` exists; **zink on Venus works** (`zink Vulkan 1.4(Virtio-GPU Venus (Apple M3 Pro) (MOLTENVK))`) and reports **GLES 2.0**, becoming **GLES 3.0 with `MESA_GLES_VERSION_OVERRIDE=3.0`**; llvmpipe reports **GLES 3.2** as the software fallback |
 | 0.4 | Hyprland renders a frame with a headless output | **in progress** | `installation/omarchy/hyprland-pad/`: patches written and applied on Hyprland 0.56.2 + Aquamarine 0.15.1 (headless render-node fd + SHM allocator; EGL device from the render node; shm render target with readback). Packages built: `work/omarchy-pad/gate-0.4/pkgs/{aquamarine-pad-0.15.1-1,hyprland-pad-0.56.2-1}-aarch64.pkg.tar.zst`. They are now baked into the image by `installation/omarchy/build-image.sh`. |
 | 0.5 | Systemd-less Omarchy session (supervisor, shims, Quickshell) | **partial** | `work/omarchy-pad/evidence/gate-0.5/session-probe.txt`: init starts the buses/daemons, and every shim answers (systemctl verbs, systemd-run, systemd-cat, uwsm-app, journalctl, loginctl, hostnamectl, timedatectl, udevadm, ufw, bluetoothctl, rfkill, brightnessctl). **`omarchy-hw-platform` now answers `aarch64`** after the procfs magic-link fix below. Quickshell itself is next. |
-| 0.6 | `omarchy-pad-bridge`: screencopy frames into ishwl + input injection | **in progress** | `work/omarchy-pad/evidence/gate-0.6/`: builds clean (libwayland-client, libm, libc only); against the compositor-side mock the whole chain is proven (screencopy pixels into the ishwl view buffer, virtual-pointer/button/axis/key requests, resize). Run `06-run5-real` drives the real patched Hyprland; the key-into-foot witness is still missing. |
-| 0.8 | Simulator end-to-end + performance/memory numbers | **partial** | `work/omarchy-pad/evidence/gate-0.8-app/`: the app builds (device + simulator), 408 DesktopKit tests pass, and in the simulator it **imports the Arch/Omarchy rootfs and boots Linux** (`[boot] import_seconds=14.55`, `boot_seconds=18.48`) and shows the canvas — currently `Starting Omarchy…`, waiting for the bridge's `omarchy-pad` toplevel. |
-| 0.7 | iPad text input / IME into the guest | open | |
-| 0.8 | Simulator end-to-end + performance/memory numbers | open | |
+| 0.6 | `omarchy-pad-bridge`: screencopy frames into ishwl + input injection | **pass** | `work/omarchy-pad/evidence/gate-0.6/`: mock-compositor chain, real-Hyprland chain, and `on-screen/` — a clean app boot of image `202610180603` in the Simulator puts the whole desktop on the canvas: session started by the app's own launch request, Hyprland on `wayland-1`, Omarchy's Quickshell shell mapped as the `omarchy-bar` layer, a **real `foot` window composited into the frame** (with Hyprland's border and the cursor) at the iPad's own 1024x1366 size. |
+| 0.7 | iPad text input / IME into the guest | **partial** | the pointer path is proven end to end: `motion 1 700 900` on the app's own events channel leaves the composited cursor at x 700..711, y 901..920 in the captured frame (`on-screen/on-screen-clean-boot.txt`). Keyboard/IME from the canvas is not measured yet. |
+| 0.8 | Simulator end-to-end + performance/memory numbers | **partial** | the app builds (device + simulator), 408 DesktopKit tests pass, it imports the Arch/Omarchy rootfs and boots Linux (`import_seconds=14.55`, `boot_seconds=18.48`), starts the session, and shows the running desktop. Measured: **~1 fps** at 1024x1366 (467 frames in ~8 minutes), 5.5 MB per frame, `capture_failures=0`. Memory/CPU numbers and the device run are still open. |
 
 ## Engine changes carried or made so far
 
@@ -53,6 +52,49 @@ kept space-free anyway.
   and `configure` resizes the output through Hyprland's IPC. Real-Hyprland throughput under
   emulation is ~0.7–1 fps at 1280x800 (the mock path does ~40 fps): the render path is the
   Phase-2 performance work. Evidence in `work/omarchy-pad/evidence/gate-0.6/`.
+
+### 0.6 on screen — the desktop in the app (image `202610180603`)
+
+A clean run: install the app, let it import the image it carries, launch it, and do nothing
+else. The canvas shows the Omarchy desktop. Five bugs stood between the previous run (a
+black window, "Starting Omarchy…" forever) and this one, all found by watching the guest
+from the Mac through the launch channel (`installation/omarchy/send-guest-cmd.py`):
+
+1. **The capture froze when nothing changed.** `copy_with_damage` completes a request only
+   for damage Hyprland counts as output damage, and cursor motion did not: a pending request
+   sat unanswered while the pointer moved, and the canvas kept an old frame. The bridge now
+   takes a **full copy** every frame (`hypr.c`), and the pending-request timeout applies to
+   every request instead of only the first, so a wedged request cannot freeze the stream.
+2. **`hyprctl` could not talk to the compositor.** It sets `SO_RCVTIMEO`/`SO_SNDTIMEO` with
+   the *Linux* option numbers (20/21); iSH only knew its own historical numbers (66/67), so
+   the call failed with EINVAL and hyprctl aborted every request — the compositor's readiness
+   checks and Omarchy's own tooling along with it (`fs/sock.h`, `fs/sock.c`).
+3. **The session's clients attached to the wrong compositor.** ishwl owns `wayland-0`, and
+   Hyprland inherits the session's environment, so everything Hyprland started — Omarchy's
+   shell through `autostart.lua`, every `exec-once`, every app — connected to *ishwl* instead
+   of to Hyprland. Nothing appeared in the composited output. The session now clears stale
+   sockets and starts Hyprland on an explicit `wayland-1`, which its children inherit.
+4. **The bridge looked for Hyprland on the wrong socket too.** It defaults `--ishwl-socket`
+   to `$WAYLAND_DISPLAY`, which is now Hyprland's, and then excludes that name from the
+   candidates it tries as the compositor. The session passes `--ishwl-socket` explicitly and
+   captures the value before it replaces `WAYLAND_DISPLAY`.
+5. **The iPad's size was ignored.** `hyprctl keyword monitor …` is refused by Hyprland 0.56
+   ("keyword can't work with non-legacy parsers. Use eval."), so the output stayed at the
+   placeholder 1280x800 and the canvas stretched it. The bridge now sends
+   `eval hl.monitor({ output = …, mode = …, position = "0x0", scale = 1 })` over Hyprland's
+   IPC socket, with `keyword` and then `hyprctl` as fallbacks, and rejects a reply that
+   contains Hyprland's own words for a refusal.
+
+What the run proves, in one line: the app's own `spawn` starts the session; Hyprland answers
+in 4 s on `wayland-1`; the bridge resizes the output to the iPad's 1024x1366 and presents
+frames at ~1 fps with `capture_failures=0`; Omarchy's shell is mapped as the `omarchy-bar`
+layer (26 px, full width); a real `foot` window appears in the canvas with Hyprland's border
+and the composited cursor; and `motion 1 700 900` through the app's own events channel leaves
+the cursor at exactly 700,900 in the captured frame.
+
+Still open here: the bar's widget content and the wallpaper are not painted yet (the bar's
+background band is), and the frames are one-tenth of a second-per-frame short of usable —
+Phase 2 work.
 
 ## Known image facts
 

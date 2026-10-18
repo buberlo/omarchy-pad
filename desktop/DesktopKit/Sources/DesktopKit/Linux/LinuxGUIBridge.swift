@@ -874,9 +874,18 @@ private final class DisplayLinkTarget: NSObject {
 }
 
 /// Line reader for the notify FIFO, on its own thread so the main thread never waits
-/// on the guest. It polls with a timeout so `stop()` can end it; the FIFO is opened
-/// O_RDWR and so never reports EOF.
+/// on the guest.
+///
+/// It reads on every pass instead of waiting for `poll` to report the FIFO readable: in the
+/// app guest the readiness notification never arrives for the other side's writes. ishwl
+/// announced the Omarchy surface (417 bytes) into the notify FIFO and `poll` stayed silent,
+/// so the canvas never learned about the window it was waiting for; the same silence in the
+/// guest's event loop left the canvas's own `spawn` unread in the events FIFO. Reading
+/// unconditionally is one syscall per period and works whether or not the emulator reports
+/// readiness. A read of 0 (no writer at this instant) is not the end: the FIFO is opened
+/// O_RDWR, and ishwl restarting must not kill the reader.
 private final class FIFOLineReader: @unchecked Sendable {
+    private static let logger = Logger(subsystem: "DesktopKit", category: "LinuxGUI")
     private let fd: Int32
     private let deliver: @Sendable ([String]) -> Void
     private let stopped = OSAllocatedUnfairLock(initialState: false)
@@ -899,11 +908,17 @@ private final class FIFOLineReader: @unchecked Sendable {
         var pending = [UInt8]()
         var buffer = [UInt8](repeating: 0, count: 16 * 1024)
         while !stopped.withLock({ $0 }) {
+            // Sleep briefly when there is nothing to read, so an idle session does not spin.
             var pfd = pollfd(fd: fd, events: Int16(POLLIN), revents: 0)
-            guard poll(&pfd, 1, 500) > 0 else { continue }
+            _ = poll(&pfd, 1, 100)
             let count = buffer.withUnsafeMutableBytes { read(fd, $0.baseAddress, $0.count) }
-            if count < 0 && errno == EINTR { continue }
-            guard count > 0 else { return }
+            if count < 0 {
+                // Nothing to read right now (or a signal): keep the reader alive.
+                if errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR { continue }
+                Self.logger.error("notify read failed: \(String(cString: strerror(errno)), privacy: .public)")
+                return
+            }
+            if count == 0 { continue }
             pending.append(contentsOf: buffer[0..<count])
             guard let lastNewline = pending.lastIndex(of: 0x0A) else { continue }
             let complete = pending[...lastNewline]

@@ -231,6 +231,13 @@ static inline int sock_flags_from_real(int real) {
 #define SO_DOMAIN_ 39
 #define SO_RCVTIMEO_ 66
 #define SO_SNDTIMEO_ 67
+// The Linux ABI numbers for the same two options. iSH's own headers have always used 66/67
+// and binaries built against them keep working; everything built against real Linux headers
+// (Arch, Alpine, Debian) sends 20/21, and 66/67-only handling turned those calls into EINVAL
+// -- which is what made hyprctl abort every request ("Couldn't set socket timeout") and with
+// it the compositor's readiness checks and Omarchy's own tooling.
+#define SO_RCVTIMEO_LINUX_ 20
+#define SO_SNDTIMEO_LINUX_ 21
 #define IP_TOS_ 1
 #define IP_TTL_ 2
 #define IP_HDRINCL_ 3
@@ -264,8 +271,8 @@ static inline int sock_opt_to_real(int fake, int level) {
             case SO_SNDBUF_: return SO_SNDBUF;
             case SO_RCVBUF_: return SO_RCVBUF;
             case SO_TIMESTAMP_: return SO_TIMESTAMP;
-            case SO_RCVTIMEO_: return SO_RCVTIMEO;
-            case SO_SNDTIMEO_: return SO_SNDTIMEO;
+            case SO_RCVTIMEO_: case SO_RCVTIMEO_LINUX_: return SO_RCVTIMEO;
+            case SO_SNDTIMEO_: case SO_SNDTIMEO_LINUX_: return SO_SNDTIMEO;
             case SO_REUSEPORT_: return SO_REUSEPORT;
         } break;
         case IPPROTO_TCP: switch (fake) {
