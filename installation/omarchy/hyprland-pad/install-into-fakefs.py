@@ -105,11 +105,41 @@ class Fakefs:
                 continue
             yield name
 
+    def package_modes(self, pkg):
+        """Guest path -> tar permission bits.
+
+        The extraction happens through bsdtar on the host, so a file's mode on disk is the
+        tar's mode filtered by the host umask: binaries came out 0644, iSH registered that,
+        and the guest then answered "Permission denied" for e.g. hyprctl -- which broke every
+        Omarchy script that shells out to it. The tar is the authority, so take the bits from
+        there and put them on the extracted file as well.
+        """
+        modes = {}
+        out = subprocess.run(["bsdtar", "-tvf", pkg], capture_output=True, text=True, check=True).stdout
+        for line in out.splitlines():
+            parts = line.split()
+            if len(parts) < 9:
+                continue
+            perms, name = parts[0], parts[-1]
+            if name.startswith("./"):
+                name = name[2:]
+            if not name or perms[0] not in "-dl":
+                continue
+            bits = 0
+            for i, ch in enumerate(perms[1:10]):
+                if ch in "rwxstT":
+                    bits |= {0: 0o400, 1: 0o200, 2: 0o100, 3: 0o040, 4: 0o020, 5: 0o010,
+                             6: 0o004, 7: 0o002, 8: 0o001}[i]
+            modes[name] = bits
+        return modes
+
     def install_package(self, pkg):
         # hardlinked members share the real inode after extraction: register the first
         # path normally and point the rest at that same inode.
         seen = {}
         before = (self.added, self.updated, self.skipped)
+        modes = self.package_modes(pkg)
+        fixed_modes = 0
 
         for name in self.package_paths(pkg):
             guest = "/" + name
@@ -119,6 +149,15 @@ class Fakefs:
                 self.skipped += 1
                 print(f"  !! {guest}: not on disk after extraction (skipped)")
                 continue
+
+            # Give the extracted file the mode the package declares: the host umask otherwise
+            # strips the executable bits and the guest cannot run it (see package_modes).
+            want = modes.get(name)
+            if want is not None and statmod.S_ISREG(os.lstat(real).st_mode):
+                have = statmod.S_IMODE(os.lstat(real).st_mode)
+                if have != want:
+                    os.chmod(real, want)
+                    fixed_modes += 1
 
             st = os.lstat(real)
             key = (st.st_dev, st.st_ino)
@@ -132,7 +171,8 @@ class Fakefs:
             self.register(guest, mode_for(real))
 
         print(f"  {os.path.basename(pkg)}: {self.added - before[0]} new, "
-              f"{self.updated - before[1]} updated, {self.skipped - before[2]} skipped")
+              f"{self.updated - before[1]} updated, {self.skipped - before[2]} skipped, "
+              f"{fixed_modes} mode(s) fixed from the package")
 
     def register_file(self, path, mode=None):
         """Register a file that was copied into FS/data by hand.

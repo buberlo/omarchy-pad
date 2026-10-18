@@ -36,7 +36,7 @@ def main() -> int:
     ap.add_argument("command")
     ap.add_argument("--events")
     args = ap.parse_args()
-    events = args.events or default_events()
+    events = args.events or os.environ.get("OMARCHY_EVENTS") or default_events()
     if not os.path.exists(events):
         print(f"no events FIFO at {events} (is the app running?)", file=sys.stderr)
         return 1
