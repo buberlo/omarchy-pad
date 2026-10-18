@@ -1,0 +1,109 @@
+#!/bin/sh
+# PID 1 for the Omarchy Pad root.
+#
+# systemd cannot run under the iSH emulator (no cgroups, no /proc/self/cgroup, no
+# unshare/setns, no kobject-uevent netlink, and mount() rejects everything outside a
+# short flag list), so this script is what /sbin/init points at. It brings up the
+# non-session pieces once and then only reaps: the kernel treats PID 1 exiting as a
+# complete shutdown.
+#
+# The desktop itself is not started here. The iOS app's canvas launches
+# `omarchy-pad-session` through ishwl's spawn channel once the Linux system is up, so a
+# session can be restarted (and later shown in the app) without rebooting the guest.
+
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH
+export HOME=/root USER=root LOGNAME=root SHELL=/bin/sh
+export OMARCHY_PATH=/usr/share/omarchy
+export XDG_RUNTIME_DIR=/run/user/0
+
+RUNDIR=/run/omarchy-pad
+LOG=$RUNDIR/init.log
+mkdir -p "$RUNDIR" "$XDG_RUNTIME_DIR" /run/dbus /dev/shm /tmp /var/tmp
+chmod 700 "$XDG_RUNTIME_DIR"
+: >"$LOG"
+
+log() { printf '%s %s\n' "$(date -u +%H:%M:%S)" "$*" >>"$LOG"; }
+
+log "omarchy-pad-init starting (pid $$)"
+
+# Self-heal the executable bits: the image tar carries them, but the fakefs importer's
+# regular-file path did not preserve them in the first app import (ishwl spawned
+# omarchy-pad-session and the child exited 127 because the guest saw it non-executable).
+chmod 755 /usr/local/bin/omarchy-pad-* /usr/local/bin/ishwl /usr/local/bin/ishwl-launch /usr/local/bin/ishwl-session /usr/local/lib/omarchy-pad/shim 2>/dev/null || true
+
+# --- buses ---------------------------------------------------------------------------
+# A system bus is what polkitd, NetworkManager, UPower and power-profiles-daemon expect;
+# the session bus is what every Omarchy script and Quickshell use. Neither needs systemd.
+if command -v dbus-daemon >/dev/null 2>&1; then
+    mkdir -p /run/dbus
+    if [ ! -S /run/dbus/system_bus_socket ]; then
+        dbus-daemon --system --fork --nopidfile >>"$LOG" 2>&1 || log "system bus failed"
+    fi
+    if [ ! -S "$XDG_RUNTIME_DIR/bus" ]; then
+        dbus-daemon --session --fork --address="unix:path=$XDG_RUNTIME_DIR/bus" >>"$LOG" 2>&1 ||
+            log "session bus failed"
+    fi
+    printf 'unix:path=%s/bus\n' "$XDG_RUNTIME_DIR" >"$RUNDIR/dbus-address"
+    export DBUS_SESSION_BUS_ADDRESS="unix:path=$XDG_RUNTIME_DIR/bus"
+else
+    log "no dbus-daemon; the session will start without a bus"
+fi
+
+# --- system daemons ------------------------------------------------------------------
+# These live outside PATH (Arch installs them as libexec-style helpers), so each is named
+# by absolute path and skipped when the package is not in the image. Supervised restarts
+# are deliberately out of scope: a daemon that dies is logged, not resurrected, because the
+# v1 failure policy is "say so in the app", not "hide it".
+start_daemon() {
+    name=$1
+    shift
+    if ! command -v "$1" >/dev/null 2>&1; then
+        log "not installed: $name"
+        return 0
+    fi
+    "$@" >>"$RUNDIR/$name.log" 2>&1 &
+    log "started $name as pid $!"
+}
+
+start_daemon networkmanager NetworkManager --no-daemon
+start_daemon polkitd /usr/lib/polkit-1/polkitd --no-debug
+start_daemon upowerd /usr/lib/upower/upowerd
+start_daemon power-profiles-daemon /usr/lib/power-profiles-daemon
+
+# --- audio ---------------------------------------------------------------------------
+# PipeWire first, then the session manager, then the PulseAudio protocol server that the
+# iOS audio bridge and most applications speak to.
+start_daemon pipewire pipewire
+sleep 1
+start_daemon wireplumber wireplumber
+start_daemon pipewire-pulse pipewire-pulse
+start_daemon rtkit-daemon /usr/lib/rtkit-daemon
+
+log "init ready; waiting for a session launch"
+
+# Launch requests. ishwl's own spawn path cannot execve in this emulator build (every
+# existing path fails with ENOTDIR; see docs/omarchy/GATES.md), while this supervisor's
+# fork/exec works -- it starts every daemon above the same way. Session launches therefore
+# arrive here over a FIFO, and ishwl writes a request instead of exec'ing.
+LAUNCH_FIFO=$RUNDIR/launch
+rm -f "$LAUNCH_FIFO"
+mkfifo "$LAUNCH_FIFO" 2>/dev/null || log "could not create $LAUNCH_FIFO"
+(
+    # Every writer closing ends the inner read loop with EOF; the outer loop reopens the
+    # FIFO (blocking until the next writer) so the channel survives ishwl restarts and any
+    # gap between requests. Without it the first launch would also be the last.
+    while :; do
+        while IFS= read -r cmd; do
+            [ -n "$cmd" ] || continue
+            log "launch request: $cmd"
+            # cmd is the path of a self-deleting launcher script ishwl wrote; it carries
+            # ishwl's environment, which this supervisor does not share.
+            setsid sh -c "$cmd" >>"$RUNDIR/launched.log" 2>&1 &
+        done <"$LAUNCH_FIFO"
+    done
+) &
+log "launch channel ready at $LAUNCH_FIFO"
+while :; do
+    wait
+done

@@ -55,3 +55,7 @@ gpu/sim-root.txt
 gpu/sim-udid.txt
 /site/dist/
 __pycache__/
+
+# Local work tree: guest images, guest tools, staged apps, gate evidence and logs. The
+# scripts in installation/omarchy rebuild all of it (the image alone is ~900 MB).
+/work/

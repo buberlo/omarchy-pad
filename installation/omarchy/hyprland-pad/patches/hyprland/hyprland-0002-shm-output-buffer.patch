@@ -1,0 +1,224 @@
+diff --git a/src/render/Framebuffer.cpp b/src/render/Framebuffer.cpp
+index 4b8d392..5f04856 100644
+--- a/src/render/Framebuffer.cpp
++++ b/src/render/Framebuffer.cpp
+@@ -65,3 +65,8 @@ void IFramebuffer::setImageDescription(NColorManagement::PImageDescription desc)
+     else
+         Log::logger->log(Log::TRACE, "CM: FIXME no framebuffer texture");
+ }
++
++bool IFramebuffer::readPixelsToBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t offsetX, uint32_t offsetY, uint32_t width, uint32_t height) {
++    Log::logger->log(Log::ERR, "Framebuffer \"{}\" cannot read pixels into a CPU visible buffer", m_name);
++    return false;
++}
+diff --git a/src/render/Framebuffer.hpp b/src/render/Framebuffer.hpp
+index 215e5ed..5724de5 100644
+--- a/src/render/Framebuffer.hpp
++++ b/src/render/Framebuffer.hpp
+@@ -4,6 +4,7 @@
+ #include "../helpers/Format.hpp"
+ #include "Texture.hpp"
+ #include "../helpers/cm/ColorManagement.hpp"
++#include <aquamarine/buffer/Buffer.hpp>
+ #include <cstdint>
+ #include <drm_fourcc.h>
+ 
+@@ -19,6 +20,9 @@ namespace Render {
+         virtual bool                        alloc(int w, int h, DRMFormat format = DRM_FORMAT_ARGB8888);
+         virtual void                        release()                                                                                                                  = 0;
+         virtual bool                        readPixels(CHLBufferReference buffer, uint32_t offsetX = 0, uint32_t offsetY = 0, uint32_t width = 0, uint32_t height = 0) = 0;
++        // Copy out of this framebuffer into a buffer that is only CPU visible (no dmabuf to
++        // hand to the GPU); not every renderer can do that.
++        virtual bool                        readPixelsToBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t offsetX = 0, uint32_t offsetY = 0, uint32_t width = 0, uint32_t height = 0);
+ 
+         virtual void                        bind() = 0;
+ 
+diff --git a/src/render/GLRenderer.cpp b/src/render/GLRenderer.cpp
+index 07fc4c0..0cea6f7 100644
+--- a/src/render/GLRenderer.cpp
++++ b/src/render/GLRenderer.cpp
+@@ -22,7 +22,10 @@
+ #include "./gl/GLTexture.hpp"
+ 
+ #include <cstdint>
++#include <cstdlib>
+ #include <string_view>
++#include <fcntl.h>
++#include <unistd.h>
+ #include <hyprutils/memory/SharedPtr.hpp>
+ #include <hyprutils/memory/UniquePtr.hpp>
+ #include <hyprutils/utils/ScopeGuard.hpp>
+@@ -82,6 +85,65 @@ bool CHyprGLRenderer::initRenderBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t
+     return !!m_currentRenderbuffer;
+ }
+ 
++// Gate evidence helper: dump the raw contents of a CPU visible output buffer so that a
++// frame can be inspected from outside the compositor. No-op unless HYPR_PAD_SHM_DUMP is set.
++static void dumpShmFrame(const Aquamarine::SSHMAttrs& shm, const uint8_t* data) {
++    static const auto PATH = getenv("HYPR_PAD_SHM_DUMP");
++    if (!PATH || !*PATH || !data || shm.stride <= 0)
++        return;
++
++    const auto LEN = sc<size_t>(shm.stride) * sc<size_t>(shm.size.y);
++
++    const int  FD = open(PATH, O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0644);
++    if (FD < 0) {
++        Log::logger->log(Log::ERR, "shm: cannot open {} to dump a frame", PATH);
++        return;
++    }
++
++    size_t written = 0;
++    while (written < LEN) {
++        const auto N = write(FD, data + written, LEN - written);
++        if (N <= 0)
++            break;
++        written += sc<size_t>(N);
++    }
++
++    close(FD);
++
++    Log::logger->log(Log::DEBUG, "shm: dumped {} bytes of the output buffer to {}", written, PATH);
++}
++
++void CHyprGLRenderer::copyCurrentBufferToShm() {
++    if (!m_currentRenderbuffer)
++        return;
++
++    const auto BUFFER = m_currentRenderbuffer->m_hlBuffer.lock();
++    if (!BUFFER || BUFFER->type() != Aquamarine::BUFFER_TYPE_SHM)
++        return;
++
++    const auto SHM = BUFFER->shm();
++    if (!SHM.success) {
++        Log::logger->log(Log::ERR, "shm: output buffer has no CPU mapping, the frame is lost");
++        return;
++    }
++
++    // OpenGL::end() (already run above) resets renderData.currentFB, so ask the
++    // renderbuffer for the framebuffer the frame was just rendered into.
++    const auto FB = m_currentRenderbuffer->getFB();
++    if (!FB) {
++        Log::logger->log(Log::ERR, "shm: no framebuffer to copy the frame out of");
++        return;
++    }
++
++    if (!FB->readPixelsToBuffer(BUFFER, 0, 0, sc<uint32_t>(SHM.size.x), sc<uint32_t>(SHM.size.y))) {
++        Log::logger->log(Log::ERR, "shm: failed to copy the frame into the output buffer");
++        return;
++    }
++
++    const auto DATA = std::get<0>(BUFFER->beginDataPtr(0));
++    dumpShmFrame(SHM, DATA);
++}
++
+ bool CHyprGLRenderer::beginFullFakeRenderInternal(PHLMONITOR pMonitor, CRegion& damage, SP<IFramebuffer> fb, bool simple) {
+     initRender();
+ 
+@@ -129,8 +191,14 @@ void CHyprGLRenderer::endRender(const std::function<void()>& renderingDoneCallba
+     if (m_renderMode == RENDER_MODE_FULL_FAKE)
+         return;
+ 
+-    if (m_renderMode == RENDER_MODE_NORMAL)
++    if (m_renderMode == RENDER_MODE_NORMAL) {
++        // A CPU visible output buffer has no dmabuf for anyone to consume, so the frame has
++        // to leave the renderer here, while it is still current and before the renderbuffer
++        // is released by the scope guard above.
++        copyCurrentBufferToShm();
++
+         PMONITOR->m_output->state->setBuffer(m_currentBuffer);
++    }
+ 
+     if (!explicitSyncSupported()) {
+         Log::logger->log(Log::TRACE, "renderer: Explicit sync unsupported, falling back to implicit in endRender");
+diff --git a/src/render/GLRenderer.hpp b/src/render/GLRenderer.hpp
+index 784dc66..ac92097 100644
+--- a/src/render/GLRenderer.hpp
++++ b/src/render/GLRenderer.hpp
+@@ -46,6 +46,8 @@ namespace Render::GL {
+         bool                 beginFullFakeRenderInternal(PHLMONITOR pMonitor, CRegion& damage, SP<IFramebuffer> fb, bool simple = false) override;
+         void                 initRender() override;
+         bool                 initRenderBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t fmt) override;
++        // Copies the frame out of the GL framebuffer into a CPU visible output buffer.
++        void                 copyCurrentBufferToShm();
+ 
+         SP<ITexture>         getBlurTexture(PHLMONITORREF pMonitor) override;
+ 
+diff --git a/src/render/gl/GLFramebuffer.cpp b/src/render/gl/GLFramebuffer.cpp
+index 695b578..9a47695 100644
+--- a/src/render/gl/GLFramebuffer.cpp
++++ b/src/render/gl/GLFramebuffer.cpp
+@@ -134,6 +134,10 @@ void CGLFramebuffer::release() {
+ }
+ 
+ bool CGLFramebuffer::readPixels(CHLBufferReference buffer, uint32_t offsetX, uint32_t offsetY, uint32_t width, uint32_t height) {
++    return readPixelsToBuffer(buffer.m_buffer, offsetX, offsetY, width, height);
++}
++
++bool CGLFramebuffer::readPixelsToBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t offsetX, uint32_t offsetY, uint32_t width, uint32_t height) {
+     auto shm = buffer->shm();
+     if (!shm.success) {
+         LOGM(Log::ERR, "Can't copy: buffer is not shm");
+diff --git a/src/render/gl/GLFramebuffer.hpp b/src/render/gl/GLFramebuffer.hpp
+index 1927504..84a6744 100644
+--- a/src/render/gl/GLFramebuffer.hpp
++++ b/src/render/gl/GLFramebuffer.hpp
+@@ -15,6 +15,7 @@ namespace Render::GL {
+         void   addStencil(SP<ITexture> tex) override;
+         void   release() override;
+         bool   readPixels(CHLBufferReference buffer, uint32_t offsetX = 0, uint32_t offsetY = 0, uint32_t width = 0, uint32_t height = 0) override;
++        bool   readPixelsToBuffer(SP<Aquamarine::IBuffer> buffer, uint32_t offsetX = 0, uint32_t offsetY = 0, uint32_t width = 0, uint32_t height = 0) override;
+ 
+         void   bind() override;
+         void   unbind();
+diff --git a/src/render/gl/GLRenderbuffer.cpp b/src/render/gl/GLRenderbuffer.cpp
+index 794d035..e6c45dc 100644
+--- a/src/render/gl/GLRenderbuffer.cpp
++++ b/src/render/gl/GLRenderbuffer.cpp
+@@ -34,6 +34,32 @@ CGLRenderbuffer::~CGLRenderbuffer() {
+ CGLRenderbuffer::CGLRenderbuffer(SP<Aquamarine::IBuffer> buffer, uint32_t format) : IRenderbuffer(buffer, format) {
+     auto dma = buffer->dmabuf();
+ 
++    // Some outputs (aquamarine's headless backend, and any host whose renderer cannot
++    // import dmabufs) hand us CPU visible buffers instead of dmabufs. There is no
++    // EGLImage to build here: render into a texture and copy it back when the frame is
++    // presented, see CHyprGLRenderer::copyCurrentBufferToShm().
++    if (buffer->type() == Aquamarine::BUFFER_TYPE_SHM) {
++        const auto FORMAT = format == DRM_FORMAT_INVALID ? DRM_FORMAT_XRGB8888 : format;
++
++        m_framebuffer              = makeShared<CGLFramebuffer>();
++        m_framebuffer->m_size      = buffer->size;
++        m_framebuffer->m_drmFormat = FORMAT;
++
++        if (!m_framebuffer->alloc(buffer->size.x, buffer->size.y, FORMAT)) {
++            Log::logger->log(Log::ERR, "rb: failed to allocate a framebuffer for a shm buffer");
++            return;
++        }
++
++        // the texture starts out undefined, and damage tracking may only render part of it
++        m_framebuffer->bind();
++        GLFB(m_framebuffer)->clearAfterInvalidation();
++        GLFB(m_framebuffer)->unbind();
++
++        m_shmBacked = true;
++        m_good      = true;
++        return;
++    }
++
+     m_image = g_pHyprOpenGL->createEGLImage(dma);
+     if (m_image == EGL_NO_IMAGE_KHR) {
+         Log::logger->log(Log::ERR, "rb: createEGLImage failed");
+diff --git a/src/render/gl/GLRenderbuffer.hpp b/src/render/gl/GLRenderbuffer.hpp
+index 4e60431..bf399e4 100644
+--- a/src/render/gl/GLRenderbuffer.hpp
++++ b/src/render/gl/GLRenderbuffer.hpp
+@@ -14,7 +14,8 @@ namespace Render::GL {
+         void unbind() override;
+ 
+       private:
+-        void*  m_image = nullptr;
+-        GLuint m_rbo   = 0;
++        void*  m_image     = nullptr;
++        GLuint m_rbo       = 0;
++        bool   m_shmBacked = false; // rendered into a texture, copied back over the CPU
+     };
+ }

@@ -1,0 +1,534 @@
+diff --git a/include/aquamarine/allocator/Allocator.hpp b/include/aquamarine/allocator/Allocator.hpp
+index 2dc1ee5..fd14130 100644
+--- a/include/aquamarine/allocator/Allocator.hpp
++++ b/include/aquamarine/allocator/Allocator.hpp
+@@ -17,6 +17,7 @@ namespace Aquamarine {
+     enum eAllocatorType {
+         AQ_ALLOCATOR_TYPE_GBM = 0,
+         AQ_ALLOCATOR_TYPE_DRM_DUMB,
++        AQ_ALLOCATOR_TYPE_SHM, // CPU (memfd) buffers, no dmabuf representation
+     };
+ 
+     class IAllocator {
+diff --git a/include/aquamarine/allocator/SHM.hpp b/include/aquamarine/allocator/SHM.hpp
+new file mode 100644
+index 0000000..8555935
+--- /dev/null
++++ b/include/aquamarine/allocator/SHM.hpp
+@@ -0,0 +1,67 @@
++#pragma once
++
++#include "Allocator.hpp"
++
++namespace Aquamarine {
++    class CSHMAllocator;
++    class CBackend;
++    class CSwapchain;
++
++    // A CPU-visible buffer backed by an anonymous file (memfd) mapped into our address
++    // space. It has no dmabuf representation at all: the only way in and out of it is
++    // the CPU mapping. This is what a headless output uses when the host has no KMS
++    // device to scan out from, and when importing/graphics-mapping dmabufs is
++    // impossible (no EGL_EXT_image_dma_buf_import on the renderer).
++    class CSHMBuffer : public IBuffer {
++      public:
++        virtual ~CSHMBuffer();
++
++        virtual eBufferCapability                      caps();
++        virtual eBufferType                            type();
++        virtual void                                   update(const Hyprutils::Math::CRegion& damage);
++        virtual bool                                   isSynchronous();
++        virtual bool                                   good();
++        virtual SSHMAttrs                              shm();
++        virtual std::tuple<uint8_t*, uint32_t, size_t> beginDataPtr(uint32_t flags);
++        virtual void                                   endDataPtr();
++
++      private:
++        CSHMBuffer(const SAllocatorBufferParams& params, Hyprutils::Memory::CWeakPointer<CSHMAllocator> allocator_,
++                   Hyprutils::Memory::CSharedPointer<CSwapchain> swapchain);
++
++        Hyprutils::Memory::CWeakPointer<CSHMAllocator> allocator;
++
++        //
++        int        fd     = -1; // owned
++        uint8_t*   data   = nullptr;
++        size_t     len    = 0;
++        SSHMAttrs  attrs{.success = false};
++
++        friend class CSHMAllocator;
++    };
++
++    class CSHMAllocator : public IAllocator {
++      public:
++        ~CSHMAllocator();
++        static Hyprutils::Memory::CSharedPointer<CSHMAllocator> create(Hyprutils::Memory::CWeakPointer<CBackend> backend_);
++
++        virtual Hyprutils::Memory::CSharedPointer<IBuffer>          acquire(const SAllocatorBufferParams& params, Hyprutils::Memory::CSharedPointer<CSwapchain> swapchain_);
++        virtual Hyprutils::Memory::CSharedPointer<CBackend>         getBackend();
++        // CPU-only buffers do not belong to any DRM node.
++        virtual int                                                 drmFD();
++        virtual eAllocatorType                                      type();
++
++        //
++        Hyprutils::Memory::CWeakPointer<CSHMAllocator> self;
++
++      private:
++        CSHMAllocator(Hyprutils::Memory::CWeakPointer<CBackend> backend_);
++
++        // a vector purely for tracking (debugging) the buffers and nothing more
++        std::vector<Hyprutils::Memory::CWeakPointer<CSHMBuffer>> buffers;
++
++        Hyprutils::Memory::CWeakPointer<CBackend>                backend;
++
++        friend class CSHMBuffer;
++    };
++};
+diff --git a/include/aquamarine/backend/Backend.hpp b/include/aquamarine/backend/Backend.hpp
+index bd55c7c..d06d3c2 100644
+--- a/include/aquamarine/backend/Backend.hpp
++++ b/include/aquamarine/backend/Backend.hpp
+@@ -180,6 +180,8 @@ namespace Aquamarine {
+ 
+         struct {
+             int                                                                       fd = -1;
++            // Gate 0.4: set when fd is one end of a pipe instead of a timerfd
++            int                                                                       wr = -1;
+             std::vector<Hyprutils::Memory::CSharedPointer<std::function<void(void)>>> pending;
+         } idle;
+ 
+diff --git a/include/aquamarine/backend/Headless.hpp b/include/aquamarine/backend/Headless.hpp
+index 5945b00..1ae15e4 100644
+--- a/include/aquamarine/backend/Headless.hpp
++++ b/include/aquamarine/backend/Headless.hpp
+@@ -64,6 +64,14 @@ namespace Aquamarine {
+         Hyprutils::Memory::CWeakPointer<CBackend>                       backend;
+         std::vector<Hyprutils::Memory::CSharedPointer<CHeadlessOutput>> outputs;
+ 
++        // Gate 0.4: headless outputs are backed by CPU (memfd) buffers, see SHM.cpp.
++        // AQ_HEADLESS_GBM=1 restores the old "primary (GBM) allocator" behaviour.
++        Hyprutils::Memory::CSharedPointer<IAllocator>                   headlessAllocator();
++
++        Hyprutils::Memory::CSharedPointer<IAllocator>                   shmAllocator;
++        int                                                             drmNodeFD = -1;
++        bool                                                            drmNodeTried = false;
++
+         size_t                                                          outputIDCounter = 0;
+ 
+         class CTimer {
+diff --git a/src/allocator/SHM.cpp b/src/allocator/SHM.cpp
+new file mode 100644
+index 0000000..2e4be0b
+--- /dev/null
++++ b/src/allocator/SHM.cpp
+@@ -0,0 +1,196 @@
++#include <aquamarine/allocator/SHM.hpp>
++#include <aquamarine/backend/Backend.hpp>
++#include <aquamarine/allocator/Swapchain.hpp>
++#include "FormatUtils.hpp"
++#include <cerrno>
++#include <cstdio>
++#include <cstdlib>
++#include <cstring>
++#include <fcntl.h>
++#include <sys/mman.h>
++#include <unistd.h>
++
++#ifndef MFD_CLOEXEC
++#define MFD_CLOEXEC 0x0001U
++#endif
++
++using namespace Aquamarine;
++using namespace Hyprutils::Memory;
++#define SP CSharedPointer
++
++static constexpr uint32_t BYTES_PER_PIXEL = 4;
++
++// A 32-bit packed format is all a CPU-mapped buffer needs to be describable; the
++// renderer reads the pixels through the same fourcc it asked for.
++static uint32_t sanitizeFormat(uint32_t format) {
++    return format == DRM_FORMAT_INVALID ? DRM_FORMAT_XRGB8888 : format;
++}
++
++static size_t bufferLength(const Hyprutils::Math::Vector2D& size) {
++    return sc<size_t>(size.x) * sc<size_t>(size.y) * BYTES_PER_PIXEL;
++}
++
++// memfd_create is the point of this allocator, but it is not always available (old
++// kernels, sandboxes); an unlinked file in /dev/shm behaves identically for our use.
++static int createAnonymousFile(size_t len) {
++    int fd = -1;
++
++#ifdef __linux__
++    fd = memfd_create("aquamarine-shm", MFD_CLOEXEC);
++#endif
++
++    if (fd < 0) {
++        char path[] = "/dev/shm/aquamarine-shm-XXXXXX";
++        if (access("/dev/shm", W_OK) != 0)
++            snprintf(path, sizeof(path), "/tmp/aquamarine-shm-XXXXXX");
++
++        fd = mkstemp(path);
++        if (fd >= 0) {
++            unlink(path);
++            fcntl(fd, F_SETFD, FD_CLOEXEC);
++        }
++    }
++
++    if (fd < 0)
++        return -1;
++
++    if (ftruncate(fd, sc<off_t>(len))) {
++        close(fd);
++        return -1;
++    }
++
++    return fd;
++}
++
++Aquamarine::CSHMBuffer::CSHMBuffer(const SAllocatorBufferParams& params, Hyprutils::Memory::CWeakPointer<CSHMAllocator> allocator_,
++                                   Hyprutils::Memory::CSharedPointer<CSwapchain> swapchain) : allocator(allocator_) {
++    if (!allocator)
++        return;
++
++    const auto FORMAT = sanitizeFormat(params.format);
++
++    attrs.size   = params.size;
++    attrs.format = FORMAT;
++    attrs.stride = sc<int>(params.size.x) * BYTES_PER_PIXEL;
++    attrs.offset = 0;
++    size         = attrs.size;
++
++    len = bufferLength(attrs.size);
++    if (len == 0) {
++        allocator->backend->log(AQ_LOG_ERROR, std::format("SHM: refusing to allocate a {} buffer", attrs.size));
++        return;
++    }
++
++    fd = createAnonymousFile(len);
++    if (fd < 0) {
++        allocator->backend->log(AQ_LOG_ERROR, std::format("SHM: failed to create a {} byte anonymous file: {}", len, strerror(errno)));
++        return;
++    }
++
++    data = sc<uint8_t*>(mmap(nullptr, len, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0));
++    if (data == MAP_FAILED) {
++        data = nullptr;
++        allocator->backend->log(AQ_LOG_ERROR, std::format("SHM: failed to map a {} byte buffer: {}", len, strerror(errno)));
++        return;
++    }
++
++    // start from black, not from uninitialized pages
++    memset(data, 0, len);
++
++    attrs.success = true;
++    attrs.fd      = fd;
++
++    allocator->backend->log(AQ_LOG_DEBUG,
++                            std::format("SHM: allocated a new buffer with size {} and format {} (stride {}, {} bytes, fd {})", attrs.size, fourccToName(attrs.format), attrs.stride,
++                                        len, fd));
++}
++
++Aquamarine::CSHMBuffer::~CSHMBuffer() {
++    if (data)
++        munmap(data, len);
++
++    if (fd >= 0)
++        close(fd);
++
++    events.destroy.emit();
++}
++
++eBufferCapability Aquamarine::CSHMBuffer::caps() {
++    return Aquamarine::eBufferCapability::BUFFER_CAPABILITY_DATAPTR;
++}
++
++eBufferType Aquamarine::CSHMBuffer::type() {
++    return Aquamarine::eBufferType::BUFFER_TYPE_SHM;
++}
++
++void Aquamarine::CSHMBuffer::update(const Hyprutils::Math::CRegion& damage) {
++    ;
++}
++
++bool Aquamarine::CSHMBuffer::isSynchronous() {
++    return true;
++}
++
++bool Aquamarine::CSHMBuffer::good() {
++    return attrs.success && data;
++}
++
++SSHMAttrs Aquamarine::CSHMBuffer::shm() {
++    return attrs;
++}
++
++std::tuple<uint8_t*, uint32_t, size_t> Aquamarine::CSHMBuffer::beginDataPtr(uint32_t flags) {
++    return {data, attrs.format, len};
++}
++
++void Aquamarine::CSHMBuffer::endDataPtr() {
++    ;
++}
++
++Aquamarine::CSHMAllocator::CSHMAllocator(Hyprutils::Memory::CWeakPointer<CBackend> backend_) : backend(backend_) {
++    ;
++}
++
++Aquamarine::CSHMAllocator::~CSHMAllocator() {
++    ;
++}
++
++SP<CSHMAllocator> Aquamarine::CSHMAllocator::create(Hyprutils::Memory::CWeakPointer<CBackend> backend_) {
++    auto allocator = SP<CSHMAllocator>(new CSHMAllocator(backend_));
++
++    allocator->self = allocator;
++
++    backend_->log(AQ_LOG_DEBUG, "Created a SHM allocator");
++
++    return allocator;
++}
++
++SP<IBuffer> Aquamarine::CSHMAllocator::acquire(const SAllocatorBufferParams& params, SP<CSwapchain> swapchain_) {
++    if (params.size.x < 1 || params.size.y < 1) {
++        backend->log(AQ_LOG_ERROR, std::format("SHM: couldn't allocate a buffer with invalid size {}", params.size));
++        return nullptr;
++    }
++
++    auto newBuffer = SP<CSHMBuffer>(new CSHMBuffer(params, self, swapchain_));
++
++    if (!newBuffer->good()) {
++        backend->log(AQ_LOG_ERROR, std::format("SHM: couldn't allocate a buffer with size {} and format {}", params.size, fourccToName(params.format)));
++        return nullptr;
++    }
++
++    buffers.emplace_back(newBuffer);
++    std::erase_if(buffers, [](const auto& b) { return b.expired(); });
++    return newBuffer;
++}
++
++Hyprutils::Memory::CSharedPointer<CBackend> Aquamarine::CSHMAllocator::getBackend() {
++    return backend.lock();
++}
++
++int Aquamarine::CSHMAllocator::drmFD() {
++    return -1;
++}
++
++eAllocatorType Aquamarine::CSHMAllocator::type() {
++    return AQ_ALLOCATOR_TYPE_SHM;
++}
+diff --git a/src/backend/Backend.cpp b/src/backend/Backend.cpp
+index dbd7147..fd1bae3 100644
+--- a/src/backend/Backend.cpp
++++ b/src/backend/Backend.cpp
+@@ -4,9 +4,14 @@
+ #include <aquamarine/backend/DRM.hpp>
+ #include <aquamarine/backend/Null.hpp>
+ #include <aquamarine/allocator/GBM.hpp>
++#include <aquamarine/allocator/SHM.hpp>
+ #include <hyprutils/os/FileDescriptor.hpp>
++#include <algorithm>
++#include <cerrno>
++#include <cstdlib>
+ #include <ranges>
+ #include <sys/timerfd.h>
++#include <sys/utsname.h>
+ #include <ctime>
+ #include <cstring>
+ #include <xf86drm.h>
+@@ -18,6 +23,24 @@
+ using namespace Hyprutils::Memory;
+ using namespace Hyprutils::OS;
+ using namespace Aquamarine;
++
++// Gate 0.4: iSH (the usermode Linux emulator this fork targets) has a timerfd that
++// deadlocks against itself, see the comment in CBackend::create(). Detect it from uname
++// so that everything built on aquamarine works there without extra environment.
++// AQ_HEADLESS_NO_TIMERFD=1 forces the workaround, AQ_HEADLESS_TIMERFD=1 disables it.
++static bool noTimerfd() {
++    if (getenv("AQ_HEADLESS_NO_TIMERFD"))
++        return true;
++
++    if (getenv("AQ_HEADLESS_TIMERFD"))
++        return false;
++
++    struct utsname uts = {};
++    if (uname(&uts) != 0)
++        return false;
++
++    return strstr(uts.release, "-ish") != nullptr;
++}
+ #define SP CSharedPointer
+ 
+ #define TIMESPEC_NSEC_PER_SEC 1000000000LL
+@@ -103,8 +126,24 @@ Hyprutils::Memory::CSharedPointer<CBackend> Aquamarine::CBackend::create(const s
+         }
+     }
+ 
+-    // create a timerfd for idle events
+-    backend->idle.fd = timerfd_create(CLOCK_MONOTONIC, TFD_CLOEXEC);
++    // Gate 0.4: iSH's emulated timerfd deadlocks. sys_timerfd_settime() holds fd->lock and
++    // then takes the timer lock, while timerfd_callback() runs on the timer thread holding
++    // the timer lock and takes fd->lock (kernel/time.c + util/timer.c). Idle events are
++    // posted on every iteration the compositor loop has deferred work, so that race is hit
++    // within seconds and the whole compositor freezes. A pipe carries the same "there is
++    // idle work" notification and never touches the timer subsystem.
++    if (noTimerfd()) {
++        int fds[2] = {-1, -1};
++        if (pipe2(fds, O_CLOEXEC | O_NONBLOCK) == 0) {
++            backend->idle.fd = fds[0];
++            backend->idle.wr = fds[1];
++        } else {
++            backend->log(AQ_LOG_ERROR, std::format("backend: failed to create the idle pipe: {}, using a timerfd", strerror(errno)));
++        }
++    }
++
++    if (backend->idle.fd < 0)
++        backend->idle.fd = timerfd_create(CLOCK_MONOTONIC, TFD_CLOEXEC);
+ 
+     return backend;
+ }
+@@ -173,6 +212,17 @@ bool Aquamarine::CBackend::start() {
+         }
+     }
+ 
++    if (!primaryAllocator) {
++        // Gate 0.4: a headless-only backend has no DRM fd, but it does not need one:
++        // headless outputs are rendered into CPU (memfd) buffers (see SHM.cpp). Give the
++        // backend an allocator anyway so that every primaryAllocator consumer keeps
++        // working, instead of failing with "no allocator available".
++        const bool HEADLESS = std::ranges::any_of(implementations, [](const auto& i) { return i->type() == AQ_BACKEND_HEADLESS; });
++
++        if (HEADLESS)
++            primaryAllocator = CSHMAllocator::create(self);
++    }
++
+     if (!primaryAllocator && (implementations.empty() || implementations.at(0)->type() != AQ_BACKEND_NULL)) {
+         log(AQ_LOG_CRITICAL, "Cannot open backend: no allocator available");
+         return false;
+@@ -269,6 +319,17 @@ void Aquamarine::CBackend::addIdleEvent(SP<std::function<void(void)>> fn) {
+ }
+ 
+ void Aquamarine::CBackend::updateIdleTimer() {
++    if (idle.wr >= 0) {
++        // Gate 0.4 pipe mode: just wake the loop up; an empty queue needs no timer at all.
++        if (idle.pending.empty())
++            return;
++
++        const char byte = 'i';
++        if (write(idle.wr, &byte, 1) < 0 && errno != EAGAIN)
++            log(AQ_LOG_ERROR, std::format("backend: failed to signal the idle pipe: {}", strerror(errno)));
++        return;
++    }
++
+     uint64_t ADD_NS = idle.pending.empty() ? TIMESPEC_NSEC_PER_SEC * 240ULL /* 240s, 4 mins */ : 0;
+ 
+     timespec now;
+diff --git a/src/backend/Headless.cpp b/src/backend/Headless.cpp
+index 179b850..a4a5d68 100644
+--- a/src/backend/Headless.cpp
++++ b/src/backend/Headless.cpp
+@@ -1,6 +1,8 @@
+ #include <aquamarine/backend/Headless.hpp>
++#include <aquamarine/allocator/SHM.hpp>
+ #include <fcntl.h>
+ #include <algorithm>
++#include <cstdlib>
+ #include <ctime>
+ #include <sys/timerfd.h>
+ #include <cstring>
+@@ -76,6 +78,19 @@ void Aquamarine::CHeadlessOutput::scheduleFrame(const scheduleFrameReason reason
+ 
+     frameScheduled = true;
+ 
++    // Gate 0.4: iSH's emulated timerfd deadlocks. sys_timerfd_settime() holds fd->lock
++    // and then waits for the timer lock, while timerfd_callback() runs from the timer
++    // thread holding the timer lock and waits for fd->lock (kernel/time.c, util/timer.c).
++    // The first re-arm of a frame timer therefore freezes the compositor for good.
++    // With AQ_HEADLESS_NO_TIMERFD=1 frames are rendered on the next idle event instead,
++    // which is unpaced but never touches timerfd.
++    static const auto NO_TIMERFD = getenv("AQ_HEADLESS_NO_TIMERFD") != nullptr;
++
++    if (NO_TIMERFD) {
++        backend->backend->addIdleEvent(framecb);
++        return;
++    }
++
+     // schedule next frame when it should occur with a timer
+     int64_t refreshRatemHz = 60000;
+     auto&   currentState   = state->state();
+@@ -131,11 +146,50 @@ std::vector<SP<SPollFD>> Aquamarine::CHeadlessBackend::pollFDs() {
+ }
+ 
+ int Aquamarine::CHeadlessBackend::drmFD() {
++    // A headless backend has no KMS device: nothing can be scanned out and there is no
++    // card node to modeset. Reporting -1 keeps every DRM/GBM consumer away from us.
+     return -1;
+ }
+ 
+ int Aquamarine::CHeadlessBackend::drmRenderNodeFD() {
+-    return -1;
++    if (drmNodeTried)
++        return drmNodeFD;
++
++    drmNodeTried = true;
++
++    // Gate 0.4: on hosts that only expose a render node (no card0) the compositor still
++    // needs *a* DRM fd to create its EGL/GBM context, so hand it the render node.
++    const char* env  = getenv("AQ_HEADLESS_DRM_NODE");
++    const char* path = env && *env ? env : "/dev/dri/renderD128";
++
++    drmNodeFD = open(path, O_RDWR | O_CLOEXEC);
++    if (drmNodeFD < 0) {
++        backend->log(AQ_LOG_WARNING, std::format("headless: cannot open DRM node {} ({}), continuing without one", path, strerror(errno)));
++        return -1;
++    }
++
++    backend->log(AQ_LOG_DEBUG, std::format("headless: using DRM node {}", path));
++    return drmNodeFD;
++}
++
++Hyprutils::Memory::CSharedPointer<IAllocator> Aquamarine::CHeadlessBackend::headlessAllocator() {
++    if (shmAllocator)
++        return shmAllocator;
++
++    // Gate 0.4: headless output buffers are never scanned out, they are only ever read
++    // back over the CPU, so GBM/dmabuf allocation buys us nothing and costs us an
++    // EGLImage import the renderer may not support. Use CPU buffers instead.
++    static const auto FORCE_GBM = getenv("AQ_HEADLESS_GBM") != nullptr;
++
++    if (!FORCE_GBM) {
++        shmAllocator = CSHMAllocator::create(backend);
++        if (shmAllocator)
++            return shmAllocator;
++
++        backend->log(AQ_LOG_ERROR, "headless: failed to create a SHM allocator, falling back to the primary allocator");
++    }
++
++    return backend->primaryAllocator;
+ }
+ 
+ bool Aquamarine::CHeadlessBackend::dispatchEvents() {
+@@ -200,7 +254,7 @@ bool Aquamarine::CHeadlessBackend::createOutput(const std::string& name) {
+     auto output = SP<CHeadlessOutput>(new CHeadlessOutput(outputName, self.lock()));
+     outputs.emplace_back(output);
+     output->modes.emplace_back(SP<SOutputMode>(new SOutputMode(Vector2D{1920, 1080}, 60000, true)));
+-    output->swapchain = CSwapchain::create(backend->primaryAllocator, self.lock());
++    output->swapchain = CSwapchain::create(headlessAllocator(), self.lock());
+     output->self      = output;
+     backend->events.newOutput.emit(SP<IOutput>(output));
+ 
+@@ -249,11 +303,11 @@ void Aquamarine::CHeadlessBackend::addTimer(std::chrono::steady_clock::time_poin
+ }
+ 
+ SP<IAllocator> Aquamarine::CHeadlessBackend::preferredAllocator() {
+-    return backend->primaryAllocator;
++    return headlessAllocator();
+ }
+ 
+ std::vector<SP<IAllocator>> Aquamarine::CHeadlessBackend::getAllocators() {
+-    return {backend->primaryAllocator};
++    return {headlessAllocator()};
+ }
+ 
+ Hyprutils::Memory::CWeakPointer<IBackendImplementation> Aquamarine::CHeadlessBackend::getPrimary() {

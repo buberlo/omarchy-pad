@@ -1,0 +1,290 @@
+#!/bin/sh
+# Multi-call shim for the systemd-shaped commands Omarchy's scripts call.
+#
+# Installed once and symlinked under every name in the list at the bottom, it dispatches on
+# $0. The desktop is supervised by omarchy-pad-init instead of systemd, and user "units" are
+# started on demand from their .service files, so what these commands need to answer is:
+#
+#   systemctl --user  import-environment / daemon-reload / enable --now / start / stop /
+#                     restart / try-restart / reset-failed / is-active / is-enabled /
+#                     show-environment / show -p MainPID --value / list-timers --output=json
+#   systemd-run       --on-active= / --on-calendar= / --scope / --property= / --wait / --user
+#   systemd-cat       exec the command after --
+#   uwsm-app          exec the command (30 Omarchy scripts launch applications through it)
+#   journalctl        no journal exists; empty output, success
+#   loginctl          no logind; plausible empty answers
+#   hostnamectl       set-hostname writes /etc/hostname
+#   timedatectl       list-timezones from the zoneinfo tree; set-timezone links /etc/localtime
+#   udevadm, ufw, bluetoothctl, rfkill   no device manager, no firewall, no radio: no-ops
+#
+# Every call is appended to /run/omarchy-pad/shims.log so the app's diagnostics can show what
+# Omarchy asked for and what it was told.
+
+RUNDIR=/run/omarchy-pad
+UNITDIR=$RUNDIR/units
+SHIMLOG=$RUNDIR/shims.log
+mkdir -p "$UNITDIR" 2>/dev/null || true
+
+name=$(basename "$0")
+{
+    printf '%s %s' "$(date -u +%H:%M:%S)" "$name"
+    for a in "$@"; do printf ' %s' "$a"; done
+    printf '\n'
+} >>"$SHIMLOG" 2>/dev/null || true
+
+unit_file() { # unit_file NAME -> path or empty
+    for dir in "$HOME/.config/systemd/user" /etc/systemd/user /usr/lib/systemd/user; do
+        if [ -f "$dir/$1.service" ]; then
+            printf '%s\n' "$dir/$1.service"
+            return 0
+        fi
+    done
+    return 1
+}
+
+unit_running() { # unit_running NAME -> pid or empty
+    pidfile=$UNITDIR/$1.pid
+    [ -f "$pidfile" ] || return 1
+    pid=$(cat "$pidfile" 2>/dev/null)
+    [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null && { printf '%s\n' "$pid"; return 0; }
+    return 1
+}
+
+start_unit() { # start_unit NAME
+    if unit_running "$1" >/dev/null; then
+        return 0
+    fi
+    file=$(unit_file "$1") || return 1
+    # One background shell per ExecStart= line. systemd's prefixes (-, @, +, !) are not
+    # meaningful here; the command is run as written, with the session environment.
+    pids=""
+    while IFS= read -r line; do
+        cmd=$(printf '%s\n' "$line" | sed -e 's/^[[:space:]]*//' -e 's/^ExecStart=//' -e 's/^[-@+!:]*//')
+        [ -n "$cmd" ] || continue
+        case $cmd in
+            *%*|*'$'*) : ;; # instantiations and specifiers are left to the caller
+        esac
+        setsid sh -c "$cmd" >>"$RUNDIR/unit-$1.log" 2>&1 &
+        pids="$pids $!"
+    done <<EOF
+$(grep -E '^ExecStart=' "$file")
+EOF
+    pids=$(printf '%s' "$pids" | sed 's/^ //')
+    [ -n "$pids" ] || return 1
+    printf '%s\n' "$pids" >"$UNITDIR/$1.pid"
+    return 0
+}
+
+stop_unit() {
+    pidfile=$UNITDIR/$1.pid
+    [ -f "$pidfile" ] || return 0
+    for pid in $(cat "$pidfile"); do
+        kill -TERM "-$pid" 2>/dev/null || kill -TERM "$pid" 2>/dev/null
+    done
+    rm -f "$pidfile"
+    return 0
+}
+
+case $name in
+    systemctl)
+        user=0
+        args=""
+        verb=""
+        for a in "$@"; do
+            case $a in
+                --user) user=1 ;;
+                --system) ;;
+                --*) ;;
+                *)
+                    if [ -z "$verb" ]; then verb=$a; else args="$args $a"; fi
+                    ;;
+            esac
+        done
+        [ -n "$verb" ] || exit 0
+        first_unit=$(printf '%s' "$args" | sed 's/^ *//' | cut -d' ' -f1)
+        case $verb in
+            import-environment)
+                # Omarchy calls this so user units inherit the session environment. There is
+                # no user manager to import into; the supervisor's environment is the session.
+                exit 0
+                ;;
+            show-environment)
+                printf 'OMARCHY_PATH=%s\n' "${OMARCHY_PATH:-/usr/share/omarchy}"
+                printf 'XDG_RUNTIME_DIR=%s\n' "${XDG_RUNTIME_DIR:-/run/user/0}"
+                exit 0
+                ;;
+            unset-environment|daemon-reload|reset-failed|cancel|kill)
+                exit 0
+                ;;
+            list-timers)
+                case " $* " in
+                    *--output=json*) printf '[]\n' ;;
+                esac
+                exit 0
+                ;;
+            show)
+                case " $* " in
+                    *MainPID*) printf '0\n' ;;
+                esac
+                exit 0
+                ;;
+            is-active)
+                for u in $args; do
+                    if unit_running "$u" >/dev/null; then printf 'active\n'; else printf 'inactive\n'; exit 3; fi
+                done
+                exit 0
+                ;;
+            is-enabled)
+                for u in $args; do
+                    if [ -f "$UNITDIR/$u.enabled" ]; then printf 'enabled\n'; else printf 'disabled\n'; exit 1; fi
+                done
+                exit 0
+                ;;
+            enable)
+                for u in $args; do : >"$UNITDIR/$u.enabled"; done
+                case " $* " in
+                    *--now*) for u in $args; do start_unit "$u"; done ;;
+                esac
+                exit 0
+                ;;
+            disable)
+                for u in $args; do rm -f "$UNITDIR/$u.enabled"; done
+                exit 0
+                ;;
+            start|restart|try-restart|reload-or-restart)
+                st=0
+                for u in $args; do
+                    [ "$verb" = restart ] && stop_unit "$u"
+                    start_unit "$u" || st=1
+                done
+                exit $st
+                ;;
+            stop)
+                for u in $args; do stop_unit "$u"; done
+                exit 0
+                ;;
+            status)
+                for u in $args; do
+                    if unit_running "$u" >/dev/null; then
+                        printf '● %s.service - started by omarchy-pad\n     Active: active (running)\n' "$u"
+                        exit 0
+                    fi
+                    printf '○ %s.service - inactive\n' "$u"
+                    exit 3
+                done
+                exit 0
+                ;;
+            *)
+                exit 0
+                ;;
+        esac
+        ;;
+    systemd-run)
+        # Timers become a background sleep; scopes run immediately; everything else is
+        # started and forgotten unless --wait asks for the exit status.
+        delay=0
+        waitfor=0
+        cmd=""
+        for a in "$@"; do
+            case $a in
+                --on-active=*) delay=$(printf '%s' "$a" | sed 's/^--on-active=//; s/[^0-9.]//g') ;;
+                --on-calendar=*) delay=0 ;;
+                --wait) waitfor=1 ;;
+                --*) ;;
+                *) cmd="$cmd $a" ;;
+            esac
+        done
+        cmd=$(printf '%s' "$cmd" | sed 's/^ *//')
+        [ -n "$cmd" ] || exit 0
+        if [ "$waitfor" = 1 ]; then
+            [ "$delay" = 0 ] || sleep "$delay"
+            sh -c "$cmd"
+            exit $?
+        fi
+        if [ "$delay" != 0 ]; then
+            setsid sh -c "sleep $delay; $cmd" >>"$RUNDIR/systemd-run.log" 2>&1 &
+        else
+            setsid sh -c "$cmd" >>"$RUNDIR/systemd-run.log" 2>&1 &
+        fi
+        exit 0
+        ;;
+    systemd-cat)
+        # Options with a separate argument must not be mistaken for the command:
+        # `systemd-cat -t tag cmd …` is how Omarchy launches the shell.
+        while [ $# -gt 0 ]; do
+            case $1 in
+                --) shift; break ;;
+                -t|--identifier|--priority|-p) shift 2 ;;
+                -*) shift ;;
+                *) break ;;
+            esac
+        done
+        [ $# -gt 0 ] && exec "$@"
+        exit 0
+        ;;
+    uwsm-app)
+        [ $# -gt 0 ] && exec "$@"
+        exit 0
+        ;;
+    journalctl)
+        exit 0
+        ;;
+    loginctl)
+        case ${1:-} in
+            show-session|list-sessions|list-users) exit 0 ;;
+            *) exit 0 ;;
+        esac
+        ;;
+    hostnamectl)
+        case ${1:-} in
+            set-hostname) shift; [ $# -gt 0 ] && printf '%s\n' "$1" >/etc/hostname; exit 0 ;;
+            --static|--transient) cat /etc/hostname 2>/dev/null; exit 0 ;;
+            *) printf '   Static hostname: %s\n' "$(cat /etc/hostname 2>/dev/null || echo omarchy-pad)"; exit 0 ;;
+        esac
+        ;;
+    timedatectl)
+        case ${1:-} in
+            list-timezones)
+                (cd /usr/share/zoneinfo 2>/dev/null && find . -type f -not -path './posix/*' -not -path './right/*' \
+                    -not -name 'iso3166.tab' -not -name 'zone.tab' -not -name 'zone1970.tab' -not -name 'leapseconds' \
+                    -not -name 'tzdata.zi' -not -name '+VERSION' | sed 's|^\./||' | sort | head -500)
+                exit 0
+                ;;
+            set-timezone)
+                tz=$2
+                if [ -f "/usr/share/zoneinfo/$tz" ]; then
+                    ln -sf "/usr/share/zoneinfo/$tz" /etc/localtime
+                    printf '%s\n' "$tz" >/etc/timezone
+                    exit 0
+                fi
+                exit 1
+                ;;
+            *)
+                printf '      Local time: %s\n  Time zone: %s\n' "$(date '+%a %Y-%m-%d %H:%M:%S %Z')" "$(cat /etc/timezone 2>/dev/null || echo UTC)"
+                exit 0
+                ;;
+        esac
+        ;;
+    udevadm|ufw)
+        exit 0
+        ;;
+    bluetoothctl)
+        case ${1:-} in
+            show) printf 'Controller 00:00:00:00:00:00 (public)\n\tPowered: no\n\tDiscoverable: no\n'; exit 0 ;;
+            *) exit 0 ;;
+        esac
+        ;;
+    rfkill)
+        case ${1:-} in
+            list) exit 0 ;;
+            *) exit 0 ;;
+        esac
+        ;;
+    brightnessctl)
+        printf 'No backlight device\n' >&2
+        exit 1
+        ;;
+    *)
+        exit 0
+        ;;
+esac

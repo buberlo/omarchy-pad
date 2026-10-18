@@ -1,0 +1,16 @@
+#!/bin/sh
+# One-word diagnostic for ishwl's spawn channel: `omarchy-pad-session` once exited 127
+# through that channel while running fine from a shell, and the fakefs metadata proved the
+# file is present and executable. This writes everything needed to tell the cases apart.
+{
+    echo "date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "argv0: $0"
+    echo "PATH: $PATH"
+    echo "pwd: $(pwd)"
+    echo "id: $(id 2>&1)"
+    echo "--- ls"; ls -l /usr/local/bin/omarchy-pad-session /usr/local/bin/ishwl-launch 2>&1
+    echo "--- command -v"; command -v omarchy-pad-session ishwl-launch sh env 2>&1
+    echo "--- direct run"; /usr/local/bin/omarchy-pad-session --help 2>&1 | head -3
+    echo "--- exec test"; /bin/sh -c 'echo inner-ok' 2>&1
+    echo "probe rc: $?"
+} > /tmp/pad-spawn-probe.out 2>&1

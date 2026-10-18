@@ -1,0 +1,50 @@
+diff --git a/src/Compositor.cpp b/src/Compositor.cpp
+index 1d2d8b9..ffc96e5 100644
+--- a/src/Compositor.cpp
++++ b/src/Compositor.cpp
+@@ -24,6 +24,7 @@
+ #include "state/MonitorState.hpp"
+ #include "state/WorkspaceState.hpp"
+ #include <aquamarine/output/Output.hpp>
++#include <cstdlib>
+ #include <ctime>
+ #include <random>
+ #include <print>
+@@ -376,6 +377,7 @@ void CCompositor::initServer(std::string socketName, int socketFd) {
+ 
+     if (!m_drm.syncobjSupport && !m_drmRenderNode.syncObjSupport)
+         Log::logger->log(Log::DEBUG, "DRM no syncobj support, disabling explicit sync");
++
+ #else
+     Log::logger->log(Log::DEBUG, "DRM syncobj timeline support: no (not linux)");
+ #endif
+@@ -424,6 +426,29 @@ void CCompositor::initServer(std::string socketName, int socketFd) {
+ 
+     initManagers(STAGE_LATE);
+ 
++    // Gate 0.4: Hyprland only creates a headless output on request, normally through
++    // `hyprctl output create headless <name>`. That is not always possible -- iSH does not
++    // implement setsockopt(SO_RCVTIMEO), so hyprctl aborts before it sends anything -- and
++    // HYPR_PAD_HEADLESS_OUTPUT=<name> creates the output instead. Deferred to the first
++    // event loop iteration so every manager exists and the output goes through exactly the
++    // same path as a hotplugged monitor.
++    if (const auto* headlessOutput = getenv("HYPR_PAD_HEADLESS_OUTPUT"); headlessOutput && *headlessOutput) {
++        const std::string HEADLESSNAME = headlessOutput;
++        g_pEventLoopManager->doLater([HEADLESSNAME] {
++            for (auto const& impl : g_pCompositor->m_aqBackend->getImplementations()) {
++                if (impl->type() != Aquamarine::eBackendType::AQ_BACKEND_HEADLESS)
++                    continue;
++
++                if (impl->createOutput(HEADLESSNAME))
++                    Log::logger->log(Log::DEBUG, "Created headless output {} on request", HEADLESSNAME);
++                else
++                    Log::logger->log(Log::ERR, "Failed to create headless output {}", HEADLESSNAME);
++
++                break;
++            }
++        });
++    }
++
+     m_listeners.lock = g_pSessionLockManager->m_events.lock.listen([this] {
+         static int lock_count = 0;
+         // lock_count used to avoid triggering condition on initial forceLock()

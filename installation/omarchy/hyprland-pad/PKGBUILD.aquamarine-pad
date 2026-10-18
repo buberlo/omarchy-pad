@@ -1,0 +1,71 @@
+# Maintainer: Omarchy Pad (gate 0.4) <noreply@example.com>
+#
+# Aquamarine 0.15.1 (the version Omarchy `edge` aarch64 ships) plus the Omarchy Pad
+# gate 0.4 patch:
+#
+#   0001-headless-render-node.patch
+#     - CHeadlessBackend::drmRenderNodeFD() reports a render node (AQ_HEADLESS_DRM_NODE,
+#       default /dev/dri/renderD128) instead of -1, so a compositor on a host with no KMS
+#       card still gets a DRM fd for its EGL context. drmFD() deliberately stays -1:
+#       there is no card node and nothing can be scanned out.
+#     - New CSHMAllocator/CSHMBuffer (memfd + mmap, no dmabuf), used for headless output
+#       swapchains and as CBackend::start()'s last-resort allocator, so a headless-only
+#       backend no longer dies with "no allocator available".
+#     - AQ_HEADLESS_GBM=1 restores the old primary (GBM) allocator behaviour.
+
+pkgname=aquamarine-pad
+pkgver=0.15.1
+pkgrel=1
+pkgdesc='a very light linux rendering backend library (Omarchy Pad: shm headless outputs)'
+arch=(aarch64)
+url="https://github.com/hyprwm/aquamarine"
+license=(BSD-3-Clause)
+depends=(libgcc
+         libstdc++
+         glibc
+         hyprutils
+         libdisplay-info
+         libdrm
+         libglvnd
+         libinput
+         mesa
+         opengl-driver
+         pixman
+         seatd
+         systemd-libs
+         wayland
+         wayland-protocols)
+makedepends=(cmake
+             hyprwayland-scanner)
+provides=("libaquamarine.so" "aquamarine=$pkgver")
+conflicts=(aquamarine)
+_archive="aquamarine-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz"
+        aquamarine-0001-headless-render-node.patch)
+sha256sums=('2f9de98c0bd1b7b1b09c576e390a2fef436449762fb334163c414f0c300296f2'
+            'SKIP')
+
+prepare() {
+	cd "$srcdir/$_archive"
+	patch -Np1 --fuzz=0 -i "$srcdir/aquamarine-0001-headless-render-node.patch"
+}
+
+build() {
+	cd "$srcdir/$_archive"
+	# cc1plus needs more than 8 MiB of stack for DRM.cpp: GCC raises its own limit
+	# natively, but under QEMU user-mode emulation the guest stack is fixed at exec and
+	# setrlimit is ignored, so the compiler segfaults. QEMU reads this at exec; native
+	# builds ignore it.
+	export QEMU_STACK_SIZE=64M
+	cmake -B build \
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		-D CMAKE_SKIP_RPATH=ON \
+		-D CMAKE_BUILD_TYPE=Release
+	cmake --build build
+}
+
+package() {
+	cd "$srcdir/$_archive"
+	DESTDIR="$pkgdir" cmake --install build
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+}

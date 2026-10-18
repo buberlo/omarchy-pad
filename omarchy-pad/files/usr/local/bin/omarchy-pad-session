@@ -1,0 +1,169 @@
+#!/bin/sh
+# Starts the Omarchy desktop inside the running Omarchy Pad guest.
+#
+# Launched by the iOS app's canvas (through ishwl's spawn channel) or by hand:
+#     omarchy-pad-session            Omarchy's own configuration, iPad overrides on top
+#     omarchy-pad-session --minimal  a bare headless Hyprland for bring-up and tests
+#
+# Hyprland owns one headless output; `omarchy-pad-bridge` copies that output into an
+# ishwl surface (the native iPad window) and injects the iPad's input back. Nothing here
+# needs a DRM card, a seat, udev or systemd.
+set -eu
+
+MINIMAL=0
+if [ "${1:-}" = "--minimal" ]; then
+    MINIMAL=1
+fi
+
+RUNDIR=/run/omarchy-pad
+LOG=$RUNDIR/session.log
+mkdir -p "$RUNDIR"
+: >>"$LOG"
+log() { printf '%s %s\n' "$(date -u +%H:%M:%S)" "$*" | tee -a "$LOG"; }
+
+# What the canvas shows while it waits for the desktop's first window, and what it reports
+# when the session gave up. The app reads these as host files of the shared guest
+# filesystem, so they are plain text and never commands.
+STATUS=/tmp/omarchy-pad/status
+ERROR=/tmp/omarchy-pad/error
+mkdir -p /tmp/omarchy-pad
+status() { printf '%s\n' "$*" >"$STATUS" 2>/dev/null || true; }
+fail() {
+    printf '%s\n' "$*" >"$ERROR" 2>/dev/null || true
+    status "$*"
+    log "failed: $*"
+}
+rm -f "$ERROR"
+status "starting Hyprland"
+
+# --- environment ----------------------------------------------------------------------
+export HOME=/root USER=root LOGNAME=root SHELL=/bin/sh
+# The app starts this through ishwl's spawn channel. ishwl hands its own environment over
+# (the supervisor runs the request, so nothing is inherited implicitly), and these are the
+# values it uses -- ishwl-session's XDG_RUNTIME_DIR and ishwl's default socket name -- so a
+# manual run lands on the same compositor. Only an explicit override wins.
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/tmp/xdg-runtime}
+export WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_DESKTOP=Hyprland
+export OMARCHY_PATH=/usr/share/omarchy
+export PATH=$OMARCHY_PATH/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+mkdir -p "$XDG_RUNTIME_DIR" "$XDG_CONFIG_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
+chmod 700 "$XDG_RUNTIME_DIR"
+
+if [ -z "${DBUS_SESSION_BUS_ADDRESS:-}" ] && [ -r "$RUNDIR/dbus-address" ]; then
+    DBUS_SESSION_BUS_ADDRESS=$(cat "$RUNDIR/dbus-address")
+    export DBUS_SESSION_BUS_ADDRESS
+fi
+
+# Omarchy/Quickshell expect a handful of variables and prefer Wayland for every toolkit.
+export GDK_BACKEND=wayland,x11,*
+export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export NO_AT_BRIDGE=1 GTK_A11Y=none GIO_USE_VFS=local
+
+# Software rendering is allowed because the guest's GL is a render node driven by zink on
+# Venus; Hyprland's own software classification patch is what Omarchy ships.
+export WLR_RENDERER_ALLOW_SOFTWARE=1
+# Hyprland refuses to run as root without this flag. There is no login session, no seat and
+# no privilege boundary to protect inside the emulator, and the whole guest runs as root
+# (the same choice LinPad's Alpine session makes), so the flag is the honest answer.
+ROOT_FLAG=""
+if [ "$(id -u)" = 0 ]; then
+    ROOT_FLAG=--i-am-really-stupid
+fi
+# Hyprland needs a GLES 3.0 context. The guest's GPU is Mesa's zink on Venus, which reports
+# ES 2.0 unless the version is overridden; with the override the context is genuinely 3.0
+# and Hyprland's shaders compile. (LinPad's Alpine session does the same for its apps.)
+export MESA_GLES_VERSION_OVERRIDE=${MESA_GLES_VERSION_OVERRIDE:-3.0}
+# The patched Hyprland creates its headless output from this variable rather than from a
+# monitor rule: `monitor = HEADLESS-1, …` alone does not create it, and hyprctl cannot be
+# relied on inside the emulator. The bridge also creates the output over Hyprland's IPC if
+# it is missing, so either path gets there.
+export HYPR_PAD_HEADLESS_OUTPUT=${HYPR_PAD_HEADLESS_OUTPUT:-HEADLESS-1}
+# The timerfd deadlock fix is in the engine now; the workaround stays available for older
+# builds, and the patched aquamarine detects iSH by itself.
+export AQ_HEADLESS_NO_TIMERFD=${AQ_HEADLESS_NO_TIMERFD:-1}
+# The GPU hook the image ships: Venus ICD, zink, software WSI. Sourced with an if, not an
+# `A && B` list: under `set -e` a missing file would end the script silently, which is
+# exactly how the first device run lost its session.
+if [ -r /etc/profile.d/gpu.sh ]; then
+    . /etc/profile.d/gpu.sh
+fi
+
+# --- the compositor -------------------------------------------------------------------
+if [ "$MINIMAL" = 0 ]; then
+    # Omarchy's provisioning normally seeds the owner's configuration; this image may have
+    # booted without it, so make the session self-healing rather than start Hyprland with no
+    # config at all. -n never overwrites anything already there.
+    mkdir -p "$HOME/.config/hypr" "$HOME/.local/state/omarchy/toggles/hypr"
+    [ -d "$OMARCHY_PATH/config/hypr" ] && cp -rn "$OMARCHY_PATH/config/hypr/." "$HOME/.config/hypr/" 2>/dev/null || true
+    for t in no-animations window-opaque; do
+        [ -f "$OMARCHY_PATH/default/hypr/toggles/$t.lua" ] &&
+            cp -n "$OMARCHY_PATH/default/hypr/toggles/$t.lua" "$HOME/.local/state/omarchy/toggles/hypr/" 2>/dev/null || true
+    done
+fi
+
+if [ "$MINIMAL" = 1 ]; then
+    CONFIG=/usr/share/omarchy-pad/hyprland-pad.conf
+    log "starting Hyprland with the bring-up config $CONFIG"
+    hyprland ${ROOT_FLAG} -c "$CONFIG" >>"$LOG" 2>&1 &
+else
+    log "starting Hyprland with Omarchy's configuration"
+    hyprland ${ROOT_FLAG} >>"$LOG" 2>&1 &
+fi
+HYPRLAND_PID=$!
+log "hyprland pid $HYPRLAND_PID"
+
+# Wait for the compositor to answer before the bridge connects: the shell in Omarchy does
+# exactly this (bin/omarchy-launch-shell), and it is the only reliable readiness signal.
+tries=0
+while [ "$tries" -lt 300 ]; do
+    if ! kill -0 "$HYPRLAND_PID" 2>/dev/null; then
+        log "hyprland exited before it answered"
+        fail "Hyprland exited before it answered; see $LOG"
+        exit 1
+    fi
+    # Two signals, because either can be the only one available: hyprctl answering, or the
+    # compositor's own Wayland socket existing. hyprctl used to fail in the guest on
+    # setsockopt(SO_RCVTIMEO) (fixed in the engine, but an older build must still boot), and
+    # the socket is what the bridge actually needs.
+    ready=0
+    if hyprctl -j monitors >/dev/null 2>&1; then
+        ready=1
+    else
+        for s in "$XDG_RUNTIME_DIR"/hypr/*/.socket.sock; do
+            [ -S "$s" ] && ready=1
+        done
+    fi
+    if [ "$ready" = 1 ]; then
+        log "hyprland is answering after ${tries}s"
+        status "Hyprland is up (${tries}s); starting the display bridge"
+        break
+    fi
+    tries=$((tries + 1))
+    sleep 1
+done
+[ "$tries" -lt 300 ] || {
+    fail "Hyprland did not answer within 300s; see $LOG"
+    exit 1
+}
+
+# --- the display/input bridge ---------------------------------------------------------
+if command -v omarchy-pad-bridge >/dev/null 2>&1; then
+    log "starting omarchy-pad-bridge"
+    omarchy-pad-bridge >>"$LOG" 2>&1 &
+    log "bridge pid $!"
+    status "the desktop is on screen"
+else
+    log "omarchy-pad-bridge is not installed yet; the desktop runs headless"
+    fail "omarchy-pad-bridge is not installed in this root"
+fi
+
+wait "$HYPRLAND_PID"
+log "hyprland exited"

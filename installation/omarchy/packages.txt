@@ -1,0 +1,53 @@
+# Omarchy Pad image: the Omarchy runtime plus only what the iPad session needs.
+#
+# The full `omarchy-pkg-defaults aarch64` set is the ISO's desktop list: it carries
+# docker, cups, libreoffice, chromium, bluez, firmware and VM tooling that an iPad
+# image must not pay for. This list starts from `omarchy-dev` (which pulls Hyprland,
+# Quickshell, uwsm, the Omarchy shell and the themes) and adds the pieces the session
+# needs that the ISO gets from `omarchy-other.packages` (PipeWire servers, the Qt
+# Wayland and layer-shell integration) plus the probes the bridge and the GPU gates
+# use. Everything else stays installable later with `omarchy install`.
+#
+# One package per line; comments and blanks ignored.
+
+# Omarchy runtime (MIT; provides /usr/share/omarchy, bin/omarchy, the Quickshell shell)
+omarchy-dev
+omarchy-settings-dev
+
+# Graphics: Mesa is the guest side of the Venus -> virglrenderer -> MoltenVK path;
+# mesa-utils (eglinfo) and vulkan-tools (vulkaninfo) are the gate probes, and
+# vulkan-virtio is the Venus ICD itself (Arch does not pull it in with mesa).
+mesa
+mesa-utils
+vulkan-tools
+vulkan-virtio
+libglvnd
+
+# Session: audio, layer-shell for Quickshell, polkit for its PolkitAgent plugin
+pipewire
+pipewire-pulse
+pipewire-alsa
+wireplumber
+gtk4-layer-shell
+qt6-wayland
+polkit
+
+# First things to drive once a frame reaches the iPad
+foot
+wl-clipboard
+wtype
+grim
+slurp
+jq
+socat
+gum
+udiskie
+upower
+power-profiles-daemon
+networkmanager
+xkeyboard-config
+noto-fonts
+noto-fonts-emoji
+curl
+unzip
+sudo
