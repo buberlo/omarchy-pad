@@ -107,11 +107,13 @@ NSArray<NSString *> *CurrentAppGroups(void) {
 NSURL *ContainerURL(void) {
     NSString *appGroup = CurrentAppGroups().firstObject;
     NSURL *url = appGroup ? [NSFileManager.defaultManager containerURLForSecurityApplicationGroupIdentifier:appGroup] : nil;
-#if TARGET_OS_SIMULATOR
-    // Ad-hoc simulator builds can't carry the app-group entitlement.
+    // An app built without the app group -- an ad-hoc simulator build, or a device build whose
+    // bundle id does not have the App Groups capability yet, which is how a fresh bundle id
+    // starts -- still has to run: it then gets its own Linux system in its own container
+    // instead of the shared one. Returning nil here was fatal on a device, with nothing but a
+    // "the Linux filesystem is not reachable" screen to explain it.
     if (url == nil)
         url = [NSFileManager.defaultManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].firstObject;
-#endif
     return url;
 }
 

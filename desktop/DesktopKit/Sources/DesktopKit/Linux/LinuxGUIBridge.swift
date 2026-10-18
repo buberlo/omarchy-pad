@@ -241,8 +241,8 @@ final class LinuxGUIBridge {
         state = .running
         send("hello")
         keyboardLayout.attach { [weak self] line in self?.send(line) }
-        for command in pendingLaunches { spawn(command) }
-        pendingLaunches.removeAll()
+        // Anything asked for while the session was coming up goes out now (see launch(_:)).
+        flushPendingLaunches()
         monitorSession(runtimeURL)
         await loadApplications()
     }
@@ -279,6 +279,9 @@ final class LinuxGUIBridge {
                     self.sessionEnded()
                     return
                 }
+                // A request that arrived while this check was between states must not wait for
+                // the next session: send whatever is still queued.
+                self.flushPendingLaunches()
             }
         }
     }
@@ -388,17 +391,38 @@ final class LinuxGUIBridge {
         applications = LinuxDesktopEntry.parseListing(listing.stdout)
     }
 
+    /// Starts `command` in the guest. Nothing is ever sent twice: a request that arrives before
+    /// the session is reachable waits in `pendingLaunches` and is flushed as soon as it is.
+    ///
+    /// It used to be flushed exactly once, at the end of `connect()`. A launch that landed
+    /// after that flush but before `state` became `.running` (or during an attempt that failed
+    /// before reaching the flush) stayed queued for good: the canvas showed "Starting Omarchy"
+    /// until its 300 s watchdog gave up, while the guest sat at an idle prompt with no session.
+    /// That is the failure the app's own diagnostics caught -- `startingSteam` in the status
+    /// file, nothing at all in the guest's ishwl log. The flush is now driven by the state
+    /// change *and* retried by the health check, so a stranded request is impossible.
     func launch(command: String) {
+        pendingLaunches.append(command)
+        Self.logger.info("launch \(command, privacy: .public): \(self.pendingLaunches.count) queued, state \(String(describing: self.state), privacy: .public)")
         if state == .running {
-            spawn(command)
+            flushPendingLaunches()
         } else {
-            pendingLaunches.append(command)
             start()
         }
     }
 
+    /// Sends every queued request, once the session can take them.
+    private func flushPendingLaunches() {
+        guard state == .running, !pendingLaunches.isEmpty else { return }
+        let commands = pendingLaunches
+        pendingLaunches.removeAll()
+        Self.logger.info("flushing \(commands.count) queued launch request(s)")
+        for command in commands { spawn(command) }
+    }
+
     private func spawn(_ command: String) {
         launchTimes.append(Date())
+        Self.logger.info("spawn \(command, privacy: .public)")
         send("spawn \(Self.escape(command))")
     }
 
